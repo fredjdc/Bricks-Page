@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" x-data="{ currentLang: 'es' }" :lang="currentLang">
 <head>
     <meta charset="UTF-8">
     <!-- Bricks App Banners
@@ -59,39 +59,39 @@
             <div class="hidden md:flex md:flex-1 md:items-center md:justify-between">
                 <nav class="flex items-center space-x-6 text-sm font-medium">
                     <a href="#features" class="transition-colors hover:text-brand">
-                        <span lang="en">Features</span>
-                        <span lang="es" class="hidden">Características</span>
+                        <span x-show="currentLang === 'en'">Features</span>
+                        <span x-show="currentLang === 'es'">Características</span>
                     </a>
                     <a href="#for-buyers" class="transition-colors hover:text-brand">
-                        <span lang="en">For Buyers</span>
-                        <span lang="es" class="hidden">Para Compradores</span>
+                        <span x-show="currentLang === 'en'">For Buyers</span>
+                        <span x-show="currentLang === 'es'">Para Compradores</span>
                     </a>
                     <a href="#for-pros" class="transition-colors hover:text-brand">
-                        <span lang="en">For Professionals</span>
-                        <span lang="es" class="hidden">Para Profesionales</span>
+                        <span x-show="currentLang === 'en'">For Professionals</span>
+                        <span x-show="currentLang === 'es'">Para Profesionales</span>
                     </a>
                     <a href="#pricing" class="transition-colors hover:text-brand">
-                        <span lang="en">Pricing</span>
-                        <span lang="es" class="hidden">Precios</span>
+                        <span x-show="currentLang === 'en'">Pricing</span>
+                        <span x-show="currentLang === 'es'">Precios</span>
                     </a>
                     <a href="#faq" class="transition-colors hover:text-brand">
-                        <span lang="en">FAQ</span>
-                        <span lang="es" class="hidden">FAQ</span>
+                        <span x-show="currentLang === 'en'">FAQ</span>
+                        <span x-show="currentLang === 'es'">FAQ</span>
                     </a>
                 </nav>
                 
-                <!-- Language Selector -->
+                <!-- Language Selector with Alpine.js -->
                 <div class="relative" x-data="{ open: false }">
                     <button @click="open = !open" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2">
-                        <span id="current-language">Español</span>
+                        <span x-text="currentLang === 'en' ? 'English' : 'Español'">Español</span>
                         <svg class="ml-1 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="m6 9 4 4 4-4"></path>
                         </svg>
                     </button>
                     <div x-show="open" @click.away="open = false" class="absolute right-0 mt-2 w-40 rounded-md border bg-popover text-popover-foreground shadow-md outline-none z-50">
                         <div class="p-1">
-                            <a href="#" onclick="changeLanguage('en'); return false;" class="relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none hover:bg-accent hover:text-accent-foreground">English</a>
-                            <a href="#" onclick="changeLanguage('es'); return false;" class="relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none hover:bg-accent hover:text-accent-foreground">Español</a>
+                            <button @click="currentLang = 'en'; open = false" class="relative flex w-full cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none hover:bg-accent hover:text-accent-foreground">English</button>
+                            <button @click="currentLang = 'es'; open = false" class="relative flex w-full cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none hover:bg-accent hover:text-accent-foreground">Español</button>
                         </div>
                     </div>
                 </div>
@@ -108,40 +108,17 @@
             </div>
         </div>
         
-        <!-- Mobile menu -->
-        <div class="md:hidden hidden bg-background border-t" id="mobile-menu">
-            <div class="space-y-1 p-4">
-                <a href="#features" class="block py-2 px-3 text-foreground hover:bg-accent rounded-md">
-                    <span lang="en">Features</span>
-                    <span lang="es" class="hidden">Características</span>
-                </a>
-                <a href="#for-buyers" class="block py-2 px-3 text-foreground hover:bg-accent rounded-md">
-                    <span lang="en">For Buyers</span>
-                    <span lang="es" class="hidden">Para Compradores</span>
-                </a>
-                <a href="#for-pros" class="block py-2 px-3 text-foreground hover:bg-accent rounded-md">
-                    <span lang="en">For Professionals</span>
-                    <span lang="es" class="hidden">Para Profesionales</span>
-                </a>
-                <a href="#pricing" class="block py-2 px-3 text-foreground hover:bg-accent rounded-md">
-                    <span lang="en">Pricing</span>
-                    <span lang="es" class="hidden">Precios</span>
-                </a>
-                <a href="#faq" class="block py-2 px-3 text-foreground hover:bg-accent rounded-md">
-                    <span lang="en">FAQ</span>
-                    <span lang="es" class="hidden">FAQ</span>
-                </a>
-                
-                <!-- Mobile Language Selector -->
-                <div class="pt-4 mt-3 border-t border-accent">
-                    <div class="px-3 mb-2 text-sm font-medium">
-                        <span lang="en">Language</span>
-                        <span lang="es" class="hidden">Idioma</span>
-                    </div>
-                    <div class="grid grid-cols-2 gap-2">
-                        <button onclick="changeLanguage('en')" class="flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 language-btn" data-lang="en">English</button>
-                        <button onclick="changeLanguage('es')" class="flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 language-btn" data-lang="es">Español</button>
-                    </div>
+        <!-- Mobile menu with optimized language selector -->
+        <div class="md:hidden hidden bg-background border-t" id="mobile-menu" x-data="{ open: false }" :class="{ 'hidden': !open }">
+            <!-- Mobile navigation with x-show for language -->
+            <div class="px-3 py-2 border-t border-gray-100 mt-2">
+                <div class="text-gray-600 mb-1">
+                    <span x-show="currentLang === 'en'">Language</span>
+                    <span x-show="currentLang === 'es'">Idioma</span>
+                </div>
+                <div class="grid grid-cols-2 gap-2">
+                    <button @click="currentLang = 'en'" class="flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2" :class="currentLang === 'en' ? 'bg-brand text-brand-foreground' : 'bg-background'">English</button>
+                    <button @click="currentLang = 'es'" class="flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2" :class="currentLang === 'es' ? 'bg-brand text-brand-foreground' : 'bg-background'">Español</button>
                 </div>
             </div>
         </div>
@@ -1085,24 +1062,50 @@
             <div class="border-t border-muted-foreground/20 pt-8 flex flex-col md:flex-row justify-between space-y-4 md:space-y-0">
                 <div class="flex space-x-6 text-sm text-muted-foreground">
                     <a href="privacy.html" class="hover:underline">
-                        <span lang="en">Privacy Policy</span>
-                        <span lang="es" class="hidden">Política de Privacidad</span>
+                        <span x-show="currentLang === 'en'">Privacy Policy</span>
+                        <span x-show="currentLang === 'es'">Política de Privacidad</span>
                     </a>
                     <a href="terms.html" class="hover:underline">
-                        <span lang="en">Terms of Service</span>
-                        <span lang="es" class="hidden">Términos de Servicio</span>
+                        <span x-show="currentLang === 'en'">Terms of Service</span>
+                        <span x-show="currentLang === 'es'">Términos de Servicio</span>
                     </a>
                     <a href="about.html" class="hover:underline">
-                        <span lang="en">About</span>
-                        <span lang="es" class="hidden">Acerca de</span>
+                        <span x-show="currentLang === 'en'">About</span>
+                        <span x-show="currentLang === 'es'">Acerca de</span>
                     </a>
                 </div>
                 <p class="text-sm text-muted-foreground">
-                    <span lang="en">© 2025 Bricks. All rights reserved.</span>
-                    <span lang="es" class="hidden">© 2025 Bricks. Todos los derechos reservados.</span>
+                    <span x-show="currentLang === 'en'">© 2025 Bricks. All rights reserved.</span>
+                    <span x-show="currentLang === 'es'">© 2025 Bricks. Todos los derechos reservados.</span>
                 </p>
             </div>
         </div>
     </footer>
+
+    <script>
+    // Initialize Alpine.js with language state
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('langState', () => ({
+            init() {
+                // Set document language attribute whenever currentLang changes
+                this.$watch('currentLang', value => {
+                    document.documentElement.setAttribute('lang', value);
+                });
+            }
+        }));
+    });
+
+    // Mobile menu toggle
+    document.addEventListener('DOMContentLoaded', () => {
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if (menuButton && mobileMenu) {
+            menuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+    });
+    </script>
 </body>
 </html> 
