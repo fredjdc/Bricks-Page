@@ -84,6 +84,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (menuButton && mobileMenu) {
         menuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
+            // Make sure Alpine.js doesn't interfere with our toggle
+            if (mobileMenu.__x) {
+                mobileMenu.__x.updateElements(mobileMenu);
+            }
         });
     }
 

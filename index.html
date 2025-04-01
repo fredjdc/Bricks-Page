@@ -2,10 +2,10 @@
 <html lang="es" x-data="{ currentLang: 'es' }" :lang="currentLang">
 <head>
     <meta charset="UTF-8">
-    <!-- Bricks App Banners
+    <!-- Bricks App Banners -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-itunes-app" content="app-id=370144476,app-argument=https://bricksapp.com/calculator">
-    <meta name="description" content="Bricks: la calculadora hipotecaria intuitiva para compradores primerizos. Compare tasas, visualice pagos y tome decisiones financieras con confianza. Herramienta profesional para bancos."> -->
+    <meta name="description" content="Bricks: la calculadora hipotecaria intuitiva para compradores primerizos. Compare tasas, visualice pagos y tome decisiones financieras con confianza. Herramienta profesional para bancos.">
 
     <!-- Test Banner -->
     <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
@@ -109,8 +109,31 @@
         </div>
         
         <!-- Mobile menu with optimized language selector -->
-        <div class="md:hidden hidden bg-background border-t" id="mobile-menu" x-data="{ open: false }" :class="{ 'hidden': !open }">
-            <!-- Mobile navigation with x-show for language -->
+        <div class="md:hidden hidden bg-background border-t" id="mobile-menu">
+            <!-- Mobile navigation links -->
+            <nav class="px-4 py-3 space-y-3">
+                <a href="#features" class="block py-2 text-sm font-medium text-foreground hover:text-brand">
+                    <span x-show="currentLang === 'en'">Features</span>
+                    <span x-show="currentLang === 'es'">Características</span>
+                </a>
+                <a href="#for-buyers" class="block py-2 text-sm font-medium text-foreground hover:text-brand">
+                    <span x-show="currentLang === 'en'">For Buyers</span>
+                    <span x-show="currentLang === 'es'">Para Compradores</span>
+                </a>
+                <a href="#for-pros" class="block py-2 text-sm font-medium text-foreground hover:text-brand">
+                    <span x-show="currentLang === 'en'">For Professionals</span>
+                    <span x-show="currentLang === 'es'">Para Profesionales</span>
+                </a>
+                <a href="#pricing" class="block py-2 text-sm font-medium text-foreground hover:text-brand">
+                    <span x-show="currentLang === 'en'">Pricing</span>
+                    <span x-show="currentLang === 'es'">Precios</span>
+                </a>
+                <a href="#faq" class="block py-2 text-sm font-medium text-foreground hover:text-brand">
+                    <span x-show="currentLang === 'en'">FAQ</span>
+                    <span x-show="currentLang === 'es'">FAQ</span>
+                </a>
+            </nav>
+            <!-- Language selector -->
             <div class="px-3 py-2 border-t border-gray-100 mt-2">
                 <div class="text-gray-600 mb-1">
                     <span x-show="currentLang === 'en'">Language</span>
