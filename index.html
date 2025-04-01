@@ -7,10 +7,10 @@
     <meta name="apple-itunes-app" content="app-id=370144476,app-argument=https://bricksapp.com/calculator">
     <meta name="description" content="Bricks: la calculadora hipotecaria intuitiva para compradores primerizos. Compare tasas, visualice pagos y tome decisiones financieras con confianza. Herramienta profesional para bancos."> -->
 
-    <!-- Test Banner 
+    <!-- Test Banner -->
     <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
     <meta property="fb:app_id" content="1401488693436528">
-    <meta name="apple-itunes-app" content="app-id=1477376905, app-argument=https://github.com/"/>-->
+    <meta name="apple-itunes-app" content="app-id=1477376905, app-argument=https://github.com/"/>
     
     <title>Bricks - Decisiones Hipotecarias Simplificadas</title>
     
@@ -33,206 +33,20 @@
     
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                container: {
-                    center: true,
-                    padding: '1rem',
-                    screens: {
-                        DEFAULT: '100%',
-                        sm: '640px',
-                        md: '768px',
-                        lg: '1024px',
-                        xl: '1200px',
-                        '2xl': '1200px',
-                    },
-                },
-                extend: {
-                    colors: {
-                        border: "hsl(240 5.9% 90%)",
-                        input: "hsl(240 5.9% 90%)",
-                        ring: "hsl(240 5% 64.9%)",
-                        background: "hsl(0 0% 100%)",
-                        foreground: "hsl(240 10% 3.9%)",
-                        primary: {
-                            DEFAULT: "hsl(240 5.9% 10%)",
-                            foreground: "hsl(0 0% 98%)",
-                        },
-                        secondary: {
-                            DEFAULT: "hsl(240 4.8% 95.9%)",
-                            foreground: "hsl(240 5.9% 10%)",
-                        },
-                        destructive: {
-                            DEFAULT: "hsl(0 84.2% 60.2%)",
-                            foreground: "hsl(0 0% 98%)",
-                        },
-                        muted: {
-                            DEFAULT: "hsl(240 4.8% 95.9%)",
-                            foreground: "hsl(240 3.8% 46.1%)",
-                        },
-                        accent: {
-                            DEFAULT: "hsl(240 4.8% 95.9%)",
-                            foreground: "hsl(240 5.9% 10%)",
-                        },
-                        popover: {
-                            DEFAULT: "hsl(0 0% 100%)",
-                            foreground: "hsl(240 10% 3.9%)",
-                        },
-                        card: {
-                            DEFAULT: "hsl(0 0% 100%)",
-                            foreground: "hsl(240 10% 3.9%)",
-                        },
-                        brand: {
-                            DEFAULT: "hsl(220 65% 55%)",
-                            foreground: "hsl(0 0% 98%)",
-                        },
-                        success: {
-                            DEFAULT: "hsl(142 76% 36%)",
-                            foreground: "hsl(0 0% 98%)",
-                        }
-                    },
-                    borderRadius: {
-                        lg: "var(--radius)",
-                        md: "calc(var(--radius) - 2px)",
-                        sm: "calc(var(--radius) - 4px)",
-                    },
-                    fontFamily: {
-                        sans: ["Inter", "sans-serif"],
-                    },
-                    boxShadow: {
-                        'soft-md': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
-                        'soft-lg': '0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02)',
-                        'soft-xl': '0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.01)',
-                    },
-                },
-            },
-        }
-    </script>
     
     <!-- Alpine.js for interactive components -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Custom scripts -->
+    <script defer src="scripts.js"></script>
     
     <!-- Inter font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <style type="text/tailwindcss">
-        @layer base {
-            :root {
-                --radius: 0.5rem;
-            }
-            
-            body {
-                @apply bg-background text-foreground font-sans antialiased;
-            }
-        }
-        
-        @layer utilities {
-            .animation-delay-2000 {
-                animation-delay: 2s;
-            }
-            .animation-delay-4000 {
-                animation-delay: 4s;
-            }
-        }
-        
-        /* Animations */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        
-        .animate-in {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Buttons */
-        .btn {
-            @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50;
-        }
-        
-        .btn-primary {
-            @apply bg-brand text-brand-foreground shadow hover:bg-brand/90;
-        }
-        
-        .btn-secondary {
-            @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
-        }
-        
-        .btn-outline {
-            @apply border border-input bg-background hover:bg-accent hover:text-accent-foreground;
-        }
-        
-        .btn-ghost {
-            @apply hover:bg-accent hover:text-accent-foreground;
-        }
-        
-        /* Card styles */
-        .card {
-            @apply rounded-lg border bg-card text-card-foreground shadow;
-        }
-        
-        .card-header {
-            @apply flex flex-col space-y-1.5 p-6;
-        }
-        
-        .card-title {
-            @apply font-semibold leading-none tracking-tight;
-        }
-        
-        .card-description {
-            @apply text-sm text-muted-foreground;
-        }
-        
-        .card-content {
-            @apply p-6 pt-0;
-        }
-        
-        .card-footer {
-            @apply flex items-center p-6 pt-0;
-        }
-        
-        /* Carousel styles */
-        .carousel-container {
-            width: 100%;
-            position: relative;
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            cursor: grab;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-        
-        .carousel-container::-webkit-scrollbar {
-            display: none;
-        }
-        
-        .carousel-container:active {
-            cursor: grabbing;
-        }
-        
-        .carousel-container.active {
-            scroll-snap-type: none;
-        }
-        
-        .snap-x {
-            scroll-snap-type: x mandatory;
-        }
-        
-        .snap-center {
-            scroll-snap-align: center;
-        }
-        
-        /* Hover effects */
-        .hover-lift {
-            @apply transition-transform duration-300 hover:-translate-y-1;
-        }
-    </style>
+    <!-- Main stylesheet -->
+    <link href="styles.css" rel="stylesheet">
 </head>
 <body class="min-h-screen">
     <!-- Navigation -->
@@ -1262,221 +1076,33 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 py-12 text-slate-300">
-        <div class="container px-4 md:px-6">
-            <div class="flex flex-col md:flex-row md:justify-between">
-                <div class="mb-8 md:mb-0">
-                    <a href="#" class="text-2xl font-bold text-white">Bricks</a>
-                    <p class="mt-2 max-w-xs text-slate-400">
-                        <span lang="en">Making mortgage calculations simple, beautiful, and accessible.</span>
-                        <span lang="es" class="hidden">Haciendo los cálculos hipotecarios simples, hermosos y accesibles.</span>
-                    </p>
-                </div>
-                
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
-                    <div>
-                        <h3 class="mb-4 text-lg font-semibold text-white">
-                            <span lang="en">Company</span>
-                            <span lang="es" class="hidden">Empresa</span>
-                        </h3>
-                        <ul class="space-y-2">
-                            <li><a href="about.html" class="transition-colors hover:text-white">
-                                <span lang="en">About</span>
-                                <span lang="es" class="hidden">Acerca de</span>
-                            </a></li>
-                            <li><a href="#" class="transition-colors hover:text-white">
-                                <span lang="en">Careers</span>
-                                <span lang="es" class="hidden">Carreras</span>
-                            </a></li>
-                        </ul>
-                    </div>
-                    
-                    <div>
-                        <h3 class="mb-4 text-lg font-semibold text-white">
-                            <span lang="en">Support</span>
-                            <span lang="es" class="hidden">Soporte</span>
-                        </h3>
-                        <ul class="space-y-2">
-                            <li><a href="#" class="transition-colors hover:text-white">
-                                <span lang="en">Help Center</span>
-                                <span lang="es" class="hidden">Centro de Ayuda</span>
-                            </a></li>
-                            <li><a href="https://wa.me/51953431080?text=Hola%2C%20necesito%20soporte%20respecto%20a%20lo%20siguiente%20" target="_blank" class="flex items-center transition-colors hover:text-white">
-                                <svg class="mr-2 h-4 w-4 text-green-400" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                                </svg>
-                                <span lang="en">WhatsApp</span>
-                                <span lang="es" class="hidden">WhatsApp</span>
-                            </a></li>
-                        </ul>
-                    </div>
-                </div>
+    <footer class="bg-muted py-12 mt-16">
+        <div class="container space-y-8">
+            <div class="flex flex-col md:flex-row md:justify-between space-y-6 md:space-y-0">
+                <!-- Footer content here -->
             </div>
             
-            <div class="mt-12 border-t border-gray-800 pt-8 text-center text-sm text-slate-400">
-                <p>
-                    <span lang="en">© 2025 Bricks App. All rights reserved.</span>
-                    <span lang="es" class="hidden">© 2025 Bricks App. Todos los derechos reservados.</span>
-                </p>
-                <div class="mt-4 flex justify-center space-x-6">
-                    <a href="privacy.html" class="transition-colors hover:text-white">
+            <div class="border-t border-muted-foreground/20 pt-8 flex flex-col md:flex-row justify-between space-y-4 md:space-y-0">
+                <div class="flex space-x-6 text-sm text-muted-foreground">
+                    <a href="privacy.html" class="hover:underline">
                         <span lang="en">Privacy Policy</span>
                         <span lang="es" class="hidden">Política de Privacidad</span>
                     </a>
-                    <a href="terms.html" class="transition-colors hover:text-white">
+                    <a href="terms.html" class="hover:underline">
                         <span lang="en">Terms of Service</span>
                         <span lang="es" class="hidden">Términos de Servicio</span>
                     </a>
+                    <a href="about.html" class="hover:underline">
+                        <span lang="en">About</span>
+                        <span lang="es" class="hidden">Acerca de</span>
+                    </a>
                 </div>
+                <p class="text-sm text-muted-foreground">
+                    <span lang="en">© 2025 Bricks. All rights reserved.</span>
+                    <span lang="es" class="hidden">© 2025 Bricks. Todos los derechos reservados.</span>
+                </p>
             </div>
         </div>
     </footer>
-
-    <script>
-        // Mobile menu toggle
-        const menuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        menuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Animation for elements when they come into view
-        document.addEventListener('DOMContentLoaded', () => {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate-in');
-                    }
-                });
-            }, {
-                threshold: 0.1
-            });
-            
-            document.querySelectorAll('.animate-on-scroll').forEach(element => {
-                observer.observe(element);
-            });
-        });
-        
-        // Carousel functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const carousel = document.getElementById('screenshot-carousel');
-            const container = carousel.parentElement;
-            
-            let isDown = false;
-            let startX;
-            let scrollLeft;
-            
-            // Mouse events
-            container.addEventListener('mousedown', (e) => {
-                isDown = true;
-                container.classList.add('active');
-                startX = e.pageX - container.offsetLeft;
-                scrollLeft = container.scrollLeft;
-                e.preventDefault(); // Prevent text selection
-            });
-            
-            container.addEventListener('mouseleave', () => {
-                isDown = false;
-                container.classList.remove('active');
-            });
-            
-            container.addEventListener('mouseup', () => {
-                isDown = false;
-                container.classList.remove('active');
-            });
-            
-            container.addEventListener('mousemove', (e) => {
-                if(!isDown) return;
-                e.preventDefault();
-                const x = e.pageX - container.offsetLeft;
-                const walk = (x - startX) * 1.5; // Adjust scroll speed
-                container.scrollLeft = scrollLeft - walk;
-            });
-            
-            // Touch events
-            container.addEventListener('touchstart', (e) => {
-                isDown = true;
-                container.classList.add('active');
-                startX = e.touches[0].pageX - container.offsetLeft;
-                scrollLeft = container.scrollLeft;
-            }, { passive: false });
-            
-            container.addEventListener('touchend', () => {
-                isDown = false;
-                container.classList.remove('active');
-            });
-            
-            container.addEventListener('touchcancel', () => {
-                isDown = false;
-                container.classList.remove('active');
-            });
-            
-            container.addEventListener('touchmove', (e) => {
-                if(!isDown) return;
-                const x = e.touches[0].pageX - container.offsetLeft;
-                const walk = (x - startX) * 1.5;
-                container.scrollLeft = scrollLeft - walk;
-                e.preventDefault(); // Prevent page scrolling when dragging
-            }, { passive: false });
-            
-            // Scroll to center initially
-            window.addEventListener('load', () => {
-                const containerWidth = container.offsetWidth;
-                const carouselWidth = carousel.scrollWidth;
-                const initialScroll = (carouselWidth - containerWidth) / 4;
-                container.scrollLeft = initialScroll;
-            });
-        });
-    </script>
-
-    <!-- Language Switching Script -->
-    <script>
-        // Default language set to Spanish
-        let currentLanguage = 'es';
-
-        // Function to change the language
-        function changeLanguage(lang) {
-            try {
-                // Update current language
-                currentLanguage = lang;
-                
-                // Update the displayed language in the selector
-                const langElement = document.getElementById('current-language');
-                if (langElement) {
-                    langElement.textContent = lang === 'en' ? 'English' : 'Español';
-                }
-                
-                // Show only elements for the selected language
-                const allLangElements = document.querySelectorAll('span[lang]');
-                allLangElements.forEach(el => {
-                    if (el.getAttribute('lang') === lang) {
-                        el.classList.remove('hidden');
-                    } else {
-                        el.classList.add('hidden');
-                    }
-                });
-                
-                // Update language buttons styling
-                const langButtons = document.querySelectorAll('.language-btn');
-                langButtons.forEach(btn => {
-                    if (btn.getAttribute('data-lang') === lang) {
-                        btn.classList.add('bg-brand', 'text-brand-foreground');
-                        btn.classList.remove('bg-background');
-                    } else {
-                        btn.classList.remove('bg-brand', 'text-brand-foreground');
-                        btn.classList.add('bg-background');
-                    }
-                });
-            } catch (error) {
-                console.error('Error changing language:', error);
-            }
-        }
-
-        // Initialize with Spanish language by default
-        document.addEventListener('DOMContentLoaded', function() {
-            changeLanguage('es');
-        });
-    </script>
 </body>
 </html> 
