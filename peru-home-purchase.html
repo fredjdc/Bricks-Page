@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Purchase Peru | Bricks</title>
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        /* Primary accent color - #007AFF */
+                        primary: {
+                            light: '#60a5fa', // light blue
+                            DEFAULT: '#007AFF', // blue - changed from #2563eb 
+                            dark: '#007AFF', // dark blue - changed from #1d4ed8
+                        },
+                        /* Secondary accent color (green) - #34C85A */
+                        secondary: {
+                            light: '#4ADE80', // light green
+                            DEFAULT: '#34C85A', // green - changed from #10b981
+                            dark: '#15803D', // dark green - adjusted to match new green
+                        },
+                    },
+                    maxWidth: {
+                        'screen-xl': '1200px',
+                    },
+                },
+            },
+        }
+    </script>
+    <!-- Alpine.js for interactive components -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- Link to custom CSS file -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-sans text-gray-800 bg-white overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-sm z-50 shadow-sm">
+        <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-primary text-shadow">Bricks</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <!-- Language Selector -->
+                    <div class="relative" x-data="{ open: false }">
+                        <button @click="open = !open" class="flex items-center text-gray-600 hover:text-primary transition-colors">
+                            <span id="current-language">Español</span>
+                            <svg class="ml-1 w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div x-show="open" @click.away="open = false" class="absolute right-0 mt-2 py-2 w-40 bg-white rounded-md shadow-lg z-50">
+                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-primary hover:text-white" onclick="changeLanguage('en'); return false;">English</a>
+                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-primary hover:text-white" onclick="changeLanguage('es'); return false;">Español</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button type="button" class="text-gray-600" id="mobile-menu-button">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu, show/hide based on menu state -->
+        <div class="md:hidden hidden bg-white" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="block px-3 py-2 text-gray-600 hover:text-primary transition-colors">
+                    <span lang="en">Home</span>
+                    <span lang="es" class="hidden">Inicio</span>
+                </a>
+                <!-- Mobile Language Selector -->
+                <div class="px-3 py-2 border-t border-gray-100 mt-2">
+                    <div class="text-gray-600 mb-1">
+                        <span lang="en">Language</span>
+                        <span lang="es" class="hidden">Idioma</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button onclick="changeLanguage('en')" class="px-3 py-1 bg-gray-100 rounded hover:bg-primary hover:text-white language-btn" data-lang="en">English</button>
+                        <button onclick="changeLanguage('es')" class="px-3 py-1 bg-gray-100 rounded hover:bg-primary hover:text-white language-btn" data-lang="es">Español</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Peru Home Purchase Guide Content -->
+    <section class="pt-32 pb-16 bg-white">
+        <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-3xl md:text-4xl font-bold mb-8 text-center">
+                <span lang="en">Guide to Home Purchase in Peru</span>
+                <span lang="es" class="hidden">Guía para la Compra de Vivienda en Perú</span>
+            </h1>
+            
+            <div class="bg-white rounded-xl shadow-md p-6 md:p-8 mb-8">
+                <div class="prose max-w-none">
+                    <!-- Introduction -->
+                    <p class="mb-6">
+                        <span lang="en">Purchasing a home in Peru involves several steps and considerations unique to the Peruvian real estate market. This guide is designed to help you navigate the process with confidence.</span>
+                        <span lang="es" class="hidden">La compra de una vivienda en Perú implica varios pasos y consideraciones únicas del mercado inmobiliario peruano. Esta guía está diseñada para ayudarte a navegar el proceso con confianza.</span>
+                    </p>
+                    
+                    <!-- Legal Process Section -->
+                    <h2 class="text-xl md:text-2xl font-semibold mb-4">
+                        <span lang="en">The Legal Process</span>
+                        <span lang="es" class="hidden">El Proceso Legal</span>
+                    </h2>
+                    <ol class="list-decimal pl-6 mb-8">
+                        <li class="mb-4">
+                            <span class="font-medium">
+                                <span lang="en">Property Search and Due Diligence</span>
+                                <span lang="es" class="hidden">Búsqueda de Propiedades y Due Diligence</span>
+                            </span>
+                            <p class="mt-1">
+                                <span lang="en">Begin by researching neighborhoods and properties. Ensure the property has clear title by checking the property registration (SUNARP) and verifying there are no liens or encumbrances.</span>
+                                <span lang="es" class="hidden">Comienza investigando vecindarios y propiedades. Asegúrate de que la propiedad tenga un título claro verificando el registro de propiedad (SUNARP) y confirmando que no existan gravámenes o cargas.</span>
+                            </p>
+                        </li>
+                        <li class="mb-4">
+                            <span class="font-medium">
+                                <span lang="en">Reservation Agreement</span>
+                                <span lang="es" class="hidden">Acuerdo de Reserva</span>
+                            </span>
+                            <p class="mt-1">
+                                <span lang="en">Once you've found a property, you may sign a reservation agreement and pay a small deposit to take the property off the market while further steps are completed.</span>
+                                <span lang="es" class="hidden">Una vez que hayas encontrado una propiedad, puedes firmar un acuerdo de reserva y pagar un pequeño depósito para retirar la propiedad del mercado mientras se completan los siguientes pasos.</span>
+                            </p>
+                        </li>
+                        <li class="mb-4">
+                            <span class="font-medium">
+                                <span lang="en">Purchase Agreement (Minuta de Compra Venta)</span>
+                                <span lang="es" class="hidden">Contrato de Compraventa (Minuta de Compra Venta)</span>
+                            </span>
+                            <p class="mt-1">
+                                <span lang="en">The purchase agreement outlines the terms of sale, including price, payment schedule, and closing date. Both parties must sign this document.</span>
+                                <span lang="es" class="hidden">El contrato de compraventa establece los términos de venta, incluyendo precio, calendario de pagos y fecha de cierre. Ambas partes deben firmar este documento.</span>
+                            </p>
+                        </li>
+                        <li class="mb-4">
+                            <span class="font-medium">
+                                <span lang="en">Public Deed (Escritura Pública)</span>
+                                <span lang="es" class="hidden">Escritura Pública</span>
+                            </span>
+                            <p class="mt-1">
+                                <span lang="en">The purchase agreement is elevated to a public deed by a notary public. This is an official legal document that formalizes the transfer of ownership.</span>
+                                <span lang="es" class="hidden">El contrato de compraventa se eleva a escritura pública por un notario. Este es un documento legal oficial que formaliza la transferencia de propiedad.</span>
+                            </p>
+                        </li>
+                        <li class="mb-4">
+                            <span class="font-medium">
+                                <span lang="en">Registration</span>
+                                <span lang="es" class="hidden">Registro</span>
+                            </span>
+                            <p class="mt-1">
+                                <span lang="en">The final step is registering the property in your name at the Public Registry (SUNARP). This establishes your legal ownership and protects your rights.</span>
+                                <span lang="es" class="hidden">El paso final es registrar la propiedad a tu nombre en el Registro Público (SUNARP). Esto establece tu propiedad legal y protege tus derechos.</span>
+                            </p>
+                        </li>
+                    </ol>
+                    
+                    <!-- Financing Section -->
+                    <h2 class="text-xl md:text-2xl font-semibold mb-4">
+                        <span lang="en">Financing Your Peruvian Home</span>
+                        <span lang="es" class="hidden">Financiando tu Vivienda en Perú</span>
+                    </h2>
+                    <ol class="list-decimal pl-6 mb-8">
+                        <li class="mb-4">
+                            <span class="font-medium">
+                                <span lang="en">Mortgage Pre-Approval</span>
+                                <span lang="es" class="hidden">Pre-Aprobación Hipotecaria</span>
+                            </span>
+                            <p class="mt-1">
+                                <span lang="en">Start by getting pre-approved for a mortgage to understand your budget. Peruvian banks typically finance up to 70-80% of the property value.</span>
+                                <span lang="es" class="hidden">Comienza obteniendo una pre-aprobación hipotecaria para entender tu presupuesto. Los bancos peruanos típicamente financian hasta el 70-80% del valor de la propiedad.</span>
+                            </p>
+                        </li>
+                        <li class="mb-4">
+                            <span class="font-medium">
+                                <span lang="en">Down Payment</span>
+                                <span lang="es" class="hidden">Cuota Inicial</span>
+                            </span>
+                            <p class="mt-1">
+                                <span lang="en">Prepare a down payment of at least 20-30% of the property value. Some new developments may offer financing with lower down payments.</span>
+                                <span lang="es" class="hidden">Prepara una cuota inicial de al menos 20-30% del valor de la propiedad. Algunos proyectos nuevos pueden ofrecer financiamiento con cuotas iniciales más bajas.</span>
+                            </p>
+                        </li>
+                        <li class="mb-4">
+                            <span class="font-medium">
+                                <span lang="en">Mortgage Options</span>
+                                <span lang="es" class="hidden">Opciones de Hipoteca</span>
+                            </span>
+                            <p class="mt-1">
+                                <span lang="en">Compare mortgage options from different banks. Consider interest rates, terms (typically 10-30 years), and whether the rate is fixed or variable.</span>
+                                <span lang="es" class="hidden">Compara opciones hipotecarias de diferentes bancos. Considera las tasas de interés, plazos (típicamente 10-30 años), y si la tasa es fija o variable.</span>
+                            </p>
+                        </li>
+                        <li class="mb-4">
+                            <span class="font-medium">
+                                <span lang="en">Required Documentation</span>
+                                <span lang="es" class="hidden">Documentación Requerida</span>
+                            </span>
+                            <p class="mt-1">
+                                <span lang="en">Prepare personal identification, proof of income, tax returns, and employment verification. Foreign buyers may need additional documentation.</span>
+                                <span lang="es" class="hidden">Prepara identificación personal, comprobantes de ingresos, declaraciones de impuestos y verificación de empleo. Los compradores extranjeros pueden necesitar documentación adicional.</span>
+                            </p>
+                        </li>
+                        <li class="mb-4">
+                            <span class="font-medium">
+                                <span lang="en">Closing Costs</span>
+                                <span lang="es" class="hidden">Costos de Cierre</span>
+                            </span>
+                            <p class="mt-1">
+                                <span lang="en">Budget for additional closing costs, including notary fees (0.2-0.5%), transfer tax (3% of property value), registration fees, and legal fees.</span>
+                                <span lang="es" class="hidden">Presupuesta costos adicionales de cierre, incluyendo honorarios notariales (0.2-0.5%), impuesto de transferencia (3% del valor de la propiedad), tarifas de registro y honorarios legales.</span>
+                            </p>
+                        </li>
+                    </ol>
+                    
+                    <!-- Calculator CTA Section -->
+                    <div class="bg-gray-50 p-6 rounded-lg my-8 text-center">
+                        <h3 class="text-lg font-semibold mb-3">
+                            <span lang="en">Plan Your Peruvian Home Purchase</span>
+                            <span lang="es" class="hidden">Planifica tu Compra de Vivienda en Perú</span>
+                        </h3>
+                        <p class="mb-4">
+                            <span lang="en">Use our mortgage calculator to estimate payments and understand your options.</span>
+                            <span lang="es" class="hidden">Usa nuestra calculadora hipotecaria para estimar pagos y entender tus opciones.</span>
+                        </p>
+                        <a href="index.html" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors duration-200">
+                            <span lang="en">Try Our Mortgage Calculator</span>
+                            <span lang="es" class="hidden">Prueba Nuestra Calculadora Hipotecaria</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Home Button -->
+    <div class="text-center mt-8 mb-12">
+        <a href="index.html" class="inline-flex items-center text-primary hover:text-primary-dark transition-colors">
+            <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
+            <span lang="en">Back to Home</span>
+            <span lang="es" class="hidden">Volver al Inicio</span>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-slate-400 py-12">
+        <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:justify-between">
+                <div class="mb-8 md:mb-0">
+                    <a href="#" class="text-2xl font-bold text-white">Bricks</a>
+                    <p class="mt-2 max-w-xs text-slate-400">
+                        <span lang="en">Making mortgage calculations simple, beautiful, and accessible.</span>
+                        <span lang="es" class="hidden">Haciendo los cálculos hipotecarios simples, hermosos y accesibles.</span>
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h3 class="mb-4 text-lg font-semibold text-white">
+                            <span lang="en">Company</span>
+                            <span lang="es" class="hidden">Empresa</span>
+                        </h3>
+                        <ul class="space-y-2">
+                            <li><a href="about.html" class="transition-colors hover:text-white">
+                                <span lang="en">About</span>
+                                <span lang="es" class="hidden">Acerca de</span>
+                            </a></li>
+                            <li><a href="peru-home-purchase.html" class="transition-colors hover:text-white">
+                                <span lang="en">Home Purchase Peru</span>
+                                <span lang="es" class="hidden">Viviendas en Perú</span>
+                            </a></li>
+                            <li><a href="#" class="transition-colors hover:text-white">
+                                <span lang="en">Careers</span>
+                                <span lang="es" class="hidden">Carreras</span>
+                            </a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="mb-4 text-lg font-semibold text-white">
+                            <span lang="en">Support</span>
+                            <span lang="es" class="hidden">Soporte</span>
+                        </h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="transition-colors hover:text-white">
+                                <span lang="en">Help Center</span>
+                                <span lang="es" class="hidden">Centro de Ayuda</span>
+                            </a></li>
+                            <li><a href="#" class="transition-colors hover:text-white">
+                                <span lang="en">Contact Us</span>
+                                <span lang="es" class="hidden">Contáctanos</span>
+                            </a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="mb-4 text-lg font-semibold text-white">
+                            <span lang="en">Legal</span>
+                            <span lang="es" class="hidden">Legal</span>
+                        </h3>
+                        <ul class="space-y-2">
+                            <li><a href="privacy.html" class="transition-colors hover:text-white">
+                                <span lang="en">Privacy Policy</span>
+                                <span lang="es" class="hidden">Política de Privacidad</span>
+                            </a></li>
+                            <li><a href="terms.html" class="transition-colors hover:text-white">
+                                <span lang="en">Terms of Service</span>
+                                <span lang="es" class="hidden">Términos de Servicio</span>
+                            </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 border-t border-gray-800 pt-8">
+                <p class="text-sm text-gray-400 text-center">
+                    <span lang="en">&copy; 2023 Bricks. All rights reserved.</span>
+                    <span lang="es" class="hidden">&copy; 2023 Bricks. Todos los derechos reservados.</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="scripts.js"></script>
+</body>
+</html> 
