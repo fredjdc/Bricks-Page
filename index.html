@@ -145,7 +145,7 @@
         
         /* Buttons */
         .btn {
-            @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50;
+            @apply inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50;
         }
         
         .btn-primary {
@@ -318,8 +318,8 @@
                         <span lang="es" class="hidden">Idioma</span>
                     </div>
                     <div class="grid grid-cols-2 gap-2">
-                        <button onclick="changeLanguage('en')" class="flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 language-btn" data-lang="en">English</button>
-                        <button onclick="changeLanguage('es')" class="flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 language-btn" data-lang="es">Español</button>
+                        <button onclick="changeLanguage('en')" class="flex items-center justify-center whitespace-nowrap rounded-2xl text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 language-btn" data-lang="en">English</button>
+                        <button onclick="changeLanguage('es')" class="flex items-center justify-center whitespace-nowrap rounded-2xl text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 language-btn" data-lang="es">Español</button>
                     </div>
                 </div>
             </div>
@@ -372,14 +372,14 @@
                     </ul>
                     
                     <div class="flex flex-wrap gap-4">
-                        <a href="#" class="btn px-6 py-3 rounded-lg bg-black text-white hover:bg-black/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-slate-950 focus-visible:ring-offset-2 inline-flex items-center justify-center">
+                        <a href="#" class="btn px-16 py-4 rounded-full bg-black text-white hover:bg-black/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-slate-950 focus-visible:ring-offset-2 inline-flex items-center justify-center">
                             <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.5646,12.6636 C17.532,10.0547 19.2843,8.5727 19.3623,8.5143 C18.1994,6.8761 16.3166,6.6936 15.6761,6.6747 C14.0535,6.5243 12.4844,7.716 11.6574,7.716 C10.8185,7.716 9.5219,6.6935 8.1644,6.7243 C6.4269,6.7551 4.8012,7.716 3.9234,9.2457 C2.1152,12.3603 3.4646,17.0072 5.2,19.5467 C6.0705,20.797 7.0775,22.2118 8.3948,22.1615 C9.6834,22.1112 10.16,21.3003 11.7071,21.3003 C13.2432,21.3003 13.6911,22.1615 15.0274,22.1327 C16.4046,22.1112 17.2788,20.8642 18.1256,19.6026 C19.1199,18.1483 19.5678,16.7144 19.5869,16.6545 C19.5583,16.6449 17.601,15.8649 17.5646,12.6636 Z M15.0599,5.0066 C15.7748,4.1194 16.2611,2.9026 16.1067,1.6666 C15.063,1.7078 13.7649,2.3665 13.0214,3.2346 C12.3638,4.0024 11.7741,5.2577 11.9475,6.4745 C13.1104,6.5537 14.3259,5.8843 15.0599,5.0066 Z"></path>
                             </svg>
                             <span lang="en">Download on App Store</span>
                             <span lang="es" class="hidden">Descargar en App Store</span>
                         </a>
-                        <a href="#" class="btn px-6 py-3 rounded-lg border border-brand text-brand hover:bg-brand hover:text-brand-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-slate-950 focus-visible:ring-offset-2 inline-flex items-center justify-center">
+                        <a href="#" class="btn px-16 py-4 rounded-lg border border-brand text-brand hover:bg-brand hover:text-brand-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-slate-950 focus-visible:ring-offset-2 inline-flex items-center justify-center">
                             <span lang="en">Watch Demo (2 min)</span>
                             <span lang="es" class="hidden">Ver Demostración (2 min)</span>
                         </a>
@@ -432,8 +432,8 @@
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     <!-- Feature 1 -->
-                    <div class="group relative rounded-lg border bg-background p-6 shadow-soft-md transition-all hover:shadow-soft-lg animate-on-scroll">
-                        <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-brand/10">
+                    <div class="group relative rounded-2xl border bg-background p-6 shadow-soft-md transition-all hover:shadow-soft-lg animate-on-scroll">
+                        <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-brand/10">
                             <svg class="h-6 w-6 text-brand" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                                 <path d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z"></path>
                             </svg>
@@ -451,8 +451,8 @@
                     </div>
                     
                     <!-- Feature 2 -->
-                    <div class="group relative rounded-lg border bg-background p-6 shadow-soft-md transition-all hover:shadow-soft-lg animate-on-scroll">
-                        <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-brand/10">
+                    <div class="group relative rounded-2xl border bg-background p-6 shadow-soft-md transition-all hover:shadow-soft-lg animate-on-scroll">
+                        <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-brand/10">
                             <svg class="h-6 w-6 text-brand" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                                 <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
                                 <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
@@ -471,8 +471,8 @@
                     </div>
                     
                     <!-- Feature 3 -->
-                    <div class="group relative rounded-lg border bg-background p-6 shadow-soft-md transition-all hover:shadow-soft-lg animate-on-scroll">
-                        <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-brand/10">
+                    <div class="group relative rounded-2xl border bg-background p-6 shadow-soft-md transition-all hover:shadow-soft-lg animate-on-scroll">
+                        <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-brand/10">
                             <svg class="h-6 w-6 text-brand" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                                 <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
                             </svg>
@@ -490,8 +490,8 @@
                     </div>
                     
                     <!-- Feature 4 -->
-                    <div class="group relative rounded-lg border bg-background p-6 shadow-soft-md transition-all hover:shadow-soft-lg animate-on-scroll">
-                        <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-brand/10">
+                    <div class="group relative rounded-2xl border bg-background p-6 shadow-soft-md transition-all hover:shadow-soft-lg animate-on-scroll">
+                        <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-brand/10">
                             <svg class="h-6 w-6 text-brand" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                                 <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"></path>
                             </svg>
@@ -533,7 +533,7 @@
                     </div>
                     
                     <!-- Mortgage Terms Guide Box -->
-                    <div class="rounded-lg border border-l-4 border-brand bg-brand/5 p-5 shadow-sm">
+                    <div class="rounded-2xl border border-l-4 border-brand bg-brand/5 p-5 shadow-sm">
                         <h3 class="mb-2 text-lg font-bold">
                             <span lang="en">Mortgage Terms Simplified</span>
                             <span lang="es" class="hidden">Términos Hipotecarios Simplificados</span>
@@ -635,7 +635,7 @@
                         </li>
                     </ul>
                     
-                    <div class="rounded-lg border bg-slate-50 p-6 italic text-slate-600">
+                    <div class="rounded-2xl border bg-slate-50 p-6 italic text-slate-600">
                         <span lang="en">"Bricks helped us understand exactly what we could afford and showed us how changing our down payment would affect our monthly costs."</span>
                         <span lang="es" class="hidden">"Bricks nos ayudó a entender exactamente lo que podíamos pagar y nos mostró cómo cambiar nuestro pago inicial afectaría nuestros costos mensuales."</span>
                         <div class="mt-2 font-medium text-slate-800">- Sara & Michael</div>
@@ -708,7 +708,7 @@
                         </li>
                     </ul>
                     
-                    <div class="rounded-lg border p-6 italic text-slate-600 bg-white">
+                    <div class="rounded-2xl border p-6 italic text-slate-600 bg-white">
                         <span lang="en">"Bricks has revolutionized our mortgage department. We've cut consultation time by 40% and increased our conversion rate. Clients love the visual approach to understanding complex mortgage options."</span>
                         <span lang="es" class="hidden">"Bricks ha revolucionado nuestro departamento hipotecario. Hemos reducido el tiempo de consulta en un 40% y aumentado nuestra tasa de conversión. Los clientes adoran el enfoque visual para entender opciones hipotecarias complejas."</span>
                         <div class="mt-2 font-medium text-slate-800">- Carlos M., Senior Mortgage Advisor, Banco Nacional</div>
@@ -739,34 +739,34 @@
                     </div>
                     
                     <!-- Efficiency Metrics Box -->
-                    <div class="rounded-lg border bg-white p-5 shadow-soft-md">
+                    <div class="rounded-2xl border bg-white p-5 shadow-soft-md">
                         <h3 class="mb-4 text-lg font-bold text-slate-800">
                             <span lang="en">Workflow Improvements</span>
                             <span lang="es" class="hidden">Mejoras en el Flujo de Trabajo</span>
                         </h3>
                         <div class="grid grid-cols-2 gap-4">
-                            <div class="rounded bg-slate-50 p-3 text-center">
+                            <div class="rounded-2xl bg-slate-50 p-3 text-center">
                                 <span class="block text-2xl font-bold text-brand">40%</span>
                                 <span class="text-sm text-slate-600">
                                     <span lang="en">Faster client consultations</span>
                                     <span lang="es" class="hidden">Consultas más rápidas</span>
                                 </span>
                             </div>
-                            <div class="rounded bg-slate-50 p-3 text-center">
+                            <div class="rounded-2xl bg-slate-50 p-3 text-center">
                                 <span class="block text-2xl font-bold text-brand">3.5x</span>
                                 <span class="text-sm text-slate-600">
                                     <span lang="en">Better client understanding</span>
                                     <span lang="es" class="hidden">Mejor comprensión</span>
                                 </span>
                             </div>
-                            <div class="rounded bg-slate-50 p-3 text-center">
+                            <div class="rounded-2xl bg-slate-50 p-3 text-center">
                                 <span class="block text-2xl font-bold text-brand">25%</span>
                                 <span class="text-sm text-slate-600">
                                     <span lang="en">Higher close rate</span>
                                     <span lang="es" class="hidden">Mayor tasa de cierre</span>
                                 </span>
                             </div>
-                            <div class="rounded bg-slate-50 p-3 text-center">
+                            <div class="rounded-2xl bg-slate-50 p-3 text-center">
                                 <span class="block text-2xl font-bold text-brand">90%</span>
                                 <span class="text-sm text-slate-600">
                                     <span lang="en">Client satisfaction</span>
@@ -792,7 +792,7 @@
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
                 <!-- Essential Plan -->
-                <div class="rounded-xl border bg-background shadow-soft-md hover:shadow-soft-lg transition-all animate-on-scroll overflow-hidden">
+                <div class="rounded-2xl border bg-background shadow-soft-md hover:shadow-soft-lg transition-all animate-on-scroll overflow-hidden">
                     <div class="p-6 border-b">
                         <h3 class="text-xl font-bold mb-1">
                             <span lang="en">Monthly Essential</span>
@@ -805,7 +805,7 @@
                                 <span lang="es" class="hidden">/ mes</span>
                             </span>
                         </div>
-                        <a href="#" class="btn btn-secondary w-full">
+                        <a href="#" class="btn btn-secondary w-full px-16 py-4">
                             <span lang="en">Start 7-day free trial</span>
                             <span lang="es" class="hidden">Iniciar prueba gratuita de 7 días</span>
                         </a>
@@ -845,7 +845,7 @@
                 </div>
                 
                 <!-- Professional Plan -->
-                <div class="rounded-xl border-2 border-brand shadow-soft-xl transform scale-105 z-10 bg-background animate-on-scroll relative">
+                <div class="rounded-2xl border-2 border-brand shadow-soft-xl transform scale-105 z-10 bg-background animate-on-scroll relative">
                     <div class="absolute -top-4 left-0 right-0 flex justify-center">
                         <span class="rounded-full bg-brand px-4 py-1 text-xs font-semibold text-brand-foreground">
                             <span lang="en">Most Popular</span>
@@ -864,7 +864,7 @@
                                 <span lang="es" class="hidden">/ año</span>
                             </span>
                         </div>
-                        <a href="#" class="btn btn-primary w-full">
+                        <a href="#" class="btn button-primary rounded-full btn-primary w-full px-16 py-4">
                             <span lang="en">Start 7-day free trial</span>
                             <span lang="es" class="hidden">Iniciar prueba gratuita de 7 días</span>
                         </a>
@@ -918,7 +918,7 @@
                 </div>
                 
                 <!-- Lifetime Plan -->
-                <div class="rounded-xl border bg-background shadow-soft-md hover:shadow-soft-lg transition-all animate-on-scroll overflow-hidden">
+                <div class="rounded-2xl border bg-background shadow-soft-md hover:shadow-soft-lg transition-all animate-on-scroll overflow-hidden">
                     <div class="p-6 border-b">
                         <h3 class="text-xl font-bold mb-1">
                             <span lang="en">Lifetime Access</span>
@@ -931,7 +931,7 @@
                                 <span lang="es" class="hidden">pago único</span>
                             </span>
                         </div>
-                        <a href="#" class="btn btn-secondary w-full">
+                        <a href="#" class="btn btn-secondary w-full px-16 py-4">
                             <span lang="en">Get lifetime access</span>
                             <span lang="es" class="hidden">Obtener acceso de por vida</span>
                         </a>
@@ -1037,7 +1037,7 @@
             
             <div class="mx-auto max-w-4xl space-y-4">
                 <!-- FAQ Item 1 -->
-                <div class="rounded-lg border bg-background shadow-sm" x-data="{ open: false }">
+                <div class="rounded-2xl border bg-background shadow-sm" x-data="{ open: false }">
                     <button 
                         @click="open = !open" 
                         class="flex w-full items-center justify-between px-6 py-4 text-left"
@@ -1063,7 +1063,7 @@
                 </div>
                 
                 <!-- FAQ Item 2 -->
-                <div class="rounded-lg border bg-background shadow-sm" x-data="{ open: false }">
+                <div class="rounded-2xl border bg-background shadow-sm" x-data="{ open: false }">
                     <button 
                         @click="open = !open" 
                         class="flex w-full items-center justify-between px-6 py-4 text-left"
@@ -1089,7 +1089,7 @@
                 </div>
                 
                 <!-- FAQ Item 3 -->
-                <div class="rounded-lg border bg-background shadow-sm" x-data="{ open: false }">
+                <div class="rounded-2xl border bg-background shadow-sm" x-data="{ open: false }">
                     <button 
                         @click="open = !open" 
                         class="flex w-full items-center justify-between px-6 py-4 text-left"
@@ -1115,7 +1115,7 @@
                 </div>
                 
                 <!-- FAQ Item 4 -->
-                <div class="rounded-lg border bg-background shadow-sm" x-data="{ open: false }">
+                <div class="rounded-2xl border bg-background shadow-sm" x-data="{ open: false }">
                     <button 
                         @click="open = !open" 
                         class="flex w-full items-center justify-between px-6 py-4 text-left"
@@ -1141,7 +1141,7 @@
                 </div>
                 
                 <!-- FAQ Item 5 -->
-                <div class="rounded-lg border bg-background shadow-sm" x-data="{ open: false }">
+                <div class="rounded-2xl border bg-background shadow-sm" x-data="{ open: false }">
                     <button 
                         @click="open = !open" 
                         class="flex w-full items-center justify-between px-6 py-4 text-left"
@@ -1167,7 +1167,7 @@
                 </div>
                 
                 <!-- FAQ Item 6 -->
-                <div class="rounded-lg border bg-background shadow-sm" x-data="{ open: false }">
+                <div class="rounded-2xl border bg-background shadow-sm" x-data="{ open: false }">
                     <button 
                         @click="open = !open" 
                         class="flex w-full items-center justify-between px-6 py-4 text-left"
@@ -1193,7 +1193,7 @@
                 </div>
                 
                 <!-- FAQ Item 7 (New) -->
-                <div class="rounded-lg border bg-background shadow-sm" x-data="{ open: false }">
+                <div class="rounded-2xl border bg-background shadow-sm" x-data="{ open: false }">
                     <button 
                         @click="open = !open" 
                         class="flex w-full items-center justify-between px-6 py-4 text-left"
@@ -1233,8 +1233,8 @@
                     <span lang="en">Start your 7-day free trial today and see why home buyers and professionals trust Bricks for clear, beautiful mortgage calculations.</span>
                     <span lang="es" class="hidden">Comienza tu prueba gratuita de 7 días hoy y descubre por qué los compradores de viviendas y profesionales confían en Bricks para cálculos hipotecarios claros y hermosos.</span>
                 </p>
-                <div class="flex flex-wrap justify-center gap-4">
-                    <a href="#" class="btn inline-flex h-10 items-center justify-center rounded-md bg-black px-8 py-3 text-white shadow hover:bg-black/90">
+                <div class="flex flex-wrap justify-center gap-4 ">
+                    <a href="#" class="btn px-20 py-8 inline-flex h-10 items-center justify-center rounded-md bg-black px-8 py-3 text-white shadow hover:bg-black/90">
                         <svg class="mr-2 h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M17.5646,12.6636 C17.532,10.0547 19.2843,8.5727 19.3623,8.5143 C18.1994,6.8761 16.3166,6.6936 15.6761,6.6747 C14.0535,6.5243 12.4844,7.716 11.6574,7.716 C10.8185,7.716 9.5219,6.6935 8.1644,6.7243 C6.4269,6.7551 4.8012,7.716 3.9234,9.2457 C2.1152,12.3603 3.4646,17.0072 5.2,19.5467 C6.0705,20.797 7.0775,22.2118 8.3948,22.1615 C9.6834,22.1112 10.16,21.3003 11.7071,21.3003 C13.2432,21.3003 13.6911,22.1615 15.0274,22.1327 C16.4046,22.1112 17.2788,20.8642 18.1256,19.6026 C19.1199,18.1483 19.5678,16.7144 19.5869,16.6545 C19.5583,16.6449 17.601,15.8649 17.5646,12.6636 Z M15.0599,5.0066 C15.7748,4.1194 16.2611,2.9026 16.1067,1.6666 C15.063,1.7078 13.7649,2.3665 13.0214,3.2346 C12.3638,4.0024 11.7741,5.2577 11.9475,6.4745 C13.1104,6.5537 14.3259,5.8843 15.0599,5.0066 Z"></path>
                         </svg>
@@ -1242,7 +1242,7 @@
                         <span lang="es" class="hidden">Descargar en la App Store</span>
                     </a>
                     
-                    <a href="https://wa.me/51953431080?text=Hola%2C%20me%20interesa%20Bricks" target="_blank" class="btn inline-flex h-10 items-center justify-center rounded-md bg-green-600 px-8 py-3 text-white shadow hover:bg-green-700">
+                    <a href="https://wa.me/51953431080?text=Hola%2C%20me%20interesa%20Bricks" target="_blank" class="btn px-20 py-8 inline-flex h-10 items-center justify-center rounded-md bg-green-600 px-8 py-3 text-white shadow hover:bg-green-700">
                         <svg class="mr-2 h-5 w-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                         </svg>
