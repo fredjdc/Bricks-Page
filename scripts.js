@@ -96,6 +96,14 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('animate-in');
+                
+                // Make sure animations applied when elements come into view
+                if (entry.target.classList.contains('hero-image')) {
+                    // Ensure the hero image is visible and animated
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                    }, 100);
+                }
             }
         });
     }, {
