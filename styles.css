@@ -122,7 +122,8 @@ a:focus, button:focus {
     right: -10px;
     bottom: -10px;
     border-radius: 20px;
-    background: linear-gradient(45deg, #007AFF, #10b981);
+    /* Gradient with accent blue (#007AFF) and accent green (#34C85A) */
+    background: linear-gradient(45deg, #007AFF, #34C85A);
     z-index: -1;
     opacity: 0.5;
     filter: blur(20px);
