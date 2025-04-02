@@ -10,13 +10,15 @@
     background: #f1f1f1;
 }
 
+/* Accent color for scrollbar - #007AFF */
 ::-webkit-scrollbar-thumb {
-    background: #2563eb;
+    background: #007AFF;
     border-radius: 40px;
 }
 
+/* Accent color for scrollbar hover - #007AFF */
 ::-webkit-scrollbar-thumb:hover {
-    background: #1d4ed8;
+    background: #007AFF;
 }
 
 /* Hide scrollbar for carousel */
@@ -43,7 +45,7 @@
 
 @keyframes pulse-shadow {
     0% {
-        box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4);
+        box-shadow: 0 0 0 0 rgb(0, 122, 255);
     }
     70% {
         box-shadow: 0 0 0 15px rgba(37, 99, 235, 0);
@@ -61,9 +63,9 @@
     animation: pulse-shadow 1.5s infinite;
 }
 
-/* Enhanced focus styles */
+/* Enhanced focus styles with accent color - #007AFF */
 a:focus, button:focus {
-    outline: 2px solid #2563eb;
+    outline: 2px solid #007AFF;
     outline-offset: 2px;
 }
 
@@ -107,7 +109,7 @@ a:focus, button:focus {
     box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
-/* Hero image animation */
+/* Hero image animation with accent color - #007AFF */
 .hero-image {
     position: relative;
 }
@@ -120,7 +122,7 @@ a:focus, button:focus {
     right: -10px;
     bottom: -10px;
     border-radius: 20px;
-    background: linear-gradient(45deg, #2563eb, #10b981);
+    background: linear-gradient(45deg, #007AFF, #10b981);
     z-index: -1;
     opacity: 0.5;
     filter: blur(20px);
