@@ -221,7 +221,7 @@ function changeLanguage(lang) {
         }
         
         // Show only elements for the selected language
-        const allLangElements = document.querySelectorAll('span[lang]');
+        const allLangElements = document.querySelectorAll('span[lang], img[lang]');
         allLangElements.forEach(el => {
             if (el.getAttribute('lang') === lang) {
                 el.classList.remove('hidden');
