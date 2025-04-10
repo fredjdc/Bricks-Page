@@ -34,6 +34,10 @@
     </script>
     <!-- Alpine.js for interactive components -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Common scripts with language detection -->
+    <script src="scripts.js"></script>
+    
     <!-- Link to custom CSS file -->
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -332,47 +336,6 @@
         
         menuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
-        });
-
-        // Language Switching Script
-        // Default language set to Spanish
-        let currentLanguage = 'es';
-
-        // Function to change the language
-        function changeLanguage(lang) {
-            try {
-                // Update current language
-                currentLanguage = lang;
-                
-                // Update the displayed language in the selector
-                const langElement = document.getElementById('current-language');
-                if (langElement) {
-                    langElement.textContent = lang === 'en' ? 'English' : 'Español';
-                }
-                
-                // Show only elements for the selected language
-                const allLangElements = document.querySelectorAll('span[lang]');
-                allLangElements.forEach(el => {
-                    if (el.getAttribute('lang') === lang) {
-                        el.classList.remove('hidden');
-                    } else {
-                        el.classList.add('hidden');
-                    }
-                });
-                
-                // Update the document language
-                document.documentElement.setAttribute('lang', lang);
-                
-                console.log(`Language switched to ${lang}`);
-            } catch (error) {
-                console.error('Error switching language:', error);
-            }
-        }
-
-        // Initialize language
-        document.addEventListener('DOMContentLoaded', () => {
-            // Set initial language to Spanish
-            changeLanguage('es');
         });
     </script>
 </body>

@@ -34,6 +34,10 @@
     </script>
     <!-- Alpine.js for interactive components -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Common scripts with language detection -->
+    <script src="scripts.js"></script>
+    
     <!-- Link to custom CSS file -->
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -103,144 +107,192 @@
                 <div class="prose max-w-none">
                     <!-- Last Updated Section -->
                     <p class="text-gray-600 mb-8 text-center">
-                        <span lang="en">Last Updated: April 1, 2025</span>
-                        <span lang="es" class="hidden">Última Actualización: 1 de abril de 2025</span>
+                        <span lang="en">Last Updated: May 15, 2025</span>
+                        <span lang="es" class="hidden">Última Actualización: 15 de mayo de 2025</span>
                     </p>
                     
-                    <!-- Introduction -->
+                    <!-- Agreement to Terms -->
                     <h2 class="text-xl md:text-2xl font-semibold mb-4">
-                        <span lang="en">1. Introduction</span>
-                        <span lang="es" class="hidden">1. Introducción</span>
+                        <span lang="en">1. Agreement to Terms</span>
+                        <span lang="es" class="hidden">1. Acuerdo de Términos</span>
                     </h2>
                     <p class="mb-6">
-                        <span lang="en">Welcome to Bricks. These Terms of Service ("Terms") govern your access to and use of the Bricks mobile application and related services (collectively, the "Service"). By accessing or using the Service, you agree to be bound by these Terms. If you do not agree to these Terms, you may not access or use the Service.</span>
-                        <span lang="es" class="hidden">Bienvenido a Bricks. Estos Términos de Servicio ("Términos") rigen tu acceso y uso de la aplicación móvil Bricks y los servicios relacionados (colectivamente, el "Servicio"). Al acceder o utilizar el Servicio, aceptas quedar vinculado por estos Términos. Si no estás de acuerdo con estos Términos, no podrás acceder o utilizar el Servicio.</span>
+                        <span lang="en">By downloading, installing, or using the Bricks Mortgage Calculator app ("App"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, please do not use the App.</span>
+                        <span lang="es" class="hidden">Al descargar, instalar o utilizar la aplicación Bricks Mortgage Calculator ("Aplicación"), aceptas estar sujeto a estos Términos de Servicio ("Términos"). Si no estás de acuerdo con estos Términos, por favor no utilices la Aplicación.</span>
                     </p>
                     
-                    <!-- Eligibility -->
+                    <!-- Description of Service -->
                     <h2 class="text-xl md:text-2xl font-semibold mb-4">
-                        <span lang="en">2. Eligibility</span>
-                        <span lang="es" class="hidden">2. Elegibilidad</span>
+                        <span lang="en">2. Description of Service</span>
+                        <span lang="es" class="hidden">2. Descripción del Servicio</span>
                     </h2>
                     <p class="mb-6">
-                        <span lang="en">The Service is available only to individuals who are at least 18 years old. By accessing or using the Service, you represent and warrant that you are at least 18 years old and have the legal capacity to enter into a binding agreement.</span>
-                        <span lang="es" class="hidden">El Servicio está disponible solo para personas que tengan al menos 18 años. Al acceder o utilizar el Servicio, declaras y garantizas que tienes al menos 18 años y la capacidad legal para celebrar un acuerdo vinculante.</span>
+                        <span lang="en">Bricks is a mortgage calculator application that provides tools to: calculate mortgage payments, save and compare mortgage scenarios, export results as PDFs or images, generate amortization schedules, calculate prepayment scenarios, and visualize payment breakdowns.</span>
+                        <span lang="es" class="hidden">Bricks es una aplicación de calculadora hipotecaria que proporciona herramientas para: calcular pagos hipotecarios, guardar y comparar escenarios hipotecarios, exportar resultados como PDFs o imágenes, generar tablas de amortización, calcular escenarios de pago anticipado y visualizar desgloses de pagos.</span>
                     </p>
                     
-                    <!-- Account Registration -->
+                    <!-- Financial Calculations Disclaimer -->
                     <h2 class="text-xl md:text-2xl font-semibold mb-4">
-                        <span lang="en">3. Account Registration</span>
-                        <span lang="es" class="hidden">3. Registro de Cuenta</span>
+                        <span lang="en">3. Financial Calculations Disclaimer</span>
+                        <span lang="es" class="hidden">3. Descargo de Responsabilidad sobre Cálculos Financieros</span>
                     </h2>
+                    <p class="mb-4">
+                        <span lang="en"><strong>3.1 Informational Purposes Only</strong><br>
+                        The calculations, estimates, and projections provided by Bricks are for informational purposes only. The App is not intended to replace professional financial advice, mortgage broker services, or legal counsel regarding real estate transactions or mortgage agreements.</span>
+                        <span lang="es" class="hidden"><strong>3.1 Solo para Fines Informativos</strong><br>
+                        Los cálculos, estimaciones y proyecciones proporcionados por Bricks son solo para fines informativos. La Aplicación no pretende reemplazar el asesoramiento financiero profesional, los servicios de corretaje hipotecario o el asesoramiento legal sobre transacciones inmobiliarias o acuerdos hipotecarios.</span>
+                    </p>
+                    <p class="mb-4">
+                        <span lang="en"><strong>3.2 Accuracy of Calculations</strong><br>
+                        While we strive to ensure the accuracy of our calculation algorithms, we cannot guarantee that all calculations will be free from errors or that they precisely reflect the terms and conditions of any specific lender's mortgage products.</span>
+                        <span lang="es" class="hidden"><strong>3.2 Precisión de los Cálculos</strong><br>
+                        Aunque nos esforzamos por garantizar la precisión de nuestros algoritmos de cálculo, no podemos garantizar que todos los cálculos estén libres de errores o que reflejen con precisión los términos y condiciones de los productos hipotecarios de un prestamista específico.</span>
+                    </p>
+                    <p class="mb-4">
+                        <span lang="en"><strong>3.3 Market Variables</strong><br>
+                        Interest rates, insurance rates, and other financial variables can change over time. The App uses only the information you provide and does not automatically update with real-time market conditions.</span>
+                        <span lang="es" class="hidden"><strong>3.3 Variables del Mercado</strong><br>
+                        Las tasas de interés, las tasas de seguro y otras variables financieras pueden cambiar con el tiempo. La Aplicación utiliza solo la información que proporcionas y no se actualiza automáticamente con las condiciones del mercado en tiempo real.</span>
+                    </p>
                     <p class="mb-6">
-                        <span lang="en">In order to access certain features of the Service, you may need to create an account. You agree to provide accurate, current, and complete information during the registration process and to update such information to keep it accurate, current, and complete. You are responsible for safeguarding your password and for all activities that occur under your account. You agree to notify us immediately of any unauthorized use of your account.</span>
-                        <span lang="es" class="hidden">Para acceder a ciertas funciones del Servicio, es posible que debas crear una cuenta. Aceptas proporcionar información precisa, actualizada y completa durante el proceso de registro y actualizar dicha información para mantenerla precisa, actualizada y completa. Eres responsable de proteger tu contraseña y de todas las actividades que ocurran en tu cuenta. Aceptas notificarnos inmediatamente sobre cualquier uso no autorizado de tu cuenta.</span>
+                        <span lang="en"><strong>3.4 Not a Lending Service</strong><br>
+                        Bricks does not offer loans, financing, or any other financial services. We do not process loan applications, perform credit checks, or facilitate mortgage transactions.</span>
+                        <span lang="es" class="hidden"><strong>3.4 No es un Servicio de Préstamos</strong><br>
+                        Bricks no ofrece préstamos, financiamiento ni ningún otro servicio financiero. No procesamos solicitudes de préstamos, no realizamos verificaciones de crédito ni facilitamos transacciones hipotecarias.</span>
                     </p>
                     
-                    <!-- Service Description -->
+                    <!-- User Accounts and Data -->
                     <h2 class="text-xl md:text-2xl font-semibold mb-4">
-                        <span lang="en">4. Service Description</span>
-                        <span lang="es" class="hidden">4. Descripción del Servicio</span>
+                        <span lang="en">4. User Accounts and Data</span>
+                        <span lang="es" class="hidden">4. Cuentas de Usuario y Datos</span>
                     </h2>
+                    <p class="mb-4">
+                        <span lang="en"><strong>4.1 Local Data Storage</strong><br>
+                        All data entered in the App is stored locally on your device. We do not collect or transmit your financial information to external servers.</span>
+                        <span lang="es" class="hidden"><strong>4.1 Almacenamiento Local de Datos</strong><br>
+                        Todos los datos ingresados en la Aplicación se almacenan localmente en tu dispositivo. No recopilamos ni transmitimos tu información financiera a servidores externos.</span>
+                    </p>
+                    <p class="mb-4">
+                        <span lang="en"><strong>4.2 User Responsibilities</strong><br>
+                        You are responsible for: the accuracy of all data entered into the App, securing your device to protect sensitive financial information, and backing up your data as the App does not provide cloud backup services.</span>
+                        <span lang="es" class="hidden"><strong>4.2 Responsabilidades del Usuario</strong><br>
+                        Eres responsable de: la precisión de todos los datos ingresados en la Aplicación, asegurar tu dispositivo para proteger la información financiera sensible y hacer copias de seguridad de tus datos, ya que la Aplicación no proporciona servicios de respaldo en la nube.</span>
+                    </p>
                     <p class="mb-6">
-                        <span lang="en">Bricks is a mortgage calculator application designed to help users visualize and compare mortgage options. The Service provides estimates and calculations based on the information provided by users. These calculations are for informational purposes only and should not be considered financial advice. Actual mortgage terms and conditions may vary.</span>
-                        <span lang="es" class="hidden">Bricks es una aplicación de calculadora hipotecaria diseñada para ayudar a los usuarios a visualizar y comparar opciones hipotecarias. El Servicio proporciona estimaciones y cálculos basados en la información proporcionada por los usuarios. Estos cálculos son solo para fines informativos y no deben considerarse como asesoramiento financiero. Los términos y condiciones reales de la hipoteca pueden variar.</span>
+                        <span lang="en"><strong>4.3 Data Limitations</strong><br>
+                        The free version of the App limits the number of saved calculations. Premium subscription users can save unlimited calculations.</span>
+                        <span lang="es" class="hidden"><strong>4.3 Limitaciones de Datos</strong><br>
+                        La versión gratuita de la Aplicación limita el número de cálculos guardados. Los usuarios con suscripción premium pueden guardar cálculos ilimitados.</span>
                     </p>
                     
-                    <!-- User Content -->
+                    <!-- Premium Features and Purchases -->
                     <h2 class="text-xl md:text-2xl font-semibold mb-4">
-                        <span lang="en">5. User Content</span>
-                        <span lang="es" class="hidden">5. Contenido del Usuario</span>
+                        <span lang="en">5. Premium Features and Purchases</span>
+                        <span lang="es" class="hidden">5. Funciones Premium y Compras</span>
                     </h2>
-                    <p class="mb-6">
-                        <span lang="en">You retain all rights to any information or content that you submit, post, or display through the Service ("User Content"). By submitting, posting, or displaying User Content, you grant us a worldwide, non-exclusive, royalty-free license to use, reproduce, adapt, publish, translate, and distribute such User Content for the purpose of providing and improving the Service.</span>
-                        <span lang="es" class="hidden">Conservas todos los derechos sobre cualquier información o contenido que envíes, publiques o muestres a través del Servicio ("Contenido del Usuario"). Al enviar, publicar o mostrar Contenido del Usuario, nos otorgas una licencia mundial, no exclusiva, libre de regalías para usar, reproducir, adaptar, publicar, traducir y distribuir dicho Contenido del Usuario con el fin de proporcionar y mejorar el Servicio.</span>
+                    <p class="mb-4">
+                        <span lang="en"><strong>5.1 In-App Purchases</strong><br>
+                        Bricks offers premium features through in-app purchases processed by Apple's App Store, including: PDF export and customization, advanced calculator mode, and unlimited saved calculations.</span>
+                        <span lang="es" class="hidden"><strong>5.1 Compras dentro de la Aplicación</strong><br>
+                        Bricks ofrece funciones premium a través de compras dentro de la aplicación procesadas por la App Store de Apple, que incluyen: exportación y personalización de PDF, modo de calculadora avanzada y cálculos guardados ilimitados.</span>
                     </p>
-                    
-                    <!-- Prohibited Activities -->
-                    <h2 class="text-xl md:text-2xl font-semibold mb-4">
-                        <span lang="en">6. Prohibited Activities</span>
-                        <span lang="es" class="hidden">6. Actividades Prohibidas</span>
-                    </h2>
                     <p class="mb-6">
-                        <span lang="en">You agree not to engage in any of the following prohibited activities: (a) copying, distributing, or disclosing any part of the Service; (b) using any automated system to access the Service; (c) introducing any viruses, trojan horses, worms, logic bombs, or other harmful material; (d) attempting to gain unauthorized access to, interfere with, damage, or disrupt any parts of the Service; (e) using the Service in any manner that could disable, overburden, damage, or impair the Service; (f) attempting to interfere with the proper working of the Service.</span>
-                        <span lang="es" class="hidden">Aceptas no participar en ninguna de las siguientes actividades prohibidas: (a) copiar, distribuir o divulgar cualquier parte del Servicio; (b) utilizar cualquier sistema automatizado para acceder al Servicio; (c) introducir virus, troyanos, gusanos, bombas lógicas u otro material dañino; (d) intentar obtener acceso no autorizado, interferir, dañar o interrumpir cualquier parte del Servicio; (e) utilizar el Servicio de manera que pueda desactivar, sobrecargar, dañar o perjudicar el Servicio; (f) intentar interferir con el funcionamiento adecuado del Servicio.</span>
+                        <span lang="en"><strong>5.2 Subscription Terms</strong><br>
+                        Subscription payments will be charged to your Apple ID account. Subscriptions automatically renew unless auto-renewal is turned off at least 24 hours before the end of the current period. You can manage subscriptions and turn off auto-renewal in your Apple ID account settings. No refunds will be granted for any partially used subscription period.</span>
+                        <span lang="es" class="hidden"><strong>5.2 Términos de Suscripción</strong><br>
+                        Los pagos de suscripción se cargarán a tu cuenta de Apple ID. Las suscripciones se renuevan automáticamente a menos que la renovación automática se desactive al menos 24 horas antes del final del período actual. Puedes administrar las suscripciones y desactivar la renovación automática en la configuración de tu cuenta de Apple ID. No se otorgarán reembolsos por ningún período de suscripción parcialmente utilizado.</span>
                     </p>
                     
                     <!-- Intellectual Property -->
                     <h2 class="text-xl md:text-2xl font-semibold mb-4">
-                        <span lang="en">7. Intellectual Property</span>
-                        <span lang="es" class="hidden">7. Propiedad Intelectual</span>
+                        <span lang="en">6. Intellectual Property</span>
+                        <span lang="es" class="hidden">6. Propiedad Intelectual</span>
                     </h2>
+                    <p class="mb-4">
+                        <span lang="en"><strong>6.1 Ownership</strong><br>
+                        The App, including its code, design, logos, and content, is owned by the App developer and protected by copyright, trademark, and other intellectual property laws.</span>
+                        <span lang="es" class="hidden"><strong>6.1 Propiedad</strong><br>
+                        La Aplicación, incluido su código, diseño, logotipos y contenido, es propiedad del desarrollador de la Aplicación y está protegida por derechos de autor, marcas comerciales y otras leyes de propiedad intelectual.</span>
+                    </p>
+                    <p class="mb-4">
+                        <span lang="en"><strong>6.2 License</strong><br>
+                        We grant you a limited, non-exclusive, non-transferable license to use the App for personal, non-commercial purposes only.</span>
+                        <span lang="es" class="hidden"><strong>6.2 Licencia</strong><br>
+                        Te otorgamos una licencia limitada, no exclusiva e intransferible para usar la Aplicación solo para fines personales y no comerciales.</span>
+                    </p>
                     <p class="mb-6">
-                        <span lang="en">The Service and its original content, features, and functionality are and will remain the exclusive property of Bricks and its licensors. The Service is protected by copyright, trademark, and other laws. Our trademarks and trade dress may not be used in connection with any product or service without the prior written consent of Bricks.</span>
-                        <span lang="es" class="hidden">El Servicio y su contenido original, características y funcionalidad son y seguirán siendo propiedad exclusiva de Bricks y sus licenciantes. El Servicio está protegido por derechos de autor, marcas comerciales y otras leyes. Nuestras marcas comerciales y presentación comercial no pueden utilizarse en relación con ningún producto o servicio sin el consentimiento previo por escrito de Bricks.</span>
+                        <span lang="en"><strong>6.3 Restrictions</strong><br>
+                        You may not: modify, reverse engineer, or create derivative works based on the App; remove copyright or proprietary notices from the App; use the App for any illegal or unauthorized purpose; or distribute, lease, or sublicense the App.</span>
+                        <span lang="es" class="hidden"><strong>6.3 Restricciones</strong><br>
+                        No puedes: modificar, aplicar ingeniería inversa o crear trabajos derivados basados en la Aplicación; eliminar avisos de derechos de autor o de propiedad de la Aplicación; usar la Aplicación para cualquier propósito ilegal o no autorizado; o distribuir, arrendar o sublicenciar la Aplicación.</span>
                     </p>
                     
-                    <!-- Disclaimer of Warranties -->
+                    <!-- Export Features and Sharing -->
                     <h2 class="text-xl md:text-2xl font-semibold mb-4">
-                        <span lang="en">8. Disclaimer of Warranties</span>
-                        <span lang="es" class="hidden">8. Descargo de Garantías</span>
+                        <span lang="en">7. Export Features and Sharing</span>
+                        <span lang="es" class="hidden">7. Funciones de Exportación y Compartir</span>
                     </h2>
+                    <p class="mb-4">
+                        <span lang="en"><strong>7.1 PDF and Image Export</strong><br>
+                        The App allows users to export calculation results as PDFs or images. You are responsible for protecting these exported files and controlling their distribution.</span>
+                        <span lang="es" class="hidden"><strong>7.1 Exportación de PDF e Imágenes</strong><br>
+                        La Aplicación permite a los usuarios exportar los resultados de cálculos como PDFs o imágenes. Eres responsable de proteger estos archivos exportados y controlar su distribución.</span>
+                    </p>
                     <p class="mb-6">
-                        <span lang="en">THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED. TO THE FULLEST EXTENT PERMISSIBLE PURSUANT TO APPLICABLE LAW, BRICKS DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.</span>
-                        <span lang="es" class="hidden">EL SERVICIO SE PROPORCIONA "TAL CUAL" Y "SEGÚN DISPONIBILIDAD" SIN GARANTÍAS DE NINGÚN TIPO, YA SEAN EXPRESAS O IMPLÍCITAS. HASTA EL MÁXIMO PERMITIDO POR LA LEY APLICABLE, BRICKS RENUNCIA A TODAS LAS GARANTÍAS, EXPRESAS O IMPLÍCITAS, INCLUIDAS, ENTRE OTRAS, LAS GARANTÍAS IMPLÍCITAS DE COMERCIABILIDAD E IDONEIDAD PARA UN FIN DETERMINADO.</span>
+                        <span lang="en"><strong>7.2 Disclaimer Text</strong><br>
+                        PDF exports include a disclaimer text which you can customize in the App settings. This disclaimer reinforces that the calculations are for informational purposes only.</span>
+                        <span lang="es" class="hidden"><strong>7.2 Texto de Descargo de Responsabilidad</strong><br>
+                        Las exportaciones en PDF incluyen un texto de descargo de responsabilidad que puedes personalizar en la configuración de la Aplicación. Este descargo refuerza que los cálculos son solo para fines informativos.</span>
                     </p>
                     
                     <!-- Limitation of Liability -->
                     <h2 class="text-xl md:text-2xl font-semibold mb-4">
-                        <span lang="en">9. Limitation of Liability</span>
-                        <span lang="es" class="hidden">9. Limitación de Responsabilidad</span>
+                        <span lang="en">8. Limitation of Liability</span>
+                        <span lang="es" class="hidden">8. Limitación de Responsabilidad</span>
                     </h2>
+                    <p class="mb-4">
+                        <span lang="en"><strong>8.1 No Warranty</strong><br>
+                        The App is provided "as is" without warranties of any kind, either express or implied, including, but not limited to, implied warranties of merchantability, fitness for a particular purpose, and non-infringement.</span>
+                        <span lang="es" class="hidden"><strong>8.1 Sin Garantía</strong><br>
+                        La Aplicación se proporciona "tal cual" sin garantías de ningún tipo, ya sean expresas o implícitas, incluidas, entre otras, garantías implícitas de comerciabilidad, idoneidad para un fin particular y no infracción.</span>
+                    </p>
+                    <p class="mb-4">
+                        <span lang="en"><strong>8.2 Financial Decisions</strong><br>
+                        We are not responsible for any financial decisions you make based on calculations or information provided by the App.</span>
+                        <span lang="es" class="hidden"><strong>8.2 Decisiones Financieras</strong><br>
+                        No somos responsables de ninguna decisión financiera que tomes en base a los cálculos o la información proporcionada por la Aplicación.</span>
+                    </p>
                     <p class="mb-6">
-                        <span lang="en">IN NO EVENT SHALL BRICKS, ITS OFFICERS, DIRECTORS, EMPLOYEES, OR AGENTS, BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR PUNITIVE DAMAGES ARISING OUT OF OR RELATING TO YOUR USE OF OR INABILITY TO USE THE SERVICE, INCLUDING BUT NOT LIMITED TO, LOSS OF PROFITS, DATA, USE, GOODWILL, OR OTHER INTANGIBLE LOSSES.</span>
-                        <span lang="es" class="hidden">EN NINGÚN CASO BRICKS, SUS FUNCIONARIOS, DIRECTORES, EMPLEADOS O AGENTES, SERÁN RESPONSABLES POR DAÑOS INDIRECTOS, INCIDENTALES, ESPECIALES, CONSECUENTES O PUNITIVOS QUE SURJAN O ESTÉN RELACIONADOS CON TU USO O INCAPACIDAD PARA USAR EL SERVICIO, INCLUIDOS, ENTRE OTROS, PÉRDIDA DE GANANCIAS, DATOS, USO, BUENA VOLUNTAD U OTRAS PÉRDIDAS INTANGIBLES.</span>
+                        <span lang="en"><strong>8.3 Damages</strong><br>
+                        In no event shall the App developer be liable for any direct, indirect, incidental, special, exemplary, or consequential damages arising out of the use or inability to use the App.</span>
+                        <span lang="es" class="hidden"><strong>8.3 Daños</strong><br>
+                        En ningún caso el desarrollador de la Aplicación será responsable por daños directos, indirectos, incidentales, especiales, ejemplares o consecuentes que surjan del uso o la imposibilidad de usar la Aplicación.</span>
                     </p>
                     
-                    <!-- Indemnification -->
+                    <!-- Modifications to Service -->
                     <h2 class="text-xl md:text-2xl font-semibold mb-4">
-                        <span lang="en">10. Indemnification</span>
-                        <span lang="es" class="hidden">10. Indemnización</span>
+                        <span lang="en">9. Modifications to Service</span>
+                        <span lang="es" class="hidden">9. Modificaciones al Servicio</span>
                     </h2>
                     <p class="mb-6">
-                        <span lang="en">You agree to defend, indemnify, and hold harmless Bricks, its officers, directors, employees, and agents, from and against any claims, liabilities, damages, losses, and expenses, including, without limitation, reasonable legal and accounting fees, arising out of or in any way connected with your access to or use of the Service or your violation of these Terms.</span>
-                        <span lang="es" class="hidden">Aceptas defender, indemnizar y eximir de responsabilidad a Bricks, sus funcionarios, directores, empleados y agentes, de y contra cualquier reclamo, responsabilidad, daño, pérdida y gasto, incluidos, sin limitación, honorarios legales y contables razonables, que surjan o estén relacionados de alguna manera con tu acceso o uso del Servicio o tu violación de estos Términos.</span>
+                        <span lang="en">We may modify these Terms or any features of the App at any time. Continued use of the App after any such changes constitutes your acceptance of the new Terms.</span>
+                        <span lang="es" class="hidden">Podemos modificar estos Términos o cualquier característica de la Aplicación en cualquier momento. El uso continuado de la Aplicación después de dichos cambios constituye tu aceptación de los nuevos Términos.</span>
                     </p>
                     
                     <!-- Termination -->
                     <h2 class="text-xl md:text-2xl font-semibold mb-4">
-                        <span lang="en">11. Termination</span>
-                        <span lang="es" class="hidden">11. Terminación</span>
+                        <span lang="en">10. Termination</span>
+                        <span lang="es" class="hidden">10. Terminación</span>
                     </h2>
                     <p class="mb-6">
-                        <span lang="en">We may terminate or suspend your access to the Service immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach these Terms. Upon termination, your right to use the Service will immediately cease.</span>
-                        <span lang="es" class="hidden">Podemos terminar o suspender tu acceso al Servicio inmediatamente, sin previo aviso o responsabilidad, por cualquier motivo, incluso sin limitación si incumples estos Términos. Al terminar, tu derecho a utilizar el Servicio cesará inmediatamente.</span>
+                        <span lang="en">We reserve the right to terminate or suspend your access to the App at any time, for any reason, without notice.</span>
+                        <span lang="es" class="hidden">Nos reservamos el derecho de terminar o suspender tu acceso a la Aplicación en cualquier momento, por cualquier motivo, sin previo aviso.</span>
                     </p>
                     
-                    <!-- Governing Law -->
+                    <!-- Contact Information -->
                     <h2 class="text-xl md:text-2xl font-semibold mb-4">
-                        <span lang="en">12. Governing Law</span>
-                        <span lang="es" class="hidden">12. Ley Aplicable</span>
-                    </h2>
-                    <p class="mb-6">
-                        <span lang="en">These Terms shall be governed and construed in accordance with the laws of Peru, without regard to its conflict of law provisions. Any dispute arising under these Terms shall be resolved exclusively in the courts located in Peru.</span>
-                        <span lang="es" class="hidden">Estos Términos se regirán e interpretarán de acuerdo con las leyes de Perú, sin tener en cuenta sus disposiciones sobre conflictos de leyes. Cualquier disputa que surja en virtud de estos Términos se resolverá exclusivamente en los tribunales ubicados en Perú.</span>
-                    </p>
-                    
-                    <!-- Changes to Terms -->
-                    <h2 class="text-xl md:text-2xl font-semibold mb-4">
-                        <span lang="en">13. Changes to Terms</span>
-                        <span lang="es" class="hidden">13. Cambios en los Términos</span>
-                    </h2>
-                    <p class="mb-6">
-                        <span lang="en">We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will try to provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion. By continuing to access or use our Service after those revisions become effective, you agree to be bound by the revised Terms.</span>
-                        <span lang="es" class="hidden">Nos reservamos el derecho, a nuestra exclusiva discreción, de modificar o reemplazar estos Términos en cualquier momento. Si una revisión es material, intentaremos proporcionar un aviso de al menos 30 días antes de que los nuevos términos entren en vigencia. Lo que constituye un cambio material será determinado a nuestra exclusiva discreción. Al continuar accediendo o utilizando nuestro Servicio después de que esas revisiones entren en vigor, aceptas estar vinculado por los Términos revisados.</span>
-                    </p>
-                    
-                    <!-- Contact Us -->
-                    <h2 class="text-xl md:text-2xl font-semibold mb-4">
-                        <span lang="en">14. Contact Us</span>
-                        <span lang="es" class="hidden">14. Contáctanos</span>
+                        <span lang="en">11. Contact Information</span>
+                        <span lang="es" class="hidden">11. Información de Contacto</span>
                     </h2>
                     <p class="mb-6">
                         <span lang="en">If you have any questions about these Terms, please contact us at legal@bricksapp.com.</span>
@@ -339,49 +391,6 @@
         
         menuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
-        });
-    </script>
-
-    <!-- Language Switching Script -->
-    <script>
-        // Default language set to Spanish
-        let currentLanguage = 'es';
-
-        // Function to change the language
-        function changeLanguage(lang) {
-            try {
-                // Update current language
-                currentLanguage = lang;
-                
-                // Update the displayed language in the selector
-                const langElement = document.getElementById('current-language');
-                if (langElement) {
-                    langElement.textContent = lang === 'en' ? 'English' : 'Español';
-                }
-                
-                // Show only elements for the selected language
-                const allLangElements = document.querySelectorAll('span[lang]');
-                allLangElements.forEach(el => {
-                    if (el.getAttribute('lang') === lang) {
-                        el.classList.remove('hidden');
-                    } else {
-                        el.classList.add('hidden');
-                    }
-                });
-                
-                // Update the document language
-                document.documentElement.setAttribute('lang', lang);
-                
-                console.log(`Language switched to ${lang}`);
-            } catch (error) {
-                console.error('Error switching language:', error);
-            }
-        }
-
-        // Initialize language
-        document.addEventListener('DOMContentLoaded', () => {
-            // Set initial language to Spanish
-            changeLanguage('es');
         });
     </script>
 </body>

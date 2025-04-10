@@ -106,6 +106,9 @@
     <!-- Alpine.js for interactive components -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     
+    <!-- Common scripts with language detection -->
+    <script src="scripts.js"></script>
+    
     <!-- Inter font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1422,6 +1425,8 @@
         // Carousel functionality
         document.addEventListener('DOMContentLoaded', function() {
             const carousel = document.getElementById('screenshot-carousel');
+            if (!carousel) return;
+            
             const container = carousel.parentElement;
             
             let isDown = false;
@@ -1488,55 +1493,6 @@
                 const initialScroll = (carouselWidth - containerWidth) / 4;
                 container.scrollLeft = initialScroll;
             });
-        });
-    </script>
-
-    <!-- Language Switching Script -->
-    <script>
-        // Default language set to Spanish
-        let currentLanguage = 'es';
-
-        // Function to change the language
-        function changeLanguage(lang) {
-            try {
-                // Update current language
-                currentLanguage = lang;
-                
-                // Update the displayed language in the selector
-                const langElement = document.getElementById('current-language');
-                if (langElement) {
-                    langElement.textContent = lang === 'en' ? 'English' : 'Español';
-                }
-                
-                // Show only elements for the selected language
-                const allLangElements = document.querySelectorAll('span[lang]');
-                allLangElements.forEach(el => {
-                    if (el.getAttribute('lang') === lang) {
-                        el.classList.remove('hidden');
-                    } else {
-                        el.classList.add('hidden');
-                    }
-                });
-                
-                // Update language buttons styling
-                const langButtons = document.querySelectorAll('.language-btn');
-                langButtons.forEach(btn => {
-                    if (btn.getAttribute('data-lang') === lang) {
-                        btn.classList.add('bg-brand', 'text-brand-foreground');
-                        btn.classList.remove('bg-background');
-                    } else {
-                        btn.classList.remove('bg-brand', 'text-brand-foreground');
-                        btn.classList.add('bg-background');
-                    }
-                });
-            } catch (error) {
-                console.error('Error changing language:', error);
-            }
-        }
-
-        // Initialize with Spanish language by default
-        document.addEventListener('DOMContentLoaded', function() {
-            changeLanguage('es');
         });
     </script>
 </body>

@@ -191,11 +191,28 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Language Switching Function
+// Function to detect user's browser language
+function detectUserLanguage() {
+    // Get browser language (returns language code like 'en-US', 'es-ES', etc.)
+    let browserLang = navigator.language || navigator.userLanguage;
+    
+    // Extract the primary language code (e.g., 'en' from 'en-US')
+    let primaryLang = browserLang.split('-')[0];
+    
+    // Check if the language is supported (currently only 'en' and 'es')
+    if (primaryLang === 'en' || primaryLang === 'es') {
+        return primaryLang;
+    }
+    
+    // Default to English if language is not supported
+    return 'en';
+}
+
+// Function to change the language
 function changeLanguage(lang) {
     try {
-        // Update current language
-        window.currentLanguage = lang;
+        // Update current language and store in localStorage for persistence across pages
+        localStorage.setItem('bricksLanguage', lang);
         
         // Update the displayed language in the selector
         const langElement = document.getElementById('current-language');
@@ -217,14 +234,31 @@ function changeLanguage(lang) {
         const langButtons = document.querySelectorAll('.language-btn');
         langButtons.forEach(btn => {
             if (btn.getAttribute('data-lang') === lang) {
-                btn.classList.add('bg-brand', 'text-brand-foreground');
+                btn.classList.add('bg-accent');
                 btn.classList.remove('bg-background');
             } else {
-                btn.classList.remove('bg-brand', 'text-brand-foreground');
+                btn.classList.remove('bg-accent');
                 btn.classList.add('bg-background');
             }
         });
+
+        // Update html lang attribute
+        document.documentElement.setAttribute('lang', lang);
     } catch (error) {
         console.error('Error changing language:', error);
     }
-} 
+}
+
+// Initialize language on page load
+document.addEventListener('DOMContentLoaded', () => {
+    // Check if user has a previously set language preference
+    let savedLanguage = localStorage.getItem('bricksLanguage');
+    
+    // If no saved preference, detect from browser
+    if (!savedLanguage) {
+        savedLanguage = detectUserLanguage();
+    }
+    
+    // Apply the language
+    changeLanguage(savedLanguage);
+}); 
