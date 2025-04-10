@@ -244,6 +244,39 @@ function changeLanguage(lang) {
 
         // Update html lang attribute
         document.documentElement.setAttribute('lang', lang);
+        
+        // Update meta tags and title based on language
+        if (lang === 'en') {
+            // Get English meta description and title if they exist
+            const enDescription = document.querySelector('meta[name="description-en"]');
+            const enTitle = document.querySelector('meta[name="title-en"]');
+            
+            if (enDescription) {
+                // Update the primary description meta tag with English content
+                const descriptionTag = document.querySelector('meta[name="description"]');
+                if (descriptionTag) {
+                    descriptionTag.setAttribute('content', enDescription.getAttribute('content'));
+                }
+            }
+            
+            if (enTitle) {
+                // Update the document title with English content
+                document.title = enTitle.getAttribute('content');
+            }
+        } else {
+            // Restore Spanish meta description and title
+            const esDescription = "Bricks: la calculadora hipotecaria intuitiva para compradores primerizos. Compare tasas, visualice pagos y tome decisiones financieras con confianza. Herramienta profesional para bancos.";
+            const esTitle = "Bricks - Decisiones Hipotecarias Simplificadas";
+            
+            // Update the primary description meta tag with Spanish content
+            const descriptionTag = document.querySelector('meta[name="description"]');
+            if (descriptionTag) {
+                descriptionTag.setAttribute('content', esDescription);
+            }
+            
+            // Update the document title with Spanish content
+            document.title = esTitle;
+        }
     } catch (error) {
         console.error('Error changing language:', error);
     }
