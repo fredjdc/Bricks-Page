@@ -73,7 +73,7 @@ if (typeof tailwind !== 'undefined') {
                 },
             },
         },
-    }
+    };
 }
 
 // Mobile menu toggle
