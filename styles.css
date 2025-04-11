@@ -1,3 +1,13 @@
+/* Base styles and variables */
+:root {
+    --accent-color: #007AFF;
+    --accent-hover: #0056b3;
+    --success-color: #34C85A;
+    --animation-timing: 0.3s ease;
+    --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    --shadow-hover: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
 /* Additional styles and animations for Bricks Landing Page */
 
 /* Custom scrollbar */
@@ -12,13 +22,13 @@
 
 /* Accent color for scrollbar - #007AFF */
 ::-webkit-scrollbar-thumb {
-    background: #007AFF;
+    background: var(--accent-color);
     border-radius: 40px;
 }
 
 /* Accent color for scrollbar hover - #007AFF */
 ::-webkit-scrollbar-thumb:hover {
-    background: #007AFF;
+    background: var(--accent-hover);
 }
 
 /* Hide scrollbar for carousel */
@@ -32,29 +42,28 @@
 
 /* Animations */
 @keyframes float {
-    0% {
-        transform: translateY(0.1px);
+    0%, 100% { transform: translateY(0.1px); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(0.97);
     }
     50% {
-        transform: translateY(-10px);
-    }
-    100% {
-        transform: translateY(0.1px);
+        opacity: 0.5;
+        transform: scale(1);
     }
 }
 
 @keyframes pulse-shadow {
-    0% {
-        box-shadow: 0 0 0 0 rgb(0, 122, 255);
-    }
-    70% {
-        box-shadow: 0 0 0 15px rgba(37, 99, 235, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
-    }
+    0% { box-shadow: 0 0 0 0 var(--accent-color); }
+    70% { box-shadow: 0 0 0 15px rgba(37, 99, 235, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
 }
 
+/* Animation classes */
 .animate-float {
     animation: float 4s ease-in-out infinite;
 }
@@ -65,7 +74,7 @@
 
 /* Enhanced focus styles with accent color - #007AFF */
 a:focus, button:focus {
-    outline: 2px solid #007AFF;
+    outline: 2px solid var(--accent-color);
     outline-offset: 2px;
 }
 
@@ -75,7 +84,7 @@ a:focus, button:focus {
 }
 
 .hover-lift {
-    transition: transform 0.2s ease;
+    transition: transform var(--animation-timing);
 }
 
 .hover-lift:hover {
@@ -100,13 +109,15 @@ a:focus, button:focus {
 }
 
 /* Custom card styles */
-.feature-card {
-    transition: all 0.3s ease;
+.feature-card,
+.pricing-card {
+    transition: all var(--animation-timing);
 }
 
-.feature-card:hover {
+.feature-card:hover,
+.pricing-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    box-shadow: var(--shadow-hover);
 }
 
 /* Hero image animation with accent color - #007AFF */
@@ -117,32 +128,13 @@ a:focus, button:focus {
 .hero-image::before {
     content: '';
     position: absolute;
-    top: -10px;
-    left: -10px;
-    right: -10px;
-    bottom: -10px;
+    inset: -10px;
     border-radius: 20px;
-    /* Gradient with accent blue (#007AFF) and accent green (#34C85A) */
-    background: linear-gradient(45deg, #007AFF, #34C85A);
+    background: linear-gradient(45deg, var(--accent-color), var(--success-color));
     z-index: -1;
     opacity: 0.5;
     filter: blur(20px);
     animation: pulse 4s infinite;
-}
-
-@keyframes pulse {
-    0% {
-        opacity: 0.3;
-        transform: scale(0.97);
-    }
-    50% {
-        opacity: 0.5;
-        transform: scale(1);
-    }
-    100% {
-        opacity: 0.3;
-        transform: scale(0.97);
-    }
 }
 
 /* Responsive typography */
@@ -158,39 +150,6 @@ a:focus, button:focus {
     p {
         font-size: clamp(0.875rem, 3vw, 1rem);
     }
-}
-
-/* Pricing Card Hover Effect */
-.pricing-card {
-    transition: all 0.3s ease;
-}
-
-.pricing-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-}
-
-/* Button Hover Animation */
-.button-primary {
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-}
-
-.button-primary::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: all 0.6s;
-    z-index: -1;
-}
-
-.button-primary:hover::before {
-    left: 100%;
 }
 
 /* Testimonial spacing for mobile */

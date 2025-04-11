@@ -76,222 +76,161 @@ if (typeof tailwind !== 'undefined') {
     };
 }
 
-// Mobile menu toggle
-document.addEventListener('DOMContentLoaded', () => {
-    const menuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    if (menuButton && mobileMenu) {
-        menuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            // Make sure Alpine.js doesn't interfere with our toggle
-            if (mobileMenu.__x) {
-                mobileMenu.__x.updateElements(mobileMenu);
-            }
-        });
-    }
+// Utility functions
+const debounce = (fn, delay) => {
+    let timeoutId;
+    return (...args) => {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => fn(...args), delay);
+    };
+};
 
-    // Animation for elements when they come into view
+// DOM Elements cache
+const elements = {
+    menuButton: document.getElementById('mobile-menu-button'),
+    mobileMenu: document.getElementById('mobile-menu'),
+    carousel: document.getElementById('screenshot-carousel'),
+    langElement: document.getElementById('current-language'),
+};
+
+// Event Handlers
+const handleMobileMenu = () => {
+    if (elements.mobileMenu) {
+        elements.mobileMenu.classList.toggle('hidden');
+        if (elements.mobileMenu.__x) {
+            elements.mobileMenu.__x.updateElements(elements.mobileMenu);
+        }
+    }
+};
+
+const handleCarousel = (container) => {
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    const handleStart = (e) => {
+        isDown = true;
+        container.classList.add('active');
+        startX = (e.pageX || e.touches[0].pageX) - container.offsetLeft;
+        scrollLeft = container.scrollLeft;
+        e.preventDefault();
+    };
+
+    const handleEnd = () => {
+        isDown = false;
+        container.classList.remove('active');
+    };
+
+    const handleMove = (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = (e.pageX || e.touches[0].pageX) - container.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        container.scrollLeft = scrollLeft - walk;
+    };
+
+    // Mouse events
+    container.addEventListener('mousedown', handleStart);
+    container.addEventListener('mouseleave', handleEnd);
+    container.addEventListener('mouseup', handleEnd);
+    container.addEventListener('mousemove', handleMove);
+
+    // Touch events
+    container.addEventListener('touchstart', handleStart, { passive: false });
+    container.addEventListener('touchend', handleEnd);
+    container.addEventListener('touchcancel', handleEnd);
+    container.addEventListener('touchmove', handleMove, { passive: false });
+};
+
+// Intersection Observer for animations
+const setupIntersectionObserver = () => {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('animate-in');
-                
-                // Make sure animations applied when elements come into view
                 if (entry.target.classList.contains('hero-image')) {
-                    // Ensure the hero image is visible and animated
-                    setTimeout(() => {
+                    requestAnimationFrame(() => {
                         entry.target.style.opacity = '1';
-                    }, 100);
+                    });
                 }
             }
         });
-    }, {
-        threshold: 0.1
-    });
-    
+    }, { threshold: 0.1 });
+
     document.querySelectorAll('.animate-on-scroll').forEach(element => {
         observer.observe(element);
     });
+};
 
-    // Initialize with Spanish language by default
-    changeLanguage('es');
-});
+// Language handling
+const detectUserLanguage = () => {
+    const browserLang = (navigator.language || navigator.userLanguage).split('-')[0];
+    return ['en', 'es'].includes(browserLang) ? browserLang : 'en';
+};
 
-// Carousel functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const carousel = document.getElementById('screenshot-carousel');
-    if (!carousel) return;
-    
-    const container = carousel.parentElement;
-    
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-    
-    // Mouse events
-    container.addEventListener('mousedown', (e) => {
-        isDown = true;
-        container.classList.add('active');
-        startX = e.pageX - container.offsetLeft;
-        scrollLeft = container.scrollLeft;
-        e.preventDefault(); // Prevent text selection
-    });
-    
-    container.addEventListener('mouseleave', () => {
-        isDown = false;
-        container.classList.remove('active');
-    });
-    
-    container.addEventListener('mouseup', () => {
-        isDown = false;
-        container.classList.remove('active');
-    });
-    
-    container.addEventListener('mousemove', (e) => {
-        if(!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - container.offsetLeft;
-        const walk = (x - startX) * 1.5; // Adjust scroll speed
-        container.scrollLeft = scrollLeft - walk;
-    });
-    
-    // Touch events
-    container.addEventListener('touchstart', (e) => {
-        isDown = true;
-        container.classList.add('active');
-        startX = e.touches[0].pageX - container.offsetLeft;
-        scrollLeft = container.scrollLeft;
-    }, { passive: false });
-    
-    container.addEventListener('touchend', () => {
-        isDown = false;
-        container.classList.remove('active');
-    });
-    
-    container.addEventListener('touchcancel', () => {
-        isDown = false;
-        container.classList.remove('active');
-    });
-    
-    container.addEventListener('touchmove', (e) => {
-        if(!isDown) return;
-        const x = e.touches[0].pageX - container.offsetLeft;
-        const walk = (x - startX) * 1.5;
-        container.scrollLeft = scrollLeft - walk;
-        e.preventDefault(); // Prevent page scrolling when dragging
-    }, { passive: false });
-    
-    // Scroll to center initially
-    window.addEventListener('load', () => {
-        const containerWidth = container.offsetWidth;
-        const carouselWidth = carousel.scrollWidth;
-        const initialScroll = (carouselWidth - containerWidth) / 4;
-        container.scrollLeft = initialScroll;
-    });
-});
-
-// Function to detect user's browser language
-function detectUserLanguage() {
-    // Get browser language (returns language code like 'en-US', 'es-ES', etc.)
-    let browserLang = navigator.language || navigator.userLanguage;
-    
-    // Extract the primary language code (e.g., 'en' from 'en-US')
-    let primaryLang = browserLang.split('-')[0];
-    
-    // Check if the language is supported (currently only 'en' and 'es')
-    if (primaryLang === 'en' || primaryLang === 'es') {
-        return primaryLang;
-    }
-    
-    // Default to English if language is not supported
-    return 'en';
-}
-
-// Function to change the language
-function changeLanguage(lang) {
+const changeLanguage = (lang) => {
     try {
-        // Update current language and store in localStorage for persistence across pages
         localStorage.setItem('bricksLanguage', lang);
         
-        // Update the displayed language in the selector
-        const langElement = document.getElementById('current-language');
-        if (langElement) {
-            langElement.textContent = lang === 'en' ? 'English' : 'Español';
+        if (elements.langElement) {
+            elements.langElement.textContent = lang === 'en' ? 'English' : 'Español';
         }
         
-        // Show only elements for the selected language
-        const allLangElements = document.querySelectorAll('span[lang], img[lang]');
-        allLangElements.forEach(el => {
-            if (el.getAttribute('lang') === lang) {
-                el.classList.remove('hidden');
-            } else {
-                el.classList.add('hidden');
-            }
+        document.querySelectorAll('span[lang], img[lang]').forEach(el => {
+            el.classList.toggle('hidden', el.getAttribute('lang') !== lang);
         });
         
-        // Update language buttons styling
-        const langButtons = document.querySelectorAll('.language-btn');
-        langButtons.forEach(btn => {
-            if (btn.getAttribute('data-lang') === lang) {
-                btn.classList.add('bg-accent');
-                btn.classList.remove('bg-background');
-            } else {
-                btn.classList.remove('bg-accent');
-                btn.classList.add('bg-background');
-            }
+        document.querySelectorAll('.language-btn').forEach(btn => {
+            const isActive = btn.getAttribute('data-lang') === lang;
+            btn.classList.toggle('bg-accent', isActive);
+            btn.classList.toggle('bg-background', !isActive);
         });
 
-        // Update html lang attribute
         document.documentElement.setAttribute('lang', lang);
         
         // Update meta tags and title based on language
-        if (lang === 'en') {
-            // Get English meta description and title if they exist
-            const enDescription = document.querySelector('meta[name="description-en"]');
-            const enTitle = document.querySelector('meta[name="title-en"]');
-            
-            if (enDescription) {
-                // Update the primary description meta tag with English content
-                const descriptionTag = document.querySelector('meta[name="description"]');
-                if (descriptionTag) {
-                    descriptionTag.setAttribute('content', enDescription.getAttribute('content'));
-                }
-            }
-            
-            if (enTitle) {
-                // Update the document title with English content
-                document.title = enTitle.getAttribute('content');
-            }
-        } else {
-            // Restore Spanish meta description and title
-            const esDescription = "Bricks: la calculadora hipotecaria intuitiva para compradores primerizos. Compare tasas, visualice pagos y tome decisiones financieras con confianza. Herramienta profesional para bancos.";
-            const esTitle = "Bricks - Decisiones Hipotecarias Simplificadas";
-            
-            // Update the primary description meta tag with Spanish content
-            const descriptionTag = document.querySelector('meta[name="description"]');
-            if (descriptionTag) {
-                descriptionTag.setAttribute('content', esDescription);
-            }
-            
-            // Update the document title with Spanish content
-            document.title = esTitle;
+        const metaDescription = document.querySelector(`meta[name="description"][lang="${lang}"]`);
+        const titleElement = document.querySelector(`title[lang="${lang}"]`);
+        
+        if (metaDescription) {
+            document.querySelector('meta[name="description"]').setAttribute('content', metaDescription.getAttribute('content'));
+        }
+        
+        if (titleElement) {
+            document.title = titleElement.textContent;
         }
     } catch (error) {
         console.error('Error changing language:', error);
     }
-}
+};
 
-// Initialize language on page load
+// Initialize
 document.addEventListener('DOMContentLoaded', () => {
-    // Check if user has a previously set language preference
-    let savedLanguage = localStorage.getItem('bricksLanguage');
-    
-    // If no saved preference, detect from browser
-    if (!savedLanguage) {
-        savedLanguage = detectUserLanguage();
+    // Mobile menu
+    if (elements.menuButton) {
+        elements.menuButton.addEventListener('click', handleMobileMenu);
     }
-    
-    // Apply the language
-    changeLanguage(savedLanguage);
-}); 
+
+    // Carousel
+    if (elements.carousel) {
+        const container = elements.carousel.parentElement;
+        handleCarousel(container);
+        
+        // Center carousel on load
+        window.addEventListener('load', () => {
+            const containerWidth = container.offsetWidth;
+            const carouselWidth = elements.carousel.scrollWidth;
+            container.scrollLeft = (carouselWidth - containerWidth) / 4;
+        });
+    }
+
+    // Animations
+    setupIntersectionObserver();
+
+    // Initialize language
+    const savedLang = localStorage.getItem('bricksLanguage') || detectUserLanguage();
+    changeLanguage(savedLang);
+});
+
+// Export functions for global use
+window.changeLanguage = changeLanguage; 
