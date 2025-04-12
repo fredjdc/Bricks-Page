@@ -86,15 +86,20 @@ const debounce = (fn, delay) => {
 };
 
 // DOM Elements cache
-const elements = {
-    menuButton: document.getElementById('mobile-menu-button'),
-    mobileMenu: document.getElementById('mobile-menu'),
-    carousel: document.getElementById('screenshot-carousel'),
-    langElement: document.getElementById('current-language'),
-    videoModal: document.getElementById('video-modal'),
-    openVideoBtn: document.getElementById('open-video-modal'),
-    closeVideoBtn: document.getElementById('close-video-modal'),
-    modalVideo: document.getElementById('modal-video'),
+let elements = {};
+
+// Function to initialize DOM elements
+const initializeElements = () => {
+    elements = {
+        menuButton: document.getElementById('mobile-menu-button'),
+        mobileMenu: document.getElementById('mobile-menu'),
+        carousel: document.getElementById('screenshot-carousel'),
+        langElement: document.getElementById('current-language'),
+        videoModal: document.getElementById('video-modal'),
+        openVideoBtn: document.getElementById('open-video-modal'),
+        closeVideoBtn: document.getElementById('close-video-modal'),
+        modalVideo: document.getElementById('modal-video')
+    };
 };
 
 // Event Handlers
@@ -210,23 +215,40 @@ const changeLanguage = (lang) => {
 
 // Video Modal Handler
 const handleVideoModal = () => {
-    if (!elements.videoModal || !elements.openVideoBtn || !elements.closeVideoBtn) return;
+    console.log('Video modal elements:', {
+        videoModal: elements.videoModal,
+        openVideoBtn: elements.openVideoBtn,
+        closeVideoBtn: elements.closeVideoBtn,
+        modalVideo: elements.modalVideo
+    });
+    
+    if (!elements.videoModal || !elements.openVideoBtn || !elements.closeVideoBtn) {
+        console.error('Video modal elements not found');
+        return;
+    }
     
     const openModal = (e) => {
+        console.log('Opening video modal');
         e.preventDefault();
         elements.videoModal.classList.add('opacity-100');
         elements.videoModal.classList.remove('opacity-0', 'pointer-events-none');
         document.body.style.overflow = 'hidden';
-        elements.modalVideo.play();
+        if (elements.modalVideo) {
+            elements.modalVideo.play().catch(err => console.error('Error playing video:', err));
+        }
     };
 
     const closeModal = () => {
+        console.log('Closing video modal');
         elements.videoModal.classList.remove('opacity-100');
         elements.videoModal.classList.add('opacity-0', 'pointer-events-none');
         document.body.style.overflow = '';
-        elements.modalVideo.pause();
+        if (elements.modalVideo) {
+            elements.modalVideo.pause();
+        }
     };
 
+    console.log('Adding event listeners to video modal elements');
     elements.openVideoBtn.addEventListener('click', openModal);
     elements.closeVideoBtn.addEventListener('click', closeModal);
     
@@ -247,6 +269,9 @@ const handleVideoModal = () => {
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize DOM elements
+    initializeElements();
+    
     // Mobile menu
     if (elements.menuButton) {
         elements.menuButton.addEventListener('click', handleMobileMenu);

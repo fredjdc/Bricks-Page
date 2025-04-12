@@ -1475,9 +1475,54 @@
     </div>
 
     <script>
-        // Mobile menu toggle functionality is now in scripts.js
-        // Animation for elements is now in scripts.js
-        // Carousel functionality is now in scripts.js
+        // Fallback script for video modal
+        document.addEventListener('DOMContentLoaded', function() {
+            const videoModal = document.getElementById('video-modal');
+            const openVideoBtn = document.getElementById('open-video-modal');
+            const closeVideoBtn = document.getElementById('close-video-modal');
+            const modalVideo = document.getElementById('modal-video');
+            
+            if (!videoModal || !openVideoBtn || !closeVideoBtn) {
+                console.error('Video modal elements not found in fallback');
+                return;
+            }
+            
+            console.log('Fallback video modal setup active');
+            
+            const openModal = function(e) {
+                e.preventDefault();
+                videoModal.classList.add('opacity-100');
+                videoModal.classList.remove('opacity-0', 'pointer-events-none');
+                document.body.style.overflow = 'hidden';
+                if (modalVideo) {
+                    modalVideo.play().catch(err => console.error('Error playing video in fallback:', err));
+                }
+            };
+            
+            const closeModal = function() {
+                videoModal.classList.remove('opacity-100');
+                videoModal.classList.add('opacity-0', 'pointer-events-none');
+                document.body.style.overflow = '';
+                if (modalVideo) {
+                    modalVideo.pause();
+                }
+            };
+            
+            openVideoBtn.addEventListener('click', openModal);
+            closeVideoBtn.addEventListener('click', closeModal);
+            
+            videoModal.addEventListener('click', function(e) {
+                if (e.target === videoModal) {
+                    closeModal();
+                }
+            });
+            
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && !videoModal.classList.contains('pointer-events-none')) {
+                    closeModal();
+                }
+            });
+        });
     </script>
 </body>
 </html> 
