@@ -1467,7 +1467,8 @@
             </button>
             <div class="relative w-full pt-[216%]">
                 <video id="modal-video" class="absolute inset-0 w-full h-full rounded-lg" controls>
-                    <source src="images/app-preview.mp4" type="video/mp4">
+                    <source lang="en" src="images/app-preview-en.mp4" type="video/mp4">
+                    <source lang="es" src="images/app-preview-es.mp4" type="video/mp4" class="hidden">
                     Your browser does not support the video tag.
                 </video>
             </div>
@@ -1482,30 +1483,45 @@
             const closeVideoBtn = document.getElementById('close-video-modal');
             const modalVideo = document.getElementById('modal-video');
             
-            if (!videoModal || !openVideoBtn || !closeVideoBtn) {
+            if (!videoModal || !openVideoBtn || !closeVideoBtn || !modalVideo) {
                 console.error('Video modal elements not found in fallback');
                 return;
             }
             
             console.log('Fallback video modal setup active');
             
+            function loadCorrectVideoSource() {
+                const currentLang = localStorage.getItem('bricksLanguage') || 'en';
+                const sources = modalVideo.querySelectorAll('source');
+                
+                sources.forEach(source => {
+                    const isCurrentLang = source.getAttribute('lang') === currentLang;
+                    source.classList.toggle('hidden', !isCurrentLang);
+                });
+                
+                // Force reload the video to use the correct source
+                modalVideo.load();
+            }
+            
             const openModal = function(e) {
                 e.preventDefault();
+                // Ensure correct video source is loaded
+                loadCorrectVideoSource();
+                
+                // Show modal
                 videoModal.classList.add('opacity-100');
                 videoModal.classList.remove('opacity-0', 'pointer-events-none');
                 document.body.style.overflow = 'hidden';
-                if (modalVideo) {
-                    modalVideo.play().catch(err => console.error('Error playing video in fallback:', err));
-                }
+                
+                // Play video
+                modalVideo.play().catch(err => console.error('Error playing video in fallback:', err));
             };
             
             const closeModal = function() {
                 videoModal.classList.remove('opacity-100');
                 videoModal.classList.add('opacity-0', 'pointer-events-none');
                 document.body.style.overflow = '';
-                if (modalVideo) {
-                    modalVideo.pause();
-                }
+                modalVideo.pause();
             };
             
             openVideoBtn.addEventListener('click', openModal);

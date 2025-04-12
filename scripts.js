@@ -185,8 +185,22 @@ const changeLanguage = (lang) => {
             elements.langElement.textContent = lang === 'en' ? 'English' : 'Español';
         }
         
-        document.querySelectorAll('span[lang], img[lang]').forEach(el => {
+        document.querySelectorAll('span[lang], img[lang], source[lang]').forEach(el => {
             el.classList.toggle('hidden', el.getAttribute('lang') !== lang);
+        });
+        
+        // For videos, we need to reload the video element with the correct source
+        document.querySelectorAll('video').forEach(videoEl => {
+            const activeSrc = videoEl.querySelector(`source[lang="${lang}"]:not(.hidden)`);
+            if (activeSrc && videoEl.currentSrc !== activeSrc.src) {
+                const wasPaused = videoEl.paused;
+                const currentTime = videoEl.currentTime;
+                videoEl.load();
+                if (!wasPaused) {
+                    videoEl.play().catch(err => console.error('Error playing video after language change:', err));
+                }
+                videoEl.currentTime = currentTime;
+            }
         });
         
         document.querySelectorAll('.language-btn').forEach(btn => {
