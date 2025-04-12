@@ -202,17 +202,42 @@ const changeLanguage = (lang) => {
         // Toggle visibility of language-specific elements
         document.querySelectorAll('[lang]').forEach(el => {
             // For elements with lang attribute, toggle visibility based on language
-            const isMatchingLang = el.getAttribute('lang') === lang;
+            const elemLang = el.getAttribute('lang');
+            const isMatchingLang = elemLang === lang;
             
             // Special handling for source elements in video
             if (el.tagName === 'SOURCE') {
-                // Just toggle hidden class, actual video source handling happens when video loads
                 el.classList.toggle('hidden', !isMatchingLang);
+                
+                // If this is a video source element, reload its parent video
+                if (el.parentElement && el.parentElement.tagName === 'VIDEO') {
+                    // Mark for reload after we've processed all elements
+                    el.parentElement.dataset.needsReload = 'true';
+                }
             } 
             // For all other elements with lang attribute
             else {
                 el.classList.toggle('hidden', !isMatchingLang);
             }
+        });
+        
+        // Now reload all videos that were marked for reload
+        document.querySelectorAll('video[data-needs-reload="true"]').forEach(videoEl => {
+            // Store current state
+            const wasPaused = videoEl.paused;
+            const currentTime = videoEl.currentTime;
+            
+            // This triggers the browser to reevaluate which source element to use
+            videoEl.load();
+            
+            // Restore state if the video was playing
+            if (!wasPaused) {
+                videoEl.play().catch(err => console.error('Error playing video after language change:', err));
+            }
+            videoEl.currentTime = currentTime;
+            
+            // Remove the mark
+            delete videoEl.dataset.needsReload;
         });
         
         // Update UI language indicators
@@ -233,22 +258,6 @@ const changeLanguage = (lang) => {
         if (titleElement) {
             document.title = titleElement.getAttribute('content');
         }
-        
-        // Force reload all videos to update their sources
-        document.querySelectorAll('video').forEach(videoEl => {
-            // Store current state
-            const wasPaused = videoEl.paused;
-            const currentTime = videoEl.currentTime;
-            
-            // This triggers the browser to reevaluate which source element to use
-            videoEl.load();
-            
-            // Restore state if the video was playing
-            if (!wasPaused) {
-                videoEl.play().catch(err => console.error('Error playing video after language change:', err));
-            }
-            videoEl.currentTime = currentTime;
-        });
     } catch (error) {
         console.error('Error changing language:', error);
     }
@@ -268,11 +277,26 @@ const handleVideoModal = () => {
         if (elements.modalVideo) {
             const currentLang = localStorage.getItem('bricksLanguage') || detectUserLanguage();
             
-            // First ensure all sources have proper hidden class based on language
-            elements.modalVideo.querySelectorAll('source').forEach(source => {
-                const isCurrentLang = source.getAttribute('lang') === currentLang;
+            // Ensure all source elements have proper hidden class
+            const sources = elements.modalVideo.querySelectorAll('source');
+            let hasVisibleSource = false;
+            
+            sources.forEach(source => {
+                const sourceLang = source.getAttribute('lang');
+                const isCurrentLang = sourceLang === currentLang;
                 source.classList.toggle('hidden', !isCurrentLang);
+                
+                if (isCurrentLang) {
+                    hasVisibleSource = true;
+                    console.log(`Using video source: ${source.getAttribute('src')} for language: ${currentLang}`);
+                }
             });
+            
+            // Fallback to first source if no matching language found
+            if (!hasVisibleSource && sources.length > 0) {
+                sources[0].classList.remove('hidden');
+                console.log(`No matching source found for ${currentLang}, using fallback: ${sources[0].getAttribute('src')}`);
+            }
             
             // Force reload the video to use the correct source
             elements.modalVideo.load();
