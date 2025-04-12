@@ -426,7 +426,7 @@
                             <span lang="en">Download on App Store</span>
                             <span lang="es" class="hidden">Descargar en App Store</span>
                         </a>
-                        <a href="images/app-preview.mp4" class="btn px-16 py-4 rounded-lg border border-brand text-brand hover:bg-brand hover:text-brand-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-slate-950 focus-visible:ring-offset-2 inline-flex items-center justify-center" style="width: 320px">
+                        <a href="javascript:void(0)" class="btn px-16 py-4 rounded-lg border border-brand text-brand hover:bg-brand hover:text-brand-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-slate-950 focus-visible:ring-offset-2 inline-flex items-center justify-center" style="width: 320px" id="open-video-modal">
                             <span lang="en">Watch Demo (2 min)</span>
                             <span lang="es" class="hidden">Ver Demostración (2 min)</span>
                         </a>
@@ -1456,104 +1456,28 @@
         </div>
     </footer>
 
-    <script>
-        // Mobile menu toggle
-        const menuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        menuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+    <!-- Video Modal -->
+    <div id="video-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="relative bg-white rounded-lg shadow-xl max-w-3xl w-full">
+            <button id="close-video-modal" class="absolute top-2 right-2 z-10 rounded-full p-2 bg-white/90 text-gray-800 hover:bg-white">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="relative w-full pt-[56.25%]">
+                <video id="modal-video" class="absolute inset-0 w-full h-full rounded-lg" controls>
+                    <source src="images/app-preview.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
 
-        // Animation for elements when they come into view
-        document.addEventListener('DOMContentLoaded', () => {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate-in');
-                    }
-                });
-            }, {
-                threshold: 0.1
-            });
-            
-            document.querySelectorAll('.animate-on-scroll').forEach(element => {
-                observer.observe(element);
-            });
-        });
-        
-        // Carousel functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const carousel = document.getElementById('screenshot-carousel');
-            if (!carousel) return;
-            
-            const container = carousel.parentElement;
-            
-            let isDown = false;
-            let startX;
-            let scrollLeft;
-            
-            // Mouse events
-            container.addEventListener('mousedown', (e) => {
-                isDown = true;
-                container.classList.add('active');
-                startX = e.pageX - container.offsetLeft;
-                scrollLeft = container.scrollLeft;
-                e.preventDefault(); // Prevent text selection
-            });
-            
-            container.addEventListener('mouseleave', () => {
-                isDown = false;
-                container.classList.remove('active');
-            });
-            
-            container.addEventListener('mouseup', () => {
-                isDown = false;
-                container.classList.remove('active');
-            });
-            
-            container.addEventListener('mousemove', (e) => {
-                if(!isDown) return;
-                e.preventDefault();
-                const x = e.pageX - container.offsetLeft;
-                const walk = (x - startX) * 1.5; // Adjust scroll speed
-                container.scrollLeft = scrollLeft - walk;
-            });
-            
-            // Touch events
-            container.addEventListener('touchstart', (e) => {
-                isDown = true;
-                container.classList.add('active');
-                startX = e.touches[0].pageX - container.offsetLeft;
-                scrollLeft = container.scrollLeft;
-            }, { passive: false });
-            
-            container.addEventListener('touchend', () => {
-                isDown = false;
-                container.classList.remove('active');
-            });
-            
-            container.addEventListener('touchcancel', () => {
-                isDown = false;
-                container.classList.remove('active');
-            });
-            
-            container.addEventListener('touchmove', (e) => {
-                if(!isDown) return;
-                const x = e.touches[0].pageX - container.offsetLeft;
-                const walk = (x - startX) * 1.5;
-                container.scrollLeft = scrollLeft - walk;
-                e.preventDefault(); // Prevent page scrolling when dragging
-            }, { passive: false });
-            
-            // Scroll to center initially
-            window.addEventListener('load', () => {
-                const containerWidth = container.offsetWidth;
-                const carouselWidth = carousel.scrollWidth;
-                const initialScroll = (carouselWidth - containerWidth) / 4;
-                container.scrollLeft = initialScroll;
-            });
-        });
+    <script>
+        // Mobile menu toggle functionality is now in scripts.js
+        // Animation for elements is now in scripts.js
+        // Carousel functionality is now in scripts.js
     </script>
 </body>
 </html> 

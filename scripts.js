@@ -91,6 +91,10 @@ const elements = {
     mobileMenu: document.getElementById('mobile-menu'),
     carousel: document.getElementById('screenshot-carousel'),
     langElement: document.getElementById('current-language'),
+    videoModal: document.getElementById('video-modal'),
+    openVideoBtn: document.getElementById('open-video-modal'),
+    closeVideoBtn: document.getElementById('close-video-modal'),
+    modalVideo: document.getElementById('modal-video'),
 };
 
 // Event Handlers
@@ -204,6 +208,43 @@ const changeLanguage = (lang) => {
     }
 };
 
+// Video Modal Handler
+const handleVideoModal = () => {
+    if (!elements.videoModal || !elements.openVideoBtn || !elements.closeVideoBtn) return;
+    
+    const openModal = (e) => {
+        e.preventDefault();
+        elements.videoModal.classList.add('opacity-100');
+        elements.videoModal.classList.remove('opacity-0', 'pointer-events-none');
+        document.body.style.overflow = 'hidden';
+        elements.modalVideo.play();
+    };
+
+    const closeModal = () => {
+        elements.videoModal.classList.remove('opacity-100');
+        elements.videoModal.classList.add('opacity-0', 'pointer-events-none');
+        document.body.style.overflow = '';
+        elements.modalVideo.pause();
+    };
+
+    elements.openVideoBtn.addEventListener('click', openModal);
+    elements.closeVideoBtn.addEventListener('click', closeModal);
+    
+    // Close modal when clicking outside the content
+    elements.videoModal.addEventListener('click', (e) => {
+        if (e.target === elements.videoModal) {
+            closeModal();
+        }
+    });
+
+    // Close modal with escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !elements.videoModal.classList.contains('pointer-events-none')) {
+            closeModal();
+        }
+    });
+};
+
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     // Mobile menu
@@ -226,6 +267,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Animations
     setupIntersectionObserver();
+
+    // Video Modal
+    handleVideoModal();
 
     // Initialize language
     const savedLang = localStorage.getItem('bricksLanguage') || detectUserLanguage();
