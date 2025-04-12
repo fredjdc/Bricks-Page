@@ -203,6 +203,15 @@ const changeLanguage = (lang) => {
             }
         });
         
+        // Ensure modal video has correct sources if it exists
+        const modalVideo = document.getElementById('modal-video');
+        if (modalVideo) {
+            modalVideo.querySelectorAll('source').forEach(source => {
+                source.classList.toggle('hidden', source.getAttribute('lang') !== lang);
+            });
+            modalVideo.load();
+        }
+        
         document.querySelectorAll('.language-btn').forEach(btn => {
             const isActive = btn.getAttribute('data-lang') === lang;
             btn.classList.toggle('bg-accent', isActive);
@@ -244,6 +253,21 @@ const handleVideoModal = () => {
     const openModal = (e) => {
         console.log('Opening video modal');
         e.preventDefault();
+        
+        // Load the correct video source based on current language
+        if (elements.modalVideo) {
+            const currentLang = localStorage.getItem('bricksLanguage') || 'en';
+            const sources = elements.modalVideo.querySelectorAll('source');
+            
+            sources.forEach(source => {
+                const isCurrentLang = source.getAttribute('lang') === currentLang;
+                source.classList.toggle('hidden', !isCurrentLang);
+            });
+            
+            // Force reload the video to use the correct source
+            elements.modalVideo.load();
+        }
+        
         elements.videoModal.classList.add('opacity-100');
         elements.videoModal.classList.remove('opacity-0', 'pointer-events-none');
         document.body.style.overflow = 'hidden';
