@@ -182,44 +182,73 @@ const detectUserLanguage = () => {
     return ['en', 'es'].includes(browserLang) ? browserLang : 'en';
 };
 
+/**
+ * Changes the language of the entire application
+ * @param {string} lang - The language code ('en' or 'es')
+ */
 const changeLanguage = (lang) => {
     try {
+        // Store user preference
         localStorage.setItem('bricksLanguage', lang);
         
+        // Update language display in UI
         if (elements.langElement) {
             elements.langElement.textContent = lang === 'en' ? 'English' : 'Español';
         }
         
-        document.querySelectorAll('span[lang], img[lang], source[lang]').forEach(el => {
-            el.classList.toggle('hidden', el.getAttribute('lang') !== lang);
+        // Update document language attribute
+        document.documentElement.setAttribute('lang', lang);
+        
+        // Toggle visibility of language-specific elements
+        document.querySelectorAll('[lang]').forEach(el => {
+            // For elements with lang attribute, toggle visibility based on language
+            const isMatchingLang = el.getAttribute('lang') === lang;
+            
+            // Special handling for source elements in video
+            if (el.tagName === 'SOURCE') {
+                // Just toggle hidden class, actual video source handling happens when video loads
+                el.classList.toggle('hidden', !isMatchingLang);
+            } 
+            // For all other elements with lang attribute
+            else {
+                el.classList.toggle('hidden', !isMatchingLang);
+            }
         });
         
-        // Handle the modal video element if it exists
-        const modalVideo = document.getElementById('modal-video');
-        if (modalVideo) {
-            // Make sure video is loaded with the correct source
-            modalVideo.load();
-        }
-        
+        // Update UI language indicators
         document.querySelectorAll('.language-btn').forEach(btn => {
             const isActive = btn.getAttribute('data-lang') === lang;
             btn.classList.toggle('bg-accent', isActive);
-            btn.classList.toggle("hsl(0 0% 100%)", !isActive);
+            btn.classList.toggle('bg-background', !isActive);
         });
-
-        document.documentElement.setAttribute('lang', lang);
         
         // Update meta tags and title based on language
-        const metaDescription = document.querySelector(`meta[name="description"][lang="${lang}"]`);
-        const titleElement = document.querySelector(`title[lang="${lang}"]`);
+        const metaDescription = document.querySelector(`meta[name="description-${lang}"]`);
+        const titleElement = document.querySelector(`meta[name="title-${lang}"]`);
         
         if (metaDescription) {
             document.querySelector('meta[name="description"]').setAttribute('content', metaDescription.getAttribute('content'));
         }
         
         if (titleElement) {
-            document.title = titleElement.textContent;
+            document.title = titleElement.getAttribute('content');
         }
+        
+        // Force reload all videos to update their sources
+        document.querySelectorAll('video').forEach(videoEl => {
+            // Store current state
+            const wasPaused = videoEl.paused;
+            const currentTime = videoEl.currentTime;
+            
+            // This triggers the browser to reevaluate which source element to use
+            videoEl.load();
+            
+            // Restore state if the video was playing
+            if (!wasPaused) {
+                videoEl.play().catch(err => console.error('Error playing video after language change:', err));
+            }
+            videoEl.currentTime = currentTime;
+        });
     } catch (error) {
         console.error('Error changing language:', error);
     }
@@ -237,10 +266,10 @@ const handleVideoModal = () => {
         
         // Load the correct video source based on current language
         if (elements.modalVideo) {
-            const currentLang = localStorage.getItem('bricksLanguage') || 'en';
-            const sources = elements.modalVideo.querySelectorAll('source');
+            const currentLang = localStorage.getItem('bricksLanguage') || detectUserLanguage();
             
-            sources.forEach(source => {
+            // First ensure all sources have proper hidden class based on language
+            elements.modalVideo.querySelectorAll('source').forEach(source => {
                 const isCurrentLang = source.getAttribute('lang') === currentLang;
                 source.classList.toggle('hidden', !isCurrentLang);
             });
@@ -252,8 +281,13 @@ const handleVideoModal = () => {
         elements.videoModal.classList.add('opacity-100');
         elements.videoModal.classList.remove('opacity-0', 'pointer-events-none');
         document.body.style.overflow = 'hidden';
+        
+        // Only try to play the video after the modal transition completes
         if (elements.modalVideo) {
-            elements.modalVideo.play().catch(err => console.error('Error playing video:', err));
+            setTimeout(() => {
+                elements.modalVideo.play()
+                    .catch(err => console.error('Error playing video:', err));
+            }, 300); // Match the transition duration
         }
     };
 
