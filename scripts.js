@@ -205,39 +205,10 @@ const changeLanguage = (lang) => {
             const elemLang = el.getAttribute('lang');
             const isMatchingLang = elemLang === lang;
             
-            // Special handling for source elements in video
-            if (el.tagName === 'SOURCE') {
-                el.classList.toggle('hidden', !isMatchingLang);
-                
-                // If this is a video source element, reload its parent video
-                if (el.parentElement && el.parentElement.tagName === 'VIDEO') {
-                    // Mark for reload after we've processed all elements
-                    el.parentElement.dataset.needsReload = 'true';
-                }
-            } 
-            // For all other elements with lang attribute
-            else {
+            // All elements with lang attribute (except video and source elements which we handle separately)
+            if (el.tagName !== 'VIDEO' && el.tagName !== 'SOURCE') {
                 el.classList.toggle('hidden', !isMatchingLang);
             }
-        });
-        
-        // Now reload all videos that were marked for reload
-        document.querySelectorAll('video[data-needs-reload="true"]').forEach(videoEl => {
-            // Store current state
-            const wasPaused = videoEl.paused;
-            const currentTime = videoEl.currentTime;
-            
-            // This triggers the browser to reevaluate which source element to use
-            videoEl.load();
-            
-            // Restore state if the video was playing
-            if (!wasPaused) {
-                videoEl.play().catch(err => console.error('Error playing video after language change:', err));
-            }
-            videoEl.currentTime = currentTime;
-            
-            // Remove the mark
-            delete videoEl.dataset.needsReload;
         });
         
         // Update UI language indicators
@@ -277,29 +248,23 @@ const handleVideoModal = () => {
         if (elements.modalVideo) {
             const currentLang = localStorage.getItem('bricksLanguage') || detectUserLanguage();
             
-            // Ensure all source elements have proper hidden class
-            const sources = elements.modalVideo.querySelectorAll('source');
-            let hasVisibleSource = false;
+            // More direct approach to set the correct source
+            const videoEl = elements.modalVideo;
             
-            sources.forEach(source => {
-                const sourceLang = source.getAttribute('lang');
-                const isCurrentLang = sourceLang === currentLang;
-                source.classList.toggle('hidden', !isCurrentLang);
-                
-                if (isCurrentLang) {
-                    hasVisibleSource = true;
-                    console.log(`Using video source: ${source.getAttribute('src')} for language: ${currentLang}`);
-                }
-            });
+            // Define video paths based on language
+            const videoSources = {
+                'en': 'images/app-preview-en.mp4',
+                'es': 'images/app-preview-es.mp4'
+            };
             
-            // Fallback to first source if no matching language found
-            if (!hasVisibleSource && sources.length > 0) {
-                sources[0].classList.remove('hidden');
-                console.log(`No matching source found for ${currentLang}, using fallback: ${sources[0].getAttribute('src')}`);
-            }
+            // Get the appropriate source for the current language
+            const sourcePath = videoSources[currentLang] || videoSources['en']; // Fallback to English
             
-            // Force reload the video to use the correct source
-            elements.modalVideo.load();
+            console.log(`Setting video source to: ${sourcePath} for language: ${currentLang}`);
+            
+            // Directly set the src attribute on the video element
+            videoEl.src = sourcePath;
+            videoEl.load();
         }
         
         elements.videoModal.classList.add('opacity-100');
