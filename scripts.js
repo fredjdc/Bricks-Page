@@ -117,10 +117,13 @@ const handleCarousel = (container) => {
     let startX;
     let scrollLeft;
 
+    // Common handler functions
     const handleStart = (e) => {
         isDown = true;
         container.classList.add('active');
-        startX = (e.pageX || e.touches[0].pageX) - container.offsetLeft;
+        // Works for both mouse and touch events
+        const pageX = e.pageX || (e.touches && e.touches[0].pageX);
+        startX = pageX - container.offsetLeft;
         scrollLeft = container.scrollLeft;
         e.preventDefault();
     };
@@ -133,7 +136,9 @@ const handleCarousel = (container) => {
     const handleMove = (e) => {
         if (!isDown) return;
         e.preventDefault();
-        const x = (e.pageX || e.touches[0].pageX) - container.offsetLeft;
+        // Works for both mouse and touch events
+        const pageX = e.pageX || (e.touches && e.touches[0].pageX);
+        const x = pageX - container.offsetLeft;
         const walk = (x - startX) * 1.5;
         container.scrollLeft = scrollLeft - walk;
     };
@@ -189,26 +194,10 @@ const changeLanguage = (lang) => {
             el.classList.toggle('hidden', el.getAttribute('lang') !== lang);
         });
         
-        // For videos, we need to reload the video element with the correct source
-        document.querySelectorAll('video').forEach(videoEl => {
-            const activeSrc = videoEl.querySelector(`source[lang="${lang}"]:not(.hidden)`);
-            if (activeSrc && videoEl.currentSrc !== activeSrc.src) {
-                const wasPaused = videoEl.paused;
-                const currentTime = videoEl.currentTime;
-                videoEl.load();
-                if (!wasPaused) {
-                    videoEl.play().catch(err => console.error('Error playing video after language change:', err));
-                }
-                videoEl.currentTime = currentTime;
-            }
-        });
-        
-        // Ensure modal video has correct sources if it exists
+        // Handle the modal video element if it exists
         const modalVideo = document.getElementById('modal-video');
         if (modalVideo) {
-            modalVideo.querySelectorAll('source').forEach(source => {
-                source.classList.toggle('hidden', source.getAttribute('lang') !== lang);
-            });
+            // Make sure video is loaded with the correct source
             modalVideo.load();
         }
         
@@ -238,20 +227,12 @@ const changeLanguage = (lang) => {
 
 // Video Modal Handler
 const handleVideoModal = () => {
-    console.log('Video modal elements:', {
-        videoModal: elements.videoModal,
-        openVideoBtn: elements.openVideoBtn,
-        closeVideoBtn: elements.closeVideoBtn,
-        modalVideo: elements.modalVideo
-    });
-    
     if (!elements.videoModal || !elements.openVideoBtn || !elements.closeVideoBtn) {
         console.error('Video modal elements not found');
         return;
     }
     
     const openModal = (e) => {
-        console.log('Opening video modal');
         e.preventDefault();
         
         // Load the correct video source based on current language
@@ -277,7 +258,6 @@ const handleVideoModal = () => {
     };
 
     const closeModal = () => {
-        console.log('Closing video modal');
         elements.videoModal.classList.remove('opacity-100');
         elements.videoModal.classList.add('opacity-0', 'pointer-events-none');
         document.body.style.overflow = '';
@@ -286,7 +266,6 @@ const handleVideoModal = () => {
         }
     };
 
-    console.log('Adding event listeners to video modal elements');
     elements.openVideoBtn.addEventListener('click', openModal);
     elements.closeVideoBtn.addEventListener('click', closeModal);
     

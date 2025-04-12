@@ -137,8 +137,9 @@ a:focus, button:focus {
     animation: pulse 4s infinite;
 }
 
-/* Responsive typography */
-@media (max-width: 640px) {
+/* Responsive styles combined for better maintainability */
+@media (max-width: 768px) {
+    /* Typography scaling */
     h1 {
         font-size: clamp(2rem, 5vw, 2.5rem);
     }
@@ -150,10 +151,8 @@ a:focus, button:focus {
     p {
         font-size: clamp(0.875rem, 3vw, 1rem);
     }
-}
-
-/* Testimonial spacing for mobile */
-@media (max-width: 768px) {
+    
+    /* Testimonial spacing */
     .testimonials-grid {
         gap: 4rem !important;
     }
@@ -162,4 +161,9 @@ a:focus, button:focus {
     .testimonial-card {
         margin-top: 1.5rem;
     }
+}
+
+/* More specific mobile styles */
+@media (max-width: 640px) {
+    /* Additional mobile-specific styles can go here */
 } 
