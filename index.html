@@ -1491,7 +1491,7 @@
             console.log('Fallback video modal setup active');
             
             function loadCorrectVideoSource() {
-                const currentLang = localStorage.getItem('bricksLanguage') || 'es';
+                const currentLang = localStorage.getItem('bricksLanguage') || 'es' || 'en';
                 const sources = modalVideo.querySelectorAll('source');
                 
                 sources.forEach(source => {
