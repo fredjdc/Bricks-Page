@@ -215,7 +215,7 @@ const changeLanguage = (lang) => {
         document.querySelectorAll('.language-btn').forEach(btn => {
             const isActive = btn.getAttribute('data-lang') === lang;
             btn.classList.toggle('bg-accent', isActive);
-            btn.classList.toggle('bg-background', !isActive);
+            btn.classList.toggle("hsl(0 0% 100%)", !isActive);
         });
 
         document.documentElement.setAttribute('lang', lang);
