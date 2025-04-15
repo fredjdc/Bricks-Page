@@ -95,7 +95,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     
     <!-- Common scripts with language detection -->
-    <script src="scripts.js" defer></script>
+    <script src="scripts.js"></script>
     
     <!-- Inter font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -113,6 +113,9 @@
         gtag('js', new Date());
         gtag('config', 'G-0NE96SRV4V');
     </script>
+    
+    <!-- Link to custom CSS file -->
+    <link rel="stylesheet" href="styles.css">
     
     <style type="text/tailwindcss">
         @layer base {
@@ -165,7 +168,7 @@
         }
     </style>
 </head>
-<body class="flex flex-col min-h-screen">
+<body class="font-sans text-gray-800 bg-white overflow-x-hidden">
     <!-- Success Alert - Hidden by default -->
     <div id="success-alert" class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 transition-opacity duration-300 opacity-0 pointer-events-none">
         <div class="bg-white rounded-lg shadow-soft-xl max-w-md w-full mx-4 p-6 transform transition-transform duration-300 scale-95">
@@ -198,81 +201,63 @@
         </div>
     </div>
 
-    <!-- Header Navigation -->
-    <header class="bg-white border-b border-gray-200">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-sm z-50 shadow-sm">
+        <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
-                <div class="flex">
-                    <div class="flex-shrink-0 flex items-center">
-                        <a href="index.html" class="text-xl font-bold">Bricks</a>
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <img src="images/bricks-logotype.svg" alt="Bricks Logo" class="h-6">
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <!-- Language Selector -->
+                    <div class="relative" x-data="{ open: false }">
+                        <button @click="open = !open" class="flex items-center text-gray-600 hover:text-primary transition-colors">
+                            <span class="material-symbols-outlined mr-1">language</span>
+                            <span id="current-language"></span>
+                            <svg class="ml-1 w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div x-show="open" @click.away="open = false" class="absolute right-0 mt-2 py-2 w-40 bg-white rounded-md shadow-lg z-50">
+                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-primary hover:text-white" onclick="changeLanguage('en'); return false;">English</a>
+                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-primary hover:text-white" onclick="changeLanguage('es'); return false;">Español</a>
+                        </div>
                     </div>
                 </div>
-                <div class="hidden sm:ml-6 sm:flex sm:items-center">
-                    <div class="flex space-x-4">
-                        <a href="index.html" class="text-gray-700 hover:text-brand px-3 py-2 rounded-md text-sm font-medium transition-colors">
-                            <span lang="en">Home</span>
-                            <span lang="es" class="hidden">Inicio</span>
-                        </a>
-                        <a href="about.html" class="text-gray-700 hover:text-brand px-3 py-2 rounded-md text-sm font-medium transition-colors">
-                            <span lang="en">About</span>
-                            <span lang="es" class="hidden">Acerca de</span>
-                        </a>
-                        <a href="purchase-guide-01.html" class="text-gray-700 hover:text-brand px-3 py-2 rounded-md text-sm font-medium transition-colors">
-                            <span lang="en">Purchase Guide</span>
-                            <span lang="es" class="hidden">Guía de Compra</span>
-                        </a>
-                        <a href="support.html" class="text-brand hover:text-brand px-3 py-2 rounded-md text-sm font-medium transition-colors">
-                            <span lang="en">Support</span>
-                            <span lang="es" class="hidden">Soporte</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="flex items-center sm:hidden">
-                    <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brand">
-                        <span class="sr-only">Open main menu</span>
-                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <div class="md:hidden flex items-center">
+                    <button type="button" class="text-gray-600" id="mobile-menu-button">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
                     </button>
                 </div>
-                <div class="hidden sm:ml-6 sm:flex sm:items-center">
-                    <button id="language-switcher" type="button" class="flex items-center text-sm text-gray-700 hover:text-brand focus:outline-none transition-colors">
-                        <span class="material-symbols-outlined mr-1">language</span>
-                        <span id="current-language">English</span>
-                    </button>
-                </div>
             </div>
         </div>
-        
-        <!-- Mobile menu, show/hide based on menu state. -->
-        <div id="mobile-menu" class="sm:hidden hidden">
-            <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="index.html" class="text-gray-700 hover:text-brand block px-3 py-2 rounded-md text-base font-medium transition-colors">
+        <!-- Mobile menu, show/hide based on menu state -->
+        <div class="md:hidden hidden bg-white" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="block px-3 py-2 text-gray-600 hover:text-primary transition-colors">
                     <span lang="en">Home</span>
                     <span lang="es" class="hidden">Inicio</span>
                 </a>
-                <a href="about.html" class="text-gray-700 hover:text-brand block px-3 py-2 rounded-md text-base font-medium transition-colors">
-                    <span lang="en">About</span>
-                    <span lang="es" class="hidden">Acerca de</span>
-                </a>
-                <a href="purchase-guide-01.html" class="text-gray-700 hover:text-brand block px-3 py-2 rounded-md text-base font-medium transition-colors">
-                    <span lang="en">Purchase Guide</span>
-                    <span lang="es" class="hidden">Guía de Compra</span>
-                </a>
-                <a href="support.html" class="text-brand hover:text-brand block px-3 py-2 rounded-md text-base font-medium transition-colors">
-                    <span lang="en">Support</span>
-                    <span lang="es" class="hidden">Soporte</span>
-                </a>
-                <button id="mobile-language-switcher" type="button" class="flex items-center mt-4 mx-3 text-sm text-gray-700 hover:text-brand focus:outline-none transition-colors">
-                    <span class="material-symbols-outlined mr-1">language</span>
-                    <span>English</span>
-                </button>
+                <!-- Mobile Language Selector -->
+                <div class="px-3 py-2 border-t border-gray-100 mt-2">
+                    <div class="text-gray-600 mb-1 flex items-center">
+                        <span class="material-symbols-outlined mr-1">language</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button onclick="changeLanguage('en')" class="px-3 py-1 bg-gray-100 rounded hover:bg-primary hover:text-white language-btn" data-lang="en">English</button>
+                        <button onclick="changeLanguage('es')" class="px-3 py-1 bg-gray-100 rounded hover:bg-primary hover:text-white language-btn" data-lang="es">Español</button>
+                    </div>
+                </div>
             </div>
         </div>
-    </header>
+    </nav>
 
     <!-- Main Content -->
-    <main class="flex-grow">
+    <main class="flex-grow pt-32">
         <section class="py-12 bg-gray-50">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="max-w-3xl mx-auto">
@@ -401,7 +386,7 @@
                         <ul class="space-y-2">
                             <li><a href="support.html" class="transition-colors hover:text-white">
                                 <span lang="en">Report a bug</span>
-                                <span lang="es" class="hidden">Reportar Problema</span>
+                                <span lang="es" class="hidden">Reportar un Problema</span>
                             </a></li>
                             <li><a href="https://wa.me/51953431080?text=Hola%2C%20necesito%20soporte%20respecto%20a%20lo%20siguiente%20" target="_blank" class="flex items-center transition-colors hover:text-white">
                                 <svg class="mr-2 h-4 w-4 text-[#34C85A]" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
