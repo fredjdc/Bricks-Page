@@ -13,7 +13,7 @@
     <link rel="apple-touch-icon" href="Fav-Icon.svg">
     
     <!-- Tailwind CSS via CDN -->
-    <script src="https://cdn.tailwindcss.com" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -37,7 +37,7 @@
                         background: "hsl(0 0% 100%)",
                         foreground: "hsl(240 10% 3.9%)",
                         primary: {
-                            DEFAULT: "hsl(240 5.9% 10%)",
+                            DEFAULT: "#007AFF",
                             foreground: "hsl(0 0% 98%)",
                         },
                         secondary: {
@@ -116,57 +116,6 @@
     
     <!-- Link to custom CSS file -->
     <link rel="stylesheet" href="styles.css">
-    
-    <style type="text/tailwindcss">
-        @layer base {
-            :root {
-                --radius: 0.5rem;
-            }
-            
-            body {
-                @apply bg-background text-foreground font-sans antialiased;
-            }
-        }
-        
-        @layer utilities {
-            .animation-delay-2000 {
-                animation-delay: 2s;
-            }
-            .animation-delay-4000 {
-                animation-delay: 4s;
-            }
-        }
-        
-        /* Form specific styles */
-        .form-input,
-        .form-textarea {
-            @apply w-full rounded-md border border-input bg-background px-3 py-2 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand transition duration-200;
-        }
-        
-        .form-label {
-            @apply block text-sm font-medium text-gray-700 mb-1;
-        }
-        
-        .file-input-wrapper {
-            @apply relative w-full border border-dashed border-input rounded-md py-6 px-4 flex flex-col items-center justify-center cursor-pointer hover:border-brand transition duration-200;
-        }
-        
-        .file-input {
-            @apply absolute inset-0 w-full h-full opacity-0 cursor-pointer;
-        }
-        
-        .btn {
-            @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50;
-        }
-        
-        .btn-primary {
-            @apply bg-brand text-brand-foreground shadow hover:bg-brand/90 py-2 px-4;
-        }
-        
-        .btn-secondary {
-            @apply bg-secondary text-secondary-foreground hover:bg-secondary/80 py-2 px-4;
-        }
-    </style>
 </head>
 <body class="font-sans text-gray-800 bg-white overflow-x-hidden">
     <!-- Success Alert - Hidden by default -->
@@ -240,7 +189,7 @@
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="index.html" class="block px-3 py-2 text-gray-600 hover:text-primary transition-colors">
                     <span lang="en">Home</span>
-                    <span lang="es" class="hidden">Inicio</span>
+                    <span lang="es">Inicio</span>
                 </a>
                 <!-- Mobile Language Selector -->
                 <div class="px-3 py-2 border-t border-gray-100 mt-2">
@@ -422,6 +371,14 @@
     <!-- Custom JavaScript for report form -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
             // DOM Elements
             const form = document.getElementById('issue-report-form');
             const fileInput = document.getElementById('file-upload');
@@ -586,14 +543,6 @@
             
             // Check for success on page load
             checkForSuccess();
-            
-            // Mobile menu toggle
-            const menuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            
-            menuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
         });
     </script>
 </body>

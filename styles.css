@@ -6,6 +6,16 @@
     --animation-timing: 0.3s ease;
     --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
     --shadow-hover: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --radius: 0.5rem;
+}
+
+/* Base styles */
+body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* Additional styles and animations for Bricks Landing Page */
@@ -70,6 +80,14 @@
 
 .animate-pulse-shadow:hover {
     animation: pulse-shadow 1.5s infinite;
+}
+
+.animation-delay-2000 {
+    animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+    animation-delay: 4s;
 }
 
 /* Enhanced focus styles with accent color - #007AFF */
@@ -166,4 +184,100 @@ a:focus, button:focus {
 /* More specific mobile styles */
 @media (max-width: 640px) {
     /* Additional mobile-specific styles can go here */
+}
+
+/* Form specific styles */
+.form-input,
+.form-textarea {
+    width: 100%;
+    border-radius: 0.375rem;
+    border: 1px solid var(--input, #e5e7eb);
+    background-color: var(--background, #fff);
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    transition: all 0.2s;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.25);
+}
+
+.form-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 0.25rem;
+}
+
+.file-input-wrapper {
+    position: relative;
+    width: 100%;
+    border: 1px dashed var(--input, #e5e7eb);
+    border-radius: 0.375rem;
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+.file-input-wrapper:hover {
+    border-color: var(--accent-color);
+}
+
+.file-input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--ring, #a1a1aa);
+}
+
+.btn:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    color: white;
+    box-shadow: var(--shadow-soft);
+    padding: 0.5rem 1rem;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-hover);
+}
+
+.btn-secondary {
+    background-color: var(--secondary, #f4f4f5);
+    color: var(--secondary-foreground, #18181b);
+    padding: 0.5rem 1rem;
+}
+
+.btn-secondary:hover {
+    background-color: rgba(244, 244, 245, 0.8);
 } 
