@@ -98,7 +98,14 @@ const initializeElements = () => {
         videoModal: document.getElementById('video-modal'),
         openVideoBtn: document.getElementById('open-video-modal'),
         closeVideoBtn: document.getElementById('close-video-modal'),
-        modalVideo: document.getElementById('modal-video')
+        modalVideo: document.getElementById('modal-video'),
+        // Support page elements
+        issueForm: document.getElementById('issue-report-form'),
+        fileInput: document.getElementById('file-upload'),
+        fileList: document.getElementById('file-list'),
+        successAlert: document.getElementById('success-alert'),
+        closeSuccess: document.getElementById('close-success'),
+        referenceNumber: document.getElementById('reference-number')
     };
 };
 
@@ -199,147 +206,426 @@ const changeLanguage = (lang) => {
         // Update document language attribute
         document.documentElement.setAttribute('lang', lang);
         
-        // Toggle visibility of language-specific elements
+        // Hide all language elements first
         document.querySelectorAll('[lang]').forEach(el => {
-            // For elements with lang attribute, toggle visibility based on language
-            const elemLang = el.getAttribute('lang');
-            const isMatchingLang = elemLang === lang;
-            
-            // All elements with lang attribute (except video and source elements which we handle separately)
-            if (el.tagName !== 'VIDEO' && el.tagName !== 'SOURCE') {
-                el.classList.toggle('hidden', !isMatchingLang);
+            el.classList.add('hidden');
+        });
+        
+        // Show only the elements with the selected language
+        document.querySelectorAll(`[lang="${lang}"]`).forEach(el => {
+            el.classList.remove('hidden');
+        });
+        
+        // Handle mobile language display
+        const mobileLangBtn = document.getElementById('mobile-language-switcher');
+        if (mobileLangBtn) {
+            const mobileLabel = mobileLangBtn.querySelector('span:not(.material-symbols-outlined)');
+            if (mobileLabel) {
+                mobileLabel.textContent = lang === 'en' ? 'English' : 'Español';
             }
-        });
-        
-        // Update UI language indicators
-        document.querySelectorAll('.language-btn').forEach(btn => {
-            const isActive = btn.getAttribute('data-lang') === lang;
-            btn.classList.toggle('bg-accent', isActive);
-            btn.classList.toggle('bg-background', !isActive);
-        });
-        
-        // Update meta tags and title based on language
-        const metaDescription = document.querySelector(`meta[name="description-${lang}"]`);
-        const titleElement = document.querySelector(`meta[name="title-${lang}"]`);
-        
-        if (metaDescription) {
-            document.querySelector('meta[name="description"]').setAttribute('content', metaDescription.getAttribute('content'));
         }
         
-        if (titleElement) {
-            document.title = titleElement.getAttribute('content');
-        }
+        // Update placeholders based on language
+        updatePlaceholders(lang);
     } catch (error) {
         console.error('Error changing language:', error);
     }
 };
 
-// Video Modal Handler
-const handleVideoModal = () => {
-    if (!elements.videoModal || !elements.openVideoBtn || !elements.closeVideoBtn) {
-        console.error('Video modal elements not found');
-        return;
+// Update form placeholders based on language
+const updatePlaceholders = (lang) => {
+    try {
+        // Support form placeholders
+        const placeholders = {
+            name: {
+                en: 'Enter your full name',
+                es: 'Ingresa tu nombre completo'
+            },
+            email: {
+                en: 'Enter your email address',
+                es: 'Ingresa tu correo electrónico'
+            },
+            description: {
+                en: 'Please describe the issue in detail...',
+                es: 'Por favor describe el problema en detalle...'
+            }
+        };
+        
+        // Update form input placeholders
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const descInput = document.getElementById('issue-description');
+        
+        if (nameInput) nameInput.placeholder = placeholders.name[lang];
+        if (emailInput) emailInput.placeholder = placeholders.email[lang];
+        if (descInput) descInput.placeholder = placeholders.description[lang];
+    } catch (error) {
+        console.error('Error updating placeholders:', error);
     }
+};
+
+// Video modal handlers
+const handleVideoModal = () => {
+    if (!elements.videoModal) return;
     
+    // Open modal function
     const openModal = (e) => {
         e.preventDefault();
         
-        // Load the correct video source based on current language
+        // Ensure video is ready to play
         if (elements.modalVideo) {
-            const currentLang = localStorage.getItem('bricksLanguage') || detectUserLanguage();
-            
-            // More direct approach to set the correct source
-            const videoEl = elements.modalVideo;
-            
-            // Define video paths based on language
-            const videoSources = {
-                'en': 'images/app-preview-en.mp4',
-                'es': 'images/app-preview-es.mp4'
-            };
-            
-            // Get the appropriate source for the current language
-            const sourcePath = videoSources[currentLang] || videoSources['en']; // Fallback to English
-            
-            console.log(`Setting video source to: ${sourcePath} for language: ${currentLang}`);
-            
-            // Directly set the src attribute on the video element
-            videoEl.src = sourcePath;
-            videoEl.load();
+            elements.modalVideo.src = elements.modalVideo.dataset.src;
+            elements.modalVideo.load();
         }
         
-        elements.videoModal.classList.add('opacity-100');
-        elements.videoModal.classList.remove('opacity-0', 'pointer-events-none');
+        // Show modal with animation
         document.body.style.overflow = 'hidden';
+        elements.videoModal.classList.remove('hidden', 'opacity-0');
+        elements.videoModal.classList.add('opacity-100');
         
-        // Only try to play the video after the modal transition completes
-        if (elements.modalVideo) {
-            setTimeout(() => {
-                elements.modalVideo.play()
-                    .catch(err => console.error('Error playing video:', err));
-            }, 300); // Match the transition duration
-        }
+        // Handle keyboard events for modal
+        document.addEventListener('keydown', handleModalKeypress);
+        
+        // Start video playback
+        setTimeout(() => {
+            if (elements.modalVideo) {
+                elements.modalVideo.play().catch(error => {
+                    console.warn('Autoplay prevented:', error);
+                    
+                    // Add play button if autoplay is prevented
+                    const playButton = document.createElement('button');
+                    playButton.className = 'absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10';
+                    playButton.innerHTML = `
+                        <svg class="w-16 h-16 text-white opacity-80 hover:opacity-100 transition-opacity" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path>
+                        </svg>
+                    `;
+                    
+                    // Add click event to manually play video
+                    playButton.addEventListener('click', () => {
+                        elements.modalVideo.play().then(() => {
+                            playButton.remove();
+                        }).catch(e => console.error('Play failed:', e));
+                    });
+                    
+                    // Add to modal
+                    const videoContainer = elements.modalVideo.parentElement;
+                    if (videoContainer && !videoContainer.querySelector('.play-button')) {
+                        videoContainer.appendChild(playButton);
+                    }
+                });
+            }
+        }, 150);
     };
-
+    
+    // Close modal function
     const closeModal = () => {
-        elements.videoModal.classList.remove('opacity-100');
-        elements.videoModal.classList.add('opacity-0', 'pointer-events-none');
-        document.body.style.overflow = '';
         if (elements.modalVideo) {
             elements.modalVideo.pause();
+            
+            // Remove source to stop loading/buffering
+            setTimeout(() => {
+                elements.modalVideo.src = '';
+            }, 300);
+        }
+        
+        // Hide modal with animation
+        elements.videoModal.classList.add('opacity-0');
+        setTimeout(() => {
+            elements.videoModal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }, 300);
+        
+        // Remove keyboard event listener
+        document.removeEventListener('keydown', handleModalKeypress);
+    };
+    
+    // Keyboard handler for Escape key
+    const handleModalKeypress = (e) => {
+        if (e.key === 'Escape') {
+            closeModal();
         }
     };
-
-    elements.openVideoBtn.addEventListener('click', openModal);
-    elements.closeVideoBtn.addEventListener('click', closeModal);
     
-    // Close modal when clicking outside the content
-    elements.videoModal.addEventListener('click', (e) => {
-        if (e.target === elements.videoModal) {
-            closeModal();
-        }
-    });
+    // Add event listeners
+    if (elements.openVideoBtn) {
+        elements.openVideoBtn.addEventListener('click', openModal);
+    }
+    
+    if (elements.closeVideoBtn) {
+        elements.closeVideoBtn.addEventListener('click', closeModal);
+    }
+    
+    // Close on background click (but not video click)
+    if (elements.videoModal) {
+        elements.videoModal.addEventListener('click', (e) => {
+            if (e.target === elements.videoModal) {
+                closeModal();
+            }
+        });
+    }
+};
 
-    // Close modal with escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && !elements.videoModal.classList.contains('pointer-events-none')) {
-            closeModal();
+// Support form functionality
+const initSupportForm = () => {
+    if (!elements.issueForm) return;
+    
+    // Selected files storage
+    let selectedFiles = [];
+    
+    // Handle file selection
+    if (elements.fileInput) {
+        elements.fileInput.addEventListener('change', function() {
+            const files = Array.from(this.files);
+            
+            // Check file size (limit to 10MB per file)
+            const validFiles = files.filter(file => file.size <= 10 * 1024 * 1024);
+            
+            if (validFiles.length !== files.length) {
+                const lang = document.documentElement.getAttribute('lang') || 'en';
+                alert(lang === 'en' 
+                    ? 'Some files exceed the 10MB limit and were not included.' 
+                    : 'Algunos archivos exceden el límite de 10MB y no se incluyeron.');
+            }
+            
+            if (validFiles.length > 0) {
+                selectedFiles = [...selectedFiles, ...validFiles];
+                updateFileList(selectedFiles);
+                elements.fileList.classList.remove('hidden');
+            }
+        });
+    }
+    
+    // Generate a unique reference number
+    const generateReferenceNumber = () => {
+        const timestamp = new Date().getTime().toString().slice(-6);
+        const random = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+        return `BRKS-${timestamp}${random}`;
+    };
+    
+    // Show success alert
+    const showSuccessAlert = (refNumber) => {
+        if (!elements.successAlert || !elements.referenceNumber) return;
+        
+        elements.referenceNumber.textContent = refNumber;
+        elements.successAlert.classList.remove('opacity-0', 'pointer-events-none');
+        elements.successAlert.classList.add('opacity-100');
+        
+        const alertBox = elements.successAlert.querySelector('div');
+        if (alertBox) {
+            alertBox.classList.remove('scale-95');
+            alertBox.classList.add('scale-100');
         }
+    };
+    
+    // Hide success alert
+    const hideSuccessAlert = () => {
+        if (!elements.successAlert) return;
+        
+        const alertBox = elements.successAlert.querySelector('div');
+        if (alertBox) {
+            alertBox.classList.remove('scale-100');
+            alertBox.classList.add('scale-95');
+        }
+        
+        setTimeout(() => {
+            elements.successAlert.classList.remove('opacity-100');
+            elements.successAlert.classList.add('opacity-0', 'pointer-events-none');
+        }, 200);
+    };
+    
+    // Close success alert button handler
+    if (elements.closeSuccess) {
+        elements.closeSuccess.addEventListener('click', hideSuccessAlert);
+    }
+    
+    // Handle form submission
+    if (elements.issueForm) {
+        elements.issueForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const descInput = document.getElementById('issue-description');
+            
+            if (!nameInput || !emailInput || !descInput) return;
+            
+            const formData = new FormData();
+            formData.append('name', nameInput.value);
+            formData.append('email', emailInput.value);
+            formData.append('description', descInput.value);
+            
+            // Add files to FormData
+            selectedFiles.forEach(file => {
+                formData.append('files[]', file);
+            });
+            
+            // Generate reference number
+            const refNumber = generateReferenceNumber();
+            formData.append('reference', refNumber);
+            
+            // In a real implementation, you would send this data to the server using:
+            // fetch('/submit-issue', {
+            //     method: 'POST',
+            //     body: formData
+            // })
+            
+            // For this example, we'll simulate sending the data
+            setTimeout(() => {
+                // Reset form
+                elements.issueForm.reset();
+                selectedFiles = [];
+                elements.fileList.innerHTML = '';
+                elements.fileList.classList.add('hidden');
+                
+                // Show success alert
+                showSuccessAlert(refNumber);
+                
+                // Log data for debugging
+                console.log('Form submitted!');
+                console.log('Reference number:', refNumber);
+                console.log('Name:', formData.get('name'));
+                console.log('Email:', formData.get('email'));
+                console.log('Description:', formData.get('description'));
+                console.log('Files:', selectedFiles.map(f => f.name));
+                
+                // In a real implementation, you would send an email to hola@bricks.pe with this data
+                // This requires server-side processing and cannot be done with client-side JavaScript alone
+                
+            }, 1000); // Simulate network delay
+        });
+    }
+};
+
+// Update file list display
+const updateFileList = (files) => {
+    if (!elements.fileList) return;
+    elements.fileList.innerHTML = '';
+    
+    files.forEach((file, index) => {
+        const fileItem = document.createElement('div');
+        fileItem.className = 'flex justify-between items-center p-2 bg-gray-50 rounded';
+        
+        const fileInfo = document.createElement('div');
+        fileInfo.className = 'flex items-center';
+        
+        // File icon based on type
+        const fileIcon = document.createElement('div');
+        fileIcon.className = 'mr-2 text-gray-500';
+        
+        if (file.type.startsWith('image/')) {
+            fileIcon.innerHTML = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>';
+        } else if (file.type.startsWith('video/')) {
+            fileIcon.innerHTML = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>';
+        } else {
+            fileIcon.innerHTML = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>';
+        }
+        
+        // File name and size
+        const fileName = document.createElement('div');
+        fileName.textContent = file.name;
+        fileName.className = 'text-sm';
+        
+        const fileSize = document.createElement('div');
+        fileSize.textContent = formatFileSize(file.size);
+        fileSize.className = 'text-xs text-gray-500';
+        
+        const fileDetails = document.createElement('div');
+        fileDetails.className = 'ml-2';
+        fileDetails.appendChild(fileName);
+        fileDetails.appendChild(fileSize);
+        
+        fileInfo.appendChild(fileIcon);
+        fileInfo.appendChild(fileDetails);
+        
+        // Remove button
+        const removeBtn = document.createElement('button');
+        removeBtn.className = 'text-gray-500 hover:text-red-500 focus:outline-none transition-colors';
+        removeBtn.type = 'button';
+        removeBtn.innerHTML = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>';
+        removeBtn.addEventListener('click', function() {
+            files.splice(index, 1);
+            updateFileList(files);
+            
+            if (files.length === 0) {
+                elements.fileList.classList.add('hidden');
+            }
+        });
+        
+        fileItem.appendChild(fileInfo);
+        fileItem.appendChild(removeBtn);
+        elements.fileList.appendChild(fileItem);
     });
 };
 
-// Initialize
+// Format file size to human-readable format
+function formatFileSize(bytes) {
+    if (bytes === 0) return '0 Bytes';
+    
+    const k = 1024;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+}
+
+// Language switcher setup
+const setupLanguageSwitcher = () => {
+    const languageSwitcher = document.getElementById('language-switcher');
+    const mobileLanguageSwitcher = document.getElementById('mobile-language-switcher');
+    
+    // Initial language
+    const savedLang = localStorage.getItem('bricksLanguage');
+    const initialLang = savedLang || detectUserLanguage();
+    changeLanguage(initialLang);
+    
+    // Toggle language onClick
+    const toggleLanguage = () => {
+        const currentLang = document.documentElement.getAttribute('lang') || 'en';
+        const newLang = currentLang === 'en' ? 'es' : 'en';
+        changeLanguage(newLang);
+    };
+    
+    // Language switchers
+    if (languageSwitcher) {
+        languageSwitcher.addEventListener('click', toggleLanguage);
+    }
+    
+    if (mobileLanguageSwitcher) {
+        mobileLanguageSwitcher.addEventListener('click', toggleLanguage);
+    }
+};
+
+// Initialize all functionality on page load
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize DOM elements
+    // Initialize elements cache
     initializeElements();
     
-    // Mobile menu
+    // Setup language switching
+    setupLanguageSwitcher();
+    
+    // Setup mobile menu
     if (elements.menuButton) {
         elements.menuButton.addEventListener('click', handleMobileMenu);
     }
-
-    // Carousel
+    
+    // Setup carousel if present
     if (elements.carousel) {
-        const container = elements.carousel.parentElement;
-        handleCarousel(container);
-        
-        // Center carousel on load
-        window.addEventListener('load', () => {
-            const containerWidth = container.offsetWidth;
-            const carouselWidth = elements.carousel.scrollWidth;
-            container.scrollLeft = (carouselWidth - containerWidth) / 4;
-        });
+        handleCarousel(elements.carousel);
     }
-
-    // Animations
-    setupIntersectionObserver();
-
-    // Video Modal
+    
+    // Setup video modal if present
     handleVideoModal();
-
-    // Initialize language
-    const savedLang = localStorage.getItem('bricksLanguage') || detectUserLanguage();
-    changeLanguage(savedLang);
-});
-
-// Export functions for global use
-window.changeLanguage = changeLanguage; 
+    
+    // Setup animations
+    setupIntersectionObserver();
+    
+    // Initialize support form if we're on that page
+    initSupportForm();
+    
+    // Set initial language based on saved preference or browser
+    const savedLang = localStorage.getItem('bricksLanguage');
+    const initialLang = savedLang || detectUserLanguage();
+    changeLanguage(initialLang);
+}); 
