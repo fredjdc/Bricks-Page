@@ -208,6 +208,7 @@
                             <input type="hidden" name="_captcha" value="false">
                             <input type="hidden" name="_next" value="">
                             <input type="hidden" id="reference-field" name="reference_number" value="">
+                            <input type="hidden" name="_url" value="https://bricksapp.com/support.html">
 
                             <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
                                 <div>
@@ -264,6 +265,10 @@
                                     <span lang="en">Submit Report</span>
                                     <span lang="es" class="hidden">Enviar Reporte</span>
                                 </button>
+                                <p class="mt-3 text-xs text-gray-500 text-center">
+                                    <span lang="en">Note: First-time form submissions may require activation. Please check your email for an activation link if you don't receive a confirmation.</span>
+                                    <span lang="es" class="hidden">Nota: Los primeros envíos de formularios pueden requerir activación. Por favor, revisa tu correo electrónico para un enlace de activación si no recibes una confirmación.</span>
+                                </p>
                             </div>
                         </form>
                     </div>
@@ -362,6 +367,7 @@
             const closeSuccess = document.getElementById('close-success');
             const referenceNumber = document.getElementById('reference-number');
             const referenceField = document.getElementById('reference-field');
+            const emailInput = document.getElementById('email');
             
             // Generate a unique reference number for this form session
             const refNumber = generateReferenceNumber();
@@ -376,6 +382,33 @@
             const currentUrl = window.location.href;
             const baseUrl = currentUrl.split('?')[0]; // Remove any existing query params
             form.querySelector('input[name="_next"]').value = `${baseUrl}?ref=${refNumber}&success=true`;
+            
+            // Create a hidden _replyto field that will be updated with the email value on submit
+            const replyToField = document.createElement('input');
+            replyToField.type = 'hidden';
+            replyToField.name = '_replyto';
+            form.appendChild(replyToField);
+            
+            // Update _replyto field value when email changes
+            if (emailInput) {
+                emailInput.addEventListener('change', function() {
+                    replyToField.value = this.value;
+                });
+            }
+            
+            // Add form submission event listener
+            if (form) {
+                form.addEventListener('submit', function(event) {
+                    // Set the _replyto value from email input right before submission
+                    if (emailInput && emailInput.value) {
+                        replyToField.value = emailInput.value;
+                    }
+                    
+                    // Log form submission attempt for debugging
+                    console.log('Form submitted with reference number:', refNumber);
+                    console.log('Email value:', emailInput ? emailInput.value : 'No email input found');
+                });
+            }
             
             // Selected files storage
             let selectedFiles = [];
