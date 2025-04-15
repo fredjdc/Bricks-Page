@@ -62,7 +62,7 @@
                         <img src="images/bricks-logotype.svg" alt="Bricks Logo" class="h-6">
                     </a>
                 </div>
-                <div class="hidden md:flex items-center space-x-8">
+                <div class="flex items-center space-x-8">
                     <!-- Language Selector -->
                     <div class="relative" x-data="{ open: false }">
                         <button @click="open = !open" class="flex items-center text-gray-600 hover:text-primary transition-colors">
@@ -76,32 +76,6 @@
                             <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-primary hover:text-white" onclick="changeLanguage('en'); return false;">English</a>
                             <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-primary hover:text-white" onclick="changeLanguage('es'); return false;">Español</a>
                         </div>
-                    </div>
-                </div>
-                <div class="md:hidden flex items-center">
-                    <button type="button" class="text-gray-600" id="mobile-menu-button">
-                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <!-- Mobile menu, show/hide based on menu state -->
-        <div class="md:hidden hidden bg-white" id="mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="index.html" class="block px-3 py-2 text-gray-600 hover:text-primary transition-colors">
-                    <span lang="en">Home</span>
-                    <span lang="es" class="hidden">Inicio</span>
-                </a>
-                <!-- Mobile Language Selector -->
-                <div class="px-3 py-2 border-t border-gray-100 mt-2">
-                    <div class="text-gray-600 mb-1 flex items-center">
-                        <span class="material-symbols-outlined mr-1">language</span>
-                    </div>
-                    <div class="flex space-x-2">
-                        <button onclick="changeLanguage('en')" class="px-3 py-1 bg-gray-100 rounded hover:bg-primary hover:text-white language-btn" data-lang="en">English</button>
-                        <button onclick="changeLanguage('es')" class="px-3 py-1 bg-gray-100 rounded hover:bg-primary hover:text-white language-btn" data-lang="es">Español</button>
                     </div>
                 </div>
             </div>
@@ -352,13 +326,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Mobile menu toggle
-            const menuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            
-            menuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
+            // This space intentionally left blank
         });
     </script>
 </body>
