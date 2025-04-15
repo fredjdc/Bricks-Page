@@ -288,7 +288,14 @@
                     </div>
                     
                     <div class="bg-white rounded-lg shadow-soft-lg p-6 md:p-8">
-                        <form id="issue-report-form" class="space-y-6">
+                        <form id="issue-report-form" class="space-y-6" action="https://formsubmit.co/707e6e012fa931048784ff0f766aa0df" method="POST" enctype="multipart/form-data">
+                            <!-- FormSubmit.co Configuration -->
+                            <input type="hidden" name="_subject" value="Bricks Support Request">
+                            <input type="hidden" name="_template" value="table">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_next" value="">
+                            <input type="hidden" id="reference-field" name="reference_number" value="">
+
                             <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
                                 <div>
                                     <label for="name" class="form-label">
@@ -311,7 +318,7 @@
                                     <span lang="en">Description of the Issue</span>
                                     <span lang="es" class="hidden">Descripción del Problema</span>
                                 </label>
-                                <textarea id="issue-description" name="issue-description" rows="5" class="form-textarea" required></textarea>
+                                <textarea id="issue-description" name="message" rows="5" class="form-textarea" required></textarea>
                                 <p class="mt-1 text-sm text-gray-500">
                                     <span lang="en">Please provide as much detail as possible</span>
                                     <span lang="es" class="hidden">Por favor proporciona tantos detalles como sea posible</span>
@@ -324,7 +331,7 @@
                                     <span lang="es" class="hidden">Archivos Adjuntos (opcional)</span>
                                 </label>
                                 <div class="file-input-wrapper">
-                                    <input type="file" id="file-upload" class="file-input" accept="image/*,video/*,.pdf,.doc,.docx,.txt" multiple>
+                                    <input type="file" id="file-upload" name="attachment" class="file-input" accept="image/*,video/*,.pdf,.doc,.docx,.txt" multiple>
                                     <svg class="h-6 w-6 text-gray-400 mb-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                                     </svg>
@@ -437,6 +444,21 @@
             const successAlert = document.getElementById('success-alert');
             const closeSuccess = document.getElementById('close-success');
             const referenceNumber = document.getElementById('reference-number');
+            const referenceField = document.getElementById('reference-field');
+            
+            // Generate a unique reference number for this form session
+            const refNumber = generateReferenceNumber();
+            referenceNumber.textContent = refNumber;
+            
+            // Set the reference number in the hidden field for FormSubmit
+            if (referenceField) {
+                referenceField.value = refNumber;
+            }
+            
+            // Set the return URL with the reference number for FormSubmit
+            const currentUrl = window.location.href;
+            const baseUrl = currentUrl.split('?')[0]; // Remove any existing query params
+            form.querySelector('input[name="_next"]').value = `${baseUrl}?ref=${refNumber}&success=true`;
             
             // Selected files storage
             let selectedFiles = [];
@@ -561,53 +583,24 @@
             // Close success alert
             closeSuccess.addEventListener('click', hideSuccessAlert);
             
-            // Handle form submission
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
+            // Check for success parameter in URL (when returning from FormSubmit)
+            function checkForSuccess() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const success = urlParams.get('success');
+                const ref = urlParams.get('ref');
                 
-                // Get form data
-                const formData = new FormData();
-                formData.append('name', document.getElementById('name').value);
-                formData.append('email', document.getElementById('email').value);
-                formData.append('description', document.getElementById('issue-description').value);
-                
-                // Add files to FormData
-                selectedFiles.forEach(file => {
-                    formData.append('files[]', file);
-                });
-                
-                // Generate reference number
-                const refNumber = generateReferenceNumber();
-                formData.append('reference', refNumber);
-                
-                // In a real application, you would send this data to the server
-                // using fetch or XMLHttpRequest
-                
-                // For this example, we'll simulate sending the data
-                // and show a success message
-                setTimeout(() => {
-                    // Reset form
-                    form.reset();
-                    selectedFiles = [];
-                    fileList.innerHTML = '';
-                    fileList.classList.add('hidden');
+                if (success === 'true' && ref) {
+                    // Show success message with the reference number from URL
+                    showSuccessAlert(ref);
                     
-                    // Show success alert
-                    showSuccessAlert(refNumber);
-                    
-                    // Log data to console for debugging
-                    console.log('Form submitted!');
-                    console.log('Reference number:', refNumber);
-                    console.log('Name:', formData.get('name'));
-                    console.log('Email:', formData.get('email'));
-                    console.log('Description:', formData.get('description'));
-                    console.log('Files:', selectedFiles.map(f => f.name));
-                    
-                    // In a real application, you would send an email here
-                    // but that requires server-side code
-                    
-                }, 1000); // Simulate network delay
-            });
+                    // Remove the success parameters from URL without refreshing
+                    const newUrl = window.location.pathname;
+                    window.history.replaceState({}, document.title, newUrl);
+                }
+            }
+            
+            // Check for success on page load
+            checkForSuccess();
             
             // Mobile menu toggle
             const menuButton = document.getElementById('mobile-menu-button');
