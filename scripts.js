@@ -165,15 +165,21 @@ const handleCarousel = (container) => {
 
 // Intersection Observer for animations
 const setupIntersectionObserver = () => {
+    // Hero image special handling - make it visible immediately
+    document.querySelectorAll('.hero-image').forEach(element => {
+        if (element) {
+            // Make hero image visible immediately
+            requestAnimationFrame(() => {
+                element.style.opacity = '1';
+            });
+        }
+    });
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('animate-in');
-                if (entry.target.classList.contains('hero-image')) {
-                    requestAnimationFrame(() => {
-                        entry.target.style.opacity = '1';
-                    });
-                }
+                // We've already handled hero-image opacity separately above
             }
         });
     }, { threshold: 0.1 });
