@@ -202,7 +202,7 @@
                     
                     <div class="bg-white rounded-3xl shadow-soft-xl p-6 md:p-8">
                         <!-- <form id="issue-report-form" class="space-y-6" action="https://formsubmit.co/707e6e012fa931048784ff0f766aa0df" method="POST" enctype="multipart/form-data"> -->
-                            <form id="issue-report-form" target="_blank" class="space-y-6" action="https://formsubmit.co/707e6e012fa931048784ff0f766aa0df" method="POST" enctype=multipart/form-data>
+                            <form id="issue-report-form" class="space-y-6" action="https://formsubmit.co/707e6e012fa931048784ff0f766aa0df" method="POST" enctype="multipart/form-data">
                             <!-- FormSubmit.co Configuration -->
                             <input type="hidden" name="_subject" value="Bricks Support Request">
                             <input type="hidden" name="_template" value="table">
@@ -210,6 +210,8 @@
                             <input type="hidden" name="_next" value="">
                             <input type="hidden" id="reference-field" name="reference_number" value="">
                             <input type="hidden" name="_url" value="https://bricksapp.com/support.html">
+                            <input type="hidden" name="_autoresponse" value="Thank you for your report. We've received it and will get back to you soon.">
+                            <input type="hidden" name="_honey" value="">
 
                             <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
                                 <div>
@@ -274,8 +276,6 @@
                                     <span lang="en">Submit Report</span>
                                     <span lang="es" class="hidden">Enviar Reporte</span>
                                 </button>
-                                <input type="hidden" name="_next" value="https://www.bricks.pe">
-                                <input type="hidden" name="_captcha" value="false">
                                 
                                 <p class="mt-3 text-xs text-gray-500 text-center">
                                     <span lang="en">Note: First-time form submissions may require activation. Please check your email for an activation link if you don't receive a confirmation.</span>
@@ -392,7 +392,7 @@
             
             // Set the return URL with the reference number for FormSubmit
             const currentUrl = window.location.href;
-            const baseUrl = currentUrl.split('?')[0]; // Remove any existing query params
+            const baseUrl = window.location.origin + window.location.pathname; // Use origin + pathname for a cleaner URL
             form.querySelector('input[name="_next"]').value = `${baseUrl}?ref=${refNumber}&success=true`;
             
             // Create a hidden _replyto field that will be updated with the email value on submit
@@ -416,9 +416,20 @@
                         replyToField.value = emailInput.value;
                     }
                     
+                    // Prevent default form submission temporarily
+                    event.preventDefault();
+                    
+                    // Show success alert
+                    showSuccessAlert(refNumber);
+                    
                     // Log form submission attempt for debugging
                     console.log('Form submitted with reference number:', refNumber);
                     console.log('Email value:', emailInput ? emailInput.value : 'No email input found');
+                    
+                    // Submit the form after a short delay to allow the user to see the success message
+                    setTimeout(() => {
+                        form.submit();
+                    }, 2000);
                 });
             }
             
@@ -543,7 +554,10 @@
             }
             
             // Close success alert
-            closeSuccess.addEventListener('click', hideSuccessAlert);
+            closeSuccess.addEventListener('click', function(event) {
+                event.preventDefault();
+                hideSuccessAlert();
+            });
             
             // Check for success parameter in URL (when returning from FormSubmit)
             function checkForSuccess() {
