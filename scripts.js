@@ -270,106 +270,77 @@ const updatePlaceholders = (lang) => {
     }
 };
 
-// Video modal handlers
+// Video Modal Handler
 const handleVideoModal = () => {
-    if (!elements.videoModal) return;
+    if (!elements.videoModal || !elements.openVideoBtn || !elements.closeVideoBtn) {
+        console.error('Video modal elements not found');
+        return;
+    }
     
-    // Open modal function
     const openModal = (e) => {
         e.preventDefault();
         
-        // Ensure video is ready to play
+        // Load the correct video source based on current language
         if (elements.modalVideo) {
-            elements.modalVideo.src = elements.modalVideo.dataset.src;
-            elements.modalVideo.load();
+            const currentLang = localStorage.getItem('bricksLanguage') || detectUserLanguage();
+            
+            // More direct approach to set the correct source
+            const videoEl = elements.modalVideo;
+            
+            // Define video paths based on language
+            const videoSources = {
+                'en': 'images/app-preview-en.mp4',
+                'es': 'images/app-preview-es.mp4'
+            };
+            
+            // Get the appropriate source for the current language
+            const sourcePath = videoSources[currentLang] || videoSources['en']; // Fallback to English
+            
+            console.log(`Setting video source to: ${sourcePath} for language: ${currentLang}`);
+            
+            // Directly set the src attribute on the video element
+            videoEl.src = sourcePath;
+            videoEl.load();
         }
         
-        // Show modal with animation
-        document.body.style.overflow = 'hidden';
-        elements.videoModal.classList.remove('hidden', 'opacity-0');
         elements.videoModal.classList.add('opacity-100');
+        elements.videoModal.classList.remove('opacity-0', 'pointer-events-none');
+        document.body.style.overflow = 'hidden';
         
-        // Handle keyboard events for modal
-        document.addEventListener('keydown', handleModalKeypress);
-        
-        // Start video playback
-        setTimeout(() => {
-            if (elements.modalVideo) {
-                elements.modalVideo.play().catch(error => {
-                    console.warn('Autoplay prevented:', error);
-                    
-                    // Add play button if autoplay is prevented
-                    const playButton = document.createElement('button');
-                    playButton.className = 'absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10';
-                    playButton.innerHTML = `
-                        <svg class="w-16 h-16 text-white opacity-80 hover:opacity-100 transition-opacity" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path>
-                        </svg>
-                    `;
-                    
-                    // Add click event to manually play video
-                    playButton.addEventListener('click', () => {
-                        elements.modalVideo.play().then(() => {
-                            playButton.remove();
-                        }).catch(e => console.error('Play failed:', e));
-                    });
-                    
-                    // Add to modal
-                    const videoContainer = elements.modalVideo.parentElement;
-                    if (videoContainer && !videoContainer.querySelector('.play-button')) {
-                        videoContainer.appendChild(playButton);
-                    }
-                });
-            }
-        }, 150);
+        // Only try to play the video after the modal transition completes
+        if (elements.modalVideo) {
+            setTimeout(() => {
+                elements.modalVideo.play()
+                    .catch(err => console.error('Error playing video:', err));
+            }, 300); // Match the transition duration
+        }
     };
-    
-    // Close modal function
+
     const closeModal = () => {
+        elements.videoModal.classList.remove('opacity-100');
+        elements.videoModal.classList.add('opacity-0', 'pointer-events-none');
+        document.body.style.overflow = '';
         if (elements.modalVideo) {
             elements.modalVideo.pause();
-            
-            // Remove source to stop loading/buffering
-            setTimeout(() => {
-                elements.modalVideo.src = '';
-            }, 300);
         }
-        
-        // Hide modal with animation
-        elements.videoModal.classList.add('opacity-0');
-        setTimeout(() => {
-            elements.videoModal.classList.add('hidden');
-            document.body.style.overflow = '';
-        }, 300);
-        
-        // Remove keyboard event listener
-        document.removeEventListener('keydown', handleModalKeypress);
     };
+
+    elements.openVideoBtn.addEventListener('click', openModal);
+    elements.closeVideoBtn.addEventListener('click', closeModal);
     
-    // Keyboard handler for Escape key
-    const handleModalKeypress = (e) => {
-        if (e.key === 'Escape') {
+    // Close modal when clicking outside the content
+    elements.videoModal.addEventListener('click', (e) => {
+        if (e.target === elements.videoModal) {
             closeModal();
         }
-    };
-    
-    // Add event listeners
-    if (elements.openVideoBtn) {
-        elements.openVideoBtn.addEventListener('click', openModal);
-    }
-    
-    if (elements.closeVideoBtn) {
-        elements.closeVideoBtn.addEventListener('click', closeModal);
-    }
-    
-    // Close on background click (but not video click)
-    if (elements.videoModal) {
-        elements.videoModal.addEventListener('click', (e) => {
-            if (e.target === elements.videoModal) {
-                closeModal();
-            }
-        });
-    }
+    });
+
+    // Close modal with escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !elements.videoModal.classList.contains('pointer-events-none')) {
+            closeModal();
+        }
+    });
 };
 
 // Support form functionality
@@ -384,14 +355,13 @@ const initSupportForm = () => {
         elements.fileInput.addEventListener('change', function() {
             const files = Array.from(this.files);
             
-            // Check file size (limit to 10MB per file)
-            const validFiles = files.filter(file => file.size <= 10 * 1024 * 1024);
+            // Check file size (limit to 5MB per file)
+            const validFiles = files.filter(file => file.size <= 5 * 1024 * 1024);
             
             if (validFiles.length !== files.length) {
                 const lang = document.documentElement.getAttribute('lang') || 'en';
-                alert(lang === 'en' 
-                    ? 'Some files exceed the 10MB limit and were not included.' 
-                    : 'Algunos archivos exceden el límite de 10MB y no se incluyeron.');
+                alert(lang === 'en' ? 'Some files exceed the 5MB limit and were not included.'
+                    : 'Algunos archivos exceden el límite de 5MB y no se incluyeron.');
             }
             
             if (validFiles.length > 0) {
