@@ -124,7 +124,7 @@
 <body class="font-sans text-gray-800 bg-white overflow-x-hidden">
     <!-- Success Alert - Hidden by default -->
     <div id="success-alert" class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 transition-opacity duration-300 opacity-0 pointer-events-none">
-        <div class="bg-white rounded-lg shadow-soft-xl max-w-md w-full mx-4 p-6 transform transition-transform duration-300 scale-95">
+        <div class="bg-white rounded-3xl shadow-soft-xl max-w-md w-full mx-4 p-6 transform transition-transform duration-300 scale-95">
             <div class="flex flex-col items-center text-center">
                 <div class="w-16 h-16 flex items-center justify-center rounded-full bg-success bg-opacity-10 mb-4">
                     <svg class="w-8 h-8 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -139,14 +139,14 @@
                     <span lang="en">Your report has been submitted. Your reference number is:</span>
                     <span lang="es" class="hidden">Tu reporte ha sido enviado. Tu número de referencia es:</span>
                 </p>
-                <div class="bg-gray-100 rounded px-4 py-2 font-mono text-lg mb-4">
+                <div class="bg-gray-100 rounded-xl px-4 py-2 font-mono text-lg mb-4">
                     <span id="reference-number">BRKS-000000</span>
                 </div>
                 <p class="text-sm text-gray-500 mb-6">
                     <span lang="en">Please save this number for future reference.</span>
                     <span lang="es" class="hidden">Por favor guarda este número para futuras referencias.</span>
                 </p>
-                <button id="close-success" class="btn btn-primary w-full">
+                <button id="close-success" class="btn btn-primary w-full rounded-xl">
                     <span lang="en">Close</span>
                     <span lang="es" class="hidden">Cerrar</span>
                 </button>
@@ -404,7 +404,7 @@
                 
                 selectedFiles.forEach((file, index) => {
                     const fileItem = document.createElement('div');
-                    fileItem.className = 'flex justify-between items-center p-2 bg-gray-50 rounded';
+                    fileItem.className = 'flex justify-between items-center p-2 bg-gray-50 rounded-3xl';
                     
                     const fileInfo = document.createElement('div');
                     fileInfo.className = 'flex items-center';
