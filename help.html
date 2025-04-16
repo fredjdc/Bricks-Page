@@ -338,7 +338,7 @@
                         </div>
                     </div>
                     
-                    <div class="bg-white rounded-3xl shadow-soft-xl p-6 md:p-8">
+                    <div class="bg-white rounded-3xl shadow-soft-xl p-6 md:p-8 mb-8">
                         <div x-data="{ isOpen: false }">
                             <button 
                                 @click="isOpen = !isOpen" 
@@ -519,6 +519,293 @@
                                         <span lang="es" class="hidden">Desliza hacia abajo para actualizar y restablecer todos los campos a los valores predeterminados de la configuración.</span>
                                     </li>
                                 </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-3xl shadow-soft-xl p-6 md:p-8 mb-8">
+                        <div x-data="{ isOpen: false }">
+                            <button 
+                                @click="isOpen = !isOpen" 
+                                class="flex justify-between items-center w-full p-4 font-medium text-left text-gray-900 bg-gray-50 hover:bg-gray-100 rounded-2xl mb-2 transition-colors"
+                            >
+                                <span class="text-lg font-semibold">
+                                    <span lang="en">Prepayment Calculator</span>
+                                    <span lang="es" class="hidden">Calculadora de Pagos Anticipados</span>
+                                </span>
+                                <svg 
+                                    class="w-6 h-6 transition-transform duration-200" 
+                                    :class="{'rotate-180': !isOpen}"
+                                    xmlns="http://www.w3.org/2000/svg" 
+                                    fill="none" 
+                                    viewBox="0 0 24 24" 
+                                    stroke="currentColor"
+                                >
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </button>
+                            
+                            <div x-show="isOpen" x-transition class="mt-4 px-4">
+                                <p class="text-gray-700 mb-4">
+                                    <span lang="en">The Prepayment Calculator helps you see how making extra payments affects your mortgage.</span>
+                                    <span lang="es" class="hidden">La Calculadora de Pagos Anticipados te ayuda a ver cómo los pagos adicionales afectan tu hipoteca.</span>
+                                </p>
+                                
+                                <h3 class="text-lg font-semibold mb-3">
+                                    <span lang="en">Getting Started</span>
+                                    <span lang="es" class="hidden">Primeros Pasos</span>
+                                </h3>
+                                
+                                <ol class="space-y-2 mb-6 list-decimal list-inside text-gray-700">
+                                    <li>
+                                        <span lang="en">Your mortgage details appear at the top</span>
+                                        <span lang="es" class="hidden">Los detalles de tu hipoteca aparecen en la parte superior</span>
+                                    </li>
+                                    <li>
+                                        <span lang="en">Enter two key values:</span>
+                                        <span lang="es" class="hidden">Ingresa dos valores clave:</span>
+                                        <ul class="ml-6 mt-2 space-y-1 list-disc list-inside">
+                                            <li>
+                                                <span lang="en">Extra Payment Amount: How much extra you'll pay</span>
+                                                <span lang="es" class="hidden">Monto de Pago Adicional: Cuánto extra pagarás</span>
+                                            </li>
+                                            <li>
+                                                <span lang="en">Starting Month: When you'll begin making extra payments</span>
+                                                <span lang="es" class="hidden">Mes de Inicio: Cuándo comenzarás a hacer pagos adicionales</span>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ol>
+                                
+                                <h3 class="text-lg font-semibold mb-3">
+                                    <span lang="en">Making Calculations</span>
+                                    <span lang="es" class="hidden">Realizando Cálculos</span>
+                                </h3>
+                                
+                                <ol class="space-y-2 mb-6 list-decimal list-inside text-gray-700">
+                                    <li>
+                                        <span lang="en">Tap "Calculate Savings" at the bottom</span>
+                                        <span lang="es" class="hidden">Toca "Calcular Ahorros" en la parte inferior</span>
+                                    </li>
+                                    <li>
+                                        <span lang="en">View your personalized results showing:</span>
+                                        <span lang="es" class="hidden">Ver tus resultados personalizados que muestran:</span>
+                                        <ul class="ml-6 mt-2 space-y-1 list-disc list-inside">
+                                            <li>
+                                                <span lang="en">Total Interest Saved: Money you won't pay in interest</span>
+                                                <span lang="es" class="hidden">Interés Total Ahorrado: Dinero que no pagarás en intereses</span>
+                                            </li>
+                                            <li>
+                                                <span lang="en">Months Saved: How much earlier you'll pay off your loan</span>
+                                                <span lang="es" class="hidden">Meses Ahorrados: Cuánto antes terminarás de pagar tu préstamo</span>
+                                            </li>
+                                            <li>
+                                                <span lang="en">New Loan Term: Your shortened payoff timeline</span>
+                                                <span lang="es" class="hidden">Nuevo Plazo del Préstamo: Tu cronograma de pago acortado</span>
+                                            </li>
+                                            <li>
+                                                <span lang="en">Payoff Date: When you'll become mortgage-free</span>
+                                                <span lang="es" class="hidden">Fecha de Liquidación: Cuándo te liberarás de la hipoteca</span>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ol>
+                                
+                                <h3 class="text-lg font-semibold mb-3">
+                                    <span lang="en">Using the Results</span>
+                                    <span lang="es" class="hidden">Uso de los Resultados</span>
+                                </h3>
+                                
+                                <ul class="space-y-2 mb-6 list-disc list-inside text-gray-700">
+                                    <li>
+                                        <span lang="en">Charts: See visual comparison of original vs. new loan</span>
+                                        <span lang="es" class="hidden">Gráficos: Ver comparación visual del préstamo original vs. nuevo</span>
+                                    </li>
+                                    <li>
+                                        <span lang="en">Share: Tap the share icon to save or send your results</span>
+                                        <span lang="es" class="hidden">Compartir: Toca el ícono de compartir para guardar o enviar tus resultados</span>
+                                    </li>
+                                    <li>
+                                        <span lang="en">Amortization: View detailed payment schedule with the calendar icon</span>
+                                        <span lang="es" class="hidden">Amortización: Ver calendario detallado de pagos con el ícono de calendario</span>
+                                    </li>
+                                </ul>
+                                
+                                <h3 class="text-lg font-semibold mb-3">
+                                    <span lang="en">Tips</span>
+                                    <span lang="es" class="hidden">Consejos</span>
+                                </h3>
+                                
+                                <ul class="space-y-2 mb-6 list-disc list-inside text-gray-700">
+                                    <li>
+                                        <span lang="en">Try different payment amounts to see various scenarios</span>
+                                        <span lang="es" class="hidden">Prueba diferentes montos de pago para ver varios escenarios</span>
+                                    </li>
+                                    <li>
+                                        <span lang="en">Earlier prepayments generally save more interest</span>
+                                        <span lang="es" class="hidden">Los pagos anticipados tempranos generalmente ahorran más intereses</span>
+                                    </li>
+                                    <li>
+                                        <span lang="en">You can recalculate anytime with new values</span>
+                                        <span lang="es" class="hidden">Puedes recalcular en cualquier momento con nuevos valores</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-3xl shadow-soft-xl p-6 md:p-8 mb-8">
+                        <div x-data="{ isOpen: false }">
+                            <button 
+                                @click="isOpen = !isOpen" 
+                                class="flex justify-between items-center w-full p-4 font-medium text-left text-gray-900 bg-gray-50 hover:bg-gray-100 rounded-2xl mb-2 transition-colors"
+                            >
+                                <span class="text-lg font-semibold">
+                                    <span lang="en">Files Tab</span>
+                                    <span lang="es" class="hidden">Pestaña de Archivos</span>
+                                </span>
+                                <svg 
+                                    class="w-6 h-6 transition-transform duration-200" 
+                                    :class="{'rotate-180': !isOpen}"
+                                    xmlns="http://www.w3.org/2000/svg" 
+                                    fill="none" 
+                                    viewBox="0 0 24 24" 
+                                    stroke="currentColor"
+                                >
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </button>
+                            
+                            <div x-show="isOpen" x-transition class="mt-4 px-4">
+                                <p class="text-gray-700 mb-4">
+                                    <span lang="en">Files is your centralized hub for managing all your saved mortgage calculations. This organized dashboard allows you to view, compare, and analyze your different mortgage scenarios in one convenient place.</span>
+                                    <span lang="es" class="hidden">La pestaña Archivos es tu centro centralizado para administrar todos tus cálculos hipotecarios guardados. Este panel organizado te permite ver, comparar y analizar tus diferentes escenarios hipotecarios en un solo lugar conveniente.</span>
+                                </p>
+                                
+                                <h3 class="text-lg font-semibold mb-3">
+                                    <span lang="en">View & Organize Your Calculations</span>
+                                    <span lang="es" class="hidden">Ver y Organizar tus Cálculos</span>
+                                </h3>
+                                
+                                <ul class="space-y-2 mb-6 list-disc list-inside text-gray-700">
+                                    <li>
+                                        <span lang="en">See all your saved mortgage calculations in one place</span>
+                                        <span lang="es" class="hidden">Ve todos tus cálculos hipotecarios guardados en un solo lugar</span>
+                                    </li>
+                                    <li>
+                                        <span lang="en">Sort by name or date using the arrow icon at top-left</span>
+                                        <span lang="es" class="hidden">Ordena por nombre o fecha usando el ícono de flecha en la parte superior izquierda</span>
+                                    </li>
+                                    <li>
+                                        <span lang="en">Tap any calculation to select it (up to 6 selections)</span>
+                                        <span lang="es" class="hidden">Toca cualquier cálculo para seleccionarlo (hasta 6 selecciones)</span>
+                                    </li>
+                                </ul>
+                                
+                                <h3 class="text-lg font-semibold mb-3">
+                                    <span lang="en">Quick Actions</span>
+                                    <span lang="es" class="hidden">Acciones Rápidas</span>
+                                </h3>
+                                
+                                <ul class="space-y-2 mb-6 list-disc list-inside text-gray-700">
+                                    <li>
+                                        <span lang="en">Tap calculation: Select/deselect it</span>
+                                        <span lang="es" class="hidden">Toca el cálculo: Selecciona/deselecciona</span>
+                                    </li>
+                                    <li>
+                                        <span lang="en">View Results: Tap the "View Results" button on any calculation</span>
+                                        <span lang="es" class="hidden">Ver Resultados: Toca el botón "Ver Resultados" en cualquier cálculo</span>
+                                    </li>
+                                </ul>
+                                
+                                <h3 class="text-lg font-semibold mb-3">
+                                    <span lang="en">Swipe Actions</span>
+                                    <span lang="es" class="hidden">Acciones de Deslizamiento</span>
+                                </h3>
+                                
+                                <div class="space-y-4 mb-6">
+                                    <div class="border border-gray-100 p-4 rounded-xl bg-gray-50/50">
+                                        <h4 class="font-medium mb-2">
+                                            <span lang="en">Swipe Left ←</span>
+                                            <span lang="es" class="hidden">Desliza a la Izquierda ←</span>
+                                        </h4>
+                                        <ul class="list-disc list-inside text-gray-700 space-y-1">
+                                            <li>
+                                                <span lang="en">Rename: Change the calculation name</span>
+                                                <span lang="es" class="hidden">Renombrar: Cambia el nombre del cálculo</span>
+                                            </li>
+                                            <li>
+                                                <span lang="en">Copy/Load: Use this calculation in the calculator</span>
+                                                <span lang="es" class="hidden">Copiar/Cargar: Usa este cálculo en la calculadora</span>
+                                            </li>
+                                            <li>
+                                                <span lang="en">Prepayment Calculator: Analyze savings with extra payments</span>
+                                                <span lang="es" class="hidden">Calculadora de Pagos Anticipados: Analiza ahorros con pagos adicionales</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="border border-gray-100 p-4 rounded-xl bg-gray-50/50">
+                                        <h4 class="font-medium mb-2">
+                                            <span lang="en">Swipe Right →</span>
+                                            <span lang="es" class="hidden">Desliza a la Derecha →</span>
+                                        </h4>
+                                        <ul class="list-disc list-inside text-gray-700 space-y-1">
+                                            <li>
+                                                <span lang="en">Delete: Remove the calculation</span>
+                                                <span lang="es" class="hidden">Eliminar: Quita el cálculo</span>
+                                            </li>
+                                            <li>
+                                                <span lang="en">Share: Generate and share a PDF report</span>
+                                                <span lang="es" class="hidden">Compartir: Genera y comparte un reporte en PDF</span>
+                                            </li>
+                                            <li>
+                                                <span lang="en">Amortization: View detailed payment breakdown</span>
+                                                <span lang="es" class="hidden">Amortización: Ver desglose detallado de pagos</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <h3 class="text-lg font-semibold mb-3">
+                                    <span lang="en">Compare Calculations</span>
+                                    <span lang="es" class="hidden">Comparar Cálculos</span>
+                                </h3>
+                                
+                                <ol class="space-y-2 mb-6 list-decimal list-inside text-gray-700">
+                                    <li>
+                                        <span lang="en">Select 2-3 calculations by tapping them</span>
+                                        <span lang="es" class="hidden">Selecciona 2-3 cálculos tocándolos</span>
+                                    </li>
+                                    <li>
+                                        <span lang="en">Tap the "Compare" button at the top-right</span>
+                                        <span lang="es" class="hidden">Toca el botón "Comparar" en la parte superior derecha</span>
+                                    </li>
+                                    <li>
+                                        <span lang="en">View side-by-side comparison</span>
+                                        <span lang="es" class="hidden">Ver comparación lado a lado</span>
+                                    </li>
+                                </ol>
+                                
+                                <h3 class="text-lg font-semibold mb-3">
+                                    <span lang="en">Multiple Delete</span>
+                                    <span lang="es" class="hidden">Eliminación Múltiple</span>
+                                </h3>
+                                
+                                <ol class="space-y-2 mb-6 list-decimal list-inside text-gray-700">
+                                    <li>
+                                        <span lang="en">Select two or more calculations</span>
+                                        <span lang="es" class="hidden">Selecciona dos o más cálculos</span>
+                                    </li>
+                                    <li>
+                                        <span lang="en">Tap the trash icon at the top-right</span>
+                                        <span lang="es" class="hidden">Toca el ícono de papelera en la parte superior derecha</span>
+                                    </li>
+                                    <li>
+                                        <span lang="en">Confirm to delete all selected items</span>
+                                        <span lang="es" class="hidden">Confirma para eliminar todos los elementos seleccionados</span>
+                                    </li>
+                                </ol>
                             </div>
                         </div>
                     </div>
