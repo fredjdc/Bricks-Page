@@ -115,8 +115,71 @@
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
+        
+        // Default to analytics_storage denied until consent is given
+        gtag('consent', 'default', {
+            'analytics_storage': 'denied'
+        });
+        
+        // Function to update consent based on user choice
+        function updateConsent(consent) {
+            if (consent === 'granted') {
+                gtag('consent', 'update', {
+                    'analytics_storage': 'granted'
+                });
+                // Store consent in localStorage
+                localStorage.setItem('analytics_consent', 'granted');
+                // Hide consent banner
+                document.getElementById('cookie-consent-banner').style.display = 'none';
+            } else {
+                // Keep denied or explicit denial
+                gtag('consent', 'update', {
+                    'analytics_storage': 'denied'
+                });
+                // Store the denial in localStorage
+                localStorage.setItem('analytics_consent', 'denied');
+                // Hide consent banner
+                document.getElementById('cookie-consent-banner').style.display = 'none';
+            }
+        }
+        
+        // Configure Google Analytics
         gtag('config', 'G-0NE96SRV4V');
+        
+        // Check for previously stored consent on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const storedConsent = localStorage.getItem('analytics_consent');
+            if (storedConsent === 'granted') {
+                updateConsent('granted');
+            } else if (storedConsent === 'denied') {
+                // User explicitly denied before
+                document.getElementById('cookie-consent-banner').style.display = 'none';
+            } else {
+                // Show the banner if no stored preference
+                document.getElementById('cookie-consent-banner').style.display = 'flex';
+            }
+        });
     </script>
+    
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent-banner" style="display: none;" class="fixed bottom-0 left-0 right-0 bg-gray-800 text-white p-4 z-50 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div>
+            <p class="text-sm">
+                <span lang="es">Usamos cookies para analizar el uso del sitio y mejorar su experiencia. ¿Nos permite recopilar datos anónimos de uso?</span>
+                <span lang="en" class="hidden">We use cookies to analyze site usage and improve your experience. May we collect anonymous usage data?</span>
+            </p>
+        </div>
+        <div class="flex gap-2">
+            <button onclick="updateConsent('denied')" class="btn btn-outline text-white border-white text-xs px-3 py-1 whitespace-nowrap">
+                <span lang="es">Rechazar</span>
+                <span lang="en" class="hidden">Decline</span>
+            </button>
+            <button onclick="updateConsent('granted')" class="btn btn-primary text-xs px-3 py-1 whitespace-nowrap">
+                <span lang="es">Aceptar</span>
+                <span lang="en" class="hidden">Accept</span>
+            </button>
+        </div>
+    </div>
     
     <!-- Link to custom CSS file -->
     <link rel="stylesheet" href="styles.css">
