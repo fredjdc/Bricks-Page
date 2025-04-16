@@ -180,27 +180,7 @@
                 document.getElementById('cookie-consent-banner').style.display = 'flex';
             }
         });
-    </script>
-    
-    <!-- Cookie Consent Banner -->
-    <div id="cookie-consent-banner" style="display: none;" class="fixed bottom-0 left-0 right-0 bg-gray-800 text-white p-4 z-50 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <div>
-            <p class="text-sm">
-                <span lang="es">Usamos cookies para analizar el uso del sitio y mejorar su experiencia. ¿Nos permite recopilar datos anónimos de uso?</span>
-                <span lang="en" class="hidden">We use cookies to analyze site usage and improve your experience. May we collect anonymous usage data?</span>
-            </p>
-        </div>
-        <div class="flex gap-2">
-            <button onclick="updateConsent('denied')" class="btn btn-outline text-white border-white text-xs px-3 py-1 whitespace-nowrap">
-                <span lang="es">Rechazar</span>
-                <span lang="en" class="hidden">Decline</span>
-            </button>
-            <button onclick="updateConsent('granted')" class="btn btn-primary text-xs px-3 py-1 whitespace-nowrap">
-                <span lang="es">Aceptar</span>
-                <span lang="en" class="hidden">Accept</span>
-            </button>
-        </div>
-    </div>
+    </script>    
     
     <style type="text/tailwindcss">
         @layer base {
@@ -382,6 +362,27 @@
     </script>
 </head>
 <body class="min-h-screen">
+    
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent-banner" style="display: none;" class="fixed bottom-0 left-0 right-0 bg-gray-800 text-white p-4 z-50 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div>
+            <p class="text-sm">
+                <span lang="es">Usamos cookies para analizar el uso del sitio y mejorar su experiencia. ¿Nos permite recopilar datos anónimos de uso?</span>
+                <span lang="en" class="hidden">We use cookies to analyze site usage and improve your experience. May we collect anonymous usage data?</span>
+            </p>
+        </div>
+        <div class="flex gap-2">
+            <button onclick="updateConsent('denied')" class="btn btn-outline text-black border-white text-xs px-8 py-1 whitespace-nowrap">
+                <span lang="es">Rechazar</span>
+                <span lang="en" class="hidden">Decline</span>
+            </button>
+            <button onclick="updateConsent('granted')" class="btn btn-primary text-xs px-8 py-1 whitespace-nowrap">
+                <span lang="es">Aceptar</span>
+                <span lang="en" class="hidden">Accept</span>
+            </button>
+        </div>
+    </div>
+    
     <!-- Navigation -->
     <header class="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div class="container flex h-16 items-center">
