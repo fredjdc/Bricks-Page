@@ -1191,7 +1191,7 @@
                 </p>
             </div>
             
-             <div class="mt-12 carousel-container snap-x">
+             <div class="mt-12 carousel-container snap-x overflow-x-auto scrollbar-hide">
                 <div id="screenshot-carousel" class="flex space-x-4 py-4">
                     
                     <div class="snap-center flex-shrink-0 w-80 md:w-96 rounded-xl overflow-hidden shadow-soft-lg hover-lift">
@@ -1245,6 +1245,75 @@
                 </p>
             </div>
         </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const carousel = document.getElementById('screenshot-carousel');
+                const slides = carousel.children;
+                let currentIndex = 0;
+                
+                // Clone first slide and append to end for smooth looping
+                const firstSlideClone = slides[0].cloneNode(true);
+                carousel.appendChild(firstSlideClone);
+                
+                function nextSlide() {
+                    currentIndex++;
+                    
+                    // Smooth transition
+                    carousel.style.transition = 'transform 0.5s ease-in-out';
+                    carousel.style.transform = `translateX(-${currentIndex * (slides[0].offsetWidth + 16)}px)`;
+                    
+                    // If reached the cloned first slide, reset to actual first slide without animation
+                    if (currentIndex >= slides.length - 1) {
+                        setTimeout(() => {
+                            carousel.style.transition = 'none';
+                            carousel.style.transform = 'translateX(0)';
+                            currentIndex = 0;
+                        }, 500);
+                    }
+                }
+                
+                // Auto scroll every 3 seconds
+                const interval = setInterval(nextSlide, 3000);
+                
+                // Pause auto-scroll when user interacts with carousel
+                carousel.addEventListener('mouseenter', () => clearInterval(interval));
+                carousel.addEventListener('touchstart', () => clearInterval(interval), {passive: true});
+                
+                // Resume auto-scroll when user stops interacting
+                carousel.addEventListener('mouseleave', () => {
+                    clearInterval(interval);
+                    setInterval(nextSlide, 3000);
+                });
+                
+                // Allow manual scrolling
+                let isDown = false;
+                let startX;
+                let scrollLeft;
+                
+                carousel.parentElement.addEventListener('mousedown', (e) => {
+                    isDown = true;
+                    startX = e.pageX - carousel.parentElement.offsetLeft;
+                    scrollLeft = carousel.parentElement.scrollLeft;
+                });
+                
+                carousel.parentElement.addEventListener('mouseleave', () => {
+                    isDown = false;
+                });
+                
+                carousel.parentElement.addEventListener('mouseup', () => {
+                    isDown = false;
+                });
+                
+                carousel.parentElement.addEventListener('mousemove', (e) => {
+                    if (!isDown) return;
+                    e.preventDefault();
+                    const x = e.pageX - carousel.parentElement.offsetLeft;
+                    const walk = (x - startX) * 2; // Scroll speed multiplier
+                    carousel.parentElement.scrollLeft = scrollLeft - walk;
+                });
+            });
+        </script>
     </section>
 
     <!-- FAQ Section -->
