@@ -309,8 +309,8 @@ a:focus, button:focus {
 }
 
 .desktop-app-banner-icon {
-    width: 24px;
-    height: 24px;
+    width: 48px;
+    height: 48px;
     margin-right: 12px;
     border-radius: 8px;
     overflow: hidden;
