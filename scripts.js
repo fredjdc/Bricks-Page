@@ -595,8 +595,11 @@ const setupLanguageSwitcher = () => {
  * Shows a banner on desktop devices to promote the mobile app
  */
 const handleDesktopAppBanner = () => {
+    console.log('Initializing desktop app banner...');
+    
     // Skip on mobile devices since they use the native Smart App Banner
     if (window.innerWidth < 640 || /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        console.log('Mobile device detected, skipping desktop banner');
         return;
     }
     
@@ -604,17 +607,22 @@ const handleDesktopAppBanner = () => {
     const closeBtn = document.getElementById('desktop-app-banner-close');
     const downloadBtn = document.getElementById('desktop-app-banner-button');
     
+    console.log('Banner elements:', {banner, closeBtn, downloadBtn});
+    
     // Check if user has closed the banner before
     const isBannerClosed = localStorage.getItem('desktop_app_banner_closed') === 'true';
+    console.log('Banner previously closed:', isBannerClosed);
     
     if (!isBannerClosed && banner) {
-        // Show the banner and adjust the page layout
+        // Force display the banner and adjust the page layout
+        console.log('Displaying banner...');
         banner.style.display = 'flex';
         document.body.classList.add('has-app-banner');
         
         // Close button functionality
         if (closeBtn) {
             closeBtn.addEventListener('click', () => {
+                console.log('Banner closed by user');
                 banner.style.display = 'none';
                 document.body.classList.remove('has-app-banner');
                 // Remember that user closed the banner
@@ -625,6 +633,7 @@ const handleDesktopAppBanner = () => {
         // Download button functionality
         if (downloadBtn) {
             downloadBtn.addEventListener('click', () => {
+                console.log('Download button clicked');
                 // Get current language
                 const currentLang = document.documentElement.getAttribute('lang') || 'en';
                 
@@ -650,6 +659,8 @@ const handleDesktopAppBanner = () => {
                         appLink = downloadBtn.getAttribute(`data-link-${currentLang}`);
                     }
                 }
+                
+                console.log('Opening app link:', appLink);
                 
                 // Track the event in Google Analytics
                 if (typeof gtag === 'function') {

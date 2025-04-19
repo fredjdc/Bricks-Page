@@ -17,6 +17,9 @@
     <!-- Google Material Symbols - moved higher -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=language" />
     
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+    
     <!-- Favicon -->
     <link rel="icon" href="favicon.ico" sizes="32x32">
     <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32">
@@ -129,6 +132,24 @@
     
     <!-- Common scripts with language detection -->
     <script src="scripts.js" defer></script>
+    
+    <!-- Backup script to ensure banner displays -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Make sure the banner is displayed if it should be
+            setTimeout(function() {
+                const banner = document.getElementById('desktop-app-banner');
+                const isBannerClosed = localStorage.getItem('desktop_app_banner_closed') === 'true';
+                const isMobile = window.innerWidth < 640 || /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+                
+                if (banner && !isBannerClosed && !isMobile) {
+                    console.log('Backup script: Ensuring banner is displayed');
+                    banner.style.display = 'flex';
+                    document.body.classList.add('has-app-banner');
+                }
+            }, 500); // Small timeout to ensure everything is loaded
+        });
+    </script>
     
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-0NE96SRV4V"></script>
@@ -364,27 +385,27 @@
 <body class="min-h-screen">
     
     <!-- Desktop App Banner -->
-    <div id="desktop-app-banner" class="desktop-app-banner">
-        <div class="desktop-app-banner-content">
-            <div class="desktop-app-banner-info">
-                <img src="images/apple-touch-icon.png" alt="Bricks App Icon" class="desktop-app-banner-icon">
-                <div class="desktop-app-banner-text">
-                    <div class="desktop-app-banner-title">
+    <div id="desktop-app-banner" class="desktop-app-banner" style="display: none; position: fixed; top: 0; left: 0; right: 0; background-color: #f8f8f8; border-bottom: 1px solid #e0e0e0; padding: 8px 20px; z-index: 1000; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+        <div class="desktop-app-banner-content" style="display: flex; align-items: center; max-width: 1200px; margin: 0 auto; width: 100%; justify-content: space-between; padding: 0 16px;">
+            <div class="desktop-app-banner-info" style="display: flex; align-items: center; flex: 1;">
+                <img src="images/apple-touch-icon.png" alt="Bricks App Icon" class="desktop-app-banner-icon" style="width: 24px; height: 24px; margin-right: 12px; border-radius: 8px; overflow: hidden; flex-shrink: 0;">
+                <div class="desktop-app-banner-text" style="flex: 1; max-width: 500px;">
+                    <div class="desktop-app-banner-title" style="font-weight: 600; margin-bottom: 1px; font-size: 14px;">
                         <span lang="en">Bricks - Mortgage Calculator</span>
                         <span lang="es" class="hidden">Bricks - Calculadora Hipotecaria</span>
                     </div>
-                    <div class="desktop-app-banner-description">
+                    <div class="desktop-app-banner-description" style="font-size: 12px; color: #666;">
                         <span lang="en">Compare rates, visualize payments, and make informed decisions</span>
                         <span lang="es" class="hidden">Compare tasas, visualice pagos y tome decisiones informadas</span>
                     </div>
                 </div>
             </div>
-            <div class="desktop-app-banner-actions">
-                <button id="desktop-app-banner-button" class="desktop-app-banner-button">
+            <div class="desktop-app-banner-actions" style="display: flex; align-items: center; margin-left: auto;">
+                <button id="desktop-app-banner-button" class="desktop-app-banner-button" style="background-color: #007AFF; color: white; border: none; padding: 6px 12px; border-radius: 5px; font-weight: 500; cursor: pointer; font-size: 13px;">
                     <span lang="en">Download on App Store</span>
                     <span lang="es" class="hidden">Descargar en App Store</span>
                 </button>
-                <div id="desktop-app-banner-close" class="desktop-app-banner-close">&times;</div>
+                <div id="desktop-app-banner-close" class="desktop-app-banner-close" style="cursor: pointer; font-size: 18px; margin-left: 15px; color: #666; display: flex; align-items: center; justify-content: center; height: 24px; width: 24px;">&times;</div>
             </div>
         </div>
     </div>
