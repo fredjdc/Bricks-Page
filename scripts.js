@@ -231,6 +231,23 @@ const changeLanguage = (lang) => {
             }
         }
         
+        // Update apple-itunes-app meta tag based on language
+        const appleItunesAppMeta = document.querySelector('meta[name="apple-itunes-app"]');
+        if (appleItunesAppMeta) {
+            // Extract the app-id and whichever app-argument corresponds to the selected language
+            const content = appleItunesAppMeta.getAttribute('content');
+            const appId = content.match(/app-id=([^,]+)/)[1];
+            const appArgKey = lang === 'en' ? 'app-argument' : 'app-argument-es';
+            const appArgPattern = new RegExp(`${appArgKey}=([^,]+)`);
+            const appArgMatch = content.match(appArgPattern);
+            
+            if (appId && appArgMatch && appArgMatch[1]) {
+                // Update the meta tag with just the app-id and the appropriate app-argument
+                const newContent = `app-id=${appId}, app-argument=${appArgMatch[1]}`;
+                appleItunesAppMeta.setAttribute('content', newContent);
+            }
+        }
+        
         // Update placeholders based on language
         updatePlaceholders(lang);
     } catch (error) {
