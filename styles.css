@@ -280,4 +280,87 @@ a:focus, button:focus {
 
 .btn-secondary:hover {
     background-color: rgba(244, 244, 245, 0.8);
+}
+
+/* Desktop App Banner */
+.desktop-app-banner {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 10px 20px;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    justify-content: space-between;
+}
+
+.desktop-app-banner-content {
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.desktop-app-banner-icon {
+    width: 48px;
+    height: 48px;
+    margin-right: 15px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.desktop-app-banner-text {
+    flex: 1;
+}
+
+.desktop-app-banner-title {
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.desktop-app-banner-description {
+    font-size: 14px;
+    color: #666;
+}
+
+.desktop-app-banner-button {
+    background-color: #007AFF;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.desktop-app-banner-button:hover {
+    background-color: #0066d6;
+}
+
+.desktop-app-banner-close {
+    cursor: pointer;
+    font-size: 20px;
+    margin-left: 15px;
+    color: #666;
+}
+
+/* Adjusts the main content when the banner is visible */
+body.has-app-banner {
+    padding-top: 68px;
+}
+
+@media (max-width: 640px) {
+    .desktop-app-banner {
+        display: none !important;
+    }
+    
+    body.has-app-banner {
+        padding-top: 0;
+    }
 } 

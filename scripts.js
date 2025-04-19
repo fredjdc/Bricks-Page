@@ -590,35 +590,146 @@ const setupLanguageSwitcher = () => {
     }
 };
 
-// Initialize all functionality on page load
+/**
+ * Handles the desktop app banner functionality
+ * Shows a banner on desktop devices to promote the mobile app
+ */
+const handleDesktopAppBanner = () => {
+    // Skip on mobile devices since they use the native Smart App Banner
+    if (window.innerWidth < 640 || /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        return;
+    }
+    
+    const banner = document.getElementById('desktop-app-banner');
+    const closeBtn = document.getElementById('desktop-app-banner-close');
+    const downloadBtn = document.getElementById('desktop-app-banner-button');
+    
+    // Check if user has closed the banner before
+    const isBannerClosed = localStorage.getItem('desktop_app_banner_closed') === 'true';
+    
+    if (!isBannerClosed && banner) {
+        // Show the banner and adjust the page layout
+        banner.style.display = 'flex';
+        document.body.classList.add('has-app-banner');
+        
+        // Close button functionality
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                banner.style.display = 'none';
+                document.body.classList.remove('has-app-banner');
+                // Remember that user closed the banner
+                localStorage.setItem('desktop_app_banner_closed', 'true');
+            });
+        }
+        
+        // Download button functionality
+        if (downloadBtn) {
+            downloadBtn.addEventListener('click', () => {
+                // Get current language
+                const currentLang = document.documentElement.getAttribute('lang') || 'en';
+                
+                // Get download links from meta tag
+                const meta = document.querySelector('meta[name="apple-itunes-app"]');
+                let appLink = '';
+                
+                if (meta) {
+                    const content = meta.getAttribute('content');
+                    const appArgKey = currentLang === 'en' ? 'app-argument' : 'app-argument-es';
+                    const appArgPattern = new RegExp(`${appArgKey}=([^,]+)`);
+                    const appArgMatch = content.match(appArgPattern);
+                    
+                    if (appArgMatch && appArgMatch[1]) {
+                        appLink = appArgMatch[1];
+                    }
+                }
+                
+                // Fallback to app store download links if meta tag approach doesn't work
+                if (!appLink) {
+                    const downloadBtn = document.querySelector('#app-store-download');
+                    if (downloadBtn) {
+                        appLink = downloadBtn.getAttribute(`data-link-${currentLang}`);
+                    }
+                }
+                
+                // Track the event in Google Analytics
+                if (typeof gtag === 'function') {
+                    gtag('event', 'app_download', {
+                        'event_category': 'engagement',
+                        'event_label': 'desktop_app_banner'
+                    });
+                }
+                
+                // Open the app store
+                if (appLink) {
+                    window.open(appLink, '_blank');
+                }
+            });
+        }
+    }
+};
+
+// Initialize all functionality when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize elements cache
+    // Initialize element references
     initializeElements();
     
-    // Setup language switching
-    setupLanguageSwitcher();
-    
-    // Setup mobile menu
+    // Add event listeners
     if (elements.menuButton) {
         elements.menuButton.addEventListener('click', handleMobileMenu);
     }
     
-    // Setup carousel if present
     if (elements.carousel) {
         handleCarousel(elements.carousel);
     }
     
-    // Setup video modal if present
-    handleVideoModal();
+    // Video modal handling
+    if (elements.openVideoBtn && elements.videoModal) {
+        handleVideoModal();
+    }
     
-    // Setup animations
+    // Support form handling
+    if (elements.issueForm) {
+        initSupportForm();
+    }
+    
+    // Setup language switcher if available
+    setupLanguageSwitcher();
+    
+    // Setup intersection observer for animations
     setupIntersectionObserver();
     
-    // Initialize support form if we're on that page
-    initSupportForm();
+    // Setup desktop app banner
+    handleDesktopAppBanner();
     
-    // Set initial language based on saved preference or browser
-    const savedLang = localStorage.getItem('bricksLanguage');
-    const initialLang = savedLang || detectUserLanguage();
-    changeLanguage(initialLang);
+    // Set language based on stored preference or browser language
+    const storedLang = localStorage.getItem('bricksLanguage');
+    const userLang = storedLang || detectUserLanguage();
+    changeLanguage(userLang);
+    
+    // Add resize event listener for layout adjustments
+    window.addEventListener('resize', debounce(() => {
+        // Recalculate or adjust UI elements on resize if needed
+        if (window.innerWidth >= 640) {
+            // Reset mobile menu visibility on desktop
+            if (elements.mobileMenu) {
+                elements.mobileMenu.classList.add('hidden');
+            }
+            
+            // Check desktop app banner visibility
+            const banner = document.getElementById('desktop-app-banner');
+            const isBannerClosed = localStorage.getItem('desktop_app_banner_closed') === 'true';
+            
+            if (banner && !isBannerClosed && !/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+                banner.style.display = 'flex';
+                document.body.classList.add('has-app-banner');
+            }
+        } else {
+            // Hide desktop app banner on mobile
+            const banner = document.getElementById('desktop-app-banner');
+            if (banner) {
+                banner.style.display = 'none';
+                document.body.classList.remove('has-app-banner');
+            }
+        }
+    }, 250));
 }); 
