@@ -231,23 +231,6 @@ const changeLanguage = (lang) => {
             }
         }
         
-        // Update apple-itunes-app meta tag based on language
-   /*     const appleItunesAppMeta = document.querySelector('meta[name="apple-itunes-app"]');
-        if (appleItunesAppMeta) {
-            // Extract the app-id and whichever app-argument corresponds to the selected language
-            const content = appleItunesAppMeta.getAttribute("content");
-            const appId = content.match(/app-id=([^,]+)/)[1];
-            const appArgKey = lang === "en" ? "app-argument" : "app-argument-es";
-            const appArgPattern = new RegExp(`${appArgKey}=([^,]+)`);
-            const appArgMatch = content.match(appArgPattern);
-
-            if (appId && appArgMatch && appArgMatch[1]) {
-                // Update the meta tag with just the app-id and the appropriate app-argument
-                const newContent = `app-id=${appId}, app-argument=${appArgMatch[1]}`;
-                appleItunesAppMeta.setAttribute("content", newContent);
-            }
-        }*/
-        
         // Update placeholders based on language
         updatePlaceholders(lang);
     } catch (error) {
@@ -590,95 +573,6 @@ const setupLanguageSwitcher = () => {
     }
 };
 
-/**
- * Handles the desktop app banner functionality
- * Shows a banner on desktop devices to promote the mobile app
- */
-const handleDesktopAppBanner = () => {
-    console.log('Initializing desktop app banner...');
-    
-    // Skip on mobile devices since they use the native Smart App Banner
-    if (window.innerWidth < 640 || /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        console.log('Mobile device detected, skipping desktop banner');
-        return;
-    }
-    
-    const banner = document.getElementById('desktop-app-banner');
-    const closeBtn = document.getElementById('desktop-app-banner-close');
-    const downloadBtn = document.getElementById('desktop-app-banner-button');
-    
-    console.log('Banner elements:', {banner, closeBtn, downloadBtn});
-    
-    // Check if user has closed the banner before
-    const isBannerClosed = localStorage.getItem('desktop_app_banner_closed') === 'true';
-    console.log('Banner previously closed:', isBannerClosed);
-    
-    if (!isBannerClosed && banner) {
-        // Force display the banner and adjust the page layout
-        console.log('Displaying banner...');
-        banner.style.display = 'flex';
-        document.body.classList.add('has-app-banner');
-        
-        // Close button functionality
-        if (closeBtn) {
-            closeBtn.addEventListener('click', () => {
-                console.log('Banner closed by user');
-                banner.style.display = 'none';
-                document.body.classList.remove('has-app-banner');
-                // Remember that user closed the banner
-                localStorage.setItem('desktop_app_banner_closed', 'true');
-            });
-        }
-        
-        // Download button functionality
-        if (downloadBtn) {
-            downloadBtn.addEventListener('click', () => {
-                console.log('Download button clicked');
-                // Get current language
-                const currentLang = document.documentElement.getAttribute('lang') || 'en';
-                
-                // Get download links from meta tag
-                const meta = document.querySelector('meta[name="apple-itunes-app"]');
-                let appLink = '';
-                
-                if (meta) {
-                    const content = meta.getAttribute('content');
-                    const appArgKey = currentLang === 'en' ? 'app-argument' : 'app-argument-es';
-                    const appArgPattern = new RegExp(`${appArgKey}=([^,]+)`);
-                    const appArgMatch = content.match(appArgPattern);
-                    
-                    if (appArgMatch && appArgMatch[1]) {
-                        appLink = appArgMatch[1];
-                    }
-                }
-                
-                // Fallback to app store download links if meta tag approach doesn't work
-                if (!appLink) {
-                    const downloadBtn = document.querySelector('#app-store-download');
-                    if (downloadBtn) {
-                        appLink = downloadBtn.getAttribute(`data-link-${currentLang}`);
-                    }
-                }
-                
-                console.log('Opening app link:', appLink);
-                
-                // Track the event in Google Analytics
-                if (typeof gtag === 'function') {
-                    gtag('event', 'app_download', {
-                        'event_category': 'engagement',
-                        'event_label': 'desktop_app_banner'
-                    });
-                }
-                
-                // Open the app store
-                if (appLink) {
-                    window.open(appLink, '_blank');
-                }
-            });
-        }
-    }
-};
-
 // Initialize all functionality when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize element references
@@ -709,9 +603,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Setup intersection observer for animations
     setupIntersectionObserver();
     
-    // Setup desktop app banner
-    handleDesktopAppBanner();
-    
     // Set language based on stored preference or browser language
     const storedLang = localStorage.getItem('bricksLanguage');
     const userLang = storedLang || detectUserLanguage();
@@ -724,22 +615,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // Reset mobile menu visibility on desktop
             if (elements.mobileMenu) {
                 elements.mobileMenu.classList.add('hidden');
-            }
-            
-            // Check desktop app banner visibility
-            const banner = document.getElementById('desktop-app-banner');
-            const isBannerClosed = localStorage.getItem('desktop_app_banner_closed') === 'true';
-            
-            if (banner && !isBannerClosed && !/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-                banner.style.display = 'flex';
-                document.body.classList.add('has-app-banner');
-            }
-        } else {
-            // Hide desktop app banner on mobile
-            const banner = document.getElementById('desktop-app-banner');
-            if (banner) {
-                banner.style.display = 'none';
-                document.body.classList.remove('has-app-banner');
             }
         }
     }, 250));
