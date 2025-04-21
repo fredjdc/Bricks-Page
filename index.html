@@ -133,24 +133,6 @@
     <!-- Common scripts with language detection -->
     <script src="scripts.js" defer></script>
     
-    <!-- Backup script to ensure banner displays 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Make sure the banner is displayed if it should be
-            setTimeout(function() {
-                const banner = document.getElementById('desktop-app-banner');
-                const isBannerClosed = localStorage.getItem('desktop_app_banner_closed') === 'true';
-                const isMobile = window.innerWidth < 640 || /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-                
-                if (banner && !isBannerClosed && !isMobile) {
-                    console.log('Backup script: Ensuring banner is displayed');
-                    banner.style.display = 'flex';
-                    document.body.classList.add('has-app-banner');
-                }
-            }, 500); // Small timeout to ensure everything is loaded
-        });
-    </script> -->
-    
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-0NE96SRV4V"></script>
     <script>
@@ -384,32 +366,6 @@
 </head>
 <body class="min-h-screen">
     
-    <!-- Desktop App Banner -->
-    <div id="desktop-app-banner" class="desktop-app-banner" style="display: none; position: fixed; top: 0; left: 0; right: 0; background-color: #f8f8f8; border-bottom: 1px solid #e0e0e0; padding: 8px 20px; z-index: 1000; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
-        <div class="desktop-app-banner-content" style="display: flex; align-items: center; max-width: 1200px; margin: 0 auto; width: 100%; justify-content: space-between; padding: 0 16px;">
-            <div class="desktop-app-banner-info" style="display: flex; align-items: center; flex: 1;">
-                <img src="images/apple-touch-icon.png" alt="Bricks App Icon" class="desktop-app-banner-icon" style="width: 48px; height: 48px; margin-right: 12px; border-radius: 8px; overflow: hidden; flex-shrink: 0;">
-                <div class="desktop-app-banner-text" style="flex: 1; max-width: 500px;">
-                    <div class="desktop-app-banner-title" style="font-weight: 600; margin-bottom: 1px; font-size: 14px;">
-                        <span lang="en">Bricks - Mortgage Calculator</span>
-                        <span lang="es" class="hidden">Bricks - Calculadora Hipotecaria</span>
-                    </div>
-                    <div class="desktop-app-banner-description" style="font-size: 12px; color: #666;">
-                        <span lang="en">Compare rates, visualize payments, and make informed decisions</span>
-                        <span lang="es" class="hidden">Compare tasas, visualice pagos y tome decisiones informadas</span>
-                    </div>
-                </div>
-            </div>
-            <div class="desktop-app-banner-actions" style="display: flex; align-items: center; margin-left: auto;">
-                <button id="desktop-app-banner-button" class="desktop-app-banner-button" style="background-color: #007AFF; color: white; border: none; padding: 6px 12px; border-radius: 5px; font-weight: 500; cursor: pointer; font-size: 13px;">
-                    <span lang="en">Download on App Store</span>
-                    <span lang="es" class="hidden">Descargar en App Store</span>
-                </button>
-                <div id="desktop-app-banner-close" class="desktop-app-banner-close" style="cursor: pointer; font-size: 18px; margin-left: 15px; color: #666; display: flex; align-items: center; justify-content: center; height: 24px; width: 24px;">&times;</div>
-            </div>
-        </div>
-    </div>
-    
     <!-- Cookie Consent Banner -->
     <div id="cookie-consent-banner" style="display: none;" class="fixed bottom-0 left-0 right-0 bg-gray-800 text-white p-4 z-50 flex flex-col sm:flex-row justify-between items-center gap-4">
         <div>
@@ -596,8 +552,8 @@
                             <svg class="mr-2 h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.5646,12.6636 C17.532,10.0547 19.2843,8.5727 19.3623,8.5143 C18.1994,6.8761 16.3166,6.6936 15.6761,6.6747 C14.0535,6.5243 12.4844,7.716 11.6574,7.716 C10.8185,7.716 9.5219,6.6935 8.1644,6.7243 C6.4269,6.7551 4.8012,7.716 3.9234,9.2457 C2.1152,12.3603 3.4646,17.0072 5.2,19.5467 C6.0705,20.797 7.0775,22.2118 8.3948,22.1615 C9.6834,22.1112 10.16,21.3003 11.7071,21.3003 C13.2432,21.3003 13.6911,22.1615 15.0274,22.1327 C16.4046,22.1112 17.2788,20.8642 18.1256,19.6026 C19.1199,18.1483 19.5678,16.7144 19.5869,16.6545 C19.5583,16.6449 17.601,15.8649 17.5646,12.6636 Z M15.0599,5.0066 C15.7748,4.1194 16.2611,2.9026 16.1067,1.6666 C15.063,1.7078 13.7649,2.3665 13.0214,3.2346 C12.3638,4.0024 11.7741,5.2577 11.9475,6.4745 C13.1104,6.5537 14.3259,5.8843 15.0599,5.0066 Z"></path>
                             </svg>
-                            <span lang="en">Download on App Store</span>
-                            <span lang="es" class="hidden">Descargar en App Store</span>
+                            <span lang="en">Download on the App Store</span>
+                            <span lang="es" class="hidden">Descargar en la App Store</span>
                         </a>
                         <a href="javascript:void(0)" class="btn px-16 py-4 rounded-lg border border-brand text-brand hover:bg-brand hover:text-brand-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-slate-950 focus-visible:ring-offset-2 inline-flex items-center justify-center" style="width: 280px" id="open-video-modal">
                             <span lang="en">Watch Quick Demo</span>
@@ -1578,7 +1534,7 @@
                        data-link-en="https://apps.apple.com/us/app/bricks-mortgage-calculator/id6744432658?itscg=30200&itsct=apps_box_link&mttnsubad=6744432658"
                        data-link-es="https://apps.apple.com/es/app/bricks-calculadora-hipotecaria/id6744432658?ign-itscg=30200&ign-itsct=apps_box_link&mttnsubad=6744432658&platform=iphone">
                         <svg class="mr-2 h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M17.5646,12.6636 C17.532,10.0547 19.2843,8.5727 19.3623,8.5143 C18.1994,6.8761 16.3166,6.6936 15.6761,6.6747 C14.0535,6.5243 12.4844,7.716 11.6574,7.716 C10.8185,7.716 9.5219,6.6935 8.1644,6.7243 C6.4269,6.7551 4.8012,7.716 3.9234,9.2457 C2.1152,12.3603 3.4646,17.0072 5.2,19.5467 C6.0705,20.797 7.0775,22.2118 8.3948,22.1615 C9.6834,22.1112 10.16,21.3003 11.7071,21.3003 C13.2432,21.3003 13.6911,22.1615 15.0274,22.1327 C16.4046,22.1112 17.2788,20.8642 18.1256,19.6026 C19.1199,18.1483 19.5678,16.7144 19.5869,16.6545 C19.5583,16.6449 17.601,15.8649 17.5646,12.6636 Z M15.0599,5.0066 C15.7748,4.1194 16.2611,2.9026 16.1067,1.6666 C15.063,1.7078 13.7649,2.3665 13.0214,3.2346 C12.3638,4.0024 11.7741,5.2577 11.9475,6.4745 C13.1104,6.5537 14.3259,5.8843 15.0599,5.0066 Z"></path>
+                            <path d="M17.5646,12.6636 C17.532,10.0547 19.1,8.5727 19.3623,8.5143 C18.1994,6.8761 16.3166,6.6936 15.6761,6.6747 C14.0535,6.5243 12.4844,7.716 11.6574,7.716 C10.8185,7.716 9.5219,6.6935 8.1644,6.7243 C6.4269,6.7551 4.8012,7.716 3.9234,9.2457 C2.1152,12.3603 3.4646,17.0072 5.2,19.5467 C6.0705,20.797 7.0775,22.2118 8.3948,22.1615 C9.6834,22.1112 10.16,21.3003 11.7071,21.3003 C13.2432,21.3003 13.6911,22.1615 15.0274,22.1327 C16.4046,22.1112 17.2788,20.8642 18.1256,19.6026 C19.1199,18.1483 19.5678,16.7144 19.5869,16.6545 C19.5583,16.6449 17.601,15.8649 17.5646,12.6636 Z M15.0599,5.0066 C15.7748,4.1194 16.2611,2.9026 16.1067,1.6666 C15.063,1.7078 13.7649,2.3665 13.0214,3.2346 C12.3638,4.0024 11.7741,5.2577 11.9475,6.4745 C13.1104,6.5537 14.3259,5.8843 15.0599,5.0066 Z"></path>
                         </svg>
                         <span lang="en">Download on the App Store</span>
                         <span lang="es" class="hidden">Descargar en la App Store</span>
