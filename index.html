@@ -363,13 +363,17 @@
                 <img src="images/apple-touch-icon.png" alt="Bricks App Icon" class="desktop-app-banner-icon" />
                 <div class="desktop-app-banner-info">
                     <p class="desktop-app-banner-title">Bricks</p>
-                    <p class="desktop-app-banner-subtitle">Calculadora Hipotecaria</p>
+                    <p class="desktop-app-banner-subtitle">
+                        <span lang="en">Mortgage Calculator</span>
+                        <span lang="es" class="hidden">Calculadora Hipotecaria</span>
+                    </p>
                 </div>
             </div>
             <div>
-                <a href="https://apps.apple.com/app/id6744432658" target="_blank" class="desktop-app-banner-button"
-                    >Ver en App Store</a
-                >
+                <a href="https://apps.apple.com/app/id6744432658" target="_blank" class="desktop-app-banner-button">
+                    <span lang="en">Go to App Store</span>
+                    <span lang="es" class="hidden">Ver en App Store</span>
+                </a>
                 <button id="desktop-app-banner-close" class="desktop-app-banner-close">×</button>
             </div>
         </div>
@@ -408,13 +412,13 @@
             class="fixed bottom-0 left-0 right-0 bg-gray-800 text-white p-4 z-50 flex flex-col sm:flex-row justify-between items-center gap-4">
             <div>
                 <p class="text-sm">
-                    <span lang="es"
-                        >Usamos cookies para analizar el uso del sitio y mejorar su experiencia. ¿Nos permite recopilar
-                        datos anónimos de uso?</span
-                    >
-                    <span lang="en" class="hidden"
+                    <span lang="en"
                         >We use cookies to analyze site usage and improve your experience. May we collect anonymous
                         usage data?</span
+                    >
+                    <span lang="es" class="hidden"
+                        >Usamos cookies para analizar el uso del sitio y mejorar su experiencia. ¿Nos permite recopilar
+                        datos anónimos de uso?</span
                     >
                 </p>
             </div>
@@ -422,12 +426,12 @@
                 <button
                     onclick="updateConsent('denied')"
                     class="btn btn-outline text-black border-white text-xs px-8 py-1 whitespace-nowrap">
-                    <span lang="es">Rechazar</span>
-                    <span lang="en" class="hidden">Decline</span>
+                    <span lang="en">Decline</span>
+                    <span lang="es" class="hidden">Rechazar</span>
                 </button>
                 <button onclick="updateConsent('granted')" class="btn btn-primary text-xs px-8 py-1 whitespace-nowrap">
-                    <span lang="es">Aceptar</span>
-                    <span lang="en" class="hidden">Accept</span>
+                    <span lang="en">Accept</span>
+                    <span lang="es" class="hidden">Aceptar</span>
                 </button>
             </div>
         </div>
