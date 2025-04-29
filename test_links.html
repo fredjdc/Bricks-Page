@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Promoted In-App Purchases</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .button {
+            display: block;
+            background-color: #007AFF;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            margin: 20px 0;
+            text-align: center;
+            font-weight: 500;
+        }
+        h1 {
+            color: #1D1D1F;
+            font-size: 24px;
+            text-align: center;
+        }
+        .description {
+            color: #86868B;
+            margin: 10px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bricks App - Test Promoted Purchases</h1>
+    <p class="description">Click the links below to test promoted in-app purchases</p>
+    
+    <a href="itms-services://?action=purchaseIntent&bundleId=com.bricks.bricksapp&productIdentifier=flexplan01" class="button">
+        Monthly Plan (Flex Plan)
+    </a>
+    
+    <a href="itms-services://?action=purchaseIntent&bundleId=com.bricks.bricksapp&productIdentifier=moneywise01" class="button">
+        Yearly Plan (Money Wise)
+    </a>
+</body>
+</html> 
