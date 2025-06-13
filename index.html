@@ -1690,10 +1690,11 @@
                     </p>
                 </div>
 
-                <div class="mt-12 carousel-container snap-x overflow-x-auto scrollbar-hide">
-                    <div id="screenshot-carousel" class="flex space-x-4 py-4">
+                <div class="mt-12">
+                    <div id="screenshot-carousel" class="relative overflow-hidden">
+                        <div id="carousel-track" class="flex transition-transform duration-500 ease-in-out">
                         <div
-                            class="snap-center flex-shrink-0 w-80 md:w-96 rounded-xl overflow-hidden shadow-soft-lg hover-lift">
+                            class="flex-shrink-0 w-80 md:w-96 rounded-xl overflow-hidden shadow-soft-lg hover-lift mx-2">
                             <img
                                 lang="en"
                                 src="images/carousel/bricks-en-us-01.jpg"
@@ -1709,7 +1710,7 @@
                         </div>
 
                         <div
-                            class="snap-center flex-shrink-0 w-80 md:w-96 rounded-xl overflow-hidden shadow-soft-lg hover-lift">
+                            class="flex-shrink-0 w-80 md:w-96 rounded-xl overflow-hidden shadow-soft-lg hover-lift mx-2">
                             <img
                                 lang="en"
                                 src="images/carousel/bricks-en-us-02.jpg"
@@ -1725,7 +1726,7 @@
                         </div>
 
                         <div
-                            class="snap-center flex-shrink-0 w-80 md:w-96 rounded-xl overflow-hidden shadow-soft-lg hover-lift">
+                            class="flex-shrink-0 w-80 md:w-96 rounded-xl overflow-hidden shadow-soft-lg hover-lift mx-2">
                             <img
                                 lang="en"
                                 src="images/carousel/bricks-en-us-03.jpg"
@@ -1741,7 +1742,7 @@
                         </div>
 
                         <div
-                            class="snap-center flex-shrink-0 w-80 md:w-96 rounded-xl overflow-hidden shadow-soft-lg hover-lift">
+                            class="flex-shrink-0 w-80 md:w-96 rounded-xl overflow-hidden shadow-soft-lg hover-lift mx-2">
                             <img
                                 lang="en"
                                 src="images/carousel/bricks-en-us-04.jpg"
@@ -1757,7 +1758,7 @@
                         </div>
 
                         <div
-                            class="snap-center flex-shrink-0 w-80 md:w-96 rounded-xl overflow-hidden shadow-soft-lg hover-lift">
+                            class="flex-shrink-0 w-80 md:w-96 rounded-xl overflow-hidden shadow-soft-lg hover-lift mx-2">
                             <img
                                 lang="en"
                                 src="images/carousel/bricks-en-us-05.jpg"
@@ -1773,7 +1774,7 @@
                         </div>
 
                         <div
-                            class="snap-center flex-shrink-0 w-80 md:w-96 rounded-xl overflow-hidden shadow-soft-lg hover-lift">
+                            class="flex-shrink-0 w-80 md:w-96 rounded-xl overflow-hidden shadow-soft-lg hover-lift mx-2">
                             <img
                                 lang="en"
                                 src="images/carousel/bricks-en-us-06.jpg"
@@ -1789,7 +1790,7 @@
                         </div>
 
                         <div
-                            class="snap-center flex-shrink-0 w-80 md:w-96 rounded-xl overflow-hidden shadow-soft-lg hover-lift">
+                            class="flex-shrink-0 w-80 md:w-96 rounded-xl overflow-hidden shadow-soft-lg hover-lift mx-2">
                             <img
                                 lang="en"
                                 src="images/carousel/bricks-en-us-07.jpg"
@@ -1805,7 +1806,7 @@
                         </div>
 
                         <div
-                            class="snap-center flex-shrink-0 w-80 md:w-96 rounded-xl overflow-hidden shadow-soft-lg hover-lift">
+                            class="flex-shrink-0 w-80 md:w-96 rounded-xl overflow-hidden shadow-soft-lg hover-lift mx-2">
                             <img
                                 lang="en"
                                 src="images/carousel/bricks-en-us-08.jpg"
@@ -1819,58 +1820,52 @@
                                 class="w-full hidden"
                                 loading="lazy" />
                         </div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="flex justify-center mt-8">
                     <p class="text-sm text-slate-500 italic">
-                        <span lang="en">Swipe or drag to see more screenshots</span>
-                        <span lang="es" class="hidden">Desliza o arrastra para ver más capturas de pantalla</span>
+                        <span lang="en">Screenshots auto-scroll - hover to pause</span>
+                        <span lang="es" class="hidden">Las capturas se desplazan automáticamente - pasa el mouse para pausar</span>
                     </p>
                 </div>
             </div>
 
             <script>
                 document.addEventListener("DOMContentLoaded", function () {
-                    const carousel = document.getElementById("screenshot-carousel");
-                    const slides = carousel.children;
+                    const carouselTrack = document.getElementById("carousel-track");
+                    const slides = carouselTrack.children;
+                    const slideWidth = 336; // w-80 = 320px + mx-2 = 16px = 336px total
                     let currentIndex = 0;
-
-                    // Clone first slide and append to end for smooth looping
-                    const firstSlideClone = slides[0].cloneNode(true);
-                    carousel.appendChild(firstSlideClone);
+                    let autoScrollInterval;
 
                     function nextSlide() {
-                        currentIndex++;
+                        currentIndex = (currentIndex + 1) % slides.length;
+                        const translateX = -currentIndex * slideWidth;
+                        carouselTrack.style.transform = `translateX(${translateX}px)`;
+                    }
 
-                        // Smooth transition
-                        carousel.style.transition = "transform 0.5s ease-in-out";
-                        carousel.style.transform = `translateX(-${currentIndex * (slides[0].offsetWidth + 16)}px)`;
+                    function startAutoScroll() {
+                        autoScrollInterval = setInterval(nextSlide, 3000);
+                    }
 
-                        // If reached the cloned first slide, reset to actual first slide without animation
-                        if (currentIndex >= slides.length - 1) {
-                            setTimeout(() => {
-                                carousel.style.transition = "none";
-                                carousel.style.transform = "translateX(0)";
-                                currentIndex = 0;
-                            }, 500);
+                    function stopAutoScroll() {
+                        if (autoScrollInterval) {
+                            clearInterval(autoScrollInterval);
                         }
                     }
 
-                    // Auto scroll every 3 seconds
-                    const interval = setInterval(nextSlide, 3000);
+                    // Start auto-scroll
+                    startAutoScroll();
 
-                    // Pause auto-scroll when user interacts with carousel
-                    carousel.addEventListener("mouseenter", () => clearInterval(interval));
-                    carousel.addEventListener("touchstart", () => clearInterval(interval), { passive: true });
-
-                    // Resume auto-scroll when user stops interacting
-                    carousel.addEventListener("mouseleave", () => {
-                        clearInterval(interval);
-                        setInterval(nextSlide, 3000);
-                    });
-
-
+                    // Pause on hover/touch
+                    carouselTrack.parentElement.addEventListener("mouseenter", stopAutoScroll);
+                    carouselTrack.parentElement.addEventListener("mouseleave", startAutoScroll);
+                    carouselTrack.parentElement.addEventListener("touchstart", stopAutoScroll, { passive: true });
+                    carouselTrack.parentElement.addEventListener("touchend", () => {
+                        setTimeout(startAutoScroll, 1000); // Resume after 1 second
+                    }, { passive: true });
                 });
             </script>
         </section>
