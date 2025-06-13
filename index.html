@@ -277,7 +277,6 @@
                 position: relative;
                 overflow-x: auto;
                 scroll-behavior: smooth;
-                cursor: grab;
                 -webkit-overflow-scrolling: touch;
                 scrollbar-width: none;
                 -ms-overflow-style: none;
@@ -285,14 +284,6 @@
 
             .carousel-container::-webkit-scrollbar {
                 display: none;
-            }
-
-            .carousel-container:active {
-                cursor: grabbing;
-            }
-
-            .carousel-container.active {
-                scroll-snap-type: none;
             }
 
             .snap-x {
@@ -1879,32 +1870,7 @@
                         setInterval(nextSlide, 3000);
                     });
 
-                    // Allow manual scrolling
-                    let isDown = false;
-                    let startX;
-                    let scrollLeft;
 
-                    carousel.parentElement.addEventListener("mousedown", (e) => {
-                        isDown = true;
-                        startX = e.pageX - carousel.parentElement.offsetLeft;
-                        scrollLeft = carousel.parentElement.scrollLeft;
-                    });
-
-                    carousel.parentElement.addEventListener("mouseleave", () => {
-                        isDown = false;
-                    });
-
-                    carousel.parentElement.addEventListener("mouseup", () => {
-                        isDown = false;
-                    });
-
-                    carousel.parentElement.addEventListener("mousemove", (e) => {
-                        if (!isDown) return;
-                        e.preventDefault();
-                        const x = e.pageX - carousel.parentElement.offsetLeft;
-                        const walk = (x - startX) * 2; // Scroll speed multiplier
-                        carousel.parentElement.scrollLeft = scrollLeft - walk;
-                    });
                 });
             </script>
         </section>
