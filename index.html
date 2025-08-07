@@ -1692,134 +1692,145 @@
 
                 <div class="mt-12">
                     <div id="screenshot-carousel" class="relative overflow-hidden">
+                        <!-- Navigation Buttons -->
+                        <button id="carousel-prev" class="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-slate-700 hover:text-slate-900 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-200 backdrop-blur-sm">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                            </svg>
+                        </button>
+                        <button id="carousel-next" class="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-slate-700 hover:text-slate-900 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-200 backdrop-blur-sm">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
                         <div id="carousel-track" class="flex transition-transform duration-500 ease-in-out">
-                        <div
-                            class="flex-shrink-0 w-80 md:w-96 rounded-xl overflow-hidden shadow-soft-lg hover-lift mx-2">
-                            <img
-                                lang="en"
-                                src="images/carousel/bricks-en-us-01.jpg"
-                                alt="Bricks app mortgage calculator main interface"
-                                class="w-full"
-                                loading="lazy" />
-                            <img
-                                lang="es"
-                                src="images/carousel/bricks-es-pe-01.jpg"
-                                alt="Bricks app mortgage calculator main interface"
-                                class="w-full hidden"
-                                loading="lazy" />
-                        </div>
+                            <div
+                                class="flex-shrink-0 w-80 md:w-96 rounded-xl overflow-hidden shadow-soft-lg hover-lift mx-2">
+                                <img
+                                    lang="en"
+                                    src="images/carousel/bricks-en-us-01.jpg"
+                                    alt="Bricks app mortgage calculator main interface"
+                                    class="w-full"
+                                    loading="lazy" />
+                                <img
+                                    lang="es"
+                                    src="images/carousel/bricks-es-pe-01.jpg"
+                                    alt="Bricks app mortgage calculator main interface"
+                                    class="w-full hidden"
+                                    loading="lazy" />
+                            </div>
 
-                        <div
-                            class="flex-shrink-0 w-80 md:w-96 rounded-xl overflow-hidden shadow-soft-lg hover-lift mx-2">
-                            <img
-                                lang="en"
-                                src="images/carousel/bricks-en-us-02.jpg"
-                                alt="Bricks app mortgage calculator main interface"
-                                class="w-full"
-                                loading="lazy" />
-                            <img
-                                lang="es"
-                                src="images/carousel/bricks-es-pe-02.jpg"
-                                alt="Bricks app mortgage calculator main interface"
-                                class="w-full hidden"
-                                loading="lazy" />
-                        </div>
+                            <div
+                                class="flex-shrink-0 w-80 md:w-96 rounded-xl overflow-hidden shadow-soft-lg hover-lift mx-2">
+                                <img
+                                    lang="en"
+                                    src="images/carousel/bricks-en-us-02.jpg"
+                                    alt="Bricks app mortgage calculator main interface"
+                                    class="w-full"
+                                    loading="lazy" />
+                                <img
+                                    lang="es"
+                                    src="images/carousel/bricks-es-pe-02.jpg"
+                                    alt="Bricks app mortgage calculator main interface"
+                                    class="w-full hidden"
+                                    loading="lazy" />
+                            </div>
 
-                        <div
-                            class="flex-shrink-0 w-80 md:w-96 rounded-xl overflow-hidden shadow-soft-lg hover-lift mx-2">
-                            <img
-                                lang="en"
-                                src="images/carousel/bricks-en-us-03.jpg"
-                                alt="Bricks app mortgage calculator main interface"
-                                class="w-full"
-                                loading="lazy" />
-                            <img
-                                lang="es"
-                                src="images/carousel/bricks-es-pe-03.jpg"
-                                alt="Bricks app mortgage calculator main interface"
-                                class="w-full hidden"
-                                loading="lazy" />
-                        </div>
+                            <div
+                                class="flex-shrink-0 w-80 md:w-96 rounded-xl overflow-hidden shadow-soft-lg hover-lift mx-2">
+                                <img
+                                    lang="en"
+                                    src="images/carousel/bricks-en-us-03.jpg"
+                                    alt="Bricks app mortgage calculator main interface"
+                                    class="w-full"
+                                    loading="lazy" />
+                                <img
+                                    lang="es"
+                                    src="images/carousel/bricks-es-pe-03.jpg"
+                                    alt="Bricks app mortgage calculator main interface"
+                                    class="w-full hidden"
+                                    loading="lazy" />
+                            </div>
 
-                        <div
-                            class="flex-shrink-0 w-80 md:w-96 rounded-xl overflow-hidden shadow-soft-lg hover-lift mx-2">
-                            <img
-                                lang="en"
-                                src="images/carousel/bricks-en-us-04.jpg"
-                                alt="Bricks app mortgage calculator main interface"
-                                class="w-full"
-                                loading="lazy" />
-                            <img
-                                lang="es"
-                                src="images/carousel/bricks-es-pe-04.jpg"
-                                alt="Bricks app mortgage calculator main interface"
-                                class="w-full hidden"
-                                loading="lazy" />
-                        </div>
+                            <div
+                                class="flex-shrink-0 w-80 md:w-96 rounded-xl overflow-hidden shadow-soft-lg hover-lift mx-2">
+                                <img
+                                    lang="en"
+                                    src="images/carousel/bricks-en-us-04.jpg"
+                                    alt="Bricks app mortgage calculator main interface"
+                                    class="w-full"
+                                    loading="lazy" />
+                                <img
+                                    lang="es"
+                                    src="images/carousel/bricks-es-pe-04.jpg"
+                                    alt="Bricks app mortgage calculator main interface"
+                                    class="w-full hidden"
+                                    loading="lazy" />
+                            </div>
 
-                        <div
-                            class="flex-shrink-0 w-80 md:w-96 rounded-xl overflow-hidden shadow-soft-lg hover-lift mx-2">
-                            <img
-                                lang="en"
-                                src="images/carousel/bricks-en-us-05.jpg"
-                                alt="Bricks app mortgage calculator main interface"
-                                class="w-full"
-                                loading="lazy" />
-                            <img
-                                lang="es"
-                                src="images/carousel/bricks-es-pe-05.jpg"
-                                alt="Bricks app mortgage calculator main interface"
-                                class="w-full hidden"
-                                loading="lazy" />
-                        </div>
+                            <div
+                                class="flex-shrink-0 w-80 md:w-96 rounded-xl overflow-hidden shadow-soft-lg hover-lift mx-2">
+                                <img
+                                    lang="en"
+                                    src="images/carousel/bricks-en-us-05.jpg"
+                                    alt="Bricks app mortgage calculator main interface"
+                                    class="w-full"
+                                    loading="lazy" />
+                                <img
+                                    lang="es"
+                                    src="images/carousel/bricks-es-pe-05.jpg"
+                                    alt="Bricks app mortgage calculator main interface"
+                                    class="w-full hidden"
+                                    loading="lazy" />
+                            </div>
 
-                        <div
-                            class="flex-shrink-0 w-80 md:w-96 rounded-xl overflow-hidden shadow-soft-lg hover-lift mx-2">
-                            <img
-                                lang="en"
-                                src="images/carousel/bricks-en-us-06.jpg"
-                                alt="Bricks app mortgage calculator main interface"
-                                class="w-full"
-                                loading="lazy" />
-                            <img
-                                lang="es"
-                                src="images/carousel/bricks-es-pe-06.jpg"
-                                alt="Bricks app mortgage calculator main interface"
-                                class="w-full hidden"
-                                loading="lazy" />
-                        </div>
+                            <div
+                                class="flex-shrink-0 w-80 md:w-96 rounded-xl overflow-hidden shadow-soft-lg hover-lift mx-2">
+                                <img
+                                    lang="en"
+                                    src="images/carousel/bricks-en-us-06.jpg"
+                                    alt="Bricks app mortgage calculator main interface"
+                                    class="w-full"
+                                    loading="lazy" />
+                                <img
+                                    lang="es"
+                                    src="images/carousel/bricks-es-pe-06.jpg"
+                                    alt="Bricks app mortgage calculator main interface"
+                                    class="w-full hidden"
+                                    loading="lazy" />
+                            </div>
 
-                        <div
-                            class="flex-shrink-0 w-80 md:w-96 rounded-xl overflow-hidden shadow-soft-lg hover-lift mx-2">
-                            <img
-                                lang="en"
-                                src="images/carousel/bricks-en-us-07.jpg"
-                                alt="Bricks app mortgage calculator main interface"
-                                class="w-full"
-                                loading="lazy" />
-                            <img
-                                lang="es"
-                                src="images/carousel/bricks-es-pe-07.jpg"
-                                alt="Bricks app mortgage calculator main interface"
-                                class="w-full hidden"
-                                loading="lazy" />
-                        </div>
+                            <div
+                                class="flex-shrink-0 w-80 md:w-96 rounded-xl overflow-hidden shadow-soft-lg hover-lift mx-2">
+                                <img
+                                    lang="en"
+                                    src="images/carousel/bricks-en-us-07.jpg"
+                                    alt="Bricks app mortgage calculator main interface"
+                                    class="w-full"
+                                    loading="lazy" />
+                                <img
+                                    lang="es"
+                                    src="images/carousel/bricks-es-pe-07.jpg"
+                                    alt="Bricks app mortgage calculator main interface"
+                                    class="w-full hidden"
+                                    loading="lazy" />
+                            </div>
 
-                        <div
-                            class="flex-shrink-0 w-80 md:w-96 rounded-xl overflow-hidden shadow-soft-lg hover-lift mx-2">
-                            <img
-                                lang="en"
-                                src="images/carousel/bricks-en-us-08.jpg"
-                                alt="Bricks app mortgage calculator main interface"
-                                class="w-full"
-                                loading="lazy" />
-                            <img
-                                lang="es"
-                                src="images/carousel/bricks-es-pe-08.jpg"
-                                alt="Bricks app mortgage calculator main interface"
-                                class="w-full hidden"
-                                loading="lazy" />
-                        </div>
+                            <div
+                                class="flex-shrink-0 w-80 md:w-96 rounded-xl overflow-hidden shadow-soft-lg hover-lift mx-2">
+                                <img
+                                    lang="en"
+                                    src="images/carousel/bricks-en-us-08.jpg"
+                                    alt="Bricks app mortgage calculator main interface"
+                                    class="w-full"
+                                    loading="lazy" />
+                                <img
+                                    lang="es"
+                                    src="images/carousel/bricks-es-pe-08.jpg"
+                                    alt="Bricks app mortgage calculator main interface"
+                                    class="w-full hidden"
+                                    loading="lazy" />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1827,7 +1838,9 @@
                 <div class="flex justify-center mt-8">
                     <p class="text-sm text-slate-500 italic">
                         <span lang="en">Screenshots auto-scroll - hover to pause</span>
-                        <span lang="es" class="hidden">Las capturas se desplazan automáticamente - pasa el mouse para pausar</span>
+                        <span lang="es" class="hidden"
+                            >Las capturas se desplazan automáticamente - pasa el mouse para pausar</span
+                        >
                     </p>
                 </div>
             </div>
@@ -1835,15 +1848,26 @@
             <script>
                 document.addEventListener("DOMContentLoaded", function () {
                     const carouselTrack = document.getElementById("carousel-track");
+                    const prevButton = document.getElementById("carousel-prev");
+                    const nextButton = document.getElementById("carousel-next");
                     const slides = carouselTrack.children;
                     const slideWidth = 336; // w-80 = 320px + mx-2 = 16px = 336px total
                     let currentIndex = 0;
                     let autoScrollInterval;
 
-                    function nextSlide() {
-                        currentIndex = (currentIndex + 1) % slides.length;
+                    function updateCarousel() {
                         const translateX = -currentIndex * slideWidth;
                         carouselTrack.style.transform = `translateX(${translateX}px)`;
+                    }
+
+                    function nextSlide() {
+                        currentIndex = (currentIndex + 1) % slides.length;
+                        updateCarousel();
+                    }
+
+                    function prevSlide() {
+                        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                        updateCarousel();
                     }
 
                     function startAutoScroll() {
@@ -1856,6 +1880,21 @@
                         }
                     }
 
+                    // Manual navigation event listeners
+                    prevButton.addEventListener("click", () => {
+                        stopAutoScroll();
+                        prevSlide();
+                        // Resume auto-scroll after manual interaction
+                        setTimeout(startAutoScroll, 5000);
+                    });
+
+                    nextButton.addEventListener("click", () => {
+                        stopAutoScroll();
+                        nextSlide();
+                        // Resume auto-scroll after manual interaction
+                        setTimeout(startAutoScroll, 5000);
+                    });
+
                     // Start auto-scroll
                     startAutoScroll();
 
@@ -1863,9 +1902,13 @@
                     carouselTrack.parentElement.addEventListener("mouseenter", stopAutoScroll);
                     carouselTrack.parentElement.addEventListener("mouseleave", startAutoScroll);
                     carouselTrack.parentElement.addEventListener("touchstart", stopAutoScroll, { passive: true });
-                    carouselTrack.parentElement.addEventListener("touchend", () => {
-                        setTimeout(startAutoScroll, 1000); // Resume after 1 second
-                    }, { passive: true });
+                    carouselTrack.parentElement.addEventListener(
+                        "touchend",
+                        () => {
+                            setTimeout(startAutoScroll, 1000); // Resume after 1 second
+                        },
+                        { passive: true }
+                    );
                 });
             </script>
         </section>
@@ -2202,19 +2245,32 @@
                     </h2>
                     <p class="mt-4 text-lg text-slate-600 max-w-3xl mx-auto">
                         <span lang="en">We develop great tools for the real estate industry</span>
-                        <span lang="es" class="hidden">Desarrollamos excelentes herramientas para la industria inmobiliaria</span>
+                        <span lang="es" class="hidden"
+                            >Desarrollamos excelentes herramientas para la industria inmobiliaria</span
+                        >
                     </p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                     <!-- Bricks Leads App -->
                     <div class="group">
-                        <a href="https://leads.bricks.pe" target="_blank" rel="noopener noreferrer" 
-                           class="block rounded-2xl border bg-background p-6 transition-all duration-300 hover:shadow-lg hover:scale-105">
+                        <a
+                            href="https://leads.bricks.pe"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="block rounded-2xl border bg-background p-6 transition-all duration-300 hover:shadow-lg hover:scale-105">
                             <div class="flex items-center justify-center mb-4">
                                 <div class="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center">
-                                    <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                    <svg
+                                        class="w-8 h-8 text-blue-600"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
                                     </svg>
                                 </div>
                             </div>
@@ -2224,7 +2280,7 @@
                             </h3>
                             <p class="text-slate-600 text-center text-sm">
                                 <span lang="en">Capture, manage and organize your real estate business easily</span>
-                                <span lang="es" class="hidden">Capta, gestiona y organiza fácilmente tu negocio inmobiliario</span>
+                                <span lang="es" class="hidden">Capta, gestiona y organiza fácilmente tu negocio</span>
                             </p>
                             <div class="mt-4 text-center">
                                 <span class="text-blue-600 text-sm font-medium group-hover:underline">
@@ -2237,11 +2293,21 @@
 
                     <!-- Bricks Calculator App -->
                     <div class="group">
-                        <a href="#top" class="block rounded-2xl border bg-background p-6 transition-all duration-300 hover:shadow-lg hover:scale-105">
+                        <a
+                            href="#top"
+                            class="block rounded-2xl border bg-background p-6 transition-all duration-300 hover:shadow-lg hover:scale-105">
                             <div class="flex items-center justify-center mb-4">
                                 <div class="w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center">
-                                    <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                                    <svg
+                                        class="w-8 h-8 text-green-600"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
                                     </svg>
                                 </div>
                             </div>
@@ -2251,7 +2317,9 @@
                             </h3>
                             <p class="text-slate-600 text-center text-sm">
                                 <span lang="en">Simple, beautiful and accessible mortgage calculations</span>
-                                <span lang="es" class="hidden">Cálculos hipotecarios simples, hermosos y accesibles</span>
+                                <span lang="es" class="hidden"
+                                    >Cálculos hipotecarios simples, hermosos y accesibles</span
+                                >
                             </p>
                             <div class="mt-4 text-center">
                                 <span class="text-green-600 text-sm font-medium group-hover:underline">
