@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Disallow admin or private areas
+Disallow: /admin/
+Disallow: /private/
+Disallow: /.git/
+Disallow: /.github/
+
+# Allow important files
+Allow: /sitemap.xml
+Allow: /favicon.ico
+Allow: /site.webmanifest
+
+# Sitemap location
+Sitemap: https://bricks.pe/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
