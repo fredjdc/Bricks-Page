@@ -102,81 +102,20 @@
         <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16" />
         <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
         <link rel="manifest" href="site.webmanifest" />
-        <meta name="theme-color" content="#007AFF" />
+        <meta name="theme-color" content="#1E40AF" />
 
         <!-- Tailwind CSS via CDN -->
         <script src="https://cdn.tailwindcss.com"></script>
         <script>
             tailwind.config = {
                 theme: {
-                    container: {
-                        center: true,
-                        padding: "1rem",
-                        screens: {
-                            DEFAULT: "100%",
-                            sm: "640px",
-                            md: "768px",
-                            lg: "1024px",
-                            xl: "1200px",
-                            "2xl": "1200px"
-                        }
-                    },
                     extend: {
                         colors: {
-                            border: "hsl(240 5.9% 90%)",
-                            input: "hsl(240 5.9% 90%)",
-                            ring: "hsl(240 5% 64.9%)",
-                            background: "hsl(0 0% 100%)",
-                            foreground: "hsl(240 10% 3.9%)",
-                            primary: {
-                                DEFAULT: "hsl(240 5.9% 10%)",
-                                foreground: "hsl(0 0% 98%)"
-                            },
-                            secondary: {
-                                DEFAULT: "hsl(240 4.8% 95.9%)",
-                                foreground: "hsl(240 5.9% 10%)"
-                            },
-                            destructive: {
-                                DEFAULT: "hsl(0 84.2% 60.2%)",
-                                foreground: "hsl(0 0% 98%)"
-                            },
-                            muted: {
-                                DEFAULT: "hsl(240 4.8% 95.9%)",
-                                foreground: "hsl(240 3.8% 46.1%)"
-                            },
-                            accent: {
-                                DEFAULT: "hsl(240 4.8% 95.9%)",
-                                foreground: "hsl(240 5.9% 10%)"
-                            },
-                            popover: {
-                                DEFAULT: "hsl(0 0% 100%)",
-                                foreground: "hsl(240 10% 3.9%)"
-                            },
-                            card: {
-                                DEFAULT: "hsl(0 0% 100%)",
-                                foreground: "hsl(240 10% 3.9%)"
-                            },
-                            brand: {
-                                DEFAULT: "#007AFF",
-                                foreground: "hsl(0 0% 98%)"
-                            },
-                            success: {
-                                DEFAULT: "#34C85A",
-                                foreground: "hsl(0 0% 98%)"
-                            }
-                        },
-                        borderRadius: {
-                            lg: "var(--radius)",
-                            md: "calc(var(--radius) - 2px)",
-                            sm: "calc(var(--radius) - 4px)"
+                            'bricks-blue': '#1E40AF',
+                            'bricks-yellow': '#FFCC00',
                         },
                         fontFamily: {
                             sans: ["Inter", "sans-serif"]
-                        },
-                        boxShadow: {
-                            "soft-md": "0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)",
-                            "soft-lg": "0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02)",
-                            "soft-xl": "0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.01)"
                         }
                     }
                 }
@@ -243,177 +182,70 @@
             });
         </script>
 
-        <style type="text/tailwindcss">
-            @layer base {
-                :root {
-                    --radius: 0.5rem;
-                }
-
-                body {
-                    @apply bg-background text-foreground font-sans antialiased;
-                }
-            }
-
-            @layer utilities {
-                .animation-delay-2000 {
-                    animation-delay: 2s;
-                }
-                .animation-delay-4000 {
-                    animation-delay: 4s;
-                }
-            }
-
-            /* Animations */
-            .animate-on-scroll {
-                opacity: 0;
-                transform: translateY(20px);
-                transition:
-                    opacity 0.6s ease-out,
-                    transform 0.6s ease-out;
-            }
-
-            .animate-in {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-            .animate-in.animate-float {
-                animation: float 2s ease-in-out infinite;
-            }
-
-            @keyframes float {
-                0% {
-                    transform: translateY(0);
-                }
-                50% {
-                    transform: translateY(-10px);
-                }
-                100% {
-                    transform: translateY(0);
-                }
-            }
-
-            /* Buttons */
-            .btn {
-                @apply inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50;
-            }
-
-            .btn-primary {
-                @apply bg-brand text-brand-foreground shadow hover:bg-brand/90;
-            }
-
-            .btn-secondary {
-                @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
-            }
-
-            .btn-outline {
-                @apply border border-input bg-background hover:bg-accent hover:text-accent-foreground;
-            }
-
-            .btn-ghost {
-                @apply hover:bg-accent hover:text-accent-foreground;
-            }
-
-            /* Card styles */
-            .card {
-                @apply rounded-lg border bg-card text-card-foreground shadow;
-            }
-
-            .card-header {
-                @apply flex flex-col space-y-1.5 p-6;
-            }
-
-            .card-title {
-                @apply font-semibold leading-none tracking-tight;
-            }
-
-            .card-description {
-                @apply text-sm text-muted-foreground;
-            }
-
-            .card-content {
-                @apply p-6 pt-0;
-            }
-
-            .card-footer {
-                @apply flex items-center p-6 pt-0;
-            }
-
-            /* Carousel styles */
-            .carousel-container {
-                width: 100%;
-                position: relative;
-                overflow-x: auto;
-                scroll-behavior: smooth;
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: none;
-                -ms-overflow-style: none;
-            }
-
-            .carousel-container::-webkit-scrollbar {
-                display: none;
-            }
-
-            .snap-x {
-                scroll-snap-type: x mandatory;
-            }
-
-            .snap-center {
-                scroll-snap-align: center;
-            }
-
-            /* Hover effects */
-            .hover-lift {
-                @apply transition-transform duration-300 hover:-translate-y-1;
-            }
-        </style>
-
         <style>
-            /* Prevent FOUC (Flash of Unstyled Content) */
-            .hero-image {
-                opacity: 0;
-                transition: opacity 0.3s ease-out;
-            }
-
-            /* Add critical base styles that shouldn't wait for Tailwind */
-            body {
+                body {
                 font-family: "Inter", sans-serif;
-                background-color: #ffffff;
-                color: #111112;
+                background-color: #1E40AF;
+                color: white;
                 margin: 0;
                 padding: 0;
             }
 
-            /* Basic header styling to prevent layout shifts */
-            header {
-                position: sticky;
-                top: 0;
-                z-index: 50;
-                width: 100%;
-                border-bottom: 1px solid #e5e7eb;
-                background-color: rgba(255, 255, 255, 0.95);
+            /* Glass background effect for navigation */
+            .glass-nav {
+                background: rgba(30, 64, 175, 0.8);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
             }
 
-            .container {
-                max-width: 1200px;
-                margin: 0 auto;
-                padding: 0 1rem;
+            /* Floating animation for hero image */
+            @keyframes float {
+                0%, 100% { transform: translateY(0px); }
+                50% { transform: translateY(-10px); }
+            }
+
+            .float-animation {
+                animation: float 3s ease-in-out infinite;
+            }
+
+            /* App screenshot shadows */
+            .app-shadow {
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            }
+
+            /* Custom button styles */
+            .btn-yellow {
+                background-color: #FFCC00;
+                color: #1E40AF;
+                font-weight: 600;
+                padding: 12px 24px;
+                border-radius: 24px;
+                text-decoration: none;
+                display: inline-block;
+                transition: all 0.3s ease;
+            }
+
+            .btn-yellow:hover {
+                background-color: #E6B800;
+                transform: translateY(-2px);
+            }
+
+            .btn-black {
+                background-color: #000000;
+                color: white;
+                font-weight: 600;
+                padding: 12px 24px;
+                border-radius: 24px;
+                text-decoration: none;
+                display: inline-block;
+                transition: all 0.3s ease;
+            }
+
+            .btn-black:hover {
+                background-color: #333333;
+                transform: translateY(-2px);
             }
         </style>
-
-        <script>
-            // Ensure DOM is loaded before running any scripts
-            document.addEventListener("DOMContentLoaded", function () {
-                // Initialize elements and observers as soon as DOM is ready
-                if (typeof initializeElements === "function") {
-                    initializeElements();
-                }
-
-                if (typeof setupIntersectionObserver === "function") {
-                    setupIntersectionObserver();
-                }
-            });
-        </script>
     </head>
     <body class="min-h-screen">
         <!-- Desktop App Banner (only shown on desktop browsers) -->
@@ -495,1321 +327,269 @@
             </div>
         </div>
 
-        <!-- Breadcrumb Navigation -->
-        <nav aria-label="Breadcrumb" class="bg-slate-50 py-2 px-4">
-            <div class="container">
-                <ol class="flex items-center space-x-2 text-sm text-slate-600">
-                    <li><a href="" class="hover:text-brand">Inicio</a></li>
-                    <li class="text-slate-400">/</li>
-                    <li class="text-slate-800 font-medium">Calculadora Hipotecaria</li>
-                </ol>
+        <!-- Navigation Bar with Glass Effect -->
+        <header class="glass-nav sticky top-0 z-50 w-full border-b border-white/20">
+            <div class="container mx-auto px-4 flex h-16 items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <img src="images/Bricks Logo.svg" alt="Bricks App" class="h-8" />
             </div>
-        </nav>
-
-        <!-- Navigation -->
-        <header
-            class="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-            <div class="container flex h-16 items-center">
-                <div class="mr-4 flex">
-                    <a href="#" class="mr-16 flex items-center space-x-2">
-                        <img src="images/bricks-logotype.svg" alt="Bricks Logo" class="h-6" />
-                    </a>
-                </div>
-
-                <div class="hidden md:flex md:flex-1 md:items-center md:justify-between">
-                    <nav class="flex items-center space-x-6 text-sm font-medium">
-                        <a href="#features" class="transition-colors hover:text-brand">
-                            <span lang="en">Features</span>
-                            <span lang="es" class="hidden">Características</span>
-                        </a>
-                        <a href="#for-buyers" class="transition-colors hover:text-brand">
-                            <span lang="en">For Buyers</span>
-                            <span lang="es" class="hidden">Para Compradores</span>
-                        </a>
-                        <a href="#for-pros" class="transition-colors hover:text-brand">
-                            <span lang="en">For Professionals</span>
-                            <span lang="es" class="hidden">Para Profesionales</span>
-                        </a>
-                        <a href="#pricing" class="transition-colors hover:text-brand">
-                            <span lang="en">Pricing</span>
-                            <span lang="es" class="hidden">Precios</span>
-                        </a>
-                        <a href="#faq" class="transition-colors hover:text-brand">
-                            <span lang="en">FAQ</span>
-                            <span lang="es" class="hidden">FAQ</span>
-                        </a>
-                    </nav>
-
-                    <!-- Language Selector -->
-                    <div class="relative" x-data="{ open: false }">
-                        <button
-                            @click="open = !open"
-                            class="inline-flex items-center justify-center whitespace-nowrap rounded-2xl text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2">
-                            <span class="material-symbols-outlined mr-1">language</span>
-                            <span id="current-language"></span>
-                            <svg
-                                class="ml-1 h-4 w-4"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 20 20"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path d="m6 9 4 4 4-4"></path>
-                            </svg>
-                        </button>
-                        <div
-                            x-show="open"
-                            @click.away="open = false"
-                            class="absolute right-0 mt-2 w-40 rounded-md border bg-popover text-popover-foreground shadow-md outline-none z-50">
-                            <div class="p-1">
-                                <a
-                                    href="#"
-                                    onclick="changeLanguage('en'); return false;"
-                                    class="relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none hover:bg-accent hover:text-accent-foreground"
-                                    >English</a
-                                >
-                                <a
-                                    href="#"
-                                    onclick="changeLanguage('es'); return false;"
-                                    class="relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none hover:bg-accent hover:text-accent-foreground"
-                                    >Español</a
-                                >
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="md:hidden ml-auto flex items-center">
-                    <button
-                        type="button"
-                        id="mobile-menu-button"
-                        class="inline-flex items-center justify-center rounded-md p-2 text-foreground hover:bg-accent hover:text-accent-foreground">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="h-6 w-6">
-                            <line x1="4" x2="20" y1="12" y2="12"></line>
-                            <line x1="4" x2="20" y1="6" y2="6"></line>
-                            <line x1="4" x2="20" y1="18" y2="18"></line>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Mobile menu -->
-            <div class="md:hidden hidden bg-background border-t" id="mobile-menu">
-                <div class="space-y-1 p-4">
-                    <a href="#features" class="block py-2 px-3 text-foreground hover:bg-accent rounded-md">
-                        <span lang="en">Features</span>
-                        <span lang="es" class="hidden">Características</span>
-                    </a>
-                    <a href="#for-buyers" class="block py-2 px-3 text-foreground hover:bg-accent rounded-md">
-                        <span lang="en">For Buyers</span>
-                        <span lang="es" class="hidden">Para Compradores</span>
-                    </a>
-                    <a href="#for-pros" class="block py-2 px-3 text-foreground hover:bg-accent rounded-md">
-                        <span lang="en">For Professionals</span>
-                        <span lang="es" class="hidden">Para Profesionales</span>
-                    </a>
-                    <a href="#pricing" class="block py-2 px-3 text-foreground hover:bg-accent rounded-md">
-                        <span lang="en">Pricing</span>
-                        <span lang="es" class="hidden">Precios</span>
-                    </a>
-                    <a href="#faq" class="block py-2 px-3 text-foreground hover:bg-accent rounded-md">
-                        <span lang="en">FAQ</span>
-                        <span lang="es" class="hidden">FAQ</span>
-                    </a>
-
-                    <!-- Mobile Language Selector -->
-                    <div class="pt-4 mt-3 border-t border-accent">
-                        <div class="px-3 mb-2 text-sm font-medium flex items-center">
-                            <span class="material-symbols-outlined mr-1">language</span>
-                        </div>
-                        <div class="grid grid-cols-2 gap-2">
-                            <button
-                                onclick="changeLanguage('en')"
-                                class="flex items-center justify-center whitespace-nowrap rounded-2xl text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 language-btn"
-                                data-lang="en">
-                                English
-                            </button>
-                            <button
-                                onclick="changeLanguage('es')"
-                                class="flex items-center justify-center whitespace-nowrap rounded-2xl text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 language-btn"
-                                data-lang="es">
-                                Español
-                            </button>
-                        </div>
-                    </div>
-                </div>
             </div>
         </header>
 
         <!-- Hero Section -->
-        <section class="relative py-12 md:py-32 overflow-hidden bg-gradient-to-b from-slate-50 to-white">
-            <div class="container px-4 md:px-6">
-                <div class="grid gap-12 md:grid-cols-2 md:gap-16 items-center">
-                    <div class="space-y-8">
-                        <div class="space-y-2 py-6">
-                            <h1 class="font-bold tracking-tighter text-4xl md:text-5xl lg:text-6xl">
-                                <span lang="en">Mortgage Decisions <span class="text-brand">Made Simple</span></span>
-                                <span lang="es" class="hidden"
-                                    >Decisiones Hipotecarias <span class="text-brand">Simplificadas</span></span
-                                >
+        <section class="hero-section pt-2 md:pt-16 relative overflow-hidden md:relative">
+            
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="grid md:grid-cols-2 gap-0 items-center mobile-centered-grid">
+                    <!-- Left Column - Text Content -->
+                    <div class="space-y-16 pb-8 max-w-2xl md:max-w-none lg:max-w-none">
+                        <div class="space-y-4">
+                            <h1 class="text font-bold text-xl md:text-xl lg:text-2xl">
+                                ¡Muy Pronto!
                             </h1>
-                            <p class="max-w-[600px] text-slate-700 md:text-xl">
-                                <span lang="en"
-                                    >Struggling with mortgage options? Bricks helps first-time buyers compare rates
-                                    visually and enables finance professionals to optimize workflows.</span
-                                >
-                                <span lang="es" class="hidden"
-                                    >¿Las hipotecas te confunden? Bricks te ayuda a comparar tasas fácilmente y hace que
-                                    el trabajo de los expertos financieros sea más eficiente.</span
-                                >
+                            <h2 class="text-white font-bold text-4xl md:text-4xl lg:text-4xl">
+                                Máximiza tu Productividad
+                            </h2>
+                            <p class="text-white/90 text-lg md:text-sm lg:text-xl">
+                                Captura, organiza y gestiona tu cartera inmobiliaria con la aplicación más innovadora diseñada especialmente para agentes en Perú.
                             </p>
                         </div>
 
-                        <ul class="space-y-2">
-                            <li class="flex items-start">
-                                <svg
-                                    class="h-5 w-5 text-success mr-2 mt-1"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path
-                                        fill-rule="evenodd"
-                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                                <span lang="en">Compare multiple loan options at once</span>
-                                <span lang="es" class="hidden">Compara múltiples préstamos a la vez</span>
-                            </li>
-                            <li class="flex items-start">
-                                <svg
-                                    class="h-5 w-5 text-success mr-2 mt-1"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path
-                                        fill-rule="evenodd"
-                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                                <span lang="en">Visualize total cost and monthly payments</span>
-                                <span lang="es" class="hidden">Visualiza el costo total y cuotas mensuales</span>
-                            </li>
-                            <li class="flex items-start">
-                                <svg
-                                    class="h-5 w-5 text-success mr-2 mt-1"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path
-                                        fill-rule="evenodd"
-                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                                <span lang="en">Estimate interest savings with different prepayment plans.</span>
-                                <span lang="es" class="hidden"
-                                    >Calcula cuánto ahorrarás en intereses con amortizaciones</span
-                                >
-                            </li>
-                            <li class="flex items-start">
-                                <svg
-                                    class="h-5 w-5 text-success mr-2 mt-1"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path
-                                        fill-rule="evenodd"
-                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                                <span lang="en">No financial expertise required</span>
-                                <span lang="es" class="hidden">No requieres experiencia financiera</span>
-                            </li>
-                            <li class="flex items-start">
-                                <svg
-                                    class="h-5 w-5 text-success mr-2 mt-1"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path
-                                        fill-rule="evenodd"
-                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                                <span lang="en">Everything just a swipe away: prepay, share, review</span>
-                                <span lang="es" class="hidden"
-                                    >Guía gratis para que no te sorprendan los costos ocultos</span
-                                >
-                            </li>
-                        </ul>
-
-                        <div class="flex flex-wrap gap-4 justify-center md:justify-start">
-                            <a
-                                href="https://apps.apple.com/us/app/bricks-calculadora-hipotecaria/id6744432658"
-                                id="app-store-download"
-                                class="btn inline-flex items-center justify-center rounded-full bg-black px-10 py-6 text-white shadow hover:bg-black/70"
-                                style="width: 320px">
-                                <svg class="mr-2 h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
-                                    <path
-                                        d="M17.5646,12.6636 C17.532,10.0547 19.2843,8.5727 19.3623,8.5143 C18.1994,6.8761 16.3166,6.6936 15.6761,6.6747 C14.0535,6.5243 12.4844,7.716 11.6574,7.716 C10.8185,7.716 9.5219,6.6935 8.1644,6.7243 C6.4269,6.7551 4.8012,7.716 3.9234,9.2457 C2.1152,12.3603 3.4646,17.0072 5.2,19.5467 C6.0705,20.797 7.0775,22.2118 8.3948,22.1615 C9.6834,22.1112 10.16,21.3003 11.7071,21.3003 C13.2432,21.3003 13.6911,22.1615 15.0274,22.1327 C16.4046,22.1112 17.2788,20.8642 18.1256,19.6026 C19.1199,18.1483 19.5678,16.7144 19.5869,16.6545 C19.5583,16.6449 17.601,15.8649 17.5646,12.6636 Z M15.0599,5.0066 C15.7748,4.1194 16.2611,2.9026 16.1067,1.6666 C15.063,1.7078 13.7649,2.3665 13.0214,3.2346 C12.3638,4.0024 11.7741,5.2577 11.9475,6.4745 C13.1104,6.5537 14.3259,5.8843 15.0599,5.0066 Z"></path>
-                                </svg>
-                                <span lang="en">Download on App Store</span>
-                                <span lang="es" class="hidden">Descargar en App Store</span>
-                            </a>
-                            <a
-                                href="javascript:void(0)"
-                                class="btn px-10 py-6 rounded-lg border border-brand text-brand hover:bg-brand hover:text-brand-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-slate-950 focus-visible:ring-offset-2 inline-flex items-center justify-center"
-                                style="width: 320px"
-                                id="open-video-modal">
-                                <span lang="en">Watch Quick Demo</span>
-                                <span lang="es" class="hidden">Ver Demostración Rápida</span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="relative flex items-center justify-center">
-                        <div
-                            class="relative mx-auto overflow-hidden transition-all duration-500 hover:scale-105 animate-on-scroll animate-float">
-                            <img
-                                lang="en"
-                                src="images/hero-en-us.png"
-                                alt="Bricks Mortgage Calculator App - Compare mortgage rates, visualize payments, and make confident financial decisions"
-                                class="w-full max-w-md"
-                                loading="lazy"
-                                width="400"
-                                height="800" />
-                            <img
-                                lang="es"
-                                src="images/hero-es-pe.png"
-                                alt="Bricks Calculadora Hipotecaria - Compara tasas hipotecarias, visualiza pagos y toma decisiones financieras con confianza"
-                                class="w-full max-w-md hidden"
-                                loading="lazy"
-                                width="400"
-                                height="800" />
-                        </div>
-
-                        <div
-                            class="absolute -bottom-6 right-0 md:right-10 rounded-full bg-white p-5 shadow-soft-xl shadow-lg max-w-xs">
-                            <div class="flex items-start">
-                                <div class="rounded-full p-2 mr-3 bg-success/10">
+                        <!-- Email Input Section -->
+                        <div class="space-y-4">
+                            <form
+                                id="hero-form"
+                                class="space-y-4"
+                                action="https://formsubmit.co/707e6e012fa931048784ff0f766aa0df"
+                                method="POST"
+                                x-data="{ email: '', submitted: false, success: false }"
+                                x-show="!success"
+                                @submit="setTimeout(() => { success = true }, 200)">
+                                <input type="hidden" name="_subject" value="Nuevo registro en Bricks Leads" />
+                                <input type="hidden" name="_captcha" value="false" />
+                                <input type="hidden" name="_next" value="https://leads.bricks.pe/thank-you" />
+                                
+                                <div class="flex flex-col sm:flex-row gap-4">
+                                    <input 
+                                        type="email" 
+                                        name="email"
+                                        x-model="email"
+                                        placeholder="john@mail.com" 
+                                        class="w-full sm:flex-1 px-6 py-4 bg-white/10 border border-white rounded-3xl text-white placeholder-white-400 focus:outline-none focus:border-yellow-400 transition-colors"
+                                        required
+                                    >
+                                    <button 
+                                        type="submit"
+                                        class="w-full md:w-auto btn-yellow text-lg px-8 py-4 rounded-4xl hover:scale-105 transition-transform whitespace-nowrap">
+                                        Enviar
+                                    </button>
+                                </div>
+                                
+                                <!-- Beta Tester Checkbox -->
+                                <div class="flex items-center space-x-4 mb-4">
+                                    <input 
+                                        type="checkbox" 
+                                        id="betaTester" 
+                                        name="betaTester"
+                                        class="w-5 h-5 text-yellow-400 bg-white/10 border-gray-600 rounded focus:ring-yellow-400 focus:ring-2"
+                                    >
+                                    <label for="betaTester" class="text-white/70 text-sm cursor-pointer text-left">
+                                        Quiero ser beta tester y probar la app antes del lanzamiento
+                                    </label>
+                                </div>
+                            </form>
+                            
+                            <!-- Success Message -->
+                            <div x-data="{}" x-show="success" class="text-center py-8">
+                                <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
                                     <svg
-                                        class="h-5 w-5 text-success"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20"
-                                        fill="currentColor">
-                                        <path
-                                            fill-rule="evenodd"
-                                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                            clip-rule="evenodd"></path>
+                                        class="w-8 h-8 text-white"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2.5"
+                                        viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <polyline points="20,6 9,17 4,12"></polyline>
                                     </svg>
                                 </div>
-                                <p class="text-sm text-slate-600">
-                                    <span lang="en">"Bricks made it easy to compare and choose!"</span>
-                                    <span lang="es" class="hidden"
-                                        >"Ahora sé por qué pago. ¡Bricks simplificó comparar hipotecas!"</span
-                                    >
-                                </p>
+                                <h4 class="text-xl font-semibold mb-3 text-white">¡Gracias por registrarte!</h4>
+                                <p class="text-white/70">Te avisaremos cuando Bricks Leads esté disponible.</p>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- Value Proposition -->
-        <section class="py-12 md:py-24">
-            <div class="container px-4 md:px-6">
-                <p class="text-xl md:text-2xl text-center text-slate-700 max-w-3xl mx-auto animate-on-scroll">
-                    <span lang="en"
-                        >Whether you're making the biggest purchase of your life or helping others finance it, Bricks
-                        gives you the clarity you need when it matters most.</span
-                    >
-                    <span lang="es" class="hidden"
-                        >Ya sea que estés por hacer la compra más importante de tu vida o ayudando a otros a
-                        financiarla, Bricks te da la claridad que necesitas en el momento clave.</span
-                    >
-                </p>
-            </div>
-        </section>
-
-        <!-- Key Features Section -->
-        <section id="features" class="py-12 md:py-24 bg-slate-50">
-            <div class="container px-4 md:px-6">
-                <div class="space-y-12">
-                    <div class="space-y-4 text-center">
-                        <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                            <span lang="en">Key Features</span>
-                            <span lang="es" class="hidden">Características Principales</span>
-                        </h2>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <!-- Feature 1 -->
-                        <div
-                            class="group relative rounded-2xl border bg-background p-6 shadow-soft-xl transition-all hover:shadow-lg animate-on-scroll">
-                            <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-brand/10">
-                                <svg
-                                    class="h-6 w-6 text-brand"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path
-                                        d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z"></path>
-                                </svg>
+                    <!-- Right Column - Hero Image -->
+                    <div class="space-y-16 pb-24 max-w-2xl lg:pb-8 md:max-w-none lg:max-w-none">
+                        <!-- Desktop Images (hidden on mobile) -->
+                        <div class="hidden md:block">
+                            <!-- First overlapping image (background) -->
+                            <div class="relative float2-animation" style="animation-delay: 0s; z-index: 1; position: absolute;">
+                                <img 
+                                    src="images/hero-image-bottom-layer-mobile.png" 
+                                    alt="Bricks App Screenshots Background" 
+                                    class="w-full"
+                                />
                             </div>
-                            <div class="space-y-2">
-                                <h3 class="font-semibold">
-                                    <span lang="en">Dual Calculation Modes</span>
-                                    <span lang="es" class="hidden">Modos de Cálculo Dual</span>
-                                </h3>
-                                <p class="text-muted-foreground">
-                                    <span lang="en"
-                                        >Switch between Standard for quick estimates or Advanced for detailed planning
-                                        including insurance rates.</span
-                                    >
-                                    <span lang="es" class="hidden"
-                                        >Cambia entre el modo Estándar para estimaciones rápidas o Avanzado para
-                                        planificación detallada incluyendo tasas de seguros.</span
-                                    >
-                                </p>
+                            
+                            <!-- Second overlapping image (middle) -->
+                            <div class="relative float-animation" style="animation-delay: 1s; z-index: 2; position: absolute;">
+                                <img 
+                                    src="images/hero-image-mid-layer-mobile.png" 
+                                    alt="Bricks App Screenshots Middle" 
+                                    class="w-full"
+                                />
                             </div>
-                        </div>
-
-                        <!-- Feature 2 -->
-                        <div
-                            class="group relative rounded-2xl border bg-background p-6 shadow-soft-xl transition-all hover:shadow-soft-lg animate-on-scroll">
-                            <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-brand/10">
-                                <svg
-                                    class="h-6 w-6 text-brand"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
-                                    <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
-                                </svg>
-                            </div>
-                            <div class="space-y-2">
-                                <h3 class="font-semibold">
-                                    <span lang="en">Beautiful Visualization</span>
-                                    <span lang="es" class="hidden">Gráficos Fáciles de Entender</span>
-                                </h3>
-                                <p class="text-muted-foreground">
-                                    <span lang="en"
-                                        >See your payment breakdown with beautiful charts and explore your complete
-                                        amortization schedule.</span
-                                    >
-                                    <span lang="es" class="hidden"
-                                        >Visualiza el desglose de tus pagos con atractivos gráficos y explora tu
-                                        cronograma de pagos.</span
-                                    >
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Feature 3 -->
-                        <div
-                            class="group relative rounded-2xl border bg-background p-6 shadow-soft-xl transition-all hover:shadow-soft-lg animate-on-scroll">
-                            <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-brand/10">
-                                <svg
-                                    class="h-6 w-6 text-brand"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path
-                                        d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
-                                </svg>
-                            </div>
-                            <div class="space-y-2">
-                                <h3 class="font-semibold">
-                                    <span lang="en">Save & Compare</span>
-                                    <span lang="es" class="hidden">Guardar y Comparar</span>
-                                </h3>
-                                <p class="text-muted-foreground">
-                                    <span lang="en"
-                                        >Store multiple scenarios and compare up to three options side by side to find
-                                        your perfect mortgage match.</span
-                                    >
-                                    <span lang="es" class="hidden"
-                                        >Almacena múltiples escenarios y compara hasta tres opciones lado a lado para
-                                        encontrar tu hipoteca perfecta.</span
-                                    >
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Feature 4 -->
-                        <div
-                            class="group relative rounded-2xl border bg-background p-6 shadow-soft-xl transition-all hover:shadow-soft-lg animate-on-scroll">
-                            <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-brand/10">
-                                <svg
-                                    class="h-6 w-6 text-brand"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path
-                                        fill-rule="evenodd"
-                                        d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                            </div>
-                            <div class="space-y-2">
-                                <h3 class="font-semibold">
-                                    <span lang="en">Professional Reports</span>
-                                    <span lang="es" class="hidden">Informes Profesionales</span>
-                                </h3>
-                                <p class="text-muted-foreground">
-                                    <span lang="en"
-                                        >Generate and share beautiful PDF reports or summary images with clients or your
-                                        financial advisor.</span
-                                    >
-                                    <span lang="es" class="hidden"
-                                        >Genera y comparte hermosos informes PDF o imágenes de resumen con clientes o tu
-                                        asesor financiero.</span
-                                    >
-                                </p>
+                            
+                            <!-- Third overlapping image (foreground) -->
+                            <div class="relative float-animation" style="animation-delay: 2s; z-index: 3; position: relative;">
+                                <img 
+                                    src="images/hero-image-top-layer-mobile.png" 
+                                    alt="Bricks App Screenshots Foreground" 
+                                    class="w-full"
+                                />
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- For Home Buyers -->
-        <section id="for-buyers" class="py-12 md:py-24">
-            <div class="container px-4 md:px-6">
-                <div class="mb-12 text-center">
-                    <h2
-                        class="inline-block border-b-4 border-brand pb-2 text-3xl font-bold tracking-tighter text-brand">
-                        <span lang="en">First-Time Home Buyers</span>
-                        <span lang="es" class="hidden">Tu Primer Hogar</span>
-                    </h2>
-                    <p class="mt-4 max-w-3xl mx-auto text-xl text-slate-600">
-                        <span lang="en"
-                            >No need to be a finance expert. Bricks explains everything in simple terms.</span
-                        >
-                        <span lang="es" class="hidden"
-                            >No necesitas ser un experto en finanzas. Bricks explica todo en términos simples.</span
-                        >
-                    </p>
-                </div>
-
-                <div class="grid gap-10 md:grid-cols-2 md:gap-16">
-                    <div class="space-y-6 md:pr-12">
-                        <div class="overflow-hidden rounded-2xl shadow-soft-lg animate-on-scroll">
-                            <img
-                                lang="en"
-                                src="images/demo1-en-us.jpg"
-                                alt="Happy couple with keys to their new home after using Bricks to compare mortgages"
+                    <!-- Mobile Images - Full Width (hidden on desktop) -->
+                    <div class="block md:hidden w-screen">
+                        <!-- First overlapping image (background) -->
+                        <div class="relative float2-animation w-full" style="animation-delay: 0s; z-index: 1; position: absolute; left: 0; right: 0;">
+                            <img 
+                                src="images/hero-image-bottom-layer-mobile.png" 
+                                alt="Bricks App Screenshots Background" 
                                 class="w-full"
-                                loading="lazy" />
-                            <img
-                                lang="es"
-                                src="images/demo1-es-pe.jpg"
-                                alt="Pareja feliz con llaves de su nueva casa después de utilizar Bricks para comparar hipotecas"
-                                class="w-full hidden"
-                                loading="lazy" />
+                            />
+                        </div>
+                        
+                        <!-- Second overlapping image (middle) -->
+                        <div class="relative float-animation w-full" style="animation-delay: 1s; z-index: 2; position: absolute; left: 0; right: 0;">
+                            <img 
+                                src="images/hero-image-mid-layer-mobile.png" 
+                                alt="Bricks App Screenshots Middle" 
+                                class="w-full"
+                            />
+                        </div>
+                        
+                        <!-- Third overlapping image (foreground) -->
+                        <div class="relative float-animation w-full" style="animation-delay: 2s; z-index: 3; position: relative;">
+                            <img 
+                                src="images/hero-image-top-layer-mobile.png" 
+                                alt="Bricks App Screenshots Foreground" 
+                                class="w-full"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Leads App Section -->
+        <section class="leads-app-section relative overflow-hidden">
+        <!-- Background Image -->
+            <div class="absolute left-0 right-0 top-0 bottom-0 z-0">
+                <img 
+                    src="images/bg-leads.png" 
+                    alt="Background" 
+                    class="w-full h-full object-cover"
+                />
+            </div>
+            
+            <div class="container mx-auto px-4 relative z-10 pt-20 mb-16">
+                <div class="flex items-center space-x-6 mb-8 -ml-6 md:-ml-10">
+                    <img src="images/App-Leads-Web-Icon.png" alt="Leads App Icon" class="w-48 h-48"/>
+                <div class="max-w-4xl -sm">
+                    <h2 class="text-gray-900 font-bold text-2xl md:text-3xl mb-4">Leads</h2>
+                    <p class="text-gray-700 text-lg md:text-xl mb-8">
+                        Será la herramienta definitiva para agentes inmobiliarios. Captura, organiza y gestiona tu cartera de clientes de manera eficiente y profesional.
+                    </p>
+                    <button class="btn-yellow text-lg px-8 py-4 rounded-4xl hover:scale-105 transition-transform">
+                        Quiero Enterarme
+                    </button>
+                </div>
+                    
+            </div>
+            </div>
+        </section>
+        
+        <hr class="mx-auto border-white/20 my-16 max-w-3xl">
+        
+        <!-- Bricks Calc Section -->
+        <section class="calc-section py-24">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <p class="text-white/90 text-lg md:text-xl max-w-3xl mx-auto mb-4">
+                        Mientras Esperas...
+                    </p>
+                    <h2 class="text-white font-bold text-4xl md:text-5xl mb-6">
+                        Prueba Gratis Bricks Calc
+                    </h2>
+                    <p class="text-white/90 text-lg md:text-xl max-w-3xl mx-auto">
+                        ¿Las hipotecas te confunden? Bricks te ayuda a comparar tasas fácilmente y hace que el trabajo de los expertos financieros sea más eficiente.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-2 items-center mobile-centered-grid">
+                    <!-- Desktop App Screenshots (hidden on mobile) -->
+                    <div class="relative flex justify-center hidden md:block">
+                        <div class="relative float-animation">
+                            <img 
+                                src="images/calc-image.png" 
+                                alt="Bricks Calc App Screenshots" 
+                                class="w-full"
+                            />
                         </div>
                     </div>
 
-                    <div class="space-y-6 animate-on-scroll">
-                        <ul class="space-y-3 mb-8 py-8">
+                    <!-- Mobile App Screenshots - Full Width (hidden on desktop) -->
+                    <div class="block md:hidden w-full">
+                        <div class="relative float-animation w-full">
+                            <img 
+                                src="images/calc-image.png" 
+                                alt="Bricks Calc App Screenshots" 
+                                class="w-full"
+                            />
+                        </div>
+                    </div>
+
+                    <!-- Right Column - Features -->
+                    <div class="space-y-8">
+                        <h3 class="text-white font-bold text-2xl md:text-3xl">
+                            Características Principales
+                        </h3>
+                        
+                        <p class="text-white/90 text-lg">
+                            Ya sea que estés por hacer la compra más importante de tu vida o ayudando a otros a financiarla, Bricks te da la claridad que necesitas en el momento clave.
+                        </p>
+
+                        <ul class="feature-list space-y-4">
                             <li class="flex items-start">
-                                <svg
-                                    class="h-5 w-5 text-success mr-2 mt-1"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path
-                                        fill-rule="evenodd"
-                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                                <span lang="en">Input your home price and see monthly payments instantly</span>
-                                <span lang="es" class="hidden"
-                                    >Ingresa el precio de tu vivienda y ve las cuotas mensuales al instante</span
-                                >
+                                <span class="text-bricks-yellow mr-3 mt-1">•</span>
+                                <span class="text-white">Compara múltiples préstamos a la vez</span>
                             </li>
                             <li class="flex items-start">
-                                <svg
-                                    class="h-5 w-5 text-success mr-2 mt-1"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path
-                                        fill-rule="evenodd"
-                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                                <span lang="en">Adjust down payment amounts to see how they affect your loan</span>
-                                <span lang="es" class="hidden"
-                                    >Ajusta los montos del pago inicial para ver cómo afectan tu préstamo</span
-                                >
+                                <span class="text-bricks-yellow mr-3 mt-1">•</span>
+                                <span class="text-white">Visualiza el costo total y cuotas mensuales</span>
                             </li>
                             <li class="flex items-start">
-                                <svg
-                                    class="h-5 w-5 text-success mr-2 mt-1"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path
-                                        fill-rule="evenodd"
-                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                                <span lang="en">Experiment with different loan terms (10-30 years)</span>
-                                <span lang="es" class="hidden"
-                                    >Experimenta con diferentes plazos de préstamo (10-30 años)</span
-                                >
+                                <span class="text-bricks-yellow mr-3 mt-1">•</span>
+                                <span class="text-white">Calcula cuánto ahorrarás en intereses con amortizaciones</span>
                             </li>
                             <li class="flex items-start">
-                                <svg
-                                    class="h-5 w-5 text-success mr-2 mt-1"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path
-                                        fill-rule="evenodd"
-                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                                <span lang="en">Understand the total cost of your mortgage over time</span>
-                                <span lang="es" class="hidden"
-                                    >Comprende el costo total de tu hipoteca a lo largo del tiempo</span
-                                >
+                                <span class="text-bricks-yellow mr-3 mt-1">•</span>
+                                <span class="text-white">No requieres experiencia financiera</span>
                             </li>
                             <li class="flex items-start">
-                                <svg
-                                    class="h-5 w-5 text-success mr-2 mt-1"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path
-                                        fill-rule="evenodd"
-                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                                <span lang="en">Make confident decisions backed by clear numbers</span>
-                                <span lang="es" class="hidden">Toma decisiones respaldadas por números claros</span>
+                                <span class="text-bricks-yellow mr-3 mt-1">•</span>
+                                <span class="text-white">Guía gratis para que no te sorprendan los costos ocultos</span>
                             </li>
                         </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- For Mortgage Professionals -->
-        <section id="for-pros" class="py-12 md:py-24 bg-slate-50">
-            <div class="container px-4 md:px-6">
-                <div class="mb-12 text-center">
-                    <h2
-                        class="inline-block border-b-4 border-brand pb-2 text-3xl font-bold tracking-tighter text-brand">
-                        <span lang="en">Professionals</span>
-                        <span lang="es" class="hidden">Profesionales Financieros</span>
-                    </h2>
-                    <p class="mt-4 max-w-3xl mx-auto text-xl text-slate-600">
-                        <span lang="en"
-                            >Streamline your workflow and enhance client consultations with visual tools.</span
-                        >
-                        <span lang="es" class="hidden"
-                            >Optimiza tu flujo de trabajo y mejora las consultas con clientes usando herramientas
-                            visuales.</span
-                        >
-                    </p>
-                </div>
-
-                <div class="grid gap-10 md:grid-cols-2 md:gap-16">
-                    <div class="order-2 md:order-1 space-y-6 animate-on-scroll">
-
-                        <ul class="space-y-3 mb-8 py-8">
-                            <li class="flex items-start">
-                                <svg
-                                    class="h-5 w-5 text-success mr-2 mt-1"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path
-                                        fill-rule="evenodd"
-                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                                <span lang="en">Create custom scenarios in seconds instead of minutes</span>
-                                <span lang="es" class="hidden">Información 100% segura y confidencial</span>
-                            </li>
-                            <li class="flex items-start">
-                                <svg
-                                    class="h-5 w-5 text-success mr-2 mt-1"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path
-                                        fill-rule="evenodd"
-                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                                <span lang="en">Generate branded reports with your bank's logo</span>
-                                <span lang="es" class="hidden"
-                                    >Sin cuentas, comienza a generar reportes en segundos</span
-                                >
-                            </li>
-                            <li class="flex items-start">
-                                <svg
-                                    class="h-5 w-5 text-success mr-2 mt-1"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path
-                                        fill-rule="evenodd"
-                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                                <span lang="en">Share scenarios directly with clients via secure link</span>
-                                <span lang="es" class="hidden">Comparte escenarios directamente con tus clientes</span>
-                            </li>
-                            <li class="flex items-start">
-                                <svg
-                                    class="h-5 w-5 text-success mr-2 mt-1"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path
-                                        fill-rule="evenodd"
-                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                                <span lang="en">Import rates and terms automatically from your systems</span>
-                                <span lang="es" class="hidden">Ingresa tasas y términos rápidamente</span>
-                            </li>
-                            <li class="flex items-start">
-                                <svg
-                                    class="h-5 w-5 text-success mr-2 mt-1"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path
-                                        fill-rule="evenodd"
-                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                                <span lang="en">Track client interactions and follow-ups in one place</span>
-                                <span lang="es" class="hidden">Interfaz gráfica fácil de usar e intuitiva</span>
-                            </li>
-                        </ul>
-                        <div class="mt-6 py-8"></div>
-                    </div>
-
-                    <div class="order-1 md:order-2 space-y-6 md:pl-12">
-                        <div class="relative">
-                            <div class="overflow-hidden rounded-2xl shadow-soft-lg animate-on-scroll">
-                                <img
-                                    lang="en"
-                                    src="images/demo2-en-us.jpg"
-                                    alt="Professional bank advisor using Bricks to show mortgage options to client visually"
-                                    class="w-full"
-                                    loading="lazy" />
-                                <img
-                                    lang="es"
-                                    src="images/demo2-es-pe.jpg"
-                                    alt="Asesor bancario profesional utilizando Bricks para mostrar opciones hipotecarias a cliente de forma visual"
-                                    class="w-full hidden"
-                                    loading="lazy" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Screenshots Carousel Section -->
-        <section class="py-12 md:py-24 bg-slate-50">
-            <div class="container px-4 md:px-6">
-                <div class="space-y-8 text-center">
-                    <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl animate-on-scroll">
-                        <span lang="en">See Bricks in Action</span>
-                        <span lang="es" class="hidden">Mira Bricks en Acción</span>
-                    </h2>
-                    <p class="text-xl text-slate-700 max-w-3xl mx-auto animate-on-scroll">
-                        <span lang="en">Beautiful, intuitive interface designed for clarity and ease of use.</span>
-                        <span lang="es" class="hidden"
-                            >Una interfaz bonita y fácil de usar, pensada para hacerte la vida más simple.</span
-                        >
-                    </p>
-                </div>
-
-                <!-- Carousel Container with Navigation -->
-                <div class="mt-12 relative">
-                    <!-- Navigation Buttons -->
-                    <button
-                        id="carousel-prev"
-                        class="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:bg-white hover:shadow-xl transition-all duration-200 flex items-center justify-center group disabled:opacity-50 disabled:cursor-not-allowed"
-                        aria-label="Previous screenshot">
-                        <svg
-                            class="w-6 h-6 text-slate-700 group-hover:text-slate-900 transition-colors"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24">
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M15 19l-7-7 7-7"></path>
-                        </svg>
-                    </button>
-
-                    <button
-                        id="carousel-next"
-                        class="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:bg-white hover:shadow-xl transition-all duration-200 flex items-center justify-center group disabled:opacity-50 disabled:cursor-not-allowed"
-                        aria-label="Next screenshot">
-                        <svg
-                            class="w-6 h-6 text-slate-700 group-hover:text-slate-900 transition-colors"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24">
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </button>
-
-                    <!-- Carousel Track -->
-                    <div id="screenshot-carousel" class="overflow-hidden rounded-xl">
-                        <div id="carousel-track" class="flex transition-transform duration-500 ease-in-out">
-                            <!-- Screenshot 1 -->
-                            <div
-                                class="flex-shrink-0 w-80 md:w-96 rounded-xl overflow-hidden shadow-soft-lg hover-lift mx-2">
-                                <img
-                                    lang="en"
-                                    src="images/carousel/bricks-en-us-01.jpg"
-                                    alt="Bricks app mortgage calculator main interface"
-                                    class="w-full"
-                                    loading="lazy" />
-                                <img
-                                    lang="es"
-                                    src="images/carousel/bricks-es-pe-01.jpg"
-                                    alt="Bricks app mortgage calculator main interface"
-                                    class="w-full hidden"
-                                    loading="lazy" />
-                            </div>
-
-                            <!-- Screenshot 2 -->
-                            <div
-                                class="flex-shrink-0 w-80 md:w-96 rounded-xl overflow-hidden shadow-soft-lg hover-lift mx-2">
-                                <img
-                                    lang="en"
-                                    src="images/carousel/bricks-en-us-02.jpg"
-                                    alt="Bricks app mortgage calculator main interface"
-                                    class="w-full"
-                                    loading="lazy" />
-                                <img
-                                    lang="es"
-                                    src="images/carousel/bricks-es-pe-02.jpg"
-                                    alt="Bricks app mortgage calculator main interface"
-                                    class="w-full hidden"
-                                    loading="lazy" />
-                            </div>
-
-                            <!-- Screenshot 3 -->
-                            <div
-                                class="flex-shrink-0 w-80 md:w-96 rounded-xl overflow-hidden shadow-soft-lg hover-lift mx-2">
-                                <img
-                                    lang="en"
-                                    src="images/carousel/bricks-en-us-03.jpg"
-                                    alt="Bricks app mortgage calculator main interface"
-                                    class="w-full"
-                                    loading="lazy" />
-                                <img
-                                    lang="es"
-                                    src="images/carousel/bricks-es-pe-03.jpg"
-                                    alt="Bricks app mortgage calculator main interface"
-                                    class="w-full hidden"
-                                    loading="lazy" />
-                            </div>
-
-                            <!-- Screenshot 4 -->
-                            <div
-                                class="flex-shrink-0 w-80 md:w-96 rounded-xl overflow-hidden shadow-soft-lg hover-lift mx-2">
-                                <img
-                                    lang="en"
-                                    src="images/carousel/bricks-en-us-04.jpg"
-                                    alt="Bricks app mortgage calculator main interface"
-                                    class="w-full"
-                                    loading="lazy" />
-                                <img
-                                    lang="es"
-                                    src="images/carousel/bricks-es-pe-04.jpg"
-                                    alt="Bricks app mortgage calculator main interface"
-                                    class="w-full hidden"
-                                    loading="lazy" />
-                            </div>
-
-                            <!-- Screenshot 5 -->
-                            <div
-                                class="flex-shrink-0 w-80 md:w-96 rounded-xl overflow-hidden shadow-soft-lg hover-lift mx-2">
-                                <img
-                                    lang="en"
-                                    src="images/carousel/bricks-en-us-05.jpg"
-                                    alt="Bricks app mortgage calculator main interface"
-                                    class="w-full"
-                                    loading="lazy" />
-                                <img
-                                    lang="es"
-                                    src="images/carousel/bricks-es-pe-05.jpg"
-                                    alt="Bricks app mortgage calculator main interface"
-                                    class="w-full hidden"
-                                    loading="lazy" />
-                            </div>
-
-                            <!-- Screenshot 6 -->
-                            <div
-                                class="flex-shrink-0 w-80 md:w-96 rounded-xl overflow-hidden shadow-soft-lg hover-lift mx-2">
-                                <img
-                                    lang="en"
-                                    src="images/carousel/bricks-en-us-06.jpg"
-                                    alt="Bricks app mortgage calculator main interface"
-                                    class="w-full"
-                                    loading="lazy" />
-                                <img
-                                    lang="es"
-                                    src="images/carousel/bricks-es-pe-06.jpg"
-                                    alt="Bricks app mortgage calculator main interface"
-                                    class="w-full hidden"
-                                    loading="lazy" />
-                            </div>
-
-                            <!-- Screenshot 7 -->
-                            <div
-                                class="flex-shrink-0 w-80 md:w-96 rounded-xl overflow-hidden shadow-soft-lg hover-lift mx-2">
-                                <img
-                                    lang="en"
-                                    src="images/carousel/bricks-en-us-07.jpg"
-                                    alt="Bricks app mortgage calculator main interface"
-                                    class="w-full"
-                                    loading="lazy" />
-                                <img
-                                    lang="es"
-                                    src="images/carousel/bricks-es-pe-07.jpg"
-                                    alt="Bricks app mortgage calculator main interface"
-                                    class="w-full hidden"
-                                    loading="lazy" />
-                            </div>
-
-                            <!-- Screenshot 8 -->
-                            <div
-                                class="flex-shrink-0 w-80 md:w-96 rounded-xl overflow-hidden shadow-soft-lg hover-lift mx-2">
-                                <img
-                                    lang="en"
-                                    src="images/carousel/bricks-en-us-08.jpg"
-                                    alt="Bricks app mortgage calculator main interface"
-                                    class="w-full"
-                                    loading="lazy" />
-                                <img
-                                    lang="es"
-                                    src="images/carousel/bricks-es-pe-08.jpg"
-                                    alt="Bricks app mortgage calculator main interface"
-                                    class="w-full hidden"
-                                    loading="lazy" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Carousel Indicators -->
-                    <div class="flex justify-center mt-6 space-x-2">
-                        <div id="carousel-indicators" class="flex space-x-2">
-                            <!-- Indicators will be generated by JavaScript -->
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Updated Description -->
-                <div class="flex justify-center mt-8">
-                    <p class="text-sm text-slate-500 italic">
-                        <span lang="en">Use the navigation buttons to explore all screenshots</span>
-                        <span lang="es" class="hidden"
-                            >Usa los botones de navegación para explorar todas las capturas</span
-                        >
-                    </p>
-                </div>
-            </div>
-
-            <script>
-                /**
-                 * Screenshot Carousel Class
-                 * Handles manual navigation with left/right buttons and indicators
-                 */
-                class ScreenshotCarousel {
-                    constructor() {
-                        this.carousel = document.getElementById("screenshot-carousel");
-                        this.track = document.getElementById("carousel-track");
-                        this.prevBtn = document.getElementById("carousel-prev");
-                        this.nextBtn = document.getElementById("carousel-next");
-                        this.indicatorsContainer = document.getElementById("carousel-indicators");
-
-                        this.slides = this.track.children;
-                        this.currentIndex = 0;
-                        this.slideWidth = 336; // w-80 (320px) + mx-2 (16px) = 336px total
-                        this.maxIndex = this.slides.length - 1;
-
-                        this.init();
-                    }
-
-                    init() {
-                        // Create indicators
-                        this.createIndicators();
-
-                        // Add event listeners
-                        this.addEventListeners();
-
-                        // Set initial state
-                        this.updateNavigationState();
-                        this.updateIndicators();
-                    }
-
-                    createIndicators() {
-                        // Clear existing indicators
-                        this.indicatorsContainer.innerHTML = "";
-
-                        // Create indicator dots for each slide
-                        for (let i = 0; i < this.slides.length; i++) {
-                            const indicator = document.createElement("button");
-                            indicator.className =
-                                "w-3 h-3 rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500";
-                            indicator.setAttribute("aria-label", `Go to screenshot ${i + 1}`);
-                            indicator.setAttribute("data-index", i);
-
-                            // Add click event
-                            indicator.addEventListener("click", () => this.goToSlide(i));
-
-                            this.indicatorsContainer.appendChild(indicator);
-                        }
-
-                        this.indicators = this.indicatorsContainer.children;
-                    }
-
-                    addEventListeners() {
-                        // Navigation button events
-                        this.prevBtn.addEventListener("click", () => this.previousSlide());
-                        this.nextBtn.addEventListener("click", () => this.nextSlide());
-
-                        // Keyboard navigation
-                        this.carousel.addEventListener("keydown", (e) => {
-                            if (e.key === "ArrowLeft") {
-                                e.preventDefault();
-                                this.previousSlide();
-                            } else if (e.key === "ArrowRight") {
-                                e.preventDefault();
-                                this.nextSlide();
-                            }
-                        });
-
-                        // Focus management for accessibility
-                        this.carousel.setAttribute("tabindex", "0");
-                    }
-
-                    goToSlide(index) {
-                        if (index < 0 || index > this.maxIndex) return;
-
-                        this.currentIndex = index;
-                        this.updateCarouselPosition();
-                        this.updateNavigationState();
-                        this.updateIndicators();
-                    }
-
-                    nextSlide() {
-                        if (this.currentIndex < this.maxIndex) {
-                            this.goToSlide(this.currentIndex + 1);
-                        }
-                    }
-
-                    previousSlide() {
-                        if (this.currentIndex > 0) {
-                            this.goToSlide(this.currentIndex - 1);
-                        }
-                    }
-
-                    updateCarouselPosition() {
-                        const translateX = -this.currentIndex * this.slideWidth;
-                        this.track.style.transform = `translateX(${translateX}px)`;
-                    }
-
-                    updateNavigationState() {
-                        // Update button states
-                        this.prevBtn.disabled = this.currentIndex === 0;
-                        this.nextBtn.disabled = this.currentIndex === this.maxIndex;
-
-                        // Update ARIA labels
-                        this.prevBtn.setAttribute(
-                            "aria-label",
-                            this.currentIndex === 0 ? "No previous screenshots" : "Previous screenshot"
-                        );
-                        this.nextBtn.setAttribute(
-                            "aria-label",
-                            this.currentIndex === this.maxIndex ? "No more screenshots" : "Next screenshot"
-                        );
-                    }
-
-                    updateIndicators() {
-                        // Update indicator states
-                        for (let i = 0; i < this.indicators.length; i++) {
-                            const indicator = this.indicators[i];
-                            if (i === this.currentIndex) {
-                                indicator.classList.add("bg-blue-600");
-                                indicator.classList.remove("bg-slate-300", "hover:bg-slate-400");
-                            } else {
-                                indicator.classList.remove("bg-blue-600");
-                                indicator.classList.add("bg-slate-300", "hover:bg-slate-400");
-                            }
-                        }
-                    }
-                }
-
-                // Initialize carousel when DOM is loaded
-                document.addEventListener("DOMContentLoaded", function () {
-                    new ScreenshotCarousel();
-                });
-            </script>
-        </section>
-
-        <!-- FAQ Section -->
-        <section id="faq" class="py-12 md:py-24 bg-slate-50">
-            <!-- FAQ Schema Markup -->
-            <script type="application/ld+json">
-                {
-                    "@context": "https://schema.org",
-                    "@type": "FAQPage",
-                    "mainEntity": [
-                        {
-                            "@type": "Question",
-                            "name": "¿Están seguros mis datos?",
-                            "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "Todos tus cálculos y escenarios guardados permanecen en tu dispositivo. No recopilamos ni almacenamos tu información personal financiera."
-                            }
-                        },
-                        {
-                            "@type": "Question",
-                            "name": "¿Puedo usar Bricks sin conexión a internet?",
-                            "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "¡Sí! Una vez descargado, Bricks funciona completamente sin conexión a internet."
-                            }
-                        },
-                        {
-                            "@type": "Question",
-                            "name": "¿Qué tan precisos son los cálculos?",
-                            "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "Bricks utiliza fórmulas de cálculo hipotecario estándar de la industria para resultados precisos en los que puedes confiar."
-                            }
-                        }
-                    ]
-                }
-            </script>
-            <div class="container px-4 md:px-6">
-                <div class="mb-12 text-center">
-                    <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                        <span lang="en">Frequently Asked Questions</span>
-                        <span lang="es" class="hidden">Preguntas Frecuentes</span>
-                    </h2>
-                </div>
-
-                <div class="mx-auto max-w-4xl space-y-4">
-                    <!-- FAQ Item 1 -->
-                    <div class="rounded-2xl border bg-background" x-data="{ open: false }">
-                        <button
-                            @click="open = !open"
-                            class="flex w-full items-center justify-between px-6 py-4 text-left"
-                            aria-expanded="false"
-                            :aria-expanded="open.toString()">
-                            <span class="text-lg font-medium">
-                                <span lang="en">Is my data secure?</span>
-                                <span lang="es" class="hidden">¿Están seguros mis datos?</span>
-                            </span>
-                            <svg
-                                class="h-5 w-5 transform transition-transform duration-200"
-                                :class="{'rotate-180': open}"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path
-                                    fill-rule="evenodd"
-                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </button>
-                        <div x-show="open" x-collapse>
-                            <div class="px-6 pb-4 text-muted-foreground">
-                                <p>
-                                    <span lang="en"
-                                        >All your calculations and saved scenarios remain on your device. We don't
-                                        collect or store your personal financial information.</span
-                                    >
-                                    <span lang="es" class="hidden"
-                                        >Todos tus cálculos y escenarios guardados permanecen en tu dispositivo. No
-                                        recopilamos ni almacenamos tu información.</span
-                                    >
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- FAQ Item 2 -->
-                    <div class="rounded-2xl border bg-background" x-data="{ open: false }">
-                        <button
-                            @click="open = !open"
-                            class="flex w-full items-center justify-between px-6 py-4 text-left"
-                            aria-expanded="false"
-                            :aria-expanded="open.toString()">
-                            <span class="text-lg font-medium">
-                                <span lang="en">Can I use Bricks without an internet connection?</span>
-                                <span lang="es" class="hidden">¿Puedo usar Bricks sin conexión a internet?</span>
-                            </span>
-                            <svg
-                                class="h-5 w-5 transform transition-transform duration-200"
-                                :class="{'rotate-180': open}"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path
-                                    fill-rule="evenodd"
-                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </button>
-                        <div x-show="open" x-collapse>
-                            <div class="px-6 pb-4 text-muted-foreground">
-                                <p>
-                                    <span lang="en">Yes! Once downloaded, Bricks works completely offline.</span>
-                                    <span lang="es" class="hidden"
-                                        >¡Sí! Una vez descargado, Bricks funciona completamente sin conexión.</span
-                                    >
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- FAQ Item 3 -->
-                    <div class="rounded-2xl border bg-background shadow-sm" x-data="{ open: false }">
-                        <button
-                            @click="open = !open"
-                            class="flex w-full items-center justify-between px-6 py-4 text-left"
-                            aria-expanded="false"
-                            :aria-expanded="open.toString()">
-                            <span class="text-lg font-medium">
-                                <span lang="en">Does Bricks support different currencies?</span>
-                                <span lang="es" class="hidden">¿Bricks soporta diferentes monedas?</span>
-                            </span>
-                            <svg
-                                class="h-5 w-5 transform transition-transform duration-200"
-                                :class="{'rotate-180': open}"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path
-                                    fill-rule="evenodd"
-                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </button>
-                        <div x-show="open" x-collapse>
-                            <div class="px-6 pb-4 text-muted-foreground">
-                                <p>
-                                    <span lang="en"
-                                        >Currently, Bricks supports USD and PEN currencies, with more coming soon.</span
-                                    >
-                                    <span lang="es" class="hidden"
-                                        >Actualmente, Bricks soporta las monedas USD y PEN, con más por venir
-                                        próximamente.</span
-                                    >
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- FAQ Item 4 -->
-                    <div class="rounded-2xl border bg-background" x-data="{ open: false }">
-                        <button
-                            @click="open = !open"
-                            class="flex w-full items-center justify-between px-6 py-4 text-left"
-                            aria-expanded="false"
-                            :aria-expanded="open.toString()">
-                            <span class="text-lg font-medium">
-                                <span lang="en">How accurate are the calculations?</span>
-                                <span lang="es" class="hidden">¿Qué tan precisos son los cálculos?</span>
-                            </span>
-                            <svg
-                                class="h-5 w-5 transform transition-transform duration-200"
-                                :class="{'rotate-180': open}"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path
-                                    fill-rule="evenodd"
-                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </button>
-                        <div x-show="open" x-collapse>
-                            <div class="px-6 pb-4 text-muted-foreground">
-                                <p>
-                                    <span lang="en"
-                                        >Bricks uses industry-standard mortgage calculation formulas for precise results
-                                        you can trust.</span
-                                    >
-                                    <span lang="es" class="hidden"
-                                        >Bricks utiliza fórmulas de cálculo hipotecario estándar de la industria para
-                                        resultados precisos en los que puedes confiar.</span
-                                    >
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Final Call to Action -->
-        <section class="py-16 md:py-24 bg-brand text-brand-foreground">
-            <div class="container px-4 md:px-6 text-center">
-                <div class="mx-auto max-w-3xl space-y-8">
-                    <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                        <span lang="en">Ready to take control?</span>
-                        <span lang="es" class="hidden">¿Listo para tomar el control?</span>
-                    </h2>
-                    <p class="text-xl text-brand-foreground/90">
-                        <span lang="en"
-                            >Start your 7-day free trial today and see why home buyers and professionals trust Bricks
-                            for clear, beautiful mortgage calculations.</span
-                        >
-                        <span lang="es" class="hidden"
-                            >Comienza tu prueba gratuita de 7 días hoy y descubre por qué los compradores de viviendas y
-                            profesionales confían en Bricks para cálculos hipotecarios.</span
-                        >
-                    </p>
-                    <div class="flex flex-wrap justify-center gap-4">
-                        <a
-                            href="https://apps.apple.com/us/app/bricks-calculadora-hipotecaria/id6744432658"
-                            id="app-store-download"
-                            class="btn inline-flex items-center justify-center rounded-full bg-black px-10 py-6 text-white shadow hover:bg-black/70"
-                            style="width: 320px">
-                            <svg class="mr-2 h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M17.5646,12.6636 C17.532,10.0547 19.2843,8.5727 19.3623,8.5143 C18.1994,6.8761 16.3166,6.6936 15.6761,6.6747 C14.0535,6.5243 12.4844,7.716 11.6574,7.716 C10.8185,7.716 9.5219,6.6935 8.1644,6.7243 C6.4269,6.7551 4.8012,7.716 3.9234,9.2457 C2.1152,12.3603 3.4646,17.0072 5.2,19.5467 C6.0705,20.797 7.0775,22.2118 8.3948,22.1615 C9.6834,22.1112 10.16,21.3003 11.7071,21.3003 C13.2432,21.3003 13.6911,22.1615 15.0274,22.1327 C16.4046,22.1112 17.2788,20.8642 18.1256,19.6026 C19.1199,18.1483 19.5678,16.7144 19.5869,16.6545 C19.5583,16.6449 17.601,15.8649 17.5646,12.6636 Z M15.0599,5.0066 C15.7748,4.1194 16.2611,2.9026 16.1067,1.6666 C15.063,1.7078 13.7649,2.3665 13.0214,3.2346 C12.3638,4.0024 11.7741,5.2577 11.9475,6.4745 C13.1104,6.5537 14.3259,5.8843 15.0599,5.0066 Z"></path>
-                            </svg>
-                            <span lang="en">Download on App Store</span>
-                            <span lang="es" class="hidden">Descargar en App Store</span>
-                        </a>
+<a href="https://apps.apple.com/app/id6744432658" class="inline-block">
+    <img src="images/Download_on_the_App_Store_Badge_ES_RGB_blk_100217.svg" 
+         alt="Descarga en App Store" 
+         class="h-12 md:h-14">
+</a>
                     </div>
                 </div>
             </div>
@@ -1873,7 +653,7 @@
                                     <a
                                         href="https://wa.me/51953431080?text=Hola%2C%20quiero%20informaci%C3%B3n%20respecto%20a%20lo%20siguiente"
                                         target="_blank"
-                                        class="flex items-center transition-colors hover:text-white">
+                                        class="whatsapp-link flex items-center transition-colors hover:text-white">
                                         <svg
                                             class="mr-2 h-4 w-4 text-[#34C85A]"
                                             fill="currentColor"
@@ -1911,36 +691,6 @@
                 </div>
             </div>
         </footer>
-
-        <!-- Video Modal -->
-        <div
-            id="video-modal"
-            class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 opacity-0 pointer-events-none transition-opacity duration-300">
-            <div class="relative bg-black rounded-lg shadow-xl max-w-md w-full">
-                <button
-                    id="close-video-modal"
-                    class="absolute top-2 right-2 z-10 rounded-full p-2 bg-white/90 text-gray-800 hover:bg-white">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
-                </button>
-                <div class="relative w-full pt-[180%]">
-                    <video id="modal-video" class="absolute inset-0 w-full h-full rounded-lg" controls preload="none">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-            </div>
-        </div>
 
         <!-- Google Analytics Event Tracking -->
         <script>

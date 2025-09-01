@@ -388,3 +388,287 @@ button:focus {
 .btn-secondary:hover {
     background-color: rgba(244, 244, 245, 0.8);
 }
+
+/* Mobile Centering Styles - Ensure all content is properly centered on mobile devices */
+@media (max-width: 768px) {
+    /* Center all text content */
+    .container {
+        text-align: center;
+    }
+    
+    /* Center headings */
+    h1, h2, h3, h4, h5, h6 {
+        text-align: center;
+    }
+    
+    /* Center paragraphs */
+    p {
+        text-align: center;
+    }
+    
+    /* Center buttons */
+    .btn-yellow,
+    .btn-black,
+    .btn-primary,
+    .btn-secondary,
+    a[href*="apps.apple.com"],
+    button {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+    
+    /* Center images */
+    img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    /* Center flex containers */
+    .flex {
+        justify-content: center;
+        align-items: center;
+    }
+    
+    /* Center grid items */
+    .grid {
+        justify-items: center;
+    }
+    
+    /* Mobile centered grid layout */
+    .mobile-centered-grid {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+    }
+    
+    /* Move hero images to top on mobile */
+    .hero-section .mobile-centered-grid {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .hero-section .mobile-centered-grid > div:last-child {
+        order: -1;
+        margin-bottom: 2rem;
+    }
+    
+    /* Center navigation items */
+    nav {
+        text-align: center;
+    }
+    
+    /* Center navigation container */
+    .container.mx-auto.px-4.flex.h-16.items-center.justify-between {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+    
+    /* Center logo */
+    .flex.items-center {
+        justify-content: center;
+    }
+    
+    /* Center hero section content */
+    .hero-section {
+        text-align: center;
+    }
+    
+    /* Adjust hero text content spacing when images are at top */
+    .hero-section .space-y-16 {
+        margin-top: 0;
+        padding-top: 0;
+    }
+    
+    /* Ensure hero section container doesn't interfere with full-width images */
+    .hero-section .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .hero-section .container .mobile-centered-grid > div:last-child {
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: -1rem;
+        margin-right: -1rem;
+    }
+    
+    /* Center list items */
+    ul, ol {
+        text-align: center;
+    }
+    
+    li {
+        text-align: center;
+    }
+    
+    /* Center footer content */
+    footer {
+        text-align: center;
+    }
+    
+    /* Center cookie consent banner */
+    #cookie-consent-banner {
+        text-align: center;
+    }
+    
+    /* Center desktop app banner */
+    .desktop-app-banner {
+        text-align: center;
+    }
+    
+    /* Ensure proper spacing for centered content */
+    .space-y-4 > * + *,
+    .space-y-8 > * + *,
+    .space-y-16 > * + * {
+        margin-top: 1rem;
+    }
+    
+    /* Center overlapping hero images */
+    .relative.flex.justify-center {
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        max-width: 100vw;
+        margin-left: calc(-50vw + 50%);
+        margin-right: calc(-50vw + 50%);
+        position: relative;
+        left: 50%;
+        right: 50%;
+        transform: translateX(-50%);
+    }
+    
+    /* Ensure hero images are properly sized on mobile */
+    .relative.flex.justify-center img {
+        width: 100vw;
+        max-width: 100vw;
+        height: auto;
+        object-fit: cover;
+    }
+    
+    /* Hero images container styling for mobile top placement */
+    .hero-section .relative.flex.justify-center {
+        margin-top: 0;
+        margin-bottom: 2rem;
+        padding-top: 0;
+        padding-left: 0;
+        padding-right: 0;
+        overflow: hidden;
+    }
+    
+    /* Center app screenshots */
+    .relative.flex.justify-center img {
+        margin: 0 auto;
+    }
+    
+    /* Center leads app section content */
+    .leads-app-section {
+        text-align: center;
+    }
+    
+    /* Center leads app icon and title */
+    .leads-app-section .flex.items-center.space-x-6 {
+        justify-content: center;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    /* Center leads app description */
+    .leads-app-section .max-w-2xl {
+        margin: 0 auto;
+        text-align: center;
+    }
+    
+    /* Center calc section content */
+    .calc-section {
+        text-align: center;
+    }
+    
+    /* Ensure calc section container takes full width */
+    .calc-section .container {
+        width: 100%;
+        max-width: none;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    /* Ensure the right column (features) takes full width on mobile */
+    .calc-section .mobile-centered-grid > div:last-child {
+        width: 100%;
+        max-width: none;
+    }
+    
+    /* Center feature lists */
+    .feature-list {
+        text-align: center;
+    }
+    
+    /* Center feature list items with bullets */
+    .feature-list {
+        width: 100%;
+        max-width: none;
+    }
+    
+    .feature-list li {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        text-align: left;
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    /* Ensure bullet points are properly aligned */
+    .feature-list li span:first-child {
+        flex-shrink: 0;
+        margin-right: 0.75rem;
+    }
+    
+    /* Ensure text content takes remaining space */
+    .feature-list li span:last-child {
+        flex: 1;
+    }
+    
+    /* Center WhatsApp link */
+    .whatsapp-link {
+        justify-content: center;
+    }
+}
+
+/* Additional mobile optimizations for very small screens */
+@media (max-width: 480px) {
+    /* Ensure buttons don't overflow on very small screens */
+    .btn-yellow,
+    .btn-black,
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        max-width: 280px;
+        padding: 12px 16px;
+        font-size: 16px;
+    }
+    
+    /* Adjust hero image sizing for very small screens */
+    .hero-section img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    /* Center all text with proper line height */
+    p, h1, h2, h3, h4, h5, h6 {
+        line-height: 1.5;
+        text-align: center;
+    }
+    
+    /* Ensure proper spacing between sections */
+    section {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
