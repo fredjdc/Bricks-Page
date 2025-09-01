@@ -14,6 +14,60 @@
     <link rel="manifest" href="site.webmanifest">
     <meta name="theme-color" content="#007AFF">
     
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0NE96SRV4V"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+
+        // Default to analytics_storage denied until consent is given
+        gtag("consent", "default", {
+            analytics_storage: "denied"
+        });
+
+        // Function to update consent based on user choice
+        function updateConsent(consent) {
+            if (consent === "granted") {
+                gtag("consent", "update", {
+                    analytics_storage: "granted"
+                });
+                // Store consent in localStorage
+                localStorage.setItem("analytics_consent", "granted");
+                // Hide consent banner
+                document.getElementById("cookie-consent-banner").style.display = "none";
+            } else {
+                // Keep denied or explicit denial
+                gtag("consent", "update", {
+                    analytics_storage: "denied"
+                });
+                // Store the denial in localStorage
+                localStorage.setItem("analytics_consent", "denied");
+                // Hide consent banner
+                document.getElementById("cookie-consent-banner").style.display = "none";
+            }
+        }
+
+        // Configure Google Analytics
+        gtag("config", "G-0NE96SRV4V");
+
+        // Check for previously stored consent on page load
+        document.addEventListener("DOMContentLoaded", function () {
+            const storedConsent = localStorage.getItem("analytics_consent");
+            if (storedConsent === "granted") {
+                updateConsent("granted");
+            } else if (storedConsent === "denied") {
+                // User explicitly denied before
+                document.getElementById("cookie-consent-banner").style.display = "none";
+            } else {
+                // Show the banner if no stored preference
+                document.getElementById("cookie-consent-banner").style.display = "flex";
+            }
+        });
+    </script>
+    
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -54,6 +108,20 @@
     <link rel="stylesheet" href="styles.css">
 
     <style>
+        /* Cookie consent banner styles */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(0, 122, 255, 0.2);
+            z-index: 1000;
+            padding: 1rem;
+        }
+        
+        /* Timeline styles */
         /* Timeline styles */
         .timeline-container {
             position: relative;
@@ -134,6 +202,33 @@
     </style>
 </head>
 <body class="font-sans text-gray-800 bg-white overflow-x-hidden">
+    <!-- Cookie Consent Banner -->
+    <div
+        id="cookie-consent-banner"
+        style="display: none"
+        class="cookie-banner flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div class="flex-1">
+            <p class="text-sm text-gray-300">
+                <span lang="en">We use cookies to analyze site usage and improve your experience. May we collect anonymous usage data?</span>
+                <span lang="es" class="hidden">Usamos cookies para analizar el uso del sitio y mejorar tu experiencia. ¿Nos permites recopilar datos anónimos de uso?</span>
+            </p>
+        </div>
+        <div class="flex gap-2 flex-shrink-0">
+            <button
+                onclick="updateConsent('denied')"
+                class="px-4 py-2 text-sm border border-gray-600 text-gray-300 hover:text-white hover:border-gray-500 transition-colors rounded-lg">
+                <span lang="en">Decline</span>
+                <span lang="es" class="hidden">Rechazar</span>
+            </button>
+            <button 
+                onclick="updateConsent('granted')" 
+                class="px-4 py-2 text-sm bg-primary text-white font-medium hover:bg-primary-dark transition-colors rounded-lg">
+                <span lang="en">Accept</span>
+                <span lang="es" class="hidden">Aceptar</span>
+            </button>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-sm z-50 shadow-sm">
         <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -605,7 +700,7 @@
             <div class="bg-gray-50 p-6 rounded-3xl my-12 text-center" data-aos="fade-up">
                 <h3 class="text-lg font-semibold mb-3">Planifica la Compra de Tu Casa</h3>
                 <p class="mb-4">Usa Bricks para estimar las cuotas mensuales y entender tus opciones.</p>
-                        <a href="https://apps.apple.com/us/app/bricks-calculadora-hipotecaria/id6744432658" id="app-store-download" class="btn inline-flex items-center justify-center rounded-full bg-black px-8 py-6 text-white shadow hover:bg-black/70" style="width: 320px">
+                        <a href="https://apps.apple.com/us/app/bricks-calculadora-hipotecaria/id6744432658" id="app-store-download" class="btn inline-flex items-center justify-center rounded-full bg-black px-8 py-6 text-white shadow hover:bg-black/70" style="width: 320px" onclick="gtag('event', 'click', {event_category: 'engagement', event_label: 'app_store_download'})">
                             <svg class="mr-2 h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.5646,12.6636 C17.532,10.0547 19.2843,8.5727 19.3623,8.5143 C18.1994,6.8761 16.3166,6.6936 15.6761,6.6747 C14.0535,6.5243 12.4844,7.716 11.6574,7.716 C10.8185,7.716 9.5219,6.6935 8.1644,6.7243 C6.4269,6.7551 4.8012,7.716 3.9234,9.2457 C2.1152,12.3603 3.4646,17.0072 5.2,19.5467 C6.0705,20.797 7.0775,22.2118 8.3948,22.1615 C9.6834,22.1112 10.16,21.3003 11.7071,21.3003 C13.2432,21.3003 13.6911,22.1615 15.0274,22.1327 C16.4046,22.1112 17.2788,20.8642 18.1256,19.6026 C19.1199,18.1483 19.5678,16.7144 19.5869,16.6545 C19.5583,16.6449 17.601,15.8649 17.5646,12.6636 Z M15.0599,5.0066 C15.7748,4.1194 16.2611,2.9026 16.1067,1.6666 C15.063,1.7078 13.7649,2.3665 13.0214,3.2346 C12.3638,4.0024 11.7741,5.2577 11.9475,6.4745 C13.1104,6.5537 14.3259,5.8843 15.0599,5.0066 Z"></path>
                             </svg>
@@ -619,7 +714,7 @@
 
     <!-- Back to Home Button -->
     <div class="text-center mt-8 mb-12">
-        <a href="index.html" class="inline-flex items-center text-primary hover:text-primary-dark transition-colors">
+        <a href="index.html" class="inline-flex items-center text-primary hover:text-primary-dark transition-colors" onclick="gtag('event', 'click', {event_category: 'navigation', event_label: 'back_to_home'})">
             <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
             </svg>

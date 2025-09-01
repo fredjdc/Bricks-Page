@@ -13,6 +13,60 @@
         <link rel="manifest" href="site.webmanifest" />
         <meta name="theme-color" content="#007AFF" />
 
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-0NE96SRV4V"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+
+            // Default to analytics_storage denied until consent is given
+            gtag("consent", "default", {
+                analytics_storage: "denied"
+            });
+
+            // Function to update consent based on user choice
+            function updateConsent(consent) {
+                if (consent === "granted") {
+                    gtag("consent", "update", {
+                        analytics_storage: "granted"
+                    });
+                    // Store consent in localStorage
+                    localStorage.setItem("analytics_consent", "granted");
+                    // Hide consent banner
+                    document.getElementById("cookie-consent-banner").style.display = "none";
+                } else {
+                    // Keep denied or explicit denial
+                    gtag("consent", "update", {
+                        analytics_storage: "denied"
+                    });
+                    // Store the denial in localStorage
+                    localStorage.setItem("analytics_consent", "denied");
+                    // Hide consent banner
+                    document.getElementById("cookie-consent-banner").style.display = "none";
+                }
+            }
+
+            // Configure Google Analytics
+            gtag("config", "G-0NE96SRV4V");
+
+            // Check for previously stored consent on page load
+            document.addEventListener("DOMContentLoaded", function () {
+                const storedConsent = localStorage.getItem("analytics_consent");
+                if (storedConsent === "granted") {
+                    updateConsent("granted");
+                } else if (storedConsent === "denied") {
+                    // User explicitly denied before
+                    document.getElementById("cookie-consent-banner").style.display = "none";
+                } else {
+                    // Show the banner if no stored preference
+                    document.getElementById("cookie-consent-banner").style.display = "flex";
+                }
+            });
+        </script>
+
         <!-- Tailwind CSS via CDN -->
         <script src="https://cdn.tailwindcss.com"></script>
         <script>
@@ -53,8 +107,50 @@
         <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=language" />
+
+        <style>
+            /* Cookie consent banner styles */
+            .cookie-banner {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: rgba(0, 0, 0, 0.95);
+                backdrop-filter: blur(10px);
+                border-top: 1px solid rgba(0, 122, 255, 0.2);
+                z-index: 1000;
+                padding: 1rem;
+            }
+        </style>
     </head>
     <body class="font-sans text-gray-800 bg-white overflow-x-hidden">
+        <!-- Cookie Consent Banner -->
+        <div
+            id="cookie-consent-banner"
+            style="display: none"
+            class="cookie-banner flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex-1">
+                <p class="text-sm text-gray-300">
+                    <span lang="en">We use cookies to analyze site usage and improve your experience. May we collect anonymous usage data?</span>
+                    <span lang="es" class="hidden">Usamos cookies para analizar el uso del sitio y mejorar tu experiencia. ¿Nos permites recopilar datos anónimos de uso?</span>
+                </p>
+            </div>
+            <div class="flex gap-2 flex-shrink-0">
+                <button
+                    onclick="updateConsent('denied')"
+                    class="px-4 py-2 text-sm border border-gray-600 text-gray-300 hover:text-white hover:border-gray-500 transition-colors rounded-lg">
+                    <span lang="en">Decline</span>
+                    <span lang="es" class="hidden">Rechazar</span>
+                </button>
+                <button 
+                    onclick="updateConsent('granted')" 
+                    class="px-4 py-2 text-sm bg-primary text-white font-medium hover:bg-primary-dark transition-colors rounded-lg">
+                    <span lang="en">Accept</span>
+                    <span lang="es" class="hidden">Aceptar</span>
+                </button>
+            </div>
+        </div>
+
         <!-- Navigation -->
         <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-sm z-50 shadow-sm">
             <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -520,7 +616,8 @@
                 <div class="text-center mt-8">
                     <a
                         href="index.html"
-                        class="inline-flex items-center text-primary hover:text-primary-dark transition-colors">
+                        class="inline-flex items-center text-primary hover:text-primary-dark transition-colors"
+                        onclick="gtag('event', 'click', {event_category: 'navigation', event_label: 'back_to_home'})">
                         <svg
                             class="w-5 h-5 mr-2"
                             xmlns="http://www.w3.org/2000/svg"
@@ -624,11 +721,11 @@
                         >
                     </p>
                     <div class="mt-4 flex justify-center space-x-6">
-                        <a href="privacy.html" class="transition-colors hover:text-white">
+                        <a href="privacy.html" class="transition-colors hover:text-white" onclick="gtag('event', 'click', {event_category: 'navigation', event_label: 'privacy_policy'})">
                             <span lang="en">Privacy Policy</span>
                             <span lang="es" class="hidden">Política de Privacidad</span>
                         </a>
-                        <a href="terms.html" class="transition-colors hover:text-white">
+                        <a href="terms.html" class="transition-colors hover:text-white" onclick="gtag('event', 'click', {event_category: 'navigation', event_label: 'terms_of_service'})">
                             <span lang="en">Terms of Service</span>
                             <span lang="es" class="hidden">Términos de Servicio</span>
                         </a>
