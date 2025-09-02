@@ -398,7 +398,7 @@
                                     >
                                     <button 
                                         type="submit"
-                                        class="w-full md:w-auto btn-yellow text-lg px-8 py-4 rounded-4xl hover:scale-105 transition-transform whitespace-nowrap">
+                                        class="w-full text-black md:w-auto btn-yellow text-lg px-8 py-4 rounded-4xl hover:scale-105 transition-transform whitespace-nowrap">
                                         Enviar
                                     </button>
                                 </div>
@@ -515,13 +515,13 @@
             
             <div class="container mx-auto px-4 relative z-10 pt-12 mb-24 md:mb-16">
                 <div class="flex items-center space-x-6 mb-8 -ml-6 md:-ml-10">
-                    <img src="images/icon-leads-app.png" alt="Leads App Icon" class="w-48 h-48"/>
+                    <img src="images/icon-leads-app.png" alt="Leads App Icon" class="w-32 h-32"/>
                 <div class="max-w-4xl -sm">
                     <h2 class="text-gray-900 font-bold text-2xl md:text-3xl mb-4">Leads</h2>
                     <p class="text-gray-700 text-lg md:text-xl mb-8">
                         Será la herramienta definitiva para agentes inmobiliarios. Captura, organiza y gestiona tu cartera de clientes de manera eficiente y profesional.
                     </p>
-                    <button class="btn-yellow text-lg px-8 py-4 rounded-4xl hover:scale-105 transition-transform">
+                    <button class="btn-yellow text-black text-lg px-8 py-4 rounded-4xl hover:scale-105 transition-transform">
                         Quiero Enterarme
                     </button>
                 </div>
@@ -536,10 +536,20 @@
         <section class="calc-section py-24">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-16">
-                    <p class="text-white/90 text-lg md:text-xl max-w-3xl mx-auto mb-4">
+                    <!-- Mobile Calc Icon -->
+                    <div class="md:hidden flex justify-start -ml-12 mb-4">
+                        <img src="images/icon-calc-app.png" alt="Bricks Calc" class="w-32 h-32 object-contain">
+                    </div>
+                    <p class="text-white/90 text-lg md:text-xl max-w-3xl mx-auto mb-4 flex items-center justify-center gap-3">
+                        <svg class="w-6 h-6 flex-shrink-0" viewBox="0 0 41.1 40.7" xmlns="http://www.w3.org/2000/svg">
+                            <rect class="fill-transparent" width="41.1" height="40.7"/>
+                            <path class="fill-white/90" d="M20.3,40.7c11.2,0,20.4-9.1,20.4-20.3S31.6,0,20.3,0,0,9.1,0,20.4s9.1,20.3,20.3,20.3ZM20.3,37.8c-9.6,0-17.4-7.8-17.4-17.4S10.7,2.9,20.3,2.9s17.4,7.8,17.4,17.4-7.8,17.4-17.4,17.4Z"/>
+                            <path class="fill-white/90" d="M9.5,22.4h10.8c.7,0,1.2-.5,1.2-1.2V7.2c0-.7-.5-1.2-1.2-1.2s-1.2.5-1.2,1.2v12.7h-9.6c-.7,0-1.2.5-1.2,1.2s.5,1.2,1.2,1.2Z"/>
+                        </svg>
                         Mientras Esperas...
                     </p>
-                    <h2 class="text-white font-bold text-4xl md:text-5xl mb-6">
+                    <h2 class="text-white font-bold text-4xl md:text-5xl mb-6 flex items-center justify-center gap-6">
+                        <img src="images/icon-calc-app.png" alt="Bricks Calc" class="hidden md:inline w-32 h-32 object-contain flex-shrink-0 -ml-6 md:-ml-12 md:-mt-4 md:-mb-12">
                         Prueba Gratis Bricks Calc
                     </h2>
                     <p class="text-white/90 text-lg md:text-xl max-w-3xl mx-auto">
