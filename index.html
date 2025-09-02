@@ -331,7 +331,9 @@
         <header class="glass-nav sticky top-0 z-50 w-full border-b border-white/20">
             <div class="container mx-auto px-4 grid grid-cols-2 h-16 items-center">
                 <!-- Logo -->
-                <img src="images/Bricks Logo.svg" alt="Bricks Apps" class="h-8 flex items-center space-x-2" />
+                <a href="index.html" class="flex items-center">
+                    <img src="images/Bricks Logo.svg" alt="Bricks Apps" class="h-8" />
+                </a>
 
                 <!-- Language Selector -->
                 <button 
@@ -383,7 +385,6 @@
                                 @submit="setTimeout(() => { success = true }, 200)">
                                 <input type="hidden" name="_subject" value="Nuevo registro en Bricks Leads" />
                                 <input type="hidden" name="_captcha" value="false" />
-                                <input type="hidden" name="_next" value="https://leads.bricks.pe/thank-you" />
                                 
                                 <div class="flex flex-col sm:flex-row gap-4">
                                     <input 
