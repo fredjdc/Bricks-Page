@@ -35,67 +35,13 @@
         <!-- Favicon -->
         <link rel="icon" type="image/x-icon" href="images-2/Leads-Logo.svg" />
 
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-F052KKS9DR"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag("js", new Date());
-
-            // Default to analytics_storage denied until consent is given
-            gtag("consent", "default", {
-                analytics_storage: "denied"
-            });
-
-            // Function to update consent based on user choice
-            function updateConsent(consent) {
-                if (consent === "granted") {
-                    gtag("consent", "update", {
-                        analytics_storage: "granted"
-                    });
-                    // Store consent in localStorage
-                    localStorage.setItem("analytics_consent", "granted");
-                    // Hide consent banner
-                    document.getElementById("cookie-consent-banner").style.display = "none";
-                } else {
-                    // Keep denied or explicit denial
-                    gtag("consent", "update", {
-                        analytics_storage: "denied"
-                    });
-                    // Store the denial in localStorage
-                    localStorage.setItem("analytics_consent", "denied");
-                    // Hide consent banner
-                    document.getElementById("cookie-consent-banner").style.display = "none";
-                }
-            }
-
-            // Configure Google Analytics
-            gtag("config", "G-F052KKS9DR");
-
-            // Check for previously stored consent on page load
-            document.addEventListener("DOMContentLoaded", function () {
-                const storedConsent = localStorage.getItem("analytics_consent");
-                if (storedConsent === "granted") {
-                    updateConsent("granted");
-                } else if (storedConsent === "denied") {
-                    // User explicitly denied before
-                    document.getElementById("cookie-consent-banner").style.display = "none";
-                } else {
-                    // Show the banner if no stored preference
-                    document.getElementById("cookie-consent-banner").style.display = "flex";
-                }
-
-                // Track thank you page view
-                gtag('event', 'page_view', {
-                    page_title: 'Thank You Page',
-                    page_location: window.location.href,
-                    event_category: 'engagement',
-                    event_label: 'leads_registration_success'
-                });
-            });
-        </script>
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-P5P8LRC2');</script>
+        <!-- End Google Tag Manager -->
 
         <!-- TailwindCSS CDN -->
         <script src="https://cdn.tailwindcss.com"></script>
@@ -231,6 +177,10 @@
         <!-- End Meta Pixel Code -->
     </head>
     <body class="black text-white font-exo">
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P5P8LRC2"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
         <!-- Cookie Consent Banner -->
         <div
             id="cookie-consent-banner"
