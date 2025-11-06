@@ -293,6 +293,10 @@ const updateAppScreenshots = (lang) => {
                 es: 'images/bricks-calc-img-es.png',
                 en: 'images/bricks-calc-img-en.png' // Will automatically use when English version is added
             },
+            'bricks-calc-hero': {
+                es: 'images/bricks-calc-hero-es.png',
+                en: 'images/bricks-calc-hero-en.png'
+            },
             'bricks-leads': {
                 es: 'images/bricks-leads-img-es.png',
                 en: 'images/bricks-leads-img-en.png' // Will automatically use when English version is added
@@ -317,8 +321,20 @@ const updateAppScreenshots = (lang) => {
                     img.src = imagePath;
                 };
                 testImg.src = imagePath;
+            } else if (lang === 'es' && imagePath && imagePath.includes('-es.png')) {
+                // For Spanish, test if Spanish image exists, otherwise fallback to English
+                const testImg = new Image();
+                testImg.onerror = () => {
+                    // Spanish image doesn't exist, use English version as fallback
+                    img.src = imagePaths[appName].en || imagePath;
+                };
+                testImg.onload = () => {
+                    // Spanish image exists, use it
+                    img.src = imagePath;
+                };
+                testImg.src = imagePath;
             } else if (imagePath) {
-                // For Spanish, or if English path is set, use it directly
+                // Direct path assignment if no language-specific testing needed
                 img.src = imagePath;
             }
         });
