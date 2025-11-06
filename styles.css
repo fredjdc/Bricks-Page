@@ -179,6 +179,141 @@ body {
     }
 }
 
+/* Hero Section Animations */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% center;
+    }
+    100% {
+        background-position: 200% center;
+    }
+}
+
+/* Hero Title - Animated entrance with enhanced styling */
+.hero-title {
+    /* Initial state - hidden */
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease-out 0.2s forwards;
+    /* Use white color with enhanced shadow for better visibility */
+    color: white;
+    /* Add subtle glow effect */
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.1));
+}
+
+/* Hero Title Text - Animated letter spacing with enhanced shadow */
+.hero-title-text {
+    display: inline-block;
+    letter-spacing: -0.02em;
+    transition: letter-spacing 0.3s ease;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3), 0 0 40px rgba(255, 204, 0, 0.1);
+}
+
+/* Hero Subtitle - Staggered animation */
+.hero-subtitle {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out 0.5s forwards;
+}
+
+/* Hero Subtitle Text - Enhanced readability */
+.hero-subtitle-text {
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Hero Buttons Container - Staggered animation */
+.hero-buttons {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out 0.8s forwards;
+}
+
+/* Individual Hero Button - Subtle scale on hover with glow and shimmer effect */
+.hero-btn {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Shimmer effect on button hover */
+.hero-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.hero-btn:hover::before {
+    left: 100%;
+}
+
+/* Enhanced hover effect with lift and glow */
+.hero-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 204, 0, 0.2);
+}
+
+/* Hero Background Animations */
+.hero-background {
+    overflow: hidden;
+}
+
+.hero-bg-image {
+    animation: subtleFloat 20s ease-in-out infinite;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+/* Subtle floating animation for background */
+@keyframes subtleFloat {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-20px) scale(1.02);
+    }
+}
+
+/* Gradient overlay for depth and visual interest */
+.hero-gradient-overlay {
+    background: radial-gradient(
+        ellipse at center,
+        rgba(255, 204, 0, 0.05) 0%,
+        transparent 50%
+    ),
+    linear-gradient(
+        180deg,
+        rgba(30, 64, 175, 0.3) 0%,
+        rgba(30, 64, 175, 0.1) 50%,
+        rgba(30, 64, 175, 0.3) 100%
+    );
+    pointer-events: none;
+}
+
 /* Animation classes */
 .animate-float {
     animation: float 4s ease-in-out infinite;
@@ -194,6 +329,184 @@ body {
 
 .animation-delay-4000 {
     animation-delay: 4s;
+}
+
+/* Bento Box Styles */
+.bento-box {
+    /* Glassmorphism background with subtle border */
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
+    padding: 2rem;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Initial hidden state for animation */
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+/* Hover effect for bento boxes */
+.bento-box:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+/* Icon animation on hover */
+.bento-box:hover svg {
+    transform: scale(1.1);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bento-box svg {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Scroll animation - when element comes into view */
+.bento-box.animate-on-scroll.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered animation delays for each box */
+.bento-box[data-animation-delay="0"] {
+    transition-delay: 0ms;
+}
+
+.bento-box[data-animation-delay="100"] {
+    transition-delay: 100ms;
+}
+
+.bento-box[data-animation-delay="200"] {
+    transition-delay: 200ms;
+}
+
+/* Mobile responsive adjustments for bento boxes */
+@media (max-width: 768px) {
+    .bento-box {
+        padding: 1.5rem;
+        border-radius: 20px;
+    }
+}
+
+/* Testimonials Section - Unique Styling */
+.testimonials-section {
+    /* Subtle gradient background for distinction */
+    background: linear-gradient(180deg, 
+        rgba(30, 64, 175, 0.95) 0%, 
+        rgba(30, 64, 175, 0.98) 100%);
+}
+
+/* Testimonial Card Styling */
+.testimonial-card {
+    /* Different background treatment - more solid with accent border */
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 204, 0, 0.2);
+    border-radius: 20px;
+    padding: 2.5rem;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+/* Decorative accent border on hover */
+.testimonial-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        rgba(255, 204, 0, 0.8) 0%, 
+        rgba(255, 204, 0, 0.4) 50%, 
+        rgba(255, 204, 0, 0.8) 100%);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.testimonial-card:hover::before {
+    transform: scaleX(1);
+}
+
+/* Hover effect for testimonial cards */
+.testimonial-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 204, 0, 0.4);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25),
+                0 0 20px rgba(255, 204, 0, 0.1);
+}
+
+/* Quote icon styling */
+.testimonial-quote-icon {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    opacity: 0.3;
+    transition: all 0.3s ease;
+}
+
+.testimonial-card:hover .testimonial-quote-icon {
+    opacity: 0.5;
+    transform: scale(1.1);
+}
+
+/* Testimonial text styling */
+.testimonial-text {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1.125rem;
+    line-height: 1.75;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Author styling */
+.testimonial-author {
+    color: rgba(255, 204, 0, 0.9);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    position: relative;
+    z-index: 1;
+}
+
+.testimonial-author::before {
+    content: '—';
+    margin-right: 0.5rem;
+    color: rgba(255, 204, 0, 0.6);
+}
+
+/* Mobile responsive adjustments for testimonials */
+@media (max-width: 768px) {
+    .testimonial-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .testimonial-quote-icon {
+        top: 1rem;
+        right: 1rem;
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    
+    .testimonial-quote-icon svg {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    
+    .testimonial-text {
+        font-size: 1rem;
+        padding-right: 2rem;
+    }
 }
 
 /* Enhanced focus styles with accent color - #007AFF */

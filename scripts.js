@@ -178,11 +178,22 @@ const setupIntersectionObserver = () => {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('animate-in');
-                // We've already handled hero-image opacity separately above
+                // Get animation delay from data attribute if present
+                const delay = parseInt(entry.target.getAttribute('data-animation-delay')) || 0;
+                
+                // Apply animation with delay
+                setTimeout(() => {
+                    entry.target.classList.add('animate-in');
+                }, delay);
+                
+                // Stop observing once animated
+                observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1 });
+    }, { 
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px' // Start animation slightly before element enters viewport
+    });
 
     document.querySelectorAll('.animate-on-scroll').forEach(element => {
         observer.observe(element);
@@ -233,6 +244,9 @@ const changeLanguage = (lang) => {
         
         // Update placeholders based on language
         updatePlaceholders(lang);
+        
+        // Update app screenshot images based on language
+        updateAppScreenshots(lang);
     } catch (error) {
         console.error('Error changing language:', error);
     }
@@ -267,6 +281,49 @@ const updatePlaceholders = (lang) => {
         if (descInput) descInput.placeholder = placeholders.description[lang];
     } catch (error) {
         console.error('Error updating placeholders:', error);
+    }
+};
+
+// Update app screenshot images based on language
+const updateAppScreenshots = (lang) => {
+    try {
+        // Define image paths for each app and language
+        const imagePaths = {
+            'bricks-calc': {
+                es: 'images/bricks-calc-img-es.png',
+                en: 'images/bricks-calc-img-en.png' // Will automatically use when English version is added
+            },
+            'bricks-leads': {
+                es: 'images/bricks-leads-img-es.png',
+                en: 'images/bricks-leads-img-en.png' // Will automatically use when English version is added
+            }
+        };
+        
+        // Find all images with data-app-image attribute and update their sources
+        document.querySelectorAll('[data-app-image]').forEach(img => {
+            const appName = img.getAttribute('data-app-image');
+            let imagePath = imagePaths[appName]?.[lang];
+            
+            // For English, try to use English version, but fallback to Spanish as placeholder
+            if (lang === 'en' && imagePath && imagePath.includes('-en.png')) {
+                // Test if English image exists, otherwise use Spanish placeholder
+                const testImg = new Image();
+                testImg.onerror = () => {
+                    // English image doesn't exist, use Spanish version as placeholder
+                    img.src = imagePaths[appName].es;
+                };
+                testImg.onload = () => {
+                    // English image exists, use it
+                    img.src = imagePath;
+                };
+                testImg.src = imagePath;
+            } else if (imagePath) {
+                // For Spanish, or if English path is set, use it directly
+                img.src = imagePath;
+            }
+        });
+    } catch (error) {
+        console.error('Error updating app screenshots:', error);
     }
 };
 
