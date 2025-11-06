@@ -376,6 +376,18 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+
+            /* Max width constraint for large screens */
+            @media (min-width: 1024px) {
+                .container {
+                    max-width: 1190px !important;
+                }
+                /* Also constrain any elements with larger max-width classes (max-w-6xl = 1152px, max-w-7xl = 1280px) */
+                .max-w-7xl,
+                .max-w-6xl {
+                    max-width: 1190px !important;
+                }
+            }
         </style>
 
         <!-- App Store Meta -->
@@ -440,12 +452,12 @@
         <!-- Desktop App Banner (only shown on desktop browsers) -->
         <div id="desktop-app-banner" class="desktop-app-banner">
             <div class="desktop-app-banner-content">
-                <img src="images/apple-touch-icon.png" alt="Bricks Apps Icon" class="desktop-app-banner-icon" />
+                <img src="images/bricks-calc-web-icon.png" alt="Bricks Apps Icon" class="desktop-app-banner-icon" />
                 <div class="desktop-app-banner-info">
-                    <p class="desktop-app-banner-title">Bricks</p>
+                    <p class="desktop-app-banner-title">Bricks Calc</p>
                     <p class="desktop-app-banner-subtitle">
                         <span lang="en">Mortgage Calculator</span>
-                        <span lang="es" class="hidden">Calculadora Hipotecaria</span>
+                        <span lang="es" class="hidden">Calculadora y Análisis Hipotecario</span>
                     </p>
                 </div>
             </div>
