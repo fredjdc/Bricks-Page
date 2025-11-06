@@ -89,11 +89,11 @@
                 overflow: hidden;
             }
 
-            /* Hero Headline Animation */
+            /* Hero Headline Animation - Soft and subtle */
             @keyframes fadeInUp {
                 0% {
                     opacity: 0;
-                    transform: translateY(40px);
+                    transform: translateY(20px);
                 }
                 100% {
                     opacity: 1;
@@ -113,7 +113,7 @@
             /* Hero Headline - Large, bold text with smooth entrance */
             .hero-headline {
                 opacity: 0;
-                animation: fadeInUp 1.2s ease-out 0.3s forwards;
+                animation: fadeInUp 1.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s forwards;
                 font-weight: 800;
                 letter-spacing: -0.03em;
                 line-height: 1.1;
@@ -128,7 +128,7 @@
             /* Hero Subheadline - Lighter, delayed animation */
             .hero-subheadline {
                 opacity: 0;
-                animation: fadeInUp 1s ease-out 0.6s forwards;
+                animation: fadeInUp 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s forwards;
                 font-weight: 300;
             }
 
@@ -139,13 +139,13 @@
             /* Hero CTA - Delayed entrance */
             .hero-cta {
                 opacity: 0;
-                animation: fadeIn 0.8s ease-out 0.9s forwards;
+                animation: fadeIn 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.8s forwards;
             }
 
             /* Scroll Indicator - Smooth fade in and bounce */
             .scroll-indicator {
                 opacity: 0;
-                animation: fadeIn 1s ease-out 1.2s forwards;
+                animation: fadeIn 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s forwards;
             }
 
             .scroll-arrow {
@@ -161,10 +161,10 @@
                     transform: translateY(0);
                 }
                 40% {
-                    transform: translateY(-10px);
+                    transform: translateY(-6px);
                 }
                 60% {
-                    transform: translateY(-5px);
+                    transform: translateY(-3px);
                 }
             }
 
@@ -173,14 +173,16 @@
                 scroll-behavior: smooth;
             }
 
-            /* Transition from dark hero to light content */
+            /* Transition from dark hero to light content - softer gradient resembling key features shadow */
             .transition-section {
                 background: linear-gradient(
                     to bottom,
                     #111827 0%,
-                    #111827 3%,
-                    rgba(239, 239, 239, 0.3) 10%,
-                    #efefef 20%,
+                    #111827 2%,
+                    rgba(111, 127, 139, 0.15) 8%,
+                    rgba(239, 239, 239, 0.4) 15%,
+                    rgba(239, 239, 239, 0.7) 25%,
+                    #efefef 35%,
                     #efefef 100%
                 );
                 padding-top: 6rem;
@@ -232,6 +234,20 @@
             }
             .bento-box:hover img[src*=".svg"] {
                 filter: brightness(0) saturate(100%) invert(100%);
+            }
+
+            /* Scroll animation initial state - soft and subtle */
+            .animate-on-scroll {
+                opacity: 0;
+                transform: translateY(15px);
+                transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                            transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            }
+
+            /* Scroll animation active state */
+            .animate-on-scroll.animate-in {
+                opacity: 1;
+                transform: translateY(0);
             }
         </style>
 
@@ -468,7 +484,7 @@
         </section>
 
         <!-- Problem & Value -->
-        <section class="py-20 transition-section">
+        <section class="py-20">
             <div class="container mx-auto px-4 max-w-4xl text-center py-20 space-y-6">
                 <h2 class="text-gray-900 font-bold text-3xl md:text-4xl">¿Por qué usar Bricks Calc?</h2>
                 <p class="text-gray-700 text-lg md:text-xl">
@@ -614,7 +630,7 @@
 
         <!-- Who It's For -->
         <section class="py-20">
-            <div class="container mx-auto px-4 max-w-5xl">
+            <div class="container mx-auto px-4 max-w-5xl py-32">
                 <h2 class="text-center text-gray-900 font-bold text-3xl md:text-4xl mb-12">
                     <span lang="es">Ideal para</span>
                     <span lang="en" class="hidden">Ideal for</span>
@@ -658,10 +674,14 @@
         </section>
 
         <!-- Download CTA -->
-        <section class="py-20">
+        <section class="py-20" style="background-color: #303030;">
             <div class="container mx-auto px-4 text-center max-w-3xl py-32">
-                <h2 class="text-gray-900 font-bold text-3xl md:text-4xl">Descarga Bricks Calc</h2>
-                <p class="text-gray-700 text-lg md:text-xl mt-4">
+                <img
+                    src="images/bricks-calc-web-icon.png"
+                    alt="Bricks Calc App Icon"
+                    class="mx-auto mb-6 w-24 h-24 md:w-32 md:h-32" />
+                <h2 class="text-white font-bold text-3xl md:text-4xl">Descarga Bricks Calc</h2>
+                <p class="text-gray-300 text-lg md:text-xl mt-4">
                     Empieza a analizar tu crédito hoy mismo. Descarga Bricks Calc gratis en App Store y toma decisiones
                     más informadas.
                 </p>

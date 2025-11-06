@@ -181,7 +181,7 @@ const setupIntersectionObserver = () => {
                 // Get animation delay from data attribute if present
                 const delay = parseInt(entry.target.getAttribute('data-animation-delay')) || 0;
                 
-                // Apply animation with delay
+                // Apply animation with delay for smoother, more subtle appearance
                 setTimeout(() => {
                     entry.target.classList.add('animate-in');
                 }, delay);
@@ -191,8 +191,8 @@ const setupIntersectionObserver = () => {
             }
         });
     }, { 
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px' // Start animation slightly before element enters viewport
+        threshold: 0.05, // Trigger earlier for smoother appearance
+        rootMargin: '0px 0px -80px 0px' // Start animation earlier for more subtle entrance
     });
 
     document.querySelectorAll('.animate-on-scroll').forEach(element => {
