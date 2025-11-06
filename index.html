@@ -221,6 +221,73 @@
                 background-color: #333333;
                 transform: translateY(-2px);
             }
+
+            /* Dribbble-style section divider (curved wave) */
+            .section-divider {
+                position: relative;
+                line-height: 0;
+            }
+            .section-divider svg {
+                display: block;
+                width: 100%;
+                height: 70px;
+            }
+            .section-divider--light path { fill: rgba(255,255,255,0.08); }
+            .section-divider--dark  path { fill: rgba(0,0,0,0.08); }
+
+            /* Glassmorphism panel used to differentiate sections/cards */
+            .panel {
+                background: rgba(255, 255, 255, 0.06);
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                border-radius: 24px;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+            }
+
+            /* Bento cards (Why Bricks) */
+            .bento-box {
+                background: rgba(255,255,255,0.06);
+                border: 1px solid rgba(255,255,255,0.12);
+                border-radius: 20px;
+                padding: 24px;
+                box-shadow: 0 12px 28px rgba(0,0,0,0.22);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            .bento-box:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 20px 40px rgba(0,0,0,0.28);
+            }
+
+            /* Testimonials cards */
+            .testimonial-card {
+                background: rgba(255,255,255,0.06);
+                border: 1px solid rgba(255,255,255,0.12);
+                border-radius: 20px;
+                padding: 24px;
+                box-shadow: 0 12px 28px rgba(0,0,0,0.22);
+            }
+            .testimonial-text {
+                color: rgba(255,255,255,0.9);
+                font-size: 1.125rem;
+                line-height: 1.75rem;
+                margin-top: 0.5rem;
+            }
+            .testimonial-author {
+                margin-top: 1rem;
+                color: rgba(255,255,255,0.7);
+                font-size: 0.95rem;
+            }
+
+            /* Hero visual enhancements */
+            .hero-gradient-overlay {
+                background: radial-gradient(1200px 600px at 50% 20%, rgba(255, 204, 0, 0.15), transparent 60%),
+                            radial-gradient(800px 400px at 80% 80%, rgba(255, 255, 255, 0.08), transparent 60%);
+            }
+            .hero-bg-image { opacity: 0.25; }
+            .hero-title { letter-spacing: -0.02em; }
+            .hero-subtitle { opacity: 0.95; }
+            .hero-buttons .hero-btn { box-shadow: 0 10px 24px rgba(0,0,0,0.25); }
         </style>
     </head>
     <body class="min-h-screen">
@@ -381,6 +448,11 @@
                             </div>
         </section>
 
+        <!-- Divider: Hero → Apps Overview -->
+        <div class="section-divider section-divider--light" aria-hidden="true">
+            <svg viewBox="0 0 1440 70" preserveAspectRatio="none"><path d="M0,30 C240,80 480,0 720,30 C960,60 1200,20 1440,40 L1440,70 L0,70 Z"></path></svg>
+        </div>
+
         <!-- Apps Overview Section -->
         <section id="apps-overview" class="py-24 relative">
             <div class="container mx-auto px-4">
@@ -393,7 +465,7 @@
 
                 <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
                     <!-- Bricks Calc App -->
-                    <div id="bricks-calc" class="space-y-6">
+                    <div id="bricks-calc" class="space-y-6 panels p-6 md:p-8">
                         <!-- App Icon -->
                         <div class="flex justify-center md:justify-start mb-6">
                             <div class="flex items-center gap-2 md:gap-4">
@@ -417,7 +489,7 @@
 
                         <!-- Learn More Link -->
                         <div class="pt-4">
-                            <a href="https://apps.apple.com/app/id6744432658" class="inline-flex items-center gap-3 text-bricks-yellow hover:text-yellow-400 transition-colors font-semibold">
+                            <a href="bricks-calc.html" class="inline-flex items-center gap-3 text-bricks-yellow hover:text-yellow-400 transition-colors font-semibold">
                                 <span lang="es">Más información →</span>
                                 <span lang="en" class="hidden">Learn more →</span>
                             </a>
@@ -449,7 +521,7 @@
                     </div>
 
                     <!-- Bricks Leads App -->
-                    <div id="bricks-leads" class="space-y-6">
+                    <div id="bricks-leads" class="space-y-6 panels p-6 md:p-8">
                         <!-- App Icon -->
                         <div class="flex justify-center md:justify-start mb-6">
                             <div class="flex items-center gap-2 md:gap-4">
@@ -507,6 +579,11 @@
             </div>
         </section>
 
+        <!-- Divider: Apps Overview → Why Bricks -->
+        <div class="section-divider section-divider--dark" aria-hidden="true">
+            <svg viewBox="0 0 1440 70" preserveAspectRatio="none"><path d="M0,40 C240,20 480,60 720,30 C960,0 1200,50 1440,30 L1440,70 L0,70 Z"></path></svg>
+        </div>
+
         <!-- Why Bricks Section -->
         <section class="py-24 relative">
             <div class="container mx-auto px-4">
@@ -522,9 +599,7 @@
                     <div class="bento-box animate-on-scroll" data-animation-delay="0">
                         <div class="text-center space-y-4">
                             <div class="flex justify-center mb-4">
-                                <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
+                                <img src="images/globe.americas.fill.svg" alt="Home icon" class="w-12 h-12" />
                             </div>
                             <h3 class="text-white font-bold text-xl md:text-2xl">
                                 <span lang="es">Tecnología local con visión global</span>
@@ -541,9 +616,7 @@
                     <div class="bento-box animate-on-scroll" data-animation-delay="100">
                         <div class="text-center space-y-4">
                             <div class="flex justify-center mb-4">
-                                <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-                                </svg>
+                                <img src="images/timelapse.svg" alt="Home icon" class="w-12 h-12" />
                             </div>
                             <h3 class="text-white font-bold text-xl md:text-2xl">
                                 <span lang="es">Simple. Inteligente. Escalable.</span>
@@ -560,9 +633,7 @@
                     <div class="bento-box animate-on-scroll" data-animation-delay="200">
                         <div class="text-center space-y-4">
                             <div class="flex justify-center mb-4">
-                                <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
-                                </svg>
+                                <img src="images/lock.shield.svg" alt="Home icon" class="w-12 h-12" />
                             </div>
                             <h3 class="text-white font-bold text-xl md:text-2xl">
                                 <span lang="es">Datos seguros, soporte real.</span>
@@ -577,6 +648,11 @@
             </div>
             </div>
         </section>
+
+        <!-- Divider: Why Bricks → Testimonials -->
+        <div class="section-divider section-divider--light" aria-hidden="true">
+            <svg viewBox="0 0 1440 70" preserveAspectRatio="none"><path d="M0,35 C240,55 480,10 720,35 C960,60 1200,20 1440,40 L1440,70 L0,70 Z"></path></svg>
+        </div>
         
         <!-- Testimonials Section -->
         <section class="testimonials-section py-24 relative overflow-hidden">
@@ -632,14 +708,17 @@
             </div>
         </section>
 
+        <!-- Divider: Testimonials → Final CTA -->
+        <div class="section-divider section-divider--dark" aria-hidden="true">
+            <svg viewBox="0 0 1440 70" preserveAspectRatio="none"><path d="M0,45 C240,25 480,55 720,25 C960,-5 1200,45 1440,25 L1440,70 L0,70 Z"></path></svg>
+        </div>
+
         <!-- Final CTA Section -->
         <section class="py-24 relative">
             <div class="container mx-auto px-4">
-                <div class="text-center space-y-8 max-w-3xl mx-auto">
+                <div class="text-center space-y-8 max-w-3xl mx-auto p-8 md:p-12">
                     <div class="flex justify-center mb-4">
-                        <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
-                        </svg>
+                        <img src="images/building.2.svg" alt="Home icon" class="w-16 h-16" />
                     </div>
                     <h2 class="text-white font-bold text-4xl md:text-5xl">
                         <span lang="es">Descubre cómo Bricks está transformando la industria inmobiliaria.</span>
@@ -697,6 +776,11 @@
             </div>
         </section>
 
+        <!-- Divider: Final CTA → Coming Soon -->
+        <div class="section-divider section-divider--light" aria-hidden="true">
+            <svg viewBox="0 0 1440 70" preserveAspectRatio="none"><path d="M0,30 C240,65 480,5 720,35 C960,65 1200,15 1440,40 L1440,70 L0,70 Z"></path></svg>
+        </div>
+
         <!-- Bricks Leads Coming Soon Section -->
         <section id="coming-soon" class="py-24 relative overflow-hidden">
             <!-- Background Image -->
@@ -709,7 +793,7 @@
                         </div>
             
             <div class="container mx-auto px-4 relative z-10">
-                <div class="max-w-2xl mx-auto text-center space-y-8">
+                <div class="max-w-2xl mx-auto text-center space-y-8 p-8 md:p-12">
                     <!-- App Icon -->
                     <div class="flex justify-center mb-6">
                         <img 

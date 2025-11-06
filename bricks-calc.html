@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>Bricks Calc – Calcula tu crédito hipotecario en minutos</title>
+        <meta name="description" content="Bricks Calc te ayuda a calcular tu crédito hipotecario en minutos. Compara tasas, analiza escenarios y entiende tus pagos antes de tomar una decisión." />
+        <link rel="canonical" href="https://bricks.pe/bricks-calc" />
+
+        <!-- Open Graph -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://bricks.pe/bricks-calc" />
+        <meta property="og:title" content="Bricks Calc – Calcula tu crédito hipotecario en minutos" />
+        <meta property="og:description" content="Compara tasas, analiza escenarios y entiende tus pagos antes de tomar una decisión." />
+        <meta property="og:image" content="https://bricks.pe/images/bricks-calc-img-es.png" />
+
+        <!-- Favicon & Styles -->
+        <link rel="icon" href="favicon.ico" sizes="32x32" />
+        <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
+        <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16" />
+        <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+        <link rel="manifest" href="site.webmanifest" />
+        <meta name="theme-color" content="#1E40AF" />
+
+        <!-- Fonts & Tailwind (match site) -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="styles.css" />
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: { 'bricks-blue': '#1E40AF', 'bricks-yellow': '#FFCC00' },
+                        fontFamily: { sans: ["Exo 2", "sans-serif"] }
+                    }
+                }
+            };
+        </script>
+
+        <!-- Alpine and scripts -->
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        <script src="scripts.js" defer></script>
+
+        <style>
+            body { font-family: "Exo 2", sans-serif; background-color: #1E40AF; color: white; margin: 0; }
+            .glass-nav { background: rgba(30, 64, 175, 0.8); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+        </style>
+
+        <!-- App Store Meta -->
+        <meta name="apple-itunes-app" content="app-id=6744432658, app-clip-bundle-id=com.bricks.bricksapp.Clip" />
+
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-P5P8LRC2');</script>
+        <!-- End Google Tag Manager -->
+
+        <!-- Meta Pixel Code -->
+        <script>
+            !(function (f, b, e, v, n, t, s) {
+                if (f.fbq) return;
+                n = f.fbq = function () {
+                    n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+                };
+                if (!f._fbq) f._fbq = n;
+                n.push = n;
+                n.loaded = !0;
+                n.version = "2.0";
+                n.queue = [];
+                t = b.createElement(e);
+                t.async = !0;
+                t.src = v;
+                s = b.getElementsByTagName(e)[0];
+                s.parentNode.insertBefore(t, s);
+            })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+            fbq("init", "1088148306858128");
+            fbq("track", "PageView");
+        </script>
+        <noscript>
+            <img height="1" width="1" style="display: none" src="https://www.facebook.com/tr?id=1088148306858128&ev=PageView&noscript=1" />
+        </noscript>
+        <!-- End Meta Pixel Code -->
+    </head>
+    <body class="min-h-screen">
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P5P8LRC2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+
+        <!-- Desktop App Banner (only shown on desktop browsers) -->
+        <div id="desktop-app-banner" class="desktop-app-banner">
+            <div class="desktop-app-banner-content">
+                <img src="images/apple-touch-icon.png" alt="Bricks Apps Icon" class="desktop-app-banner-icon" />
+                <div class="desktop-app-banner-info">
+                    <p class="desktop-app-banner-title">Bricks</p>
+                    <p class="desktop-app-banner-subtitle">
+                        <span lang="en">Mortgage Calculator</span>
+                        <span lang="es" class="hidden">Calculadora Hipotecaria</span>
+                    </p>
+                </div>
+            </div>
+            <div>
+                <a id="app_desktop_banner_button" href="https://apps.apple.com/app/id6744432658" target="_blank" class="desktop-app-banner-button">
+                    <span lang="en">Go to App Store</span>
+                    <span lang="es" class="hidden">Ver en App Store</span>
+                </a>
+                <button id="desktop-app-banner-close" class="desktop-app-banner-close">×</button>
+            </div>
+        </div>
+
+        <!-- Desktop App Banner Script -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // Only show on desktop browsers
+                const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+                const isMacOS = navigator.platform.toUpperCase().indexOf("MAC") >= 0;
+                const bannerElement = document.getElementById("desktop-app-banner");
+                const closeBannerButton = document.getElementById("desktop-app-banner-close");
+
+                // Check if banner was previously dismissed
+                const bannerDismissed = localStorage.getItem("app_banner_dismissed");
+
+                // Show banner only on macOS desktop and if not previously dismissed
+                if (isMacOS && !isMobile && !bannerDismissed) {
+                    bannerElement.style.display = "flex";
+                    document.body.classList.add("has-banner");
+                }
+
+                // Handle banner close
+                closeBannerButton.addEventListener("click", function () {
+                    bannerElement.style.display = "none";
+                    document.body.classList.remove("has-banner");
+                    localStorage.setItem("app_banner_dismissed", "true");
+                });
+            });
+        </script>
+
+        <!-- Cookie Consent Banner -->
+        <div id="cookie-consent-banner" style="display: none" class="fixed bottom-0 left-0 right-0 bg-gray-800 text-white p-6 z-50 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div>
+                <p class="text-sm">
+                    <span lang="en">We use cookies to analyze site usage and improve your experience. May we collect anonymous usage data?</span>
+                    <span lang="es" class="hidden">Usamos cookies para analizar el uso del sitio y mejorar su experiencia. ¿Nos permite recopilar datos anónimos de uso?</span>
+                </p>
+            </div>
+            <div class="flex gap-2">
+                <button onclick="updateConsent('denied')" class="btn btn-outline text-white border-white text-xs px-8 py-1 whitespace-nowrap">
+                    <span lang="en">Decline</span>
+                    <span lang="es" class="hidden">Rechazar</span>
+                </button>
+                <button onclick="updateConsent('granted')" class="btn btn-primary text-xs px-8 py-1 whitespace-nowrap">
+                    <span lang="en">Accept</span>
+                    <span lang="es" class="hidden">Aceptar</span>
+                </button>
+            </div>
+        </div>
+        <!-- Header -->
+        <header class="glass-nav sticky top-0 z-50 w-full border-b border-white/20">
+            <div class="container mx-auto px-4 grid grid-cols-2 h-16 items-center">
+                <a href="index.html" class="flex items-center">
+                    <img src="images/Bricks Logo.svg" alt="Bricks Apps" class="h-8" />
+                </a>
+                <button id="language-switcher" class="flex items-center space-x-2 px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors text-white justify-self-end" title="Cambiar idioma / Change language">
+                    <span id="current-language">Español</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="pt-10 md:pt-20 relative">
+            <div class="container mx-auto px-4">
+                <div class="grid md:grid-cols-2 gap-10 items-center">
+                    <div class="space-y-6">
+                        <h1 class="text-white font-bold text-4xl md:text-5xl">Bricks Calc</h1>
+                        <p class="text-white/90 text-lg md:text-xl">La forma más rápida y sencilla de calcular tu crédito hipotecario.</p>
+                        <p class="text-white/80 text-base md:text-lg">Compara tasas, analiza escenarios y entiende tus pagos antes de tomar una decisión.</p>
+                        <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                            <a id="app_store_download_button" href="https://apps.apple.com/app/id6744432658" class="inline-block hover:scale-105 transition-transform">
+                                <img src="images/Download_on_the_App_Store_Badge_ES_RGB_blk_100217.svg" alt="Descargar en App Store" class="h-12 md:h-14" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <img src="images/bricks-calc-img-es.png" alt="Bricks Calc App" class="w-full rounded-lg app-shadow" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problem & Value -->
+        <section class="py-20">
+            <div class="container mx-auto px-4 max-w-4xl text-center space-y-6">
+                <h2 class="text-white font-bold text-3xl md:text-4xl">¿Por qué usar Bricks Calc?</h2>
+                <p class="text-white/90 text-lg md:text-xl">Comprar una vivienda es una de las decisiones financieras más importantes.</p>
+                <p class="text-white/80 text-base md:text-lg">Pero entender los números puede ser confuso. Con Bricks Calc, puedes analizar tu préstamo hipotecario sin complicaciones. Diseñado para compradores, agentes y profesionales del sector.</p>
+            </div>
+        </section>
+
+        <!-- Key Features -->
+        <section class="py-20">
+            <div class="container mx-auto px-4">
+                <h2 class="text-center text-white font-bold text-3xl md:text-4xl mb-12">
+                    <span lang="es">Funciones principales</span>
+                    <span lang="en" class="hidden">Key features</span>
+                </h2>
+                <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                    <div class="bento-box animate-on-scroll p-6 bg-white/10 rounded-xxl border border-white/20" data-animation-delay="0">
+                        <img src="images/feature-01.jpg" alt="Cálculos precisos e inmediatos" class="w-full rounded-2xl mb-4" loading="lazy" />
+                        <h3 class="text-white font-semibold text-xl mb-2">
+                            <span lang="es">Cálculos precisos e inmediatos</span>
+                            <span lang="en" class="hidden">Accurate and instant calculations</span>
+                        </h3>
+                        <div class="text-white/80 space-y-2">
+                            <p>
+                                <span lang="es">Simula cuotas, tasas y plazos con resultados al instante.</span>
+                                <span lang="en" class="hidden">Simulate payments, rates, and terms with real-time results.</span>
+                            </p>
+                            <p>
+                                <span lang="es">Ajusta cada variable según tu banco o escenario.</span>
+                                <span lang="en" class="hidden">Adjust every variable to match your bank or loan scenario.</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="bento-box animate-on-scroll p-6 bg-white/10 rounded-xxl border border-white/20" data-animation-delay="100">
+                        <img src="images/feature-02.jpg" alt="Comparación de escenarios" class="w-full rounded-2xl mb-4" loading="lazy" />
+                        <h3 class="text-white font-semibold text-xl mb-2">
+                            <span lang="es">Comparación de escenarios</span>
+                            <span lang="en" class="hidden">Scenario comparison</span>
+                        </h3>
+                        <div class="text-white/80 space-y-2">
+                            <p>
+                                <span lang="es">Analiza distintas opciones de crédito y elige la más conveniente.</span>
+                                <span lang="en" class="hidden">Analyze different credit options and choose the one that fits you best.</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="bento-box animate-on-scroll p-6 bg-white/10 rounded-xxl border border-white/20" data-animation-delay="200">
+                        <img src="images/feature-03.jpg" alt="Visualiza tu amortización" class="w-full rounded-2xl mb-4" loading="lazy" />
+                        <h3 class="text-white font-semibold text-xl mb-2">
+                            <span lang="es">Visualiza tu amortización</span>
+                            <span lang="en" class="hidden">Amortization visualization</span>
+                        </h3>
+                        <div class="text-white/80 space-y-2">
+                            <p>
+                                <span lang="es">Entiende cómo cambia tu deuda, intereses y capital a lo largo del tiempo.</span>
+                                <span lang="en" class="hidden">See how your loan evolves over time — interest, balance, and payments.</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="bento-box animate-on-scroll p-6 bg-white/10 rounded-xxl border border-white/20" data-animation-delay="300">
+                        <img src="images/feature-04.jpg" alt="Comparte tus cálculos fácilmente" class="w-full rounded-2xl mb-4" loading="lazy" />
+                        <h3 class="text-white font-semibold text-xl mb-2">
+                            <span lang="es">Comparte tus cálculos fácilmente</span>
+                            <span lang="en" class="hidden">Easily share your results</span>
+                        </h3>
+                        <div class="text-white/80 space-y-2">
+                            <p>
+                                <span lang="es">Exporta o comparte tus simulaciones con clientes, asesores o familiares.</span>
+                                <span lang="en" class="hidden">Export or share your simulations with clients, advisors, or family.</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="bento-box animate-on-scroll p-6 bg-white/10 rounded-xxl border border-white/20 md:col-span-2" data-animation-delay="400">
+                        <img src="images/feature-01.jpg" alt="Multiplataforma" class="w-full rounded-2xl mb-4" loading="lazy" />
+                        <h3 class="text-white font-semibold text-xl mb-2">
+                            <span lang="es">Multiplataforma</span>
+                            <span lang="en" class="hidden">Multiplatform</span>
+                        </h3>
+                        <div class="text-white/80 space-y-2">
+                            <p>
+                                <span lang="es">Disponible para iPhone, iPad, Mac y Apple Vision Pro. Tu experiencia se adapta sin importar el dispositivo.</span>
+                                <span lang="en" class="hidden">Available for iPhone, iPad, Mac, and Apple Vision Pro. Your experience adapts seamlessly across all devices.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Who It's For -->
+        <section class="py-20">
+            <div class="container mx-auto px-4 max-w-5xl">
+                <h2 class="text-center text-white font-bold text-3xl md:text-4xl mb-12">
+                    <span lang="es">Ideal para</span>
+                    <span lang="en" class="hidden">Ideal for</span>
+                </h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bento-box animate-on-scroll p-6 bg-white/10 rounded-xxl border border-white/20 text-center" data-animation-delay="0">
+                        <div class="flex justify-center mb-4">
+                            <img src="images/house.fill.svg" alt="Home icon" class="w-12 h-12" />
+                        </div>
+                        <p class="text-white/90">
+                            <span lang="es">Personas que buscan su primer hogar</span>
+                            <span lang="en" class="hidden">People buying their first home</span>
+                        </p>
+                    </div>
+                    <div class="bento-box animate-on-scroll p-6 bg-white/10 rounded-xxl border border-white/20 text-center" data-animation-delay="100">
+                        <div class="flex justify-center mb-4">
+                            <img src="images/person.crop.circle.svg" alt="Home icon" class="w-12 h-12" />
+                        </div>
+                        <p class="text-white/90">
+                            <span lang="es">Agentes inmobiliarios que quieren asesorar mejor a sus clientes</span>
+                            <span lang="en" class="hidden">Real estate agents advising clients</span>
+                        </p>
+                    </div>
+                    <div class="bento-box animate-on-scroll p-6 bg-white/10 rounded-xxl border border-white/20 text-center" data-animation-delay="200">
+                        <div class="flex justify-center mb-4">
+                            <img src="images/building.columns.fill.svg" alt="Home icon" class="w-12 h-12" />
+                        </div>
+                        <p class="text-white/90">
+                            <span lang="es">Profesionales financieros que necesitan simulaciones rápidas</span>
+                            <span lang="en" class="hidden">Financial pros needing quick simulations</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Download CTA -->
+        <section class="py-20">
+            <div class="container mx-auto px-4 text-center max-w-3xl">
+                <h2 class="text-white font-bold text-3xl md:text-4xl">Descarga Bricks Calc</h2>
+                <p class="text-white/90 text-lg md:text-xl mt-4">Empieza a analizar tu crédito hoy mismo. Descarga Bricks Calc gratis en App Store y toma decisiones más informadas.</p>
+                <div class="mt-6">
+                    <a id="app_store_download_button" href="https://apps.apple.com/app/id6744432658" class="inline-block hover:scale-105 transition-transform">
+                        <img src="images/Download_on_the_App_Store_Badge_ES_RGB_blk_100217.svg" alt="Descargar en App Store" class="h-12 md:h-14" />
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bricks Ecosystem -->
+        <section class="py-20">
+            <div class="container mx-auto px-4 text-center max-w-3xl">
+                <h2 class="text-white font-bold text-3xl md:text-4xl">Parte de Bricks</h2>
+                <p class="text-white/90 text-lg mt-4">Bricks desarrolla herramientas digitales para el sector inmobiliario.</p>
+                <p class="text-white/80 mt-2">Explora también Bricks Leads, nuestro CRM para agentes que quieren gestionar clientes y cerrar ventas más rápido.</p>
+                <div class="mt-6">
+                    <a href="#coming-soon" class="btn-black text-white text-lg px-8 py-4 rounded-3xl hover:scale-105 transition-transform inline-flex items-center gap-3 justify-center">
+                        <img src="images/bricks-leads-web-icon.png" alt="Bricks Leads Icon" class="w-6 h-6 rounded" />
+                        <span>Descubre Bricks Leads</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="py-20" id="faq">
+            <div class="container mx-auto px-4 max-w-3xl">
+                <h2 class="text-white font-bold text-3xl md:text-4xl mb-6">
+                    <span lang="es">Preguntas frecuentes</span>
+                    <span lang="en" class="hidden">Frequently asked questions</span>
+                </h2>
+
+                <div class="rounded-2xl border border-white/10 bg-white/5 divide-y divide-white/10 overflow-hidden">
+                    <!-- Item 1 -->
+                    <div x-data="{ open: false }" class="">
+                        <button
+                            class="w-full flex items-center justify-between gap-6 px-6 py-5 text-left hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-bricks-yellow/70"
+                            aria-controls="faq-1"
+                            :aria-expanded="open.toString()"
+                            @click="open = !open">
+                            <span class="text-white font-semibold text-lg">¿Qué diferencia a Bricks Calc de otras calculadoras hipotecarias?</span>
+                            <span class="shrink-0 text-white/70">
+                                <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                                <svg x-show="open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
+                            </span>
+                        </button>
+                        <div id="faq-1" x-show="open" x-transition class="px-6 pb-6 text-white/80">
+                            Bricks Calc no solo te muestra la cuota mensual, sino que te permite analizar distintos escenarios, guardar tus simulaciones y entender cada detalle del préstamo — intereses, tasas y pagos totales — de forma visual y sencilla.
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div x-data="{ open: false }" class="">
+                        <button
+                            class="w-full flex items-center justify-between gap-6 px-6 py-5 text-left hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-bricks-yellow/70"
+                            aria-controls="faq-2"
+                            :aria-expanded="open.toString()"
+                            @click="open = !open">
+                            <span class="text-white font-semibold text-lg">¿Puedo comparar diferentes préstamos o escenarios?</span>
+                            <span class="shrink-0 text-white/70">
+                                <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                                <svg x-show="open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
+                            </span>
+                        </button>
+                        <div id="faq-2" x-show="open" x-transition class="px-6 pb-6 text-white/80">
+                            Sí. Puedes crear múltiples cálculos y ver cómo cambian tus pagos según el monto, tasa o plazo. Es ideal para comparar opciones de distintos bancos o tipos de crédito.
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div x-data="{ open: false }" class="">
+                        <button
+                            class="w-full flex items-center justify-between gap-6 px-6 py-5 text-left hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-bricks-yellow/70"
+                            aria-controls="faq-3"
+                            :aria-expanded="open.toString()"
+                            @click="open = !open">
+                            <span class="text-white font-semibold text-lg">¿Necesito conexión a internet para usarla?</span>
+                            <span class="shrink-0 text-white/70">
+                                <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                                <svg x-show="open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
+                            </span>
+                        </button>
+                        <div id="faq-3" x-show="open" x-transition class="px-6 pb-6 text-white/80">
+                            No. Bricks Calc funciona sin conexión para cálculos básicos. Solo necesitas internet si deseas sincronizar tus datos o acceder a futuras funciones avanzadas.
+                        </div>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div x-data="{ open: false }" class="">
+                        <button
+                            class="w-full flex items-center justify-between gap-6 px-6 py-5 text-left hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-bricks-yellow/70"
+                            aria-controls="faq-4"
+                            :aria-expanded="open.toString()"
+                            @click="open = !open">
+                            <span class="text-white font-semibold text-lg">¿Es gratuita?</span>
+                            <span class="shrink-0 text-white/70">
+                                <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                                <svg x-show="open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
+                            </span>
+                        </button>
+                        <div id="faq-4" x-show="open" x-transition class="px-6 pb-6 text-white/80">
+                            Sí, puedes empezar a usar Bricks Calc de forma completamente gratuita. Próximamente añadiremos funciones premium opcionales para análisis avanzados.
+                        </div>
+                    </div>
+
+                    <!-- Item 5 -->
+                    <div x-data="{ open: false }" class="">
+                        <button
+                            class="w-full flex items-center justify-between gap-6 px-6 py-5 text-left hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-bricks-yellow/70"
+                            aria-controls="faq-5"
+                            :aria-expanded="open.toString()"
+                            @click="open = !open">
+                            <span class="text-white font-semibold text-lg">¿Puedo usarla fuera del Perú?</span>
+                            <span class="shrink-0 text-white/70">
+                                <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                                <svg x-show="open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
+                            </span>
+                        </button>
+                        <div id="faq-5" x-show="open" x-transition class="px-6 pb-6 text-white/80">
+                            Sí. Aunque está optimizada para el mercado peruano, puedes usar Bricks Calc en cualquier país ajustando la moneda y la tasa de interés. También está disponible en inglés y español.
+                        </div>
+                    </div>
+
+                    <!-- Item 6 -->
+                    <div x-data="{ open: false }" class="">
+                        <button
+                            class="w-full flex items-center justify-between gap-6 px-6 py-5 text-left hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-bricks-yellow/70"
+                            aria-controls="faq-6"
+                            :aria-expanded="open.toString()"
+                            @click="open = !open">
+                            <span class="text-white font-semibold text-lg">¿Qué tan precisos son los cálculos?</span>
+                            <span class="shrink-0 text-white/70">
+                                <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                                <svg x-show="open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
+                            </span>
+                        </button>
+                        <div id="faq-6" x-show="open" x-transition class="px-6 pb-6 text-white/80">
+                            Los resultados se basan en fórmulas de amortización utilizadas por los bancos, por lo que son altamente precisos. Aun así, te recomendamos confirmar las condiciones exactas con tu entidad financiera.
+                        </div>
+                    </div>
+
+                    <!-- Item 7 -->
+                    <div x-data="{ open: false }" class="">
+                        <button
+                            class="w-full flex items-center justify-between gap-6 px-6 py-5 text-left hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-bricks-yellow/70"
+                            aria-controls="faq-7"
+                            :aria-expanded="open.toString()"
+                            @click="open = !open">
+                            <span class="text-white font-semibold text-lg">¿Puedo guardar mis cálculos o compartirlos?</span>
+                            <span class="shrink-0 text-white/70">
+                                <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                                <svg x-show="open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
+                            </span>
+                        </button>
+                        <div id="faq-7" x-show="open" x-transition class="px-6 pb-6 text-white/80">
+                            Sí. Puedes guardar tus simulaciones para consultarlas después o compartirlas fácilmente por mensaje o correo, ideal si trabajas con clientes o asesores.
+                        </div>
+                    </div>
+
+                    <!-- Item 8 -->
+                    <div x-data="{ open: false }" class="">
+                        <button
+                            class="w-full flex items-center justify-between gap-6 px-6 py-5 text-left hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-bricks-yellow/70"
+                            aria-controls="faq-8"
+                            :aria-expanded="open.toString()"
+                            @click="open = !open">
+                            <span class="text-white font-semibold text-lg">¿Bricks Calc recopila mis datos personales?</span>
+                            <span class="shrink-0 text-white/70">
+                                <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                                <svg x-show="open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
+                            </span>
+                        </button>
+                        <div id="faq-8" x-show="open" x-transition class="px-6 pb-6 text-white/80">
+                            No. Bricks Calc no requiere registro para funcionar y tus cálculos se guardan de forma privada en tu dispositivo. Solo si activas funciones opcionales en el futuro, se solicitará tu consentimiento.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer (reuse site footer layout) -->
+        <footer class="bg-gray-900 py-12 text-slate-300">
+            <div class="container px-4 md:px-6">
+                <div class="flex flex-col md:flex-row md:justify-between gap-8">
+                    <div class="mb-8 md:mb-0">
+                        <a href="index.html" class="text-2xl font-bold text-white">Bricks</a>
+                        <p class="mt-2 max-w-xs text-slate-400">Construimos apps para el sector inmobiliario.</p>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                        <div>
+                            <h3 class="mb-4 text-lg font-semibold text-white">Apps</h3>
+                            <ul class="space-y-2">
+                                <li><a href="bricks-calc.html" class="transition-colors hover:text-white">Bricks Calc</a></li>
+                                <li><a href="#coming-soon" class="transition-colors hover:text-white">Bricks Leads</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="mb-4 text-lg font-semibold text-white">Compañía</h3>
+                            <ul class="space-y-2">
+                                <li><a href="about.html" class="transition-colors hover:text-white">Sobre nosotros</a></li>
+                                <li><a href="terms.html" class="transition-colors hover:text-white">Términos y privacidad</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="mb-4 text-lg font-semibold text-white">Soporte</h3>
+                            <ul class="space-y-2">
+                                <li><a href="https://wa.me/51953431080?text=Hola%2C%20quiero%20informaci%C3%B3n%20respecto%20a%20lo%20siguiente" target="_blank" class="transition-colors hover:text-white">WhatsApp</a></li>
+                                <li><a href="mailto:support@bricks.pe" class="transition-colors hover:text-white">Email: support@bricks.pe</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-12 border-t border-gray-800 pt-8 text-center text-sm text-slate-400">
+                    <p>© 2025 Bricks Apps. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </footer>
+        
+        <!-- Google Analytics Event Tracking -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // Get all App Store download buttons (there are multiple on the page)
+                const downloadButtons = document.querySelectorAll("#app-store-download");
+
+                // Add click event listener to each button
+                downloadButtons.forEach((button) => {
+                    button.addEventListener("click", function (e) {
+                        e.preventDefault();
+                        // Get current language
+                        const currentLang = document.documentElement.getAttribute("lang") || "en";
+                        // Get the appropriate link based on language
+                        const appLink = button.getAttribute(`data-link-${currentLang}`);
+
+                        // Track the event in Google Analytics
+                        gtag("event", "app_download", {
+                            event_category: "engagement",
+                            event_label: "app_store_button"
+                        });
+
+                        // Open the app store link
+                        if (appLink) {
+                            window.open(appLink, "_blank");
+                        }
+
+                        // Log the event for debugging (optional)
+                        console.log("App download event tracked");
+                    });
+                });
+            });
+        </script>
+    </body>
+    </html>
+
+

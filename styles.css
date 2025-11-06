@@ -390,6 +390,7 @@ body {
     .bento-box {
         padding: 1.5rem;
         border-radius: 20px;
+        width: 100%;
     }
 }
 
