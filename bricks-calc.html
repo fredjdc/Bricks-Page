@@ -56,6 +56,9 @@
                 background-color: #efefef;
                 color: #1f2937;
                 margin: 0;
+                overflow-x: hidden;
+                width: 100%;
+                max-width: 100vw;
             }
             .glass-nav {
                 background: rgba(255, 255, 255, 0.9);
@@ -87,6 +90,8 @@
                 align-items: center;
                 justify-content: center;
                 overflow: hidden;
+                width: 100%;
+                max-width: 100vw;
             }
 
             /* Hero Headline Animation - Soft and subtle */
@@ -185,8 +190,63 @@
 
             /* Responsive adjustments for hero layout */
             @media (max-width: 768px) {
+                /* Ensure hero section container is properly constrained and centered */
+                .hero-section-lusion {
+                    overflow-x: hidden;
+                }
+                
+                /* Ensure content container is properly centered and doesn't overflow */
+                .hero-section-lusion .container {
+                    width: 100%;
+                    max-width: 100%;
+                    padding-left: 1rem;
+                    padding-right: 1rem;
+                }
+                
+                /* Ensure grid is properly constrained on mobile */
+                .hero-section-lusion .grid {
+                    width: 100% !important;
+                    max-width: 100% !important;
+                    margin-left: auto;
+                    margin-right: auto;
+                    padding-left: 0;
+                    padding-right: 0;
+                }
+                
+                /* Ensure text content is properly centered */
+                .hero-section-lusion .flex.flex-col {
+                    width: 100%;
+                    max-width: 100%;
+                    padding-left: 0;
+                    padding-right: 0;
+                }
+                
+                /* Ensure headline text doesn't overflow */
+                .hero-headline {
+                    width: 100%;
+                    max-width: 100%;
+                    word-wrap: break-word;
+                    overflow-wrap: break-word;
+                }
+                
+                /* Ensure subheadline text doesn't overflow */
+                .hero-subheadline {
+                    width: 100%;
+                    max-width: 100%;
+                    word-wrap: break-word;
+                    overflow-wrap: break-word;
+                }
+                
+                /* Ensure hero image container is properly constrained */
+                .hero-image-container {
+                    width: 100%;
+                    max-width: 100%;
+                    padding: 0;
+                }
+                
                 .hero-image-container img {
-                    max-width: 90%;
+                    max-width: 100%;
+                    width: 100%;
                     filter: drop-shadow(0 15px 40px rgba(0, 0, 0, 0.3)) drop-shadow(0 0 30px rgba(59, 130, 246, 0.15));
                 }
             }
@@ -493,7 +553,7 @@
                         <!-- Main Headline -->
                         <h1
                             class="hero-headline text-white font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight tracking-tight">
-                            <span lang="es" class="hero-headline-text">Calcula tu crédito hipotecario al instante</span>
+                            <span lang="es" class="hero-headline-text">Calcula tu crédito al instante</span>
                             <span lang="en" class="hidden hero-headline-text">Calculate your mortgage instantly</span>
                         </h1>
 
@@ -526,7 +586,7 @@
                     <!-- Right Column: Hero Image -->
                     <div class="hero-image-container hero-image2 float-animation">
                         <img
-                            src="images/bricks-calc-img-es.png"
+                            src="images/bricks-calc-hero-en.png"
                             alt="Bricks Calc - Calculadora Hipotecaria"
                             class="w-full max-w-2xl mx-auto"
                             loading="eager" />
