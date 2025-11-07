@@ -309,6 +309,14 @@ const updateAppScreenshots = (lang) => {
                 es: 'images/top-layer-es-01.png',
                 en: 'images/top-layer-en-01.png'
             },
+            'bricks-calc-fusion-back': {
+                es: 'images/fusion-es-01.png',
+                en: 'images/fusion-en-01.png'
+            },
+            'bricks-calc-fusion-middle': {
+                es: 'images/fusion-es-02.png',
+                en: 'images/fusion-en-02.png'
+            },
             'bricks-leads': {
                 es: 'images/bricks-leads-img-es.png',
                 en: 'images/bricks-leads-img-en.png' // Will automatically use when English version is added
