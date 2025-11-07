@@ -659,25 +659,25 @@
                     <div class="hero-image-container hero-image2">
                         <!-- Layered parallax wrapper keeps all hero layers aligned -->
                         <div class="hero-parallax" data-parallax-parent>
-                            <div class="hero-parallax-layer layer-back" data-parallax-layer data-depth="0.05">
+                            <div class="hero-parallax-layer layer-back" data-parallax-layer data-depth="0.2">
                                 <img
-                                    src="images/bricks-calc-hero-es.png"
+                                    src="images/back-layer-es-03.png"
                                     alt=""
                                     aria-hidden="true"
                                     class="w-full max-w-2xl mx-auto"
                                     loading="lazy" />
                             </div>
-                            <div class="hero-parallax-layer layer-middle" data-parallax-layer data-depth="0.1">
+                            <div class="hero-parallax-layer layer-middle" data-parallax-layer data-depth="0.4">
                                 <img
-                                    src="images/bricks-calc-hero-es.png"
+                                    src="images/back-layer-es-02.png"
                                     alt="Bricks Calc - Calculadora Hipotecaria"
                                     class="w-full max-w-2xl mx-auto"
                                     data-app-image="bricks-calc-hero"
                                     loading="eager" />
                             </div>
-                            <div class="hero-parallax-layer layer-front" data-parallax-layer data-depth="0.18">
+                            <div class="hero-parallax-layer layer-front" data-parallax-layer data-depth="0.8">
                                 <img
-                                    src="images/bricks-calc-hero-es.png"
+                                    src="images/back-layer-es-01.png"
                                     alt=""
                                     aria-hidden="true"
                                     class="w-full max-w-2xl mx-auto"
@@ -1357,6 +1357,7 @@
                 let rafId = null;
 
                 // Apply both scroll-driven and pointer-driven offsets so each layer moves independently
+                // Coefficients tuned higher to amplify the perceived depth of the effect.
                 const updateLayers = () => {
                     rafId = null;
 
@@ -1366,9 +1367,9 @@
 
                         group.querySelectorAll("[data-parallax-layer]").forEach((layer) => {
                             const depth = Number(layer.dataset.depth || 0);
-                            const scrollOffset = -distanceFromCenter * depth * 0.12;
-                            const pointerOffsetX = pointerX * depth * 20;
-                            const pointerOffsetY = pointerY * depth * 14;
+                            const scrollOffset = -distanceFromCenter * depth * 0.22;
+                            const pointerOffsetX = pointerX * depth * 32;
+                            const pointerOffsetY = pointerY * depth * 24;
 
                             layer.style.transform = `translate3d(${pointerOffsetX}px, ${scrollOffset + pointerOffsetY}px, 0)`;
                         });
