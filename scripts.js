@@ -323,15 +323,15 @@ const updateAppScreenshots = (lang) => {
             },
             'bricks-leads-layer-back': {
                 es: 'images/leads-back-layer-es-03.png',
-                en: 'images/leads-back-layer-es-03.png' // English artwork pending; reuse Spanish layer as placeholder
+                en: 'images/leads-back-layer-en-03.png'
             },
             'bricks-leads-layer-middle': {
                 es: 'images/leads-mid-layer-es-02.png',
-                en: 'images/leads-mid-layer-es-02.png'
+                en: 'images/leads-mid-layer-en-02.png'
             },
             'bricks-leads-layer-front': {
-                es: 'images/top-layer-es-01.png',
-                en: 'images/top-layer-en-01.png'
+                es: 'images/leads-top-layer-es-01.png',
+                en: 'images/leads-top-layer-en-01.png'
             }
         };
         
