@@ -241,6 +241,65 @@
                 }
             }
 
+            /* Bricks Calc icon parallax (scroll-driven only) */
+            .app-icon-parallax {
+                position: relative;
+                isolation: isolate;
+                display: grid;
+                place-items: center;
+            }
+
+            .app-icon-layer {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transform: translate3d(-50%, -50%, 0);
+                will-change: transform, opacity;
+                transition: transform 0.3s ease-out;
+                opacity: 0;
+            }
+
+            .app-icon-layer img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+
+            .app-icon-layer.layer-back {
+                z-index: 1;
+                filter: drop-shadow(0 30px 65px rgba(15, 23, 42, 0.28));
+            }
+
+            .app-icon-layer.layer-middle {
+                z-index: 2;
+                filter: drop-shadow(0 20px 55px rgba(15, 23, 42, 0.22));
+            }
+
+            .app-icon-layer.layer-front {
+                z-index: 3;
+                opacity: 1;
+            }
+
+            .app-icon-layer.layer-front img {
+                filter: drop-shadow(0 24px 50px rgba(37, 99, 235, 0.22));
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                .app-icon-layer {
+                    opacity: 0;
+                    transform: translate3d(-50%, -50%, 0) !important;
+                }
+
+                .app-icon-layer.layer-front {
+                    opacity: 1;
+                }
+            }
+
             /* Responsive adjustments for hero layout */
             @media (max-width: 768px) {
                 /* Ensure hero section container is properly constrained and centered */
@@ -721,10 +780,28 @@
         <section class="py-20">
             <div class="container mx-auto px-4">
                 <div class="max-w-5xl mx-auto text-center py-20 space-y-6">
-                    <img
-                        src="images/bricks-calc-web-icon.png"
-                        alt="Bricks Calc App Icon"
-                        class="mx-auto mb-6 w-24 h-24 md:w-32 md:h-32" />
+                    <div class="app-icon-parallax mx-auto mb-6 w-24 h-24 md:w-32 md:h-32" data-icon-parallax>
+                        <div class="app-icon-layer layer-back" data-icon-depth="1.4" data-icon-direction="left">
+                            <img
+                                src="images/fusion-01.png"
+                                alt=""
+                                aria-hidden="true"
+                                loading="lazy" />
+                        </div>
+                        <div class="app-icon-layer layer-middle" data-icon-depth="1" data-icon-direction="right">
+                            <img
+                                src="images/fusion-02.png"
+                                alt=""
+                                aria-hidden="true"
+                                loading="lazy" />
+                        </div>
+                        <div class="app-icon-layer layer-front">
+                            <img
+                                src="images/bricks-calc-web-icon.png"
+                                alt="Bricks Calc App Icon"
+                                loading="lazy" />
+                        </div>
+                    </div>
                     <h2 class="text-gray-900 font-bold text-3xl md:text-4xl">¿Por qué usar Bricks Calc?</h2>
                     <p class="text-gray-700 text-lg md:text-xl">
                         Comprar una vivienda es una de las decisiones financieras más importantes.
@@ -736,6 +813,9 @@
                 </div>
             </div>
         </section>
+
+        <!-- Section Divider: separates Problem & Value from Key Features to improve visual hierarchy -->
+        <hr class="border-t border-gray-300 max-w-5xl mx-auto" aria-hidden="true" />
 
         <!-- Key Features -->
         <section class="py-20">
@@ -1349,8 +1429,9 @@
                 // Respect accessibility settings and bail out early when we should not animate
                 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
                 const parallaxGroups = document.querySelectorAll("[data-parallax-parent]");
+                const iconGroups = document.querySelectorAll("[data-icon-parallax]");
 
-                if (prefersReducedMotion || !parallaxGroups.length) {
+                if (prefersReducedMotion || (!parallaxGroups.length && !iconGroups.length)) {
                     return;
                 }
 
@@ -1360,37 +1441,77 @@
 
                 // Apply both scroll-driven and pointer-driven offsets so each layer moves independently
                 // Coefficients tuned higher to amplify the perceived depth of the effect.
-                const updateLayers = () => {
+                const updateAnimations = () => {
                     rafId = null;
 
-                    parallaxGroups.forEach((group) => {
-                        const rect = group.getBoundingClientRect();
-                        const distanceFromCenter = rect.top + rect.height / 2 - window.innerHeight / 2;
+                    if (parallaxGroups.length) {
+                        parallaxGroups.forEach((group) => {
+                            const rect = group.getBoundingClientRect();
+                            const distanceFromCenter = rect.top + rect.height / 2 - window.innerHeight / 2;
 
-                        group.querySelectorAll("[data-parallax-layer]").forEach((layer) => {
-                            const depth = Number(layer.dataset.depth || 0);
-                            const scrollOffset = -distanceFromCenter * depth * 0.22;
-                            const pointerOffsetX = pointerX * depth * 32;
-                            const pointerOffsetY = pointerY * depth * 24;
+                            group.querySelectorAll("[data-parallax-layer]").forEach((layer) => {
+                                const depth = Number(layer.dataset.depth || 0);
+                                const scrollOffset = -distanceFromCenter * depth * 0.22;
+                                const pointerOffsetX = pointerX * depth * 32;
+                                const pointerOffsetY = pointerY * depth * 24;
 
-                            layer.style.transform = `translate3d(${pointerOffsetX}px, ${scrollOffset + pointerOffsetY}px, 0)`;
+                                layer.style.transform = `translate3d(${pointerOffsetX}px, ${scrollOffset + pointerOffsetY}px, 0)`;
+                            });
                         });
-                    });
+                    }
+
+                    if (iconGroups.length) {
+                        const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+                        const start = viewportHeight * 0.8;
+                        const end = viewportHeight * 0.2;
+                        const range = Math.max(start - end, 1);
+
+                        iconGroups.forEach((group) => {
+                            const rect = group.getBoundingClientRect();
+                            const progressRaw = (start - rect.top) / range;
+                            const progress = Math.min(1, Math.max(0, progressRaw));
+
+                            group.querySelectorAll("[data-icon-depth]").forEach((layer) => {
+                                const depth = Number(layer.dataset.iconDepth || 1);
+                                const travel = 140 * depth;
+                                const offsetY = (1 - progress) * travel;
+                                const direction = layer.dataset.iconDirection || "center";
+                                const horizontalTravel = direction === "left" ? -120 : direction === "right" ? 120 : 0;
+                                const offsetX = (1 - progress) * horizontalTravel;
+                                const rotation = direction === "left" ? -4 : direction === "right" ? 4 : 0;
+                                const rotateAngle = rotation * (1 - progress);
+                                const scale = 1 - progress * 0.08 * depth;
+                                const clampedScale = Math.max(0.85, scale);
+
+                                layer.style.transform =
+                                    `translate3d(-50%, -50%, 0) translate3d(${offsetX}px, ${-offsetY}px, 0) rotate(${rotateAngle}deg) scale(${clampedScale})`;
+                                layer.style.opacity = Math.min(1, Math.max(0, progress * 1.25));
+                            });
+
+                            const frontLayer = group.querySelector(".layer-front");
+                            if (frontLayer) {
+                                frontLayer.style.transform = "translate3d(-50%, -50%, 0)";
+                                frontLayer.style.opacity = 1;
+                            }
+                        });
+                    }
                 };
 
                 const scheduleUpdate = () => {
                     if (rafId !== null) return;
-                    rafId = requestAnimationFrame(updateLayers);
+                    rafId = requestAnimationFrame(updateAnimations);
                 };
 
                 window.addEventListener("scroll", scheduleUpdate, { passive: true });
                 window.addEventListener("resize", scheduleUpdate);
 
-                window.addEventListener("pointermove", (event) => {
-                    pointerX = event.clientX / window.innerWidth - 0.5;
-                    pointerY = event.clientY / window.innerHeight - 0.5;
-                    scheduleUpdate();
-                });
+                if (parallaxGroups.length) {
+                    window.addEventListener("pointermove", (event) => {
+                        pointerX = event.clientX / window.innerWidth - 0.5;
+                        pointerY = event.clientY / window.innerHeight - 0.5;
+                        scheduleUpdate();
+                    });
+                }
 
                 // Initialise transforms once everything is laid out
                 scheduleUpdate();
