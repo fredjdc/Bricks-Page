@@ -151,22 +151,10 @@
                 align-items: center;
             }
 
-            /* Hero Image - Beautiful entrance with scale and fade */
+            /* Hero Background - fade in only so the entry feels calm and avoids scale motion */
             .hero-image {
                 opacity: 0;
-                animation: fadeInScale 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s forwards;
-                transform-origin: center;
-            }
-
-            @keyframes fadeInScale {
-                0% {
-                    opacity: 0;
-                    transform: scale(0.95) translateY(20px);
-                }
-                100% {
-                    opacity: 1;
-                    transform: scale(1) translateY(0);
-                }
+                animation: fadeIn 1s ease-out 0s forwards;
             }
 
             /* Hero image container with shadow and glow effects */
