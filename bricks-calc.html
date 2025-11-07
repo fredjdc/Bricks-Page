@@ -188,6 +188,59 @@
                 transform: translateY(-5px) scale(1.02);
             }
 
+            /* Layered parallax hero image */
+            .hero-parallax {
+                position: relative;
+                width: 100%;
+                max-width: 32rem;
+                min-height: clamp(320px, 60vw, 640px);
+                margin: 0 auto;
+            }
+
+            .hero-parallax-layer {
+                position: absolute;
+                inset: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                pointer-events: none;
+                will-change: transform;
+                transition: transform 0.3s ease-out;
+            }
+
+            .hero-parallax-layer img {
+                width: 100%;
+                height: auto;
+            }
+
+            .hero-parallax-layer.layer-back {
+                z-index: 1;
+                filter: brightness(0.85) saturate(0.95) drop-shadow(0 18px 50px rgba(15, 23, 42, 0.35));
+            }
+
+            .hero-parallax-layer.layer-middle {
+                z-index: 2;
+            }
+
+            .hero-parallax-layer.layer-front {
+                z-index: 3;
+                filter: brightness(1.05) drop-shadow(0 24px 70px rgba(37, 99, 235, 0.35));
+            }
+
+            @media (max-width: 768px) {
+                .hero-parallax {
+                    max-width: clamp(240px, 80vw, 360px);
+                    min-height: clamp(280px, 120vw, 520px);
+                }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                .hero-parallax-layer {
+                    transition: none;
+                    transform: none !important;
+                }
+            }
+
             /* Responsive adjustments for hero layout */
             @media (max-width: 768px) {
                 /* Ensure hero section container is properly constrained and centered */
@@ -248,6 +301,14 @@
                     max-width: 100%;
                     width: 100%;
                     filter: drop-shadow(0 15px 40px rgba(0, 0, 0, 0.3)) drop-shadow(0 0 30px rgba(59, 130, 246, 0.15));
+                }
+
+                .hero-parallax-layer.layer-back img {
+                    filter: brightness(0.85) saturate(0.95) drop-shadow(0 15px 40px rgba(15, 23, 42, 0.3));
+                }
+
+                .hero-parallax-layer.layer-front img {
+                    filter: brightness(1.05) drop-shadow(0 20px 60px rgba(37, 99, 235, 0.3));
                 }
             }
 
@@ -595,13 +656,34 @@
                     </div>
 
                     <!-- Right Column: Hero Image -->
-                    <div class="hero-image-container hero-image2 float-animation">
-                        <img
-                            src="images/bricks-calc-hero-es.png"
-                            alt="Bricks Calc - Calculadora Hipotecaria"
-                            class="w-full max-w-2xl mx-auto"
-                            data-app-image="bricks-calc-hero"
-                            loading="eager" />
+                    <div class="hero-image-container hero-image2">
+                        <!-- Layered parallax wrapper keeps all hero layers aligned -->
+                        <div class="hero-parallax" data-parallax-parent>
+                            <div class="hero-parallax-layer layer-back" data-parallax-layer data-depth="0.05">
+                                <img
+                                    src="images/bricks-calc-hero-es.png"
+                                    alt=""
+                                    aria-hidden="true"
+                                    class="w-full max-w-2xl mx-auto"
+                                    loading="lazy" />
+                            </div>
+                            <div class="hero-parallax-layer layer-middle" data-parallax-layer data-depth="0.1">
+                                <img
+                                    src="images/bricks-calc-hero-es.png"
+                                    alt="Bricks Calc - Calculadora Hipotecaria"
+                                    class="w-full max-w-2xl mx-auto"
+                                    data-app-image="bricks-calc-hero"
+                                    loading="eager" />
+                            </div>
+                            <div class="hero-parallax-layer layer-front" data-parallax-layer data-depth="0.18">
+                                <img
+                                    src="images/bricks-calc-hero-es.png"
+                                    alt=""
+                                    aria-hidden="true"
+                                    class="w-full max-w-2xl mx-auto"
+                                    loading="lazy" />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1258,6 +1340,59 @@
                 </div>
             </div>
         </footer>
+
+        <!-- Hero Parallax Motion -->
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                // Respect accessibility settings and bail out early when we should not animate
+                const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+                const parallaxGroups = document.querySelectorAll("[data-parallax-parent]");
+
+                if (prefersReducedMotion || !parallaxGroups.length) {
+                    return;
+                }
+
+                let pointerX = 0;
+                let pointerY = 0;
+                let rafId = null;
+
+                // Apply both scroll-driven and pointer-driven offsets so each layer moves independently
+                const updateLayers = () => {
+                    rafId = null;
+
+                    parallaxGroups.forEach((group) => {
+                        const rect = group.getBoundingClientRect();
+                        const distanceFromCenter = rect.top + rect.height / 2 - window.innerHeight / 2;
+
+                        group.querySelectorAll("[data-parallax-layer]").forEach((layer) => {
+                            const depth = Number(layer.dataset.depth || 0);
+                            const scrollOffset = -distanceFromCenter * depth * 0.12;
+                            const pointerOffsetX = pointerX * depth * 20;
+                            const pointerOffsetY = pointerY * depth * 14;
+
+                            layer.style.transform = `translate3d(${pointerOffsetX}px, ${scrollOffset + pointerOffsetY}px, 0)`;
+                        });
+                    });
+                };
+
+                const scheduleUpdate = () => {
+                    if (rafId !== null) return;
+                    rafId = requestAnimationFrame(updateLayers);
+                };
+
+                window.addEventListener("scroll", scheduleUpdate, { passive: true });
+                window.addEventListener("resize", scheduleUpdate);
+
+                window.addEventListener("pointermove", (event) => {
+                    pointerX = event.clientX / window.innerWidth - 0.5;
+                    pointerY = event.clientY / window.innerHeight - 0.5;
+                    scheduleUpdate();
+                });
+
+                // Initialise transforms once everything is laid out
+                scheduleUpdate();
+            });
+        </script>
 
         <!-- Scroll to Next Section Functionality -->
         <script>
