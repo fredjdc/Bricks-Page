@@ -646,7 +646,7 @@ const initSupportForm = () => {
                 console.log('Description:', formData.get('description'));
                 console.log('Files:', selectedFiles.map(f => f.name));
                 
-                // In a real implementation, you would send an email to hola@bricks.pe with this data
+                // In a real implementation, you would send an email to hello@bricks.pe with this data
                 // This requires server-side processing and cannot be done with client-side JavaScript alone
                 
             }, 1000); // Simulate network delay
