@@ -297,6 +297,18 @@ const updateAppScreenshots = (lang) => {
                 es: 'images/bricks-calc-hero-es.png',
                 en: 'images/bricks-calc-hero-en.png'
             },
+            'bricks-calc-hero-layer-back': {
+                es: 'images/back-layer-es-03.png',
+                en: 'images/back-layer-en-03.png'
+            },
+            'bricks-calc-hero-layer-middle': {
+                es: 'images/mid-layer-es-02.png',
+                en: 'images/mid-layer-en-02.png'
+            },
+            'bricks-calc-hero-layer-front': {
+                es: 'images/top-layer-es-01.png',
+                en: 'images/top-layer-en-01.png'
+            },
             'bricks-leads': {
                 es: 'images/bricks-leads-img-es.png',
                 en: 'images/bricks-leads-img-en.png' // Will automatically use when English version is added
