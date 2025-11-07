@@ -320,6 +320,18 @@ const updateAppScreenshots = (lang) => {
             'bricks-leads': {
                 es: 'images/bricks-leads-img-es.png',
                 en: 'images/bricks-leads-img-en.png' // Will automatically use when English version is added
+            },
+            'bricks-leads-layer-back': {
+                es: 'images/leads-back-layer-es-03.png',
+                en: 'images/leads-back-layer-es-03.png' // English artwork pending; reuse Spanish layer as placeholder
+            },
+            'bricks-leads-layer-middle': {
+                es: 'images/leads-mid-layer-es-02.png',
+                en: 'images/leads-mid-layer-es-02.png'
+            },
+            'bricks-leads-layer-front': {
+                es: 'images/top-layer-es-01.png',
+                en: 'images/top-layer-en-01.png'
             }
         };
         
@@ -361,6 +373,60 @@ const updateAppScreenshots = (lang) => {
     } catch (error) {
         console.error('Error updating app screenshots:', error);
     }
+};
+
+// Gentle parallax for the Apps Overview stacks
+const initAppsParallax = () => {
+    // Respect user preference for reduced motion and bail if animation should be skipped
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+        return;
+    }
+
+    const parallaxCards = document.querySelectorAll('[data-app-parallax]');
+    if (!parallaxCards.length) {
+        return;
+    }
+
+    let pointerX = 0;
+    let pointerY = 0;
+    let rafId = null;
+
+    const updateParallax = () => {
+        rafId = null;
+
+        parallaxCards.forEach((card) => {
+            const rect = card.getBoundingClientRect();
+            const distanceFromCenter = rect.top + rect.height / 2 - window.innerHeight / 2;
+
+            card.querySelectorAll('[data-parallax-depth]').forEach((layer) => {
+                const depth = Number(layer.dataset.parallaxDepth || 0);
+                const scrollOffset = -distanceFromCenter * depth * 0.18;
+                const pointerOffsetX = pointerX * depth * 24;
+                const pointerOffsetY = pointerY * depth * 16;
+
+                layer.style.transform = `translate3d(${pointerOffsetX}px, ${scrollOffset + pointerOffsetY}px, 0)`;
+            });
+        });
+    };
+
+    const scheduleUpdate = () => {
+        if (rafId !== null) {
+            return;
+        }
+        rafId = requestAnimationFrame(updateParallax);
+    };
+
+    window.addEventListener('scroll', scheduleUpdate, { passive: true });
+    window.addEventListener('resize', scheduleUpdate);
+    window.addEventListener('pointermove', (event) => {
+        pointerX = event.clientX / window.innerWidth - 0.5;
+        pointerY = event.clientY / window.innerHeight - 0.5;
+        scheduleUpdate();
+    });
+
+    // Run once so the layers start in the right spot without needing user input
+    scheduleUpdate();
 };
 
 // Video Modal Handler
@@ -695,6 +761,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Setup intersection observer for animations
     setupIntersectionObserver();
+
+    // Activate the apps overview parallax effect when the cards are present
+    initAppsParallax();
     
     // Set language based on stored preference or browser language
     const storedLang = localStorage.getItem('bricksLanguage');
