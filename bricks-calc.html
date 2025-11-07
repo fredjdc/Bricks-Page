@@ -496,6 +496,72 @@
                     max-width: 1190px !important;
                 }
             }
+
+            .download-zoom-wrapper {
+                position: relative;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: 1.5rem;
+                isolation: isolate;
+            }
+
+            .download-zoom-wrapper img {
+                position: relative;
+                z-index: 2;
+                filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.35));
+            }
+
+            .zoom-line {
+                position: absolute;
+                inset: 0;
+                border-radius: 32px;
+                border: 1px solid rgba(255, 255, 255, 0.25);
+                transform: scale(0.75);
+                opacity: 0;
+                z-index: 1;
+                animation: zoomLinePulse 3.2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+            }
+
+            .zoom-line-1 {
+                animation-delay: 0s;
+            }
+
+            .zoom-line-2 {
+                animation-delay: 0.5s;
+            }
+
+            .zoom-line-3 {
+                animation-delay: 1.0s;
+            }
+
+            .zoom-line-4 {
+                animation-delay: 1.5s;
+            }
+
+            @keyframes zoomLinePulse {
+                0% {
+                    opacity: 0;
+                    transform: scale(0.75);
+                }
+                25% {
+                    opacity: 1;
+                }
+                60% {
+                    opacity: 0.85;
+                }
+                100% {
+                    opacity: 0;
+                    transform: scale(1.1);
+                }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                .zoom-line {
+                    animation: none;
+                    opacity: 0;
+                }
+            }
         </style>
 
         <!-- App Store Meta App CLip
@@ -986,10 +1052,15 @@
         <!-- Download CTA -->
         <section class="py-20" style="background-color: #303030;">
             <div class="container mx-auto px-4 text-center max-w-3xl py-32">
-                <img
-                    src="images/bricks-calc-web-icon.png"
-                    alt="Bricks Calc App Icon"
-                    class="mx-auto mb-6 w-24 h-24 md:w-32 md:h-32" />
+                <div class="download-zoom-wrapper mx-auto mb-6">
+                    <span class="zoom-line zoom-line-1" aria-hidden="true"></span>
+                    <span class="zoom-line zoom-line-2" aria-hidden="true"></span>
+                    <span class="zoom-line zoom-line-3" aria-hidden="true"></span>
+                    <img
+                        src="images/bricks-calc-web-icon.png"
+                        alt="Bricks Calc App Icon"
+                        class="w-24 h-24 md:w-32 md:h-32" />
+                </div>
                 <h2 class="text-white font-bold text-3xl md:text-4xl">Descarga Bricks Calc</h2>
                 <p class="text-gray-300 text-lg md:text-xl mt-4">
                     Empieza a analizar tu crédito hoy mismo. Descarga Bricks Calc gratis en App Store y toma decisiones
