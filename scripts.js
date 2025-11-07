@@ -317,6 +317,27 @@ const updateAppScreenshots = (lang) => {
                 es: 'images/fusion-es-02.png',
                 en: 'images/fusion-en-02.png'
             },
+            // Key features gallery artwork toggles with locale-specific imagery
+            'bricks-calc-feature-01': {
+                es: 'images/feature-es-01.jpg',
+                en: 'images/feature-en-01.jpg'
+            },
+            'bricks-calc-feature-02': {
+                es: 'images/feature-es-02.jpg',
+                en: 'images/feature-en-02.jpg'
+            },
+            'bricks-calc-feature-03': {
+                es: 'images/feature-es-03.jpg',
+                en: 'images/feature-en-03.jpg'
+            },
+            'bricks-calc-feature-04': {
+                es: 'images/feature-es-04.jpg',
+                en: 'images/feature-en-04.jpg'
+            },
+            'bricks-calc-feature-05': {
+                es: 'images/feature-es-05.jpg',
+                en: 'images/feature-en-05.jpg'
+            },
             'bricks-leads': {
                 es: 'images/bricks-leads-img-es.png',
                 en: 'images/bricks-leads-img-en.png' // Will automatically use when English version is added
