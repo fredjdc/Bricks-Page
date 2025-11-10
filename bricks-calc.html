@@ -462,13 +462,21 @@
             .bento-box:hover span {
                 color: white !important;
             }
-            /* Ensure icons are visible - make them dark gray when not hovered, white when hovered */
+            /* Ensure icons and feature images are visible */
             .bento-box img[src*=".svg"] {
                 transition: filter 0.3s ease;
                 filter: brightness(0) saturate(100%) invert(30%);
             }
             .bento-box:hover img[src*=".svg"] {
                 filter: brightness(0) saturate(100%) invert(100%);
+            }
+
+            /* Ensure feature images (JPG) remain visible on hover */
+            .bento-box img[src*=".jpg"] {
+                transition: filter 0.3s ease;
+            }
+            .bento-box:hover img[src*=".jpg"] {
+                filter: brightness(1.2) contrast(1.1);
             }
 
             /* Scroll animation initial state - soft and subtle */
