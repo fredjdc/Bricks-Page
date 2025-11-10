@@ -200,6 +200,181 @@ const setupIntersectionObserver = () => {
     });
 };
 
+// Hero word swap animation settings keep timing centralized
+const HERO_WORD_FADE_DURATION = 300;
+const HERO_WORD_HOLD_DURATION = 1700;
+const heroWordControllers = [];
+
+/**
+ * Creates a controller that handles the hero word swap lifecycle.
+ * @param {HTMLElement} container - Wrapper with data attributes that describe the animation.
+ * @returns {{ lang: string, start: Function, stop: Function, refresh: Function } | null}
+ */
+const createHeroWordController = (container) => {
+    if (!container) {
+        return null;
+    }
+
+    const lang = container.dataset.lang || 'en';
+    const words = (container.dataset.words || '')
+        .split('|')
+        .map((word) => word.trim())
+        .filter(Boolean);
+    const wordElement = container.querySelector('.hero-word');
+
+    if (!wordElement || words.length === 0) {
+        return null;
+    }
+
+    const fadeDuration = Number(container.dataset.fadeMs) || HERO_WORD_FADE_DURATION;
+    const holdDuration = Number(container.dataset.holdMs) || HERO_WORD_HOLD_DURATION;
+    const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let timers = [];
+    let currentIndex = 0;
+
+    const clearTimers = () => {
+        timers.forEach(clearTimeout);
+        timers = [];
+    };
+
+    const setWordInstant = (word) => {
+        wordElement.textContent = word;
+    };
+
+    // Keeps layout width stable to avoid the heading from jumping.
+    const computeMinWidth = () => {
+        if (!words.length) {
+            return;
+        }
+
+        const measureElement = wordElement.cloneNode(true);
+        measureElement.style.position = 'absolute';
+        measureElement.style.visibility = 'hidden';
+        measureElement.style.whiteSpace = 'nowrap';
+        measureElement.style.pointerEvents = 'none';
+        measureElement.style.opacity = '0';
+
+        document.body.appendChild(measureElement);
+
+        let maxWidth = 0;
+        words.forEach((word) => {
+            measureElement.textContent = word;
+            const width = measureElement.getBoundingClientRect().width;
+            if (width > maxWidth) {
+                maxWidth = width;
+            }
+        });
+
+        document.body.removeChild(measureElement);
+
+        if (maxWidth > 0) {
+            container.style.setProperty('--hero-word-min-width', `${Math.ceil(maxWidth)}px`);
+        }
+    };
+
+    const animateTo = (word, onComplete) => {
+        container.classList.add('is-fading-out');
+
+        const fadeOutTimer = setTimeout(() => {
+            container.classList.remove('is-fading-out');
+            setWordInstant(word);
+            container.classList.add('is-fading-in');
+
+            const fadeInTimer = setTimeout(() => {
+                container.classList.remove('is-fading-in');
+                if (typeof onComplete === 'function') {
+                    onComplete();
+                }
+            }, fadeDuration);
+
+            timers.push(fadeInTimer);
+        }, fadeDuration);
+
+        timers.push(fadeOutTimer);
+    };
+
+    const scheduleNext = () => {
+        if (currentIndex >= words.length - 1) {
+            return;
+        }
+
+        const holdTimer = setTimeout(() => {
+            currentIndex += 1;
+            animateTo(words[currentIndex], scheduleNext);
+        }, holdDuration);
+
+        timers.push(holdTimer);
+    };
+
+    const start = () => {
+        clearTimers();
+        currentIndex = 0;
+        setWordInstant(words[currentIndex]);
+        computeMinWidth();
+        container.classList.remove('is-fading-in', 'is-fading-out');
+
+        if (words.length <= 1 || reduceMotionQuery.matches) {
+            return;
+        }
+
+        scheduleNext();
+    };
+
+    const stop = () => {
+        clearTimers();
+        container.classList.remove('is-fading-in', 'is-fading-out');
+    };
+
+    const handleMotionPreferenceChange = () => {
+        stop();
+        setWordInstant(words[0]);
+    };
+
+    if (typeof reduceMotionQuery.addEventListener === 'function') {
+        reduceMotionQuery.addEventListener('change', handleMotionPreferenceChange);
+    } else if (typeof reduceMotionQuery.addListener === 'function') {
+        // Safari fallback
+        reduceMotionQuery.addListener(handleMotionPreferenceChange);
+    }
+
+    // Ensure the initial word is visible immediately.
+    setWordInstant(words[0]);
+    computeMinWidth();
+
+    return {
+        lang,
+        start,
+        stop,
+        refresh: computeMinWidth
+    };
+};
+
+/**
+ * Scans the DOM for word-swap containers and registers controllers.
+ */
+const initializeHeroWordSwap = () => {
+    heroWordControllers.length = 0;
+    document.querySelectorAll('[data-word-swap]').forEach((container) => {
+        const controller = createHeroWordController(container);
+        if (controller) {
+            heroWordControllers.push(controller);
+        }
+    });
+};
+
+/**
+ * Syncs word swap animation with the active language.
+ * @param {string} lang - The language that should animate.
+ */
+const updateHeroWordSwapForLanguage = (lang) => {
+    heroWordControllers.forEach((controller) => {
+        controller.stop();
+        if (controller.lang === lang) {
+            controller.start();
+        }
+    });
+};
+
 // Language handling
 const detectUserLanguage = () => {
     const browserLang = (navigator.language || navigator.userLanguage).split('-')[0];
@@ -247,6 +422,9 @@ const changeLanguage = (lang) => {
         
         // Update app screenshot images based on language
         updateAppScreenshots(lang);
+
+        // Restart hero headline animation for the freshly selected language
+        updateHeroWordSwapForLanguage(lang);
     } catch (error) {
         console.error('Error changing language:', error);
     }
@@ -757,6 +935,9 @@ const setupLanguageSwitcher = () => {
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize element references
     initializeElements();
+
+    // Prepare hero word swap controllers before language toggles run
+    initializeHeroWordSwap();
     
     // Add event listeners
     if (elements.menuButton) {
@@ -800,5 +981,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 elements.mobileMenu.classList.add('hidden');
             }
         }
+
+        // Keep hero word width in sync when viewport changes
+        heroWordControllers.forEach((controller) => controller.refresh());
     }, 250));
 }); 

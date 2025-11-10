@@ -354,10 +354,41 @@
                 background: radial-gradient(1200px 600px at 50% 20%, rgba(255, 204, 0, 0.15), transparent 60%),
                             radial-gradient(800px 400px at 80% 80%, rgba(255, 255, 255, 0.08), transparent 60%);
             }
-            .hero-bg-image { opacity: 0.25; }
+            .hero-bg-image { opacity: 0.8; }
             .hero-title { letter-spacing: -0.02em; }
+            
+            /* Word swap animation for hero message keeps layout stable */
+            .hero-word-swap {
+                display: inline-flex;
+                position: relative;
+                min-width: var(--hero-word-min-width, auto);
+                white-space: nowrap;
+                will-change: opacity, transform;
+            }
+            .hero-word-swap .hero-word {
+                display: inline-block;
+                opacity: 1;
+                transform: translateY(0);
+                transition: opacity 0.3s ease, transform 0.3s ease;
+            }
+            .hero-word-swap.is-fading-out .hero-word {
+                opacity: 0;
+                transform: translateY(-0.35em);
+            }
+            .hero-word-swap.is-fading-in .hero-word {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            @media (prefers-reduced-motion: reduce) {
+                .hero-word-swap .hero-word {
+                    transition: none;
+                }
+                .hero-word-swap {
+                    will-change: auto;
+                }
+            }
             .hero-subtitle { opacity: 0.95; }
-            .hero-buttons .hero-btn { box-shadow: 0 10px 24px rgba(0,0,0,0.25); }
+            .hero-buttons .hero-btn { box-shadow: 0 10px 24px rgba(0,0,0,0.12); }
         </style>
     </head>
     <body class="min-h-screen">
@@ -484,18 +515,43 @@
                     <!-- Hero Text Content -->
                     <div class="space-y-6 max-w-3xl">
                         <h1 class="hero-title text-white font-bold text-3xl md:text-5xl lg:text-6xl leading-tight">
-                            <span lang="es" class="hero-title-text">Potenciamos a los profesionales y compradores con tecnologías inteligentes</span>
-                            <span lang="en" class="hidden hero-title-text">Bricks creates smart apps for real estate professionals and home buyers</span>
+                            <!-- Word swap animation container (ES) -->
+                            <span lang="es" class="hero-title-text">
+                                Potenciamos a<br>
+                                <span
+                                    class="hero-word-swap"
+                                    data-word-swap
+                                    data-lang="es"
+                                    data-words="compradores|inversionistas|profesionales"
+                                    aria-live="polite"
+                                >
+                                    <span class="hero-word">profesionales</span>
+                                </span>
+                                con<br>tecnologías inteligentes
+                            </span>
+                            <!-- Word swap animation container (EN) -->
+                            <span lang="en" class="hidden hero-title-text">
+                                We create smart apps<br> for real estate<br>
+                                <span
+                                    class="hero-word-swap"
+                                    data-word-swap
+                                    data-lang="en"
+                                    data-words="buyers|realtors|investors|professionals"
+                                    aria-live="polite"
+                                >
+                                    <span class="hero-word">professionals</span>
+                                </span>
+                            </span>
                         </h1>
                         <p class="hero-subtitle text-white/90 text-lg md:text-xl lg:text-2xl leading-relaxed">
-                            <span lang="es" class="hero-subtitle-text">Desde calcular tu crédito hipotecario hasta gestionar tus clientes, nuestras herramientas te ayudan a tomar mejores decisiones.</span>
-                            <span lang="en" class="hidden hero-subtitle-text">From calculating your mortgage to managing your clients, our tools help you make better decisions.</span>
+                            <span lang="es" class="hero-subtitle-text">Desde calcular tu crédito hipotecario hasta gestionar clientes, nuestras herramientas te ayudan a tomar mejores decisiones</span>
+                            <span lang="en" class="hidden hero-subtitle-text">From calculating your mortgage to managing your clients, our tools help you make the best choice</span>
                         </p>
                     </div>
                                 
                     <!-- CTA Buttons -->
                     <div class="flex flex-col sm:flex-row gap-4 pt-8 hero-buttons">
-                        <a href="bricks-calc.html" class="hero-btn btn-black text-white text-lg px-8 py-4 rounded-3xl hover:scale-105 transition-transform flex items-center gap-3 justify-center">
+                        <a href="bricks-calc.html" class="hero-btn btn-primary text-white text-lg px-8 py-4 rounded-3xl hover:scale-105 transition-transform flex items-center gap-3 justify-center">
                             <img 
                                 src="images/bricks-calc-web-icon.png" 
                                 alt="Bricks Calc Icon" 
@@ -504,7 +560,7 @@
                             <span lang="es">Conoce Bricks Calc</span>
                             <span lang="en" class="hidden">Discover Bricks Calc</span>
                         </a>
-                        <a href="https://leads.bricks.pe" class="hero-btn btn-black text-white text-lg px-8 py-4 rounded-3xl hover:scale-105 transition-transform flex items-center gap-3 justify-center">
+                        <a href="https://leads.bricks.pe" class="hero-btn btn-primary text-white text-lg px-8 py-4 rounded-3xl hover:scale-105 transition-transform flex items-center gap-3 justify-center">
                             <img 
                                 src="images/bricks-leads-web-icon.png" 
                                 alt="Bricks Leads Icon" 
