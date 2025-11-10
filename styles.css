@@ -333,14 +333,15 @@ body {
 
 /* Bento Box Styles */
 .bento-box {
-    /* White background by default */
-    background: white;
-    color: #333;
+    /* Glassmorphism background with subtle border */
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 24px;
     padding: 2rem;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-
+    
     /* Initial hidden state for animation */
     opacity: 0;
     transform: translateY(30px);
@@ -348,12 +349,20 @@ body {
 
 /* Hover effect for bento boxes */
 .bento-box:hover {
-    background: var(--accent-color);
-    color: white;
-    border-color: var(--accent-color);
+    background: white;
+    border-color: rgba(255, 255, 255, 0.25);
     transform: translateY(-8px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2),
-                0 0 0 1px var(--accent-color);
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+/* Content color changes on bento box hover */
+.bento-box:hover * {
+    color: #303030 !important;
+}
+
+.bento-box:hover img {
+    filter: brightness(0) saturate(100%) invert(12%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
 }
 
 /* Icon animation on hover */
