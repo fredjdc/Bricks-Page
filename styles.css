@@ -381,6 +381,77 @@ body {
     transform: translateY(0);
 }
 
+/* Hero title scroll animation - elegant fade and slide up with shorter delay */
+h1.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+h1.animate-on-scroll.animate-in {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Main section title scroll animation - elegant fade and slide up */
+h2.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+h2.animate-on-scroll.animate-in {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* App title and icon scroll animation - slide from center to final position */
+h3.animate-on-scroll, img.animate-on-scroll {
+    opacity: 0;
+    transform: translateX(0);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+h3.animate-on-scroll.animate-in, img.animate-on-scroll.animate-in {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* On desktop, titles and icons slide from center to left-aligned position */
+@media (min-width: 768px) {
+    h3.animate-on-scroll, img.animate-on-scroll {
+        transform: translateX(30%);
+    }
+
+    h3.animate-on-scroll.animate-in, img.animate-on-scroll.animate-in {
+        transform: translateX(0);
+    }
+}
+
+/* Description paragraph scroll animation - subtle fade and slide up */
+p.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+p.animate-on-scroll.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Learn more link scroll animation - subtle fade and slide up with slight delay */
+a.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+}
+
+a.animate-on-scroll.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* Staggered animation delays for each box */
 .bento-box[data-animation-delay="0"] {
     transition-delay: 0ms;
