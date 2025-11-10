@@ -233,7 +233,7 @@ body {
 .hero-subtitle {
     opacity: 0;
     transform: translateY(20px);
-    animation: fadeInUp 1s ease-out 0.5s forwards;
+    animation: fadeInUp 1s ease-out 0.8s forwards;
 }
 
 /* Hero Subtitle Text - Enhanced readability */
@@ -245,7 +245,7 @@ body {
 .hero-buttons {
     opacity: 0;
     transform: translateY(20px);
-    animation: fadeInUp 1s ease-out 0.8s forwards;
+    animation: fadeInUp 1s ease-out 1.2s forwards;
 }
 
 /* Individual Hero Button - Subtle scale on hover with glow and shimmer effect */
