@@ -284,7 +284,7 @@ body {
 
 .hero-bg-image {
     animation: subtleFloat 20s ease-in-out infinite;
-    opacity: 0.8;
+    opacity: 0.08;
     transition: opacity 0.3s ease;
 }
 
@@ -333,15 +333,14 @@ body {
 
 /* Bento Box Styles */
 .bento-box {
-    /* Glassmorphism background with subtle border */
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    /* White background by default */
+    background: white;
+    color: #333;
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 24px;
     padding: 2rem;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    
+
     /* Initial hidden state for animation */
     opacity: 0;
     transform: translateY(30px);
@@ -349,11 +348,12 @@ body {
 
 /* Hover effect for bento boxes */
 .bento-box:hover {
-    background: rgba(255, 255, 255, 0.12);
-    border-color: rgba(255, 255, 255, 0.25);
+    background: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
     transform: translateY(-8px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2),
-                0 0 0 1px rgba(255, 255, 255, 0.1);
+                0 0 0 1px var(--accent-color);
 }
 
 /* Icon animation on hover */
@@ -953,6 +953,12 @@ button:focus {
     .whatsapp-link {
         justify-content: center;
     }
+
+    /* Ensure hero background image fills full height on mobile */
+    .hero-bg-image {
+        height: 100% !important;
+        width: 100% !important;
+    }
 }
 
 /* Additional mobile optimizations for very small screens */
@@ -971,6 +977,12 @@ button:focus {
     .hero-section img {
         max-width: 100%;
         height: auto;
+    }
+
+    /* Ensure hero background image fills full height on mobile */
+    .hero-bg-image {
+        height: 100% !important;
+        width: 100% !important;
     }
     
     /* Center all text with proper line height */

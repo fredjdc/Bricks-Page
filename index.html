@@ -342,7 +342,7 @@
                 background: radial-gradient(1200px 600px at 50% 20%, rgba(255, 204, 0, 0.15), transparent 60%),
                             radial-gradient(800px 400px at 80% 80%, rgba(255, 255, 255, 0.08), transparent 60%);
             }
-            .hero-bg-image { opacity: 0.8; }
+            .hero-bg-image { opacity: 0.08; }
             .hero-title {
                 letter-spacing: -0.02em;
                 transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -531,16 +531,16 @@
         <!-- Hero Section -->
         <section class="hero-section min-h-screen flex items-center relative overflow-hidden transition-all duration-700 ease-out hover:bg-blue-600/5">
             <!-- Background Image -->
-            <div class="absolute inset-0 flex items-center justify-center z-0 hero-background">
+            <div class="absolute inset-0 z-0 hero-background">
                 <img
-                    src="images/bg-dots.png"
+                    src="images/background-hero-city.svg"
                     alt="Background"
                     class="h-full w-full object-cover hero-bg-image"
                 />
             </div>
 
             <!-- Decorative gradient overlay for depth -->
-            <div class="absolute inset-0 z-0 hero-gradient-overlay"></div>
+            <div class="absolute inset-0 z-0 hero-gradient-overlay2"></div>
 
             <div class="container mx-auto px-4 relative z-10 w-full">
                 <div class="flex flex-col items-center text-center space-y-8 py-12 md:py-16">
@@ -616,14 +616,16 @@
 
         <!-- Divider: Hero → Apps Overview -->
         <div class="section-divider section-divider--light" aria-hidden="true">
-            <svg viewBox="0 0 1440 70" preserveAspectRatio="none"><path d="M0,30 C240,80 480,0 720,30 C960,60 1200,20 1440,40 L1440,70 L0,70 Z"></path></svg>
+            <picture>
+                <img src="images/layered-slants.svg" alt="" width="100%" height="auto">
+            </picture>
         </div>
 
         <!-- Apps Overview Section -->
-        <section id="apps-overview" class="py-24 relative">
+        <section id="apps-overview" class="py-24 relative bg-gray-50">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-16">
-                    <h2 class="text-white font-bold text-4xl md:text-5xl mb-4">
+                    <h2 class="text-gray-900 font-bold text-4xl md:text-5xl mb-4">
                         <span lang="es">Nuestras Apps</span>
                         <span lang="en" class="hidden">Our Apps</span>
                     </h2>
@@ -640,7 +642,7 @@
                                     alt="Bricks Calc Icon" 
                                     class="w-[50px] h-[50px] rounded-lg flex-shrink-0"
                                 />
-                                <h3 class="text-white font-bold text-3xl md:text-4xl">
+                                <h3 class="text-gray-900 font-bold text-3xl md:text-4xl">
                                     <span lang="es">Bricks Calc</span>
                                     <span lang="en" class="hidden">Bricks Calc</span>
                                 </h3>
@@ -648,7 +650,7 @@
                         </div>
                             
                         <!-- Description -->
-                        <p class="text-white/90 text-lg md:text-xl">
+                        <p class="text-gray-700 text-lg md:text-xl">
                             <span lang="es">Calcula tu crédito hipotecario en minutos y analiza tus pagos, tasas y escenarios. Ideal para compradores o agentes.</span>
                             <span lang="en" class="hidden">Calculate your mortgage in minutes and analyze your payments, rates and scenarios. Ideal for buyers or agents.</span>
                         </p>
@@ -752,7 +754,7 @@
                                     alt="Bricks Leads Icon" 
                                     class="w-[50px] h-[50px] rounded-lg flex-shrink-0"
                                 />
-                                <h3 class="text-white font-bold text-3xl md:text-4xl">
+                                <h3 class="text-gray-900 font-bold text-3xl md:text-4xl">
                                     <span lang="es">Bricks Leads</span>
                                     <span lang="en" class="hidden">Bricks Leads</span>
                                 </h3>
@@ -760,7 +762,7 @@
                         </div>
                         
                         <!-- Description -->
-                        <p class="text-white/90 text-lg md:text-xl">
+                        <p class="text-gray-700 text-lg md:text-xl">
                             <span lang="es">Gestiona tus clientes, seguimientos y propiedades desde una app fácil de usar diseñada para agentes inmobiliarios.</span>
                             <span lang="en" class="hidden">Manage your clients, follow-ups and properties from an easy-to-use app designed for real estate agents.</span>
                         </p>
@@ -857,9 +859,11 @@
             </div>
         </section>
 
-        <!-- Divider: Apps Overview → Why Bricks -->
-        <div class="section-divider section-divider--dark" aria-hidden="true">
-            <svg viewBox="0 0 1440 70" preserveAspectRatio="none"><path d="M0,40 C240,20 480,60 720,30 C960,0 1200,50 1440,30 L1440,70 L0,70 Z"></path></svg>
+        <!-- Divider: Hero → Apps Overview -->
+        <div class="section-divider section-divider--light" style="transform: scaleY(-1);" aria-hidden="true">
+            <picture>
+                <img src="images/layered-slants.svg" alt="" width="100%" height="-auto">
+            </picture>
         </div>
 
         <!-- Why Bricks Section -->
@@ -1324,3 +1328,4 @@
         </script>
     </body>
 </html>
+
