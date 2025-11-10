@@ -191,8 +191,6 @@
                 place-items: center;
                 padding: 1.5rem;
                 border-radius: 3.75rem;
-                background: linear-gradient(135deg, rgba(15, 23, 42, 0.55), rgba(30, 64, 175, 0.45));
-                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
                 overflow: hidden;
                 isolation: isolate; /* Ensures backdrop effects stay within the card */
             }
@@ -202,7 +200,6 @@
                 position: absolute;
                 inset: 10%;
                 border-radius: inherit;
-                background: radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.16), transparent 60%);
                 z-index: 0;
                 opacity: 0.75;
             }
@@ -243,15 +240,6 @@
             .apps-parallax-layer--middle img {
                 filter: saturate(95%);
                 opacity: 0.85;
-            }
-
-            .apps-parallax-glow {
-                position: absolute;
-                inset: 0;
-                z-index: 1;
-                background: radial-gradient(circle at 50% 80%, rgba(255, 204, 0, 0.35), transparent 70%);
-                mix-blend-mode: screen;
-                pointer-events: none;
             }
 
             /* App screenshot shadows */
