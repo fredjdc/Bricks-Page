@@ -343,8 +343,46 @@
                             radial-gradient(800px 400px at 80% 80%, rgba(255, 255, 255, 0.08), transparent 60%);
             }
             .hero-bg-image { opacity: 0.8; }
-            .hero-title { letter-spacing: -0.02em; }
-            
+            .hero-title {
+                letter-spacing: -0.02em;
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                cursor: default;
+                position: relative;
+            }
+            .hero-title:hover {
+                transform: translateY(-2px);
+                text-shadow: 0 0 20px rgba(255, 204, 0, 0.3), 0 0 40px rgba(255, 204, 0, 0.1);
+            }
+
+            /* Floating sparkles animation */
+            @keyframes sparkle {
+                0%, 100% { opacity: 0; transform: translateY(0px) scale(0.8); }
+                50% { opacity: 1; transform: translateY(-20px) scale(1.2); }
+            }
+
+            .hero-sparkle {
+                position: absolute;
+                width: 4px;
+                height: 4px;
+                background: #FFCC00;
+                border-radius: 50%;
+                opacity: 0;
+                pointer-events: none;
+                animation: sparkle 2s ease-in-out infinite;
+            }
+
+            .hero-title:hover .hero-sparkle:nth-child(1) { animation-delay: 0s; }
+            .hero-title:hover .hero-sparkle:nth-child(2) { animation-delay: 0.3s; }
+            .hero-title:hover .hero-sparkle:nth-child(3) { animation-delay: 0.6s; }
+            .hero-title:hover .hero-sparkle:nth-child(4) { animation-delay: 0.9s; }
+            .hero-title:hover .hero-sparkle:nth-child(5) { animation-delay: 1.2s; }
+
+            /* Subtle pulse effect on hover */
+            @keyframes hero-pulse {
+                0%, 100% { box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.1); }
+                50% { box-shadow: 0 0 0 10px rgba(255, 204, 0, 0); }
+            }
+
             /* Word swap animation for hero message keeps layout stable */
             .hero-word-swap {
                 display: inline-flex;
@@ -375,7 +413,14 @@
                     will-change: auto;
                 }
             }
-            .hero-subtitle { opacity: 0; }
+            .hero-subtitle {
+                opacity: 0;
+                transition: opacity 0.6s ease-out, transform 0.4s ease-out;
+            }
+            .hero-title:hover + .hero-subtitle {
+                opacity: 0.95;
+                transform: translateY(-2px);
+            }
             .hero-buttons .hero-btn { box-shadow: 0 10px 24px rgba(0,0,0,0.12); }
         </style>
     </head>
@@ -484,7 +529,7 @@
         </header>
 
         <!-- Hero Section -->
-        <section class="hero-section min-h-screen flex items-center relative overflow-hidden">
+        <section class="hero-section min-h-screen flex items-center relative overflow-hidden transition-all duration-700 ease-out hover:bg-blue-600/5">
             <!-- Background Image -->
             <div class="absolute inset-0 flex items-center justify-center z-0 hero-background">
                 <img
@@ -503,6 +548,13 @@
                     <!-- Hero Text Content -->
                     <div class="space-y-6 max-w-3xl">
                         <h1 class="hero-title text-white font-bold text-4xl md:text-5xl lg:text-6xl leading-tight">
+                            <!-- Floating sparkles -->
+                            <div class="hero-sparkle" style="top: 10%; left: 15%;"></div>
+                            <div class="hero-sparkle" style="top: 20%; right: 20%;"></div>
+                            <div class="hero-sparkle" style="top: 60%; left: 10%;"></div>
+                            <div class="hero-sparkle" style="top: 70%; right: 15%;"></div>
+                            <div class="hero-sparkle" style="bottom: 10%; left: 25%;"></div>
+
                             <!-- Word swap animation container (ES) -->
                             <span lang="es" class="hero-title-text">
                                 Potenciamos a<br>
@@ -955,25 +1007,27 @@
                         <span lang="en" class="hidden">Download our apps and take your work to the next level.</span>
                     </p>
 
-                    <!-- App Icons and Download Buttons -->
-                    <div class="flex flex-col md:flex-row items-center justify-center gap-8 pt-8">
-                        <!-- Bricks Calc -->
-                        <a id="app_store_download_button" href="https://apps.apple.com/app/id6754506837" class="inline-block hover:scale-105 transition-transform">
-                            <img src="images/Download_on_the_App_Store_Badge_ES_RGB_blk_100217.svg" 
-                                 alt="Descarga en App Store" 
-                                 class="h-12 md:h-14">
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 pt-8 hero-buttons">
+                        <a href="bricks-calc.html" class="hero-btn btn-primary text-white text-lg px-8 py-4 rounded-3xl hover:scale-105 transition-transform flex items-center gap-3 justify-center">
+                            <img 
+                                src="images/bricks-calc-web-icon.png" 
+                                alt="Bricks Calc Icon" 
+                                class="w-6 h-6 rounded"
+                            />
+                            <span lang="es">Conoce Bricks Calc</span>
+                            <span lang="en" class="hidden">Discover Bricks Calc</span>
                         </a>
-
-                        <!-- Bricks Leads -->
-                        <a href="https://leads.bricks.pe" class="btn-black text-white text-lg px-8 py-4 rounded-3xl hover:scale-105 transition-transform flex items-center gap-3 justify-center">
+                        <a href="https://leads.bricks.pe" class="hero-btn btn-primary text-white text-lg px-8 py-4 rounded-3xl hover:scale-105 transition-transform flex items-center gap-3 justify-center">
                             <img 
                                 src="images/bricks-leads-web-icon.png" 
                                 alt="Bricks Leads Icon" 
                                 class="w-6 h-6 rounded"
                             />
-                            <span lang="es">Próximamente</span>
-                            <span lang="en" class="hidden">Coming Soon</span>
+                            <span lang="es">Explora Bricks Leads</span>
+                            <span lang="en" class="hidden">Explore Bricks Leads</span>
                         </a>
+                                </div>
                         </div>
 
                     <!-- WhatsApp Link -->
