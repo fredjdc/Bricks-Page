@@ -310,11 +310,163 @@
                 border-radius: 20px;
                 padding: 24px;
                 box-shadow: 0 12px 28px rgba(0,0,0,0.22);
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                position: relative;
+                overflow: hidden;
+                cursor: pointer;
             }
+
+            .bento-box::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(135deg, rgba(255, 204, 0, 0.1), rgba(255, 204, 0, 0.05));
+                opacity: 0;
+                transition: opacity 0.4s ease;
+                border-radius: inherit;
+                z-index: 1;
+            }
+
+            .bento-box:hover::before {
+                opacity: 1;
+            }
+
             .bento-box:hover {
-                transform: translateY(-4px);
-                box-shadow: 0 20px 40px rgba(0,0,0,0.28);
+                transform: translateY(-8px) scale(1.02);
+                box-shadow: 0 24px 48px rgba(0,0,0,0.32), 0 0 20px rgba(255, 204, 0, 0.15);
+                border-color: rgba(255, 204, 0, 0.3);
+            }
+
+            /* Icon animations */
+            .bento-box .icon-container {
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                transform: scale(1);
+            }
+
+            .bento-box:hover .icon-container {
+                transform: scale(1.1) rotate(5deg);
+                filter: drop-shadow(0 4px 8px rgba(255, 204, 0, 0.3));
+            }
+
+            /* Content animations */
+            .bento-box .bento-title {
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            .bento-box:hover .bento-title {
+                transform: translateY(-2px);
+                color: #FFCC00;
+            }
+
+            .bento-box .bento-text {
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                transform: translateY(0);
+                opacity: 0.9;
+            }
+
+            .bento-box:hover .bento-text {
+                transform: translateY(-1px);
+                opacity: 1;
+            }
+
+            /* Staggered animation for multiple cards */
+            .bento-box:nth-child(1) { transition-delay: 0s; }
+            .bento-box:nth-child(2) { transition-delay: 0.1s; }
+            .bento-box:nth-child(3) { transition-delay: 0.2s; }
+
+            /* Particle animations */
+            @keyframes particle-float-1 {
+                0% { transform: translate(0, 0) scale(0) rotate(0deg); opacity: 0; }
+                20% { opacity: 0.8; }
+                100% { transform: translate(-20px, -30px) scale(1) rotate(180deg); opacity: 0; }
+            }
+
+            @keyframes particle-float-2 {
+                0% { transform: translate(0, 0) scale(0) rotate(0deg); opacity: 0; }
+                20% { opacity: 0.8; }
+                100% { transform: translate(25px, -35px) scale(1.2) rotate(-90deg); opacity: 0; }
+            }
+
+            @keyframes particle-float-3 {
+                0% { transform: translate(0, 0) scale(0) rotate(0deg); opacity: 0; }
+                20% { opacity: 0.6; }
+                100% { transform: translate(-15px, -25px) scale(0.8) rotate(270deg); opacity: 0; }
+            }
+
+            @keyframes particle-float-4 {
+                0% { transform: translate(0, 0) scale(0) rotate(0deg); opacity: 0; }
+                20% { opacity: 0.7; }
+                100% { transform: translate(30px, -20px) scale(1.1) rotate(360deg); opacity: 0; }
+            }
+
+            @keyframes particle-float-5 {
+                0% { transform: translate(0, 0) scale(0) rotate(0deg); opacity: 0; }
+                20% { opacity: 0.9; }
+                100% { transform: translate(-25px, -40px) scale(0.9) rotate(450deg); opacity: 0; }
+            }
+
+            /* Particle container and particles */
+            .bento-particles {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                pointer-events: none;
+                z-index: 0;
+                overflow: hidden;
+            }
+
+            .bento-particle {
+                position: absolute;
+                width: 4px;
+                height: 4px;
+                background: rgba(255, 204, 0, 0.6);
+                border-radius: 50%;
+                opacity: 0;
+                animation-duration: 2s;
+                animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+                animation-fill-mode: forwards;
+            }
+
+            .bento-box:hover .bento-particle:nth-child(1) {
+                animation-name: particle-float-1;
+                animation-delay: 0s;
+                top: 60%;
+                left: 20%;
+            }
+
+            .bento-box:hover .bento-particle:nth-child(2) {
+                animation-name: particle-float-2;
+                animation-delay: 0.2s;
+                top: 70%;
+                left: 70%;
+            }
+
+            .bento-box:hover .bento-particle:nth-child(3) {
+                animation-name: particle-float-3;
+                animation-delay: 0.4s;
+                top: 50%;
+                left: 50%;
+            }
+
+            .bento-box:hover .bento-particle:nth-child(4) {
+                animation-name: particle-float-4;
+                animation-delay: 0.6s;
+                top: 80%;
+                left: 30%;
+            }
+
+            .bento-box:hover .bento-particle:nth-child(5) {
+                animation-name: particle-float-5;
+                animation-delay: 0.8s;
+                top: 40%;
+                left: 80%;
             }
 
             /* Testimonials cards */
@@ -879,15 +1031,23 @@
                 <div class="grid md:grid-cols-3 gap-8 md:gap-12 max-w-6xl mx-auto">
                     <!-- Technology Local -->
                     <div class="bento-box animate-on-scroll" data-animation-delay="0">
-                        <div class="text-center space-y-4">
-                            <div class="flex justify-center mb-4">
-                                <img src="images/globe.americas.fill.svg" alt="Home icon" class="w-12 h-12" />
+                        <!-- Particle Effects -->
+                        <div class="bento-particles">
+                            <div class="bento-particle"></div>
+                            <div class="bento-particle"></div>
+                            <div class="bento-particle"></div>
+                            <div class="bento-particle"></div>
+                            <div class="bento-particle"></div>
+                        </div>
+                        <div class="text-center space-y-4 relative z-10">
+                            <div class="icon-container flex justify-center mb-4">
+                                <img src="images/globe.americas.fill.svg" alt="Home icon" class="w-12 h-12 transition-all duration-300" />
                             </div>
-                            <h3 class="text-white font-bold text-xl md:text-2xl">
+                            <h3 class="bento-title text-white font-bold text-xl md:text-2xl">
                                 <span lang="es">Tecnología local con visión global</span>
                                 <span lang="en" class="hidden">Local technology with global vision</span>
                             </h3>
-                            <p class="text-white/90 text-base md:text-lg">
+                            <p class="bento-text text-white/90 text-base md:text-lg">
                                 <span lang="es">Bricks desarrolla herramientas digitales diseñadas en Perú y pensadas para el mercado inmobiliario de América Latina y Estados Unidos.</span>
                                 <span lang="en" class="hidden">Bricks develops digital tools designed in Peru and created for the real estate market in Latin America and the United States.</span>
                             </p>
@@ -896,15 +1056,23 @@
                     
                     <!-- Simple Intelligent Scalable -->
                     <div class="bento-box animate-on-scroll" data-animation-delay="100">
-                        <div class="text-center space-y-4">
-                            <div class="flex justify-center mb-4">
-                                <img src="images/timelapse.svg" alt="Home icon" class="w-12 h-12" />
+                        <!-- Particle Effects -->
+                        <div class="bento-particles">
+                            <div class="bento-particle"></div>
+                            <div class="bento-particle"></div>
+                            <div class="bento-particle"></div>
+                            <div class="bento-particle"></div>
+                            <div class="bento-particle"></div>
+                        </div>
+                        <div class="text-center space-y-4 relative z-10">
+                            <div class="icon-container flex justify-center mb-4">
+                                <img src="images/timelapse.svg" alt="Home icon" class="w-12 h-12 transition-all duration-300" />
                             </div>
-                            <h3 class="text-white font-bold text-xl md:text-2xl">
+                            <h3 class="bento-title text-white font-bold text-xl md:text-2xl">
                                 <span lang="es">Simple. Inteligente. Escalable.</span>
                                 <span lang="en" class="hidden">Simple. Smart. Scalable.</span>
                             </h3>
-                            <p class="text-white/90 text-base md:text-lg">
+                            <p class="bento-text text-white/90 text-base md:text-lg">
                                 <span lang="es">Nuestras apps están creadas para simplificar procesos, ahorrar tiempo y ayudarte a crecer tu negocio.</span>
                                 <span lang="en" class="hidden">Our apps are created to simplify processes, save time and help you grow your business.</span>
                             </p>
@@ -913,15 +1081,23 @@
 
                     <!-- Secure Data -->
                     <div class="bento-box animate-on-scroll" data-animation-delay="200">
-                        <div class="text-center space-y-4">
-                            <div class="flex justify-center mb-4">
-                                <img src="images/lock.shield.svg" alt="Home icon" class="w-12 h-12" />
+                        <!-- Particle Effects -->
+                        <div class="bento-particles">
+                            <div class="bento-particle"></div>
+                            <div class="bento-particle"></div>
+                            <div class="bento-particle"></div>
+                            <div class="bento-particle"></div>
+                            <div class="bento-particle"></div>
+                        </div>
+                        <div class="text-center space-y-4 relative z-10">
+                            <div class="icon-container flex justify-center mb-4">
+                                <img src="images/lock.shield.svg" alt="Home icon" class="w-12 h-12 transition-all duration-300" />
                             </div>
-                            <h3 class="text-white font-bold text-xl md:text-2xl">
+                            <h3 class="bento-title text-white font-bold text-xl md:text-2xl">
                                 <span lang="es">Datos seguros, soporte real.</span>
                                 <span lang="en" class="hidden">Secure data, real support.</span>
                             </h3>
-                            <p class="text-white/90 text-base md:text-lg">
+                            <p class="bento-text text-white/90 text-base md:text-lg">
                                 <span lang="es">Bricks ofrece soporte personalizado por WhatsApp y mantiene tus datos siempre protegidos.</span>
                                 <span lang="en" class="hidden">Bricks offers personalized support via WhatsApp and keeps your data always protected.</span>
                             </p>
