@@ -25,9 +25,11 @@
             background: white;
             border-radius: 16px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            max-width: 600px;
+            max-width: 700px;
             width: 100%;
             padding: 40px;
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
         .header {
@@ -172,8 +174,49 @@
             margin-top: 20px;
             white-space: pre-wrap;
             word-wrap: break-word;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .history-section {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        .history-section h3 {
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 16px;
+        }
+
+        .history-list {
             max-height: 200px;
             overflow-y: auto;
+        }
+
+        .history-item {
+            background: white;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 3px solid #667eea;
+        }
+
+        .history-item-rate {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 16px;
+        }
+
+        .history-item-details {
+            text-align: right;
+            font-size: 12px;
+            color: #666;
         }
 
         .instructions {
@@ -248,6 +291,13 @@
         .copy-button.copied {
             background: #28a745;
         }
+
+        .empty-history {
+            text-align: center;
+            color: #999;
+            padding: 20px;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
@@ -314,11 +364,17 @@
             📋 Copy JSON
         </button>
 
+        <div class="history-section" id="historySection" style="display: none;">
+            <h3>📊 Rate History</h3>
+            <div class="history-list" id="historyList"></div>
+        </div>
+
         <div class="instructions">
             <h3>📋 How to Update:</h3>
             <ol>
                 <li>Enter the new mortgage rate and select the month</li>
                 <li>Click "Generate JSON" to create the JSON content</li>
+                <li>The current rate will be automatically added to history if it changed</li>
                 <li>Click "Copy JSON" to copy the formatted JSON</li>
                 <li>Go to your GitHub repository</li>
                 <li>Edit the file <code>mortgage-rate.json</code> in the root directory</li>
@@ -336,6 +392,8 @@
 
     <script>
         const JSON_FILE_URL = 'https://www.bricks.pe/mortgage-rate.json';
+        const MAX_HISTORY_ENTRIES = 24; // Keep last 24 months (2 years)
+        let currentData = null;
         
         // Load current rate on page load
         window.addEventListener('DOMContentLoaded', () => {
@@ -373,12 +431,20 @@
                     throw new Error('Invalid JSON format: missing rate field');
                 }
                 
+                // Store current data for history comparison
+                currentData = data;
+                
                 currentRateEl.textContent = parseFloat(data.rate).toFixed(2) + '%';
                 currentMonthEl.textContent = data.month || 'No month specified';
                 
                 // Pre-fill form with current values
                 document.getElementById('rate').value = data.rate;
                 document.getElementById('month').value = data.month || '';
+                
+                // Display history if available
+                if (data.history && Array.isArray(data.history) && data.history.length > 0) {
+                    displayHistory(data.history);
+                }
                 
                 // Show success status
                 fetchStatus.className = 'fetch-status success show';
@@ -399,7 +465,43 @@
             }
         }
 
-        // Generate JSON output
+        // Display history
+        function displayHistory(history) {
+            const historySection = document.getElementById('historySection');
+            const historyList = document.getElementById('historyList');
+            
+            if (!history || history.length === 0) {
+                historySection.style.display = 'none';
+                return;
+            }
+            
+            historySection.style.display = 'block';
+            historyList.innerHTML = '';
+            
+            // Sort history by date (newest first)
+            const sortedHistory = [...history].sort((a, b) => {
+                const dateA = a.lastUpdated || '';
+                const dateB = b.lastUpdated || '';
+                return dateB.localeCompare(dateA);
+            });
+            
+            sortedHistory.forEach(entry => {
+                const item = document.createElement('div');
+                item.className = 'history-item';
+                item.innerHTML = `
+                    <div>
+                        <div class="history-item-rate">${parseFloat(entry.rate).toFixed(2)}%</div>
+                    </div>
+                    <div class="history-item-details">
+                        <div>${entry.month || 'N/A'}</div>
+                        <div style="color: #999; font-size: 11px;">${entry.lastUpdated || 'N/A'}</div>
+                    </div>
+                `;
+                historyList.appendChild(item);
+            });
+        }
+
+        // Generate JSON output with automatic history tracking
         function generateJSON() {
             const rate = parseFloat(document.getElementById('rate').value);
             const month = document.getElementById('month').value;
@@ -415,10 +517,46 @@
                 return;
             }
             
+            // Prepare new data
+            let history = [];
+            
+            // Check if rate or month changed from current data
+            if (currentData) {
+                const rateChanged = Math.abs(currentData.rate - rate) > 0.001; // Allow for floating point differences
+                const monthChanged = currentData.month !== month;
+                
+                // If rate or month changed, add current rate to history
+                if (rateChanged || monthChanged) {
+                    // Start with existing history (if any)
+                    if (currentData.history && Array.isArray(currentData.history)) {
+                        history = [...currentData.history];
+                    }
+                    
+                    // Add current rate to history
+                    history.unshift({
+                        rate: currentData.rate,
+                        lastUpdated: currentData.lastUpdated || today,
+                        month: currentData.month || 'Unknown'
+                    });
+                    
+                    // Limit history to last MAX_HISTORY_ENTRIES entries
+                    if (history.length > MAX_HISTORY_ENTRIES) {
+                        history = history.slice(0, MAX_HISTORY_ENTRIES);
+                    }
+                } else {
+                    // No change, keep existing history
+                    if (currentData.history && Array.isArray(currentData.history)) {
+                        history = [...currentData.history];
+                    }
+                }
+            }
+            
+            // Create new JSON data
             const jsonData = {
                 rate: rate,
                 lastUpdated: today,
-                month: month
+                month: month,
+                history: history
             };
             
             const jsonOutput = document.getElementById('jsonOutput');
@@ -430,6 +568,17 @@
             
             // Scroll to JSON output
             jsonOutput.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            
+            // Show message if history was updated
+            if (history.length > 0 && currentData && 
+                (Math.abs(currentData.rate - rate) > 0.001 || currentData.month !== month)) {
+                const fetchStatus = document.getElementById('fetchStatus');
+                fetchStatus.className = 'fetch-status success show';
+                fetchStatus.textContent = `✅ Current rate (${currentData.rate}%) will be added to history. History now has ${history.length} entries.`;
+                setTimeout(() => {
+                    fetchStatus.classList.remove('show');
+                }, 5000);
+            }
         }
 
         // Copy JSON to clipboard
