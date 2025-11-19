@@ -74,6 +74,12 @@
             margin-top: 8px;
         }
 
+        .current-rate-date {
+            color: #999;
+            font-size: 11px;
+            margin-top: 4px;
+        }
+
         .form-group {
             margin-bottom: 20px;
         }
@@ -311,6 +317,7 @@
             <div class="current-rate-label">Current Rate</div>
             <div class="current-rate-value" id="currentRate">Loading...</div>
             <div class="current-rate-month" id="currentMonth"></div>
+            <div class="current-rate-date" id="currentDate"></div>
         </div>
 
         <form id="rateForm">
@@ -375,6 +382,7 @@
                 <li>Enter the new mortgage rate and select the month</li>
                 <li>Click "Generate JSON" to create the JSON content</li>
                 <li>The current rate will be automatically added to history if it changed</li>
+                <li>The date will be automatically set to today's date</li>
                 <li>Click "Copy JSON" to copy the formatted JSON</li>
                 <li>Go to your GitHub repository</li>
                 <li>Edit the file <code>mortgage-rate.json</code> in the root directory</li>
@@ -410,11 +418,13 @@
         async function loadCurrentRate() {
             const currentRateEl = document.getElementById('currentRate');
             const currentMonthEl = document.getElementById('currentMonth');
+            const currentDateEl = document.getElementById('currentDate');
             const fetchStatus = document.getElementById('fetchStatus');
             const submitBtn = document.getElementById('submitBtn');
             
             currentRateEl.textContent = 'Loading...';
             currentMonthEl.textContent = '';
+            currentDateEl.textContent = '';
             submitBtn.disabled = true;
             
             try {
@@ -437,6 +447,12 @@
                 currentRateEl.textContent = parseFloat(data.rate).toFixed(2) + '%';
                 currentMonthEl.textContent = data.month || 'No month specified';
                 
+                // Display date (prefer 'date' field, fallback to 'lastUpdated')
+                const displayDate = data.date || data.lastUpdated || '';
+                if (displayDate) {
+                    currentDateEl.textContent = 'Date: ' + displayDate;
+                }
+                
                 // Pre-fill form with current values
                 document.getElementById('rate').value = data.rate;
                 document.getElementById('month').value = data.month || '';
@@ -456,6 +472,7 @@
             } catch (error) {
                 currentRateEl.textContent = 'Error';
                 currentMonthEl.textContent = 'Could not load current rate';
+                currentDateEl.textContent = '';
                 
                 // Show error status
                 fetchStatus.className = 'fetch-status error show';
@@ -480,32 +497,33 @@
             
             // Sort history by date (newest first)
             const sortedHistory = [...history].sort((a, b) => {
-                const dateA = a.lastUpdated || '';
-                const dateB = b.lastUpdated || '';
+                const dateA = a.date || a.lastUpdated || '';
+                const dateB = b.date || b.lastUpdated || '';
                 return dateB.localeCompare(dateA);
             });
             
             sortedHistory.forEach(entry => {
                 const item = document.createElement('div');
                 item.className = 'history-item';
+                const entryDate = entry.date || entry.lastUpdated || 'N/A';
                 item.innerHTML = `
                     <div>
                         <div class="history-item-rate">${parseFloat(entry.rate).toFixed(2)}%</div>
                     </div>
                     <div class="history-item-details">
                         <div>${entry.month || 'N/A'}</div>
-                        <div style="color: #999; font-size: 11px;">${entry.lastUpdated || 'N/A'}</div>
+                        <div style="color: #999; font-size: 11px;">${entryDate}</div>
                     </div>
                 `;
                 historyList.appendChild(item);
             });
         }
 
-        // Generate JSON output with automatic history tracking
+        // Generate JSON output with automatic history tracking and date
         function generateJSON() {
             const rate = parseFloat(document.getElementById('rate').value);
             const month = document.getElementById('month').value;
-            const today = new Date().toISOString().split('T')[0];
+            const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format
             
             if (isNaN(rate) || !month) {
                 alert('Please fill in all fields');
@@ -532,10 +550,12 @@
                         history = [...currentData.history];
                     }
                     
-                    // Add current rate to history
+                    // Add current rate to history with date
+                    const currentDate = currentData.date || currentData.lastUpdated || today;
                     history.unshift({
                         rate: currentData.rate,
-                        lastUpdated: currentData.lastUpdated || today,
+                        date: currentDate,
+                        lastUpdated: currentDate, // Keep for backward compatibility
                         month: currentData.month || 'Unknown'
                     });
                     
@@ -551,10 +571,11 @@
                 }
             }
             
-            // Create new JSON data
+            // Create new JSON data with date field
             const jsonData = {
                 rate: rate,
-                lastUpdated: today,
+                date: today,
+                lastUpdated: today, // Keep for backward compatibility
                 month: month,
                 history: history
             };
@@ -574,7 +595,7 @@
                 (Math.abs(currentData.rate - rate) > 0.001 || currentData.month !== month)) {
                 const fetchStatus = document.getElementById('fetchStatus');
                 fetchStatus.className = 'fetch-status success show';
-                fetchStatus.textContent = `✅ Current rate (${currentData.rate}%) will be added to history. History now has ${history.length} entries.`;
+                fetchStatus.textContent = `✅ Current rate (${currentData.rate}%) will be added to history. History now has ${history.length} entries. Date set to ${today}.`;
                 setTimeout(() => {
                     fetchStatus.classList.remove('show');
                 }, 5000);
