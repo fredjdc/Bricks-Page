@@ -1,9 +1,15 @@
 {
-  "rate": 7.92,
+  "rate": 7.91,
   "date": "2025-11-19",
   "lastUpdated": "2025-11-19",
   "month": "November 2025",
   "history": [
+    {
+      "rate": 7.92,
+      "date": "2025-11-19",
+      "lastUpdated": "2025-11-19",
+      "month": "November 2025"
+    },
     {
       "rate": 8.05,
       "date": "2025-01-15",
