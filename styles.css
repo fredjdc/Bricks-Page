@@ -314,6 +314,19 @@ body {
     pointer-events: none;
 }
 
+/* Animated canvas background styling */
+#hero-canvas {
+    opacity: 0.0;
+    mix-blend-mode: screen;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+/* Enhance canvas visibility on hover */
+.hero-section:hover #hero-canvas {
+    opacity: 0.2;
+}
+
 /* Animation classes */
 .animate-float {
     animation: float 4s ease-in-out infinite;
