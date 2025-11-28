@@ -180,17 +180,17 @@ const setupIntersectionObserver = () => {
             if (entry.isIntersecting) {
                 // Get animation delay from data attribute if present
                 const delay = parseInt(entry.target.getAttribute('data-animation-delay')) || 0;
-                
+
                 // Apply animation with delay for smoother, more subtle appearance
                 setTimeout(() => {
                     entry.target.classList.add('animate-in');
                 }, delay);
-                
+
                 // Stop observing once animated
                 observer.unobserve(entry.target);
             }
         });
-    }, { 
+    }, {
         threshold: 0.05, // Trigger earlier for smoother appearance
         rootMargin: '0px 0px -80px 0px' // Start animation earlier for more subtle entrance
     });
@@ -389,25 +389,25 @@ const changeLanguage = (lang) => {
     try {
         // Store user preference
         localStorage.setItem('bricksLanguage', lang);
-        
+
         // Update language display in UI
         if (elements.langElement) {
             elements.langElement.textContent = lang === 'en' ? 'English' : 'Español';
         }
-        
+
         // Update document language attribute
         document.documentElement.setAttribute('lang', lang);
-        
+
         // Hide all language elements first
         document.querySelectorAll('[lang]').forEach(el => {
             el.classList.add('hidden');
         });
-        
+
         // Show only the elements with the selected language
         document.querySelectorAll(`[lang="${lang}"]`).forEach(el => {
             el.classList.remove('hidden');
         });
-        
+
         // Handle mobile language display
         const mobileLangBtn = document.getElementById('mobile-language-switcher');
         if (mobileLangBtn) {
@@ -416,10 +416,10 @@ const changeLanguage = (lang) => {
                 mobileLabel.textContent = lang === 'en' ? 'English' : 'Español';
             }
         }
-        
+
         // Update placeholders based on language
         updatePlaceholders(lang);
-        
+
         // Update app screenshot images based on language
         updateAppScreenshots(lang);
 
@@ -448,12 +448,12 @@ const updatePlaceholders = (lang) => {
                 es: 'Por favor describe el problema en detalle...'
             }
         };
-        
+
         // Update form input placeholders
         const nameInput = document.getElementById('name');
         const emailInput = document.getElementById('email');
         const descInput = document.getElementById('issue-description');
-        
+
         if (nameInput) nameInput.placeholder = placeholders.name[lang];
         if (emailInput) emailInput.placeholder = placeholders.email[lang];
         if (descInput) descInput.placeholder = placeholders.description[lang];
@@ -533,12 +533,12 @@ const updateAppScreenshots = (lang) => {
                 en: 'images/leads-top-layer-en-01.png'
             }
         };
-        
+
         // Find all images with data-app-image attribute and update their sources
         document.querySelectorAll('[data-app-image]').forEach(img => {
             const appName = img.getAttribute('data-app-image');
             let imagePath = imagePaths[appName]?.[lang];
-            
+
             // For English, try to use English version, but fallback to Spanish as placeholder
             if (lang === 'en' && imagePath && imagePath.includes('-en.png')) {
                 // Test if English image exists, otherwise use Spanish placeholder
@@ -634,37 +634,37 @@ const handleVideoModal = () => {
         console.error('Video modal elements not found');
         return;
     }
-    
+
     const openModal = (e) => {
         e.preventDefault();
-        
+
         // Load the correct video source based on current language
         if (elements.modalVideo) {
             const currentLang = localStorage.getItem('bricksLanguage') || detectUserLanguage();
-            
+
             // More direct approach to set the correct source
             const videoEl = elements.modalVideo;
-            
+
             // Define video paths based on language
             const videoSources = {
                 'en': 'images/app-preview-en.mp4',
                 'es': 'images/app-preview-es.mp4'
             };
-            
+
             // Get the appropriate source for the current language
             const sourcePath = videoSources[currentLang] || videoSources['en']; // Fallback to English
-            
+
             console.log(`Setting video source to: ${sourcePath} for language: ${currentLang}`);
-            
+
             // Directly set the src attribute on the video element
             videoEl.src = sourcePath;
             videoEl.load();
         }
-        
+
         elements.videoModal.classList.add('opacity-100');
         elements.videoModal.classList.remove('opacity-0', 'pointer-events-none');
         document.body.style.overflow = 'hidden';
-        
+
         // Only try to play the video after the modal transition completes
         if (elements.modalVideo) {
             setTimeout(() => {
@@ -685,7 +685,7 @@ const handleVideoModal = () => {
 
     elements.openVideoBtn.addEventListener('click', openModal);
     elements.closeVideoBtn.addEventListener('click', closeModal);
-    
+
     // Close modal when clicking outside the content
     elements.videoModal.addEventListener('click', (e) => {
         if (e.target === elements.videoModal) {
@@ -704,24 +704,24 @@ const handleVideoModal = () => {
 // Support form functionality
 const initSupportForm = () => {
     if (!elements.issueForm) return;
-    
+
     // Selected files storage
     let selectedFiles = [];
-    
+
     // Handle file selection
     if (elements.fileInput) {
-        elements.fileInput.addEventListener('change', function() {
+        elements.fileInput.addEventListener('change', function () {
             const files = Array.from(this.files);
-            
+
             // Check file size (limit to 5MB per file)
             const validFiles = files.filter(file => file.size <= 5 * 1024 * 1024);
-            
+
             if (validFiles.length !== files.length) {
                 const lang = document.documentElement.getAttribute('lang') || 'en';
                 alert(lang === 'en' ? 'Some files exceed the 5MB limit and were not included.'
                     : 'Algunos archivos exceden el límite de 5MB y no se incluyeron.');
             }
-            
+
             if (validFiles.length > 0) {
                 selectedFiles = [...selectedFiles, ...validFiles];
                 updateFileList(selectedFiles);
@@ -729,82 +729,82 @@ const initSupportForm = () => {
             }
         });
     }
-    
+
     // Generate a unique reference number
     const generateReferenceNumber = () => {
         const timestamp = new Date().getTime().toString().slice(-6);
         const random = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
         return `BRKS-${timestamp}${random}`;
     };
-    
+
     // Show success alert
     const showSuccessAlert = (refNumber) => {
         if (!elements.successAlert || !elements.referenceNumber) return;
-        
+
         elements.referenceNumber.textContent = refNumber;
         elements.successAlert.classList.remove('opacity-0', 'pointer-events-none');
         elements.successAlert.classList.add('opacity-100');
-        
+
         const alertBox = elements.successAlert.querySelector('div');
         if (alertBox) {
             alertBox.classList.remove('scale-95');
             alertBox.classList.add('scale-100');
         }
     };
-    
+
     // Hide success alert
     const hideSuccessAlert = () => {
         if (!elements.successAlert) return;
-        
+
         const alertBox = elements.successAlert.querySelector('div');
         if (alertBox) {
             alertBox.classList.remove('scale-100');
             alertBox.classList.add('scale-95');
         }
-        
+
         setTimeout(() => {
             elements.successAlert.classList.remove('opacity-100');
             elements.successAlert.classList.add('opacity-0', 'pointer-events-none');
         }, 200);
     };
-    
+
     // Close success alert button handler
     if (elements.closeSuccess) {
         elements.closeSuccess.addEventListener('click', hideSuccessAlert);
     }
-    
+
     // Handle form submission
     if (elements.issueForm) {
-        elements.issueForm.addEventListener('submit', function(e) {
+        elements.issueForm.addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             // Get form data
             const nameInput = document.getElementById('name');
             const emailInput = document.getElementById('email');
             const descInput = document.getElementById('issue-description');
-            
+
             if (!nameInput || !emailInput || !descInput) return;
-            
+
             const formData = new FormData();
             formData.append('name', nameInput.value);
             formData.append('email', emailInput.value);
             formData.append('description', descInput.value);
-            
+
             // Add files to FormData
             selectedFiles.forEach(file => {
                 formData.append('files[]', file);
             });
-            
+
             // Generate reference number
             const refNumber = generateReferenceNumber();
             formData.append('reference', refNumber);
-            
+
             // In a real implementation, you would send this data to the server using:
             // fetch('/submit-issue', {
             //     method: 'POST',
             //     body: formData
             // })
-            
+
             // For this example, we'll simulate sending the data
             setTimeout(() => {
                 // Reset form
@@ -812,10 +812,10 @@ const initSupportForm = () => {
                 selectedFiles = [];
                 elements.fileList.innerHTML = '';
                 elements.fileList.classList.add('hidden');
-                
+
                 // Show success alert
                 showSuccessAlert(refNumber);
-                
+
                 // Log data for debugging
                 console.log('Form submitted!');
                 console.log('Reference number:', refNumber);
@@ -823,10 +823,10 @@ const initSupportForm = () => {
                 console.log('Email:', formData.get('email'));
                 console.log('Description:', formData.get('description'));
                 console.log('Files:', selectedFiles.map(f => f.name));
-                
+
                 // In a real implementation, you would send an email to hello@bricks.pe with this data
                 // This requires server-side processing and cannot be done with client-side JavaScript alone
-                
+
             }, 1000); // Simulate network delay
         });
     }
@@ -836,18 +836,18 @@ const initSupportForm = () => {
 const updateFileList = (files) => {
     if (!elements.fileList) return;
     elements.fileList.innerHTML = '';
-    
+
     files.forEach((file, index) => {
         const fileItem = document.createElement('div');
         fileItem.className = 'flex justify-between items-center p-2 bg-gray-50 rounded';
-        
+
         const fileInfo = document.createElement('div');
         fileInfo.className = 'flex items-center';
-        
+
         // File icon based on type
         const fileIcon = document.createElement('div');
         fileIcon.className = 'mr-2 text-gray-500';
-        
+
         if (file.type.startsWith('image/')) {
             fileIcon.innerHTML = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>';
         } else if (file.type.startsWith('video/')) {
@@ -855,38 +855,38 @@ const updateFileList = (files) => {
         } else {
             fileIcon.innerHTML = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>';
         }
-        
+
         // File name and size
         const fileName = document.createElement('div');
         fileName.textContent = file.name;
         fileName.className = 'text-sm';
-        
+
         const fileSize = document.createElement('div');
         fileSize.textContent = formatFileSize(file.size);
         fileSize.className = 'text-xs text-gray-500';
-        
+
         const fileDetails = document.createElement('div');
         fileDetails.className = 'ml-2';
         fileDetails.appendChild(fileName);
         fileDetails.appendChild(fileSize);
-        
+
         fileInfo.appendChild(fileIcon);
         fileInfo.appendChild(fileDetails);
-        
+
         // Remove button
         const removeBtn = document.createElement('button');
         removeBtn.className = 'text-gray-500 hover:text-red-500 focus:outline-none transition-colors';
         removeBtn.type = 'button';
         removeBtn.innerHTML = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>';
-        removeBtn.addEventListener('click', function() {
+        removeBtn.addEventListener('click', function () {
             files.splice(index, 1);
             updateFileList(files);
-            
+
             if (files.length === 0) {
                 elements.fileList.classList.add('hidden');
             }
         });
-        
+
         fileItem.appendChild(fileInfo);
         fileItem.appendChild(removeBtn);
         elements.fileList.appendChild(fileItem);
@@ -896,11 +896,11 @@ const updateFileList = (files) => {
 // Format file size to human-readable format
 function formatFileSize(bytes) {
     if (bytes === 0) return '0 Bytes';
-    
+
     const k = 1024;
     const sizes = ['Bytes', 'KB', 'MB', 'GB'];
     const i = Math.floor(Math.log(bytes) / Math.log(k));
-    
+
     return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
 }
 
@@ -908,24 +908,24 @@ function formatFileSize(bytes) {
 const setupLanguageSwitcher = () => {
     const languageSwitcher = document.getElementById('language-switcher');
     const mobileLanguageSwitcher = document.getElementById('mobile-language-switcher');
-    
+
     // Initial language
     const savedLang = localStorage.getItem('bricksLanguage');
     const initialLang = savedLang || detectUserLanguage();
     changeLanguage(initialLang);
-    
+
     // Toggle language onClick
     const toggleLanguage = () => {
         const currentLang = document.documentElement.getAttribute('lang') || 'en';
         const newLang = currentLang === 'en' ? 'es' : 'en';
         changeLanguage(newLang);
     };
-    
+
     // Language switchers
     if (languageSwitcher) {
         languageSwitcher.addEventListener('click', toggleLanguage);
     }
-    
+
     if (mobileLanguageSwitcher) {
         mobileLanguageSwitcher.addEventListener('click', toggleLanguage);
     }
@@ -938,40 +938,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Prepare hero word swap controllers before language toggles run
     initializeHeroWordSwap();
-    
+
     // Add event listeners
     if (elements.menuButton) {
         elements.menuButton.addEventListener('click', handleMobileMenu);
     }
-    
+
     if (elements.carousel) {
         handleCarousel(elements.carousel);
     }
-    
+
     // Video modal handling
     if (elements.openVideoBtn && elements.videoModal) {
         handleVideoModal();
     }
-    
+
     // Support form handling
     if (elements.issueForm) {
         initSupportForm();
     }
-    
+
     // Setup language switcher if available
     setupLanguageSwitcher();
-    
+
     // Setup intersection observer for animations
     setupIntersectionObserver();
 
     // Activate the apps overview parallax effect when the cards are present
     initAppsParallax();
-    
+
     // Set language based on stored preference or browser language
     const storedLang = localStorage.getItem('bricksLanguage');
     const userLang = storedLang || detectUserLanguage();
     changeLanguage(userLang);
-    
+
     // Add resize event listener for layout adjustments
     window.addEventListener('resize', debounce(() => {
         // Recalculate or adjust UI elements on resize if needed
