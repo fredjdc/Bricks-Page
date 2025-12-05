@@ -137,30 +137,38 @@ body {
 
 /* Hide scrollbar for carousel */
 .scrollbar-hide {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
 }
+
 .scrollbar-hide::-webkit-scrollbar {
-    display: none; /* Chrome, Safari and Opera */
+    display: none;
+    /* Chrome, Safari and Opera */
 }
 
 /* Animations */
 @keyframes float {
+
     0%,
     100% {
         transform: translateY(0.1px);
     }
+
     50% {
         transform: translateY(-10px);
     }
 }
 
 @keyframes pulse {
+
     0%,
     100% {
         opacity: 0.3;
         transform: scale(0.97);
     }
+
     50% {
         opacity: 0.5;
         transform: scale(1);
@@ -171,9 +179,11 @@ body {
     0% {
         box-shadow: 0 0 0 0 var(--accent-color);
     }
+
     70% {
         box-shadow: 0 0 0 15px rgba(37, 99, 235, 0);
     }
+
     100% {
         box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
     }
@@ -185,6 +195,7 @@ body {
         opacity: 0;
         transform: translateY(30px);
     }
+
     100% {
         opacity: 1;
         transform: translateY(0);
@@ -195,6 +206,7 @@ body {
     0% {
         opacity: 0;
     }
+
     100% {
         opacity: 1;
     }
@@ -204,6 +216,7 @@ body {
     0% {
         background-position: -200% center;
     }
+
     100% {
         background-position: 200% center;
     }
@@ -290,9 +303,12 @@ body {
 
 /* Subtle floating animation for background */
 @keyframes subtleFloat {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0) scale(1);
     }
+
     50% {
         transform: translateY(-20px) scale(1.02);
     }
@@ -300,17 +316,13 @@ body {
 
 /* Gradient overlay for depth and visual interest */
 .hero-gradient-overlay {
-    background: radial-gradient(
-        ellipse at center,
-        rgba(255, 204, 0, 0.05) 0%,
-        transparent 50%
-    ),
-    linear-gradient(
-        180deg,
-        rgba(30, 64, 175, 0.3) 0%,
-        rgba(30, 64, 175, 0.1) 50%,
-        rgba(30, 64, 175, 0.3) 100%
-    );
+    background: radial-gradient(ellipse at center,
+            rgba(255, 204, 0, 0.05) 0%,
+            transparent 50%),
+        linear-gradient(180deg,
+            rgba(30, 64, 175, 0.3) 0%,
+            rgba(30, 64, 175, 0.1) 50%,
+            rgba(30, 64, 175, 0.3) 100%);
     pointer-events: none;
 }
 
@@ -354,7 +366,7 @@ body {
     border-radius: 24px;
     padding: 2rem;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    
+
     /* Initial hidden state for animation */
     opacity: 0;
     transform: translateY(30px);
@@ -366,7 +378,7 @@ body {
     border-color: rgba(255, 255, 255, 0.25);
     transform: translateY(-8px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2),
-                0 0 0 1px rgba(255, 255, 255, 0.1);
+        0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
 /* Content color changes on bento box hover */
@@ -419,24 +431,29 @@ h2.animate-on-scroll.animate-in {
 }
 
 /* App title and icon scroll animation - slide from center to final position */
-h3.animate-on-scroll, img.animate-on-scroll {
+h3.animate-on-scroll,
+img.animate-on-scroll {
     opacity: 0;
     transform: translateX(0);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-h3.animate-on-scroll.animate-in, img.animate-on-scroll.animate-in {
+h3.animate-on-scroll.animate-in,
+img.animate-on-scroll.animate-in {
     opacity: 1;
     transform: translateX(0);
 }
 
 /* On desktop, titles and icons slide from center to left-aligned position */
 @media (min-width: 768px) {
-    h3.animate-on-scroll, img.animate-on-scroll {
+
+    h3.animate-on-scroll,
+    img.animate-on-scroll {
         transform: translateX(30%);
     }
 
-    h3.animate-on-scroll.animate-in, img.animate-on-scroll.animate-in {
+    h3.animate-on-scroll.animate-in,
+    img.animate-on-scroll.animate-in {
         transform: translateX(0);
     }
 }
@@ -490,9 +507,9 @@ a.animate-on-scroll.animate-in {
 /* Testimonials Section - Unique Styling */
 .testimonials-section {
     /* Subtle gradient background for distinction */
-    background: linear-gradient(180deg, 
-        rgba(30, 64, 175, 0.95) 0%, 
-        rgba(30, 64, 175, 0.98) 100%);
+    background: linear-gradient(180deg,
+            rgba(30, 64, 175, 0.95) 0%,
+            rgba(30, 64, 175, 0.98) 100%);
 }
 
 /* Testimonial Card Styling */
@@ -515,10 +532,10 @@ a.animate-on-scroll.animate-in {
     left: 0;
     right: 0;
     height: 3px;
-    background: linear-gradient(90deg, 
-        rgba(255, 204, 0, 0.8) 0%, 
-        rgba(255, 204, 0, 0.4) 50%, 
-        rgba(255, 204, 0, 0.8) 100%);
+    background: linear-gradient(90deg,
+            rgba(255, 204, 0, 0.8) 0%,
+            rgba(255, 204, 0, 0.4) 50%,
+            rgba(255, 204, 0, 0.8) 100%);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -534,7 +551,7 @@ a.animate-on-scroll.animate-in {
     border-color: rgba(255, 204, 0, 0.4);
     transform: translateY(-5px);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25),
-                0 0 20px rgba(255, 204, 0, 0.1);
+        0 0 20px rgba(255, 204, 0, 0.1);
 }
 
 /* Quote icon styling */
@@ -584,19 +601,19 @@ a.animate-on-scroll.animate-in {
     .testimonial-card {
         padding: 2rem 1.5rem;
     }
-    
+
     .testimonial-quote-icon {
         top: 1rem;
         right: 1rem;
         width: 2.5rem;
         height: 2.5rem;
     }
-    
+
     .testimonial-quote-icon svg {
         width: 2.5rem;
         height: 2.5rem;
     }
-    
+
     .testimonial-text {
         font-size: 1rem;
         padding-right: 2rem;
@@ -671,6 +688,7 @@ button:focus {
 
 /* Responsive styles combined for better maintainability */
 @media (max-width: 768px) {
+
     /* Typography scaling */
     h1 {
         font-size: clamp(2rem, 5vw, 2.5rem);
@@ -798,21 +816,27 @@ button:focus {
 
 /* Mobile Centering Styles - Ensure all content is properly centered on mobile devices */
 @media (max-width: 768px) {
+
     /* Center all text content */
     .container {
         text-align: center;
     }
-    
+
     /* Center headings */
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
         text-align: center;
     }
-    
+
     /* Center paragraphs */
     p {
         text-align: center;
     }
-    
+
     /* Center buttons */
     .btn-yellow,
     .btn-black,
@@ -825,114 +849,115 @@ button:focus {
         margin-right: auto;
         text-align: center;
     }
-    
+
     /* Center images */
     img {
         display: block;
         margin-left: auto;
         margin-right: auto;
     }
-    
+
     /* Center flex containers */
     .flex {
         justify-content: center;
         align-items: center;
     }
-    
+
     /* Center grid items */
     .grid {
         justify-items: center;
     }
-    
+
     /* Mobile centered grid layout */
     .mobile-centered-grid {
         grid-template-columns: 1fr !important;
         gap: 2rem !important;
     }
-    
+
     /* Move hero images to top on mobile */
     .hero-section .mobile-centered-grid {
         display: flex;
         flex-direction: column;
     }
-    
-    .hero-section .mobile-centered-grid > div:last-child {
+
+    .hero-section .mobile-centered-grid>div:last-child {
         order: -1;
         margin-bottom: 2rem;
     }
-    
+
     /* Center navigation items */
     nav {
         text-align: center;
     }
-    
+
     /* Center navigation container */
     .container.mx-auto.px-4.flex.h-16.items-center.justify-between {
         flex-direction: column;
         gap: 1rem;
         padding: 1rem;
     }
-    
+
     /* Center logo */
     .flex.items-center {
         justify-content: center;
     }
-    
+
     /* Center hero section content */
     .hero-section {
         text-align: center;
     }
-    
+
     /* Adjust hero text content spacing when images are at top */
     .hero-section .space-y-16 {
         margin-top: 0;
         padding-top: 0;
     }
-    
+
     /* Ensure hero section container doesn't interfere with full-width images */
     .hero-section .container {
         padding-left: 1rem;
         padding-right: 1rem;
     }
-    
-    .hero-section .container .mobile-centered-grid > div:last-child {
+
+    .hero-section .container .mobile-centered-grid>div:last-child {
         padding-left: 0;
         padding-right: 0;
         margin-left: -1rem;
         margin-right: -1rem;
     }
-    
+
     /* Center list items */
-    ul, ol {
+    ul,
+    ol {
         text-align: center;
     }
-    
+
     li {
         text-align: center;
     }
-    
+
     /* Center footer content */
     footer {
         text-align: center;
     }
-    
+
     /* Center cookie consent banner */
     #cookie-consent-banner {
         text-align: center;
     }
-    
+
     /* Center desktop app banner */
     .desktop-app-banner {
         text-align: center;
     }
-    
+
     /* Ensure proper spacing for centered content */
-    .space-y-4 > * + *,
-    .space-y-8 > * + *,
-    .space-y-16 > * + * {
+    .space-y-4>*+*,
+    .space-y-8>*+*,
+    .space-y-16>*+* {
         margin-top: 1rem;
     }
-    
+
     /* Center overlapping hero images */
     .relative.flex.justify-center {
         justify-content: center;
@@ -946,7 +971,7 @@ button:focus {
         right: 50%;
         transform: translateX(-50%);
     }
-    
+
     /* Ensure hero images are properly sized on mobile */
     .relative.flex.justify-center img {
         width: 100vw;
@@ -954,7 +979,7 @@ button:focus {
         height: auto;
         object-fit: cover;
     }
-    
+
     /* Hero images container styling for mobile top placement */
     .hero-section .relative.flex.justify-center {
         margin-top: 0;
@@ -964,35 +989,35 @@ button:focus {
         padding-right: 0;
         overflow: hidden;
     }
-    
+
     /* Center app screenshots */
     .relative.flex.justify-center img {
         margin: 0 auto;
     }
-    
+
     /* Center leads app section content */
     .leads-app-section {
         text-align: center;
     }
-    
+
     /* Center leads app icon and title */
     .leads-app-section .flex.items-center.space-x-6 {
         justify-content: center;
         flex-direction: column;
         gap: 1rem;
     }
-    
+
     /* Center leads app description */
     .leads-app-section .max-w-2xl {
         margin: 0 auto;
         text-align: center;
     }
-    
+
     /* Center calc section content */
     .calc-section {
         text-align: center;
     }
-    
+
     /* Ensure calc section container takes full width */
     .calc-section .container {
         width: 100%;
@@ -1000,24 +1025,24 @@ button:focus {
         padding-left: 1rem;
         padding-right: 1rem;
     }
-    
+
     /* Ensure the right column (features) takes full width on mobile */
-    .calc-section .mobile-centered-grid > div:last-child {
+    .calc-section .mobile-centered-grid>div:last-child {
         width: 100%;
         max-width: none;
     }
-    
+
     /* Center feature lists */
     .feature-list {
         text-align: center;
     }
-    
+
     /* Center feature list items with bullets */
     .feature-list {
         width: 100%;
         max-width: none;
     }
-    
+
     .feature-list li {
         display: flex;
         justify-content: flex-start;
@@ -1030,18 +1055,18 @@ button:focus {
         padding-right: 1rem;
         margin-bottom: 1rem;
     }
-    
+
     /* Ensure bullet points are properly aligned */
     .feature-list li span:first-child {
         flex-shrink: 0;
         margin-right: 0.75rem;
     }
-    
+
     /* Ensure text content takes remaining space */
     .feature-list li span:last-child {
         flex: 1;
     }
-    
+
     /* Center WhatsApp link */
     .whatsapp-link {
         justify-content: center;
@@ -1056,6 +1081,7 @@ button:focus {
 
 /* Additional mobile optimizations for very small screens */
 @media (max-width: 480px) {
+
     /* Ensure buttons don't overflow on very small screens */
     .btn-yellow,
     .btn-black,
@@ -1065,7 +1091,7 @@ button:focus {
         padding: 12px 16px;
         font-size: 16px;
     }
-    
+
     /* Adjust hero image sizing for very small screens */
     .hero-section img {
         max-width: 100%;
@@ -1077,13 +1103,19 @@ button:focus {
         height: 100% !important;
         width: 100% !important;
     }
-    
+
     /* Center all text with proper line height */
-    p, h1, h2, h3, h4, h5, h6 {
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
         line-height: 1.5;
         text-align: center;
     }
-    
+
     /* Ensure proper spacing between sections */
     section {
         padding-left: 1rem;
