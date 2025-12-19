@@ -378,7 +378,7 @@ const updateHeroWordSwapForLanguage = (lang) => {
 // Language handling
 const detectUserLanguage = () => {
     const browserLang = (navigator.language || navigator.userLanguage).split('-')[0];
-    return ['en', 'es'].includes(browserLang) ? browserLang : 'en';
+    return ['en', 'es', 'fr', 'pt'].includes(browserLang) ? browserLang : 'en';
 };
 
 /**
@@ -392,7 +392,13 @@ const changeLanguage = (lang) => {
 
         // Update language display in UI
         if (elements.langElement) {
-            elements.langElement.textContent = lang === 'en' ? 'English' : 'Español';
+            const langNames = {
+                'en': 'English',
+                'es': 'Español',
+                'fr': 'Français',
+                'pt': 'Português'
+            };
+            elements.langElement.textContent = langNames[lang] || 'English';
         }
 
         // Update document language attribute
@@ -413,7 +419,13 @@ const changeLanguage = (lang) => {
         if (mobileLangBtn) {
             const mobileLabel = mobileLangBtn.querySelector('span:not(.material-symbols-outlined)');
             if (mobileLabel) {
-                mobileLabel.textContent = lang === 'en' ? 'English' : 'Español';
+                const langNames = {
+                    'en': 'English',
+                    'es': 'Español',
+                    'fr': 'Français',
+                    'pt': 'Português'
+                };
+                mobileLabel.textContent = langNames[lang] || 'English';
             }
         }
 
@@ -437,15 +449,21 @@ const updatePlaceholders = (lang) => {
         const placeholders = {
             name: {
                 en: 'Enter your full name',
-                es: 'Ingresa tu nombre completo'
+                es: 'Ingresa tu nombre completo',
+                fr: 'Entrez votre nom complet',
+                pt: 'Digite seu nome completo'
             },
             email: {
                 en: 'Enter your email address',
-                es: 'Ingresa tu correo electrónico'
+                es: 'Ingresa tu correo electrónico',
+                fr: 'Entrez votre adresse e-mail',
+                pt: 'Digite seu endereço de e-mail'
             },
             description: {
                 en: 'Please describe the issue in detail...',
-                es: 'Por favor describe el problema en detalle...'
+                es: 'Por favor describe el problema en detalle...',
+                fr: 'Veuillez décrire le problème en détail...',
+                pt: 'Por favor, descreva o problema em detalhes...'
             }
         };
 
@@ -469,7 +487,9 @@ const updateAppScreenshots = (lang) => {
         const imagePaths = {
             'bricks-calc': {
                 es: 'images/bricks-calc-img-es.png',
-                en: 'images/bricks-calc-img-en.png' // Will automatically use when English version is added
+                en: 'images/bricks-calc-img-en.png',
+                fr: 'images/bricks-calc-img-en.png', // Fallback
+                pt: 'images/bricks-calc-img-en.png'  // Fallback
             },
             'bricks-calc-hero': {
                 es: 'images/bricks-calc-hero-es.png',
@@ -518,7 +538,9 @@ const updateAppScreenshots = (lang) => {
             },
             'bricks-leads': {
                 es: 'images/bricks-leads-img-es.png',
-                en: 'images/bricks-leads-img-en.png' // Will automatically use when English version is added
+                en: 'images/bricks-leads-img-en.png',
+                fr: 'images/bricks-leads-img-en.png', // Fallback
+                pt: 'images/bricks-leads-img-en.png'  // Fallback
             },
             'bricks-leads-layer-back': {
                 es: 'images/leads-back-layer-es-03.png',
@@ -648,7 +670,9 @@ const handleVideoModal = () => {
             // Define video paths based on language
             const videoSources = {
                 'en': 'images/app-preview-en.mp4',
-                'es': 'images/app-preview-es.mp4'
+                'es': 'images/app-preview-es.mp4',
+                'fr': 'images/app-preview-en.mp4', // Fallback
+                'pt': 'images/app-preview-en.mp4'  // Fallback
             };
 
             // Get the appropriate source for the current language
@@ -718,8 +742,13 @@ const initSupportForm = () => {
 
             if (validFiles.length !== files.length) {
                 const lang = document.documentElement.getAttribute('lang') || 'en';
-                alert(lang === 'en' ? 'Some files exceed the 5MB limit and were not included.'
-                    : 'Algunos archivos exceden el límite de 5MB y no se incluyeron.');
+                const messages = {
+                    en: 'Some files exceed the 5MB limit and were not included.',
+                    es: 'Algunos archivos exceden el límite de 5MB y no se incluyeron.',
+                    fr: 'Certains fichiers dépassent la limite de 5 Mo et n\'ont pas été inclus.',
+                    pt: 'Alguns arquivos excedem o limite de 5MB e não foram incluídos.'
+                };
+                alert(messages[lang] || messages['en']);
             }
 
             if (validFiles.length > 0) {
@@ -917,8 +946,10 @@ const setupLanguageSwitcher = () => {
     // Toggle language onClick
     const toggleLanguage = () => {
         const currentLang = document.documentElement.getAttribute('lang') || 'en';
-        const newLang = currentLang === 'en' ? 'es' : 'en';
-        changeLanguage(newLang);
+        const languages = ['en', 'es', 'fr', 'pt'];
+        const currentIndex = languages.indexOf(currentLang);
+        const nextLang = languages[(currentIndex + 1) % languages.length];
+        changeLanguage(nextLang);
     };
 
     // Language switchers
