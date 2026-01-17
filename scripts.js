@@ -946,7 +946,7 @@ const setupLanguageSwitcher = () => {
     // Toggle language onClick
     const toggleLanguage = () => {
         const currentLang = document.documentElement.getAttribute('lang') || 'en';
-        const languages = ['en', 'es', 'fr', 'pt'];
+        const languages = ['en', 'es'];
         const currentIndex = languages.indexOf(currentLang);
         const nextLang = languages[(currentIndex + 1) % languages.length];
         changeLanguage(nextLang);
