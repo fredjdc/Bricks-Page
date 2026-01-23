@@ -553,6 +553,47 @@ const updateAppScreenshots = (lang) => {
             'bricks-leads-layer-front': {
                 es: 'images/leads-top-layer-es-01.png',
                 en: 'images/leads-top-layer-en-01.png'
+            },
+            // Bricks Scan
+            'bricks-scan-hero-layer-back': {
+                es: 'images/bricks-scan-back-layer-es-03.png',
+                en: 'images/bricks-scan-back-layer-en-03.png'
+            },
+            'bricks-scan-hero-layer-middle': {
+                es: 'images/bricks-scan-mid-layer-es-02.png',
+                en: 'images/bricks-scan-mid-layer-en-02.png'
+            },
+            'bricks-scan-hero-layer-front': {
+                es: 'images/bricks-scan-top-layer-es-01.png',
+                en: 'images/bricks-scan-top-layer-en-01.png'
+            },
+            'bricks-scan-fusion-back': {
+                es: 'images/bricks-scan-fusion-es-01.png',
+                en: 'images/bricks-scan-fusion-en-01.png'
+            },
+            'bricks-scan-fusion-middle': {
+                es: 'images/bricks-scan-fusion-es-02.png',
+                en: 'images/bricks-scan-fusion-en-02.png'
+            },
+            'bricks-scan-feature-01': {
+                es: 'images/bricks-scan-feature-es-01.jpg',
+                en: 'images/bricks-scan-feature-en-01.jpg'
+            },
+            'bricks-scan-feature-02': {
+                es: 'images/bricks-scan-feature-es-02.jpg',
+                en: 'images/bricks-scan-feature-en-02.jpg'
+            },
+            'bricks-scan-feature-03': {
+                es: 'images/bricks-scan-feature-es-03.jpg',
+                en: 'images/bricks-scan-feature-en-03.jpg'
+            },
+            'bricks-scan-feature-04': {
+                es: 'images/bricks-scan-feature-es-04.jpg',
+                en: 'images/bricks-scan-feature-en-04.jpg'
+            },
+            'bricks-scan-feature-05': {
+                es: 'images/bricks-scan-feature-es-05.jpg',
+                en: 'images/bricks-scan-feature-en-05.jpg'
             }
         };
 
