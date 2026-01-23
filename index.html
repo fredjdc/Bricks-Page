@@ -295,24 +295,22 @@
             transform: translateY(-2px);
         }
 
-        /* Dribbble-style section divider (curved wave) */
+        /* Minimal section divider */
         .section-divider {
-            position: relative;
-            line-height: 0;
-        }
-
-        .section-divider svg {
-            display: block;
             width: 100%;
-            height: 70px;
+            border: 0;
+            margin: 0;
         }
 
-        .section-divider--light path {
-            fill: rgba(255, 255, 255, 0.08);
+        /* Hidden for sections with contrasting backgrounds */
+        .section-divider--light {
+            display: none;
         }
 
-        .section-divider--dark path {
-            fill: rgba(0, 0, 0, 0.08);
+        /* Subtle line for sections with same background */
+        .section-divider--dark {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.08);
         }
 
         /* Glassmorphism panel used to differentiate sections/cards */
@@ -876,12 +874,8 @@
         </div>
     </section>
 
-    <!-- Divider: Hero → Apps Overview -->
-    <div class="section-divider section-divider--light" aria-hidden="true">
-        <picture>
-            <img src="images/layered-slants.svg" alt="" width="100%" height="auto">
-        </picture>
-    </div>
+    <!-- Divider: Hero → Apps Overview (Hidden/Straight Edge) -->
+    <div class="section-divider section-divider--light" aria-hidden="true"></div>
 
     <!-- Apps Overview Section -->
     <section id="apps-overview" class="py-24 relative bg-gray-50">
@@ -1055,12 +1049,8 @@
         </div>
     </section>
 
-    <!-- Divider: Hero → Apps Overview -->
-    <div class="section-divider section-divider--light" style="transform: scaleY(-1);" aria-hidden="true">
-        <picture>
-            <img src="images/layered-slants.svg" alt="" width="100%" height="-auto">
-        </picture>
-    </div>
+    <!-- Divider: Hero → Apps Overview (Hidden/Straight Edge) -->
+    <div class="section-divider section-divider--light" aria-hidden="true"></div>
 
     <!-- Why Bricks Section -->
     <section class="py-24 relative">
@@ -1160,12 +1150,8 @@
         </div>
     </section>
 
-    <!-- Divider: Why Bricks → Testimonials -->
-    <div class="section-divider section-divider--light" aria-hidden="true">
-        <svg viewBox="0 0 1440 70" preserveAspectRatio="none">
-            <path d="M0,35 C240,55 480,10 720,35 C960,60 1200,20 1440,40 L1440,70 L0,70 Z"></path>
-        </svg>
-    </div>
+    <!-- Divider: Why Bricks → Testimonials (Subtle Line) -->
+    <div class="section-divider section-divider--dark" aria-hidden="true"></div>
 
     <!-- Testimonials Section -->
     <section class="testimonials-section py-24 relative overflow-hidden">
@@ -1229,12 +1215,8 @@
         </div>
     </section>
 
-    <!-- Divider: Testimonials → Final CTA -->
-    <div class="section-divider section-divider--dark" aria-hidden="true">
-        <svg viewBox="0 0 1440 70" preserveAspectRatio="none">
-            <path d="M0,45 C240,25 480,55 720,25 C960,-5 1200,45 1440,25 L1440,70 L0,70 Z"></path>
-        </svg>
-    </div>
+    <!-- Divider: Testimonials → Final CTA (Subtle Line) -->
+    <div class="section-divider section-divider--dark" aria-hidden="true"></div>
 
     <!-- Final CTA Section -->
     <section class="py-24 relative">
@@ -1291,12 +1273,8 @@
         </div>
     </section>
 
-    <!-- Divider: Final CTA → Coming Soon -->
-    <div class="section-divider section-divider--light" aria-hidden="true">
-        <svg viewBox="0 0 1440 70" preserveAspectRatio="none">
-            <path d="M0,30 C240,65 480,5 720,35 C960,65 1200,15 1440,40 L1440,70 L0,70 Z"></path>
-        </svg>
-    </div>
+    <!-- Divider: Final CTA → Coming Soon (Subtle Line if needed, or straight) -->
+    <div class="section-divider section-divider--dark" aria-hidden="true"></div>
 
     <!-- Bricks Leads Coming Soon Section -->
     <section id="coming-soon" class="py-24 relative overflow-hidden">
