@@ -48,10 +48,45 @@
     </script>
 
     <!-- Alpine and scripts -->
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="scripts.js" defer></script>
 
     <style>
+        /* Dreamy Fade Up Animation */
+        .dreamy-transition {
+            opacity: 0;
+            transform: translateY(40px) scale(0.98);
+            transition: opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                        transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+            will-change: opacity, transform;
+        }
+
+        .dreamy-transition.is-visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Soft Image Card Styles */
+        .soft-image-card {
+            position: relative;
+            border-radius: 2rem;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.5s ease-out;
+        }
+        
+        .soft-image-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .soft-image-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
         body {
             font-family: "Exo 2", sans-serif;
             background-color: #efefef;
@@ -734,11 +769,11 @@
     </section>
 
     <!-- Problem & Value -->
-    <section class="py-20">
+    <section class="py-32 bg-white" x-data="{ shown: false }" x-intersect.threshold.0.2="shown = true">
         <div class="container mx-auto px-4">
-            <div class="max-w-5xl mx-auto text-center py-20 space-y-6">
+            <div class="max-w-4xl mx-auto text-center space-y-8">
                 <!-- Icon Parallax -->
-                <div class="app-icon-parallax mx-auto mb-6 w-24 h-24 md:w-32 md:h-32" data-icon-parallax>
+                <div class="app-icon-parallax mx-auto mb-10 w-32 h-32 md:w-40 md:h-40" data-icon-parallax>
                     <div class="app-icon-layer layer-back" data-icon-depth="1.4" data-icon-direction="left">
                         <img src="images-bricks-scan/fusion-es-01.png" alt="" aria-hidden="true" loading="lazy"
                             data-app-image="bricks-scan-fusion-back" />
@@ -753,11 +788,14 @@
                     </div>
                 </div>
 
-                <h2 class="text-gray-900 font-bold text-3xl md:text-4xl animate-on-scroll">
+                <h2 class="text-gray-900 font-bold text-4xl md:text-6xl leading-tight tracking-tight dreamy-transition"
+                    :class="shown ? 'is-visible' : ''">
                     <span lang="es">Soberanía Digital</span>
                     <span lang="en" class="hidden">Digital Sovereignty</span>
                 </h2>
-                <p class="text-gray-700 text-lg md:text-xl max-w-3xl mx-auto">
+                <p class="text-gray-600 text-xl md:text-2xl leading-relaxed max-w-3xl mx-auto dreamy-transition"
+                   style="transition-delay: 100ms;"
+                   :class="shown ? 'is-visible' : ''">
                     <span lang="es">Tus contratos, recibos e identificaciones son asuntos privados. Bricks Scan utiliza
                         la potencia del Neural Engine para procesar todo sin servidores.</span>
                     <span lang="en" class="hidden">Your contracts, receipts, and IDs are private matters. Bricks Scan
@@ -767,122 +805,162 @@
         </div>
     </section>
 
-    <hr class="border-t border-gray-300 max-w-5xl mx-auto" aria-hidden="true" />
-
-    <!-- Key Features -->
-    <section class="py-20">
+    <!-- Feature 1: Smart Renaming (Text Left, Image Right) -->
+    <section class="py-24 md:py-32 overflow-hidden bg-white" x-data="{ shown: false }" x-intersect.threshold.0.3="shown = true">
         <div class="container mx-auto px-4">
-            <h2 class="text-center text-gray-900 font-bold text-3xl md:text-4xl mb-12 animate-on-scroll">
-                <span lang="es">Potencia Profesional</span>
-                <span lang="en" class="hidden">Professional Power</span>
-            </h2>
-            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                <!-- Feature 1: Core Scanning -->
-                <div class="bento-box animate-on-scroll p-6 bg-white rounded-xxl border border-gray-300"
-                    data-animation-delay="0">
-                    <img src="images-bricks-scan/feature-es-01.jpg" alt="Captura Instantánea"
-                        class="w-full rounded-2xl mb-4" loading="lazy" data-app-image="bricks-scan-feature-01" />
-                    <h3 class="text-gray-900 font-semibold text-xl mb-2">
+            <div class="grid md:grid-cols-2 gap-12 lg:gap-24 items-center">
+                <!-- Text Column -->
+                <div class="order-2 md:order-1 space-y-6 text-center md:text-left dreamy-transition"
+                     :class="shown ? 'is-visible' : ''">
+                    <h2 class="text-3xl md:text-5xl font-bold text-gray-900 tracking-tight leading-tight">
                         <span lang="es">Renombrado Inteligente</span>
                         <span lang="en" class="hidden">Smart Renaming</span>
-                    </h3>
-                    <div class="text-gray-700 space-y-2">
-                        <p>
-                            <span lang="es">Olvídate de "Escanear 2024-01". Nuestra IA analiza el contenido y renombra
-                                el archivo automáticamente (ej. "Factura - Apple - $99").</span>
-                            <span lang="en" class="hidden">Forget "Scan 2024-01". Our AI analyzes content and
-                                auto-renames files (e.g., "Invoice - Apple - $99").</span>
-                        </p>
+                    </h2>
+                    <p class="text-lg md:text-xl text-gray-600 leading-relaxed">
+                        <span lang="es">Olvídate de "Escanear 2024-01". Nuestra IA analiza el contenido y renombra
+                            el archivo automáticamente (ej. "Factura - Apple - $99").</span>
+                        <span lang="en" class="hidden">Forget "Scan 2024-01". Our AI analyzes content and
+                            auto-renames files (e.g., "Invoice - Apple - $99").</span>
+                    </p>
+                </div>
+                <!-- Image Column -->
+                <div class="order-1 md:order-2 dreamy-transition"
+                     style="transition-delay: 200ms;"
+                     :class="shown ? 'is-visible' : ''">
+                    <div class="soft-image-card">
+                        <img src="images-bricks-scan/feature-es-01.jpg" alt="Smart Renaming" loading="lazy" data-app-image="bricks-scan-feature-01">
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <!-- Feature 2: Intelligent Organization -->
-                <div class="bento-box animate-on-scroll p-6 bg-white rounded-xxl border border-gray-300"
-                    data-animation-delay="100">
-                    <img src="images-bricks-scan/feature-es-02.jpg" alt="Organización Inteligente"
-                        class="w-full rounded-2xl mb-4" loading="lazy" data-app-image="bricks-scan-feature-02" />
-                    <h3 class="text-gray-900 font-semibold text-xl mb-2">
+    <!-- Feature 2: Executive Summaries (Image Left, Text Right) -->
+    <section class="py-24 md:py-32 overflow-hidden bg-gray-50" x-data="{ shown: false }" x-intersect.threshold.0.3="shown = true">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 lg:gap-24 items-center">
+                <!-- Image Column -->
+                <div class="order-1 md:order-1 dreamy-transition"
+                     style="transition-delay: 200ms;"
+                     :class="shown ? 'is-visible' : ''">
+                    <div class="soft-image-card">
+                        <img src="images-bricks-scan/feature-es-02.jpg" alt="Executive Summaries" loading="lazy" data-app-image="bricks-scan-feature-02">
+                    </div>
+                </div>
+                <!-- Text Column -->
+                <div class="order-2 md:order-2 space-y-6 text-center md:text-left dreamy-transition"
+                     :class="shown ? 'is-visible' : ''">
+                    <h2 class="text-3xl md:text-5xl font-bold text-gray-900 tracking-tight leading-tight">
                         <span lang="es">Resúmenes Ejecutivos</span>
                         <span lang="en" class="hidden">Executive Summaries</span>
-                    </h3>
-                    <div class="text-gray-700 space-y-2">
-                        <p>
-                            <span lang="es">¿Contratos de 50 páginas? Obtén un resumen de 3 oraciones al instante sin
-                                leer todo el documento.</span>
-                            <span lang="en" class="hidden">50-page contracts? Get a 3-sentence executive summary
-                                instantly without reading the whole doc.</span>
-                        </p>
-                    </div>
+                    </h2>
+                    <p class="text-lg md:text-xl text-gray-600 leading-relaxed">
+                        <span lang="es">¿Contratos de 50 páginas? Obtén un resumen de 3 oraciones al instante sin
+                            leer todo el documento.</span>
+                        <span lang="en" class="hidden">50-page contracts? Get a 3-sentence executive summary
+                            instantly without reading the whole doc.</span>
+                    </p>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <!-- Feature 3: Apple Intelligence -->
-                <div class="bento-box animate-on-scroll p-6 bg-white rounded-xxl border border-gray-300"
-                    data-animation-delay="200">
-                    <img src="images-bricks-scan/feature-es-03.jpg" alt="Apple Intelligence"
-                        class="w-full rounded-2xl mb-4" loading="lazy" data-app-image="bricks-scan-feature-03" />
-                    <h3 class="text-gray-900 font-semibold text-xl mb-2">
+    <!-- Feature 3: Filing Assistant (Text Left, Image Right) -->
+    <section class="py-24 md:py-32 overflow-hidden bg-white" x-data="{ shown: false }" x-intersect.threshold.0.3="shown = true">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 lg:gap-24 items-center">
+                <!-- Text Column -->
+                <div class="order-2 md:order-1 space-y-6 text-center md:text-left dreamy-transition"
+                     :class="shown ? 'is-visible' : ''">
+                    <h2 class="text-3xl md:text-5xl font-bold text-gray-900 tracking-tight leading-tight">
                         <span lang="es">Tu Asistente de Archivo</span>
                         <span lang="en" class="hidden">Your Filing Assistant</span>
-                    </h3>
-                    <div class="text-gray-700 space-y-2">
-                        <p>
-                            <span lang="es">Clasificación automática. Las facturas van a "Finanzas", los IDs a
-                                "Personal". Tu archivador se gestiona solo.</span>
-                            <span lang="en" class="hidden">Auto-classification. Invoices go to "Finance", IDs to
-                                "Personal". Your filing cabinet manages itself.</span>
-                        </p>
-                        <ul class="list-disc list-inside mt-4 text-sm opacity-80">
-                            <li>
-                                <span lang="es">Listas Inteligentes</span>
-                                <span lang="en" class="hidden">Smart Lists</span>
-                            </li>
-                            <li>
-                                <span lang="es">Búsqueda OCR instantánea</span>
-                                <span lang="en" class="hidden">Instant OCR Search</span>
-                            </li>
-                        </ul>
+                    </h2>
+                    <p class="text-lg md:text-xl text-gray-600 leading-relaxed">
+                        <span lang="es">Clasificación automática. Las facturas van a "Finanzas", los IDs a
+                            "Personal". Tu archivador se gestiona solo.</span>
+                        <span lang="en" class="hidden">Auto-classification. Invoices go to "Finance", IDs to
+                            "Personal". Your filing cabinet manages itself.</span>
+                    </p>
+                    <ul class="space-y-3 pt-2 inline-block text-left">
+                        <li class="flex items-center gap-3 text-gray-700 text-lg">
+                            <svg class="w-6 h-6 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span lang="es">Listas Inteligentes</span>
+                            <span lang="en" class="hidden">Smart Lists</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700 text-lg">
+                            <svg class="w-6 h-6 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span lang="es">Búsqueda OCR instantánea</span>
+                            <span lang="en" class="hidden">Instant OCR Search</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Image Column -->
+                <div class="order-1 md:order-2 dreamy-transition"
+                     style="transition-delay: 200ms;"
+                     :class="shown ? 'is-visible' : ''">
+                    <div class="soft-image-card">
+                        <img src="images-bricks-scan/feature-es-03.jpg" alt="Filing Assistant" loading="lazy" data-app-image="bricks-scan-feature-03">
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <!-- Feature 4: Export -->
-                <div class="bento-box animate-on-scroll p-6 bg-white rounded-xxl border border-gray-300"
-                    data-animation-delay="300">
-                    <img src="images-bricks-scan/feature-es-04.jpg" alt="Exportación Universal"
-                        class="w-full rounded-2xl mb-4" loading="lazy" data-app-image="bricks-scan-feature-04" />
-                    <h3 class="text-gray-900 font-semibold text-xl mb-2">
+    <!-- Feature 4: On-Device Privacy (Image Left, Text Right) -->
+    <section class="py-24 md:py-32 overflow-hidden bg-gray-50" x-data="{ shown: false }" x-intersect.threshold.0.3="shown = true">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 lg:gap-24 items-center">
+                <!-- Image Column -->
+                <div class="order-1 md:order-1 dreamy-transition"
+                     style="transition-delay: 200ms;"
+                     :class="shown ? 'is-visible' : ''">
+                    <div class="soft-image-card">
+                        <img src="images-bricks-scan/feature-es-04.jpg" alt="On-Device Privacy" loading="lazy" data-app-image="bricks-scan-feature-04">
+                    </div>
+                </div>
+                <!-- Text Column -->
+                <div class="order-2 md:order-2 space-y-6 text-center md:text-left dreamy-transition"
+                     :class="shown ? 'is-visible' : ''">
+                    <h2 class="text-3xl md:text-5xl font-bold text-gray-900 tracking-tight leading-tight">
                         <span lang="es">Privacidad "On-Device"</span>
                         <span lang="en" class="hidden">On-Device Privacy</span>
-                    </h3>
-                    <div class="text-gray-700 space-y-2">
-                        <p>
-                            <span lang="es">Sin servidores. Sin cuentas obligatorias. Tus datos nunca salen de tu iPhone
-                                o Mac.</span>
-                            <span lang="en" class="hidden">No servers. No forced accounts. Your data never leaves your
-                                iPhone or Mac.</span>
-                        </p>
-                        <p class="text-sm mt-4 font-medium">
-                            <span lang="es">Plan Gratuito: 12 Documentos / 20 Páginas por Doc.</span>
-                            <span lang="en" class="hidden">Free Plan: 12 Documents / 20 Pages per Doc.</span>
-                        </p>
-                    </div>
+                    </h2>
+                    <p class="text-lg md:text-xl text-gray-600 leading-relaxed">
+                        <span lang="es">Sin servidores. Sin cuentas obligatorias. Tus datos nunca salen de tu iPhone
+                            o Mac.</span>
+                        <span lang="en" class="hidden">No servers. No forced accounts. Your data never leaves your
+                            iPhone or Mac.</span>
+                    </p>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <!-- Feature 5: Native Design -->
-                <div class="bento-box animate-on-scroll p-6 bg-white rounded-xxl border border-gray-300 md:col-span-2"
-                    data-animation-delay="400">
-                    <img src="images-bricks-scan/feature-es-05.jpg" alt="Diseño Nativo" class="w-full rounded-2xl mb-4"
-                        loading="lazy" data-app-image="bricks-scan-feature-05" />
-                    <h3 class="text-gray-900 font-semibold text-xl mb-2">
+    <!-- Feature 5: Native Design (Text Left, Image Right) -->
+    <section class="py-24 md:py-32 overflow-hidden bg-white" x-data="{ shown: false }" x-intersect.threshold.0.3="shown = true">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 lg:gap-24 items-center">
+                <!-- Text Column -->
+                <div class="order-2 md:order-1 space-y-6 text-center md:text-left dreamy-transition"
+                     :class="shown ? 'is-visible' : ''">
+                    <h2 class="text-3xl md:text-5xl font-bold text-gray-900 tracking-tight leading-tight">
                         <span lang="es">Diseñado para Apple</span>
                         <span lang="en" class="hidden">Crafted for Apple</span>
-                    </h3>
-                    <div class="text-gray-700 space-y-2">
-                        <p>
-                            <span lang="es">No es un port. Es una experiencia nativa fluida, optimizada para batería y
-                                lista para funcionar sin conexión.</span>
-                            <span lang="en" class="hidden">Not a port. A fluid native experience, battery optimized, and
-                                ready to work completely offline.</span>
-                        </p>
+                    </h2>
+                    <p class="text-lg md:text-xl text-gray-600 leading-relaxed">
+                        <span lang="es">No es un port. Es una experiencia nativa fluida, optimizada para batería y
+                            lista para funcionar sin conexión.</span>
+                        <span lang="en" class="hidden">Not a port. A fluid native experience, battery optimized, and
+                            ready to work completely offline.</span>
+                    </p>
+                </div>
+                <!-- Image Column -->
+                <div class="order-1 md:order-2 dreamy-transition"
+                     style="transition-delay: 200ms;"
+                     :class="shown ? 'is-visible' : ''">
+                    <div class="soft-image-card">
+                        <img src="images-bricks-scan/feature-es-05.jpg" alt="Native Design" loading="lazy" data-app-image="bricks-scan-feature-05">
                     </div>
                 </div>
             </div>
@@ -890,47 +968,56 @@
     </section>
 
     <!-- Download CTA -->
-    <section class="py-20" style="background-color: #303030;">
-        <div class="container mx-auto px-4 text-center max-w-3xl py-32">
-            <div class="download-zoom-wrapper mx-auto mb-6">
+    <section class="py-32 md:py-40" style="background-color: #303030;" x-data="{ shown: false }" x-intersect.threshold.0.3="shown = true">
+        <div class="container mx-auto px-4 text-center max-w-3xl">
+            <div class="download-zoom-wrapper mx-auto mb-10 dreamy-transition" :class="shown ? 'is-visible' : ''">
                 <span class="zoom-line zoom-line-1" aria-hidden="true"></span>
                 <span class="zoom-line zoom-line-3" aria-hidden="true"></span>
 
                 <img src="images-bricks-scan/bricks-scan-web-icon.png" alt="Bricks Scan App Icon"
-                    class="w-24 h-24 md:w-32 md:h-32" />
+                    class="w-32 h-32 md:w-40 md:h-40" />
             </div>
-            <h2 class="text-white font-bold text-3xl md:text-4xl animate-on-scroll">
+            <h2 class="text-white font-bold text-4xl md:text-6xl leading-tight tracking-tight mb-6 dreamy-transition" 
+                style="transition-delay: 100ms;"
+                :class="shown ? 'is-visible' : ''">
                 <span lang="es">Convierte papel en poder.</span>
                 <span lang="en" class="hidden">Turn paper into power.</span>
             </h2>
-            <p class="text-gray-300 text-lg md:text-xl mt-4">
+            <p class="text-gray-300 text-xl md:text-2xl leading-relaxed mb-10 dreamy-transition"
+               style="transition-delay: 200ms;"
+               :class="shown ? 'is-visible' : ''">
                 <span lang="es">Comienza gratis con el Plan Esencial (12 documentos). Desbloquea ilimitado para
                     siempre.</span>
                 <span lang="en" class="hidden">Start free with the Essentials Plan (12 docs). Unlock unlimited
                     forever.</span>
             </p>
-            <div class="mt-6">
+            <div class="mt-8 dreamy-transition"
+                 style="transition-delay: 300ms;"
+                 :class="shown ? 'is-visible' : ''">
                 <a id="app_store_download_button" href="https://apps.apple.com/app/idYOUR_APP_ID"
                     class="inline-block hover:scale-105 transition-transform"
                     aria-label="Bricks Scan App Store download">
                     <img lang="es" src="images-bricks-scan/Download_on_the_App_Store_Badge_ES_RGB_blk_100217.svg"
-                        alt="Descargar en App Store" class="h-12 md:h-14" />
+                        alt="Descargar en App Store" class="h-14 md:h-16" />
                     <img lang="en" src="images-bricks-scan/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
-                        alt="Download on the App Store" class="hidden h-12 md:h-14" />
+                        alt="Download on the App Store" class="hidden h-14 md:h-16" />
                 </a>
             </div>
         </div>
     </section>
 
     <!-- FAQ -->
-    <section class="py-20" id="faq">
+    <section class="py-32" id="faq" x-data="{ shown: false }" x-intersect.threshold.0.2="shown = true">
         <div class="container mx-auto px-4 max-w-3xl">
-            <h2 class="text-gray-900 font-bold text-3xl md:text-4xl mb-6 animate-on-scroll">
+            <h2 class="text-gray-900 font-bold text-4xl md:text-5xl mb-12 text-center dreamy-transition"
+                :class="shown ? 'is-visible' : ''">
                 <span lang="es">Preguntas frecuentes</span>
                 <span lang="en" class="hidden">Frequently asked questions</span>
             </h2>
 
-            <div class="rounded-3xl border border-gray-300 bg-white divide-y divide-gray-300 overflow-hidden">
+            <div class="rounded-3xl border border-gray-300 bg-white divide-y divide-gray-300 overflow-hidden dreamy-transition"
+                 style="transition-delay: 200ms;"
+                 :class="shown ? 'is-visible' : ''">
                 <!-- Item 1: Privacy -->
                 <div x-data="{ open: false }">
                     <button
@@ -1034,13 +1121,15 @@
     </section>
 
     <!-- Bricks Ecosystem -->
-    <section class="py-60" style="background-color: #FFFFFF;">
+    <section class="py-32 md:py-48" style="background-color: #FFFFFF;" x-data="{ shown: false }" x-intersect.threshold.0.3="shown = true">
         <div class="container mx-auto px-4 text-center max-w-3xl">
-            <h2 class="text-gray-900 font-bold text-3xl md:text-4xl animate-on-scroll">
+            <h2 class="text-gray-900 font-bold text-4xl md:text-5xl mb-12 dreamy-transition" :class="shown ? 'is-visible' : ''">
                 <span lang="es">Descubre más de Bricks Apps</span>
                 <span lang="en" class="hidden">Discover more from Bricks Apps</span>
             </h2>
-            <div class="mt-8 flex flex-wrap justify-center gap-4">
+            <div class="mt-12 flex flex-wrap justify-center gap-6 dreamy-transition" 
+                 style="transition-delay: 200ms;"
+                 :class="shown ? 'is-visible' : ''">
                 <a href="bricks-calc.html"
                     class="btn-black bg-white border border-gray-300 text-gray-900 text-lg px-8 py-4 rounded-3xl hover:bg-gray-50 transition-colors inline-flex items-center gap-3 justify-center">
                     <img src="images-bricks-scan/bricks-calc-web-icon.png" alt="Bricks Calc Icon"
