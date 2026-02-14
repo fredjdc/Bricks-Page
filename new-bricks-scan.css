@@ -588,4 +588,15 @@ body.dark-mode .btn-secondary {
     .btn {
         width: 100%;
     }
-}
+
+    .solution-text {
+        text-align: center;
+        margin-bottom: 48px;
+    }
+
+    .solution-text .feature-list {
+        display: inline-block;
+        text-align: left;
+        margin-top: 24px;
+        margin-bottom: 32px;
+    }
