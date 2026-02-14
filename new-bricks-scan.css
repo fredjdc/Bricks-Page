@@ -155,9 +155,52 @@ a:hover {
 }
 
 .section-hero {
-    padding-top: var(--space-lg);
+    padding-top: var(--space-md);
     padding-bottom: var(--space-md);
-    text-align: center;
+    /* text-align: center; REMOVED to allow grid control */
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    /* Image slightly wider */
+    gap: 48px;
+    align-items: center;
+}
+
+.hero-content {
+    text-align: left;
+}
+
+.hero-content .cta-group {
+    justify-content: flex-start;
+}
+
+/* Mobile Hero Layout */
+@media (max-width: 900px) {
+    .hero-grid {
+        display: flex;
+        flex-direction: column-reverse;
+        /* Image on top */
+        gap: 32px;
+        text-align: center;
+    }
+
+    .hero-content {
+        text-align: center;
+    }
+
+    .hero-content .cta-group {
+        justify-content: center;
+    }
+
+    .hero-image-wrapper {
+        width: 100%;
+        max-width: 500px;
+        /* Constrain image on mobile */
+        padding: 40px 20px;
+        /* Reduce padding on mobile */
+    }
 }
 
 .grid-2 {
