@@ -154,6 +154,32 @@ a:hover {
     background-color: var(--bg-secondary);
 }
 
+/* Expanding Background Section */
+#problem-section {
+    position: relative;
+    background-color: transparent;
+    /* Override section-alt background */
+    z-index: 1;
+}
+
+.expanding-bg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    /* Initial width */
+    height: 100%;
+    background-color: var(--bg-secondary);
+    border-radius: 24px;
+    /* Initial border radius */
+    z-index: -1;
+    will-change: width, border-radius;
+    /* Transition for smoother fallback if JS fails or for initial load */
+    transition: width 0.1s linear, border-radius 0.1s linear;
+}
+
 .section-hero {
     padding-top: var(--space-md);
     padding-bottom: var(--space-md);

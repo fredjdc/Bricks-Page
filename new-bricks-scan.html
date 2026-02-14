@@ -51,7 +51,8 @@
     </section>
 
     <!-- SECTION — THE PROBLEM -->
-    <section class="section section-alt">
+    <section id="problem-section" class="section section-alt">
+        <div class="expanding-bg"></div>
         <div class="container reading-column center-text">
             <h2 class="section-title reveal-on-scroll">Every transaction creates complexity.</h2>
             <div class="problem-content mt-sm reveal-on-scroll delay-100">
@@ -297,6 +298,44 @@
                 }
                 localStorage.setItem('theme', theme);
             });
+
+            // Expanding Background Logic
+            const problemSection = document.getElementById('problem-section');
+            const expandingBg = problemSection ? problemSection.querySelector('.expanding-bg') : null;
+
+            if (problemSection && expandingBg) {
+                const handleScroll = () => {
+                    const rect = problemSection.getBoundingClientRect();
+                    const windowHeight = window.innerHeight;
+
+                    // Calculate progress based on section position
+                    // 0 = section top is at bottom of viewport
+                    // 1 = section top is near top of viewport (trigger point)
+                    // trigger point: define how far up it needs to be to be full width
+                    const triggerPoint = windowHeight * 0.2; // 20% from top
+                    const totalDistance = windowHeight - triggerPoint;
+
+                    let progress = (windowHeight - rect.top) / totalDistance;
+
+                    // Clamp progress between 0 and 1
+                    progress = Math.min(Math.max(progress, 0), 1);
+
+                    // Interpolate values
+                    const startWidth = 50; // percentage
+                    const endWidth = 100;
+                    const startRadius = 24; // px
+                    const endRadius = 0;
+
+                    const currentWidth = startWidth + ((endWidth - startWidth) * progress);
+                    const currentRadius = startRadius - ((startRadius - endRadius) * progress);
+
+                    expandingBg.style.width = `${currentWidth}%`;
+                    expandingBg.style.borderRadius = `${currentRadius}px`;
+                };
+
+                window.addEventListener('scroll', handleScroll, { passive: true });
+                handleScroll(); // Initial call
+            }
         });
     </script>
 </body>
