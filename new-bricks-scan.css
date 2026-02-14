@@ -536,12 +536,14 @@ body.dark-mode .btn-secondary {
     width: 100%;
 }
 
-.screenshot-side {
+.solution-image .screenshot-side {
     position: absolute;
     top: 0;
     width: 100%;
-    max-width: 70%;
-    height: auto;
+    max-width: 50%;
+    height: 75%;
+    object-fit: cover;
+    object-position: top;
     z-index: 1;
     opacity: 1;
     transition: transform 0.1s linear;
