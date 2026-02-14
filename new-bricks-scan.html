@@ -22,7 +22,7 @@
     <!-- Header / Nav -->
     <header class="container site-header">
         <div class="logo">
-            <img src="images-bricks-scan/Bricks Logo.svg" alt="Bricks Logo">
+            <img src="images-bricks-scan/Bricks Logo-dark.svg" alt="Bricks Logo" class="theme-logo">
         </div>
         <!-- Minimal Nav if needed, or just specific app link -->
     </header>
@@ -249,7 +249,7 @@
 
     <!-- Footer -->
     <footer class="container site-footer center-text reveal-on-scroll">
-        <img src="images-bricks-scan/Bricks Logo.svg" alt="Bricks Logo"
+        <img src="images-bricks-scan/Bricks Logo-dark.svg" alt="Bricks Logo" class="theme-logo"
             style="height: 24px; opacity: 0.5; margin-bottom: 24px;">
         <p class="metadata footer-links">
             © 2026 Bricks. All rights reserved. <br>
@@ -285,25 +285,68 @@
             });
 
             // Dark Mode Toggle Logic
+            // Dark Mode Toggle Logic
             const themeToggle = document.getElementById('theme-toggle');
             const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
 
-            // Check for saved user preference, if any, on load
-            const currentTheme = localStorage.getItem('theme');
-            if (currentTheme == 'dark') {
-                document.body.classList.add('dark-mode');
-            } else if (currentTheme == 'light') {
-                document.body.classList.remove('dark-mode');
-            }
+            // Logo Switching Logic
+            const logoImages = document.querySelectorAll('.theme-logo');
+            const logoLight = 'images-bricks-scan/Bricks Logo-dark.svg'; // Dark logo for Light theme
+            const logoDark = 'images-bricks-scan/Bricks Logo.svg';       // Light logo for Dark theme
+
+            const updateLogos = (isDark) => {
+                logoImages.forEach(img => {
+                    img.src = isDark ? logoDark : logoLight;
+                });
+            };
+
+            const applyTheme = () => {
+                const savedTheme = localStorage.getItem('theme');
+                if (savedTheme === 'dark') {
+                    document.body.classList.remove('light-mode');
+                    document.body.classList.add('dark-mode');
+                    updateLogos(true);
+                } else if (savedTheme === 'light') {
+                    document.body.classList.remove('dark-mode');
+                    document.body.classList.add('light-mode');
+                    updateLogos(false);
+                } else {
+                    // System preference
+                    document.body.classList.remove('dark-mode');
+                    document.body.classList.remove('light-mode');
+                    // Check if system is dark
+                    updateLogos(prefersDarkScheme.matches);
+                }
+            };
+
+            // Initial Application
+            applyTheme();
+
+            // Listen for system changes
+            prefersDarkScheme.addEventListener('change', (e) => {
+                if (!localStorage.getItem('theme')) {
+                    updateLogos(e.matches);
+                }
+            });
 
             themeToggle.addEventListener('click', function () {
-                document.body.classList.toggle('dark-mode');
+                // Determine current effective theme
+                const isSystemDark = prefersDarkScheme.matches;
+                const currentClass = document.body.classList.contains('dark-mode') ? 'dark' :
+                    (document.body.classList.contains('light-mode') ? 'light' : 'system');
 
-                let theme = 'light';
-                if (document.body.classList.contains('dark-mode')) {
-                    theme = 'dark';
+                let currentIsDark = currentClass === 'dark' || (currentClass === 'system' && isSystemDark);
+
+                // Toggle to the OTHER state
+                if (currentIsDark) {
+                    // Switch to Light
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    // Switch to Dark
+                    localStorage.setItem('theme', 'dark');
                 }
-                localStorage.setItem('theme', theme);
+
+                applyTheme();
             });
 
             // Expanding Background Logic
