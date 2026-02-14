@@ -258,31 +258,29 @@ body.dark-mode .btn-secondary,
 }
 
 /* 8️⃣ Motion on Web - Minimal micro-animations */
-/* "Fade in on scroll (150ms)" - Interpret as fast duration or delay. Using 0.5s duration for smoothness, 0.15s delay. */
-.fade-in-up {
+.reveal-on-scroll {
     opacity: 0;
-    transform: translateY(8px);
-    animation: fadeInUp 0.5s ease-out forwards;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: opacity, transform;
 }
 
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-/* Delays */
-.delay-1 {
-    animation-delay: 0.1s;
+/* Delays for staggered effects */
+.delay-100 {
+    transition-delay: 0.1s;
 }
 
-.delay-2 {
-    animation-delay: 0.2s;
+.delay-200 {
+    transition-delay: 0.2s;
 }
 
-.delay-3 {
-    animation-delay: 0.3s;
+.delay-300 {
+    transition-delay: 0.3s;
 }
 
 /* Components */
