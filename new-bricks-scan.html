@@ -109,7 +109,14 @@
                 </div>
             </div>
             <div class="solution-image reveal-on-scroll delay-200">
-                <img src="images-bricks-scan/screenshot-01.png" alt="Bricks Scan Organizing Documents" class="hero-img">
+                <div class="screenshot-stack">
+                    <img src="images-bricks-scan/screenshot-02.png" alt="Bricks Scan Screenshot Left"
+                        class="screenshot-side left">
+                    <img src="images-bricks-scan/screenshot-02.png" alt="Bricks Scan Screenshot Right"
+                        class="screenshot-side right">
+                    <img src="images-bricks-scan/screenshot-01.png" alt="Bricks Scan Organizing Documents"
+                        class="screenshot-main">
+                </div>
             </div>
         </div>
     </section>
@@ -335,6 +342,42 @@
 
                 window.addEventListener('scroll', handleScroll, { passive: true });
                 handleScroll(); // Initial call
+            }
+
+            // Solution Section Fan-out Animation Logic
+            const solutionSection = document.getElementById('solution');
+            const leftScreenshot = solutionSection ? solutionSection.querySelector('.screenshot-side.left') : null;
+            const rightScreenshot = solutionSection ? solutionSection.querySelector('.screenshot-side.right') : null;
+
+            if (solutionSection && leftScreenshot && rightScreenshot) {
+                const handleSolutionScroll = () => {
+                    const rect = solutionSection.getBoundingClientRect();
+                    const windowHeight = window.innerHeight;
+
+                    // Start animation when section enters viewport
+                    // Finish when section is centered
+                    const startPoint = windowHeight;
+                    const endPoint = windowHeight * 0.2;
+                    const totalDistance = startPoint - endPoint;
+
+                    let progress = (startPoint - rect.top) / totalDistance;
+                    progress = Math.min(Math.max(progress, 0), 1);
+
+                    // Interpolate values for fan-out
+                    const maxRotation = 10; // degrees
+                    const maxTranslateX = 160; // pixels
+                    const maxTranslateY = -20; // pixels
+
+                    const currentRotation = maxRotation * progress;
+                    const currentTranslateX = maxTranslateX * progress;
+                    const currentTranslateY = maxTranslateY * progress;
+
+                    leftScreenshot.style.transform = `translateX(-${currentTranslateX}px) translateY(${currentTranslateY}px) rotate(-${currentRotation}deg)`;
+                    rightScreenshot.style.transform = `translateX(${currentTranslateX}px) translateY(${currentTranslateY}px) rotate(${currentRotation}deg)`;
+                };
+
+                window.addEventListener('scroll', handleSolutionScroll, { passive: true });
+                handleSolutionScroll(); // Initial call
             }
         });
     </script>

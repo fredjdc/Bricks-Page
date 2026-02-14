@@ -510,14 +510,50 @@ body.dark-mode .btn-secondary {
 
 .solution-image img {
     width: 100%;
-    /* Reduce size further as requested */
+    /* Main image stays at its max-width */
     max-width: 70%;
     height: auto;
     display: block;
     margin: 0 auto;
-    /* Ensure shadow doesn't clip if added later */
     filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.1));
     border-radius: 24px;
+}
+
+.screenshot-stack {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    /* Adjust based on main image size */
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.screenshot-main {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+}
+
+.screenshot-side {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    max-width: 70%;
+    height: auto;
+    z-index: 1;
+    opacity: 1;
+    transition: transform 0.1s linear;
+    will-change: transform;
+}
+
+.screenshot-side.left {
+    z-index: 2;
+}
+
+.screenshot-side.right {
+    z-index: 1;
 }
 
 /* Mobile Responsive */
