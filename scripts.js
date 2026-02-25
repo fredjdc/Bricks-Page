@@ -657,18 +657,26 @@ const initAppsParallax = () => {
     const updateParallax = () => {
         rafId = null;
 
+        const writes = [];
+
+        // READ PHASE: Calculate all positions first
         parallaxCards.forEach((card) => {
             const rect = card.getBoundingClientRect();
             const distanceFromCenter = rect.top + rect.height / 2 - window.innerHeight / 2;
 
             card.querySelectorAll('[data-parallax-depth]').forEach((layer) => {
                 const depth = Number(layer.dataset.parallaxDepth || 0);
-                const scrollOffset = -distanceFromCenter * depth * 0.18;
-                const pointerOffsetX = pointerX * depth * 24;
-                const pointerOffsetY = pointerY * depth * 16;
-
-                layer.style.transform = `translate3d(${pointerOffsetX}px, ${scrollOffset + pointerOffsetY}px, 0)`;
+                writes.push({ layer, depth, distanceFromCenter });
             });
+        });
+
+        // WRITE PHASE: Apply all transforms in a batch
+        writes.forEach(({ layer, depth, distanceFromCenter }) => {
+            const scrollOffset = -distanceFromCenter * depth * 0.18;
+            const pointerOffsetX = pointerX * depth * 24;
+            const pointerOffsetY = pointerY * depth * 16;
+
+            layer.style.transform = `translate3d(${pointerOffsetX}px, ${scrollOffset + pointerOffsetY}px, 0)`;
         });
     };
 
@@ -718,8 +726,6 @@ const handleVideoModal = () => {
 
             // Get the appropriate source for the current language
             const sourcePath = videoSources[currentLang] || videoSources['en']; // Fallback to English
-
-            console.log(`Setting video source to: ${sourcePath} for language: ${currentLang}`);
 
             // Directly set the src attribute on the video element
             videoEl.src = sourcePath;
@@ -886,14 +892,6 @@ const initSupportForm = () => {
                 // Show success alert
                 showSuccessAlert(refNumber);
 
-                // Log data for debugging
-                console.log('Form submitted!');
-                console.log('Reference number:', refNumber);
-                console.log('Name:', formData.get('name'));
-                console.log('Email:', formData.get('email'));
-                console.log('Description:', formData.get('description'));
-                console.log('Files:', selectedFiles.map(f => f.name));
-
                 // In a real implementation, you would send an email to hello@bricks.pe with this data
                 // This requires server-side processing and cannot be done with client-side JavaScript alone
 
@@ -968,10 +966,21 @@ function formatFileSize(bytes) {
     if (bytes === 0) return '0 Bytes';
 
     const k = 1024;
-    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
-    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+    let i = 0;
+    let tempBytes = bytes;
 
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    while (tempBytes >= k && i < sizes.length - 1) {
+        tempBytes /= k;
+        i++;
+    }
+
+    if (parseFloat(tempBytes.toFixed(2)) >= k && i < sizes.length - 1) {
+        tempBytes /= k;
+        i++;
+    }
+
+    return parseFloat(tempBytes.toFixed(2)) + ' ' + sizes[i];
 }
 
 // Language switcher setup
@@ -1057,4 +1066,4 @@ document.addEventListener('DOMContentLoaded', () => {
         // Keep hero word width in sync when viewport changes
         heroWordControllers.forEach((controller) => controller.refresh());
     }, 250));
-}); 
+});
