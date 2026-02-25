@@ -727,8 +727,6 @@ const handleVideoModal = () => {
             // Get the appropriate source for the current language
             const sourcePath = videoSources[currentLang] || videoSources['en']; // Fallback to English
 
-            console.log(`Setting video source to: ${sourcePath} for language: ${currentLang}`);
-
             // Directly set the src attribute on the video element
             videoEl.src = sourcePath;
             videoEl.load();
@@ -893,14 +891,6 @@ const initSupportForm = () => {
 
                 // Show success alert
                 showSuccessAlert(refNumber);
-
-                // Log data for debugging
-                console.log('Form submitted!');
-                console.log('Reference number:', refNumber);
-                console.log('Name:', formData.get('name'));
-                console.log('Email:', formData.get('email'));
-                console.log('Description:', formData.get('description'));
-                console.log('Files:', selectedFiles.map(f => f.name));
 
                 // In a real implementation, you would send an email to hello@bricks.pe with this data
                 // This requires server-side processing and cannot be done with client-side JavaScript alone
