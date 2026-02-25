@@ -602,10 +602,6 @@
                     // Show success alert
                     showSuccessAlert(refNumber);
 
-                    // Log form submission attempt for debugging
-                    console.log("Form submitted with reference number:", refNumber);
-                    console.log("Email value:", emailInput ? emailInput.value : "No email input found");
-
                     // Submit the form after a short delay to allow the user to see the success message
                     setTimeout(() => {
                         form.submit();

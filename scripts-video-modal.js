@@ -260,8 +260,6 @@ const handleVideoModal = () => {
             // Get the appropriate source for the current language
             const sourcePath = videoSources[currentLang] || videoSources['en']; // Fallback to English
             
-            console.log(`Setting video source to: ${sourcePath} for language: ${currentLang}`);
-            
             // Directly set the src attribute on the video element
             videoEl.src = sourcePath;
             videoEl.load();
