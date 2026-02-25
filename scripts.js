@@ -968,10 +968,21 @@ function formatFileSize(bytes) {
     if (bytes === 0) return '0 Bytes';
 
     const k = 1024;
-    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
-    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+    let i = 0;
+    let tempBytes = bytes;
 
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    while (tempBytes >= k && i < sizes.length - 1) {
+        tempBytes /= k;
+        i++;
+    }
+
+    if (parseFloat(tempBytes.toFixed(2)) >= k && i < sizes.length - 1) {
+        tempBytes /= k;
+        i++;
+    }
+
+    return parseFloat(tempBytes.toFixed(2)) + ' ' + sizes[i];
 }
 
 // Language switcher setup
@@ -1057,4 +1068,4 @@ document.addEventListener('DOMContentLoaded', () => {
         // Keep hero word width in sync when viewport changes
         heroWordControllers.forEach((controller) => controller.refresh());
     }, 250));
-}); 
+});
