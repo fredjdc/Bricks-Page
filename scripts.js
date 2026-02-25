@@ -657,18 +657,26 @@ const initAppsParallax = () => {
     const updateParallax = () => {
         rafId = null;
 
+        const writes = [];
+
+        // READ PHASE: Calculate all positions first
         parallaxCards.forEach((card) => {
             const rect = card.getBoundingClientRect();
             const distanceFromCenter = rect.top + rect.height / 2 - window.innerHeight / 2;
 
             card.querySelectorAll('[data-parallax-depth]').forEach((layer) => {
                 const depth = Number(layer.dataset.parallaxDepth || 0);
-                const scrollOffset = -distanceFromCenter * depth * 0.18;
-                const pointerOffsetX = pointerX * depth * 24;
-                const pointerOffsetY = pointerY * depth * 16;
-
-                layer.style.transform = `translate3d(${pointerOffsetX}px, ${scrollOffset + pointerOffsetY}px, 0)`;
+                writes.push({ layer, depth, distanceFromCenter });
             });
+        });
+
+        // WRITE PHASE: Apply all transforms in a batch
+        writes.forEach(({ layer, depth, distanceFromCenter }) => {
+            const scrollOffset = -distanceFromCenter * depth * 0.18;
+            const pointerOffsetX = pointerX * depth * 24;
+            const pointerOffsetY = pointerY * depth * 16;
+
+            layer.style.transform = `translate3d(${pointerOffsetX}px, ${scrollOffset + pointerOffsetY}px, 0)`;
         });
     };
 
