@@ -657,18 +657,26 @@ const initAppsParallax = () => {
     const updateParallax = () => {
         rafId = null;
 
+        const writes = [];
+
+        // READ PHASE: Calculate all positions first
         parallaxCards.forEach((card) => {
             const rect = card.getBoundingClientRect();
             const distanceFromCenter = rect.top + rect.height / 2 - window.innerHeight / 2;
 
             card.querySelectorAll('[data-parallax-depth]').forEach((layer) => {
                 const depth = Number(layer.dataset.parallaxDepth || 0);
-                const scrollOffset = -distanceFromCenter * depth * 0.18;
-                const pointerOffsetX = pointerX * depth * 24;
-                const pointerOffsetY = pointerY * depth * 16;
-
-                layer.style.transform = `translate3d(${pointerOffsetX}px, ${scrollOffset + pointerOffsetY}px, 0)`;
+                writes.push({ layer, depth, distanceFromCenter });
             });
+        });
+
+        // WRITE PHASE: Apply all transforms in a batch
+        writes.forEach(({ layer, depth, distanceFromCenter }) => {
+            const scrollOffset = -distanceFromCenter * depth * 0.18;
+            const pointerOffsetX = pointerX * depth * 24;
+            const pointerOffsetY = pointerY * depth * 16;
+
+            layer.style.transform = `translate3d(${pointerOffsetX}px, ${scrollOffset + pointerOffsetY}px, 0)`;
         });
     };
 
@@ -958,10 +966,21 @@ function formatFileSize(bytes) {
     if (bytes === 0) return '0 Bytes';
 
     const k = 1024;
-    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
-    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+    let i = 0;
+    let tempBytes = bytes;
 
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    while (tempBytes >= k && i < sizes.length - 1) {
+        tempBytes /= k;
+        i++;
+    }
+
+    if (parseFloat(tempBytes.toFixed(2)) >= k && i < sizes.length - 1) {
+        tempBytes /= k;
+        i++;
+    }
+
+    return parseFloat(tempBytes.toFixed(2)) + ' ' + sizes[i];
 }
 
 // Language switcher setup
@@ -1047,4 +1066,4 @@ document.addEventListener('DOMContentLoaded', () => {
         // Keep hero word width in sync when viewport changes
         heroWordControllers.forEach((controller) => controller.refresh());
     }, 250));
-}); 
+});
