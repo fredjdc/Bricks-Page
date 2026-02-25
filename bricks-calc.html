@@ -1481,38 +1481,6 @@
         }
     </script>
 
-    <!-- Google Analytics Event Tracking -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Get all App Store download buttons (there are multiple on the page)
-            const downloadButtons = document.querySelectorAll("#app-store-download");
-
-            // Add click event listener to each button
-            downloadButtons.forEach((button) => {
-                button.addEventListener("click", function (e) {
-                    e.preventDefault();
-                    // Get current language
-                    const currentLang = document.documentElement.getAttribute("lang") || "en";
-                    // Get the appropriate link based on language
-                    const appLink = button.getAttribute(`data-link-${currentLang}`);
-
-                    // Track the event in Google Analytics
-                    gtag("event", "app_download", {
-                        event_category: "engagement",
-                        event_label: "app_store_button"
-                    });
-
-                    // Open the app store link
-                    if (appLink) {
-                        window.open(appLink, "_blank");
-                    }
-
-                    // Log the event for debugging (optional)
-                    console.log("App download event tracked");
-                });
-            });
-        });
-    </script>
 </body>
 
 </html>
