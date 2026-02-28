@@ -388,19 +388,19 @@
             }
 
             // Solution Section Fan-out Animation Logic
-            const solutionSection = document.getElementById('solution');
-            const leftScreenshot = solutionSection ? solutionSection.querySelector('.screenshot-side.left') : null;
-            const rightScreenshot = solutionSection ? solutionSection.querySelector('.screenshot-side.right') : null;
+            const stackContainer = document.querySelector('.screenshot-stack');
+            const leftScreenshot = stackContainer ? stackContainer.querySelector('.screenshot-side.left') : null;
+            const rightScreenshot = stackContainer ? stackContainer.querySelector('.screenshot-side.right') : null;
 
-            if (solutionSection && leftScreenshot && rightScreenshot) {
+            if (stackContainer && leftScreenshot && rightScreenshot) {
                 const handleSolutionScroll = () => {
-                    const rect = solutionSection.getBoundingClientRect();
+                    const rect = stackContainer.getBoundingClientRect();
                     const windowHeight = window.innerHeight;
 
-                    // Start animation when section enters viewport
-                    // Finish when section is centered
-                    const startPoint = windowHeight;
-                    const endPoint = windowHeight * 0.2;
+                    // Start animation when the stack enters viewport
+                    // Finish when stack is near center
+                    const startPoint = windowHeight * 0.9;
+                    const endPoint = windowHeight * 0.3;
                     const totalDistance = startPoint - endPoint;
 
                     let progress = (startPoint - rect.top) / totalDistance;
