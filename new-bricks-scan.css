@@ -110,12 +110,16 @@ h6 {
 
 h1.hero-title {
     font-size: 56px;
+    font-weight: 900;
+    color: #000000;
     line-height: 1.05;
     margin-bottom: 24px;
 }
 
 h2.section-title {
     font-size: 36px;
+    font-weight: 900;
+    color: #000000;
     margin-bottom: 24px;
 }
 
@@ -304,7 +308,7 @@ a:hover {
     align-items: center;
     justify-content: center;
     padding: 16px 28px;
-    border-radius: var(--r2-inner);
+    border-radius: var(--r3-primary);
     font-size: 17px;
     font-weight: 500;
     transition: all 0.2s ease-in-out;
@@ -326,8 +330,7 @@ a:hover {
     left: 2px;
     right: 2px;
     bottom: 2px;
-    border-radius: calc(var(--r2-inner) - 2px);
-    border: 1px solid var(--bg-white);
+    border-radius: calc(var(--r3-primary) - 2px);
     pointer-events: none;
 }
 
@@ -339,6 +342,9 @@ a:hover {
 .btn-primary {
     /* Slightly more pronounced to stand out, but still off-white */
     font-weight: 600;
+    background-color: var(--text-primary);
+    color: var(--bg-primary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* The single teal accent on the primary button */
@@ -436,6 +442,13 @@ a:hover {
     color: var(--text-secondary);
     font-size: 16px;
     padding-left: 12px;
+}
+
+.checkmark-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    flex-shrink: 0;
 }
 
 /* Ecosystem Cards */
@@ -601,11 +614,5 @@ a:hover {
         text-align: left;
         border-left: none;
         padding-left: 0;
-    }
-
-    .feature-item::before {
-        content: "•";
-        color: var(--depth-plane);
-        margin-right: 8px;
     }
 }
