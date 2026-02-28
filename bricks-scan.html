@@ -1,1326 +1,361 @@
-<!doctype html>
-<html lang="es">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- SEO Meta Tags -->
-    <title>Bricks Scan – El Escáner que Piensa. La Privacidad que Protege.</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bricks Scan - Built for real estate agents on Apple</title>
     <meta name="description"
-        content="Bricks Scan: Escáner de documentos nativo para iOS y macOS. Privacidad 100% en el dispositivo, renombra archivos automáticamente y genera resúmenes con Apple Intelligence." />
-    <meta name="keywords"
-        content="scanner app, document scanner, ios scanner, ocr, pdf expert, apple intelligence, privacidad, escáner de documentos, iphone scanner, macos scanner, on-device ai" />
-    <link rel="canonical" href="https://bricks.pe/bricks-scan" />
+        content="Eliminate document chaos and MLS paperwork overload. Organize every document instantly from your iPhone, iPad, or Mac.">
 
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://bricks.pe/bricks-scan" />
-    <meta property="og:title" content="Bricks Scan – Privado. Inteligente. Nativo." />
-    <meta property="og:description"
-        content="Deja de subir tu vida a la nube. Escanea, organiza y resume documentos con inteligencia 100% local." />
-    <meta property="og:image" content="images-bricks-scan/bricks-scan-og.png" />
+    <!-- Design System CSS -->
+    <link rel="stylesheet" href="new-bricks-scan.css">
 
-    <!-- Favicon & Styles -->
+    <!-- Favicon -->
     <link rel="icon" href="favicon.ico" sizes="32x32" />
     <link rel="icon" type="image/png" href="images-bricks-scan/favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="images-bricks-scan/favicon-16x16.png" sizes="16x16" />
     <link rel="apple-touch-icon" href="images-bricks-scan/apple-touch-icon.png" />
-    <link rel="manifest" href="site.webmanifest" />
-    <meta name="theme-color" content="#1E40AF" />
-
-    <!-- Fonts & Tailwind (match site) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: { "bricks-blue": "#1E40AF", "bricks-yellow": "#FFCC00" },
-                    fontFamily: { sans: ["Exo 2", "sans-serif"] }
-                }
-            }
-        };
-    </script>
-
-    <!-- Alpine and scripts -->
-    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script src="scripts.js" defer></script>
-
-    <style>
-        /* Dreamy Fade Up Animation */
-        .dreamy-transition {
-            opacity: 0;
-            transform: translateY(40px) scale(0.98);
-            transition: opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), 
-                        transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
-            will-change: opacity, transform;
-        }
-
-        .dreamy-transition.is-visible {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-
-        /* Soft Image Card Styles */
-        .soft-image-card {
-            position: relative;
-            border-radius: 2rem;
-            overflow: hidden;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.5s ease-out;
-        }
-        
-        .soft-image-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .soft-image-card img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        body {
-            font-family: "Exo 2", sans-serif;
-            background-color: #efefef;
-            color: #1f2937;
-            margin: 0;
-            overflow-x: hidden;
-            width: 100%;
-            max-width: 100vw;
-        }
-
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-
-        /* Navigation styles for hero section */
-        .hero-nav {
-            background: rgba(17, 24, 39, 0.8) !important;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom-color: rgba(255, 255, 255, 0.1) !important;
-        }
-
-        .hero-logo {
-            filter: brightness(0) invert(1);
-        }
-
-        .hero-language-btn {
-            color: white !important;
-        }
-
-        /* Lusion-Inspired Hero Section Styles */
-        .hero-section-lusion {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            width: 100%;
-            max-width: 100vw;
-        }
-
-        /* Hero Headline Animation - Soft and subtle */
-        @keyframes fadeInUp {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-
-            100% {
-                opacity: 1;
-            }
-        }
-
-        /* Hero Headline - Large, bold text with smooth entrance */
-        .hero-headline {
-            opacity: 0;
-            animation: fadeInUp 1.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s forwards;
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            line-height: 1.1;
-        }
-
-        .hero-headline-text {
-            display: inline-block;
-            color: #ffffff;
-            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Hero Subheadline - Lighter, delayed animation */
-        .hero-subheadline {
-            opacity: 0;
-            animation: fadeInUp 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s forwards;
-            font-weight: 300;
-        }
-
-        .hero-subheadline-text {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        /* Hero CTA - Delayed entrance */
-        .hero-cta {
-            opacity: 0;
-            animation: fadeIn 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.8s forwards;
-            /* Center the button on mobile without making it full width */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Hero Background - fade in only so the entry feels calm and avoids scale motion */
-        .hero-image {
-            opacity: 0;
-            animation: fadeIn 1s ease-out 0s forwards;
-        }
-
-        /* Hero image container with shadow and glow effects */
-        .hero-image-container {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .hero-image-container img {
-            max-width: 100%;
-            height: auto;
-
-            transition: transform 0.3s ease;
-        }
-
-        .hero-image-container:hover img {
-            transform: translateY(-5px) scale(1.04);
-        }
-
-        /* Layered parallax hero image */
-        .hero-parallax {
-            position: relative;
-            width: 100%;
-            max-width: 32rem;
-            min-height: clamp(320px, 60vw, 640px);
-            margin: 0 auto;
-        }
-
-        .hero-parallax-layer {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            pointer-events: none;
-            will-change: transform;
-            transition: transform 0.3s ease-out;
-        }
-
-        .hero-parallax-layer img {
-            width: 100%;
-            height: auto;
-        }
-
-        .hero-parallax-layer.layer-back {
-            z-index: 1;
-            filter: brightness(0.85) saturate(0.95) drop-shadow(0 18px 50px rgba(15, 23, 42, 0.35));
-        }
-
-        .hero-parallax-layer.layer-middle {
-            z-index: 2;
-        }
-
-        .hero-parallax-layer.layer-front {
-            z-index: 3;
-            filter: brightness(1.05) drop-shadow(0 24px 70px rgba(37, 99, 235, 0.35));
-        }
-
-        @media (max-width: 768px) {
-            .hero-parallax {
-                max-width: clamp(240px, 80vw, 360px);
-                min-height: clamp(280px, 120vw, 520px);
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .hero-parallax-layer {
-                transition: none;
-                transform: none !important;
-            }
-        }
-
-        /* Bricks Calc icon parallax style re-used */
-        .app-icon-parallax {
-            position: relative;
-            isolation: isolate;
-            display: grid;
-            place-items: center;
-        }
-
-        .app-icon-layer {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transform: translate3d(-50%, -50%, 0);
-            will-change: transform, opacity;
-            transition: transform 0.3s ease-out;
-            opacity: 0;
-        }
-
-        .app-icon-layer img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .app-icon-layer.layer-back {
-            z-index: 1;
-            filter: drop-shadow(0 30px 65px rgba(15, 23, 42, 0.28));
-        }
-
-        .app-icon-layer.layer-middle {
-            z-index: 2;
-            filter: drop-shadow(0 20px 55px rgba(15, 23, 42, 0.22));
-        }
-
-        .app-icon-layer.layer-front {
-            z-index: 3;
-            opacity: 1;
-        }
-
-        .app-icon-layer.layer-front img {
-            filter: drop-shadow(0 24px 50px rgba(37, 99, 235, 0.22));
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .app-icon-layer {
-                opacity: 0;
-                transform: translate3d(-50%, -50%, 0) !important;
-            }
-
-            .app-icon-layer.layer-front {
-                opacity: 1;
-            }
-        }
-
-        /* Responsive adjustments for hero layout */
-        @media (max-width: 768px) {
-
-            /* Ensure hero section container is properly constrained and centered */
-            .hero-section-lusion {
-                overflow-x: hidden;
-            }
-
-            /* Ensure content container is properly centered and doesn't overflow */
-            .hero-section-lusion .container {
-                width: 100%;
-                max-width: 100%;
-                padding-left: 1rem;
-                padding-right: 1rem;
-            }
-
-            /* Ensure grid is properly constrained on mobile */
-            .hero-section-lusion .grid {
-                width: 100% !important;
-                max-width: 100% !important;
-                margin-left: auto;
-                margin-right: auto;
-                padding-left: 0;
-                padding-right: 0;
-            }
-
-            /* Ensure text content is properly centered */
-            .hero-section-lusion .flex.flex-col {
-                width: 100%;
-                max-width: 100%;
-                padding-left: 0;
-                padding-right: 0;
-            }
-
-            /* Ensure headline text doesn't overflow */
-            .hero-headline {
-                width: 100%;
-                max-width: 100%;
-                word-wrap: break-word;
-                overflow-wrap: break-word;
-            }
-
-            /* Ensure subheadline text doesn't overflow */
-            .hero-subheadline {
-                width: 100%;
-                max-width: 100%;
-                word-wrap: break-word;
-                overflow-wrap: break-word;
-            }
-
-            /* Ensure hero image container is properly constrained */
-            .hero-image-container {
-                width: 100%;
-                max-width: 100%;
-                padding: 0;
-            }
-
-            .hero-image-container img {
-                max-width: 100%;
-                width: 100%;
-                filter: drop-shadow(0 15px 40px rgba(0, 0, 0, 0.3)) drop-shadow(0 0 30px rgba(59, 130, 246, 0.15));
-            }
-
-            .hero-parallax-layer.layer-back img {
-                filter: brightness(0.85) saturate(0.95) drop-shadow(0 15px 40px rgba(15, 23, 42, 0.3));
-            }
-
-            .hero-parallax-layer.layer-front img {
-                filter: brightness(1.05) drop-shadow(0 20px 60px rgba(37, 99, 235, 0.3));
-            }
-        }
-
-        /* Override mobile full-width behavior for App Store button */
-        @media (max-width: 768px) {
-            .hero-cta a[href*="apps.apple.com"] {
-                display: inline-block !important;
-                width: auto !important;
-                max-width: 180px !important;
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .hero-cta a[href*="apps.apple.com"] img {
-                max-width: 180px !important;
-                width: 180px !important;
-                height: auto !important;
-                object-fit: contain;
-            }
-        }
-
-        /* Scroll Indicator */
-        .scroll-indicator {
-            opacity: 0;
-            animation: fadeIn 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s forwards;
-            cursor: pointer;
-            transition: opacity 0.3s ease;
-        }
-
-        .scroll-indicator:hover {
-            opacity: 1 !important;
-        }
-
-        .scroll-arrow {
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-
-            0%,
-            20%,
-            50%,
-            80%,
-            100% {
-                transform: translateY(0);
-            }
-
-            40% {
-                transform: translateY(-6px);
-            }
-
-            60% {
-                transform: translateY(-3px);
-            }
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Transition section gradient */
-        .transition-section {
-            background: linear-gradient(to bottom,
-                    #172554 0%,
-                    #172554 2%,
-                    rgba(30, 58, 138, 0.3) 8%,
-                    rgba(59, 130, 246, 0.1) 15%,
-                    rgba(239, 239, 239, 0.4) 20%,
-                    rgba(239, 239, 239, 0.7) 30%,
-                    #efefef 40%,
-                    #efefef 100%);
-            padding-top: 6rem;
-            margin-top: -2rem;
-        }
-
-        @media (max-width: 768px) {
-            .transition-section {
-                padding-top: 4rem;
-                margin-top: 0;
-            }
-        }
-
-        /* Bento Box Styles */
-        .bento-box {
-            transition:
-                background-color 0.3s ease,
-                border-color 0.3s ease,
-                color 0.3s ease;
-        }
-
-        .bento-box:hover {
-            background-color: #007aff !important;
-            border-color: #007aff !important;
-        }
-
-        .bento-box h3,
-        .bento-box p,
-        .bento-box span {
-            transition: color 0.3s ease;
-        }
-
-        .bento-box:hover h3,
-        .bento-box:hover p,
-        .bento-box:hover span {
-            color: white !important;
-        }
-
-        .bento-box img[src*=".svg"] {
-            transition: filter 0.3s ease;
-            filter: brightness(0) saturate(100%) invert(30%);
-        }
-
-        .bento-box:hover img[src*=".svg"] {
-            filter: brightness(0) saturate(100%) invert(100%);
-        }
-
-        .bento-box img[src*=".jpg"] {
-            transition: filter 0.3s ease;
-        }
-
-        .bento-box:hover img[src*=".jpg"] {
-            filter: brightness(1.02) contrast(1.02);
-        }
-
-        /* Scroll Animations */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(15px);
-            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .animate-on-scroll.animate-in {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        @media (min-width: 1024px) {
-            .container {
-                max-width: 1190px !important;
-            }
-
-            .max-w-7xl,
-            .max-w-6xl {
-                max-width: 1190px !important;
-            }
-        }
-
-        .download-zoom-wrapper {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1.5rem;
-            isolation: isolate;
-        }
-
-        .download-zoom-wrapper img {
-            position: relative;
-            z-index: 2;
-            filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.35));
-        }
-
-        .zoom-line {
-            position: absolute;
-            inset: 0;
-            border-radius: 48px;
-            border: 2px solid rgba(255, 255, 255, 0.25);
-            transform: scale(0.75);
-            opacity: 0;
-            z-index: 1;
-            animation: zoomLinePulse 4.5s cubic-bezier(0.22, 1, 0.36, 1) infinite;
-        }
-
-        .zoom-line-1 {
-            animation-delay: 0s;
-        }
-
-        .zoom-line-2 {
-            animation-delay: 0.5s;
-        }
-
-        .zoom-line-3 {
-            animation-delay: 1.0s;
-        }
-
-        .zoom-line-4 {
-            animation-delay: 1.5s;
-        }
-
-        @keyframes zoomLinePulse {
-            0% {
-                opacity: 0;
-                transform: scale(0.75);
-            }
-
-            25% {
-                opacity: 1;
-            }
-
-            60% {
-                opacity: 0.85;
-            }
-
-            100% {
-                opacity: 0;
-                transform: scale(1.1);
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .zoom-line {
-                animation: none;
-                opacity: 0;
-            }
-        }
-    </style>
-
-    <!-- Google Tag Manager - Placeholder if needed -->
-    <!-- End Google Tag Manager -->
 </head>
 
-<body class="min-h-screen">
-    <!-- Desktop App Banner -->
-    <div id="desktop-app-banner" class="desktop-app-banner">
-        <div class="desktop-app-banner-content">
-            <img src="images-bricks-scan/bricks-scan-web-icon.png" alt="Bricks Apps Icon"
-                class="desktop-app-banner-icon" />
-            <div class="desktop-app-banner-info">
-                <p class="desktop-app-banner-title">Bricks Scan</p>
-                <p class="desktop-app-banner-subtitle">
-                    <span lang="en">Native AI Document Scanner</span>
-                    <span lang="es" class="hidden">Escáner de Docs con IA Nativa</span>
-                </p>
-            </div>
+<body>
+
+    <!-- Header / Nav -->
+    <header class="container site-header">
+        <div class="logo">
+            <img src="images-bricks-scan/Bricks Logo-dark.svg" alt="Bricks Logo">
         </div>
-        <div>
-            <a id="app_desktop_banner_button" href="https://apps.apple.com/app/idYOUR_APP_ID" target="_blank" rel="noopener noreferrer"
-                class="desktop-app-banner-button">
-                <span lang="en">Get</span>
-                <span lang="es" class="hidden">Obtener</span>
-            </a>
-            <button id="desktop-app-banner-close" class="desktop-app-banner-close">×</button>
-        </div>
-    </div>
-
-    <!-- Desktop App Banner Script -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-            const isMacOS = navigator.platform.toUpperCase().indexOf("MAC") >= 0;
-            const bannerElement = document.getElementById("desktop-app-banner");
-            const closeBannerButton = document.getElementById("desktop-app-banner-close");
-            const bannerDismissed = localStorage.getItem("app_banner_dismissed_scan");
-
-            if (isMacOS && !isMobile && !bannerDismissed) {
-                bannerElement.style.display = "flex";
-                document.body.classList.add("has-banner");
-            }
-
-            closeBannerButton.addEventListener("click", function () {
-                bannerElement.style.display = "none";
-                document.body.classList.remove("has-banner");
-                localStorage.setItem("app_banner_dismissed_scan", "true");
-            });
-        });
-    </script>
-
-    <!-- Header -->
-    <header class="glass-nav sticky top-0 z-50 w-full border-b border-gray-300/20 hero-nav">
-        <div class="container mx-auto px-4 grid grid-cols-2 h-16 items-center">
-            <a href="index.html" class="flex items-center">
-                <img src="images-bricks-scan/Bricks Logo.svg" alt="Bricks Apps" class="h-8 hero-logo" />
-            </a>
-            <button id="language-switcher"
-                class="flex items-center space-x-2 px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors text-white justify-self-end hero-language-btn"
-                title="Cambiar idioma / Change language">
-                <span id="current-language">Español</span>
-            </button>
-        </div>
+        <!-- Minimal Nav if needed, or just specific app link -->
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero-section-lusion relative min-h-screen flex items-center justify-center overflow-hidden">
-        <!-- Background with subtle pattern -->
-        <div class="absolute inset-0 bg-gradient-to-br from-blue-950 via-blue-900 to-indigo-950 z-0 hero-image"></div>
-        <div class="absolute inset-0 opacity-10 z-0" style="
-                    background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0);
-                    background-size: 40px 40px;
-                "></div>
+    <!-- 5️⃣ Hero Section -->
+    <section class="section section-hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <h1 class="hero-title reveal-on-scroll">Built for real estate agents on Apple.</h1>
+                <p class="body-text reveal-on-scroll delay-100">
+                    Eliminate document chaos and MLS paperwork overload.
+                </p>
 
-        <!-- Content Container -->
-        <div class="container mx-auto px-4 relative z-10 py-24 md:py-20">
-            <div class="grid md:grid-cols-2 gap-8 lg:gap-12 items-center max-w-5xl mx-auto">
-                <!-- Left Column: Text Content -->
-                <div class="flex flex-col items-center md:items-start text-center md:text-left space-y-6 md:space-y-8">
-                    <!-- Main Headline -->
-                    <h1
-                        class="hero-headline text-white font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight tracking-tight animate-on-scroll">
-                        <span lang="es" class="hero-headline-text">El Escáner que Piensa. La Privacidad que
-                            Protege.</span>
-                        <span lang="en" class="hidden hero-headline-text">The Scanner That Thinks. The Privacy That
-                            Protects.</span>
-                    </h1>
-
-                    <!-- Subheadline -->
-                    <p
-                        class="hero-subheadline text-gray-300 text-lg sm:text-xl md:text-2xl lg:text-3xl font-light max-w-2xl leading-relaxed">
-                        <span lang="es" class="hero-subheadline-text">Deja de subir tu vida a la nube. Bricks Scan
-                            organiza, resume y protege tus documentos 100% en tu dispositivo.</span>
-                        <span lang="en" class="hidden hero-subheadline-text">Stop uploading your life to the cloud.
-                            Bricks Scan organizes, summarizes, and protects your docs 100% on-device.</span>
-                    </p>
-
-                    <!-- CTA Button -->
-                    <div class="hero-cta pt-4 md:pt-8">
-                        <a id="app_store_download_button" href="https://apps.apple.com/app/idYOUR_APP_ID"
-                            class="inline-block hover:scale-105 transition-transform"
-                            aria-label="Bricks Scan App Store download">
-                            <img lang="es"
-                                src="images-bricks-scan/Download_on_the_App_Store_Badge_ES_RGB_blk_100217.svg"
-                                alt="Descargar en App Store" class="h-12 md:h-14 w-auto" />
-                            <img lang="en"
-                                src="images-bricks-scan/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
-                                alt="Download on the App Store" class="hidden h-12 md:h-14 w-auto" />
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Right Column: Hero Image -->
-                <div class="hero-image-container">
-                    <div class="hero-parallax" data-parallax-parent>
-                        <div class="hero-parallax-layer layer-back" data-parallax-layer data-depth="0.4">
-                            <!-- Placeholder images - User should update these -->
-                            <img src="images-bricks-scan/back-layer-es-03.png" alt="" aria-hidden="true"
-                                class="w-full max-w-2xl mx-auto" loading="lazy"
-                                data-app-image="bricks-scan-hero-layer-back" />
-                        </div>
-                        <div class="hero-parallax-layer layer-middle" data-parallax-layer data-depth="0.8">
-                            <img src="images-bricks-scan/mid-layer-es-02.png" alt="Bricks Scan"
-                                class="w-full max-w-2xl mx-auto" data-app-image="bricks-scan-hero-layer-middle"
-                                loading="eager" />
-                        </div>
-                        <div class="hero-parallax-layer layer-front" data-parallax-layer data-depth="1.2">
-                            <img src="images-bricks-scan/top-layer-es-01.png" alt="" aria-hidden="true"
-                                class="w-full max-w-2xl mx-auto" loading="lazy"
-                                data-app-image="bricks-scan-hero-layer-front" />
-                        </div>
-                    </div>
+                <div class="cta-group reveal-on-scroll delay-200">
+                    <a href="https://apps.apple.com/app/idYOUR_APP_ID" class="btn btn-primary">
+                        <div class="accent-notch"></div>
+                        Download on the App Store
+                    </a>
+                    <a href="#solution" class="btn btn-secondary">Explore Bricks Scan</a>
                 </div>
             </div>
-        </div>
 
-        <!-- Scroll to Explore Indicator -->
-        <div class="absolute bottom-12 md:bottom-8 left-0 right-0 z-10 scroll-indicator"
-            onclick="scrollToNextSection()">
-            <div class="flex flex-col items-center space-y-2 text-white/60 mx-auto w-fit">
-                <span class="text-sm font-medium tracking-wider uppercase">
-                    <span lang="es">Desplázate para explorar</span>
-                    <span lang="en" class="hidden">Scroll to explore</span>
-                </span>
-                <div class="scroll-arrow">
-                    <svg class="w-6 h-6 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-                    </svg>
-                </div>
+            <!-- Hero Image -->
+            <div class="hero-image-wrapper reveal-on-scroll delay-300">
+                <img src="images-bricks-scan/hero-image.png" alt="Bricks Scan App Interface" class="hero-img">
             </div>
         </div>
     </section>
 
-    <!-- Problem & Value -->
-    <section class="py-32 bg-white" x-data="{ shown: false }" x-intersect.threshold.0.2="shown = true">
-        <div class="container mx-auto px-4">
-            <div class="max-w-4xl mx-auto text-center space-y-8">
-                <!-- Icon Parallax -->
-                <div class="app-icon-parallax mx-auto mb-10 w-32 h-32 md:w-40 md:h-40" data-icon-parallax>
-                    <div class="app-icon-layer layer-back" data-icon-depth="1.4" data-icon-direction="left">
-                        <img src="images-bricks-scan/fusion-es-01.png" alt="" aria-hidden="true" loading="lazy"
-                            data-app-image="bricks-scan-fusion-back" />
-                    </div>
-                    <div class="app-icon-layer layer-middle" data-icon-depth="1" data-icon-direction="right">
-                        <img src="images-bricks-scan/fusion-es-02.png" alt="" aria-hidden="true" loading="lazy"
-                            data-app-image="bricks-scan-fusion-middle" />
-                    </div>
-                    <div class="app-icon-layer layer-front">
-                        <img src="images-bricks-scan/bricks-scan-web-icon.png" alt="Bricks Scan App Icon" loading="lazy"
-                            onerror="this.onerror=null;this.src='https://placehold.co/128x128/1E40AF/FFF.png?text=Icon';" />
-                    </div>
-                </div>
-
-                <h2 class="text-gray-900 font-bold text-4xl md:text-6xl leading-tight tracking-tight dreamy-transition"
-                    :class="shown ? 'is-visible' : ''">
-                    <span lang="es">Soberanía Digital</span>
-                    <span lang="en" class="hidden">Digital Sovereignty</span>
-                </h2>
-                <p class="text-gray-600 text-xl md:text-2xl leading-relaxed max-w-3xl mx-auto dreamy-transition"
-                   style="transition-delay: 100ms;"
-                   :class="shown ? 'is-visible' : ''">
-                    <span lang="es">Tus contratos, recibos e identificaciones son asuntos privados. Bricks Scan utiliza
-                        la potencia del Neural Engine para procesar todo sin servidores.</span>
-                    <span lang="en" class="hidden">Your contracts, receipts, and IDs are private matters. Bricks Scan
-                        uses the power of the Neural Engine to process everything server-free.</span>
+    <!-- SECTION — THE PROBLEM -->
+    <section id="problem-section" class="section section-alt">
+        <div class="expanding-bg"></div>
+        <div class="container reading-column center-text">
+            <h2 class="section-title reveal-on-scroll">Every transaction creates complexity.</h2>
+            <div class="problem-content mt-sm reveal-on-scroll delay-100">
+                <p class="body-text mb-sm">
+                    Listings generate contracts, disclosures, amendments, inspection reports, ID verification, and
+                    closing documents.
+                </p>
+                <p class="body-text mb-sm">
+                    Files are shared across email, text, cloud drives, and transaction platforms. Finding the right
+                    version should not slow you down.
+                </p>
+                <p class="body-text">
+                    Real estate work is demanding enough. Your operational tools should reduce friction — not add to it.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- Feature 1: Smart Renaming (Text Left, Image Right) -->
-    <section class="py-24 md:py-32 overflow-hidden bg-white" x-data="{ shown: false }" x-intersect.threshold.0.3="shown = true">
-        <div class="container mx-auto px-4">
-            <div class="grid md:grid-cols-2 gap-12 lg:gap-24 items-center">
-                <!-- Text Column -->
-                <div class="order-2 md:order-1 space-y-6 text-center md:text-left dreamy-transition"
-                     :class="shown ? 'is-visible' : ''">
-                    <h2 class="text-3xl md:text-5xl font-bold text-gray-900 tracking-tight leading-tight">
-                        <span lang="es">Renombrado Inteligente</span>
-                        <span lang="en" class="hidden">Smart Renaming</span>
-                    </h2>
-                    <p class="text-lg md:text-xl text-gray-600 leading-relaxed">
-                        <span lang="es">Olvídate de "Escanear 2024-01". Nuestra IA analiza el contenido y renombra
-                            el archivo automáticamente (ej. "Factura - Apple - $99").</span>
-                        <span lang="en" class="hidden">Forget "Scan 2024-01". Our AI analyzes content and
-                            auto-renames files (e.g., "Invoice - Apple - $99").</span>
-                    </p>
+    <!-- SECTION — THE SOLUTION (Bricks Scan) -->
+    <section id="solution" class="section">
+        <div class="container grid-2">
+            <div class="solution-text">
+                <img src="images-bricks-scan/bricks-scan-web-icon.png" alt="Bricks Scan Icon"
+                    class="app-icon reveal-on-scroll">
+                <h2 class="section-title reveal-on-scroll delay-100">Organize every document. Instantly.</h2>
+                <p class="body-text mb-sm reveal-on-scroll delay-100">
+                    Bricks Scan captures, names, and classifies transaction documents automatically.
+                </p>
+                <p class="body-text mb-sm reveal-on-scroll delay-100">
+                    Search inside any page. Locate clauses, totals, or dates in seconds. Keep documents structured by
+                    property or deal.
+                </p>
+                <p class="body-text mb-sm reveal-on-scroll delay-100">
+                    Everything stays on your device unless you choose to sync.
+                </p>
+
+                <ul class="feature-list reveal-on-scroll delay-200">
+                    <li class="feature-item">
+                        Searchable PDFs by default
+                    </li>
+                    <li class="feature-item">
+                        Automatic document type detection
+                    </li>
+                    <li class="feature-item">
+                        Structured folders for contracts and disclosures
+                    </li>
+                    <li class="feature-item">
+                        Built specifically for iPhone, iPad, and Mac
+                    </li>
+                </ul>
+
+                <div class="reveal-on-scroll delay-300">
+                    <a href="#how-it-works" class="btn btn-secondary">See how Bricks Scan works</a>
                 </div>
-                <!-- Image Column -->
-                <div class="order-1 md:order-2 dreamy-transition"
-                     style="transition-delay: 200ms;"
-                     :class="shown ? 'is-visible' : ''">
-                    <div class="soft-image-card">
-                        <img src="images-bricks-scan/feature-es-01.jpg" alt="Smart Renaming" loading="lazy" data-app-image="bricks-scan-feature-01">
-                    </div>
+            </div>
+            <div class="solution-image reveal-on-scroll delay-200">
+                <div class="screenshot-stack">
+                    <img src="images-bricks-scan/screenshot-02.png" alt="Bricks Scan Screenshot Left"
+                        class="screenshot-side left">
+                    <img src="images-bricks-scan/screenshot-02.png" alt="Bricks Scan Screenshot Right"
+                        class="screenshot-side right">
+                    <img src="images-bricks-scan/screenshot-01.png" alt="Bricks Scan Organizing Documents"
+                        class="screenshot-main">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Feature 2: Executive Summaries (Image Left, Text Right) -->
-    <section class="py-24 md:py-32 overflow-hidden bg-gray-50" x-data="{ shown: false }" x-intersect.threshold.0.3="shown = true">
-        <div class="container mx-auto px-4">
-            <div class="grid md:grid-cols-2 gap-12 lg:gap-24 items-center">
-                <!-- Image Column -->
-                <div class="order-1 md:order-1 dreamy-transition"
-                     style="transition-delay: 200ms;"
-                     :class="shown ? 'is-visible' : ''">
-                    <div class="soft-image-card">
-                        <img src="images-bricks-scan/feature-es-02.jpg" alt="Executive Summaries" loading="lazy" data-app-image="bricks-scan-feature-02">
-                    </div>
+    <!-- SECTION — THE ECOSYSTEM -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="reading-column center-text mb-md">
+                <h2 class="section-title reveal-on-scroll">A focused toolkit for agents.</h2>
+                <p class="body-text reveal-on-scroll delay-100">
+                    Each Bricks app solves a specific operational burden. No unnecessary features. No enterprise
+                    complexity.
+                </p>
+            </div>
+
+            <div class="grid-3">
+                <!-- Bricks Scan -->
+                <div class="ecosystem-card embossed-card reveal-on-scroll delay-100">
+                    <img src="images-bricks-scan/bricks-scan-web-icon.png" alt="Scan" class="app-icon">
+                    <h3 class="subheading">Bricks Scan</h3>
+                    <p class="body-text" style="font-size: 16px;">Structure transaction paperwork and MLS documents.</p>
                 </div>
-                <!-- Text Column -->
-                <div class="order-2 md:order-2 space-y-6 text-center md:text-left dreamy-transition"
-                     :class="shown ? 'is-visible' : ''">
-                    <h2 class="text-3xl md:text-5xl font-bold text-gray-900 tracking-tight leading-tight">
-                        <span lang="es">Resúmenes Ejecutivos</span>
-                        <span lang="en" class="hidden">Executive Summaries</span>
-                    </h2>
-                    <p class="text-lg md:text-xl text-gray-600 leading-relaxed">
-                        <span lang="es">¿Contratos de 50 páginas? Obtén un resumen de 3 oraciones al instante sin
-                            leer todo el documento.</span>
-                        <span lang="en" class="hidden">50-page contracts? Get a 3-sentence executive summary
-                            instantly without reading the whole doc.</span>
-                    </p>
+
+                <!-- Bricks Mortgage -->
+                <div class="ecosystem-card embossed-card reveal-on-scroll delay-200">
+                    <img src="images-bricks-scan/bricks-calc-web-icon.png" alt="Mortgage" class="app-icon">
+                    <h3 class="subheading">Bricks Mortgage</h3>
+                    <p class="body-text" style="font-size: 16px;">Model deals quickly. Estimate payments, rates, and
+                        financing scenarios on the spot.</p>
                 </div>
+
+                <!-- Bricks CRM -->
+                <div class="ecosystem-card embossed-card reveal-on-scroll delay-300">
+                    <img src="images-bricks-scan/bricks-leads-web-icon.png" alt="CRM" class="app-icon">
+                    <h3 class="subheading">Bricks CRM</h3>
+                    <p class="body-text" style="font-size: 16px;">Track clients and follow-ups without bloated
+                        dashboards.</p>
+                </div>
+            </div>
+
+            <div class="center-text mt-md reveal-on-scroll delay-300">
+                <p class="body-text" style="font-weight: 500;">Use one tool. Or use the full suite.</p>
             </div>
         </div>
     </section>
 
-    <!-- Feature 3: Filing Assistant (Text Left, Image Right) -->
-    <section class="py-24 md:py-32 overflow-hidden bg-white" x-data="{ shown: false }" x-intersect.threshold.0.3="shown = true">
-        <div class="container mx-auto px-4">
-            <div class="grid md:grid-cols-2 gap-12 lg:gap-24 items-center">
-                <!-- Text Column -->
-                <div class="order-2 md:order-1 space-y-6 text-center md:text-left dreamy-transition"
-                     :class="shown ? 'is-visible' : ''">
-                    <h2 class="text-3xl md:text-5xl font-bold text-gray-900 tracking-tight leading-tight">
-                        <span lang="es">Tu Asistente de Archivo</span>
-                        <span lang="en" class="hidden">Your Filing Assistant</span>
-                    </h2>
-                    <p class="text-lg md:text-xl text-gray-600 leading-relaxed">
-                        <span lang="es">Clasificación automática. Las facturas van a "Finanzas", los IDs a
-                            "Personal". Tu archivador se gestiona solo.</span>
-                        <span lang="en" class="hidden">Auto-classification. Invoices go to "Finance", IDs to
-                            "Personal". Your filing cabinet manages itself.</span>
-                    </p>
-                    <ul class="space-y-3 pt-2 inline-block text-left">
-                        <li class="flex items-center gap-3 text-gray-700 text-lg">
-                            <svg class="w-6 h-6 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span lang="es">Listas Inteligentes</span>
-                            <span lang="en" class="hidden">Smart Lists</span>
-                        </li>
-                        <li class="flex items-center gap-3 text-gray-700 text-lg">
-                            <svg class="w-6 h-6 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span lang="es">Búsqueda OCR instantánea</span>
-                            <span lang="en" class="hidden">Instant OCR Search</span>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Image Column -->
-                <div class="order-1 md:order-2 dreamy-transition"
-                     style="transition-delay: 200ms;"
-                     :class="shown ? 'is-visible' : ''">
-                    <div class="soft-image-card">
-                        <img src="images-bricks-scan/feature-es-03.jpg" alt="Filing Assistant" loading="lazy" data-app-image="bricks-scan-feature-03">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Feature 4: On-Device Privacy (Image Left, Text Right) -->
-    <section class="py-24 md:py-32 overflow-hidden bg-gray-50" x-data="{ shown: false }" x-intersect.threshold.0.3="shown = true">
-        <div class="container mx-auto px-4">
-            <div class="grid md:grid-cols-2 gap-12 lg:gap-24 items-center">
-                <!-- Image Column -->
-                <div class="order-1 md:order-1 dreamy-transition"
-                     style="transition-delay: 200ms;"
-                     :class="shown ? 'is-visible' : ''">
-                    <div class="soft-image-card">
-                        <img src="images-bricks-scan/feature-es-04.jpg" alt="On-Device Privacy" loading="lazy" data-app-image="bricks-scan-feature-04">
-                    </div>
-                </div>
-                <!-- Text Column -->
-                <div class="order-2 md:order-2 space-y-6 text-center md:text-left dreamy-transition"
-                     :class="shown ? 'is-visible' : ''">
-                    <h2 class="text-3xl md:text-5xl font-bold text-gray-900 tracking-tight leading-tight">
-                        <span lang="es">Privacidad "On-Device"</span>
-                        <span lang="en" class="hidden">On-Device Privacy</span>
-                    </h2>
-                    <p class="text-lg md:text-xl text-gray-600 leading-relaxed">
-                        <span lang="es">Sin servidores. Sin cuentas obligatorias. Tus datos nunca salen de tu iPhone
-                            o Mac.</span>
-                        <span lang="en" class="hidden">No servers. No forced accounts. Your data never leaves your
-                            iPhone or Mac.</span>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Feature 5: Native Design (Text Left, Image Right) -->
-    <section class="py-24 md:py-32 overflow-hidden bg-white" x-data="{ shown: false }" x-intersect.threshold.0.3="shown = true">
-        <div class="container mx-auto px-4">
-            <div class="grid md:grid-cols-2 gap-12 lg:gap-24 items-center">
-                <!-- Text Column -->
-                <div class="order-2 md:order-1 space-y-6 text-center md:text-left dreamy-transition"
-                     :class="shown ? 'is-visible' : ''">
-                    <h2 class="text-3xl md:text-5xl font-bold text-gray-900 tracking-tight leading-tight">
-                        <span lang="es">Diseñado para Apple</span>
-                        <span lang="en" class="hidden">Crafted for Apple</span>
-                    </h2>
-                    <p class="text-lg md:text-xl text-gray-600 leading-relaxed">
-                        <span lang="es">No es un port. Es una experiencia nativa fluida, optimizada para batería y
-                            lista para funcionar sin conexión.</span>
-                        <span lang="en" class="hidden">Not a port. A fluid native experience, battery optimized, and
-                            ready to work completely offline.</span>
-                    </p>
-                </div>
-                <!-- Image Column -->
-                <div class="order-1 md:order-2 dreamy-transition"
-                     style="transition-delay: 200ms;"
-                     :class="shown ? 'is-visible' : ''">
-                    <div class="soft-image-card">
-                        <img src="images-bricks-scan/feature-es-05.jpg" alt="Native Design" loading="lazy" data-app-image="bricks-scan-feature-05">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Download CTA -->
-    <section class="py-32 md:py-40" style="background-color: #303030;" x-data="{ shown: false }" x-intersect.threshold.0.3="shown = true">
-        <div class="container mx-auto px-4 text-center max-w-3xl">
-            <div class="download-zoom-wrapper mx-auto mb-10 dreamy-transition" :class="shown ? 'is-visible' : ''">
-                <span class="zoom-line zoom-line-1" aria-hidden="true"></span>
-                <span class="zoom-line zoom-line-3" aria-hidden="true"></span>
-
-                <img src="images-bricks-scan/bricks-scan-web-icon.png" alt="Bricks Scan App Icon"
-                    class="w-32 h-32 md:w-40 md:h-40" />
-            </div>
-            <h2 class="text-white font-bold text-4xl md:text-6xl leading-tight tracking-tight mb-6 dreamy-transition" 
-                style="transition-delay: 100ms;"
-                :class="shown ? 'is-visible' : ''">
-                <span lang="es">Convierte papel en poder.</span>
-                <span lang="en" class="hidden">Turn paper into power.</span>
-            </h2>
-            <p class="text-gray-300 text-xl md:text-2xl leading-relaxed mb-10 dreamy-transition"
-               style="transition-delay: 200ms;"
-               :class="shown ? 'is-visible' : ''">
-                <span lang="es">Comienza gratis con el Plan Esencial (12 documentos). Desbloquea ilimitado para
-                    siempre.</span>
-                <span lang="en" class="hidden">Start free with the Essentials Plan (12 docs). Unlock unlimited
-                    forever.</span>
+    <!-- SECTION — PRIVACY & CONTROL -->
+    <section class="section">
+        <div class="container reading-column center-text">
+            <h2 class="section-title reveal-on-scroll">Designed with control in mind.</h2>
+            <p class="body-text mb-sm reveal-on-scroll delay-100">
+                Documents are processed on your device. Accounts are optional. Tracking is minimal and transparent.
             </p>
-            <div class="mt-8 dreamy-transition"
-                 style="transition-delay: 300ms;"
-                 :class="shown ? 'is-visible' : ''">
-                <a id="app_store_download_button" href="https://apps.apple.com/app/idYOUR_APP_ID"
-                    class="inline-block hover:scale-105 transition-transform"
-                    aria-label="Bricks Scan App Store download">
-                    <img lang="es" src="images-bricks-scan/Download_on_the_App_Store_Badge_ES_RGB_blk_100217.svg"
-                        alt="Descargar en App Store" class="h-14 md:h-16" />
-                    <img lang="en" src="images-bricks-scan/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
-                        alt="Download on the App Store" class="hidden h-14 md:h-16" />
-                </a>
+            <p class="body-text reveal-on-scroll delay-100">
+                Bricks is built to respect your workflow and your data.
+            </p>
+        </div>
+    </section>
+
+    <!-- SECTION — TESTIMONIALS -->
+    <section class="section" style="border-top: 1px solid var(--divider); border-bottom: 1px solid var(--divider);">
+        <div class="container">
+            <h2 class="section-title center-text reveal-on-scroll">Used by working agents.</h2>
+
+            <div class="testimonials-grid">
+                <div class="testimonial reveal-on-scroll delay-100">
+                    <p class="body-text quote">“I can find any disclosure or amendment in seconds. It removed a layer of
+                        stress from every deal.”</p>
+                    <p class="metadata">— Residential Agent, Texas</p>
+                </div>
+                <div class="testimonial reveal-on-scroll delay-200">
+                    <p class="body-text quote">“The mortgage calculator alone saves time during client meetings.”</p>
+                    <p class="metadata">— Broker Associate, California</p>
+                </div>
+                <div class="testimonial reveal-on-scroll delay-300">
+                    <p class="body-text quote">“It feels like a system app made for real estate.”</p>
+                    <p class="metadata">— Independent Agent, Florida</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ -->
-    <section class="py-32" id="faq" x-data="{ shown: false }" x-intersect.threshold.0.2="shown = true">
-        <div class="container mx-auto px-4 max-w-3xl">
-            <h2 class="text-gray-900 font-bold text-4xl md:text-5xl mb-12 text-center dreamy-transition"
-                :class="shown ? 'is-visible' : ''">
-                <span lang="es">Preguntas frecuentes</span>
-                <span lang="en" class="hidden">Frequently asked questions</span>
-            </h2>
+    <!-- SECTION — PRICING PREVIEW -->
+    <section class="section">
+        <div class="container reading-column center-text">
+            <h2 class="section-title reveal-on-scroll">Simple pricing.</h2>
+            <p class="body-text mb-md reveal-on-scroll delay-100">
+                Each app is available individually. Or subscribe to the full Bricks suite.
+            </p>
 
-            <div class="rounded-3xl border border-gray-300 bg-white divide-y divide-gray-300 overflow-hidden dreamy-transition"
-                 style="transition-delay: 200ms;"
-                 :class="shown ? 'is-visible' : ''">
-                <!-- Item 1: Privacy -->
-                <div x-data="{ open: false }">
-                    <button
-                        class="w-full flex items-center justify-between gap-6 px-6 py-5 text-left hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-bricks-yellow/70"
-                        @click="open = !open">
-                        <span class="flex-1 text-left text-gray-900 font-semibold text-lg">
-                            <span lang="es">¿Es realmente privado? ¿Suben mis contratos?</span>
-                            <span lang="en" class="hidden">Is it really private? Do you upload my contracts?</span>
-                        </span>
-                        <span class="shrink-0 text-gray-600">
-                            <!-- Icon chevron -->
-                            <svg x-show="!open" class="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 4v16m8-8H4"></path>
-                            </svg>
-                            <svg x-show="open" class="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4">
-                                </path>
-                            </svg>
-                        </span>
-                    </button>
-                    <div x-show="open" x-transition class="px-6 pb-6 text-gray-700">
-                        <span lang="es">Absolutamente. Bricks Scan utiliza arquitectura "Zero-Knowledge". Todo el OCR,
-                            el análisis de IA y la clasificación ocurren en tu dispositivo. No tenemos servidores para
-                            ver tus datos.</span>
-                        <span lang="en" class="hidden">Absolutely. Bricks Scan uses "Zero-Knowledge" architecture. All
-                            OCR, AI analysis, and classification happen on your device. We have no servers to see your
-                            data.</span>
-                    </div>
+            <div class="pricing-table embossed-card reveal-on-scroll delay-200">
+                <div class="pricing-row">
+                    <span style="font-weight: 500;">Bricks Scan</span>
+                    <span>From $69/year</span>
                 </div>
-
-                <!-- Item 2: Free Plan Limits -->
-                <div x-data="{ open: false }">
-                    <button
-                        class="w-full flex items-center justify-between gap-6 px-6 py-5 text-left hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-bricks-yellow/70"
-                        @click="open = !open">
-                        <span class="flex-1 text-left text-gray-900 font-semibold text-lg">
-                            <span lang="es">¿Cómo funciona el límite gratuito?</span>
-                            <span lang="en" class="hidden">How does the free limit work?</span>
-                        </span>
-                        <span class="shrink-0 text-gray-600">
-                            <svg x-show="!open" class="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 4v16m8-8H4"></path>
-                            </svg>
-                            <svg x-show="open" class="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4">
-                                </path>
-                            </svg>
-                        </span>
-                    </button>
-                    <div x-show="open" x-transition class="px-6 pb-6 text-gray-700">
-                        <span lang="es">El plan gratuito te permite gestionar hasta 12 documentos activos (máx. 20
-                            páginas cada uno) con todas las funciones de IA habilitadas. Es perfecto para proyectos
-                            específicos. Para archivo ilimitado, existe la opción Pro.</span>
-                        <span lang="en" class="hidden">The free plan lets you manage up to 12 active documents (max 20
-                            pages each) with all AI features enabled. Perfect for specific projects. For unlimited
-                            archiving, there is a Pro option.</span>
-                    </div>
+                <div class="pricing-row">
+                    <span style="font-weight: 500;">Bricks Mortgage</span>
+                    <span>From $59/year</span>
                 </div>
-
-                <!-- Item 3: Offline -->
-                <div x-data="{ open: false }">
-                    <button
-                        class="w-full flex items-center justify-between gap-6 px-6 py-5 text-left hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-bricks-yellow/70"
-                        @click="open = !open">
-                        <span class="flex-1 text-left text-gray-900 font-semibold text-lg">
-                            <span lang="es">¿Funciona Apple Intelligence en mi teléfono?</span>
-                            <span lang="en" class="hidden">Does Apple Intelligence work on my phone?</span>
-                        </span>
-                        <span class="shrink-0 text-gray-600">
-                            <svg x-show="!open" class="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 4v16m8-8H4"></path>
-                            </svg>
-                            <svg x-show="open" class="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4">
-                                </path>
-                            </svg>
-                        </span>
-                    </button>
-                    <div x-show="open" x-transition class="px-6 pb-6 text-gray-700">
-                        <span lang="es">Bricks Scan utiliza las últimas APIs de Apple Intelligence en dispositivos
-                            compatibles. Si tu dispositivo es más antiguo, la app utiliza algoritmos ML estándar
-                            optimizados para seguir ofreciendo reconocimiento de texto y organización rápida.</span>
-                        <span lang="en" class="hidden">Bricks Scan uses the latest Apple Intelligence APIs on supported
-                            devices. If your device is older, the app gracefully falls back to optimized standard ML
-                            algorithms to still provide text recognition and fast organization.</span>
-                    </div>
+                <div class="pricing-row">
+                    <span style="font-weight: 500;">Bricks CRM</span>
+                    <span>From $79/year</span>
                 </div>
+                <div class="pricing-row total">
+                    <span>Bricks Suite</span>
+                    <span>$149/year</span>
+                </div>
+            </div>
 
-
+            <div class="mt-sm reveal-on-scroll delay-300">
+                <p class="metadata mb-sm">No contracts. Cancel anytime.</p>
+                <a href="#" class="btn btn-secondary">View pricing</a>
             </div>
         </div>
     </section>
 
-    <!-- Bricks Ecosystem -->
-    <section class="py-32 md:py-48" style="background-color: #FFFFFF;" x-data="{ shown: false }" x-intersect.threshold.0.3="shown = true">
-        <div class="container mx-auto px-4 text-center max-w-3xl">
-            <h2 class="text-gray-900 font-bold text-4xl md:text-5xl mb-12 dreamy-transition" :class="shown ? 'is-visible' : ''">
-                <span lang="es">Descubre más de Bricks Apps</span>
-                <span lang="en" class="hidden">Discover more from Bricks Apps</span>
-            </h2>
-            <div class="mt-12 flex flex-wrap justify-center gap-6 dreamy-transition" 
-                 style="transition-delay: 200ms;"
-                 :class="shown ? 'is-visible' : ''">
-                <a href="bricks-calc.html"
-                    class="btn-black bg-white border border-gray-300 text-gray-900 text-lg px-8 py-4 rounded-3xl hover:bg-gray-50 transition-colors inline-flex items-center gap-3 justify-center">
-                    <img src="images-bricks-scan/bricks-calc-web-icon.png" alt="Bricks Calc Icon"
-                        class="w-6 h-6 rounded" />
-                    <span>Bricks Calc</span>
-                </a>
-                <a href="#coming-soon"
-                    class="btn-black bg-gray-900 text-white text-lg px-8 py-4 rounded-3xl hover:scale-105 transition-transform inline-flex items-center gap-3 justify-center">
-                    <img src="images-bricks-scan/bricks-leads-web-icon.png" alt="Bricks Leads Icon"
-                        class="w-6 h-6 rounded" />
-                    <span>Bricks Leads</span>
-                </a>
+    <!-- FINAL CTA SECTION -->
+    <section class="section section-hero">
+        <div class="container reading-column center-text">
+            <h2 class="section-title reveal-on-scroll">Reduce operational friction.</h2>
+            <p class="body-text mb-sm reveal-on-scroll delay-100">
+                Built for real estate professionals who work on Apple.
+            </p>
+            <div class="cta-group reveal-on-scroll delay-200">
+                <a href="https://apps.apple.com/app/idYOUR_APP_ID" class="btn btn-primary">Download on the App Store</a>
+                <a href="index.html" class="btn btn-secondary">Learn more about Bricks</a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 py-12 text-slate-300">
-        <div class="container px-4 md:px-6">
-            <div class="flex flex-col md:flex-row md:justify-between gap-8">
-                <div class="mb-8 md:mb-0">
-                    <a href="index.html" class="text-2xl font-bold text-white">Bricks Apps</a>
-                    <p class="mt-2 max-w-xs text-slate-400">
-                        <span lang="es">Software artesanal para profesionales soberanos.</span>
-                        <span lang="en" class="hidden">Crafted software for sovereign professionals.</span>
-                    </p>
-                </div>
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
-                    <div>
-                        <h3 class="mb-4 text-lg font-semibold text-white">
-                            <span lang="es">Apps</span>
-                            <span lang="en" class="hidden">Apps</span>
-                        </h3>
-                        <ul class="space-y-2">
-                            <li>
-                                <a href="bricks-scan.html" class="transition-colors text-white font-medium">Bricks
-                                    Scan</a>
-                            </li>
-                            <li>
-                                <a href="bricks-calc.html" class="transition-colors hover:text-white">Bricks Calc</a>
-                            </li>
-                            <li>
-                                <a href="#coming-soon" class="transition-colors hover:text-white">Bricks Leads</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="mb-4 text-lg font-semibold text-white">
-                            <span lang="es">Compañía</span>
-                            <span lang="en" class="hidden">Company</span>
-                        </h3>
-                        <ul class="space-y-2">
-                            <li>
-                                <a href="about.html" class="transition-colors hover:text-white">
-                                    <span lang="es">Sobre nosotros</span>
-                                    <span lang="en" class="hidden">About us</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="terms.html" class="transition-colors hover:text-white">
-                                    <span lang="es">Términos y privacidad</span>
-                                    <span lang="en" class="hidden">Terms & Privacy</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="mb-4 text-lg font-semibold text-white">
-                            <span lang="es">Soporte</span>
-                            <span lang="en" class="hidden">Support</span>
-                        </h3>
-                        <ul class="space-y-2">
-                            <li>
-                                <a href="https://wa.me/51953431080" target="_blank" rel="noopener noreferrer"
-                                    class="transition-colors hover:text-white">WhatsApp</a>
-                            </li>
-                            <li>
-                                <a href="mailto:hello@bricks.pe"
-                                    class="transition-colors hover:text-white">hello@bricks.pe</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="mt-12 border-t border-gray-800 pt-8 text-center text-sm text-slate-400">
-                <p>
-                    <span lang="es">© 2026 Bricks Apps. Todos los derechos reservados.</span>
-                    <span lang="en" class="hidden">© 2026 Bricks Apps. All rights reserved.</span>
-                </p>
-            </div>
-        </div>
+    <footer class="container site-footer center-text reveal-on-scroll">
+        <img src="images-bricks-scan/Bricks Logo-dark.svg" alt="Bricks Logo"
+            style="height: 24px; opacity: 0.5; margin-bottom: 24px;">
+        <p class="metadata footer-links">
+            © 2026 Bricks. All rights reserved. <br>
+            <a href="privacy.html">Privacy Policy</a> &nbsp;•&nbsp; <a href="terms.html">Terms of Service</a>
+        </p>
     </footer>
 
-    <!-- Scripts reused from template -->
-    <!-- Hero Parallax Motion -->
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-            const parallaxGroups = document.querySelectorAll("[data-parallax-parent]");
-            const iconGroups = document.querySelectorAll("[data-icon-parallax]");
-
-            if (prefersReducedMotion || (!parallaxGroups.length && !iconGroups.length)) {
-                return;
-            }
-
-            let pointerX = 0;
-            let pointerY = 0;
-            let rafId = null;
-
-            const updateAnimations = () => {
-                rafId = null;
-
-                if (parallaxGroups.length) {
-                    parallaxGroups.forEach((group) => {
-                        const rect = group.getBoundingClientRect();
-                        const distanceFromCenter = rect.top + rect.height / 2 - window.innerHeight / 2;
-
-                        group.querySelectorAll("[data-parallax-layer]").forEach((layer) => {
-                            const depth = Number(layer.dataset.depth || 0);
-                            const scrollOffset = -distanceFromCenter * depth * 0.22;
-                            const pointerOffsetX = pointerX * depth * 32;
-                            const pointerOffsetY = pointerY * depth * 24;
-
-                            layer.style.transform = `translate3d(${pointerOffsetX}px, ${scrollOffset + pointerOffsetY}px, 0)`;
-                        });
-                    });
-                }
-
-                if (iconGroups.length) {
-                    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-                    const start = viewportHeight * 0.8;
-                    const end = viewportHeight * 0.2;
-                    const range = Math.max(start - end, 1);
-
-                    iconGroups.forEach((group) => {
-                        const rect = group.getBoundingClientRect();
-                        const progressRaw = (start - rect.top) / range;
-                        const progress = Math.min(1, Math.max(0, progressRaw));
-
-                        group.querySelectorAll("[data-icon-depth]").forEach((layer) => {
-                            const depth = Number(layer.dataset.iconDepth || 1);
-                            const travel = 140 * depth;
-                            const offsetY = (1 - progress) * travel;
-                            const direction = layer.dataset.iconDirection || "center";
-                            const horizontalTravel = direction === "left" ? -120 : direction === "right" ? 120 : 0;
-                            const offsetX = (1 - progress) * horizontalTravel;
-                            const rotation = direction === "left" ? -4 : direction === "right" ? 4 : 0;
-                            const rotateAngle = rotation * (1 - progress);
-                            const scale = 1 - progress * 0.08 * depth;
-                            const clampedScale = Math.max(0.85, scale);
-
-                            layer.style.transform =
-                                `translate3d(-50%, -50%, 0) translate3d(${offsetX}px, ${-offsetY}px, 0) rotate(${rotateAngle}deg) scale(${clampedScale})`;
-                            layer.style.opacity = Math.min(1, Math.max(0, progress * 1.25));
-                        });
-
-                        const frontLayer = group.querySelector(".layer-front");
-                        if (frontLayer) {
-                            frontLayer.style.transform = "translate3d(-50%, -50%, 0)";
-                            frontLayer.style.opacity = 1;
-                        }
-                    });
-                }
+        // Intersection Observer for Reveal on Scroll
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
             };
 
-            const scheduleUpdate = () => {
-                if (rafId !== null) return;
-                rafId = requestAnimationFrame(updateAnimations);
-            };
-
-            window.addEventListener("scroll", scheduleUpdate, { passive: true });
-            window.addEventListener("resize", scheduleUpdate);
-
-            if (parallaxGroups.length) {
-                window.addEventListener("pointermove", (event) => {
-                    pointerX = event.clientX / window.innerWidth - 0.5;
-                    pointerY = event.clientY / window.innerHeight - 0.5;
-                    scheduleUpdate();
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
                 });
+            }, observerOptions);
+
+            const animatedElements = document.querySelectorAll('.reveal-on-scroll');
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });
+
+            // Expanding Background Logic
+            const problemSection = document.getElementById('problem-section');
+            const expandingBg = problemSection ? problemSection.querySelector('.expanding-bg') : null;
+
+            if (problemSection && expandingBg) {
+                const handleScroll = () => {
+                    const rect = problemSection.getBoundingClientRect();
+                    const windowHeight = window.innerHeight;
+
+                    // Calculate progress based on section position
+                    // 0 = section top is at bottom of viewport
+                    // 1 = section top is near top of viewport (trigger point)
+                    // trigger point: define how far up it needs to be to be full width
+                    const triggerPoint = windowHeight * 0.2; // 20% from top
+                    const totalDistance = windowHeight - triggerPoint;
+
+                    let progress = (windowHeight - rect.top) / totalDistance;
+
+                    // Clamp progress between 0 and 1
+                    progress = Math.min(Math.max(progress, 0), 1);
+
+                    // Interpolate values
+                    const startWidth = 50; // percentage
+                    const endWidth = 100;
+                    const startRadius = 24; // px
+                    const endRadius = 0;
+
+                    const currentWidth = startWidth + ((endWidth - startWidth) * progress);
+                    const currentRadius = startRadius - ((startRadius - endRadius) * progress);
+
+                    expandingBg.style.width = `${currentWidth}%`;
+                    expandingBg.style.borderRadius = `${currentRadius}px`;
+                };
+
+                window.addEventListener('scroll', handleScroll, { passive: true });
+                handleScroll(); // Initial call
             }
 
-            scheduleUpdate();
+            // Solution Section Fan-out Animation Logic
+            const solutionSection = document.getElementById('solution');
+            const leftScreenshot = solutionSection ? solutionSection.querySelector('.screenshot-side.left') : null;
+            const rightScreenshot = solutionSection ? solutionSection.querySelector('.screenshot-side.right') : null;
+
+            if (solutionSection && leftScreenshot && rightScreenshot) {
+                const handleSolutionScroll = () => {
+                    const rect = solutionSection.getBoundingClientRect();
+                    const windowHeight = window.innerHeight;
+
+                    // Start animation when section enters viewport
+                    // Finish when section is centered
+                    const startPoint = windowHeight;
+                    const endPoint = windowHeight * 0.2;
+                    const totalDistance = startPoint - endPoint;
+
+                    let progress = (startPoint - rect.top) / totalDistance;
+                    progress = Math.min(Math.max(progress, 0), 1);
+
+                    // Interpolate values for fan-out
+                    const maxRotation = 4; // degrees
+                    const maxTranslateX = 120; // pixels
+                    const maxTranslateY = -20; // pixels
+
+                    const currentRotation = maxRotation * progress;
+                    const currentTranslateX = maxTranslateX * progress;
+                    const currentTranslateY = maxTranslateY * progress;
+
+                    leftScreenshot.style.transform = `translateX(-${currentTranslateX}px) translateY(${currentTranslateY}px) rotate(-${currentRotation}deg)`;
+                    rightScreenshot.style.transform = `translateX(${currentTranslateX}px) translateY(${currentTranslateY}px) rotate(${currentRotation}deg)`;
+                };
+
+                window.addEventListener('scroll', handleSolutionScroll, { passive: true });
+                handleSolutionScroll(); // Initial call
+            }
         });
-
-        function scrollToNextSection() {
-            const heroSection = document.querySelector(".hero-section-lusion");
-            const nextSection = heroSection.nextElementSibling;
-            if (nextSection) {
-                nextSection.scrollIntoView({ behavior: "smooth", block: "start" });
-            }
-        }
     </script>
 </body>
 
