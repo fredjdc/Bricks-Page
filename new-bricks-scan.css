@@ -421,8 +421,6 @@ a:hover {
 .hero-img {
     width: 100%;
     height: auto;
-    /* Soft bas-relief shadow instead of drop-shadow if possible, or keep drop-shadow for transparent pngs */
-    filter: drop-shadow(12px 12px 24px var(--surface-shadow)) drop-shadow(-8px -8px 16px var(--bg-white));
     border-radius: var(--r3-primary);
 }
 
