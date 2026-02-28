@@ -542,7 +542,7 @@ a:hover {
 .screenshot-stack {
     position: relative;
     width: 100%;
-    max-width: 320px;
+    max-width: 240px;
     margin: 0 auto;
 }
 
