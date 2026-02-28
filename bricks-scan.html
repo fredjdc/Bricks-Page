@@ -407,9 +407,10 @@
                     progress = Math.min(Math.max(progress, 0), 1);
 
                     // Interpolate values for fan-out
-                    const maxRotation = 4; // degrees
-                    const maxTranslateX = 80; // pixels
-                    const maxTranslateY = -20; // pixels
+                    const isMobile = window.innerWidth <= 768;
+                    const maxRotation = isMobile ? 3 : 4; // degrees
+                    const maxTranslateX = isMobile ? 40 : 80; // pixels
+                    const maxTranslateY = isMobile ? -10 : -20; // pixels
 
                     const currentRotation = maxRotation * progress;
                     const currentTranslateX = maxTranslateX * progress;
