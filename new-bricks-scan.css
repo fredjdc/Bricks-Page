@@ -5,16 +5,24 @@
 
 :root {
     /* 2️⃣ Color System (Web) - Cool Neutrals Only */
-    --bg-primary: #F6F7F8;    /* Off-white base */
-    --bg-white: #FFFFFF;      /* White */
-    --surface-shadow: #E7ECEF; /* Cool gray (surface shadow) */
-    --depth-plane: #C9D3DA;   /* Cool gray (depth plane) */
-    --edge-def: #9AA7B2;      /* Cool gray (edge definition) */
-    
-    --text-primary: #0B0F14;  /* Near-black (UI text) */
-    --text-secondary: #55626E; /* Secondary text gray */
-    
-    --accent-teal: #00A6A1;   /* The ONLY color accent */
+    --bg-primary: #F6F7F8;
+    /* Off-white base */
+    --bg-white: #FFFFFF;
+    /* White */
+    --surface-shadow: #E7ECEF;
+    /* Cool gray (surface shadow) */
+    --depth-plane: #C9D3DA;
+    /* Cool gray (depth plane) */
+    --edge-def: #9AA7B2;
+    /* Cool gray (edge definition) */
+
+    --text-primary: #0B0F14;
+    /* Near-black (UI text) */
+    --text-secondary: #55626E;
+    /* Secondary text gray */
+
+    --accent-teal: #00A6A1;
+    /* The ONLY color accent */
 
     /* 3️⃣ Typography */
     --font-stack: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", system-ui, sans-serif;
@@ -29,22 +37,25 @@
     --reading-width: 720px;
 
     /* Border Radius Families */
-    --r1-small: 8px;     /* small details */
-    --r2-inner: 16px;    /* inner cutouts */
-    --r3-primary: 24px;  /* primary silhouette */
+    --r1-small: 8px;
+    /* small details */
+    --r2-inner: 16px;
+    /* inner cutouts */
+    --r3-primary: 24px;
+    /* primary silhouette */
 
     /* Bas-Relief Shadows */
     /* Light top-left, shadow down-right */
-    --emboss-raised: 
-        12px 12px 24px var(--surface-shadow), 
+    --emboss-raised:
+        12px 12px 24px var(--surface-shadow),
         -12px -12px 24px var(--bg-white);
-    
-    --emboss-raised-hover: 
-        16px 16px 32px var(--surface-shadow), 
+
+    --emboss-raised-hover:
+        16px 16px 32px var(--surface-shadow),
         -16px -16px 32px var(--bg-white);
-        
-    --emboss-recessed: 
-        inset 6px 6px 12px var(--surface-shadow), 
+
+    --emboss-recessed:
+        inset 6px 6px 12px var(--surface-shadow),
         inset -6px -6px 12px var(--bg-white);
 
     --micro-seam: inset 0 1px 2px var(--depth-plane);
@@ -75,16 +86,25 @@ body {
 body::before {
     content: "";
     position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     pointer-events: none;
     z-index: 9999;
     background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="0.03"/%3E%3C/svg%3E');
 }
 
 /* Typography Hierarchy */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     color: var(--text-primary);
-    font-weight: 500; /* Clean, not too loud */
+    font-weight: 500;
+    /* Clean, not too loud */
     letter-spacing: -0.02em;
 }
 
@@ -152,7 +172,9 @@ a:hover {
 
 .expanding-bg {
     position: absolute;
-    top: 0; bottom: 0; left: 50%;
+    top: 0;
+    bottom: 0;
+    left: 50%;
     transform: translateX(-50%);
     width: 50%;
     height: 100%;
@@ -192,12 +214,15 @@ a:hover {
         gap: 32px;
         text-align: center;
     }
+
     .hero-content {
         text-align: center;
     }
+
     .hero-content .cta-group {
         justify-content: center;
     }
+
     .hero-image-wrapper {
         width: 100%;
         max-width: 500px;
@@ -228,10 +253,21 @@ a:hover {
     margin: 0 auto;
 }
 
-.mt-sm { margin-top: var(--space-sm); }
-.mt-md { margin-top: var(--space-md); }
-.mb-sm { margin-bottom: var(--space-sm); }
-.mb-md { margin-bottom: var(--space-md); }
+.mt-sm {
+    margin-top: var(--space-sm);
+}
+
+.mt-md {
+    margin-top: var(--space-md);
+}
+
+.mb-sm {
+    margin-bottom: var(--space-sm);
+}
+
+.mb-md {
+    margin-bottom: var(--space-md);
+}
 
 /* 9️⃣ Bas-Relief UI Components */
 .embossed-card {
@@ -251,7 +287,7 @@ a:hover {
 .teal-accent-inlay {
     display: inline-block;
     background-color: var(--accent-teal);
-    box-shadow: inset 2px 2px 4px rgba(0,0,0,0.1), inset -1px -1px 2px rgba(255,255,255,0.3);
+    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.1), inset -1px -1px 2px rgba(255, 255, 255, 0.3);
     border-radius: var(--r1-small);
 }
 
@@ -286,7 +322,10 @@ a:hover {
 .btn::after {
     content: '';
     position: absolute;
-    top: 2px; left: 2px; right: 2px; bottom: 2px;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
     border-radius: calc(var(--r2-inner) - 2px);
     border: 1px solid var(--bg-white);
     pointer-events: none;
@@ -310,7 +349,7 @@ a:hover {
     border-radius: 4px;
     margin-left: -12px;
     margin-right: 12px;
-    box-shadow: inset 1px 1px 3px rgba(0,0,0,0.2);
+    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .btn-secondary {
@@ -331,9 +370,17 @@ a:hover {
     transform: translateY(0);
 }
 
-.delay-100 { transition-delay: 0.1s; }
-.delay-200 { transition-delay: 0.2s; }
-.delay-300 { transition-delay: 0.3s; }
+.delay-100 {
+    transition-delay: 0.1s;
+}
+
+.delay-200 {
+    transition-delay: 0.2s;
+}
+
+.delay-300 {
+    transition-delay: 0.3s;
+}
 
 /* Components */
 
@@ -349,7 +396,8 @@ a:hover {
 .logo img {
     height: 24px;
     display: block;
-    opacity: 0.8; /* softer contrast */
+    opacity: 0.8;
+    /* softer contrast */
 }
 
 /* Hero Image Wrapper */
@@ -375,7 +423,8 @@ a:hover {
     list-style: none;
     margin-bottom: 32px;
     padding-left: 12px;
-    border-left: 2px solid var(--surface-shadow); /* Subtly recessed line */
+    border-left: 2px solid var(--surface-shadow);
+    /* Subtly recessed line */
 }
 
 .feature-item {
@@ -478,7 +527,7 @@ a:hover {
 .screenshot-stack {
     position: relative;
     width: 100%;
-    max-width: 500px;
+    max-width: 360px;
     margin: 0 auto;
 }
 
@@ -512,13 +561,49 @@ a:hover {
 
 /* Mobile Responsive Adjustments */
 @media (max-width: 768px) {
-    h1.hero-title { font-size: 40px; }
-    h2.section-title { font-size: 32px; }
-    .grid-2 { grid-template-columns: 1fr; gap: 48px; }
-    .section-hero { padding-top: 48px; }
-    .cta-group { flex-direction: column; width: 100%; max-width: 320px; margin: 32px auto 0; }
-    .btn { width: 100%; }
-    .solution-text { text-align: center; margin-bottom: 32px; }
-    .feature-list { display: inline-block; text-align: left; border-left: none; padding-left: 0; }
-    .feature-item::before { content: "•"; color: var(--depth-plane); margin-right: 8px; }
+    h1.hero-title {
+        font-size: 40px;
+    }
+
+    h2.section-title {
+        font-size: 32px;
+    }
+
+    .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+
+    .section-hero {
+        padding-top: 48px;
+    }
+
+    .cta-group {
+        flex-direction: column;
+        width: 100%;
+        max-width: 320px;
+        margin: 32px auto 0;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .solution-text {
+        text-align: center;
+        margin-bottom: 32px;
+    }
+
+    .feature-list {
+        display: inline-block;
+        text-align: left;
+        border-left: none;
+        padding-left: 0;
+    }
+
+    .feature-item::before {
+        content: "•";
+        color: var(--depth-plane);
+        margin-right: 8px;
+    }
 }
