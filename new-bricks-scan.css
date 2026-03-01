@@ -442,6 +442,7 @@ a:hover {
 
     #language-switcher {
         padding: 8px !important;
+        width: auto !important;
     }
 }
 
