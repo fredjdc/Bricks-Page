@@ -108,9 +108,15 @@
     <!-- Header / Nav -->
     <header class="container site-header">
         <div class="logo">
-            <img src="images-bricks-scan/Bricks Logo-dark.svg" alt="Bricks Logo">
+            <a href="index.html" class="flex items-center" style="display: flex; align-items: center;">
+                <img src="images-bricks-scan/Bricks Logo-dark.svg" onerror="this.src='images/Bricks Logo.svg'"
+                    alt="Bricks Logo" style="height: 24px;">
+            </a>
         </div>
-        <!-- Minimal Nav if needed, or just specific app link -->
+        <button id="language-switcher" class="btn btn-secondary" style="padding: 8px 16px; font-size: 14px;"
+            title="Change language / Cambiar idioma">
+            <span id="current-language">English</span>
+        </button>
     </header>
 
     <!-- 5️⃣ Hero Section -->
@@ -118,15 +124,21 @@
         <div class="hero-bg" aria-hidden="true"></div>
         <div class="container hero-grid">
             <div class="hero-content">
-                <h1 class="hero-title reveal-on-scroll">Built for real estate agents on Apple.</h1>
+                <h1 class="hero-title reveal-on-scroll">
+                    <span lang="en">Built for real estate agents on Apple.</span>
+                    <span lang="es" class="hidden">Creado para agentes inmobiliarios en Apple.</span>
+                </h1>
                 <p class="body-text reveal-on-scroll delay-100">
-                    Eliminate document chaos and MLS paperwork overload.
+                    <span lang="en">Eliminate document chaos and MLS paperwork overload.</span>
+                    <span lang="es" class="hidden">Elimina el caos de documentos y la sobrecarga de papeleo del
+                        MLS.</span>
                 </p>
 
                 <div class="cta-group reveal-on-scroll delay-200">
                     <a href="https://apps.apple.com/app/idYOUR_APP_ID" class="btn btn-primary">
                         <div class="accent-notch"></div>
-                        Download on the App Store
+                        <span lang="en">Download on the App Store</span>
+                        <span lang="es" class="hidden">Descargar en App Store</span>
                     </a>
                 </div>
             </div>
@@ -142,18 +154,29 @@
     <section id="problem-section" class="section section-alt">
         <div class="expanding-bg"></div>
         <div class="container reading-column center-text">
-            <h2 class="section-title reveal-on-scroll">Every transaction creates complexity.</h2>
+            <h2 class="section-title reveal-on-scroll">
+                <span lang="en">Every transaction creates complexity.</span>
+                <span lang="es" class="hidden">Cada transacción crea complejidad.</span>
+            </h2>
             <div class="problem-content mt-sm reveal-on-scroll delay-100">
                 <p class="body-text mb-sm">
-                    Listings generate contracts, disclosures, amendments, inspection reports, ID verification, and
-                    closing documents.
+                    <span lang="en">Listings generate contracts, disclosures, amendments, inspection reports, ID
+                        verification, and closing documents.</span>
+                    <span lang="es" class="hidden">Los listados generan contratos, divulgaciones, enmiendas, informes de
+                        inspección, verificación de identidad y documentos de cierre.</span>
                 </p>
                 <p class="body-text mb-sm">
-                    Files are shared across email, text, cloud drives, and transaction platforms. Finding the right
-                    version should not slow you down.
+                    <span lang="en">Files are shared across email, text, cloud drives, and transaction platforms.
+                        Finding the right version should not slow you down.</span>
+                    <span lang="es" class="hidden">Los archivos se comparten por correo electrónico, mensajes de texto,
+                        unidades en la nube y plataformas de transacciones. Encontrar la versión correcta no debería
+                        frenarte.</span>
                 </p>
                 <p class="body-text">
-                    Real estate work is demanding enough. Your operational tools should reduce friction — not add to it.
+                    <span lang="en">Real estate work is demanding enough. Your operational tools should reduce friction
+                        — not add to it.</span>
+                    <span lang="es" class="hidden">El trabajo inmobiliario es lo suficientemente exigente. Tus
+                        herramientas operativas deberían reducir la fricción, no aumentarla.</span>
                 </p>
             </div>
         </div>
@@ -165,31 +188,43 @@
             <div class="solution-text">
                 <img src="images-bricks-scan/bricks-scan-web-icon.png" alt="Bricks Scan Icon"
                     class="app-icon reveal-on-scroll">
-                <h2 class="section-title reveal-on-scroll delay-100">Organize every document. Instantly.</h2>
+                <h2 class="section-title reveal-on-scroll delay-100">
+                    <span lang="en">Organize every document. Instantly.</span>
+                    <span lang="es" class="hidden">Organiza cada documento. Al instante.</span>
+                </h2>
                 <p class="body-text mb-sm reveal-on-scroll delay-100">
-                    Bricks Scan captures, names, and classifies transaction documents automatically.
+                    <span lang="en">Bricks Scan captures, names, and classifies transaction documents
+                        automatically.</span>
+                    <span lang="es" class="hidden">Bricks Scan captura, nombra y clasifica los documentos de las
+                        transacciones automáticamente.</span>
                 </p>
                 <p class="body-text mb-sm reveal-on-scroll delay-100">
-                    Search inside any page. Locate clauses, totals, or dates in seconds. Keep documents structured by
-                    property or deal.
+                    <span lang="en">Search inside any page. Locate clauses, totals, or dates in seconds. Keep documents
+                        structured by property or deal.</span>
+                    <span lang="es" class="hidden">Busca dentro de cualquier página. Localiza cláusulas, totales o
+                        fechas en segundos. Mantén los documentos estructurados por propiedad o trato.</span>
                 </p>
 
                 <ul class="feature-list reveal-on-scroll delay-200">
                     <li class="feature-item">
                         <img src="images/checkmark.svg" alt="Check" class="checkmark-icon">
-                        Searchable PDFs by default
+                        <span lang="en">Searchable PDFs by default</span>
+                        <span lang="es" class="hidden">PDFs buscables por defecto</span>
                     </li>
                     <li class="feature-item">
                         <img src="images/checkmark.svg" alt="Check" class="checkmark-icon">
-                        Automatic document type detection
+                        <span lang="en">Automatic document type detection</span>
+                        <span lang="es" class="hidden">Detección automática de tipo de documento</span>
                     </li>
                     <li class="feature-item">
                         <img src="images/checkmark.svg" alt="Check" class="checkmark-icon">
-                        Structured folders for contracts and disclosures
+                        <span lang="en">Structured folders for contracts and disclosures</span>
+                        <span lang="es" class="hidden">Carpetas estructuradas para contratos y divulgaciones</span>
                     </li>
                     <li class="feature-item">
                         <img src="images/checkmark.svg" alt="Check" class="checkmark-icon">
-                        Built specifically for iPhone, iPad, and Mac
+                        <span lang="en">Built specifically for iPhone, iPad, and Mac</span>
+                        <span lang="es" class="hidden">Creado específicamente para iPhone, iPad y Mac</span>
                     </li>
                 </ul>
             </div>
@@ -209,38 +244,61 @@
     <!-- SECTION — PRIVACY FIRST -->
     <section class="section section-alt">
         <div class="container reading-column center-text">
-            <h2 class="section-title reveal-on-scroll">Privacy-first by default.</h2>
+            <h2 class="section-title reveal-on-scroll">
+                <span lang="en">Privacy-first by default.</span>
+                <span lang="es" class="hidden">Privacidad primero por defecto.</span>
+            </h2>
             <p class="body-text mb-md reveal-on-scroll delay-100" style="margin-left: auto; margin-right: auto;">
-                Your documents are personal — so we treat them that way. Bricks is built to keep your files private,
-                with clear controls and no surprises. You decide what you scan, what you save, and what you share.
+                <span lang="en">Your documents are personal — so we treat them that way. Bricks is built to keep your
+                    files private, with clear controls and no surprises. You decide what you scan, what you save, and
+                    what you share.</span>
+                <span lang="es" class="hidden">Tus documentos son personales — así que los tratamos de esa manera.
+                    Bricks está creado para mantener tus archivos privados, con controles claros y sin sorpresas. Tú
+                    decides qué escaneas, qué guardas y qué compartes.</span>
             </p>
         </div>
 
         <div class="container reveal-on-scroll delay-200" style="max-width: 800px; text-align: center;">
-            <img src="images-bricks-scan/feature-en-01.jpg" alt="Privacy Controls" class="hero-img">
+            <img src="images-bricks-scan/feature-en-01.jpg" alt="Privacy Controls" class="hero-img"
+                data-app-image="bricks-scan-feature-01">
         </div>
 
         <div class="container grid-3 mt-md reveal-on-scroll delay-300">
             <div class="center-text">
                 <img src="images/checkmark.svg" alt="Check" class="checkmark-icon"
                     style="margin: 0 auto 16px; display: block;">
-                <h3 class="subheading" style="font-size: 18px;">You’re in control</h3>
-                <p class="body-text" style="font-size: 15px; margin: 0 auto;">Keep, delete, export, or share anytime.
+                <h3 class="subheading" style="font-size: 18px;">
+                    <span lang="en">You’re in control</span>
+                    <span lang="es" class="hidden">Tú tienes el control</span>
+                </h3>
+                <p class="body-text" style="font-size: 15px; margin: 0 auto;">
+                    <span lang="en">Keep, delete, export, or share anytime.</span>
+                    <span lang="es" class="hidden">Mantén, elimina, exporta o comparte en cualquier momento.</span>
                 </p>
             </div>
             <div class="center-text">
                 <img src="images/checkmark.svg" alt="Check" class="checkmark-icon"
                     style="margin: 0 auto 16px; display: block;">
-                <h3 class="subheading" style="font-size: 18px;">No hidden data use</h3>
-                <p class="body-text" style="font-size: 15px; margin: 0 auto;">We don’t sell your personal information.
+                <h3 class="subheading" style="font-size: 18px;">
+                    <span lang="en">No hidden data use</span>
+                    <span lang="es" class="hidden">Sin uso de datos ocultos</span>
+                </h3>
+                <p class="body-text" style="font-size: 15px; margin: 0 auto;">
+                    <span lang="en">We don’t sell your personal information.</span>
+                    <span lang="es" class="hidden">No vendemos tu información personal.</span>
                 </p>
             </div>
             <div class="center-text">
                 <img src="images/checkmark.svg" alt="Check" class="checkmark-icon"
                     style="margin: 0 auto 16px; display: block;">
-                <h3 class="subheading" style="font-size: 18px;">Clear permissions</h3>
-                <p class="body-text" style="font-size: 15px; margin: 0 auto;">Camera, Photos, and Files access only when
-                    you need it.</p>
+                <h3 class="subheading" style="font-size: 18px;">
+                    <span lang="en">Clear permissions</span>
+                    <span lang="es" class="hidden">Permisos claros</span>
+                </h3>
+                <p class="body-text" style="font-size: 15px; margin: 0 auto;">
+                    <span lang="en">Camera, Photos, and Files access only when you need it.</span>
+                    <span lang="es" class="hidden">Acceso a Cámara, Fotos y Archivos solo cuando lo necesites.</span>
+                </p>
             </div>
         </div>
     </section>
@@ -248,37 +306,61 @@
     <!-- SECTION — SCAN ACROSS DEVICES -->
     <section class="section">
         <div class="container reading-column center-text">
-            <h2 class="section-title reveal-on-scroll">Scan across your devices.</h2>
+            <h2 class="section-title reveal-on-scroll">
+                <span lang="en">Scan across your devices.</span>
+                <span lang="es" class="hidden">Escanea a través de tus dispositivos.</span>
+            </h2>
             <p class="body-text mb-md reveal-on-scroll delay-100" style="margin-left: auto; margin-right: auto;">
-                Start on one device, pick up on another. Your scans and folders stay consistent so you can capture
-                documents anywhere and organize them later — without changing your workflow.
+                <span lang="en">Start on one device, pick up on another. Your scans and folders stay consistent so you
+                    can capture documents anywhere and organize them later — without changing your workflow.</span>
+                <span lang="es" class="hidden">Empieza en un dispositivo, continúa en otro. Tus escaneos y carpetas se
+                    mantienen consistentes para que puedas capturar documentos en cualquier lugar y organizarlos luego —
+                    sin cambiar tu flujo de trabajo.</span>
             </p>
         </div>
 
         <div class="container reveal-on-scroll delay-200" style="max-width: 800px; text-align: center;">
-            <img src="images-bricks-scan/feature-en-02.jpg" alt="Scan Across Devices" class="hero-img">
+            <img src="images-bricks-scan/feature-en-02.jpg" alt="Scan Across Devices" class="hero-img"
+                data-app-image="bricks-scan-feature-02">
         </div>
 
         <div class="container grid-3 mt-md reveal-on-scroll delay-300">
             <div class="center-text">
                 <img src="images/checkmark.svg" alt="Check" class="checkmark-icon"
                     style="margin: 0 auto 16px; display: block;">
-                <h3 class="subheading" style="font-size: 18px;">Scan on the go</h3>
-                <p class="body-text" style="font-size: 15px; margin: 0 auto;">Review later</p>
+                <h3 class="subheading" style="font-size: 18px;">
+                    <span lang="en">Scan on the go</span>
+                    <span lang="es" class="hidden">Escanea sobre la marcha</span>
+                </h3>
+                <p class="body-text" style="font-size: 15px; margin: 0 auto;">
+                    <span lang="en">Review later</span>
+                    <span lang="es" class="hidden">Revisa más tarde</span>
+                </p>
             </div>
             <div class="center-text">
                 <img src="images/checkmark.svg" alt="Check" class="checkmark-icon"
                     style="margin: 0 auto 16px; display: block;">
-                <h3 class="subheading" style="font-size: 18px;">Consistent folders</h3>
-                <p class="body-text" style="font-size: 15px; margin: 0 auto;">Keep folders and tags consistent
-                    everywhere</p>
+                <h3 class="subheading" style="font-size: 18px;">
+                    <span lang="en">Consistent folders</span>
+                    <span lang="es" class="hidden">Carpetas consistentes</span>
+                </h3>
+                <p class="body-text" style="font-size: 15px; margin: 0 auto;">
+                    <span lang="en">Keep folders and tags consistent everywhere</span>
+                    <span lang="es" class="hidden">Mantén carpetas y etiquetas consistentes en todas partes</span>
+                </p>
             </div>
             <div class="center-text">
                 <img src="images/checkmark.svg" alt="Check" class="checkmark-icon"
                     style="margin: 0 auto 16px; display: block;">
-                <h3 class="subheading" style="font-size: 18px;">Stay productive</h3>
-                <p class="body-text" style="font-size: 15px; margin: 0 auto;">Whether you’re on phone, tablet, or
-                    desktop</p>
+                <h3 class="subheading" style="font-size: 18px;">
+                    <span lang="en">Stay productive</span>
+                    <span lang="es" class="hidden">Mantente productivo</span>
+                </h3>
+                <p class="body-text" style="font-size: 15px; margin: 0 auto;">
+                    <span lang="en">Whether you’re on phone, tablet, or desktop</span>
+                    <span lang="es" class="hidden">Ya sea que estés en el teléfono, tableta o computadora de
+                        escritorio</span>
+                </p>
             </div>
         </div>
     </section>
@@ -287,10 +369,15 @@
     <section class="section section-alt">
         <div class="container">
             <div class="reading-column center-text mb-md">
-                <h2 class="section-title reveal-on-scroll">A focused toolkit for agents.</h2>
+                <h2 class="section-title reveal-on-scroll">
+                    <span lang="en">A focused toolkit for agents.</span>
+                    <span lang="es" class="hidden">Un kit de herramientas enfocado para agentes.</span>
+                </h2>
                 <p class="body-text reveal-on-scroll delay-100">
-                    Each Bricks app solves a specific operational burden. No unnecessary features. No enterprise
-                    complexity.
+                    <span lang="en">Each Bricks app solves a specific operational burden. No unnecessary features. No
+                        enterprise complexity.</span>
+                    <span lang="es" class="hidden">Cada app de Bricks resuelve una carga operativa específica. Sin
+                        funciones innecesarias. Sin complejidad empresarial.</span>
                 </p>
             </div>
 
@@ -299,23 +386,32 @@
                 <div class="ecosystem-card embossed-card reveal-on-scroll delay-100">
                     <img src="images-bricks-scan/bricks-scan-web-icon.png" alt="Scan" class="app-icon">
                     <h3 class="subheading">Bricks Scan</h3>
-                    <p class="body-text" style="font-size: 16px;">Structure transaction paperwork and MLS documents.</p>
+                    <p class="body-text" style="font-size: 16px;">
+                        <span lang="en">Structure transaction paperwork and MLS documents.</span>
+                        <span lang="es" class="hidden">Estructura papeleo de transacciones y documentos MLS.</span>
+                    </p>
                 </div>
 
                 <!-- Bricks Mortgage -->
                 <div class="ecosystem-card embossed-card reveal-on-scroll delay-200">
                     <img src="images-bricks-scan/bricks-calc-web-icon.png" alt="Mortgage" class="app-icon">
                     <h3 class="subheading">Bricks Mortgage</h3>
-                    <p class="body-text" style="font-size: 16px;">Model deals quickly. Estimate payments, rates, and
-                        financing scenarios on the spot.</p>
+                    <p class="body-text" style="font-size: 16px;">
+                        <span lang="en">Model deals quickly. Estimate payments, rates, and financing scenarios on the
+                            spot.</span>
+                        <span lang="es" class="hidden">Modela ofertas rápidamente. Estima pagos, tasas y escenarios de
+                            financiamiento al instante.</span>
+                    </p>
                 </div>
 
                 <!-- Bricks CRM -->
                 <div class="ecosystem-card embossed-card reveal-on-scroll delay-300">
                     <img src="images-bricks-scan/bricks-leads-web-icon.png" alt="CRM" class="app-icon">
                     <h3 class="subheading">Bricks CRM</h3>
-                    <p class="body-text" style="font-size: 16px;">Track clients and follow-ups without bloated
-                        dashboards.</p>
+                    <p class="body-text" style="font-size: 16px;">
+                        <span lang="en">Track clients and follow-ups without bloated dashboards.</span>
+                        <span lang="es" class="hidden">Rastrea clientes y seguimientos sin paneles complicados.</span>
+                    </p>
                 </div>
             </div>
         </div>
@@ -324,12 +420,20 @@
     <!-- SECTION — PRIVACY & CONTROL -->
     <section class="section">
         <div class="container reading-column center-text">
-            <h2 class="section-title reveal-on-scroll">Designed with control in mind.</h2>
+            <h2 class="section-title reveal-on-scroll">
+                <span lang="en">Designed with control in mind.</span>
+                <span lang="es" class="hidden">Diseñado con el control en mente.</span>
+            </h2>
             <p class="body-text mb-sm reveal-on-scroll delay-100">
-                Documents are processed on your device. Accounts are optional. Tracking is minimal and transparent.
+                <span lang="en">Documents are processed on your device. Accounts are optional. Tracking is minimal and
+                    transparent.</span>
+                <span lang="es" class="hidden">Los documentos se procesan en tu dispositivo. Las cuentas son opcionales.
+                    El rastreo es mínimo y transparente.</span>
             </p>
             <p class="body-text reveal-on-scroll delay-100">
-                Bricks is built to respect your workflow and your data.
+                <span lang="en">Bricks is built to respect your workflow and your data.</span>
+                <span lang="es" class="hidden">Bricks está construido para respetar tu flujo de trabajo y tus
+                    datos.</span>
             </p>
         </div>
     </section>
@@ -337,21 +441,45 @@
     <!-- SECTION — TESTIMONIALS -->
     <section class="section" style="border-top: 1px solid var(--divider); border-bottom: 1px solid var(--divider);">
         <div class="container">
-            <h2 class="section-title center-text reveal-on-scroll">Used by working agents.</h2>
+            <h2 class="section-title center-text reveal-on-scroll">
+                <span lang="en">Used by working agents.</span>
+                <span lang="es" class="hidden">Utilizado por agentes activos.</span>
+            </h2>
 
             <div class="testimonials-grid">
                 <div class="testimonial reveal-on-scroll delay-100">
-                    <p class="body-text quote">“I can find any disclosure or amendment in seconds. It removed a layer of
-                        stress from every deal.”</p>
-                    <p class="metadata">— Residential Agent, Texas</p>
+                    <p class="body-text quote">
+                        <span lang="en">“I can find any disclosure or amendment in seconds. It removed a layer of stress
+                            from every deal.”</span>
+                        <span lang="es" class="hidden">"Puedo encontrar cualquier divulgación o enmienda en segundos.
+                            Eliminó una capa de estrés de cada trato."</span>
+                    </p>
+                    <p class="metadata">
+                        <span lang="en">— Residential Agent, Texas</span>
+                        <span lang="es" class="hidden">— Agente Residencial, Texas</span>
+                    </p>
                 </div>
                 <div class="testimonial reveal-on-scroll delay-200">
-                    <p class="body-text quote">“The mortgage calculator alone saves time during client meetings.”</p>
-                    <p class="metadata">— Broker Associate, California</p>
+                    <p class="body-text quote">
+                        <span lang="en">“The mortgage calculator alone saves time during client meetings.”</span>
+                        <span lang="es" class="hidden">"Solo la calculadora de hipotecas ahorra tiempo durante las
+                            reuniones con clientes."</span>
+                    </p>
+                    <p class="metadata">
+                        <span lang="en">— Broker Associate, California</span>
+                        <span lang="es" class="hidden">— Agente Asociado, California</span>
+                    </p>
                 </div>
                 <div class="testimonial reveal-on-scroll delay-300">
-                    <p class="body-text quote">“It feels like a system app made for real estate.”</p>
-                    <p class="metadata">— Independent Agent, Florida</p>
+                    <p class="body-text quote">
+                        <span lang="en">“It feels like a system app made for real estate.”</span>
+                        <span lang="es" class="hidden">"Se siente como una aplicación del sistema creada para bienes
+                            raíces."</span>
+                    </p>
+                    <p class="metadata">
+                        <span lang="en">— Independent Agent, Florida</span>
+                        <span lang="es" class="hidden">— Agente Independiente, Florida</span>
+                    </p>
                 </div>
             </div>
         </div>
@@ -360,32 +488,52 @@
     <!-- SECTION — PRICING PREVIEW -->
     <section class="section">
         <div class="container reading-column center-text">
-            <h2 class="section-title reveal-on-scroll">Simple pricing.</h2>
+            <h2 class="section-title reveal-on-scroll">
+                <span lang="en">Simple pricing.</span>
+                <span lang="es" class="hidden">Precios simples.</span>
+            </h2>
             <p class="body-text mb-md reveal-on-scroll delay-100">
-                Each app is available individually. Or subscribe to the full Bricks suite.
+                <span lang="en">Each app is available individually. Or subscribe to the full Bricks suite.</span>
+                <span lang="es" class="hidden">Cada app está disponible individualmente. O suscríbete a la suite
+                    completa de Bricks.</span>
             </p>
 
             <div class="pricing-table embossed-card reveal-on-scroll delay-200">
                 <div class="pricing-row">
                     <span style="font-weight: 500;">Bricks Scan</span>
-                    <span>$29/year</span>
+                    <span>
+                        <span lang="en">$29/year</span>
+                        <span lang="es" class="hidden">$29/año</span>
+                    </span>
                 </div>
                 <div class="pricing-row">
                     <span style="font-weight: 500;">Bricks Mortgage</span>
-                    <span>$19/year</span>
+                    <span>
+                        <span lang="en">$19/year</span>
+                        <span lang="es" class="hidden">$19/año</span>
+                    </span>
                 </div>
                 <div class="pricing-row">
                     <span style="font-weight: 500;">Bricks CRM</span>
-                    <span>$79/year</span>
+                    <span>
+                        <span lang="en">$79/year</span>
+                        <span lang="es" class="hidden">$79/año</span>
+                    </span>
                 </div>
                 <div class="pricing-row total">
                     <span>Bricks Suite</span>
-                    <span>$99/year</span>
+                    <span>
+                        <span lang="en">$99/year</span>
+                        <span lang="es" class="hidden">$99/año</span>
+                    </span>
                 </div>
             </div>
 
             <div class="mt-sm reveal-on-scroll delay-300">
-                <p class="metadata mb-sm">No contracts. Cancel anytime.</p>
+                <p class="metadata mb-sm">
+                    <span lang="en">No contracts. Cancel anytime.</span>
+                    <span lang="es" class="hidden">Sin contratos. Cancela en cualquier momento.</span>
+                </p>
             </div>
         </div>
     </section>
@@ -393,12 +541,19 @@
     <!-- FINAL CTA SECTION -->
     <section class="section section-hero">
         <div class="container reading-column center-text">
-            <h2 class="section-title reveal-on-scroll">Reduce operational friction.</h2>
+            <h2 class="section-title reveal-on-scroll">
+                <span lang="en">Reduce operational friction.</span>
+                <span lang="es" class="hidden">Reduce la fricción operativa.</span>
+            </h2>
             <p class="body-text mb-sm reveal-on-scroll delay-100">
-                Built for real estate professionals who work on Apple.
+                <span lang="en">Built for real estate professionals who work on Apple.</span>
+                <span lang="es" class="hidden">Creado para profesionales inmobiliarios que trabajan en Apple.</span>
             </p>
             <div class="cta-group reveal-on-scroll delay-200">
-                <a href="https://apps.apple.com/app/idYOUR_APP_ID" class="btn btn-primary">Download on the App Store</a>
+                <a href="https://apps.apple.com/app/idYOUR_APP_ID" class="btn btn-primary">
+                    <span lang="en">Download on the App Store</span>
+                    <span lang="es" class="hidden">Descargar en App Store</span>
+                </a>
             </div>
         </div>
     </section>
@@ -415,8 +570,8 @@
                             style="height: 24px; opacity: 0.8;">
                     </a>
                     <p class="body-text" style="font-size: 15px;">
-                        <span lang="es">Construimos apps para el sector inmobiliario.</span>
-                        <span lang="en" class="hidden">We build apps for the real estate sector.</span>
+                        <span lang="en">We build apps for the real estate sector.</span>
+                        <span lang="es" class="hidden">Construimos apps para el sector inmobiliario.</span>
                     </p>
                 </div>
 
@@ -426,27 +581,27 @@
                     <!-- Apps Section -->
                     <div>
                         <h3 class="subheading" style="font-size: 16px; margin-bottom: 16px;">
-                            <span lang="es">Apps</span>
-                            <span lang="en" class="hidden">Apps</span>
+                            <span lang="en">Apps</span>
+                            <span lang="es" class="hidden">Apps</span>
                         </h3>
                         <ul
                             style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
                             <li>
                                 <a href="bricks-scan.html" class="body-text" style="font-size: 15px;">
-                                    <span lang="es">Bricks Scan</span>
-                                    <span lang="en" class="hidden">Bricks Scan</span>
+                                    <span lang="en">Bricks Scan</span>
+                                    <span lang="es" class="hidden">Bricks Scan</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="bricks-calc.html" class="body-text" style="font-size: 15px;">
-                                    <span lang="es">Bricks Calc</span>
-                                    <span lang="en" class="hidden">Bricks Calc</span>
+                                    <span lang="en">Bricks Calc</span>
+                                    <span lang="es" class="hidden">Bricks Calc</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="https://leads.bricks.pe" class="body-text" style="font-size: 15px;">
-                                    <span lang="es">Bricks Leads</span>
-                                    <span lang="en" class="hidden">Bricks Leads</span>
+                                    <span lang="en">Bricks Leads</span>
+                                    <span lang="es" class="hidden">Bricks Leads</span>
                                 </a>
                             </li>
                         </ul>
@@ -455,29 +610,29 @@
                     <!-- Company Section -->
                     <div>
                         <h3 class="subheading" style="font-size: 16px; margin-bottom: 16px;">
-                            <span lang="es">Compañía</span>
-                            <span lang="en" class="hidden">Company</span>
+                            <span lang="en">Company</span>
+                            <span lang="es" class="hidden">Compañía</span>
                         </h3>
                         <ul
                             style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
                             <li>
                                 <a href="about.html" class="body-text" style="font-size: 15px;">
-                                    <span lang="es">Sobre nosotros</span>
-                                    <span lang="en" class="hidden">About us</span>
+                                    <span lang="en">About us</span>
+                                    <span lang="es" class="hidden">Sobre nosotros</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="https://wa.me/51953431080?text=Hola%2C%20quiero%20informaci%C3%B3n%20respecto%20a%20lo%20siguiente"
                                     target="_blank" rel="noopener noreferrer" class="body-text"
                                     style="font-size: 15px;">
-                                    <span lang="es">Contacto</span>
-                                    <span lang="en" class="hidden">Contact</span>
+                                    <span lang="en">Contact</span>
+                                    <span lang="es" class="hidden">Contacto</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="terms.html" class="body-text" style="font-size: 15px;">
-                                    <span lang="es">Términos y privacidad</span>
-                                    <span lang="en" class="hidden">Terms and privacy</span>
+                                    <span lang="en">Terms and privacy</span>
+                                    <span lang="es" class="hidden">Términos y privacidad</span>
                                 </a>
                             </li>
                         </ul>
@@ -486,35 +641,35 @@
                     <!-- Support Section -->
                     <div>
                         <h3 class="subheading" style="font-size: 16px; margin-bottom: 16px;">
-                            <span lang="es">Soporte</span>
-                            <span lang="en" class="hidden">Support</span>
+                            <span lang="en">Support</span>
+                            <span lang="es" class="hidden">Soporte</span>
                         </h3>
                         <ul
                             style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
                             <li>
                                 <a href="/support.html" class="body-text" style="font-size: 15px;">
-                                    <span lang="es">Ayuda &amp; Feedback</span>
-                                    <span lang="en" class="hidden">Help &amp; Feedback</span>
+                                    <span lang="en">Help &amp; Feedback</span>
+                                    <span lang="es" class="hidden">Ayuda &amp; Feedback</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="https://wa.me/51953431080?text=Hola%2C%20quiero%20informaci%C3%B3n%20respecto%20a%20lo%20siguiente"
                                     target="_blank" rel="noopener noreferrer" class="body-text"
                                     style="font-size: 15px; display: flex; align-items: center;">
-                                    <span lang="es">WhatsApp</span>
-                                    <span lang="en" class="hidden">WhatsApp</span>
+                                    <span lang="en">WhatsApp</span>
+                                    <span lang="es" class="hidden">WhatsApp</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="mailto:hello@bricks.pe" class="body-text" style="font-size: 15px;">
-                                    <span lang="es">Email: hello@bricks.pe</span>
-                                    <span lang="en" class="hidden">Email: hello@bricks.pe</span>
+                                    <span lang="en">Email: hello@bricks.pe</span>
+                                    <span lang="es" class="hidden">Email: hello@bricks.pe</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="/survey.html" class="body-text" style="font-size: 15px;">
-                                    <span lang="es">Encuesta</span>
-                                    <span lang="en" class="hidden">Survey</span>
+                                    <span lang="en">Survey</span>
+                                    <span lang="es" class="hidden">Encuesta</span>
                                 </a>
                             </li>
                         </ul>
