@@ -1,531 +1,521 @@
-<!doctype html>
-<html lang="es">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        
-        <!-- App Store Meta App CLip
-        <meta name="apple-itunes-app" content="app-id=6744432658, app-clip-bundle-id=com.bricks.bricksapp.Clip" /> -->
-        <title>About | Bricks</title>
+<!DOCTYPE html>
+<html lang="en">
 
-        <!-- Favicon -->
-        <link rel="icon" href="favicon.ico" sizes="32x32" />
-        <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
-        <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16" />
-        <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-        <link rel="manifest" href="site.webmanifest" />
-        <meta name="theme-color" content="#007AFF" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Bricks</title>
+    <meta name="description"
+        content="At Bricks, we build innovative technology for the real estate sector to make the work of agents, buyers, and financial professionals easier and more efficient.">
 
-        <!-- Google Tag Manager -->
-        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-P5P8LRC2');</script>
-        <!-- End Google Tag Manager -->
+    <!-- Design System CSS -->
+    <link rel="stylesheet" href="new-bricks-scan.css?v=3">
 
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-0NE96SRV4V"></script>
-        <script>
-            // GA4 tracker for marketing dashboards. Keeps custom events consistent across pages.
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag("js", new Date());
-            gtag("config", "G-0NE96SRV4V");
-        </script>
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="theme-color" content="#1E40AF" />
 
-        <!-- Tailwind CSS via CDN -->
-        <script src="https://cdn.tailwindcss.com"></script>
-        <script>
-            tailwind.config = {
-                theme: {
-                    extend: {
-                        colors: {
-                            /* Primary accent color - #007AFF */
-                            primary: {
-                                light: "#60a5fa", // light blue
-                                DEFAULT: "#007AFF", // blue - changed from #2563eb
-                                dark: "#007AFF" // dark blue - changed from #1d4ed8
-                            },
-                            /* Secondary accent color (green) - #34C85A */
-                            secondary: {
-                                light: "#4ADE80", // light green
-                                DEFAULT: "#34C85A", // green - changed from #10b981
-                                dark: "#15803D" // dark green - adjusted to match new green
-                            }
-                        },
-                        maxWidth: {
-                            "screen-xl": "1200px"
-                        },
-                        fontFamily: {
-                            sans: ["Exo 2", "sans-serif"]
-                        }
-                    }
-                }
+    <!-- Alpine and scripts -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="scripts.js" defer></script>
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != "dataLayer" ? "&l=" + l : "";
+            j.async = true;
+            j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", "GTM-P5P8LRC2");
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0NE96SRV4V"></script>
+    <script>
+        // GA4 tracker ensures product marketing funnels capture download conversions.
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+        gtag("config", "G-0NE96SRV4V");
+    </script>
+
+    <!-- Meta Pixel Code -->
+    <script>
+        !(function (f, b, e, v, n, t, s) {
+            if (f.fbq) return;
+            n = f.fbq = function () {
+                n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
             };
-        </script>
-        <!-- Alpine.js for interactive components -->
-        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+            if (!f._fbq) f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = "2.0";
+            n.queue = [];
+            t = b.createElement(e);
+            t.async = !0;
+            t.src = v;
+            s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s);
+        })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+        fbq("init", "1088148306858128");
+        fbq("track", "PageView");
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display: none"
+            src="https://www.facebook.com/tr?id=1088148306858128&ev=PageView&noscript=1" />
+    </noscript>
+    <!-- End Meta Pixel Code -->
+</head>
 
-        <!-- Exo 2 font -->
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap"
-            rel="stylesheet" />
+<body class="min-h-screen">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P5P8LRC2" height="0" width="0"
+            style="display: none; visibility: hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
-        <!-- Common scripts with language detection -->
-        <script src="scripts.js"></script>
-
-        <!-- Link to custom CSS file -->
-        <link rel="stylesheet" href="styles.css" />
-
-        <!-- Google Material Symbols -->
-        <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=language" />
-
-        <style>
-            /* Cookie consent banner styles */
-            .cookie-banner {
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                background: rgba(0, 0, 0, 0.95);
-                backdrop-filter: blur(10px);
-                border-top: 1px solid rgba(0, 122, 255, 0.2);
-                z-index: 1000;
-                padding: 1rem;
-            }
-        </style>
-
-        <!-- Meta Pixel Code -->
-        <script>
-            !(function (f, b, e, v, n, t, s) {
-                if (f.fbq) return;
-                n = f.fbq = function () {
-                    n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
-                };
-                if (!f._fbq) f._fbq = n;
-                n.push = n;
-                n.loaded = !0;
-                n.version = "2.0";
-                n.queue = [];
-                t = b.createElement(e);
-                t.async = !0;
-                t.src = v;
-                s = b.getElementsByTagName(e)[0];
-                s.parentNode.insertBefore(t, s);
-            })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
-            fbq("init", "1088148306858128");
-            fbq("track", "PageView");
-        </script>
-        <noscript
-            ><img
-                height="1"
-                width="1"
-                style="display: none"
-                src="https://www.facebook.com/tr?id=1088148306858128&ev=PageView&noscript=1"
-        /></noscript>
-        <!-- End Meta Pixel Code -->
-    </head>
-    <body class="font-sans text-gray-800 bg-white overflow-x-hidden">
-        <!-- Google Tag Manager (noscript) -->
-        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P5P8LRC2"
-        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-        <!-- End Google Tag Manager (noscript) -->
-        <!-- Cookie Consent Banner -->
-        <div
-            id="cookie-consent-banner"
-            style="display: none"
-            class="cookie-banner flex flex-col sm:flex-row justify-between items-center gap-4">
-            <div class="flex-1">
-                <p class="text-sm text-gray-300">
-                    <span lang="en">We use cookies to analyze site usage and improve your experience. May we collect anonymous usage data?</span>
-                    <span lang="es" class="hidden">Usamos cookies para analizar el uso del sitio y mejorar tu experiencia. ¿Nos permites recopilar datos anónimos de uso?</span>
-                </p>
-            </div>
-            <div class="flex gap-2 flex-shrink-0">
-                <button
-                    onclick="updateConsent('denied')"
-                    class="px-4 py-2 text-sm border border-gray-600 text-gray-300 hover:text-white hover:border-gray-500 transition-colors rounded-lg">
-                    <span lang="en">Decline</span>
-                    <span lang="es" class="hidden">Rechazar</span>
-                </button>
-                <button 
-                    onclick="updateConsent('granted')" 
-                    class="px-4 py-2 text-sm bg-primary text-white font-medium hover:bg-primary-dark transition-colors rounded-lg">
-                    <span lang="en">Accept</span>
-                    <span lang="es" class="hidden">Aceptar</span>
-                </button>
-            </div>
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent-banner"
+        style="display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg-primary); padding: 24px; z-index: 50; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; box-shadow: 0 -4px 16px var(--surface-shadow); border-top: 1px solid var(--depth-plane);">
+        <div>
+            <p class="body-text" style="font-size: 14px; margin: 0;">
+                <span lang="en">We use cookies to analyze site usage and improve your experience. May we collect
+                    anonymous usage data?</span>
+                <span lang="es" class="hidden">Usamos cookies para analizar el uso del sitio y mejorar su experiencia.
+                    ¿Nos permite recopilar datos anónimos de uso?</span>
+            </p>
         </div>
+        <div style="display: flex; gap: 8px;">
+            <button onclick="updateConsent('denied')" class="btn btn-secondary"
+                style="padding: 10px 20px; font-size: 14px;">
+                <span lang="en">Decline</span>
+                <span lang="es" class="hidden">Rechazar</span>
+            </button>
+            <button onclick="updateConsent('granted')" class="btn btn-primary"
+                style="padding: 10px 20px; font-size: 14px;">
+                <span lang="en">Accept</span>
+                <span lang="es" class="hidden">Aceptar</span>
+            </button>
+        </div>
+    </div>
 
-        <!-- Navigation -->
-        <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-sm z-50 shadow-sm">
-            <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex justify-between h-16">
-                    <div class="flex items-center">
-                        <a href="index.html" class="flex items-center">
-                            <img src="images/Bricks Logo - Dark.svg" alt="Bricks Logo" class="h-8" />
-                        </a>
-                    </div>
-                    <div class="flex items-center space-x-8">
-                        <!-- Language Selector -->
-                        <div class="relative" x-data="{ open: false }">
-                            <button
-                                @click="open = !open"
-                                class="flex items-center text-gray-600 hover:text-primary transition-colors">
-                                <span class="material-symbols-outlined mr-1">language</span>
-                                <span id="current-language"></span>
-                                <svg
-                                    class="ml-1 w-4 h-4"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor">
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </button>
-                            <div
-                                x-show="open"
-                                @click.away="open = false"
-                                class="absolute right-0 mt-2 py-2 w-40 bg-white rounded-md shadow-lg z-50">
-                                <a
-                                    href="#"
-                                    class="block px-4 py-2 text-gray-800 hover:bg-primary hover:text-white"
-                                    onclick="changeLanguage('en'); return false;"
-                                    >English</a
-                                >
-                                <a
-                                    href="#"
-                                    class="block px-4 py-2 text-gray-800 hover:bg-primary hover:text-white"
-                                    onclick="changeLanguage('es'); return false;"
-                                    >Español</a
-                                >
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-
-        <!-- About Content -->
-        <section class="pt-32 pb-16 bg-white">
-            <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h1 class="text-3xl md:text-4xl font-bold mb-8 text-center">
-                    <span lang="en">About Bricks</span>
-                    <span lang="es" class="hidden">Acerca de Bricks</span>
-                </h1>
-
-                <div class="bg-white p-6 md:p-8 mb-8">
-                    <div class="prose max-w-none">
-                        <!-- Our Story Section -->
-                        <h2 class="text-xl md:text-2xl font-semibold mb-4">
-                            <span lang="en">Our Story</span>
-                            <span lang="es" class="hidden">Nuestra Historia</span>
-                        </h2>
-                        <p class="mb-6">
-                            <span lang="en"
-                                >At Bricks, we build innovative technology for the real estate sector to make the work
-                                of agents, buyers, and financial professionals easier and more efficient. We create
-                                native iOS apps with a modern, easy-to-use design tailored to the Peruvian market.</span
-                            >
-                            <span lang="es" class="hidden"
-                                >En Bricks desarrollamos soluciones tecnológicas innovadoras para el sector
-                                inmobiliario, con el objetivo de facilitar y optimizar el trabajo de agentes,
-                                compradores y profesionales financieros. Creamos aplicaciones móviles nativas para iOS,
-                                con un diseño moderno, fácil de usar y adaptado a las necesidades del mercado
-                                peruano.</span
-                            >
-                        </p>
-
-                        <!-- Our Mission Section -->
-                        <h2 class="text-xl md:text-2xl font-semibold mb-4">
-                            <span lang="en">Our Mission</span>
-                            <span lang="es" class="hidden">Nuestra Misión</span>
-                        </h2>
-                        <p class="mb-6">
-                            <span lang="en"
-                                >We are committed to continuous innovation and to developing new tools and applications
-                                that drive the digital transformation of the real estate industry.</span
-                            >
-                            <span lang="es" class="hidden"
-                                >Nuestro compromiso es seguir innovando y desarrollar nuevas herramientas y
-                                aplicaciones para impulsar la transformación digital del sector inmobiliario.</span
-                            >
-                        </p>
-
-                        <!-- What We Offer Section -->
-                        <h2 class="text-xl md:text-2xl font-semibold mb-4">
-                            <span lang="en">What We Offer</span>
-                            <span lang="es" class="hidden">Lo Que Ofrecemos</span>
-                        </h2>
-                        <div class="grid md:grid-cols-2 gap-6 mb-8">
-                            <div class="bg-gray-50 p-5 rounded-3xl">
-                                <h3 class="text-lg font-medium mb-2 text-primary">
-                                    <span lang="en">Bricks Calculator</span>
-                                    <span lang="es" class="hidden">Bricks Calculator</span>
-                                </h3>
-                                <p>
-                                    <span lang="en"
-                                        >An app that simplifies mortgage comparison and understanding by clearly showing
-                                        payments, costs, and amortization.</span
-                                    >
-                                    <span lang="es" class="hidden"
-                                        >Una app que simplifica la comparación y comprensión de hipotecas, mostrando
-                                        pagos, costos y amortizaciones de forma clara.</span
-                                    >
-                                </p>
-                            </div>
-                            <div class="bg-gray-50 p-5 rounded-3xl">
-                                <h3 class="text-lg font-medium mb-2 text-primary">
-                                    <span lang="en">Bricks Leads</span>
-                                    <span lang="es" class="hidden">Bricks Leads</span>
-                                </h3>
-                                <p>
-                                    <span lang="en"
-                                        >A real estate CRM to manage clients, properties, and showings from iPhone,
-                                        iPad, and Mac, with automatic sync and offline mode.</span
-                                    >
-                                    <span lang="es" class="hidden"
-                                        >Un CRM inmobiliario para gestionar clientes, propiedades y visitas desde iPhone,
-                                        iPad y Mac, con sincronización automática y uso offline.</span
-                                    >
-                                </p>
-                            </div>
-                        </div>
-                        <p class="mb-8">
-                            <span lang="en"
-                                >Both applications work together to provide an end-to-end solution that combines
-                                financial analysis and commercial management.</span
-                            >
-                            <span lang="es" class="hidden"
-                                >Ambas aplicaciones trabajan de forma complementaria para ofrecer una solución integral
-                                que combina análisis financiero y gestión comercial.</span
-                            >
-                        </p>
-
-                        <!-- Our Values Section -->
-                        <h2 class="text-xl md:text-2xl font-semibold mb-4">
-                            <span lang="en">Our Values</span>
-                            <span lang="es" class="hidden">Nuestros Valores</span>
-                        </h2>
-                        <ul class="list-disc pl-6 mb-8">
-                            <li class="mb-2">
-                                <span class="font-medium">
-                                    <span lang="en">Transparency:</span>
-                                    <span lang="es" class="hidden">Transparencia:</span>
-                                </span>
-                                <span lang="en"
-                                    >We believe in clear, honest information without hidden fees or confusing
-                                    terms.</span
-                                >
-                                <span lang="es" class="hidden"
-                                    >Creemos en información clara y honesta sin tarifas ocultas ni términos
-                                    confusos.</span
-                                >
-                            </li>
-                            <li class="mb-2">
-                                <span class="font-medium">
-                                    <span lang="en">Accessibility:</span>
-                                    <span lang="es" class="hidden">Accesibilidad:</span>
-                                </span>
-                                <span lang="en"
-                                    >Financial tools should be accessible to everyone, regardless of their background or
-                                    expertise.</span
-                                >
-                                <span lang="es" class="hidden"
-                                    >Las herramientas financieras deben ser accesibles para todos, independientemente de
-                                    su origen o experiencia.</span
-                                >
-                            </li>
-                            <li class="mb-2">
-                                <span class="font-medium">
-                                    <span lang="en">Innovation:</span>
-                                    <span lang="es" class="hidden">Innovación:</span>
-                                </span>
-                                <span lang="en"
-                                    >We continuously improve our app with new features and insights based on user
-                                    feedback.</span
-                                >
-                                <span lang="es" class="hidden"
-                                    >Mejoramos continuamente nuestra aplicación con nuevas funciones y conocimientos
-                                    basados en los comentarios de los usuarios.</span
-                                >
-                            </li>
-                            <li>
-                                <span class="font-medium">
-                                    <span lang="en">Empowerment:</span>
-                                    <span lang="es" class="hidden">Empoderamiento:</span>
-                                </span>
-                                <span lang="en"
-                                    >We aim to give users the knowledge and tools they need to take control of their
-                                    financial future.</span
-                                >
-                                <span lang="es" class="hidden"
-                                    >Nuestro objetivo es brindar a los usuarios el conocimiento y las herramientas que
-                                    necesitan para tomar el control de su futuro financiero.</span
-                                >
-                            </li>
-                        </ul>
-
-                        <!-- Team Section -->
-                        <h2 class="text-xl md:text-2xl font-semibold mb-4">
-                            <span lang="en">Our Team</span>
-                            <span lang="es" class="hidden">Nuestro Equipo</span>
-                        </h2>
-                        <p class="mb-6">
-                            <span lang="en"
-                                >Bricks is developed by a passionate team of financial experts, developers, and
-                                designers committed to creating the best mortgage calculation experience possible. We
-                                combine deep industry knowledge with cutting-edge technology to build tools that make a
-                                difference in people's lives.</span
-                            >
-                            <span lang="es" class="hidden"
-                                >Bricks es desarrollado por un equipo apasionado de expertos financieros,
-                                desarrolladores y diseñadores comprometidos a crear la mejor experiencia de cálculo
-                                hipotecario posible. Combinamos un profundo conocimiento de la industria con tecnología
-                                de vanguardia para crear herramientas que marcan la diferencia en la vida de las
-                                personas.</span
-                            >
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Back to Home Button -->
-        <div class="text-center mt-8 mb-12">
-            <a
-                href="index.html"
-                class="inline-flex items-center text-primary hover:text-primary-dark transition-colors"
-                onclick="gtag('event', 'click', {event_category: 'navigation', event_label: 'back_to_home'})">
-                <svg
-                    class="w-5 h-5 mr-2"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-                </svg>
-                <span lang="en">Back to Home</span>
-                <span lang="es" class="hidden">Volver al Inicio</span>
+    <!-- Header / Nav -->
+    <header class="container site-header">
+        <div class="logo">
+            <a href="index.html" class="flex items-center" style="display: flex; align-items: center;">
+                <img src="images/Bricks Logo - Dark.svg" onerror="this.src='images/Bricks Logo.svg'" alt="Bricks Apps"
+                    style="height: 24px;" />
             </a>
         </div>
+        <button id="language-switcher" class="btn btn-secondary" style="padding: 8px 16px; font-size: 14px;"
+            title="Cambiar idioma / Change language">
+            <span id="current-language">Español</span>
+        </button>
+    </header>
 
-        <!-- Footer -->
-        <footer class="bg-gray-900 py-12 text-slate-300">
-            <div class="container px-4 md:px-6">
-                <div class="flex flex-col md:flex-row md:justify-between">
-                    <div class="mb-8 md:mb-0">
-                        <a href="#" class="text-2xl font-bold text-white">Bricks Apps</a>
-                        <p class="mt-2 max-w-xs text-slate-400">
-                            <span lang="en">Making mortgage calculations simple, beautiful, and accessible.</span>
-                            <span lang="es" class="hidden"
-                                >Desarrollamos herramientas inmobiliarias premium. Diseñadas específicamente para profesionales que buscan la mejor experiencia iOS.</span
-                            >
-                        </p>
-                    </div>
+    <!-- SECTION — HERO -->
+    <section class="section section-hero hero">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="container reading-column center-text">
+            <h1 class="hero-title reveal-on-scroll">
+                <span lang="en">About Bricks</span>
+                <span lang="es" class="hidden">Acerca de Bricks</span>
+            </h1>
+        </div>
+    </section>
 
-                    <div class="grid grid-cols-2 md:grid-cols-2 gap-8">
-                        <div>
-                            <h3 class="mb-4 text-lg font-semibold text-white">
-                                <span lang="en">Company</span>
-                                <span lang="es" class="hidden">Bricks</span>
-                            </h3>
-                            <ul class="space-y-2">
-                                <li>
-                                    <a href="about.html" class="transition-colors hover:text-white">
-                                        <span lang="en">About</span>
-                                        <span lang="es" class="hidden">Acerca de</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="purchase-guide-01.html" class="transition-colors hover:text-white">
-                                        <span lang="en">Purchase Guide</span>
-                                        <span lang="es" class="hidden">Guía Rápida</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+    <!-- SECTION — OUR STORY -->
+    <section class="section section-alt" style="border-top: 1px solid var(--divider);">
+        <div class="container reading-column center-text">
+            <h2 class="section-title reveal-on-scroll">
+                <span lang="en">Our Story</span>
+                <span lang="es" class="hidden">Nuestra Historia</span>
+            </h2>
+            <div class="problem-content mt-sm reveal-on-scroll delay-100">
+                <p class="body-text mb-sm" style="margin-left: auto; margin-right: auto;">
+                    <span lang="en">At Bricks, we build innovative technology for the real estate sector to make the
+                        work of agents, buyers, and financial professionals easier and more efficient. We create native
+                        iOS apps with a modern, easy-to-use design tailored to the Peruvian market.</span>
+                    <span lang="es" class="hidden">En Bricks desarrollamos soluciones tecnológicas innovadoras para el
+                        sector inmobiliario, con el objetivo de facilitar y optimizar el trabajo de agentes, compradores
+                        y profesionales financieros. Creamos aplicaciones móviles nativas para iOS, con un diseño
+                        moderno, fácil de usar y adaptado a las necesidades del mercado peruano.</span>
+                </p>
+            </div>
+        </div>
+    </section>
 
-                        <div>
-                            <h3 class="mb-4 text-lg font-semibold text-white">
-                                <span lang="en">Support</span>
-                                <span lang="es" class="hidden">Soporte</span>
-                            </h3>
-                            <ul class="space-y-2">
-                                <li>
-                                    <a href="help.html" class="transition-colors hover:text-white">
-                                        <span lang="en">Help</span>
-                                        <span lang="es" class="hidden">Ayuda</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="support.html" class="transition-colors hover:text-white">
-                                        <span lang="en">Support</span>
-                                        <span lang="es" class="hidden">Reporta un problema</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a
-                                        href="https://wa.me/51953431080?text=Hola%2C%20quiero%20informaci%C3%B3n%20respecto%20a%20lo%20siguiente"
-                                        target="_blank" rel="noopener noreferrer"
-                                        class="flex items-center transition-colors hover:text-white">
-                                        <svg
-                                            class="mr-2 h-4 w-4 text-[#34C85A]"
-                                            fill="currentColor"
-                                            viewBox="0 0 24 24"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                                        </svg>
-                                        <span lang="en">WhatsApp</span>
-                                        <span lang="es" class="hidden">WhatsApp</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+    <!-- SECTION — OUR MISSION -->
+    <section class="section">
+        <div class="container reading-column center-text">
+            <h2 class="section-title reveal-on-scroll">
+                <span lang="en">Our Mission</span>
+                <span lang="es" class="hidden">Nuestra Misión</span>
+            </h2>
+            <div class="problem-content mt-sm reveal-on-scroll delay-100">
+                <p class="body-text mb-sm" style="margin-left: auto; margin-right: auto;">
+                    <span lang="en">We are committed to continuous innovation and to developing new tools and
+                        applications that drive the digital transformation of the real estate industry.</span>
+                    <span lang="es" class="hidden">Nuestro compromiso es seguir innovando y desarrollar nuevas
+                        herramientas y aplicaciones para impulsar la transformación digital del sector
+                        inmobiliario.</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION — THE ECOSYSTEM (What We Offer) -->
+    <section class="section section-alt"
+        style="border-top: 1px solid var(--divider); border-bottom: 1px solid var(--divider);">
+        <div class="container">
+            <div class="reading-column center-text mb-md">
+                <h2 class="section-title reveal-on-scroll">
+                    <span lang="en">What We Offer</span>
+                    <span lang="es" class="hidden">Lo Que Ofrecemos</span>
+                </h2>
+            </div>
+            <div class="grid-3">
+                <!-- Bricks Scan -->
+                <div class="ecosystem-card embossed-card reveal-on-scroll delay-100">
+                    <img src="images-bricks-scan/bricks-scan-web-icon.png" alt="Scan" class="app-icon">
+                    <h3 class="subheading">
+                        <span lang="en">Bricks Scan</span>
+                        <span lang="es" class="hidden">Bricks Scan</span>
+                    </h3>
+                    <p class="body-text" style="font-size: 16px;">
+                        <span lang="en">Structure transaction paperwork and MLS documents.</span>
+                        <span lang="es" class="hidden">Estructura papeleo de transacciones y documentos MLS.</span>
+                    </p>
                 </div>
 
-                <div class="mt-12 border-t border-gray-800 pt-8 text-center text-sm text-slate-400">
-                    <p>
-                        <span lang="en">© 2025 Bricks Apps. All rights reserved.</span>
-                        <span lang="es" class="hidden"
-                            >© 2025 Bricks Apps. Todos los derechos reservados.</span
-                        >
+                <!-- Bricks Mortgage -->
+                <div class="ecosystem-card embossed-card reveal-on-scroll delay-200">
+                    <img src="images/bricks-calc-web-icon.png" alt="Mortgage" class="app-icon">
+                    <h3 class="subheading">
+                        <span lang="en">Bricks Calculator</span>
+                        <span lang="es" class="hidden">Bricks Calculator</span>
+                    </h3>
+                    <p class="body-text" style="font-size: 16px;">
+                        <span lang="en">An app that simplifies mortgage comparison and understanding by clearly showing
+                            payments, costs, and amortization.</span>
+                        <span lang="es" class="hidden">Una app que simplifica la comparación y comprensión de hipotecas,
+                            mostrando pagos, costos y amortizaciones de forma clara.</span>
                     </p>
-                    <div class="mt-4 flex justify-center space-x-6">
-                        <a href="privacy.html" class="transition-colors hover:text-white" onclick="gtag('event', 'click', {event_category: 'navigation', event_label: 'privacy_policy'})">
-                            <span lang="en">Privacy Policy</span>
-                            <span lang="es" class="hidden">Política de Privacidad</span>
-                        </a>
-                        <a href="terms.html" class="transition-colors hover:text-white" onclick="gtag('event', 'click', {event_category: 'navigation', event_label: 'terms_of_service'})">
-                            <span lang="en">Terms of Service</span>
-                            <span lang="es" class="hidden">Términos de Servicio</span>
-                        </a>
+                </div>
+
+                <!-- Bricks CRM -->
+                <div class="ecosystem-card embossed-card reveal-on-scroll delay-300">
+                    <img src="images/bricks-leads-web-icon.png" alt="CRM" class="app-icon">
+                    <h3 class="subheading">
+                        <span lang="en">Bricks Leads</span>
+                        <span lang="es" class="hidden">Bricks Leads</span>
+                    </h3>
+                    <p class="body-text" style="font-size: 16px;">
+                        <span lang="en">A real estate CRM to manage clients, properties, and showings from iPhone, iPad,
+                            and Mac, with automatic sync and offline mode.</span>
+                        <span lang="es" class="hidden">Un CRM inmobiliario para gestionar clientes, propiedades y
+                            visitas desde iPhone, iPad y Mac, con sincronización automática y uso offline.</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="reading-column center-text mt-md reveal-on-scroll delay-400">
+                <p class="body-text">
+                    <span lang="en">These applications work together to provide an end-to-end solution for real estate
+                        professionals.</span>
+                    <span lang="es" class="hidden">Estas aplicaciones trabajan de forma complementaria para ofrecer una
+                        solución integral para profesionales inmobiliarios.</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION — OUR VALUES -->
+    <section class="section">
+        <div class="container reading-column">
+            <h2 class="section-title center-text reveal-on-scroll mb-md">
+                <span lang="en">Our Values</span>
+                <span lang="es" class="hidden">Nuestros Valores</span>
+            </h2>
+
+            <ul class="feature-list reveal-on-scroll delay-100" style="margin-left: 0; padding-left: 0;">
+                <li class="feature-item" style="align-items: flex-start; margin-bottom: 24px;">
+                    <img src="images/checkmark.svg" alt="Check" class="checkmark-icon" style="margin-top: 4px;">
+                    <div>
+                        <span class="subheading" style="display: block; margin-bottom: 4px; font-size: 18px;">
+                            <span lang="en">Transparency</span>
+                            <span lang="es" class="hidden">Transparencia</span>
+                        </span>
+                        <span class="body-text" style="font-size: 16px;">
+                            <span lang="en">We believe in clear, honest information without hidden fees or confusing
+                                terms.</span>
+                            <span lang="es" class="hidden">Creemos en información clara y honesta sin tarifas ocultas ni
+                                términos confusos.</span>
+                        </span>
+                    </div>
+                </li>
+                <li class="feature-item" style="align-items: flex-start; margin-bottom: 24px;">
+                    <img src="images/checkmark.svg" alt="Check" class="checkmark-icon" style="margin-top: 4px;">
+                    <div>
+                        <span class="subheading" style="display: block; margin-bottom: 4px; font-size: 18px;">
+                            <span lang="en">Accessibility</span>
+                            <span lang="es" class="hidden">Accesibilidad</span>
+                        </span>
+                        <span class="body-text" style="font-size: 16px;">
+                            <span lang="en">Financial tools should be accessible to everyone, regardless of their
+                                background or expertise.</span>
+                            <span lang="es" class="hidden">Las herramientas financieras deben ser accesibles para todos,
+                                independientemente de su origen o experiencia.</span>
+                        </span>
+                    </div>
+                </li>
+                <li class="feature-item" style="align-items: flex-start; margin-bottom: 24px;">
+                    <img src="images/checkmark.svg" alt="Check" class="checkmark-icon" style="margin-top: 4px;">
+                    <div>
+                        <span class="subheading" style="display: block; margin-bottom: 4px; font-size: 18px;">
+                            <span lang="en">Innovation</span>
+                            <span lang="es" class="hidden">Innovación</span>
+                        </span>
+                        <span class="body-text" style="font-size: 16px;">
+                            <span lang="en">We continuously improve our app with new features and insights based on user
+                                feedback.</span>
+                            <span lang="es" class="hidden">Mejoramos continuamente nuestra aplicación con nuevas
+                                funciones y conocimientos basados en los comentarios de los usuarios.</span>
+                        </span>
+                    </div>
+                </li>
+                <li class="feature-item" style="align-items: flex-start;">
+                    <img src="images/checkmark.svg" alt="Check" class="checkmark-icon" style="margin-top: 4px;">
+                    <div>
+                        <span class="subheading" style="display: block; margin-bottom: 4px; font-size: 18px;">
+                            <span lang="en">Empowerment</span>
+                            <span lang="es" class="hidden">Empoderamiento</span>
+                        </span>
+                        <span class="body-text" style="font-size: 16px;">
+                            <span lang="en">We aim to give users the knowledge and tools they need to take control of
+                                their financial future.</span>
+                            <span lang="es" class="hidden">Nuestro objetivo es brindar a los usuarios el conocimiento y
+                                las herramientas que necesitan para tomar el control de su futuro financiero.</span>
+                        </span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SECTION — OUR TEAM -->
+    <section class="section section-alt" style="border-top: 1px solid var(--divider);">
+        <div class="container reading-column center-text">
+            <h2 class="section-title reveal-on-scroll">
+                <span lang="en">Our Team</span>
+                <span lang="es" class="hidden">Nuestro Equipo</span>
+            </h2>
+            <div class="problem-content mt-sm reveal-on-scroll delay-100">
+                <p class="body-text mb-sm" style="margin-left: auto; margin-right: auto;">
+                    <span lang="en">Bricks is developed by a passionate team of financial experts, developers, and
+                        designers committed to creating the best mortgage calculation experience possible. We combine
+                        deep industry knowledge with cutting-edge technology to build tools that make a difference in
+                        people's lives.</span>
+                    <span lang="es" class="hidden">Bricks es desarrollado por un equipo apasionado de expertos
+                        financieros, desarrolladores y diseñadores comprometidos a crear la mejor experiencia de cálculo
+                        hipotecario posible. Combinamos un profundo conocimiento de la industria con tecnología de
+                        vanguardia para crear herramientas que marcan la diferencia en la vida de las personas.</span>
+                </p>
+            </div>
+
+            <div class="mt-md reveal-on-scroll delay-200">
+                <a href="index.html" class="btn btn-secondary" style="display: inline-flex; align-items: center;">
+                    <svg class="w-5 h-5 mr-2" style="width: 20px; height: 20px; margin-right: 8px;"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                    </svg>
+                    <span lang="en">Back to Home</span>
+                    <span lang="es" class="hidden">Volver al Inicio</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container reveal-on-scroll">
+            <div
+                style="display: flex; flex-wrap: wrap; gap: 48px; justify-content: space-between; margin-bottom: 48px;">
+                <!-- Brand Section -->
+                <div style="flex: 1; min-width: 280px;">
+                    <a href="index.html" style="display: inline-block; margin-bottom: 16px;">
+                        <img src="images/Bricks Logo - Dark.svg" onerror="this.src='images/Bricks Logo.svg'"
+                            alt="Bricks Logo" style="height: 24px; opacity: 0.8;">
+                    </a>
+                    <p class="body-text" style="font-size: 15px;">
+                        <span lang="en">We build apps for the real estate sector.</span>
+                        <span lang="es" class="hidden">Construimos apps para el sector inmobiliario.</span>
+                    </p>
+                </div>
+
+                <!-- Footer Links Grid -->
+                <div
+                    style="flex: 2; min-width: 280px; display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 32px;">
+                    <!-- Apps Section -->
+                    <div>
+                        <h3 class="subheading" style="font-size: 16px; margin-bottom: 16px;">
+                            <span lang="en">Apps</span>
+                            <span lang="es" class="hidden">Apps</span>
+                        </h3>
+                        <ul
+                            style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+                            <li>
+                                <a href="bricks-scan.html" class="body-text" style="font-size: 15px;">
+                                    <span lang="en">Bricks Scan</span>
+                                    <span lang="es" class="hidden">Bricks Scan</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="bricks-calc.html" class="body-text" style="font-size: 15px;">
+                                    <span lang="en">Bricks Calc</span>
+                                    <span lang="es" class="hidden">Bricks Calc</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://leads.bricks.pe" class="body-text" style="font-size: 15px;">
+                                    <span lang="en">Bricks Leads</span>
+                                    <span lang="es" class="hidden">Bricks Leads</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Company Section -->
+                    <div>
+                        <h3 class="subheading" style="font-size: 16px; margin-bottom: 16px;">
+                            <span lang="en">Company</span>
+                            <span lang="es" class="hidden">Compañía</span>
+                        </h3>
+                        <ul
+                            style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+                            <li>
+                                <a href="about.html" class="body-text" style="font-size: 15px;">
+                                    <span lang="en">About us</span>
+                                    <span lang="es" class="hidden">Sobre nosotros</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://wa.me/51953431080?text=Hola%2C%20quiero%20informaci%C3%B3n%20respecto%20a%20lo%20siguiente"
+                                    target="_blank" rel="noopener noreferrer" class="body-text"
+                                    style="font-size: 15px;">
+                                    <span lang="en">Contact</span>
+                                    <span lang="es" class="hidden">Contacto</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="purchase-guide-01.html" class="body-text" style="font-size: 15px;">
+                                    <span lang="en">Purchase Guide</span>
+                                    <span lang="es" class="hidden">Guía Rápida</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Support Section -->
+                    <div>
+                        <h3 class="subheading" style="font-size: 16px; margin-bottom: 16px;">
+                            <span lang="en">Support</span>
+                            <span lang="es" class="hidden">Soporte</span>
+                        </h3>
+                        <ul
+                            style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+                            <li>
+                                <a href="/support.html" class="body-text" style="font-size: 15px;">
+                                    <span lang="en">Help &amp; Feedback</span>
+                                    <span lang="es" class="hidden">Ayuda &amp; Feedback</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="help.html" class="body-text" style="font-size: 15px;">
+                                    <span lang="en">Help Center</span>
+                                    <span lang="es" class="hidden">Centro de Ayuda</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://wa.me/51953431080?text=Hola%2C%20quiero%20informaci%C3%B3n%20respecto%20a%20lo%20siguiente"
+                                    target="_blank" rel="noopener noreferrer" class="body-text"
+                                    style="font-size: 15px; display: flex; align-items: center;">
+                                    <span lang="en">WhatsApp</span>
+                                    <span lang="es" class="hidden">WhatsApp</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="mailto:hello@bricks.pe" class="body-text" style="font-size: 15px;">
+                                    <span lang="en">Email: hello@bricks.pe</span>
+                                    <span lang="es" class="hidden">Email: hello@bricks.pe</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/survey.html" class="body-text" style="font-size: 15px;">
+                                    <span lang="en">Survey</span>
+                                    <span lang="es" class="hidden">Encuesta</span>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </footer>
 
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                // This space intentionally left blank
+            <div
+                style="border-top: 1px solid var(--surface-shadow); padding-top: 32px; display: flex; flex-direction: column; align-items: center; gap: 16px;">
+                <p class="metadata" style="text-align: center;">
+                    <span lang="en">© 2026 Bricks Apps. All rights reserved.</span>
+                    <span lang="es" class="hidden">© 2026 Bricks Apps. Todos los derechos reservados.</span>
+                </p>
+                <div class="footer-links" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 24px;">
+                    <a href="privacy.html" style="margin: 0;">
+                        <span lang="en">Privacy Policy</span>
+                        <span lang="es" class="hidden">Política de Privacidad</span>
+                    </a>
+                    <a href="terms.html" style="margin: 0;">
+                        <span lang="en">Terms of Service</span>
+                        <span lang="es" class="hidden">Términos de Servicio</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for Reveal on Scroll
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const animatedElements = document.querySelectorAll('.reveal-on-scroll');
+            animatedElements.forEach(el => {
+                observer.observe(el);
             });
-        </script>
-    </body>
+        });
+    </script>
+</body>
+
 </html>
