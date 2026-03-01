@@ -171,8 +171,10 @@
 
                 <!-- Form Card -->
                 <div class="embossed-card" style="padding: 40px 32px;">
-                    <form id="issue-report-form" action="https://formsubmit.co/ajax/707e6e012fa931048784ff0f766aa0df"
-                        method="POST" enctype="multipart/form-data">
+                    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+                    <form id="issue-report-form" target="hidden_iframe"
+                        action="https://formsubmit.co/707e6e012fa931048784ff0f766aa0df" method="POST"
+                        enctype="multipart/form-data">
                         <!-- FormSubmit.co Configuration -->
                         <input type="hidden" name="_subject" value="Bricks Apps Support Request" />
                         <input type="hidden" name="_template" value="table" />
@@ -254,7 +256,7 @@
                         </div>
                     </form>
                 </div>
-                <p class="file-upload-hint" style="text-align: right; padding-top: 32px;">V1.2</p>
+                <p class="file-upload-hint" style="text-align: right; padding-top: 32px;">V1.2.1</p>
             </div>
         </section>
     </main>
@@ -418,63 +420,46 @@
             // Selected files storage
             let selectedFiles = [];
 
-            // ── Form Submission via AJAX ────────────────────────────────
+            // ── Form Submission via Hidden IFrame ───────────────────────
+            let isSubmitting = false;
+
+            // Listen for the iframe load event (fires when FormSubmit responds)
+            const hiddenIframe = document.getElementById("hidden_iframe");
+            if (hiddenIframe) {
+                hiddenIframe.addEventListener("load", function () {
+                    if (isSubmitting) {
+                        showSuccessAlert(refNumber);
+                        form.reset();
+                        selectedFiles = [];
+                        fileList.innerHTML = "";
+                        fileList.classList.add("hidden");
+                        submitBtn.disabled = false;
+                        isSubmitting = false;
+                    }
+                });
+            }
+
             form.addEventListener("submit", function (event) {
-                event.preventDefault();
+                // DO NOT preventDefault() - let the browser natively submit the form to the hidden iframe!
 
-                const nameVal = document.getElementById("name").value.trim();
-                const emailVal = document.getElementById("email").value.trim();
-                const msgVal = document.getElementById("issue-description").value.trim();
-
-                if (!nameVal || !emailVal || !msgVal) return;
-
-                // Build FormData manually so we control every field and the attachment
-                const data = new FormData();
-                data.append("name", nameVal);
-                data.append("email", emailVal);
-                data.append("message", msgVal);
-                data.append("reference_number", refNumber);
-                data.append("_subject", "Bricks Apps Support Request");
-                data.append("_template", "table");
-                data.append("_replyto", emailVal);
-
-                // Attach the first selected file if present
-                if (selectedFiles.length > 0) {
-                    data.append("attachment", selectedFiles[0], selectedFiles[0].name);
+                // Sync the first selected file into the native input using DataTransfer
+                // This ensures the native file upload includes the visually selected file
+                if (selectedFiles.length > 0 && typeof DataTransfer !== "undefined") {
+                    try {
+                        const dt = new DataTransfer();
+                        dt.items.add(selectedFiles[0]);
+                        fileInput.files = dt.files;
+                    } catch (e) {
+                        // DataTransfer not supported — fall back to native input as-is
+                    }
                 }
 
                 // Disable submit button while sending
                 submitBtn.disabled = true;
+                isSubmitting = true;
 
-                fetch(form.action, {
-                    method: "POST",
-                    headers: { "Accept": "application/json" },
-                    body: data
-                })
-                    .then(function (response) {
-                        return response.json().then(function (json) {
-                            return { ok: response.ok, json: json };
-                        });
-                    })
-                    .then(function (result) {
-                        if (result.ok && result.json.success === "true") {
-                            showSuccessAlert(refNumber);
-                            form.reset();
-                            selectedFiles = [];
-                            fileList.innerHTML = "";
-                            fileList.classList.add("hidden");
-                        } else {
-                            console.error("FormSubmit error:", result.json);
-                            alert("Submission failed. Please try again later.");
-                        }
-                    })
-                    .catch(function (err) {
-                        console.error("Network error:", err);
-                        alert("Network error. Please check your connection and try again.");
-                    })
-                    .finally(function () {
-                        submitBtn.disabled = false;
-                    });
+                // Note: The form will now natively POST to FormSubmit,
+                // and the hiddenIframe "load" event will trigger the success flow.
             });
 
             // ── File Selection ──────────────────────────────────────────
