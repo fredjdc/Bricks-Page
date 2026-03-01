@@ -15,9 +15,95 @@
     <link rel="icon" href="favicon.ico" sizes="32x32" />
     <link rel="icon" type="image/png" href="images-bricks-scan/favicon-32x32.png" sizes="32x32" />
     <link rel="apple-touch-icon" href="images-bricks-scan/apple-touch-icon.png" />
+    <!-- Alpine and scripts -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="scripts.js" defer></script>
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != "dataLayer" ? "&l=" + l : "";
+            j.async = true;
+            j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", "GTM-P5P8LRC2");
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0NE96SRV4V"></script>
+    <script>
+        // GA4 tracker ensures product marketing funnels capture download conversions.
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+        gtag("config", "G-0NE96SRV4V");
+    </script>
+
+    <!-- Meta Pixel Code -->
+    <script>
+        !(function (f, b, e, v, n, t, s) {
+            if (f.fbq) return;
+            n = f.fbq = function () {
+                n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+            };
+            if (!f._fbq) f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = "2.0";
+            n.queue = [];
+            t = b.createElement(e);
+            t.async = !0;
+            t.src = v;
+            s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s);
+        })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+        fbq("init", "1088148306858128");
+        fbq("track", "PageView");
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display: none"
+            src="https://www.facebook.com/tr?id=1088148306858128&ev=PageView&noscript=1" />
+    </noscript>
+    <!-- End Meta Pixel Code -->
 </head>
 
 <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P5P8LRC2" height="0" width="0"
+            style="display: none; visibility: hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent-banner"
+        style="display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg-primary); padding: 24px; z-index: 50; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; box-shadow: 0 -4px 16px var(--surface-shadow); border-top: 1px solid var(--depth-plane);">
+        <div>
+            <p class="body-text" style="font-size: 14px; margin: 0;">
+                <span lang="en">We use cookies to analyze site usage and improve your experience. May we collect
+                    anonymous usage data?</span>
+                <span lang="es" class="hidden">Usamos cookies para analizar el uso del sitio y mejorar su experiencia.
+                    ¿Nos permite recopilar datos anónimos de uso?</span>
+            </p>
+        </div>
+        <div style="display: flex; gap: 8px;">
+            <button onclick="updateConsent('denied')" class="btn btn-secondary"
+                style="padding: 10px 20px; font-size: 14px;">
+                <span lang="en">Decline</span>
+                <span lang="es" class="hidden">Rechazar</span>
+            </button>
+            <button onclick="updateConsent('granted')" class="btn btn-primary"
+                style="padding: 10px 20px; font-size: 14px;">
+                <span lang="en">Accept</span>
+                <span lang="es" class="hidden">Aceptar</span>
+            </button>
+        </div>
+    </div>
 
     <!-- Header / Nav -->
     <header class="container site-header">

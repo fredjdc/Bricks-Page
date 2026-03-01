@@ -1012,6 +1012,49 @@ const setupLanguageSwitcher = () => {
     }
 };
 
+// Cookie Consent Management
+const initializeCookieConsent = () => {
+    // Check for previously stored consent on page load
+    const storedConsent = localStorage.getItem('analytics_consent');
+    const banner = document.getElementById('cookie-consent-banner');
+
+    if (banner) {
+        if (storedConsent === 'granted') {
+            updateConsent('granted');
+        } else if (storedConsent === 'denied') {
+            // User explicitly denied before
+            banner.style.display = 'none';
+        } else {
+            // Show the banner if no stored preference
+            banner.style.display = 'flex';
+        }
+    }
+};
+
+window.updateConsent = function (consent) {
+    if (typeof gtag === 'function') {
+        if (consent === 'granted') {
+            gtag('consent', 'update', {
+                'analytics_storage': 'granted'
+            });
+            localStorage.setItem('analytics_consent', 'granted');
+        } else {
+            gtag('consent', 'update', {
+                'analytics_storage': 'denied'
+            });
+            localStorage.setItem('analytics_consent', 'denied');
+        }
+    } else {
+        // Fallback if gtag is not defined
+        localStorage.setItem('analytics_consent', consent);
+    }
+
+    const banner = document.getElementById('cookie-consent-banner');
+    if (banner) {
+        banner.style.display = 'none';
+    }
+};
+
 // Initialize all functionality when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize element references
@@ -1047,6 +1090,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Activate the apps overview parallax effect when the cards are present
     initAppsParallax();
+
+    // Initialize cookie consent
+    initializeCookieConsent();
 
     // Set language based on stored preference or browser language
     const storedLang = localStorage.getItem('bricksLanguage');
