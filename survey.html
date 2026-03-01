@@ -124,6 +124,31 @@
     <noscript><img height="1" width="1" style="display: none"
             src="https://www.facebook.com/tr?id=1088148306858128&ev=PageView&noscript=1" /></noscript>
     <!-- End Meta Pixel Code -->
+    <!-- Custom Styles -->
+    <style>
+        /* Typeform container styling restored to original functionality */
+        .typeform-container {
+            min-height: calc(100vh - 80px);
+            /* Account for header */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 0;
+            position: relative;
+            /* Setup for background bloom */
+            overflow: hidden;
+            /* Contains background bloom */
+        }
+
+        .typeform-wrapper {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 10;
+        }
+    </style>
 </head>
 
 <body>
@@ -173,22 +198,16 @@
     </header>
 
     <!-- Main Feedback Section -->
-    <section class="section section-hero hero"
-        style="height: 100vh; padding: 0; margin: 0; position: relative; border-bottom: none;">
+    <main class="typeform-container hero">
+        <!-- Kept the hero class temporarily for background effects targeting -->
         <div class="hero-bg" aria-hidden="true" style="top: -100px;"></div>
+        <div class="typeform-wrapper">
 
-        <!-- Typeform Embed -->
-        <div id="typeform-container" class="reveal-on-scroll delay-100"
-            style="position: absolute; top: calc(var(--space-md) + 24px); left: 0; right: 0; bottom: 0; width: 100%; height: calc(100vh - var(--space-md) - 24px); border-top-left-radius: 24px; border-top-right-radius: 24px; overflow: hidden; box-shadow: 0 -8px 32px var(--surface-shadow); z-index: 10;">
+            <!-- Typeform Embed -->
+            <div data-tf-live="01K4P9Q4YRWCHEBKVJGV9YD4TT"></div>
+            <script src="//embed.typeform.com/next/embed.js"></script>
         </div>
-        <script src="//embed.typeform.com/next/embed.js"></script>
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const tfContainer = document.getElementById('typeform-container');
-                window.tf.createWidget('01K4P9Q4YRWCHEBKVJGV9YD4TT', { container: tfContainer });
-            });
-        </script>
-    </section>
+    </main>
 
     <!-- Intersection Observer for Reveal on Scroll -->
     <script>
