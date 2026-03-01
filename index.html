@@ -700,6 +700,7 @@
             box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
         }
     </style>
+    <link rel="stylesheet" href="new-bricks-scan.css">
 </head>
 
 <body class="min-h-screen">
@@ -1359,37 +1360,49 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 py-12 text-slate-300">
-        <div class="container px-4 md:px-6">
-            <div class="flex flex-col md:flex-row md:justify-between gap-8">
+    <footer class="site-footer">
+        <div class="container reveal-on-scroll">
+            <div
+                style="display: flex; flex-wrap: wrap; gap: 48px; justify-content: space-between; margin-bottom: 48px;">
                 <!-- Brand Section -->
-                <div class="mb-8 md:mb-0">
-                    <a href="index.html" class="text-2xl font-bold text-white">Bricks</a>
-                    <p class="mt-2 max-w-xs text-slate-400">
-                        <span lang="es">Construimos apps para el sector inmobiliario.</span>
-                        <span lang="en" class="hidden">We build apps for the real estate sector.</span>
+                <div style="flex: 1; min-width: 280px;">
+                    <a href="index.html" style="display: inline-block; margin-bottom: 16px;">
+                        <img src="images/Bricks Logo - Dark.svg" onerror="this.src='images/Bricks Logo.svg'"
+                            alt="Bricks Logo" style="height: 24px; opacity: 0.8;">
+                    </a>
+                    <p class="body-text" style="font-size: 15px;">
+                        <span lang="en">We build apps for the real estate sector.</span>
+                        <span lang="es" class="hidden">Construimos apps para el sector inmobiliario.</span>
                     </p>
                 </div>
 
                 <!-- Footer Links Grid -->
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                <div
+                    style="flex: 2; min-width: 280px; display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 32px;">
                     <!-- Apps Section -->
                     <div>
-                        <h3 class="mb-4 text-lg font-semibold text-white">
-                            <span lang="es">Apps</span>
-                            <span lang="en" class="hidden">Apps</span>
+                        <h3 class="subheading" style="font-size: 16px; margin-bottom: 16px;">
+                            <span lang="en">Apps</span>
+                            <span lang="es" class="hidden">Apps</span>
                         </h3>
-                        <ul class="space-y-2">
+                        <ul
+                            style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
                             <li>
-                                <a href="bricks-calc.html" class="transition-colors hover:text-white">
-                                    <span lang="es">Bricks Calc</span>
-                                    <span lang="en" class="hidden">Bricks Calc</span>
+                                <a href="bricks-scan.html" class="body-text" style="font-size: 15px;">
+                                    <span lang="en">Bricks Scan</span>
+                                    <span lang="es" class="hidden">Bricks Scan</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="https://leads.bricks.pe" class="transition-colors hover:text-white">
-                                    <span lang="es">Bricks Leads</span>
-                                    <span lang="en" class="hidden">Bricks Leads</span>
+                                <a href="bricks-calc.html" class="body-text" style="font-size: 15px;">
+                                    <span lang="en">Bricks Calc</span>
+                                    <span lang="es" class="hidden">Bricks Calc</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://leads.bricks.pe" class="body-text" style="font-size: 15px;">
+                                    <span lang="en">Bricks Leads</span>
+                                    <span lang="es" class="hidden">Bricks Leads</span>
                                 </a>
                             </li>
                         </ul>
@@ -1397,29 +1410,28 @@
 
                     <!-- Company Section -->
                     <div>
-                        <h3 class="mb-4 text-lg font-semibold text-white">
-                            <span lang="es">Compañía</span>
-                            <span lang="en" class="hidden">Company</span>
+                        <h3 class="subheading" style="font-size: 16px; margin-bottom: 16px;">
+                            <span lang="en">Company</span>
+                            <span lang="es" class="hidden">Compañía</span>
                         </h3>
-                        <ul class="space-y-2">
+                        <ul
+                            style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
                             <li>
-                                <a href="about.html" class="transition-colors hover:text-white">
-                                    <span lang="es">Sobre nosotros</span>
-                                    <span lang="en" class="hidden">About us</span>
+                                <a href="about.html" class="body-text" style="font-size: 15px;">
+                                    <span lang="en">About us</span>
+                                    <span lang="es" class="hidden">Sobre nosotros</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="https://wa.me/51953431080?text=Hola%2C%20quiero%20informaci%C3%B3n%20respecto%20a%20lo%20siguiente"
-                                    target="_blank" rel="noopener noreferrer"
-                                    class="transition-colors hover:text-white">
-                                    <span lang="es">Contacto</span>
-                                    <span lang="en" class="hidden">Contact</span>
+                                <a href="purchase-guide-01.html" class="body-text" style="font-size: 15px;">
+                                    <span lang="en">Purchase Guide</span>
+                                    <span lang="es" class="hidden">Guía Rápida</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="terms.html" class="transition-colors hover:text-white">
-                                    <span lang="es">Términos y privacidad</span>
-                                    <span lang="en" class="hidden">Terms and privacy</span>
+                                <a href="mailto:hello@bricks.pe" class="body-text" style="font-size: 15px;">
+                                    <span lang="en">Email: hello@bricks.pe</span>
+                                    <span lang="es" class="hidden">Email: hello@bricks.pe</span>
                                 </a>
                             </li>
                         </ul>
@@ -1427,40 +1439,29 @@
 
                     <!-- Support Section -->
                     <div>
-                        <h3 class="mb-4 text-lg font-semibold text-white">
-                            <span lang="es">Soporte</span>
-                            <span lang="en" class="hidden">Support</span>
+                        <h3 class="subheading" style="font-size: 16px; margin-bottom: 16px;">
+                            <span lang="en">Support</span>
+                            <span lang="es" class="hidden">Soporte</span>
                         </h3>
-                        <ul class="space-y-2">
+                        <ul
+                            style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
                             <li>
-                                <a href="/support.html" class="transition-colors hover:text-white">
-                                    <span lang="es">Ayuda &amp; Feedback</span>
-                                    <span lang="en" class="hidden">Help &amp; Feedback</span>
+                                <a href="support.html" class="body-text" style="font-size: 15px;">
+                                    <span lang="en">Help &amp; Feedback</span>
+                                    <span lang="es" class="hidden">Ayuda &amp; Feedback</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="https://wa.me/51953431080?text=Hola%2C%20quiero%20informaci%C3%B3n%20respecto%20a%20lo%20siguiente"
-                                    target="_blank" rel="noopener noreferrer"
-                                    class="whatsapp-link flex items-center transition-colors hover:text-white">
-                                    <svg class="mr-2 h-4 w-4 text-[#34C85A]" fill="currentColor" viewBox="0 0 24 24"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                                    </svg>
-                                    <span lang="es">WhatsApp</span>
-                                    <span lang="en" class="hidden">WhatsApp</span>
+                                <a href="help.html" class="body-text" style="font-size: 15px;">
+                                    <span lang="en">Apps Guides</span>
+                                    <span lang="es" class="hidden">Guías de Apps</span>
                                 </a>
                             </li>
+
                             <li>
-                                <a href="mailto:hello@bricks.pe" class="transition-colors hover:text-white">
-                                    <span lang="es">Email: hello@bricks.pe</span>
-                                    <span lang="en" class="hidden">Email: hello@bricks.pe</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/survey.html" class="transition-colors hover:text-white">
-                                    <span lang="es">Encuesta</span>
-                                    <span lang="en" class="hidden">Survey</span>
+                                <a href="/survey.html" class="body-text" style="font-size: 15px;">
+                                    <span lang="en">Survey</span>
+                                    <span lang="es" class="hidden">Encuesta</span>
                                 </a>
                             </li>
                         </ul>
@@ -1468,17 +1469,18 @@
                 </div>
             </div>
 
-            <div class="mt-12 border-t border-gray-800 pt-8 text-center text-sm text-slate-400">
-                <p>
-                    <span lang="en">© 2025 Bricks Apps. All rights reserved.</span>
-                    <span lang="es" class="hidden">© 2025 Bricks Apps. Todos los derechos reservados.</span>
+            <div
+                style="border-top: 1px solid var(--surface-shadow); padding-top: 32px; display: flex; flex-direction: column; align-items: center; gap: 16px;">
+                <p class="metadata" style="text-align: center;">
+                    <span lang="en">© 2026 Bricks Apps. All rights reserved.</span>
+                    <span lang="es" class="hidden">© 2026 Bricks Apps. Todos los derechos reservados.</span>
                 </p>
-                <div class="mt-4 flex justify-center space-x-6">
-                    <a href="privacy.html" class="transition-colors hover:text-white">
+                <div class="footer-links" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 24px;">
+                    <a href="privacy.html" style="margin: 0;">
                         <span lang="en">Privacy Policy</span>
                         <span lang="es" class="hidden">Política de Privacidad</span>
                     </a>
-                    <a href="terms.html" class="transition-colors hover:text-white">
+                    <a href="terms.html" style="margin: 0;">
                         <span lang="en">Terms of Service</span>
                         <span lang="es" class="hidden">Términos de Servicio</span>
                     </a>

@@ -292,7 +292,10 @@ Use one radius family across all assets:
 - **Hero Layout**: Build the primary focal section with `<section class="section section-hero hero">` and `<div class="hero-bg">`.
 - **Standard UI Typography**: Utilize design system classes `.hero-title`, `.subheading`, and `.body-text` instead of inline styles. 
 - **Buttons**: Use `.btn.btn-primary` and `.btn.btn-secondary` for a uniform look.
-- **Footer**: Implement `.site-footer` structure consistently across all endpoints.
+- **Footer**: Implement `.site-footer` structure consistently across all endpoints. The standard footer includes three columns of links:
+  - **Apps**: Bricks Scan, Bricks Calc, Bricks Leads.
+  - **Company**: About us, Purchase Guide, Email (hello@bricks.pe).
+  - **Support**: Help & Feedback, Apps Guides, Survey.
 
 ---
 
