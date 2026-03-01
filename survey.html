@@ -1,5 +1,5 @@
-<!doctype html>
-<html lang="es">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8" />
@@ -39,9 +39,6 @@
         content="Envíanos tu feedback sobre Bricks Apps. Tu opinión nos ayuda a mejorar nuestras herramientas inmobiliarias." />
     <meta property="twitter:image" content="https://bricks.pe/images/twitter-image.jpg" />
 
-    <!-- App Store Meta App CLip
-        <meta name="apple-itunes-app" content="app-id=6744432658, app-clip-bundle-id=com.bricks.bricksapp.Clip" /> -->
-
     <!-- Additional Meta Tags -->
     <meta name="description-en"
         content="Send us your feedback about Bricks Apps. Your opinion helps us improve our real estate tools." />
@@ -49,32 +46,22 @@
 
     <!-- Structured Data / Schema.org -->
     <script type="application/ld+json">
-            {
-                "@context": "https://schema.org",
-                "@type": "WebPage",
-                "name": "Feedback - Bricks Apps",
-                "description": "Envíanos tu feedback sobre Bricks Apps. Tu opinión nos ayuda a mejorar nuestras herramientas inmobiliarias.",
-                "url": "https://bricks.pe/feedback",
-                "publisher": {
-                    "@type": "Organization",
-                    "name": "Bricks Apps",
-                    "url": "https://bricks.pe/"
-                }
-            }
-        </script>
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Feedback - Bricks Apps",
+        "description": "Envíanos tu feedback sobre Bricks Apps. Tu opinión nos ayuda a mejorar nuestras herramientas inmobiliarias.",
+        "url": "https://bricks.pe/feedback",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Bricks Apps",
+            "url": "https://bricks.pe/"
+        }
+    }
+    </script>
 
-    <!-- Exo 2 font - moved higher in the document -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet" />
-
-    <!-- Google Material Symbols - moved higher -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=language" />
-
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="styles.css" />
+    <!-- Design System CSS -->
+    <link rel="stylesheet" href="new-bricks-scan.css?v=3">
 
     <!-- Favicon -->
     <link rel="icon" href="favicon.ico" sizes="32x32" />
@@ -83,24 +70,6 @@
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
     <link rel="manifest" href="site.webmanifest" />
     <meta name="theme-color" content="#1E40AF" />
-
-    <!-- Tailwind CSS via CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'bricks-blue': '#1E40AF',
-                        'bricks-yellow': '#FFCC00',
-                    },
-                    fontFamily: {
-                        sans: ["Exo 2", "sans-serif"]
-                    }
-                }
-            }
-        };
-    </script>
 
     <!-- Alpine.js for interactive components -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -155,73 +124,6 @@
     <noscript><img height="1" width="1" style="display: none"
             src="https://www.facebook.com/tr?id=1088148306858128&ev=PageView&noscript=1" /></noscript>
     <!-- End Meta Pixel Code -->
-
-    <style>
-        body {
-            font-family: "Exo 2", sans-serif;
-            background-color: #1E40AF;
-            color: white;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* Glass background effect for navigation */
-        .glass-nav {
-            background: rgba(30, 64, 175, 0.8);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-
-        /* Custom button styles */
-        .btn-yellow {
-            background-color: #FFCC00;
-            color: #1E40AF;
-            font-weight: 600;
-            padding: 12px 24px;
-            border-radius: 24px;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
-        }
-
-        .btn-yellow:hover {
-            background-color: #E6B800;
-            transform: translateY(-2px);
-        }
-
-        .btn-black {
-            background-color: #000000;
-            color: white;
-            font-weight: 600;
-            padding: 12px 24px;
-            border-radius: 24px;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
-        }
-
-        .btn-black:hover {
-            background-color: #333333;
-            transform: translateY(-2px);
-        }
-
-        /* Typeform container styling */
-        .typeform-container {
-            min-height: calc(100vh - 200px);
-            /* Account for header and footer */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem 0;
-        }
-
-        .typeform-wrapper {
-            width: 100%;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-    </style>
 </head>
 
 <body>
@@ -231,69 +133,83 @@
     <!-- End Google Tag Manager (noscript) -->
 
     <!-- Cookie Consent Banner -->
-    <div id="cookie-consent-banner" style="display: none"
-        class="fixed bottom-0 left-0 right-0 bg-gray-800 text-white p-6 z-50 flex flex-col sm:flex-row justify-between items-center gap-4">
+    <div id="cookie-consent-banner"
+        style="display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg-primary); padding: 24px; z-index: 50; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; box-shadow: 0 -4px 16px var(--surface-shadow); border-top: 1px solid var(--depth-plane);">
         <div>
-            <p class="text-sm">
+            <p class="body-text" style="font-size: 14px; margin: 0;">
                 <span lang="en">We use cookies to analyze site usage and improve your experience. May we collect
-                    anonymous
-                    usage data?</span>
+                    anonymous usage data?</span>
                 <span lang="es" class="hidden">Usamos cookies para analizar el uso del sitio y mejorar su experiencia.
-                    ¿Nos permite recopilar
-                    datos anónimos de uso?</span>
+                    ¿Nos permite recopilar datos anónimos de uso?</span>
             </p>
         </div>
-        <div class="flex gap-2">
-            <button onclick="updateConsent('denied')"
-                class="btn btn-outline text-white border-white text-xs px-8 py-1 whitespace-nowrap">
+        <div style="display: flex; gap: 8px;">
+            <button onclick="updateConsent('denied')" class="btn btn-secondary"
+                style="padding: 10px 20px; font-size: 14px;">
                 <span lang="en">Decline</span>
                 <span lang="es" class="hidden">Rechazar</span>
             </button>
-            <button onclick="updateConsent('granted')" class="btn btn-primary text-xs px-8 py-1 whitespace-nowrap">
+            <button onclick="updateConsent('granted')" class="btn btn-primary"
+                style="padding: 10px 20px; font-size: 14px;">
                 <span lang="en">Accept</span>
                 <span lang="es" class="hidden">Aceptar</span>
             </button>
         </div>
     </div>
 
-    <!-- Navigation Bar with Glass Effect -->
-    <header class="glass-nav sticky top-0 z-50 w-full border-b border-white/20">
-        <div class="container mx-auto px-4 grid grid-cols-2 h-16 items-center">
-            <!-- Logo -->
-            <a href="index.html" class="flex items-center">
-                <img src="images/Bricks Logo.svg" alt="Bricks Apps" class="h-8" />
+    <!-- Header / Nav -->
+    <header class="container site-header">
+        <div class="logo">
+            <a href="index.html" class="flex items-center" style="display: flex; align-items: center;">
+                <img src="images/Bricks Logo - Dark.svg" onerror="this.src='images/Bricks Logo.svg'" alt="Bricks Apps"
+                    style="height: 24px;" />
             </a>
-
-            <!-- Language Selector -->
-            <button id="language-switcher"
-                class="flex items-center space-x-2 px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors text-white justify-self-end"
-                title="Cambiar idioma / Change language">
-                <img src="images/globe-icon.svg" alt="" class="w-5 h-5 opacity-80">
-                <span id="current-language" class="hidden md:inline">Español</span>
-            </button>
         </div>
+        <button id="language-switcher" class="btn btn-secondary" style="padding: 8px 16px; font-size: 14px;"
+            title="Cambiar idioma / Change language">
+            <img src="images/globe-icon.svg" alt="" class="language-globe-icon">
+            <span id="current-language">Español</span>
+        </button>
     </header>
 
     <!-- Main Feedback Section -->
-    <main class="typeform-container">
-        <div class="typeform-wrapper">
-            <div class="text-center mb-8">
-                <h1 class="text-white font-bold text-3xl md:text-4xl mb-4">
-                    <span lang="es">Tu Feedback es Importante</span>
-                    <span lang="en" class="hidden">Your Feedback Matters</span>
-                </h1>
-                <p class="text-white/90 text-lg md:text-xl max-w-2xl mx-auto">
-                    <span lang="es">Ayúdanos a mejorar Bricks Apps compartiendo tus pensamientos y sugerencias.</span>
-                    <span lang="en" class="hidden">Help us improve Bricks Apps by sharing your thoughts and
-                        suggestions.</span>
-                </p>
-            </div>
+    <section class="section section-hero hero"
+        style="min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-start; padding-top: calc(var(--space-md) + 40px); padding-bottom: 24px; border-bottom: none;">
+        <div class="hero-bg" aria-hidden="true" style="top: -100px;"></div>
+        <div class="container reading-column center-text" style="flex: 1; display: flex; flex-direction: column;">
 
             <!-- Typeform Embed -->
-            <div data-tf-live="01K4P9Q4YRWCHEBKVJGV9YD4TT"></div>
+            <div data-tf-live="01K4P9Q4YRWCHEBKVJGV9YD4TT" class="reveal-on-scroll delay-100"
+                style="flex: 1; min-height: calc(100vh - var(--space-md) - 80px); width: 100%; display: flex; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 32px var(--surface-shadow);">
+            </div>
             <script src="//embed.typeform.com/next/embed.js"></script>
         </div>
-    </main>
+    </section>
+
+    <!-- Intersection Observer for Reveal on Scroll -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const animatedElements = document.querySelectorAll('.reveal-on-scroll');
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
 </body>
 
 </html>
