@@ -282,6 +282,19 @@ Use one radius family across all assets:
 
 ---
 
+# 9I) Web Pages (Standard / Post-Action Layouts)
+**Purpose:** Brand consistency across all site pages (Thank You pages, form confirmations, standard marketing pages).
+
+**Rules**
+- **No Tailwind CSS**: Explicitly deprecate the use of Tailwind classes, CDN scripts, or configuration blocks. Use `new-bricks-scan.css` exclusively for standard branding compliance.
+- **Header**: Use `<header class="container site-header">`. Place the logo on the left and a `.btn.btn-secondary` back button or language switcher on the right.
+- **Hero Layout**: Build the primary focal section with `<section class="section section-hero hero">` and `<div class="hero-bg">`.
+- **Standard UI Typography**: Utilize design system classes `.hero-title`, `.subheading`, and `.body-text` instead of inline styles. 
+- **Buttons**: Use `.btn.btn-primary` and `.btn.btn-secondary` for a uniform look.
+- **Footer**: Implement `.site-footer` structure consistently across all endpoints.
+
+---
+
 ## 10) Subject Library (Naming + Constraints)
 Use this list to keep icon meanings consistent.
 
