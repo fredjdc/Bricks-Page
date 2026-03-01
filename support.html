@@ -451,6 +451,18 @@
                     // Prevent default form submission temporarily
                     event.preventDefault();
 
+                    // Sync selectedFiles array back into the native file input using DataTransfer
+                    // so FormSubmit receives the attachment correctly (only the first file is sent)
+                    if (selectedFiles.length > 0 && typeof DataTransfer !== "undefined") {
+                        try {
+                            const dt = new DataTransfer();
+                            dt.items.add(selectedFiles[0]);
+                            fileInput.files = dt.files;
+                        } catch (e) {
+                            // DataTransfer not supported — fall back to native input as-is
+                        }
+                    }
+
                     // Show success alert
                     showSuccessAlert(refNumber);
 
@@ -485,6 +497,9 @@
                     updateFileList();
                     fileList.classList.remove("hidden");
                 }
+
+                // Reset native input so the same file can be re-selected if removed
+                this.value = "";
             });
 
             // Update file list UI
