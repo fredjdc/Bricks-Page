@@ -422,6 +422,28 @@ a:hover {
     }
 }
 
+/* Language Switcher */
+#language-switcher {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.language-globe-icon {
+    width: 16px;
+    height: 16px;
+    opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+    #language-switcher #current-language {
+        display: none;
+    }
+    #language-switcher {
+        padding: 8px 12px !important;
+    }
+}
+
 .logo img {
     height: 24px;
     display: block;
