@@ -230,7 +230,18 @@ Use one radius family across all assets:
 
 ---
 
-# 9E) Social Media Generated Images (Posts, Ads, Stories)
+# 9E) Global Website Headers & Navigation
+**Purpose:** Consistent navigation across all subpages.
+
+**Rules**
+- Use `<header class="container site-header">` without `sticky` positioning.
+- Include the logo on the left.
+- Include a simple language switcher button on the right, styled with `.btn.btn-secondary`.
+- Text-only language switcher (e.g., `Español`); **do not** include material symbol icons for the language.
+
+---
+
+# 9F) Social Media Generated Images (Posts, Ads, Stories)
 **Purpose:** Fast comprehension + brand consistency in feed.
 
 **Rules**
@@ -244,7 +255,7 @@ Use one radius family across all assets:
 
 ---
 
-# 9F) User Feedback Board Images (Feature Requests, Bugs, Praise)
+# 9G) User Feedback Board Images (Feature Requests, Bugs, Praise)
 **Purpose:** Friendly but consistent; avoid playful color.
 
 **Rules**
@@ -257,7 +268,7 @@ Use one radius family across all assets:
 
 ---
 
-# 9G) Onboarding Graphics
+# 9H) Onboarding Graphics
 **Purpose:** Explain features quickly, in the same material world as the app.
 
 **Rules**
