@@ -1,33 +1,46 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- App Store Meta App CLip
-    <meta name="apple-itunes-app" content="app-id=6744432658, app-clip-bundle-id=com.bricks.bricksapp.Clip"> -->
-    <title>Costos Extra en la Compra de Vivienda en Perú | Bricks</title>
-    
+    <title>
+        <span lang="en">Extra Costs in Home Purchase in Peru | Bricks</span>
+        <span lang="es" class="hidden">Costos Extra en la Compra de Vivienda en Perú | Bricks</span>
+    </title>
+    <meta name="description"
+        content="Understand additional costs beyond the sale price when buying property in Peru. Quick guide for home buyers.">
+
+    <!-- Design System CSS -->
+    <link rel="stylesheet" href="new-bricks-scan.css">
+
     <!-- Favicon -->
-    <link rel="icon" href="favicon.ico" sizes="32x32">
-    <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16">
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-    <link rel="manifest" href="site.webmanifest">
-    <meta name="theme-color" content="#007AFF">
-    
+    <link rel="icon" href="favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+
+    <!-- Alpine and scripts -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="scripts.js" defer></script>
+
     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-P5P8LRC2');</script>
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != "dataLayer" ? "&l=" + l : "";
+            j.async = true;
+            j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", "GTM-P5P8LRC2");
+    </script>
     <!-- End Google Tag Manager -->
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-0NE96SRV4V"></script>
     <script>
-        // GA4 tracker to measure guide engagement and conversion paths.
         window.dataLayer = window.dataLayer || [];
         function gtag() {
             dataLayer.push(arguments);
@@ -35,142 +48,6 @@
         gtag("js", new Date());
         gtag("config", "G-0NE96SRV4V");
     </script>
-    
-    <!-- Tailwind CSS via CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        /* Primary accent color - #007AFF */
-                        primary: {
-                            light: '#60a5fa', // light blue
-                            DEFAULT: '#007AFF', // blue - changed from #2563eb 
-                            dark: '#007AFF', // dark blue - changed from #1d4ed8
-                        },
-                        /* Secondary accent color (green) - #34C85A */
-                        secondary: {
-                            light: '#4ADE80', // light green
-                            DEFAULT: '#34C85A', // green - changed from #10b981
-                            dark: '#15803D', // dark green - adjusted to match new green
-                        },
-                    },
-                    maxWidth: {
-                        'screen-xl': '1200px',
-                    },
-                    fontFamily: {
-                        sans: ["Exo 2", "sans-serif"]
-                    }
-                },
-            },
-        }
-    </script>
-    <!-- Alpine.js for interactive components -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <!-- Exo 2 font -->
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Google Material Symbols -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=language" />
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- Link to custom CSS file -->
-    <link rel="stylesheet" href="styles.css">
-
-    <style>
-        /* Cookie consent banner styles */
-        .cookie-banner {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(10px);
-            border-top: 1px solid rgba(0, 122, 255, 0.2);
-            z-index: 1000;
-            padding: 1rem;
-        }
-        
-        /* Timeline styles */
-        /* Timeline styles */
-        .timeline-container {
-            position: relative;
-        }
-        
-        .timeline-line {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 4px;
-            height: 100%;
-            background-color: #007AFF;
-        }
-        
-        .timeline-item {
-            position: relative;
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-        }
-        
-        .timeline-item:before {
-            content: '';
-            position: absolute;
-            width: 0px;
-            height: 0px;
-            border-radius: 50%;
-            background-color: #007AFF;
-            left: 50%;
-            transform: translateX(-50%);
-            top: 2rem;
-            border: 0px solid white;
-            z-index: 1;
-        }
-        
-        /* Alternating items left and right on desktop */
-        @media (min-width: 768px) {
-            .timeline-item {
-                width: 45%;
-            }
-            
-            .timeline-item:nth-child(odd) {
-                margin-left: auto;
-                margin-right: 2rem;
-            }
-            
-            .timeline-item:nth-child(even) {
-                margin-left: 2rem;
-                margin-right: auto;
-            }
-            
-            .timeline-item:nth-child(odd):before {
-                left: 0;
-                transform: translateX(-50%);
-            }
-            
-            .timeline-item:nth-child(even):before {
-                left: 0;
-                transform: translateX(-50%);
-            }
-        }
-        
-        /* Mobile timeline adjustments */
-        @media (max-width: 767px) {
-            .timeline-line {
-                left: 2rem;
-            }
-            
-            .timeline-item {
-                margin-left: 3rem;
-                width: calc(100% - 3rem);
-            }
-            
-            .timeline-item:before {
-                left: 0;
-                transform: translateX(-50%);
-            }
-        }
-    </style>
 
     <!-- Meta Pixel Code -->
     <script>
@@ -193,663 +70,505 @@
         fbq("init", "1088148306858128");
         fbq("track", "PageView");
     </script>
-    <noscript
-        ><img
-            height="1"
-            width="1"
-            style="display: none"
-            src="https://www.facebook.com/tr?id=1088148306858128&ev=PageView&noscript=1"
-    /></noscript>
+    <noscript>
+        <img height="1" width="1" style="display: none"
+            src="https://www.facebook.com/tr?id=1088148306858128&ev=PageView&noscript=1" />
+    </noscript>
     <!-- End Meta Pixel Code -->
 </head>
-<body class="font-sans text-gray-800 bg-white overflow-x-hidden">
+
+<body>
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P5P8LRC2"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P5P8LRC2" height="0" width="0"
+            style="display: none; visibility: hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
+
     <!-- Cookie Consent Banner -->
-    <div
-        id="cookie-consent-banner"
-        style="display: none"
-        class="cookie-banner flex flex-col sm:flex-row justify-between items-center gap-4">
-        <div class="flex-1">
-            <p class="text-sm text-gray-300">
-                <span lang="en">We use cookies to analyze site usage and improve your experience. May we collect anonymous usage data?</span>
-                <span lang="es" class="hidden">Usamos cookies para analizar el uso del sitio y mejorar tu experiencia. ¿Nos permites recopilar datos anónimos de uso?</span>
+    <div id="cookie-consent-banner"
+        style="display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg-primary); padding: 24px; z-index: 50; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; box-shadow: 0 -4px 16px var(--surface-shadow); border-top: 1px solid var(--depth-plane);">
+        <div>
+            <p class="body-text" style="font-size: 14px; margin: 0;">
+                <span lang="en">We use cookies to analyze site usage and improve your experience. May we collect
+                    anonymous usage data?</span>
+                <span lang="es" class="hidden">Usamos cookies para analizar el uso del sitio y mejorar tu experiencia.
+                    ¿Nos permite recopilar datos anónimos de uso?</span>
             </p>
         </div>
-        <div class="flex gap-2 flex-shrink-0">
-            <button
-                onclick="updateConsent('denied')"
-                class="px-4 py-2 text-sm border border-gray-600 text-gray-300 hover:text-white hover:border-gray-500 transition-colors rounded-lg">
+        <div style="display: flex; gap: 8px;">
+            <button onclick="updateConsent('denied')" class="btn btn-secondary"
+                style="padding: 10px 20px; font-size: 14px;">
                 <span lang="en">Decline</span>
                 <span lang="es" class="hidden">Rechazar</span>
             </button>
-            <button 
-                onclick="updateConsent('granted')" 
-                class="px-4 py-2 text-sm bg-primary text-white font-medium hover:bg-primary-dark transition-colors rounded-lg">
+            <button onclick="updateConsent('granted')" class="btn btn-primary"
+                style="padding: 10px 20px; font-size: 14px;">
                 <span lang="en">Accept</span>
                 <span lang="es" class="hidden">Aceptar</span>
             </button>
         </div>
     </div>
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-sm z-50 shadow-sm">
-        <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <a href="index.html" class="flex items-center">
-                        <img src="images/Bricks Logo - Dark.svg" alt="Bricks Logo" class="h-8">
-                    </a>
-                </div>
-            </div>
+    <!-- Header / Nav -->
+    <header class="container site-header">
+        <div class="logo">
+            <a href="index.html" class="flex items-center" style="display: flex; align-items: center;">
+                <img src="images/Bricks Logo - Dark.svg" alt="Bricks Logo" style="height: 24px;">
+            </a>
         </div>
-    </nav>
+        <button id="language-switcher" class="btn btn-secondary" style="padding: 8px 16px; font-size: 14px;"
+            title="Change language / Cambiar idioma">
+            <span id="current-language">English</span>
+        </button>
+    </header>
 
-    <!-- Costos Extra en la Compra de Vivienda Content -->
-    <section class="pt-32 pb-16 bg-white">
-        <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 class="text-3xl md:text-4xl font-bold mb-2 text-center" data-aos="fade-up">Guía Rápida</h1>
-            <h2 class="text-xl font-semibold mb-12 text-slate-900 text-center" data-aos="fade-up"><span>Gastos Ocultos al Comprar Tu Casa</span></h2>
-            
-            <div class="mb-8 text-center" data-aos="fade-up" data-aos-delay="100">
-                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-                    Al comprar un inmueble de estreno en Perú, hay costos adicionales que van más allá del precio de venta. Esta guía te explica cuáles son y cómo planificarlos sin sorpresas.
-                </p>
-            </div>
-            
-            <!-- Timeline Section -->
-            <div class="relative py-8 mt-12">
-                <!-- Timeline Line -->
-                <div class="timeline-container">
-                    <div class="timeline-line"></div>
-                    
-                    <!-- Timeline Items -->
-                    <div class="timeline-item bg-white rounded-3xl shadow-2xl" data-aos="fade-up">
-                        <h3 class="text-xl font-semibold text-primary mb-3">1. Cuota inicial o separación</h3>
-                        <p class="mb-2">Normalmente entre el 10% y 30% del valor del inmueble.</p>
-                        <ul class="list-disc pl-5 text-gray-700">
-                            <li>Para separar el inmueble: S/. 500 - S/. 10,000</li>
-                            <li>Saldo de cuota inicial: Generalmente pagadero en 30-60 días</li>
-                        </ul>
-                        <div class="mt-3 p-3 bg-blue-50 rounded-3xl">
-                            <p class="text-sm text-gray-600 italic">
-                                <strong>Consejo:</strong> Negocia plazos más extensos para completar la cuota inicial si adquieres en planos.
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item bg-white rounded-3xl shadow-2xl" data-aos="fade-up" data-aos-delay="100">
-                        <h3 class="text-xl font-semibold text-primary mb-3">2. Gastos de estudio crediticio</h3>
-                        <p class="mb-2">Evaluación de tu capacidad de endeudamiento por la entidad financiera.</p>
-                        <ul class="list-disc pl-5 text-gray-700">
-                            <li>Estudio de títulos: S/. 200 - S/. 500</li>
-                            <li>Tasación del inmueble: S/. 300 - S/. 700</li>
-                            <li>Gastos administrativos: S/. 250 - S/. 500</li>
-                        </ul>
-                        <div class="mt-3 p-3 bg-blue-50 rounded-3xl">
-                            <p class="text-sm text-gray-600 italic">
-                                <strong>Nota:</strong> Algunas entidades financieras pueden incluir estos costos en el préstamo.
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item bg-white rounded-3xl shadow-2xl" data-aos="fade-up" data-aos-delay="200">
-                        <h3 class="text-xl font-semibold text-primary mb-3">3. Gastos notariales</h3>
-                        <p class="mb-2">Formalización legal de la compra ante notario público.</p>
-                        <ul class="list-disc pl-5 text-gray-700">
-                            <li>Escritura pública: S/. 500 - S/. 1,500 (varía según el valor del inmueble)</li>
-                            <li>Bloqueo registral: S/. 40 - S/. 60</li>
-                            <li>Legalización de documentos: S/. 100 - S/. 300</li>
-                        </ul>
-                        <div class="mt-3 p-3 bg-blue-50 rounded-3xl">
-                            <p class="text-sm text-gray-600 italic">
-                                <strong>Importante:</strong> Si es posible, compara tarifas entre notarías autorizadas, pueden variar significativamente el costo.
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item bg-white rounded-3xl shadow-2xl" data-aos="fade-up" data-aos-delay="300">
-                        <h3 class="text-xl font-semibold text-primary mb-3">4. Gastos registrales</h3>
-                        <p class="mb-2">Inscripción de la propiedad en Registros Públicos (SUNARP).</p>
-                        <ul class="list-disc pl-5 text-gray-700">
-                            <li>Derecho de inscripción: 0.75% de una UIT + 3/1000 del valor del inmueble</li>
-                            <li>Inscripción de hipoteca: S/. 35 por derechos de calificación + 0.75/1000 del monto del crédito</li>
-                            <li>Certificados y copias: S/. 100 - S/. 200</li>
-                        </ul>
-                        <div class="mt-3 p-3 bg-blue-50 rounded-3xl">
-                            <p class="text-sm text-gray-600 italic">
-                                <strong>Dato:</strong> La UIT para 2024 es de S/. 5,150.
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item bg-white rounded-3xl shadow-2xl" data-aos="fade-up" data-aos-delay="400">
-                        <h3 class="text-xl font-semibold text-primary mb-3">5. Impuesto de Alcabala</h3>
-                        <p class="mb-2">Impuesto municipal por transferencia de propiedad.</p>
-                        <ul class="list-disc pl-5 text-gray-700">
-                            <li>Equivale al 3% del valor de transferencia</li>
-                            <li>Deducible: 10 UIT (S/. 51,500 para 2024)</li>
-                            <li>Primera venta de inmuebles por constructoras: <strong>Exonerado</strong></li>
-                        </ul>
-                        <div class="mt-3 p-3 bg-blue-50 rounded-3xl">
-                            <p class="text-sm text-gray-600 italic">
-                                <strong>Beneficio:</strong> La compra de viviendas de estreno directamente de constructoras está exonerada de este impuesto.
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item bg-white rounded-3xl shadow-2xl" data-aos="fade-up" data-aos-delay="500">
-                        <h3 class="text-xl font-semibold text-primary mb-3">6. Comisiones bancarias</h3>
-                        <p class="mb-2">Costos asociados al crédito hipotecario.</p>
-                        <ul class="list-disc pl-5 text-gray-700">
-                            <li>Comisión por desembolso (ITF): 0.5% - 1% del monto del crédito</li>
-                            <li>Gastos de gestión: S/. 300 - S/. 800</li>
-                            <li>Seguro de desgravamen: 0.023% - 0.070% mensual del saldo</li>
-                            <li>Seguro contra todo riesgo: 0.025% - 0.045% anual del valor del inmueble</li>
-                        </ul>
-                        <div class="mt-3 p-3 bg-blue-50 rounded-3xl">
-                            <p class="text-sm text-gray-600 italic">
-                                <strong>Recomendación:</strong> Compara las TCEA (Tasa de Costo Efectivo Anual) entre bancos, no solo la TEA.
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item bg-white rounded-3xl shadow-2xl" data-aos="fade-up" data-aos-delay="600">
-                        <h3 class="text-xl font-semibold text-primary mb-3">7. Gastos de mudanza y acondicionamiento</h3>
-                        <p class="mb-2">Costos para hacer habitable tu nueva vivienda.</p>
-                        <ul class="list-disc pl-5 text-gray-700">
-                            <li>Servicio de mudanza: S/. 800 - S/. 2,500 (dependiendo de la distancia y volumen)</li>
-                            <li>Conexión de servicios (luz, agua, gas, internet): S/. 300 - S/. 1,000</li>
-                            <li>Acondicionamiento básico: S/. 3,000 - S/. 10,000 (cortinas, luminarias, etc.)</li>
-                        </ul>
-                        <div class="mt-3 p-3 bg-blue-50 rounded-3xl">
-                            <p class="text-sm text-gray-600 italic">
-                                <strong>Consejo:</strong> Reserva un 5-10% adicional del valor del inmueble para estos gastos imprevistos.
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item bg-white rounded-3xl shadow-2xl" data-aos="fade-up" data-aos-delay="700">
-                        <h3 class="text-xl font-semibold text-primary mb-3">8. Costos de administración</h3>
-                        <p class="mb-2">Gastos recurrentes tras la adquisición del inmueble.</p>
-                        <ul class="list-disc pl-5 text-gray-700">
-                            <li>Cuota inicial de mantenimiento: 1-3 meses adelantados</li>
-                            <li>Fondo de reserva del edificio: 1-2 cuotas de mantenimiento</li>
-                            <li>Impuesto predial y arbitrios: Aproximadamente 0.2% - 1% del valor del inmueble anualmente</li>
-                        </ul>
-                        <div class="mt-3 p-3 bg-blue-50 rounded-3xl">
-                            <p class="text-sm text-gray-600 italic">
-                                <strong>Importante:</strong> Solicita al vendedor información detallada sobre los gastos mensuales aproximados.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Resumen de Costos -->
-            <div class="bg-gray-50 p-8 rounded-3xl mt-16" data-aos="fade-up">
-                <h2 class="text-2xl font-bold mb-6 text-center">Resumen de Costos Extra</h2>
-                
-                <div class="overflow-x-auto max-w-full">
-                    <table class="min-w-full bg-white rounded-3xl overflow-hidden">
-                        <thead class="bg-primary text-white">
-                            <tr>
-                                <th class="py-3 px-4 text-left">Concepto</th>
-                                <th class="py-3 px-4 text-right">Rango aproximado</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-gray-200">
-                            <tr class="hover:bg-gray-50">
-                                <td class="py-3 px-4">Cuota inicial</td>
-                                <td class="py-3 px-4 text-right">10% - 30%</td>
-                            </tr>
-                            <tr class="hover:bg-gray-50">
-                                <td class="py-3 px-4">Gastos de estudio crediticio</td>
-                                <td class="py-3 px-4 text-right">S/. 750 - S/. 1,700</td>
-                            </tr>
-                            <tr class="hover:bg-gray-50">
-                                <td class="py-3 px-4">Gastos notariales</td>
-                                <td class="py-3 px-4 text-right">S/. 640 - S/. 1,860</td>
-                            </tr>
-                            <tr class="hover:bg-gray-50">
-                                <td class="py-3 px-4">Gastos registrales</td>
-                                <td class="py-3 px-4 text-right">S/. 300 - S/. 3,000</td>
-                            </tr>
-                            <tr class="hover:bg-gray-50">
-                                <td class="py-3 px-4">Impuesto de Alcabala</td>
-                                <td class="py-3 px-4 text-right">Exonerado (primera venta)</td>
-                            </tr>
-                            <tr class="hover:bg-gray-50">
-                                <td class="py-3 px-4">Comisiones bancarias</td>
-                                <td class="py-3 px-4 text-right">Variable</td>
-                            </tr>
-                            <tr class="hover:bg-gray-50">
-                                <td class="py-3 px-4">Mudanza y acondicionamiento</td>
-                                <td class="py-3 px-4 text-right">S/. 4,100 - S/. 13,500</td>
-                            </tr>
-                        </tbody>
-                        <tfoot class="bg-gray-100 font-semibold">
-                            <tr>
-                                <td class="py-3 px-4">TOTAL APROXIMADO (sin cuota inicial)</td>
-                                <td class="py-3 px-4 text-right">2% al 7% del valor del inmueble</td>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div>
-                
-                <div class="mt-6 p-4 bg-yellow-50 rounded-3xl border border-yellow-200">
-                    <p class="text-sm text-gray-700">
-                        <strong>Importante:</strong> Estos costos son aproximados y pueden variar según la ubicación del inmueble, su valor, la entidad financiera y otros factores. Se recomienda solicitar cotizaciones específicas para tu caso.
+    <!-- Hero Section -->
+    <section class="section section-hero hero">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="container center-text">
+            <div class="hero-content">
+                <h1 class="hero-title reveal-on-scroll">
+                    <span lang="en">Quick Guide</span>
+                    <span lang="es" class="hidden">Guía Rápida</span>
+                </h1>
+                <h2 class="section-title reveal-on-scroll delay-100">
+                    <span lang="en">Hidden Costs of Buying Your Home</span>
+                    <span lang="es" class="hidden">Gastos Ocultos al Comprar Tu Casa</span>
+                </h2>
+                <div class="reading-column reveal-on-scroll delay-200">
+                    <p class="body-text">
+                        <span lang="en">When buying a brand new property in Peru, there are additional costs beyond the
+                            sale price. This guide explains what they are and how to plan for them without
+                            surprises.</span>
+                        <span lang="es" class="hidden">Al comprar un inmueble de estreno en Perú, hay costos adicionales
+                            que van más allá del precio de venta. Esta guía te explica cuáles son y cómo planificarlos
+                            sin sorpresas.</span>
                     </p>
                 </div>
             </div>
-
-            <!-- Beneficios para Compradores de Vivienda en Perú -->
-            <section class="py-16 bg-gradient-to-b rounded-3xl from-white to-gray-50">
-                <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center" data-aos="fade-up">Beneficios para Compradores de Vivienda en Perú</h2>
-                    
-                    <div class="mb-8 text-center" data-aos="fade-up" data-aos-delay="100">
-                        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-                            El Estado peruano ofrece diversos programas y beneficios para facilitar el acceso a la vivienda propia. Conoce las opciones disponibles que podrían ayudarte a hacer realidad el sueño de tu casa propia.
-                        </p>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-                        <!-- Fondo MiVivienda -->
-                        <div class="bg-white rounded-3xl shadow-xl overflow-hidden transform transition-transform hover:scale-105" data-aos="fade-up">
-                            <div class="h-3 bg-primary"></div>
-                            <div class="p-6">
-                                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                                    <svg class="w-6 h-6 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-                                    </svg>
-                                </div>
-                                <h3 class="text-xl font-semibold text-gray-900 mb-2">Nuevo Crédito MiVivienda</h3>
-                                <p class="text-gray-600 mb-4">Financiamiento para compra de viviendas con valor entre S/. 65,200 hasta S/. 427,600.</p>
-                                <ul class="space-y-2">
-                                    <li class="flex items-start">
-                                        <svg class="w-5 h-5 text-secondary mt-0.5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                        </svg>
-                                        <span>Tasa de interés preferencial</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <svg class="w-5 h-5 text-secondary mt-0.5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                        </svg>
-                                        <span>Plazo de financiamiento de hasta 20 años</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <svg class="w-5 h-5 text-secondary mt-0.5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                        </svg>
-                                        <span>Financiamiento de hasta el 90% del valor</span>
-                                    </li>
-                                </ul>
-                                <div class="mt-4 p-3 bg-blue-50 rounded-2xl">
-                                    <p class="text-sm text-gray-600">
-                                        <span class="font-semibold">Requisito clave:</span> No ser propietario de otra vivienda a nivel nacional.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Bono del Buen Pagador -->
-                        <div class="bg-white rounded-3xl shadow-xl overflow-hidden transform transition-transform hover:scale-105" data-aos="fade-up" data-aos-delay="100">
-                            <div class="h-3 bg-secondary"></div>
-                            <div class="p-6">
-                                <div class="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center mb-4">
-                                    <svg class="w-6 h-6 text-secondary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                </div>
-                                <h3 class="text-xl font-semibold text-gray-900 mb-2">Bono del Buen Pagador (BBP)</h3>
-                                <p class="text-gray-600 mb-4">Subsidio directo que reduce el monto del préstamo al comprar una vivienda con Nuevo Crédito MiVivienda.</p>
-                                <div class="overflow-x-auto max-w-full mb-4">
-                                    <table class="min-w-full bg-white">
-                                        <thead class="bg-gray-50 text-xs">
-                                            <tr>
-                                                <th class="py-2 px-3 text-left">Valor de Vivienda</th>
-                                                <th class="py-2 px-3 text-right">Bono</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="divide-y divide-gray-100 text-sm">
-                                            <tr>
-                                                <td class="py-2 px-3">S/. 65,200 - S/. 93,100</td>
-                                                <td class="py-2 px-3 text-right font-medium">S/. 25,700</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="py-2 px-3">S/. 93,100 - S/. 139,400</td>
-                                                <td class="py-2 px-3 text-right font-medium">S/. 21,400</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="py-2 px-3">S/. 139,400 - S/. 232,200</td>
-                                                <td class="py-2 px-3 text-right font-medium">S/. 19,600</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="py-2 px-3">S/. 232,200 - S/. 343,900</td>
-                                                <td class="py-2 px-3 text-right font-medium">S/. 10,800</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="mt-2 p-3 bg-green-50 rounded-2xl">
-                                    <p class="text-sm text-gray-600">
-                                        <span class="font-semibold">Importante:</span> El BBP se pierde si se prepaga más del 30% del préstamo en los primeros 5 años.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Programa Techo Propio -->
-                        <div class="bg-white rounded-3xl shadow-xl overflow-hidden transform transition-transform hover:scale-105" data-aos="fade-up" data-aos-delay="200">
-                            <div class="h-3 bg-purple-500"></div>
-                            <div class="p-6">
-                                <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mb-4">
-                                    <svg class="w-6 h-6 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
-                                    </svg>
-                                </div>
-                                <h3 class="text-xl font-semibold text-gray-900 mb-2">Programa Techo Propio</h3>
-                                <p class="text-gray-600 mb-4">Subsidio estatal directo para familias de bajos recursos que quieren adquirir, construir o mejorar su vivienda.</p>
-                                <ul class="space-y-2">
-                                    <li class="flex items-start">
-                                        <svg class="w-5 h-5 text-purple-500 mt-0.5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                        </svg>
-                                        <span>Bono Familiar Habitacional (BFH) de hasta S/. 43,000 para compra</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <svg class="w-5 h-5 text-purple-500 mt-0.5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                        </svg>
-                                        <span>BFH de hasta S/. 25,800 para construcción</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <svg class="w-5 h-5 text-purple-500 mt-0.5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                        </svg>
-                                        <span>Valor máximo de vivienda: S/. 116,600</span>
-                                    </li>
-                                </ul>
-                                <div class="mt-4 p-3 bg-purple-50 rounded-2xl">
-                                    <p class="text-sm text-gray-600">
-                                        <span class="font-semibold">Requisito clave:</span> Ingreso familiar mensual máximo de S/. 3,715 para compra.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Beneficio para Jóvenes -->
-                        <div class="bg-white rounded-3xl shadow-xl overflow-hidden transform transition-transform hover:scale-105" data-aos="fade-up" data-aos-delay="300">
-                            <div class="h-3 bg-amber-500"></div>
-                            <div class="p-6">
-                                <div class="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center mb-4">
-                                    <svg class="w-6 h-6 text-amber-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-                                    </svg>
-                                </div>
-                                <h3 class="text-xl font-semibold text-gray-900 mb-2">Bono MiVivienda Joven</h3>
-                                <p class="text-gray-600 mb-4">Beneficio adicional para jóvenes entre 18 y 35 años que adquieren su primera vivienda.</p>
-                                <ul class="space-y-2">
-                                    <li class="flex items-start">
-                                        <svg class="w-5 h-5 text-amber-500 mt-0.5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                        </svg>
-                                        <span>Bono adicional del 0.5% del monto financiado</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <svg class="w-5 h-5 text-amber-500 mt-0.5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                        </svg>
-                                        <span>Aplicable junto con el BBP regular</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <svg class="w-5 h-5 text-amber-500 mt-0.5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                        </svg>
-                                        <span>Cuota inicial mínima reducida al 7.5%</span>
-                                    </li>
-                                </ul>
-                                <div class="mt-4 p-3 bg-amber-50 rounded-2xl">
-                                    <p class="text-sm text-gray-600">
-                                        <span class="font-semibold">Ventaja:</span> Permite a jóvenes acceder a vivienda con menor cuota inicial y mejor tasa.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Beneficios Tributarios -->
-                        <div class="bg-white rounded-3xl shadow-xl overflow-hidden transform transition-transform hover:scale-105" data-aos="fade-up" data-aos-delay="400">
-                            <div class="h-3 bg-emerald-500"></div>
-                            <div class="p-6">
-                                <div class="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center mb-4">
-                                    <svg class="w-6 h-6 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2zM10 8.5a.5.5 0 11-1 0 .5.5 0 011 0zm5 5a.5.5 0 11-1 0 .5.5 0 011 0z"></path>
-                                    </svg>
-                                </div>
-                                <h3 class="text-xl font-semibold text-gray-900 mb-2">Beneficios Tributarios</h3>
-                                <p class="text-gray-600 mb-4">Incentivos fiscales asociados a la adquisición de vivienda.</p>
-                                <ul class="space-y-2">
-                                    <li class="flex items-start">
-                                        <svg class="w-5 h-5 text-emerald-500 mt-0.5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                        </svg>
-                                        <span>Deducción de intereses de créditos hipotecarios (hasta 3 UIT anuales)</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <svg class="w-5 h-5 text-emerald-500 mt-0.5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                        </svg>
-                                        <span>Primera venta de inmuebles: IGV solo aplicado al valor del terreno</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <svg class="w-5 h-5 text-emerald-500 mt-0.5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                        </svg>
-                                        <span>Exoneración del impuesto a la renta por venta de inmuebles para vivienda única</span>
-                                    </li>
-                                </ul>
-                                <div class="mt-4 p-3 bg-emerald-50 rounded-2xl">
-                                    <p class="text-sm text-gray-600">
-                                        <span class="font-semibold">Nota:</span> La deducción de intereses aplica solo a primera o única vivienda.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Bono Verde -->
-                        <div class="bg-white rounded-3xl shadow-xl overflow-hidden transform transition-transform hover:scale-105" data-aos="fade-up" data-aos-delay="500">
-                            <div class="h-3 bg-lime-500"></div>
-                            <div class="p-6">
-                                <div class="w-12 h-12 rounded-full bg-lime-100 flex items-center justify-center mb-4">
-                                    <svg class="w-6 h-6 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                </div>
-                                <h3 class="text-xl font-semibold text-gray-900 mb-2">Bono MiVivienda Verde</h3>
-                                <p class="text-gray-600 mb-4">Incentivo para adquirir viviendas que incorporen criterios de sostenibilidad ambiental.</p>
-                                <ul class="space-y-2">
-                                    <li class="flex items-start">
-                                        <svg class="w-5 h-5 text-lime-500 mt-0.5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                        </svg>
-                                        <span>Bono adicional del 3% o 4% del valor de financiamiento</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <svg class="w-5 h-5 text-lime-500 mt-0.5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                        </svg>
-                                        <span>Acumulable con el BBP regular</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <svg class="w-5 h-5 text-lime-500 mt-0.5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                        </svg>
-                                        <span>Menor consumo de agua y energía = menor gasto mensual</span>
-                                    </li>
-                                </ul>
-                                <div class="mt-4 p-3 bg-lime-50 rounded-2xl">
-                                    <p class="text-sm text-gray-600">
-                                        <span class="font-semibold">Beneficio:</span> Viviendas con tecnologías eco-amigables que reducen gastos de servicios hasta en 30%.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-            <!-- Calculator CTA Section -->
-            <div class="bg-gray-50 p-6 rounded-3xl my-12 text-center" data-aos="fade-up">
-                <h3 class="text-lg font-semibold mb-3">Planifica la Compra de Tu Casa</h3>
-                <p class="mb-4">Usa Bricks para estimar las cuotas mensuales y entender tus opciones.</p>
-                        <a href="https://apps.apple.com/us/app/bricks-calculadora-hipotecaria/id6754506837" id="app-store-download" class="btn inline-flex items-center justify-center rounded-full bg-black px-8 py-6 text-white shadow hover:bg-black/70" style="width: 320px" onclick="gtag('event', 'click', {event_category: 'engagement', event_label: 'app_store_download'})">
-                            <svg class="mr-2 h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M17.5646,12.6636 C17.532,10.0547 19.2843,8.5727 19.3623,8.5143 C18.1994,6.8761 16.3166,6.6936 15.6761,6.6747 C14.0535,6.5243 12.4844,7.716 11.6574,7.716 C10.8185,7.716 9.5219,6.6935 8.1644,6.7243 C6.4269,6.7551 4.8012,7.716 3.9234,9.2457 C2.1152,12.3603 3.4646,17.0072 5.2,19.5467 C6.0705,20.797 7.0775,22.2118 8.3948,22.1615 C9.6834,22.1112 10.16,21.3003 11.7071,21.3003 C13.2432,21.3003 13.6911,22.1615 15.0274,22.1327 C16.4046,22.1112 17.2788,20.8642 18.1256,19.6026 C19.1199,18.1483 19.5678,16.7144 19.5869,16.6545 C19.5583,16.6449 17.601,15.8649 17.5646,12.6636 Z M15.0599,5.0066 C15.7748,4.1194 16.2611,2.9026 16.1067,1.6666 C15.063,1.7078 13.7649,2.3665 13.0214,3.2346 C12.3638,4.0024 11.7741,5.2577 11.9475,6.4745 C13.1104,6.5537 14.3259,5.8843 15.0599,5.0066 Z"></path>
-                            </svg>
-                            <span lang="es">Descargar en App Store</span>
-                        </a>
-                    </div>
-                </div>
-            </section>
         </div>
     </section>
 
-    <!-- Back to Home Button -->
-    <div class="text-center mt-8 mb-12">
-        <a href="index.html" class="inline-flex items-center text-primary hover:text-primary-dark transition-colors" onclick="gtag('event', 'click', {event_category: 'navigation', event_label: 'back_to_home'})">
-            <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-            </svg>
-            <span>Volver al Inicio</span>
-        </a>
-    </div>
+    <!-- Main Content -->
+    <section class="section">
+        <div class="container reading-column">
+            <!-- Intro Text -->
+            <div class="reveal-on-scroll center-text mb-md">
+                <p class="body-text">
+                    <span lang="en">Buying a house is a big step. Beyond the sale price, it's important to understand
+                        the additional costs that arise during the process.</span>
+                    <span lang="es" class="hidden">Comprar una casa es un gran paso. Más allá del precio de venta, es
+                        importante entender los costos adicionales que surgen durante el proceso.</span>
+                </p>
+            </div>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 py-12 text-slate-300">
-        <div class="max-w-screen-xl mx-auto px-4 md:px-6">
-            <div class="flex flex-col md:flex-row md:justify-between">
-                <div class="mb-8 md:mb-0">
-                    <a href="#" class="text-2xl font-bold text-white">Bricks Apps</a>
-                    <p class="mt-2 max-w-xs text-slate-400">
-                        <span lang="es">Desarrollamos herramientas inmobiliarias premium. Diseñadas específicamente para profesionales que buscan la mejor experiencia iOS.</span>
+            <!-- Timeline Cards -->
+            <div class="grid-1">
+                <div class="embossed-card reveal-on-scroll mb-md" style="padding: 32px;">
+                    <h3 class="subheading">
+                        <span lang="en">1. Down Payment or Reservation</span>
+                        <span lang="es" class="hidden">1. Cuota inicial o separación</span>
+                    </h3>
+                    <p class="body-text mb-sm" style="font-size: 16px;">
+                        <span lang="en">Normally between 10% and 30% of the property value.</span>
+                        <span lang="es" class="hidden">Normalmente entre el 10% y 30% del valor del inmueble.</span>
+                    </p>
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <span lang="en">To reserve the property: S/. 500 - S/. 10,000</span>
+                            <span lang="es" class="hidden">Para separar el inmueble: S/. 500 - S/. 10,000</span>
+                        </li>
+                        <li class="feature-item">
+                            <span lang="en">Balance of down payment: Generally payable in 30-60 days</span>
+                            <span lang="es" class="hidden">Saldo de cuota inicial: Generalmente pagadero en 30-60
+                                días</span>
+                        </li>
+                    </ul>
+                    <div class="recessed-well mt-sm" style="padding: 16px;">
+                        <p class="metadata italic">
+                            <strong><span lang="en">Tip:</span><span lang="es" class="hidden">Consejo:</span></strong>
+                            <span lang="en">Negotiate longer terms to complete the down payment if purchasing
+                                off-plan.</span>
+                            <span lang="es" class="hidden">Negocia plazos más extensos para completar la cuota inicial
+                                si adquieres en planos.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="embossed-card reveal-on-scroll mb-md delay-100" style="padding: 32px;">
+                    <h3 class="subheading">
+                        <span lang="en">2. Credit Study Fees</span>
+                        <span lang="es" class="hidden">2. Gastos de estudio crediticio</span>
+                    </h3>
+                    <p class="body-text mb-sm" style="font-size: 16px;">
+                        <span lang="en">Evaluation of your borrowing capacity by the financial institution.</span>
+                        <span lang="es" class="hidden">Evaluación de tu capacidad de endeudamiento por la entidad
+                            financiera.</span>
+                    </p>
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <span lang="en">Title search: S/. 200 - S/. 500</span>
+                            <span lang="es" class="hidden">Estudio de títulos: S/. 200 - S/. 500</span>
+                        </li>
+                        <li class="feature-item">
+                            <span lang="en">Property appraisal: S/. 300 - S/. 700</span>
+                            <span lang="es" class="hidden">Tasación del inmueble: S/. 300 - S/. 700</span>
+                        </li>
+                        <li class="feature-item">
+                            <span lang="en">Administrative costs: S/. 250 - S/. 500</span>
+                            <span lang="es" class="hidden">Gastos administrativos: S/. 250 - S/. 500</span>
+                        </li>
+                    </ul>
+                    <div class="recessed-well mt-sm" style="padding: 16px;">
+                        <p class="metadata italic">
+                            <strong><span lang="en">Note:</span><span lang="es" class="hidden">Nota:</span></strong>
+                            <span lang="en">Some financial institutions may include these costs in the loan.</span>
+                            <span lang="es" class="hidden">Algunas entidades financieras pueden incluir estos costos en
+                                el préstamo.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="embossed-card reveal-on-scroll mb-md delay-200" style="padding: 32px;">
+                    <h3 class="subheading">
+                        <span lang="en">3. Notary Fees</span>
+                        <span lang="es" class="hidden">3. Gastos notariales</span>
+                    </h3>
+                    <p class="body-text mb-sm" style="font-size: 16px;">
+                        <span lang="en">Legal formalization of the purchase before a public notary.</span>
+                        <span lang="es" class="hidden">Formalización legal de la compra ante notario público.</span>
+                    </p>
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <span lang="en">Public deed: S/. 500 - S/. 1,500</span>
+                            <span lang="es" class="hidden">Escritura pública: S/. 500 - S/. 1,500</span>
+                        </li>
+                        <li class="feature-item">
+                            <span lang="en">Registry lock: S/. 40 - S/. 60</span>
+                            <span lang="es" class="hidden">Bloqueo registral: S/. 40 - S/. 60</span>
+                        </li>
+                        <li class="feature-item">
+                            <span lang="en">Document legalization: S/. 100 - S/. 300</span>
+                            <span lang="es" class="hidden">Legalización de documentos: S/. 100 - S/. 300</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="embossed-card reveal-on-scroll mb-md delay-300" style="padding: 32px;">
+                    <h3 class="subheading">
+                        <span lang="en">4. Registration Fees</span>
+                        <span lang="es" class="hidden">4. Gastos registrales</span>
+                    </h3>
+                    <p class="body-text mb-sm" style="font-size: 16px;">
+                        <span lang="en">Registration of the property in the Public Registry (SUNARP).</span>
+                        <span lang="es" class="hidden">Inscripción de la propiedad en Registros Públicos
+                            (SUNARP).</span>
+                    </p>
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <span lang="en">Registration fee: 0.75% of one UIT + 3/1000 of property value</span>
+                            <span lang="es" class="hidden">Derecho de inscripción: 0.75% de una UIT + 3/1000 del valor
+                                del inmueble</span>
+                        </li>
+                        <li class="feature-item">
+                            <span lang="en">Mortgage registration: S/. 35 + 0.75/1000 of credit</span>
+                            <span lang="es" class="hidden">Inscripción de hipoteca: S/. 35 + 0.75/1000 del monto
+                                crediticio</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="embossed-card reveal-on-scroll mb-md" style="padding: 32px;">
+                    <h3 class="subheading">
+                        <span lang="en">5. Alcabala Tax</span>
+                        <span lang="es" class="hidden">5. Impuesto de Alcabala</span>
+                    </h3>
+                    <p class="body-text mb-sm" style="font-size: 16px;">
+                        <span lang="en">Municipal tax for property transfer.</span>
+                        <span lang="es" class="hidden">Impuesto municipal por transferencia de propiedad.</span>
+                    </p>
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <span lang="en">Equivalent to 3% of the transfer value</span>
+                            <span lang="es" class="hidden">Equivale al 3% del valor de transferencia</span>
+                        </li>
+                        <li class="feature-item">
+                            <span lang="en">Deductible: 10 UIT (S/ 51,500 for 2024)</span>
+                            <span lang="es" class="hidden">Deducible: 10 UIT (S/ 51,500 para 2024)</span>
+                        </li>
+                    </ul>
+                    <div class="recessed-well mt-sm" style="padding: 16px;">
+                        <p class="metadata italic">
+                            <strong><span lang="en">Benefit:</span><span lang="es"
+                                    class="hidden">Beneficio:</span></strong>
+                            <span lang="en">First sale of brand new homes directly from developers is exempt from this
+                                tax.</span>
+                            <span lang="es" class="hidden">La primera venta de viviendas de estreno directamente de
+                                constructoras está exonerada de este impuesto.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="embossed-card reveal-on-scroll mb-md delay-100" style="padding: 32px;">
+                    <h3 class="subheading">
+                        <span lang="en">6. Bank Commissions</span>
+                        <span lang="es" class="hidden">6. Comisiones bancarias</span>
+                    </h3>
+                    <p class="body-text mb-sm" style="font-size: 16px;">
+                        <span lang="en">Costs associated with the mortgage credit.</span>
+                        <span lang="es" class="hidden">Costos asociados al crédito hipotecario.</span>
+                    </p>
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <span lang="en">Life insurance: monthly balance percentage</span>
+                            <span lang="es" class="hidden">Seguro de desgravamen: porcentaje mensual del saldo</span>
+                        </li>
+                        <li class="feature-item">
+                            <span lang="en">Property insurance: annual value percentage</span>
+                            <span lang="es" class="hidden">Seguro contra todo riesgo: porcentaje anual del valor</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Summary Table -->
+            <div class="pricing-table embossed-card reveal-on-scroll mt-md" style="padding: 48px;">
+                <h2 class="subheading center-text mb-md">
+                    <span lang="en">Extra Costs Summary</span>
+                    <span lang="es" class="hidden">Resumen de Costos Extra</span>
+                </h2>
+                <div class="pricing-row">
+                    <span style="font-weight: 500;">
+                        <span lang="en">Down payment</span>
+                        <span lang="es" class="hidden">Cuota inicial</span>
+                    </span>
+                    <span>10% - 30%</span>
+                </div>
+                <div class="pricing-row">
+                    <span style="font-weight: 500;">
+                        <span lang="en">Legal fees</span>
+                        <span lang="es" class="hidden">Gastos notariales</span>
+                    </span>
+                    <span>S/. 1,000 - S/. 3,000</span>
+                </div>
+                <div class="pricing-row total">
+                    <span>
+                        <span lang="en">ESTIMATED TOTAL (extra)</span>
+                        <span lang="es" class="hidden">TOTAL ESTIMADO (extra)</span>
+                    </span>
+                    <span>
+                        <span lang="en">2% to 7% of property value</span>
+                        <span lang="es" class="hidden">2% al 7% del valor</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title center-text reveal-on-scroll">
+                <span lang="en">Buyer Benefits in Peru</span>
+                <span lang="es" class="hidden">Beneficios para Compradores en Perú</span>
+            </h2>
+            <div class="grid-3 mt-md">
+                <div class="embossed-card reveal-on-scroll" style="padding: 32px;">
+                    <div class="icon-circle mb-sm"
+                        style="width: 48px; height: 48px; border-radius: 50%; background: var(--bg-primary); box-shadow: var(--soft-emboss-card); display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+                        <img src="images/checkmark.svg" alt="Benefit" style="width: 24px;">
+                    </div>
+                    <h3 class="subheading">
+                        <span lang="en">Housing Subsidies (Bonos)</span>
+                        <span lang="es" class="hidden">Beneficios de Vivienda (Bonos)</span>
+                    </h3>
+                    <ul class="feature-list" style="font-size: 15px;">
+                        <li class="feature-item">
+                            <span lang="en"><strong>BBP:</strong> Direct subsidy for your down payment.</span>
+                            <span lang="es" class="hidden"><strong>BBP:</strong> Subsidio directo para tu cuota
+                                inicial.</span>
+                        </li>
+                        <li class="feature-item">
+                            <span lang="en"><strong>Bono Verde:</strong> Extra discount for eco-friendly homes.</span>
+                            <span lang="es" class="hidden"><strong>Bono Verde:</strong> Descuento extra por hogares
+                                eco-amigables.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="embossed-card reveal-on-scroll delay-100" style="padding: 32px;">
+                    <div class="icon-circle mb-sm"
+                        style="width: 48px; height: 48px; border-radius: 50%; background: var(--bg-primary); box-shadow: var(--soft-emboss-card); display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+                        <img src="images/checkmark.svg" alt="Benefit" style="width: 24px;">
+                    </div>
+                    <h3 class="subheading">
+                        <span lang="en">AFP Withdrawal</span>
+                        <span lang="es" class="hidden">Retiro de AFP</span>
+                    </h3>
+                    <p class="body-text" style="font-size: 15px;">
+                        <span lang="en">Withdraw up to 25% of your AFP funds for the down payment or mortgage repayment
+                            for your first home.</span>
+                        <span lang="es" class="hidden">Retira hasta el 25% de tu AFP para la cuota inicial o
+                            amortización de crédito de primera vivienda.</span>
                     </p>
                 </div>
-                
-                <div class="grid grid-cols-2 md:grid-cols-2 gap-8">
+
+                <div class="embossed-card reveal-on-scroll delay-200" style="padding: 32px;">
+                    <div class="icon-circle mb-sm"
+                        style="width: 48px; height: 48px; border-radius: 50%; background: var(--bg-primary); box-shadow: var(--soft-emboss-card); display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+                        <img src="images/checkmark.svg" alt="Benefit" style="width: 24px;">
+                    </div>
+                    <h3 class="subheading">
+                        <span lang="en">Tax Benefits</span>
+                        <span lang="es" class="hidden">Beneficios Tributarios</span>
+                    </h3>
+                    <p class="body-text" style="font-size: 15px;">
+                        <span lang="en">Income Tax refund for mortgage interest and deductions for independent
+                            workers.</span>
+                        <span lang="es" class="hidden">Devolución de Impuesto a la Renta por intereses hipotecarios y
+                            deducciones para independientes.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator CTA -->
+    <section class="section">
+        <div class="container center-text">
+            <div class="embossed-card reveal-on-scroll" style="padding: 64px; max-width: 800px; margin: 0 auto;">
+                <h2 class="section-title mb-sm">
+                    <span lang="en">Ready to calculate your budget?</span>
+                    <span lang="es" class="hidden">¿Listo para calcular tu presupuesto?</span>
+                </h2>
+                <p class="body-text mb-md">
+                    <span lang="en">Use our advanced calculator to get a realistic estimate of all costs and find your
+                        dream home.</span>
+                    <span lang="es" class="hidden">Usa nuestra calculadora avanzada para obtener un estimado realista de
+                        todos los costos y encontrar tu hogar ideal.</span>
+                </p>
+                <div style="display: flex; justify-content: center; gap: 16px;">
+                    <a href="bricks-calc.html" class="btn btn-primary"
+                        style="padding: 12px 32px; text-decoration: none;">
+                        <span lang="en">Go to Calculator</span>
+                        <span lang="es" class="hidden">Ir a la Calculadora</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container reveal-on-scroll">
+            <div
+                style="display: flex; flex-wrap: wrap; gap: 48px; justify-content: space-between; margin-bottom: 48px;">
+                <!-- Brand Section -->
+                <div style="flex: 1; min-width: 280px;">
+                    <a href="index.html" style="display: inline-block; margin-bottom: 16px;">
+                        <img src="images/Bricks Logo - Dark.svg" onerror="this.src='images/Bricks Logo.svg'"
+                            alt="Bricks Logo" style="height: 24px; opacity: 0.8;">
+                    </a>
+                    <p class="body-text" style="font-size: 15px;">
+                        <span lang="en">We build apps for the real estate sector.</span>
+                        <span lang="es" class="hidden">Construimos apps para el sector inmobiliario.</span>
+                    </p>
+                </div>
+
+                <!-- Footer Links Grid -->
+                <div
+                    style="flex: 2; min-width: 280px; display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 32px;">
+                    <!-- Apps Section -->
                     <div>
-                        <h3 class="mb-4 text-lg font-semibold text-white">
-                            <span lang="es">Bricks</span>
+                        <h3 class="subheading" style="font-size: 16px; margin-bottom: 16px;">
+                            <span lang="en">Apps</span>
+                            <span lang="es" class="hidden">Apps</span>
                         </h3>
-                        <ul class="space-y-2">
-                            <li><a href="about.html" class="transition-colors hover:text-white">
-                                <span lang="es">Acerca de</span>
-                            </a></li>
-                            <li><a href="purchase-guide-01.html" class="transition-colors hover:text-white">
-                                <span lang="es">Guía Rápida</span>
-                            </a></li>
+                        <ul
+                            style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+                            <li><a href="bricks-scan.html" class="body-text" style="font-size: 15px;">Bricks Scan</a>
+                            </li>
+                            <li><a href="bricks-calc.html" class="body-text" style="font-size: 15px;">Bricks Calc</a>
+                            </li>
                         </ul>
                     </div>
-                    
+
+                    <!-- Company Section -->
                     <div>
-                        <h3 class="mb-4 text-lg font-semibold text-white">
-                            <span lang="es">Soporte</span>
+                        <h3 class="subheading" style="font-size: 16px; margin-bottom: 16px;">
+                            <span lang="en">Company</span>
+                            <span lang="es" class="hidden">Compañía</span>
                         </h3>
-                        <ul class="space-y-2">
-                            <li><a href="help.html" class="transition-colors hover:text-white">
-                                <span lang="es">Ayuda</span>
-                            </a></li>
-                            <li><a href="support.html" class="transition-colors hover:text-white">
-                                <span lang="es">Reporta un problema</span>
-                            </a></li>
-                            <li><a href="https://wa.me/51953431080?text=Hola%2C%20quiero%20informaci%C3%B3n%20respecto%20a%20lo%20siguiente" target="_blank" rel="noopener noreferrer" class="flex items-center transition-colors hover:text-white">
-                                <svg class="mr-2 h-4 w-4 text-[#34C85A]" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                                </svg>
-                                <span lang="es">WhatsApp</span>
-                            </a></li>
+                        <ul
+                            style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+                            <li><a href="about.html" class="body-text" style="font-size: 15px;">About us</a></li>
+                            <li><a href="purchase-guide-01.html" class="body-text" style="font-size: 15px;">Purchase
+                                    Guide</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Support Section -->
+                    <div>
+                        <h3 class="subheading" style="font-size: 16px; margin-bottom: 16px;">
+                            <span lang="en">Support</span>
+                            <span lang="es" class="hidden">Soporte</span>
+                        </h3>
+                        <ul
+                            style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+                            <li><a href="help.html" class="body-text" style="font-size: 15px;">Help Center</a></li>
+                            <li><a href="support.html" class="body-text" style="font-size: 15px;">Contact</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
-            
-            <div class="mt-12 border-t border-gray-800 pt-8 text-center text-sm text-slate-400">
-                <p>
-                    <span lang="es">© 2025 Bricks Apps. Todos los derechos reservados.</span>
+
+            <div
+                style="border-top: 1px solid var(--surface-shadow); padding-top: 32px; display: flex; flex-direction: column; align-items: center; gap: 16px;">
+                <p class="metadata" style="text-align: center;">
+                    <span lang="en">© 2026 Bricks Apps. All rights reserved.</span>
+                    <span lang="es" class="hidden">© 2026 Bricks Apps. Todos los derechos reservados.</span>
                 </p>
-                <div class="mt-4 flex justify-center space-x-6">
-                    <a href="privacy.html" class="transition-colors hover:text-white">
-                        <span lang="es">Política de Privacidad</span>
-                    </a>
-                    <a href="terms.html" class="transition-colors hover:text-white">
-                        <span lang="es">Términos de Servicio</span>
-                    </a>
+                <div class="footer-links" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 24px;">
+                    <a href="privacy.html" style="margin: 0;">Privacy Policy</a>
+                    <a href="terms.html" style="margin: 0;">Terms of Service</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- AOS Animation Script -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize AOS animations
-            AOS.init({
-                duration: 800,
-                easing: 'ease-in-out',
-                once: true
-            });
-            
-            // Set default language
-            document.getElementById('current-language').textContent = 'Español';
-            
-            // Mark Spanish language button as active
-            document.querySelectorAll('.language-btn').forEach(btn => {
-                if (btn.dataset.lang === 'es') {
-                    btn.classList.add('bg-primary', 'text-white');
-                    btn.classList.remove('bg-gray-100');
-                }
-            });
-            
-            // App Store download button functionality
-            const downloadButtons = document.querySelectorAll('#app-store-download');
-            
-            // Add click event listener to each button
-            downloadButtons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    // This page is Spanish-only, so we'll default to Spanish
-                    const appLink = button.getAttribute('data-link-es');
-                    
-                    // Open the app store link
-                    if (appLink) {
-                        window.open(appLink, '_blank');
+        // Intersection Observer for Reveal on Scroll
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
                     }
                 });
+            }, observerOptions);
+
+            const animatedElements = document.querySelectorAll('.reveal-on-scroll');
+            animatedElements.forEach(el => {
+                observer.observe(el);
             });
         });
-        
-        // Language switcher functionality (simplified since this is Spanish only)
-        function changeLanguage(lang) {
-            if (lang === 'en') {
-                window.location.href = 'index.html'; // Redirect to English homepage
+
+        // Simple updateConsent if scripts.js is busy
+        function updateConsent(status) {
+            localStorage.setItem('cookie-consent', status);
+            const banner = document.getElementById('cookie-consent-banner');
+            if (banner) banner.style.display = 'none';
+            if (status === 'granted' && typeof gtag === 'function') {
+                gtag('consent', 'update', { 'analytics_storage': 'granted' });
             }
-            
-            document.getElementById('current-language').textContent = 'Español';
-            
-            // Update active language button
-            document.querySelectorAll('.language-btn').forEach(btn => {
-                if (btn.dataset.lang === lang) {
-                    btn.classList.add('bg-primary', 'text-white');
-                    btn.classList.remove('bg-gray-100');
-                } else {
-                    btn.classList.remove('bg-primary', 'text-white');
-                    btn.classList.add('bg-gray-100');
-                }
-            });
         }
     </script>
 </body>
-</html> 
+
+</html>
