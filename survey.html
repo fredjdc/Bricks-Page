@@ -126,36 +126,29 @@
     <!-- End Meta Pixel Code -->
     <!-- Custom Styles -->
     <style>
-        /* Typeform container styling restored to original functionality */
         .typeform-container {
-            min-height: calc(100vh - 80px);
-            /* Account for header */
+            height: calc(100vh - 80px);
             display: flex;
             flex-direction: column;
-            padding: calc(var(--space-md) + 24px) 0 24px 0;
-            position: relative;
-            /* Setup for background bloom */
+            padding: 0;
             overflow: hidden;
-            /* Contains background bloom */
         }
 
         .typeform-wrapper {
             width: 100%;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 1rem;
-            position: relative;
-            z-index: 10;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
+            height: 100%;
         }
 
-        /* Force Typeform embed to occupy remaining space */
         .typeform-wrapper>div[data-tf-live] {
             flex-grow: 1;
             width: 100%;
-            min-height: 400px;
+            height: 100%;
         }
     </style>
 </head>
@@ -207,53 +200,14 @@
     </header>
 
     <!-- Main Feedback Section -->
-    <main class="typeform-container hero">
-        <!-- Kept the hero class temporarily for background effects targeting -->
-        <div class="hero-bg" aria-hidden="true" style="top: -100px;"></div>
-
+    <main class="typeform-container">
         <div class="typeform-wrapper">
-            <div style="text-align: center; margin-bottom: 2rem;">
-                <h1 class="hero-title reveal-on-scroll delay-100" style="margin-bottom: 16px; margin-top: 0;">
-                    <span lang="es">Tu Feedback es Importante</span>
-                    <span lang="en" class="hidden">Your Feedback Matters</span>
-                </h1>
-                <p class="body-text reveal-on-scroll delay-200" style="margin: 0 auto; max-width: 42rem;">
-                    <span lang="es">Ayúdanos a mejorar Bricks Apps compartiendo tus pensamientos y sugerencias.</span>
-                    <span lang="en" class="hidden">Help us improve Bricks Apps by sharing your thoughts and
-                        suggestions.</span>
-                </p>
-            </div>
-
             <!-- Typeform Embed -->
-            <div data-tf-live="01K4P9Q4YRWCHEBKVJGV9YD4TT" style="width: 100%; height: 600px;"></div>
+            <div data-tf-live="01K4P9Q4YRWCHEBKVJGV9YD4TT" style="width: 100%; height: 100%;"></div>
             <script src="//embed.typeform.com/next/embed.js"></script>
         </div>
     </main>
 
-    <!-- Intersection Observer for Reveal on Scroll -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1
-            };
-
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-
-            const animatedElements = document.querySelectorAll('.reveal-on-scroll');
-            animatedElements.forEach(el => {
-                observer.observe(el);
-            });
-        });
-    </script>
 </body>
 
 </html>
