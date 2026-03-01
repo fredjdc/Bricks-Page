@@ -131,9 +131,8 @@
             min-height: calc(100vh - 80px);
             /* Account for header */
             display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem 0;
+            flex-direction: column;
+            padding: calc(var(--space-md) + 24px) 0 24px 0;
             position: relative;
             /* Setup for background bloom */
             overflow: hidden;
@@ -147,6 +146,16 @@
             padding: 0 1rem;
             position: relative;
             z-index: 10;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        /* Force Typeform embed to occupy remaining space */
+        .typeform-wrapper>div[data-tf-live] {
+            flex-grow: 1;
+            width: 100%;
+            min-height: 400px;
         }
     </style>
 </head>
@@ -216,7 +225,7 @@
             </div>
 
             <!-- Typeform Embed -->
-            <div data-tf-live="01K4P9Q4YRWCHEBKVJGV9YD4TT"></div>
+            <div data-tf-live="01K4P9Q4YRWCHEBKVJGV9YD4TT" style="width: 100%; height: 600px;"></div>
             <script src="//embed.typeform.com/next/embed.js"></script>
         </div>
     </main>
