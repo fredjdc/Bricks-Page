@@ -237,7 +237,7 @@ Use one radius family across all assets:
 - Use `<header class="container site-header">` without `sticky` positioning.
 - Include the logo on the left.
 - Include a simple language switcher button on the right, styled with `.btn.btn-secondary`.
-- Include the globe icon (`images/globe-icon.svg`) alongside the language text (e.g., `English`). On mobile sizing, the text should be hidden and only the globe icon displayed.
+- Include the globe icon (`images/globe-icon.svg`) alongside the language text (e.g., `English`). On mobile sizing, the text should be hidden, only the globe icon displayed, and the padding should be equal horizontally and vertically (e.g., `padding: 8px`) to keep it compact.
 - Do not include material symbol icons from external fonts.
 
 ---

@@ -439,8 +439,9 @@ a:hover {
     #language-switcher #current-language {
         display: none;
     }
+
     #language-switcher {
-        padding: 8px 12px !important;
+        padding: 8px !important;
     }
 }
 
