@@ -392,11 +392,34 @@ a:hover {
 
 /* Header */
 .site-header {
-    padding-top: 24px;
-    padding-bottom: 24px;
+    position: fixed;
+    top: 24px;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    margin: 0 auto;
+    width: calc(100% - 48px);
+    max-width: var(--max-width);
+    padding: 16px 32px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 100px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 8px 32px rgba(11, 15, 20, 0.04), inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .site-header {
+        top: 16px;
+        margin: 0 auto;
+        width: calc(100% - 32px);
+        padding: 16px 24px;
+    }
 }
 
 .logo img {
@@ -663,6 +686,7 @@ a:hover {
     position: relative;
     overflow: hidden;
     background-color: var(--bg-primary, #F6F7F8);
+    padding-top: calc(var(--space-md) + 80px);
 }
 
 /* Ensure all content sits above the background */
