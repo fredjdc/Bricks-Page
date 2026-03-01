@@ -108,18 +108,22 @@
         style="display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg-primary); padding: 24px; z-index: 50; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; box-shadow: 0 -4px 16px var(--surface-shadow); border-top: 1px solid var(--depth-plane);">
         <div>
             <p class="body-text" style="font-size: 14px; margin: 0;">
-                Usamos cookies para analizar el uso del sitio y mejorar tu experiencia. ¿Nos permites recopilar datos
-                anónimos de uso?
+                <span lang="en">We use cookies to analyze site usage and improve your experience. May we collect
+                    anonymous usage data?</span>
+                <span lang="es" class="hidden">Usamos cookies para analizar el uso del sitio y mejorar tu experiencia.
+                    ¿Nos permites recopilar datos anónimos de uso?</span>
             </p>
         </div>
         <div style="display: flex; gap: 8px;">
             <button onclick="updateConsent('denied')" class="btn btn-secondary"
                 style="padding: 10px 20px; font-size: 14px;">
-                Rechazar
+                <span lang="en">Decline</span>
+                <span lang="es" class="hidden">Rechazar</span>
             </button>
             <button onclick="updateConsent('granted')" class="btn btn-primary"
                 style="padding: 10px 20px; font-size: 14px;">
-                Aceptar
+                <span lang="en">Accept</span>
+                <span lang="es" class="hidden">Aceptar</span>
             </button>
         </div>
     </div>
@@ -132,10 +136,10 @@
                     style="height: 24px;" />
             </a>
         </div>
-        <a href="index.html" class="btn btn-secondary" style="padding: 8px 16px; font-size: 14px;"
-            onclick="gtag('event', 'click', {event_category: 'navigation', event_label: 'back_to_home'})">
-            <span>Volver al inicio</span>
-        </a>
+        <button id="language-switcher" class="btn btn-secondary" style="padding: 8px 16px; font-size: 14px;"
+            title="Cambiar idioma / Change language">
+            <span id="current-language">Español</span>
+        </button>
     </header>
 
     <!-- SECTION — HERO -->
@@ -155,19 +159,23 @@
             </div>
 
             <h1 class="hero-title reveal-on-scroll" style="margin-bottom: 24px;">
-                <span>¡Gracias!</span>
+                <span lang="en">Thank you!</span>
+                <span lang="es" class="hidden">¡Gracias!</span>
             </h1>
             <p class="body-text mb-md reveal-on-scroll delay-100"
                 style="margin-left: auto; margin-right: auto; font-size: 18px;">
-                <span>Te avisaremos cuando Bricks Leads esté disponible. Síguenos y comparte para llegar a más agentes
-                    inmobiliarios.</span>
+                <span lang="en">We will notify you when Bricks Leads is available. Follow us and share to reach more
+                    real estate agents.</span>
+                <span lang="es" class="hidden">Te avisaremos cuando Bricks Leads esté disponible. Síguenos y comparte
+                    para llegar a más agentes inmobiliarios.</span>
             </p>
             <div class="reveal-on-scroll delay-200">
                 <a href="https://www.instagram.com/bricks.hello/" target="_blank" rel="noopener noreferrer"
                     class="btn btn-primary"
                     style="display: inline-flex; align-items: center; justify-content: center; font-size: 16px; padding: 12px 32px;"
                     onclick="gtag('event', 'click', {event_category: 'engagement', event_label: 'instagram_follow_button'})">
-                    <span>Síguenos en Instagram</span>
+                    <span lang="en">Follow us on Instagram</span>
+                    <span lang="es" class="hidden">Síguenos en Instagram</span>
                 </a>
             </div>
         </div>
@@ -185,7 +193,8 @@
                             alt="Bricks Logo" style="height: 24px; opacity: 0.8;">
                     </a>
                     <p class="body-text" style="font-size: 15px;">
-                        <span>Construimos apps para el sector inmobiliario.</span>
+                        <span lang="en">We build apps for the real estate sector.</span>
+                        <span lang="es" class="hidden">Construimos apps para el sector inmobiliario.</span>
                     </p>
                 </div>
 
@@ -195,55 +204,70 @@
                     <!-- Apps Section -->
                     <div>
                         <h3 class="subheading" style="font-size: 16px; margin-bottom: 16px;">
-                            <span>Apps</span>
+                            <span lang="en">Apps</span>
+                            <span lang="es" class="hidden">Apps</span>
                         </h3>
                         <ul
                             style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
-                            <li><a href="bricks-scan.html" class="body-text" style="font-size: 15px;"><span>Bricks
-                                        Scan</span></a></li>
-                            <li><a href="bricks-calc.html" class="body-text" style="font-size: 15px;"><span>Bricks
-                                        Calc</span></a></li>
-                            <li><a href="https://leads.bricks.pe" class="body-text"
-                                    style="font-size: 15px;"><span>Bricks Leads</span></a></li>
+                            <li><a href="bricks-scan.html" class="body-text" style="font-size: 15px;">
+                                    <span lang="en">Bricks Scan</span>
+                                    <span lang="es" class="hidden">Bricks Scan</span></a></li>
+                            <li><a href="bricks-calc.html" class="body-text" style="font-size: 15px;">
+                                    <span lang="en">Bricks Calc</span>
+                                    <span lang="es" class="hidden">Bricks Calc</span></a></li>
+                            <li><a href="https://leads.bricks.pe" class="body-text" style="font-size: 15px;">
+                                    <span lang="en">Bricks Leads</span>
+                                    <span lang="es" class="hidden">Bricks Leads</span></a></li>
                         </ul>
                     </div>
 
                     <!-- Company Section -->
                     <div>
                         <h3 class="subheading" style="font-size: 16px; margin-bottom: 16px;">
-                            <span>Compañía</span>
+                            <span lang="en">Company</span>
+                            <span lang="es" class="hidden">Compañía</span>
                         </h3>
                         <ul
                             style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
-                            <li><a href="about.html" class="body-text" style="font-size: 15px;"><span>Sobre
-                                        nosotros</span></a></li>
+                            <li><a href="about.html" class="body-text" style="font-size: 15px;">
+                                    <span lang="en">About us</span>
+                                    <span lang="es" class="hidden">Sobre nosotros</span></a></li>
                             <li><a href="https://wa.me/51953431080?text=Hola%2C%20quiero%20informaci%C3%B3n%20respecto%20a%20lo%20siguiente"
                                     target="_blank" rel="noopener noreferrer" class="body-text"
-                                    style="font-size: 15px;"><span>Contacto</span></a></li>
-                            <li><a href="purchase-guide-01.html" class="body-text" style="font-size: 15px;"><span>Guía
-                                        Rápida</span></a></li>
+                                    style="font-size: 15px;">
+                                    <span lang="en">Contact</span>
+                                    <span lang="es" class="hidden">Contacto</span></a></li>
+                            <li><a href="purchase-guide-01.html" class="body-text" style="font-size: 15px;">
+                                    <span lang="en">Purchase Guide</span>
+                                    <span lang="es" class="hidden">Guía Rápida</span></a></li>
                         </ul>
                     </div>
 
                     <!-- Support Section -->
                     <div>
                         <h3 class="subheading" style="font-size: 16px; margin-bottom: 16px;">
-                            <span>Soporte</span>
+                            <span lang="en">Support</span>
+                            <span lang="es" class="hidden">Soporte</span>
                         </h3>
                         <ul
                             style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
-                            <li><a href="/support.html" class="body-text" style="font-size: 15px;"><span>Ayuda &amp;
-                                        Feedback</span></a></li>
-                            <li><a href="help.html" class="body-text" style="font-size: 15px;"><span>Centro de
-                                        Ayuda</span></a></li>
+                            <li><a href="/support.html" class="body-text" style="font-size: 15px;">
+                                    <span lang="en">Help &amp; Feedback</span>
+                                    <span lang="es" class="hidden">Ayuda &amp; Feedback</span></a></li>
+                            <li><a href="help.html" class="body-text" style="font-size: 15px;">
+                                    <span lang="en">Help Center</span>
+                                    <span lang="es" class="hidden">Centro de Ayuda</span></a></li>
                             <li><a href="https://wa.me/51953431080?text=Hola%2C%20quiero%20informaci%C3%B3n%20respecto%20a%20lo%20siguiente"
                                     target="_blank" rel="noopener noreferrer" class="body-text"
-                                    style="font-size: 15px; display: flex; align-items: center;"><span>WhatsApp</span></a>
-                            </li>
-                            <li><a href="mailto:hello@bricks.pe" class="body-text" style="font-size: 15px;"><span>Email:
-                                        hello@bricks.pe</span></a></li>
-                            <li><a href="/survey.html" class="body-text"
-                                    style="font-size: 15px;"><span>Encuesta</span></a></li>
+                                    style="font-size: 15px; display: flex; align-items: center;">
+                                    <span lang="en">WhatsApp</span>
+                                    <span lang="es" class="hidden">WhatsApp</span></a></li>
+                            <li><a href="mailto:hello@bricks.pe" class="body-text" style="font-size: 15px;">
+                                    <span lang="en">Email: hello@bricks.pe</span>
+                                    <span lang="es" class="hidden">Email: hello@bricks.pe</span></a></li>
+                            <li><a href="/survey.html" class="body-text" style="font-size: 15px;">
+                                    <span lang="en">Survey</span>
+                                    <span lang="es" class="hidden">Encuesta</span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -252,11 +276,18 @@
             <div
                 style="border-top: 1px solid var(--surface-shadow); padding-top: 32px; display: flex; flex-direction: column; align-items: center; gap: 16px;">
                 <p class="metadata" style="text-align: center;">
-                    <span>© 2026 Bricks Apps. Todos los derechos reservados.</span>
+                    <span lang="en">© 2026 Bricks Apps. All rights reserved.</span>
+                    <span lang="es" class="hidden">© 2026 Bricks Apps. Todos los derechos reservados.</span>
                 </p>
                 <div class="footer-links" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 24px;">
-                    <a href="privacy.html" style="margin: 0;"><span>Política de Privacidad</span></a>
-                    <a href="terms.html" style="margin: 0;"><span>Términos de Servicio</span></a>
+                    <a href="privacy.html" style="margin: 0;">
+                        <span lang="en">Privacy Policy</span>
+                        <span lang="es" class="hidden">Política de Privacidad</span>
+                    </a>
+                    <a href="terms.html" style="margin: 0;">
+                        <span lang="en">Terms of Service</span>
+                        <span lang="es" class="hidden">Términos de Servicio</span>
+                    </a>
                 </div>
             </div>
         </div>

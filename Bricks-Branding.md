@@ -287,7 +287,7 @@ Use one radius family across all assets:
 
 **Rules**
 - **No Tailwind CSS**: Explicitly deprecate the use of Tailwind classes, CDN scripts, or configuration blocks. Use `new-bricks-scan.css` exclusively for standard branding compliance.
-- **Header**: Use `<header class="container site-header">`. Place the logo on the left and a `.btn.btn-secondary` back button or language switcher on the right.
+- **Header**: Use `<header class="container site-header">`. Place the logo on the left. On the right side of the header bar, explicitly incorporate the language selection button (`<button id="language-switcher">`) to toggle between English and Spanish instead of a generic back button. Ensure textual content inside elements adopts a dual `<span lang="en">` / `<span lang="es" class="hidden">` structure.
 - **Hero Layout**: Build the primary focal section with `<section class="section section-hero hero">` and `<div class="hero-bg">`.
 - **Standard UI Typography**: Utilize design system classes `.hero-title`, `.subheading`, and `.body-text` instead of inline styles. 
 - **Buttons**: Use `.btn.btn-primary` and `.btn.btn-secondary` for a uniform look.
