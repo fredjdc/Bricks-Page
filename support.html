@@ -171,17 +171,13 @@
 
                 <!-- Form Card -->
                 <div class="embossed-card" style="padding: 40px 32px;">
-                    <form id="issue-report-form" action="https://formsubmit.co/707e6e012fa931048784ff0f766aa0df"
+                    <form id="issue-report-form" action="https://formsubmit.co/ajax/707e6e012fa931048784ff0f766aa0df"
                         method="POST" enctype="multipart/form-data">
                         <!-- FormSubmit.co Configuration -->
                         <input type="hidden" name="_subject" value="Bricks Apps Support Request" />
                         <input type="hidden" name="_template" value="table" />
                         <input type="hidden" name="_captcha" value="false" />
-                        <input type="hidden" name="_next" value="" />
                         <input type="hidden" id="reference-field" name="reference_number" value="" />
-                        <input type="hidden" name="_url" value="https://bricksapp.com/support.html" />
-                        <input type="hidden" name="_autoresponse"
-                            value="Thank you for your report. We've received it and will get back to you soon." />
                         <input type="hidden" name="_honey" value="" />
 
                         <!-- Name & Email Row -->
@@ -404,147 +400,144 @@
     <!-- Custom JavaScript for report form -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // DOM Elements
             const form = document.getElementById("issue-report-form");
             const fileInput = document.getElementById("file-upload");
             const fileList = document.getElementById("file-list");
             const successAlert = document.getElementById("success-alert");
             const closeSuccess = document.getElementById("close-success");
-            const referenceNumber = document.getElementById("reference-number");
+            const referenceElm = document.getElementById("reference-number");
             const referenceField = document.getElementById("reference-field");
-            const emailInput = document.getElementById("email");
+            const submitBtn = form.querySelector('button[type="submit"]');
 
-            // Generate a unique reference number for this form session
+            // Generate a reference number and pre-fill the hidden field
             const refNumber = generateReferenceNumber();
-            referenceNumber.textContent = refNumber;
-
-            // Set the reference number in the hidden field for FormSubmit
-            if (referenceField) {
-                referenceField.value = refNumber;
-            }
-
-            // Set the return URL with the reference number for FormSubmit
-            const baseUrl = window.location.origin + window.location.pathname;
-            form.querySelector('input[name="_next"]').value = `${baseUrl}?ref=${refNumber}&success=true`;
-
-            // Create a hidden _replyto field that will be updated with the email value on submit
-            const replyToField = document.createElement("input");
-            replyToField.type = "hidden";
-            replyToField.name = "_replyto";
-            form.appendChild(replyToField);
-
-            // Update _replyto field value when email changes
-            if (emailInput) {
-                emailInput.addEventListener("change", function () {
-                    replyToField.value = this.value;
-                });
-            }
-
-            // Add form submission event listener
-            if (form) {
-                form.addEventListener("submit", function (event) {
-                    // Set the _replyto value from email input right before submission
-                    if (emailInput && emailInput.value) {
-                        replyToField.value = emailInput.value;
-                    }
-
-                    // Prevent default form submission temporarily
-                    event.preventDefault();
-
-                    // Sync selectedFiles array back into the native file input using DataTransfer
-                    // so FormSubmit receives the attachment correctly (only the first file is sent)
-                    if (selectedFiles.length > 0 && typeof DataTransfer !== "undefined") {
-                        try {
-                            const dt = new DataTransfer();
-                            dt.items.add(selectedFiles[0]);
-                            fileInput.files = dt.files;
-                        } catch (e) {
-                            // DataTransfer not supported — fall back to native input as-is
-                        }
-                    }
-
-                    // Show success alert
-                    showSuccessAlert(refNumber);
-
-                    // Submit the form after a short delay to allow the user to see the success message
-                    setTimeout(() => {
-                        form.submit();
-                    }, 2000);
-                });
-            }
+            referenceElm.textContent = refNumber;
+            if (referenceField) referenceField.value = refNumber;
 
             // Selected files storage
             let selectedFiles = [];
 
-            // Handle file selection
+            // ── Form Submission via AJAX ────────────────────────────────
+            form.addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                const nameVal = document.getElementById("name").value.trim();
+                const emailVal = document.getElementById("email").value.trim();
+                const msgVal = document.getElementById("issue-description").value.trim();
+
+                if (!nameVal || !emailVal || !msgVal) return;
+
+                // Build FormData manually so we control every field and the attachment
+                const data = new FormData();
+                data.append("name", nameVal);
+                data.append("email", emailVal);
+                data.append("message", msgVal);
+                data.append("reference_number", refNumber);
+                data.append("_subject", "Bricks Apps Support Request");
+                data.append("_template", "table");
+                data.append("_replyto", emailVal);
+
+                // Attach the first selected file if present
+                if (selectedFiles.length > 0) {
+                    data.append("attachment", selectedFiles[0], selectedFiles[0].name);
+                }
+
+                // Disable submit button while sending
+                submitBtn.disabled = true;
+
+                fetch(form.action, {
+                    method: "POST",
+                    headers: { "Accept": "application/json" },
+                    body: data
+                })
+                    .then(function (response) {
+                        return response.json().then(function (json) {
+                            return { ok: response.ok, json: json };
+                        });
+                    })
+                    .then(function (result) {
+                        if (result.ok && result.json.success === "true") {
+                            showSuccessAlert(refNumber);
+                            form.reset();
+                            selectedFiles = [];
+                            fileList.innerHTML = "";
+                            fileList.classList.add("hidden");
+                        } else {
+                            console.error("FormSubmit error:", result.json);
+                            alert("Submission failed. Please try again later.");
+                        }
+                    })
+                    .catch(function (err) {
+                        console.error("Network error:", err);
+                        alert("Network error. Please check your connection and try again.");
+                    })
+                    .finally(function () {
+                        submitBtn.disabled = false;
+                    });
+            });
+
+            // ── File Selection ──────────────────────────────────────────
             fileInput.addEventListener("change", function () {
-                const files = Array.from(this.files);
+                var files = Array.from(this.files);
 
                 // Check file size (limit to 4MB per file)
-                const validFiles = files.filter((file) => file.size <= 4 * 1024 * 1024);
+                var validFiles = files.filter(function (f) { return f.size <= 4 * 1024 * 1024; });
 
                 if (validFiles.length !== files.length) {
-                    const lang = document.documentElement.getAttribute('lang') || 'en';
-                    const messages = {
-                        en: 'Some files exceed the 4MB limit and were not included.',
-                        es: 'Algunos archivos exceden el límite de 4MB y no se incluyeron.'
+                    var lang = document.documentElement.getAttribute("lang") || "en";
+                    var msgs = {
+                        en: "Some files exceed the 4MB limit and were not included.",
+                        es: "Algunos archivos exceden el límite de 4MB y no se incluyeron."
                     };
-                    alert(messages[lang] || messages['en']);
+                    alert(msgs[lang] || msgs["en"]);
                 }
 
                 if (validFiles.length > 0) {
-                    selectedFiles = [...selectedFiles, ...validFiles];
+                    selectedFiles = selectedFiles.concat(validFiles);
                     updateFileList();
                     fileList.classList.remove("hidden");
                 }
 
-                // Reset native input so the same file can be re-selected if removed
+                // Reset so the same file can be re-selected after removal
                 this.value = "";
             });
 
-            // Update file list UI
+            // ── File List UI ────────────────────────────────────────────
             function updateFileList() {
                 fileList.innerHTML = "";
 
-                selectedFiles.forEach((file, index) => {
-                    const fileItem = document.createElement("div");
+                selectedFiles.forEach(function (file, index) {
+                    var fileItem = document.createElement("div");
                     fileItem.className = "file-list-item";
 
-                    const fileInfo = document.createElement("div");
+                    var fileInfo = document.createElement("div");
                     fileInfo.className = "file-info";
 
-                    // File icon
-                    const fileIcon = document.createElement("div");
+                    var fileIcon = document.createElement("div");
                     fileIcon.className = "file-icon";
-                    fileIcon.innerHTML =
-                        '<svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>';
+                    fileIcon.innerHTML = '<svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>';
 
-                    // File details
-                    const fileDetails = document.createElement("div");
-                    const fileName = document.createElement("div");
+                    var fileDetails = document.createElement("div");
+                    var fileName = document.createElement("div");
+                    var fileSizeEl = document.createElement("div");
                     fileName.textContent = file.name;
                     fileName.className = "file-name";
-                    const fileSize = document.createElement("div");
-                    fileSize.textContent = formatFileSize(file.size);
-                    fileSize.className = "file-size";
+                    fileSizeEl.textContent = formatFileSize(file.size);
+                    fileSizeEl.className = "file-size";
                     fileDetails.appendChild(fileName);
-                    fileDetails.appendChild(fileSize);
+                    fileDetails.appendChild(fileSizeEl);
 
                     fileInfo.appendChild(fileIcon);
                     fileInfo.appendChild(fileDetails);
 
-                    // Remove button
-                    const removeBtn = document.createElement("button");
+                    var removeBtn = document.createElement("button");
                     removeBtn.className = "file-remove-btn";
                     removeBtn.type = "button";
-                    removeBtn.innerHTML =
-                        '<svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>';
+                    removeBtn.innerHTML = '<svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>';
                     removeBtn.addEventListener("click", function () {
                         selectedFiles.splice(index, 1);
                         updateFileList();
-                        if (selectedFiles.length === 0) {
-                            fileList.classList.add("hidden");
-                        }
+                        if (selectedFiles.length === 0) fileList.classList.add("hidden");
                     });
 
                     fileItem.appendChild(fileInfo);
@@ -553,61 +546,33 @@
                 });
             }
 
-            // Format file size to human-readable format
+            // ── Helpers ─────────────────────────────────────────────────
             function formatFileSize(bytes) {
                 if (bytes === 0) return "0 Bytes";
-                const k = 1024;
-                const sizes = ["Bytes", "KB", "MB", "GB", "TB"];
-                let i = 0;
-                let tempBytes = bytes;
-                while (tempBytes >= k && i < sizes.length - 1) {
-                    tempBytes /= k;
-                    i++;
-                }
-                return parseFloat(tempBytes.toFixed(2)) + " " + sizes[i];
+                var k = 1024, sizes = ["Bytes", "KB", "MB", "GB"], i = 0, tmp = bytes;
+                while (tmp >= k && i < sizes.length - 1) { tmp /= k; i++; }
+                return parseFloat(tmp.toFixed(2)) + " " + sizes[i];
             }
 
-            // Generate a unique reference number
             function generateReferenceNumber() {
-                const timestamp = new Date().getTime().toString().slice(-6);
-                const random = Math.floor(Math.random() * 1000)
-                    .toString()
-                    .padStart(3, "0");
-                return `BRKS-${timestamp}${random}`;
+                var ts = new Date().getTime().toString().slice(-6);
+                var rnd = Math.floor(Math.random() * 1000).toString().padStart(3, "0");
+                return "BRKS-" + ts + rnd;
             }
 
-            // Show success alert
-            function showSuccessAlert(refNumber) {
-                referenceNumber.textContent = refNumber;
+            function showSuccessAlert(ref) {
+                referenceElm.textContent = ref;
                 successAlert.classList.add("is-visible");
             }
 
-            // Hide success alert
             function hideSuccessAlert() {
                 successAlert.classList.remove("is-visible");
             }
 
-            // Close success alert
-            closeSuccess.addEventListener("click", function (event) {
-                event.preventDefault();
+            closeSuccess.addEventListener("click", function (e) {
+                e.preventDefault();
                 hideSuccessAlert();
             });
-
-            // Check for success parameter in URL (when returning from FormSubmit)
-            function checkForSuccess() {
-                const urlParams = new URLSearchParams(window.location.search);
-                const success = urlParams.get("success");
-                const ref = urlParams.get("ref");
-
-                if (success === "true" && ref) {
-                    showSuccessAlert(ref);
-                    const newUrl = window.location.pathname;
-                    window.history.replaceState({}, document.title, newUrl);
-                }
-            }
-
-            // Check for success on page load
-            checkForSuccess();
         });
     </script>
 </body>
