@@ -1,28 +1,39 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy | Bricks Apps</title>
+
+    <!-- Design System CSS -->
+    <link rel="stylesheet" href="new-bricks-scan.css">
+
+    <!-- Google Material Symbols -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=language" />
 
     <!-- Favicon -->
     <link rel="icon" href="favicon.ico" sizes="32x32" />
-    <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-    <link rel="manifest" href="site.webmanifest" />
-    <meta name="theme-color" content="#007AFF" />
+    <link rel="icon" type="image/png" href="images-bricks-scan/favicon-32x32.png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="images-bricks-scan/apple-touch-icon.png" />
+    <!-- Alpine and scripts -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="scripts.js" defer></script>
 
     <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-P5P8LRC2');</script>
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != "dataLayer" ? "&l=" + l : "";
+            j.async = true;
+            j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", "GTM-P5P8LRC2");
+    </script>
     <!-- End Google Tag Manager -->
 
     <!-- Google tag (gtag.js) -->
@@ -36,60 +47,6 @@
         gtag("js", new Date());
         gtag("config", "G-0NE96SRV4V");
     </script>
-
-    <!-- Tailwind CSS via CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        /* Primary accent color - #007AFF */
-                        primary: {
-                            light: "#60a5fa", // light blue
-                            DEFAULT: "#007AFF", // blue - changed from #2563eb
-                            dark: "#007AFF" // dark blue - changed from #1d4ed8
-                        },
-                        secondary: {
-                            light: "#4ade80", // light green
-                            DEFAULT: "#10b981", // green
-                            dark: "#059669" // dark green
-                        }
-                    },
-                    maxWidth: {
-                        "screen-xl": "1200px"
-                    }
-                }
-            }
-        };
-    </script>
-    <!-- Alpine.js for interactive components -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-    <!-- Common scripts with language detection -->
-    <script src="scripts.js"></script>
-
-    <!-- Link to custom CSS file -->
-    <link rel="stylesheet" href="styles.css" />
-
-    <!-- Google Material Symbols -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=language" />
-
-    <style>
-        /* Cookie consent banner styles */
-        .cookie-banner {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(10px);
-            border-top: 1px solid rgba(0, 122, 255, 0.2);
-            z-index: 1000;
-            padding: 1rem;
-        }
-    </style>
 
     <!-- Meta Pixel Code -->
     <script>
@@ -112,41 +69,44 @@
         fbq("init", "1088148306858128");
         fbq("track", "PageView");
     </script>
-    <noscript><img height="1" width="1" style="display: none"
-            src="https://www.facebook.com/tr?id=1088148306858128&ev=PageView&noscript=1" /></noscript>
+    <noscript>
+        <img height="1" width="1" style="display: none"
+            src="https://www.facebook.com/tr?id=1088148306858128&ev=PageView&noscript=1" />
+    </noscript>
     <!-- End Meta Pixel Code -->
 </head>
 
-<body class="font-sans text-gray-800 bg-white overflow-x-hidden">
+<body class="min-h-screen" style="background-color: var(--bg-primary);">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P5P8LRC2" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe></noscript>
+            style="display: none; visibility: hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
+
     <!-- Cookie Consent Banner -->
-    <div id="cookie-consent-banner" style="display: none"
-        class="cookie-banner flex flex-col sm:flex-row justify-between items-center gap-4">
-        <div class="flex-1">
-            <p class="text-sm text-gray-300">
+    <div id="cookie-consent-banner"
+        style="display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg-primary); padding: 24px; z-index: 50; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; box-shadow: 0 -4px 16px var(--surface-shadow); border-top: 1px solid var(--depth-plane);">
+        <div>
+            <p class="body-text" style="font-size: 14px; margin: 0;">
                 <span lang="en">We use cookies to analyze site usage and improve your experience. May we collect
                     anonymous usage data?</span>
-                <span lang="es" class="hidden">Usamos cookies para analizar el uso del sitio y mejorar tu experiencia.
-                    ¿Nos permites recopilar datos anónimos de uso?</span>
+                <span lang="es" class="hidden">Usamos cookies para analizar el uso del sitio y mejorar su experiencia.
+                    ¿Nos permite recopilar datos anónimos de uso?</span>
                 <span lang="fr" class="hidden">Nous utilisons des cookies pour analyser l'utilisation du site et
                     améliorer votre expérience. Pouvons-nous collecter des données d'utilisation anonymes ?</span>
                 <span lang="pt" class="hidden">Usamos cookies para analisar o uso do site e melhorar sua experiência.
                     Podemos coletar dados de uso anônimos?</span>
             </p>
         </div>
-        <div class="flex gap-2 flex-shrink-0">
-            <button onclick="updateConsent('denied')"
-                class="px-4 py-2 text-sm border border-gray-600 text-gray-300 hover:text-white hover:border-gray-500 transition-colors rounded-lg">
+        <div style="display: flex; gap: 8px;">
+            <button onclick="updateConsent('denied')" class="btn btn-secondary"
+                style="padding: 10px 20px; font-size: 14px;">
                 <span lang="en">Decline</span>
                 <span lang="es" class="hidden">Rechazar</span>
                 <span lang="fr" class="hidden">Refuser</span>
                 <span lang="pt" class="hidden">Recusar</span>
             </button>
-            <button onclick="updateConsent('granted')"
-                class="px-4 py-2 text-sm bg-primary text-white font-medium hover:bg-primary-dark transition-colors rounded-lg">
+            <button onclick="updateConsent('granted')" class="btn btn-primary"
+                style="padding: 10px 20px; font-size: 14px;">
                 <span lang="en">Accept</span>
                 <span lang="es" class="hidden">Aceptar</span>
                 <span lang="fr" class="hidden">Accepter</span>
@@ -155,450 +115,413 @@
         </div>
     </div>
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-sm z-50 shadow-sm">
-        <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <a href="index.html" class="flex items-center">
-                        <img src="images/Bricks Logo - Dark.svg" alt="Bricks Logo" class="h-8" />
-                    </a>
-                </div>
-                <div class="flex items-center space-x-8">
-                    <!-- Language Selector -->
-                    <div class="relative" x-data="{ open: false }">
-                        <button @click="open = !open"
-                            class="flex items-center text-gray-600 hover:text-primary transition-colors">
-                            <span class="material-symbols-outlined mr-1">language</span>
-                            <span id="current-language"></span>
-                            <svg class="ml-1 w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                        </button>
-                        <div x-show="open" @click.away="open = false"
-                            class="absolute right-0 mt-2 py-2 w-40 bg-white rounded-md shadow-lg z-50">
-                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-primary hover:text-white"
-                                onclick="changeLanguage('en'); return false;">English</a>
-                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-primary hover:text-white"
-                                onclick="changeLanguage('es'); return false;">Español</a>
-                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-primary hover:text-white"
-                                onclick="changeLanguage('fr'); return false;">Français</a>
-                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-primary hover:text-white"
-                                onclick="changeLanguage('pt'); return false;">Português</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Header / Nav -->
+    <header class="site-header" style="position: sticky; top: 16px; padding: 12px 24px; z-index: 100;">
+        <div class="logo">
+            <a href="index.html" class="flex items-center" style="display: flex; align-items: center;">
+                <img src="images/Bricks Logo - Dark.svg" onerror="this.src='images/Bricks Logo.svg'" alt="Bricks Apps"
+                    style="height: 24px;" />
+            </a>
         </div>
-    </nav>
+        <button id="language-switcher" class="btn btn-secondary" style="padding: 8px 16px; font-size: 14px;"
+            title="Change language / Cambiar idioma">
+            <span class="material-symbols-outlined" style="font-size: 18px; margin-right: 4px;">language</span>
+            <span id="current-language">English</span>
+        </button>
+    </header>
 
     <!-- Privacy Policy Content -->
-    <section class="pt-32 pb-16 bg-white">
-        <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 class="text-3xl md:text-4xl font-bold mb-8 text-center">
+    <section class="section section-hero hero">
+        <div class="hero-bg" aria-hidden="true" style="top: -100px;"></div>
+        <div class="container reading-column center-text pt-24">
+
+            <div style="display: flex; justify-content: center; margin-bottom: 24px;">
+                <div class="teal-accent-inlay" style="width: 48px; height: 6px;"></div>
+            </div>
+
+            <h1 class="hero-title reveal-on-scroll delay-100" style="margin-bottom: 16px;">
                 <span lang="en">Privacy Policy</span>
                 <span lang="es" class="hidden">Política de Privacidad</span>
                 <span lang="fr" class="hidden">Politique de Confidentialité</span>
                 <span lang="pt" class="hidden">Política de Privacidade</span>
             </h1>
 
-            <div class="bg-white p-6 md:p-8 mb-8">
-                <div class="prose max-w-none">
-                    <!-- Last Updated Section -->
-                    <p class="text-gray-600 mb-8 text-center">
-                        <span lang="en">Last Updated: April 1, 2025</span>
-                        <span lang="es" class="hidden">Última Actualización: 1 de abril de 2025</span>
-                        <span lang="fr" class="hidden">Dernière mise à jour : 1er avril 2025</span>
-                        <span lang="pt" class="hidden">Última atualização: 1 de abril de 2025</span>
-                    </p>
+            <p class="body-text reveal-on-scroll delay-200"
+                style="margin-left: auto; margin-right: auto; max-width: 50ch;">
+                <span lang="en">Last Updated: April 1, 2025</span>
+                <span lang="es" class="hidden">Última Actualización: 1 de abril de 2025</span>
+                <span lang="fr" class="hidden">Dernière mise à jour : 1er avril 2025</span>
+                <span lang="pt" class="hidden">Última atualização: 1 de abril de 2025</span>
+            </p>
+        </div>
+    </section>
 
-                    <!-- Introduction -->
-                    <h2 class="text-xl md:text-2xl font-semibold mb-4">
-                        <span lang="en">1. Introduction</span>
-                        <span lang="es" class="hidden">1. Introducción</span>
-                        <span lang="fr" class="hidden">1. Introduction</span>
-                        <span lang="pt" class="hidden">1. Introdução</span>
-                    </h2>
-                    <p class="mb-6">
-                        <span lang="en">Welcome to Bricks Apps. This Privacy Policy applies to our apps and games, and
-                            explains how we handle your information when you use our
-                            applications.</span>
-                        <span lang="es" class="hidden">Bienvenido a Bricks Apps. Esta Política de Privacidad aplica a
-                            nuestras apps y juegos, y explica cómo manejamos tu información cuando usas nuestras
-                            aplicaciones.</span>
-                        <span lang="fr" class="hidden">Bienvenue chez Bricks Apps. Cette politique de confidentialité
-                            s'applique à nos applications et jeux, et explique comment nous gérons vos informations
-                            lorsque vous utilisez nos applications.</span>
-                        <span lang="pt" class="hidden">Bem-vindo ao Bricks Apps. Esta Política de Privacidade se aplica
-                            aos nossos aplicativos e jogos, e explica como lidamos com suas informações quando você usa
-                            nossos aplicativos.</span>
-                    </p>
+    <!-- Main Privacy Content -->
+    <main class="section pb-24">
+        <div class="container reading-column">
+            <div class="reveal-on-scroll delay-300">
+                <!-- Introduction -->
+                <h2 class="section-title mt-md" style="font-size: 28px;">
+                    <span lang="en">1. Introduction</span>
+                    <span lang="es" class="hidden">1. Introducción</span>
+                    <span lang="fr" class="hidden">1. Introduction</span>
+                    <span lang="pt" class="hidden">1. Introdução</span>
+                </h2>
+                <p class="body-text mb-md">
+                    <span lang="en">Welcome to Bricks Apps. This Privacy Policy applies to our apps and games, and
+                        explains how we handle your information when you use our
+                        applications.</span>
+                    <span lang="es" class="hidden">Bienvenido a Bricks Apps. Esta Política de Privacidad aplica a
+                        nuestras apps y juegos, y explica cómo manejamos tu información cuando usas nuestras
+                        aplicaciones.</span>
+                    <span lang="fr" class="hidden">Bienvenue chez Bricks Apps. Cette politique de confidentialité
+                        s'applique à nos applications et jeux, et explique comment nous gérons vos informations
+                        lorsque vous utilisez nos applications.</span>
+                    <span lang="pt" class="hidden">Bem-vindo ao Bricks Apps. Esta Política de Privacidade se aplica
+                        aos nossos aplicativos e jogos, e explica como lidamos com suas informações quando você usa
+                        nossos aplicativos.</span>
+                </p>
 
-                    <!-- Information We Collect -->
-                    <h2 class="text-xl md:text-2xl font-semibold mb-4">
-                        <span lang="en">2. Information We Collect</span>
-                        <span lang="es" class="hidden">2. Información que Recopilamos</span>
-                        <span lang="fr" class="hidden">2. Informations que nous collectons</span>
-                        <span lang="pt" class="hidden">2. Informações que coletamos</span>
-                    </h2>
-                    <p class="mb-6">
-                        <span lang="en">We do not collect your personal data or inputs from our apps and games. All data
-                            and calculations are processed locally on your device. However, we may collect
-                            limited diagnostic information and aggregated usage data to improve app performance and
-                            reliability. We do not use advertising services or third-party advertising SDKs.</span>
-                        <span lang="es" class="hidden">No recopilamos tus datos personales ni entradas de nuestras apps
-                            y juegos. Todos los datos y cálculos se procesan localmente en tu dispositivo. Sin embargo,
-                            podemos
-                            recopilar información de diagnóstico limitada y datos de uso agregados para mejorar el
-                            rendimiento y la confiabilidad de las apps. No utilizamos servicios de publicidad ni SDKs
-                            de anuncios de terceros.</span>
-                        <span lang="fr" class="hidden">Nous ne collectons pas vos données personnelles ni vos saisies
-                            dans nos applications et jeux. Toutes les données et calculs sont traités localement sur
-                            votre appareil. Cependant, nous pouvons
-                            collecter des informations de diagnostic limitées et des données d'utilisation agrégées pour
-                            améliorer les performances et
-                            la fiabilité des applications. Nous n'utilisons pas de services publicitaires ni de SDK
-                            publicitaires tiers.</span>
-                        <span lang="pt" class="hidden">Não coletamos seus dados pessoais ou entradas de nossos
-                            aplicativos e jogos. Todos os dados e cálculos são processados localmente no seu
-                            dispositivo. No entanto, podemos
-                            coletar informações de diagnóstico limitadas e dados de uso agregados para melhorar o
-                            desempenho e a confiabilidade dos aplicativos. Não usamos serviços de publicidade ou SDKs
-                            de publicidade de terceiros.</span>
-                    </p>
+                <!-- Information We Collect -->
+                <h2 class="section-title mt-md" style="font-size: 28px;">
+                    <span lang="en">2. Information We Collect</span>
+                    <span lang="es" class="hidden">2. Información que Recopilamos</span>
+                    <span lang="fr" class="hidden">2. Informations que nous collectons</span>
+                    <span lang="pt" class="hidden">2. Informações que coletamos</span>
+                </h2>
+                <p class="body-text mb-sm">
+                    <span lang="en">We do not collect your personal data or inputs from our apps and games. All data
+                        and calculations are processed locally on your device. However, we may collect
+                        limited diagnostic information and aggregated usage data to improve app performance and
+                        reliability. We do not use advertising services or third-party advertising SDKs.</span>
+                    <span lang="es" class="hidden">No recopilamos tus datos personales ni entradas de nuestras apps
+                        y juegos. Todos los datos y cálculos se procesan localmente en tu dispositivo. Sin embargo,
+                        podemos
+                        recopilar información de diagnóstico limitada y datos de uso agregados para mejorar el
+                        rendimiento y la confiabilidad de las apps. No utilizamos servicios de publicidad ni SDKs
+                        de anuncios de terceros.</span>
+                    <span lang="fr" class="hidden">Nous ne collectons pas vos données personnelles ni vos saisies
+                        dans nos applications et jeux. Toutes les données et calculs sont traités localement sur
+                        votre appareil. Cependant, nous pouvons
+                        collecter des informations de diagnostic limitées et des données d'utilisation agrégées pour
+                        améliorer les performances et
+                        la fiabilité des applications. Nous n'utilisons pas de services publicitaires ni de SDK
+                        publicitaires tiers.</span>
+                    <span lang="pt" class="hidden">Não coletamos seus dados pessoais ou entradas de nossos
+                        aplicativos e jogos. Todos os dados e cálculos são processados localmente no seu
+                        dispositivo. No entanto, podemos
+                        coletar informações de diagnóstico limitadas e dados de uso agregados para melhorar o
+                        desempenho e a confiabilidade dos aplicativos. Não usamos serviços de publicidade ou SDKs
+                        de publicidade de terceiros.</span>
+                </p>
 
-                    <h3 class="text-lg md:text-xl font-medium mb-3">
-                        <span lang="en">a. Information You Provide</span>
-                        <span lang="es" class="hidden">a. Información que Proporcionas</span>
-                        <span lang="fr" class="hidden">a. Informations que vous fournissez</span>
-                        <span lang="pt" class="hidden">a. Informações que você fornece</span>
-                    </h3>
-                    <p class="mb-4">
-                        <span lang="en">• App Data: Information, inputs, and data you enter into our apps and games for
-                            calculations, gameplay, or other features. This data stays on your
-                            device and is not transmitted to our servers.</span>
-                        <span lang="es" class="hidden">• Datos de la app: Información, entradas y datos que ingresas en
-                            nuestras apps y juegos para cálculos, juego u otras funciones. Estos datos permanecen en tu
-                            dispositivo y no se transmiten a nuestros servidores.</span>
-                        <span lang="fr" class="hidden">• Données de l'application : Informations, saisies et données que
-                            vous entrez dans nos applications et jeux pour les calculs, le jeu ou d'autres
-                            fonctionnalités. Ces données restent sur votre appareil et ne sont pas transmises à nos
-                            serveurs.</span>
-                        <span lang="pt" class="hidden">• Dados do aplicativo: Informações, entradas e dados que você
-                            insere em nossos aplicativos e jogos para cálculos, jogabilidade ou outros recursos. Esses
-                            dados permanecem no seu dispositivo e não são transmitidos para nossos servidores.</span>
-                    </p>
+                <h3 class="subheading mt-sm">
+                    <span lang="en">a. Information You Provide</span>
+                    <span lang="es" class="hidden">a. Información que Proporcionas</span>
+                    <span lang="fr" class="hidden">a. Informations que vous fournissez</span>
+                    <span lang="pt" class="hidden">a. Informações que você fornece</span>
+                </h3>
+                <p class="body-text mb-sm">
+                    <span lang="en">• App Data: Information, inputs, and data you enter into our apps and games for
+                        calculations, gameplay, or other features. This data stays on your
+                        device and is not transmitted to our servers.</span>
+                    <span lang="es" class="hidden">• Datos de la app: Información, entradas y datos que ingresas en
+                        nuestras apps y juegos para cálculos, juego u otras funciones. Estos datos permanecen en tu
+                        dispositivo y no se transmiten a nuestros servidores.</span>
+                    <span lang="fr" class="hidden">• Données de l'application : Informations, saisies et données que
+                        vous entrez dans nos applications et jeux pour les calculs, le jeu ou d'autres
+                        fonctionnalités. Ces données restent sur votre appareil et ne sont pas transmises à nos
+                        serveurs.</span>
+                    <span lang="pt" class="hidden">• Dados do aplicativo: Informações, entradas e dados que você
+                        insere em nossos aplicativos e jogos para cálculos, jogabilidade ou outros recursos. Esses
+                        dados permanecem no seu dispositivo e não são transmitidos para nossos servidores.</span>
+                </p>
 
-                    <h3 class="text-lg md:text-xl font-medium mb-3">
-                        <span lang="en">b. Diagnostics and Usage Data (optional)</span>
-                        <span lang="es" class="hidden">b. Datos de diagnóstico y uso (opcional)</span>
-                        <span lang="fr" class="hidden">b. Données de diagnostic et d'utilisation (facultatif)</span>
-                        <span lang="pt" class="hidden">b. Dados de diagnóstico e uso (opcional)</span>
-                    </h3>
-                    <p class="mb-4">
-                        <span lang="en">• Optional diagnostics and analytics: Crash reports, performance metrics, device
-                            type and
-                            OS version, and aggregated feature usage to help us improve the apps. Where available, you
-                            can control analytics collection in your device settings.</span>
-                        <span lang="es" class="hidden">• Diagnósticos y analíticas opcionales: Informes de fallos,
-                            métricas de rendimiento, tipo
-                            de dispositivo y versión del sistema, y uso agregado de funciones para ayudarnos a mejorar
-                            las apps. Cuando esté disponible, puedes controlar la recopilación de analíticas en los
-                            ajustes de tu dispositivo.</span>
-                        <span lang="fr" class="hidden">• Diagnostics et analyses facultatifs : Rapports de plantage,
-                            mesures de performance, type
-                            d'appareil et version du système, et utilisation agrégée des fonctionnalités pour nous aider
-                            à améliorer
-                            les applications. Lorsqu'il est disponible, vous pouvez contrôler la collecte d'analyses
-                            dans les
-                            paramètres de votre appareil.</span>
-                        <span lang="pt" class="hidden">• Diagnósticos e análises opcionais: Relatórios de falhas,
-                            métricas de desempenho, tipo
-                            de dispositivo e versão do sistema, e uso agregado de recursos para nos ajudar a melhorar
-                            os aplicativos. Quando disponível, você pode controlar a coleta de análises nas
-                            configurações do seu dispositivo.</span>
-                    </p>
+                <h3 class="subheading mt-sm">
+                    <span lang="en">b. Diagnostics and Usage Data (optional)</span>
+                    <span lang="es" class="hidden">b. Datos de diagnóstico y uso (opcional)</span>
+                    <span lang="fr" class="hidden">b. Données de diagnostic et d'utilisation (facultatif)</span>
+                    <span lang="pt" class="hidden">b. Dados de diagnóstico e uso (opcional)</span>
+                </h3>
+                <p class="body-text mb-sm">
+                    <span lang="en">• Optional diagnostics and analytics: Crash reports, performance metrics, device
+                        type and
+                        OS version, and aggregated feature usage to help us improve the apps. Where available, you
+                        can control analytics collection in your device settings.</span>
+                    <span lang="es" class="hidden">• Diagnósticos y analíticas opcionales: Informes de fallos,
+                        métricas de rendimiento, tipo
+                        de dispositivo y versión del sistema, y uso agregado de funciones para ayudarnos a mejorar
+                        las apps. Cuando esté disponible, puedes controlar la recopilación de analíticas en los
+                        ajustes de tu dispositivo.</span>
+                    <span lang="fr" class="hidden">• Diagnostics et analyses facultatifs : Rapports de plantage,
+                        mesures de performance, type
+                        d'appareil et version du système, et utilisation agrégée des fonctionnalités pour nous aider
+                        à améliorer
+                        les applications. Lorsqu'il est disponible, vous pouvez contrôler la collecte d'analyses
+                        dans les
+                        paramètres de votre appareil.</span>
+                    <span lang="pt" class="hidden">• Diagnósticos e análises opcionais: Relatórios de falhas,
+                        métricas de desempenho, tipo
+                        de dispositivo e versão do sistema, e uso agregado de recursos para nos ajudar a melhorar
+                        os aplicativos. Quando disponível, você pode controlar a coleta de análises nas
+                        configurações do seu dispositivo.</span>
+                </p>
 
-                    <h3 class="text-lg md:text-xl font-medium mb-3">
-                        <span lang="en">c. Information We Do Not Collect</span>
-                        <span lang="es" class="hidden">c. Información que no recopilamos</span>
-                        <span lang="fr" class="hidden">c. Informations que nous ne collectons pas</span>
-                        <span lang="pt" class="hidden">c. Informações que não coletamos</span>
-                    </h3>
-                    <p class="mb-4">
-                        <span lang="en">• We do not collect personal identifiers such as your name, email address, or
-                            phone
-                            number</span>
-                        <span lang="es" class="hidden">• No recopilamos identificadores personales como tu nombre,
-                            dirección de correo electrónico o número de teléfono</span>
-                        <span lang="fr" class="hidden">• Nous ne collectons pas d'identifiants personnels tels que votre
-                            nom, adresse e-mail ou numéro de téléphone</span>
-                        <span lang="pt" class="hidden">• Não coletamos identificadores pessoais, como seu nome, endereço
-                            de e-mail ou número de telefone</span>
-                    </p>
-                    <p class="mb-4">
-                        <span lang="en">• We do not request or store financial account details</span>
-                        <span lang="es" class="hidden">• No solicitamos ni almacenamos detalles de cuentas
-                            financieras</span>
-                        <span lang="fr" class="hidden">• Nous ne demandons ni ne stockons de détails de compte
-                            financier</span>
-                        <span lang="pt" class="hidden">• Não solicitamos nem armazenamos detalhes de contas
-                            financeiras</span>
-                    </p>
-                    <p class="mb-6">
-                        <span lang="en">• We do not track your location</span>
-                        <span lang="es" class="hidden">• No rastreamos tu ubicación</span>
-                        <span lang="fr" class="hidden">• Nous ne suivons pas votre localisation</span>
-                        <span lang="pt" class="hidden">• Não rastreamos sua localização</span>
-                    </p>
+                <h3 class="subheading mt-sm">
+                    <span lang="en">c. Information We Do Not Collect</span>
+                    <span lang="es" class="hidden">c. Información que no recopilamos</span>
+                    <span lang="fr" class="hidden">c. Informations que nous ne collectons pas</span>
+                    <span lang="pt" class="hidden">c. Informações que não coletamos</span>
+                </h3>
+                <p class="body-text mb-sm">
+                    <span lang="en">• We do not collect personal identifiers such as your name, email address, or
+                        phone number</span>
+                    <span lang="es" class="hidden">• No recopilamos identificadores personales como tu nombre,
+                        dirección de correo electrónico o número de teléfono</span>
+                    <span lang="fr" class="hidden">• Nous ne collectons pas d'identifiants personnels tels que votre
+                        nom, adresse e-mail ou numéro de téléphone</span>
+                    <span lang="pt" class="hidden">• Não coletamos identificadores pessoais, como seu nome, endereço
+                        de e-mail ou número de telefone</span>
+                </p>
+                <p class="body-text mb-sm">
+                    <span lang="en">• We do not request or store financial account details</span>
+                    <span lang="es" class="hidden">• No solicitamos ni almacenamos detalles de cuentas
+                        financieras</span>
+                    <span lang="fr" class="hidden">• Nous ne demandons ni ne stockons de détails de compte
+                        financier</span>
+                    <span lang="pt" class="hidden">• Não solicitamos nem armazenamos detalhes de contas
+                        financeiras</span>
+                </p>
+                <p class="body-text mb-md">
+                    <span lang="en">• We do not track your location</span>
+                    <span lang="es" class="hidden">• No rastreamos tu ubicación</span>
+                    <span lang="fr" class="hidden">• Nous ne suivons pas votre localisation</span>
+                    <span lang="pt" class="hidden">• Não rastreamos sua localização</span>
+                </p>
 
-                    <!-- How We Use Your Information -->
-                    <h2 class="text-xl md:text-2xl font-semibold mb-4">
-                        <span lang="en">3. How We Use Your Information</span>
-                        <span lang="es" class="hidden">3. Cómo Utilizamos Tu Información</span>
-                        <span lang="fr" class="hidden">3. Comment nous utilisons vos informations</span>
-                        <span lang="pt" class="hidden">3. Como usamos suas informações</span>
-                    </h2>
-                    <p class="mb-4">
-                        <span lang="en">• Local Storage: All your data is stored locally on your device</span>
-                        <span lang="es" class="hidden">• Almacenamiento Local: Todos tus datos se almacenan localmente
-                            en tu dispositivo</span>
-                        <span lang="fr" class="hidden">• Stockage local : Toutes vos données sont stockées localement
-                            sur votre appareil</span>
-                        <span lang="pt" class="hidden">• Armazenamento local: Todos os seus dados são armazenados
-                            localmente no seu dispositivo</span>
-                    </p>
-                    <p class="mb-4">
-                        <span lang="en">• App Functionality: We use the information you provide solely to enable app
-                            features and functionality on your device</span>
-                        <span lang="es" class="hidden">• Funcionalidad de la app: Utilizamos la información que
-                            proporcionas únicamente para habilitar las funciones y características de la app en tu
-                            dispositivo</span>
-                        <span lang="fr" class="hidden">• Fonctionnalité de l'application : Nous utilisons les
-                            informations que vous fournissez uniquement pour activer les fonctionnalités de
-                            l'application sur votre appareil</span>
-                        <span lang="pt" class="hidden">• Funcionalidade do aplicativo: Usamos as informações que você
-                            fornece apenas para habilitar recursos e funcionalidades do aplicativo no seu
-                            dispositivo</span>
-                    </p>
-                    <p class="mb-6">
-                        <span lang="en">• Export and Sharing: When you choose to export or share content from our apps,
-                            we temporarily
-                            process your data on your device to generate PDFs, images, or other files for sharing</span>
-                        <span lang="es" class="hidden">• Exportación y Compartir: Cuando eliges exportar o compartir
-                            contenido de nuestras apps, procesamos temporalmente
-                            tus datos en tu dispositivo para generar PDFs, imágenes u otros archivos para
-                            compartir</span>
-                        <span lang="fr" class="hidden">• Exportation et partage : Lorsque vous choisissez d'exporter ou
-                            de partager du contenu de nos applications, nous traitons temporairement
-                            vos données sur votre appareil pour générer des PDF, des images ou d'autres fichiers à
-                            partager</span>
-                        <span lang="pt" class="hidden">• Exportação e Compartilhamento: Quando você opta por exportar ou
-                            compartilhar conteúdo de nossos aplicativos, processamos temporariamente
-                            seus dados no dispositivo para gerar PDFs, imagens ou outros arquivos para
-                            compartilhamento</span>
-                    </p>
-                    <p class="mb-4">
-                        <span lang="en">• App Improvements: We may use anonymized diagnostics and aggregated usage
-                            metrics to
-                            improve features, performance, and reliability</span>
-                        <span lang="es" class="hidden">• Mejoras de la app: Podemos utilizar diagnósticos anonimizados y
-                            métricas de uso
-                            agregadas para mejorar las funciones, el rendimiento y la confiabilidad</span>
-                        <span lang="fr" class="hidden">• Améliorations de l'application : Nous pouvons utiliser des
-                            diagnostics anonymisés et des métriques d'utilisation
-                            agrégées pour améliorer les fonctionnalités, les performances et la fiabilité</span>
-                        <span lang="pt" class="hidden">• Melhorias no aplicativo: Podemos usar diagnósticos anonimizados
-                            e métricas de uso
-                            agregadas para melhorar recursos, desempenho e confiabilidade</span>
-                    </p>
+                <!-- How We Use Your Information -->
+                <h2 class="section-title mt-md" style="font-size: 28px;">
+                    <span lang="en">3. How We Use Your Information</span>
+                    <span lang="es" class="hidden">3. Cómo Utilizamos Tu Información</span>
+                    <span lang="fr" class="hidden">3. Comment nous utilisons vos informations</span>
+                    <span lang="pt" class="hidden">3. Como usamos suas informações</span>
+                </h2>
+                <p class="body-text mb-sm">
+                    <span lang="en">• Local Storage: All your data is stored locally on your device</span>
+                    <span lang="es" class="hidden">• Almacenamiento Local: Todos tus datos se almacenan localmente
+                        en tu dispositivo</span>
+                    <span lang="fr" class="hidden">• Stockage local : Toutes vos données sont stockées localement
+                        sur votre appareil</span>
+                    <span lang="pt" class="hidden">• Armazenamento local: Todos os seus dados são armazenados
+                        localmente no seu dispositivo</span>
+                </p>
+                <p class="body-text mb-sm">
+                    <span lang="en">• App Functionality: We use the information you provide solely to enable app
+                        features and functionality on your device</span>
+                    <span lang="es" class="hidden">• Funcionalidad de la app: Utilizamos la información que
+                        proporcionas únicamente para habilitar las funciones y características de la app en tu
+                        dispositivo</span>
+                    <span lang="fr" class="hidden">• Fonctionnalité de l'application : Nous utilisons les
+                        informations que vous fournissez uniquement pour activer les fonctionnalités de
+                        l'application sur votre appareil</span>
+                    <span lang="pt" class="hidden">• Funcionalidade do aplicativo: Usamos as informações que você
+                        fornece apenas para habilitar recursos e funcionalidades do aplicativo no seu
+                        dispositivo</span>
+                </p>
+                <p class="body-text mb-sm">
+                    <span lang="en">• Export and Sharing: When you choose to export or share content from our apps,
+                        we temporarily process your data on your device to generate PDFs, images, or other files for
+                        sharing</span>
+                    <span lang="es" class="hidden">• Exportación y Compartir: Cuando eliges exportar o compartir
+                        contenido de nuestras apps, procesamos temporalmente
+                        tus datos en tu dispositivo para generar PDFs, imágenes u otros archivos para
+                        compartir</span>
+                    <span lang="fr" class="hidden">• Exportation et partage : Lorsque vous choisissez d'exporter ou
+                        de partager du contenu de nos applications, nous traitons temporairement
+                        vos données sur votre appareil pour générer des PDF, des images ou d'autres fichiers à
+                        partager</span>
+                    <span lang="pt" class="hidden">• Exportação e Compartilhamento: Quando você opta por exportar ou
+                        compartilhar conteúdo de nossos aplicativos, processamos temporariamente
+                        seus dados no dispositivo para gerar PDFs, imagens ou outros arquivos para
+                        compartilhamento</span>
+                </p>
+                <p class="body-text mb-md">
+                    <span lang="en">• App Improvements: We may use anonymized diagnostics and aggregated usage
+                        metrics to improve features, performance, and reliability</span>
+                    <span lang="es" class="hidden">• Mejoras de la app: Podemos utilizar diagnósticos anonimizados y
+                        métricas de uso agregadas para mejorar las funciones, el rendimiento y la confiabilidad</span>
+                    <span lang="fr" class="hidden">• Améliorations de l'application : Nous pouvons utiliser des
+                        diagnostics anonymisés et des métriques d'utilisation
+                        agrégées pour améliorer les fonctionnalités, les performances et la fiabilité</span>
+                    <span lang="pt" class="hidden">• Melhorias no aplicativo: Podemos usar diagnósticos anonimizados
+                        e métricas de uso agregadas para melhorar recursos, desempenho e confiabilidade</span>
+                </p>
 
-                    <!-- Data Sharing and Third Parties -->
-                    <h2 class="text-xl md:text-2xl font-semibold mb-4">
-                        <span lang="en">4. Data Sharing and Third Parties</span>
-                        <span lang="es" class="hidden">4. Compartir Información</span>
-                        <span lang="fr" class="hidden">4. Partage de données et tiers</span>
-                        <span lang="pt" class="hidden">4. Compartilhamento de dados e terceiros</span>
-                    </h2>
-                    <p class="mb-4">
-                        <span lang="en">• No External Data Transfer: Your data never leaves your device unless you
-                            explicitly
-                            choose to share it</span>
-                        <span lang="es" class="hidden">• Sin Transferencia Externa de Datos: Tus datos nunca salen de tu
-                            dispositivo a menos que explícitamente
-                            elijas compartirlos</span>
-                        <span lang="fr" class="hidden">• Pas de transfert de données externe : Vos données ne quittent
-                            jamais votre appareil sauf si vous
-                            choisissez explicitement de les partager</span>
-                        <span lang="pt" class="hidden">• Sem transferência externa de dados: Seus dados nunca saem do
-                            seu dispositivo, a menos que você
-                            opte explicitamente por compartilhá-los</span>
-                    </p>
-                    <p class="mb-4">
-                        <span lang="en">• Sharing Features: When you use the app's sharing features to export or share
-                            content, you
-                            control who receives this information</span>
-                        <span lang="es" class="hidden">• Funciones de Compartir: Cuando usas las funciones de compartir
-                            de la app para exportar o compartir contenido, tú
-                            controlas quién recibe esta información</span>
-                        <span lang="fr" class="hidden">• Fonctionnalités de partage : Lorsque vous utilisez les
-                            fonctionnalités de partage de l'application pour exporter ou partager du contenu, vous
-                            contrôlez qui reçoit ces informations</span>
-                        <span lang="pt" class="hidden">• Recursos de compartilhamento: Ao usar os recursos de
-                            compartilhamento do aplicativo para exportar ou compartilhar conteúdo, você
-                            controla quem recebe essas informações</span>
-                    </p>
-                    <p class="mb-6">
-                        <span lang="en">• Apple's App Store: We use Apple for managing in-app purchases, which is
-                            subject to
-                            Apple's privacy practices</span>
-                        <span lang="es" class="hidden">• Apple App Store: Utilizamos Apple para gestionar las compras
-                            dentro de la app, lo cual está sujeto a
-                            las prácticas de privacidad de Apple</span>
-                        <span lang="fr" class="hidden">• App Store d'Apple : Nous utilisons Apple pour gérer les achats
-                            intégrés, ce qui est soumis aux
-                            pratiques de confidentialité d'Apple</span>
-                        <span lang="pt" class="hidden">• App Store da Apple: Usamos a Apple para gerenciar compras no
-                            aplicativo, o que está sujeito às
-                            práticas de privacidade da Apple</span>
-                    </p>
+                <!-- Data Sharing and Third Parties -->
+                <h2 class="section-title mt-md" style="font-size: 28px;">
+                    <span lang="en">4. Data Sharing and Third Parties</span>
+                    <span lang="es" class="hidden">4. Compartir Información</span>
+                    <span lang="fr" class="hidden">4. Partage de données et tiers</span>
+                    <span lang="pt" class="hidden">4. Compartilhamento de dados e terceiros</span>
+                </h2>
+                <p class="body-text mb-sm">
+                    <span lang="en">• No External Data Transfer: Your data never leaves your device unless you
+                        explicitly choose to share it</span>
+                    <span lang="es" class="hidden">• Sin Transferencia Externa de Datos: Tus datos nunca salen de tu
+                        dispositivo a menos que explícitamente elijas compartirlos</span>
+                    <span lang="fr" class="hidden">• Pas de transfert de données externe : Vos données ne quittent
+                        jamais votre appareil sauf si vous choisissez explicitement de les partager</span>
+                    <span lang="pt" class="hidden">• Sem transferência externa de dados: Seus dados nunca saem do
+                        seu dispositivo, a menos que você opte explicitamente por compartilhá-los</span>
+                </p>
+                <p class="body-text mb-sm">
+                    <span lang="en">• Sharing Features: When you use the app's sharing features to export or share
+                        content, you control who receives this information</span>
+                    <span lang="es" class="hidden">• Funciones de Compartir: Cuando usas las funciones de compartir
+                        de la app para exportar o compartir contenido, tú
+                        controlas quién recibe esta información</span>
+                    <span lang="fr" class="hidden">• Fonctionnalités de partage : Lorsque vous utilisez les
+                        fonctionnalités de partage de l'application pour exporter ou partager du contenu, vous
+                        contrôlez qui reçoit ces informations</span>
+                    <span lang="pt" class="hidden">• Recursos de compartilhamento: Ao usar os recursos de
+                        compartilhamento do aplicativo para exportar ou compartilhar conteúdo, você
+                        controla quem recebe essas informações</span>
+                </p>
+                <p class="body-text mb-md">
+                    <span lang="en">• Apple's App Store: We use Apple for managing in-app purchases, which is
+                        subject to Apple's privacy practices</span>
+                    <span lang="es" class="hidden">• Apple App Store: Utilizamos Apple para gestionar las compras
+                        dentro de la app, lo cual está sujeto a las prácticas de privacidad de Apple</span>
+                    <span lang="fr" class="hidden">• App Store d'Apple : Nous utilisons Apple pour gérer les achats
+                        intégrés, ce qui est soumis aux pratiques de confidentialité d'Apple</span>
+                    <span lang="pt" class="hidden">• App Store da Apple: Usamos a Apple para gerenciar compras no
+                        aplicativo, o que está sujeito às práticas de privacidade da Apple</span>
+                </p>
 
-                    <!-- Data Retention and Security -->
-                    <h2 class="text-xl md:text-2xl font-semibold mb-4">
-                        <span lang="en">5. Data Retention and Security</span>
-                        <span lang="es" class="hidden">5. Seguridad de Datos</span>
-                        <span lang="fr" class="hidden">5. Conservation et sécurité des données</span>
-                        <span lang="pt" class="hidden">5. Retenção e segurança de dados</span>
-                    </h2>
-                    <p class="mb-6">
-                        <span lang="en">• Local Storage Only: All data is stored locally on your device<br />• Data
-                            Control:
-                            You can delete your saved data at any time through the app interface</span>
-                        <span lang="es" class="hidden">• Solo Almacenamiento Local: Todos los datos se almacenan
-                            localmente en tu dispositivo<br />• Control de Datos:
-                            Puedes eliminar tus datos guardados en cualquier momento a través de la interfaz de la
-                            app</span>
-                        <span lang="fr" class="hidden">• Stockage local uniquement : Toutes les données sont stockées
-                            localement sur votre appareil<br />• Contrôle des données :
-                            Vous pouvez supprimer vos données enregistrées à tout moment via l'interface de
-                            l'application</span>
-                        <span lang="pt" class="hidden">• Apenas armazenamento local: Todos os dados são armazenados
-                            localmente no seu dispositivo<br />• Controle de dados:
-                            Você pode excluir seus dados salvos a qualquer momento através da interface do
-                            aplicativo</span>
-                    </p>
+                <!-- Data Retention and Security -->
+                <h2 class="section-title mt-md" style="font-size: 28px;">
+                    <span lang="en">5. Data Retention and Security</span>
+                    <span lang="es" class="hidden">5. Seguridad de Datos</span>
+                    <span lang="fr" class="hidden">5. Conservation et sécurité des données</span>
+                    <span lang="pt" class="hidden">5. Retenção e segurança de dados</span>
+                </h2>
+                <p class="body-text mb-md">
+                    <span lang="en">• Local Storage Only: All data is stored locally on your device<br />• Data
+                        Control: You can delete your saved data at any time through the app interface</span>
+                    <span lang="es" class="hidden">• Solo Almacenamiento Local: Todos los datos se almacenan
+                        localmente en tu dispositivo<br />• Control de Datos:
+                        Puedes eliminar tus datos guardados en cualquier momento a través de la interfaz de la
+                        app</span>
+                    <span lang="fr" class="hidden">• Stockage local uniquement : Toutes les données sont stockées
+                        localement sur votre appareil<br />• Contrôle des données :
+                        Vous pouvez supprimer vos données enregistrées à tout moment via l'interface de
+                        l'application</span>
+                    <span lang="pt" class="hidden">• Apenas armazenamento local: Todos os dados são armazenados
+                        localmente no seu dispositivo<br />• Controle de dados:
+                        Você pode excluir seus dados salvos a qualquer momento através da interface do
+                        aplicativo</span>
+                </p>
 
-                    <!-- Your Rights and Choices -->
-                    <h2 class="text-xl md:text-2xl font-semibold mb-4">
-                        <span lang="en">6. Your Rights and Choices</span>
-                        <span lang="es" class="hidden">6. Tus Derechos y Opciones</span>
-                        <span lang="fr" class="hidden">6. Vos droits et choix</span>
-                        <span lang="pt" class="hidden">6. Seus direitos e escolhas</span>
-                    </h2>
-                    <p class="mb-6">
-                        <span lang="en">• Delete Data: You can delete any or all saved data within the app<br />• Reset
-                            Settings: You can reset all app settings to defaults<br />• Export Control: You control
-                            when and how your app data is exported or shared</span>
-                        <span lang="es" class="hidden">• Eliminar Datos: Puedes eliminar cualquier dato guardado o todos
-                            los datos guardados dentro de la app<br />• Restablecer
-                            Configuración: Puedes restablecer toda la configuración de la app a los valores
-                            predeterminados<br />• Control de Exportación: Tú controlas
-                            cuándo y cómo se exportan o comparten los datos de la app</span>
-                        <span lang="fr" class="hidden">• Supprimer les données : Vous pouvez supprimer une partie ou la
-                            totalité des données enregistrées dans l'application<br />• Réinitialiser
-                            les paramètres : Vous pouvez réinitialiser tous les paramètres de l'application aux valeurs
-                            par défaut<br />• Contrôle d'exportation : Vous contrôlez
-                            quand et comment les données de l'application sont exportées ou partagées</span>
-                        <span lang="pt" class="hidden">• Excluir dados: Você pode excluir qualquer ou todos os dados
-                            salvos no aplicativo<br />• Redefinir
-                            configurações: Você pode redefinir todas as configurações do aplicativo para os
-                            padrões<br />• Controle de exportação: Você controla
-                            quando e como os dados do aplicativo são exportados ou compartilhados</span>
-                    </p>
+                <!-- Your Rights and Choices -->
+                <h2 class="section-title mt-md" style="font-size: 28px;">
+                    <span lang="en">6. Your Rights and Choices</span>
+                    <span lang="es" class="hidden">6. Tus Derechos y Opciones</span>
+                    <span lang="fr" class="hidden">6. Vos droits et choix</span>
+                    <span lang="pt" class="hidden">6. Seus direitos e escolhas</span>
+                </h2>
+                <p class="body-text mb-md">
+                    <span lang="en">• Delete Data: You can delete any or all saved data within the app<br />• Reset
+                        Settings: You can reset all app settings to defaults<br />• Export Control: You control
+                        when and how your app data is exported or shared</span>
+                    <span lang="es" class="hidden">• Eliminar Datos: Puedes eliminar cualquier dato guardado o todos
+                        los datos guardados dentro de la app<br />• Restablecer
+                        Configuración: Puedes restablecer toda la configuración de la app a los valores
+                        predeterminados<br />• Control de Exportación: Tú controlas
+                        cuándo y cómo se exportan o comparten los datos de la app</span>
+                    <span lang="fr" class="hidden">• Supprimer les données : Vous pouvez supprimer une partie ou la
+                        totalité des données enregistrées dans l'application<br />• Réinitialiser
+                        les paramètres : Vous pouvez réinitialiser tous les paramètres de l'application aux valeurs
+                        par défaut<br />• Contrôle d'exportation : Vous contrôlez
+                        quand et comment les données de l'application sont exportées ou partagées</span>
+                    <span lang="pt" class="hidden">• Excluir dados: Você pode excluir qualquer ou todos os dados
+                        salvos no aplicativo<br />• Redefinir
+                        configurações: Você pode redefinir todas as configurações do aplicativo para os
+                        padrões<br />• Controle de exportação: Você controla
+                        quando e como os dados do aplicativo são exportados ou compartilhados</span>
+                </p>
 
-                    <!-- Premium Features -->
-                    <h2 class="text-xl md:text-2xl font-semibold mb-4">
-                        <span lang="en">7. Premium Features</span>
-                        <span lang="es" class="hidden">7. Características Premium</span>
-                        <span lang="fr" class="hidden">7. Fonctionnalités Premium</span>
-                        <span lang="pt" class="hidden">7. Recursos Premium</span>
-                    </h2>
-                    <p class="mb-6">
-                        <span lang="en">Our apps and games offer premium features through in-app purchases, which are
-                            processed by Apple.
-                            These purchases only affect feature availability and do not change our data
-                            practices.</span>
-                        <span lang="es" class="hidden">Nuestras apps y juegos ofrecen características premium a través
-                            de compras dentro de la app, que son procesadas por Apple.
-                            Estas compras solo afectan la disponibilidad de funciones y no cambian nuestras prácticas de
-                            datos.</span>
-                        <span lang="fr" class="hidden">Nos applications et jeux offrent des fonctionnalités premium via
-                            des achats intégrés, gérés par Apple.
-                            Ces achats n'affectent que la disponibilité des fonctionnalités et ne modifient pas nos
-                            pratiques
-                            en matière de données.</span>
-                        <span lang="pt" class="hidden">Nossos aplicativos e jogos oferecem recursos premium por meio de
-                            compras no aplicativo, processadas pela Apple.
-                            Essas compras afetam apenas a disponibilidade de recursos e não alteram nossas práticas de
-                            dados.</span>
-                    </p>
+                <!-- Premium Features -->
+                <h2 class="section-title mt-md" style="font-size: 28px;">
+                    <span lang="en">7. Premium Features</span>
+                    <span lang="es" class="hidden">7. Características Premium</span>
+                    <span lang="fr" class="hidden">7. Fonctionnalités Premium</span>
+                    <span lang="pt" class="hidden">7. Recursos Premium</span>
+                </h2>
+                <p class="body-text mb-md">
+                    <span lang="en">Our apps and games offer premium features through in-app purchases, which are
+                        processed by Apple. These purchases only affect feature availability and do not change our data
+                        practices.</span>
+                    <span lang="es" class="hidden">Nuestras apps y juegos ofrecen características premium a través
+                        de compras dentro de la app, que son procesadas por Apple.
+                        Estas compras solo afectan la disponibilidad de funciones y no cambian nuestras prácticas de
+                        datos.</span>
+                    <span lang="fr" class="hidden">Nos applications et jeux offrent des fonctionnalités premium via
+                        des achats intégrés, gérés par Apple.
+                        Ces achats n'affectent que la disponibilité des fonctionnalités et ne modifient pas nos
+                        pratiques
+                        en matière de données.</span>
+                    <span lang="pt" class="hidden">Nossos aplicativos e jogos oferecem recursos premium por meio de
+                        compras no aplicativo, processadas pela Apple.
+                        Essas compras afetam apenas a disponibilidade de recursos e não alteram nossas práticas de
+                        dados.</span>
+                </p>
 
-                    <!-- Changes to This Policy -->
-                    <h2 class="text-xl md:text-2xl font-semibold mb-4">
-                        <span lang="en">8. Changes to This Policy</span>
-                        <span lang="es" class="hidden">8. Cambios a esta Política</span>
-                        <span lang="fr" class="hidden">8. Modifications de cette politique</span>
-                        <span lang="pt" class="hidden">8. Alterações nesta política</span>
-                    </h2>
-                    <p class="mb-6">
-                        <span lang="en">We may update this Privacy Policy periodically. We will notify you of any
-                            material
-                            changes through our apps.</span>
-                        <span lang="es" class="hidden">Podemos actualizar esta Política de Privacidad periódicamente. Te
-                            notificaremos de cualquier cambio
-                            material a través de nuestras apps.</span>
-                        <span lang="fr" class="hidden">Nous pouvons mettre à jour cette politique de confidentialité
-                            périodiquement. Nous vous informerons de tout changement
-                            important via nos applications.</span>
-                        <span lang="pt" class="hidden">Podemos atualizar esta Política de Privacidade periodicamente.
-                            Notificaremos você sobre quaisquer alterações
-                            materiais através de nossos aplicativos.</span>
-                    </p>
+                <!-- Changes to This Policy -->
+                <h2 class="section-title mt-md" style="font-size: 28px;">
+                    <span lang="en">8. Changes to This Policy</span>
+                    <span lang="es" class="hidden">8. Cambios a esta Política</span>
+                    <span lang="fr" class="hidden">8. Modifications de cette politique</span>
+                    <span lang="pt" class="hidden">8. Alterações nesta política</span>
+                </h2>
+                <p class="body-text mb-md">
+                    <span lang="en">We may update this Privacy Policy periodically. We will notify you of any
+                        material changes through our apps.</span>
+                    <span lang="es" class="hidden">Podemos actualizar esta Política de Privacidad periódicamente. Te
+                        notificaremos de cualquier cambio
+                        material a través de nuestras apps.</span>
+                    <span lang="fr" class="hidden">Nous pouvons mettre à jour cette politique de confidentialité
+                        périodiquement. Nous vous informerons de tout changement
+                        important via nos applications.</span>
+                    <span lang="pt" class="hidden">Podemos atualizar esta Política de Privacidade periodicamente.
+                        Notificaremos você sobre quaisquer alterações
+                        materiais através de nossos aplicativos.</span>
+                </p>
 
-                    <!-- Contact Us -->
-                    <h2 class="text-xl md:text-2xl font-semibold mb-4">
-                        <span lang="en">9. Contact Us</span>
-                        <span lang="es" class="hidden">9. Contáctanos</span>
-                        <span lang="fr" class="hidden">9. Contactez-nous</span>
-                        <span lang="pt" class="hidden">9. Fale Conosco</span>
-                    </h2>
-                    <p class="mb-6">
-                        <span lang="en">If you have questions about this Privacy Policy, please contact us at
-                            hello@bricks.pe</span>
-                        <span lang="es" class="hidden">Si tienes alguna pregunta sobre esta Política de Privacidad,
-                            contáctanos en
-                            hello@bricks.pe</span>
-                        <span lang="fr" class="hidden">Si vous avez des questions sur cette politique de
-                            confidentialité, veuillez nous contacter à
-                            hello@bricks.pe</span>
-                        <span lang="pt" class="hidden">Se você tiver dúvidas sobre esta Política de Privacidade, entre
-                            em contato conosco em
-                            hello@bricks.pe</span>
-                    </p>
-                </div>
+                <!-- Contact Us -->
+                <h2 class="section-title mt-md" style="font-size: 28px;">
+                    <span lang="en">9. Contact Us</span>
+                    <span lang="es" class="hidden">9. Contáctanos</span>
+                    <span lang="fr" class="hidden">9. Contactez-nous</span>
+                    <span lang="pt" class="hidden">9. Fale Conosco</span>
+                </h2>
+                <p class="body-text mb-md">
+                    <span lang="en">If you have questions about this Privacy Policy, please contact us at
+                        hello@bricks.pe</span>
+                    <span lang="es" class="hidden">Si tienes alguna pregunta sobre esta Política de Privacidad,
+                        contáctanos en
+                        hello@bricks.pe</span>
+                    <span lang="fr" class="hidden">Si vous avez des questions sur cette politique de
+                        confidentialité, veuillez nous contacter à
+                        hello@bricks.pe</span>
+                    <span lang="pt" class="hidden">Se você tiver dúvidas sobre esta Política de Privacidade, entre
+                        em contato conosco em
+                        hello@bricks.pe</span>
+                </p>
             </div>
 
-            <div class="text-center mt-8">
-                <a href="index.html"
-                    class="inline-flex items-center text-primary hover:text-primary-dark transition-colors"
+            <div class="center-text mt-lg mb-sm reveal-on-scroll delay-400">
+                <a href="index.html" class="btn btn-primary"
                     onclick="gtag('event', 'click', {event_category: 'navigation', event_label: 'back_to_home'})">
-                    <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-                    </svg>
                     <span lang="en">Back to Home</span>
                     <span lang="es" class="hidden">Volver al Inicio</span>
                     <span lang="fr" class="hidden">Retour à l'accueil</span>
@@ -606,89 +529,148 @@
                 </a>
             </div>
         </div>
-    </section>
+    </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 py-12 text-slate-300">
-        <div class="container px-4 md:px-6">
-            <div class="flex flex-col md:flex-row md:justify-between">
-                <div class="mb-8 md:mb-0">
-                    <a href="#" class="text-2xl font-bold text-white">Bricks Apps</a>
-                    <p class="mt-2 max-w-xs text-slate-400">
-                        <span lang="en">Making mortgage calculations simple, beautiful, and accessible.</span>
-                        <span lang="es" class="hidden">Desarrollamos herramientas inmobiliarias premium. Diseñadas
-                            específicamente para profesionales que buscan la mejor experiencia iOS.</span>
-                        <span lang="fr" class="hidden">Création d'outils immobiliers premium. Conçus spécifiquement pour
-                            les professionnels recherchant la meilleure expérience iOS.</span>
-                        <span lang="pt" class="hidden">Criando ferramentas imobiliárias premium. Projetadas
-                            especificamente para profissionais que buscam a melhor experiência iOS.</span>
+    <footer class="site-footer">
+        <div class="container reveal-on-scroll">
+            <div
+                style="display: flex; flex-wrap: wrap; gap: 48px; justify-content: space-between; margin-bottom: 48px;">
+                <!-- Brand Section -->
+                <div style="flex: 1; min-width: 280px;">
+                    <a href="index.html" style="display: inline-block; margin-bottom: 16px;">
+                        <img src="images-bricks-scan/Bricks Logo-dark.svg" alt="Bricks Logo"
+                            style="height: 24px; opacity: 0.8;">
+                    </a>
+                    <p class="body-text" style="font-size: 15px;">
+                        <span lang="en">We build apps for the real estate sector.</span>
+                        <span lang="es" class="hidden">Construimos apps para el sector inmobiliario.</span>
+                        <span lang="fr" class="hidden">Nous créons des applications pour le secteur immobilier.</span>
+                        <span lang="pt" class="hidden">Criamos aplicativos para o setor imobiliário.</span>
                     </p>
                 </div>
 
-                <div class="grid grid-cols-2 md:grid-cols-2 gap-8">
+                <!-- Footer Links Grid -->
+                <div
+                    style="flex: 2; min-width: 280px; display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 32px;">
+                    <!-- Apps Section -->
                     <div>
-                        <h3 class="mb-4 text-lg font-semibold text-white">
-                            <span lang="en">Company</span>
-                            <span lang="es" class="hidden">Bricks</span>
-                            <span lang="fr" class="hidden">Entreprise</span>
-                            <span lang="pt" class="hidden">Empresa</span>
+                        <h3 class="subheading" style="font-size: 16px; margin-bottom: 16px;">
+                            <span lang="en">Apps</span>
+                            <span lang="es" class="hidden">Apps</span>
+                            <span lang="fr" class="hidden">Apps</span>
+                            <span lang="pt" class="hidden">Apps</span>
                         </h3>
-                        <ul class="space-y-2">
+                        <ul
+                            style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
                             <li>
-                                <a href="about.html" class="transition-colors hover:text-white">
-                                    <span lang="en">About</span>
-                                    <span lang="es" class="hidden">Acerca de</span>
-                                    <span lang="fr" class="hidden">À propos</span>
-                                    <span lang="pt" class="hidden">Sobre</span>
+                                <a href="bricks-scan.html" class="body-text" style="font-size: 15px;">
+                                    <span lang="en">Bricks Scan</span>
+                                    <span lang="es" class="hidden">Bricks Scan</span>
+                                    <span lang="fr" class="hidden">Bricks Scan</span>
+                                    <span lang="pt" class="hidden">Bricks Scan</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="purchase-guide-01.html" class="transition-colors hover:text-white">
-                                    <span lang="en">Purchase Guide</span>
-                                    <span lang="es" class="hidden">Guía Rápida</span>
-                                    <span lang="fr" class="hidden">Guide d'achat</span>
-                                    <span lang="pt" class="hidden">Guia de Compra</span>
+                                <a href="bricks-calc.html" class="body-text" style="font-size: 15px;">
+                                    <span lang="en">Bricks Calc</span>
+                                    <span lang="es" class="hidden">Bricks Calc</span>
+                                    <span lang="fr" class="hidden">Bricks Calc</span>
+                                    <span lang="pt" class="hidden">Bricks Calc</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://leads.bricks.pe" class="body-text" style="font-size: 15px;">
+                                    <span lang="en">Bricks Leads</span>
+                                    <span lang="es" class="hidden">Bricks Leads</span>
+                                    <span lang="fr" class="hidden">Bricks Leads</span>
+                                    <span lang="pt" class="hidden">Bricks Leads</span>
                                 </a>
                             </li>
                         </ul>
                     </div>
 
+                    <!-- Company Section -->
                     <div>
-                        <h3 class="mb-4 text-lg font-semibold text-white">
+                        <h3 class="subheading" style="font-size: 16px; margin-bottom: 16px;">
+                            <span lang="en">Company</span>
+                            <span lang="es" class="hidden">Compañía</span>
+                            <span lang="fr" class="hidden">Entreprise</span>
+                            <span lang="pt" class="hidden">Empresa</span>
+                        </h3>
+                        <ul
+                            style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+                            <li>
+                                <a href="about.html" class="body-text" style="font-size: 15px;">
+                                    <span lang="en">About us</span>
+                                    <span lang="es" class="hidden">Sobre nosotros</span>
+                                    <span lang="fr" class="hidden">À propos de nous</span>
+                                    <span lang="pt" class="hidden">Sobre nós</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://wa.me/51953431080?text=Hola%2C%20quiero%20informaci%C3%B3n%20respecto%20a%20lo%20siguiente"
+                                    target="_blank" rel="noopener noreferrer" class="body-text"
+                                    style="font-size: 15px;">
+                                    <span lang="en">Contact</span>
+                                    <span lang="es" class="hidden">Contacto</span>
+                                    <span lang="fr" class="hidden">Contact</span>
+                                    <span lang="pt" class="hidden">Contato</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="terms.html" class="body-text" style="font-size: 15px;">
+                                    <span lang="en">Terms and privacy</span>
+                                    <span lang="es" class="hidden">Términos y privacidad</span>
+                                    <span lang="fr" class="hidden">Conditions et confidentialité</span>
+                                    <span lang="pt" class="hidden">Termos e privacidade</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Support Section -->
+                    <div>
+                        <h3 class="subheading" style="font-size: 16px; margin-bottom: 16px;">
                             <span lang="en">Support</span>
                             <span lang="es" class="hidden">Soporte</span>
                             <span lang="fr" class="hidden">Support</span>
                             <span lang="pt" class="hidden">Suporte</span>
                         </h3>
-                        <ul class="space-y-2">
+                        <ul
+                            style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
                             <li>
-                                <a href="help.html" class="transition-colors hover:text-white">
-                                    <span lang="en">Help</span>
-                                    <span lang="es" class="hidden">Ayuda</span>
-                                    <span lang="fr" class="hidden">Aide</span>
-                                    <span lang="pt" class="hidden">Ajuda</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="support.html" class="transition-colors hover:text-white">
-                                    <span lang="en">Support</span>
-                                    <span lang="es" class="hidden">Reporta un problema</span>
-                                    <span lang="fr" class="hidden">Support</span>
-                                    <span lang="pt" class="hidden">Suporte</span>
+                                <a href="/support.html" class="body-text" style="font-size: 15px;">
+                                    <span lang="en">Help &amp; Feedback</span>
+                                    <span lang="es" class="hidden">Ayuda &amp; Feedback</span>
+                                    <span lang="fr" class="hidden">Aide &amp; Retour</span>
+                                    <span lang="pt" class="hidden">Ajuda e Feedback</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="https://wa.me/51953431080?text=Hola%2C%20quiero%20informaci%C3%B3n%20respecto%20a%20lo%20siguiente"
-                                    target="_blank" rel="noopener noreferrer" class="flex items-center transition-colors hover:text-white">
-                                    <svg class="mr-2 h-4 w-4 text-[#34C85A]" fill="currentColor" viewBox="0 0 24 24"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                                    </svg>
+                                    target="_blank" rel="noopener noreferrer" class="body-text"
+                                    style="font-size: 15px; display: flex; align-items: center;">
                                     <span lang="en">WhatsApp</span>
                                     <span lang="es" class="hidden">WhatsApp</span>
                                     <span lang="fr" class="hidden">WhatsApp</span>
                                     <span lang="pt" class="hidden">WhatsApp</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="mailto:hello@bricks.pe" class="body-text" style="font-size: 15px;">
+                                    <span lang="en">Email: hello@bricks.pe</span>
+                                    <span lang="es" class="hidden">Email: hello@bricks.pe</span>
+                                    <span lang="fr" class="hidden">E-mail: hello@bricks.pe</span>
+                                    <span lang="pt" class="hidden">E-mail: hello@bricks.pe</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/survey.html" class="body-text" style="font-size: 15px;">
+                                    <span lang="en">Survey</span>
+                                    <span lang="es" class="hidden">Encuesta</span>
+                                    <span lang="fr" class="hidden">Sondage</span>
+                                    <span lang="pt" class="hidden">Pesquisa</span>
                                 </a>
                             </li>
                         </ul>
@@ -696,23 +678,22 @@
                 </div>
             </div>
 
-            <div class="mt-12 border-t border-gray-800 pt-8 text-center text-sm text-slate-400">
-                <p>
-                    <span lang="en">© 2025 Bricks Apps. All rights reserved.</span>
-                    <span lang="es" class="hidden">© 2025 Bricks Apps. Todos los derechos reservados.</span>
-                    <span lang="fr" class="hidden">© 2025 Bricks Apps. Tous droits réservés.</span>
-                    <span lang="pt" class="hidden">© 2025 Bricks Apps. Todos os direitos reservados.</span>
+            <div
+                style="border-top: 1px solid var(--surface-shadow); padding-top: 32px; display: flex; flex-direction: column; align-items: center; gap: 16px;">
+                <p class="metadata" style="text-align: center;">
+                    <span lang="en">© 2026 Bricks Apps. All rights reserved.</span>
+                    <span lang="es" class="hidden">© 2026 Bricks Apps. Todos los derechos reservados.</span>
+                    <span lang="fr" class="hidden">© 2026 Bricks Apps. Tous droits réservés.</span>
+                    <span lang="pt" class="hidden">© 2026 Bricks Apps. Todos os direitos reservados.</span>
                 </p>
-                <div class="mt-4 flex justify-center space-x-6">
-                    <a href="privacy.html" class="transition-colors hover:text-white"
-                        onclick="gtag('event', 'click', {event_category: 'navigation', event_label: 'privacy_policy'})">
+                <div class="footer-links" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 24px;">
+                    <a href="privacy.html" style="margin: 0;">
                         <span lang="en">Privacy Policy</span>
                         <span lang="es" class="hidden">Política de Privacidad</span>
                         <span lang="fr" class="hidden">Politique de Confidentialité</span>
                         <span lang="pt" class="hidden">Política de Privacidade</span>
                     </a>
-                    <a href="terms.html" class="transition-colors hover:text-white"
-                        onclick="gtag('event', 'click', {event_category: 'navigation', event_label: 'terms_of_service'})">
+                    <a href="terms.html" style="margin: 0;">
                         <span lang="en">Terms of Service</span>
                         <span lang="es" class="hidden">Términos de Servicio</span>
                         <span lang="fr" class="hidden">Conditions d'utilisation</span>
@@ -724,8 +705,27 @@
     </footer>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // This space intentionally left blank
+        // Intersection Observer for Reveal on Scroll
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const animatedElements = document.querySelectorAll('.reveal-on-scroll');
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });
         });
     </script>
 </body>

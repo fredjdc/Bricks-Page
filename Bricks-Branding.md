@@ -1,612 +1,331 @@
-# Bricks - Brand Guidelines
-
-## 🎨 Brand Overview
-
-Bricks is a mortgage calculator app designed for the Peruvian market, focusing on simplicity, clarity, and professional financial tools. The brand emphasizes trust, accessibility, and modern design principles.
-
-**Brand Personality:**
-- Professional yet approachable
-- Modern and clean
-- Trustworthy and reliable
-- User-friendly and intuitive
-- Accessible to all users
+# Bricks Apps — Unified Visual System
+**System Name:** Bricks Soft-Emboss (Monochrome Bas-Relief)  
+**Primary Goal:** One cohesive brand language across iOS apps, App Store, website, social, onboarding, and feedback visuals.  
+**Brand Signal:** Quiet luxury + tactile clarity. Everything looks pressed into (or gently raised from) a premium off-white surface.  
+**Accent Rule:** **#00A6A1 is the ONLY color accent** and appears **exactly once per asset** (or once per screen for complex compositions).
 
 ---
 
-## 🎯 Color Palette
-
-### Primary Colors
-```css
-/* Main Brand Blue */
-brand: "#007AFF"        /* Primary brand color - Apple Blue */
-brand-foreground: "hsl(0 0% 98%)"  /* White text on brand background */
-
-/* Success Colors */
-success: "#34C85A"      /* Success green */
-success-foreground: "hsl(0 0% 98%)"  /* White text on success background */
-
-/* Accent Colors */
-accent: "hsl(240 4.8% 95.9%)"      /* Light gray accent */
-accent-foreground: "hsl(240 5.9% 10%)"  /* Dark text on accent background */
-```
-
-### Text Colors
-```css
-foreground: "hsl(240 10% 3.9%)"    /* Primary text - Very dark gray */
-muted-foreground: "hsl(240 3.8% 46.1%)"  /* Secondary text - Medium gray */
-```
-
-### Background Colors
-```css
-background: "hsl(0 0% 100%)"           /* Main background - White */
-card: "hsl(0 0% 100%)"                 /* Card background - White */
-card-foreground: "hsl(240 10% 3.9%)"   /* Card text - Dark gray */
-popover: "hsl(0 0% 100%)"              /* Popover background - White */
-popover-foreground: "hsl(240 10% 3.9%)" /* Popover text - Dark gray */
-```
-
-### Border & Input Colors
-```css
-border: "hsl(240 5.9% 90%)"        /* Standard border - Light gray */
-input: "hsl(240 5.9% 90%)"         /* Input border - Light gray */
-ring: "hsl(240 5% 64.9%)"          /* Focus ring - Medium gray */
-```
-
-### Additional Colors
-```css
-secondary: "hsl(240 4.8% 95.9%)"   /* Secondary background - Very light gray */
-secondary-foreground: "hsl(240 5.9% 10%)"  /* Secondary text - Dark gray */
-destructive: "hsl(0 84.2% 60.2%)"  /* Error red */
-destructive-foreground: "hsl(0 0% 98%)"    /* White text on error background */
-muted: "hsl(240 4.8% 95.9%)"       /* Muted background - Very light gray */
-```
+## 0) How to Use This Spec (AI Workflow)
+When generating or updating any asset:
+1. **Identify asset type** (icon, UI screenshot, social image, website hero, feedback board, illustration).
+2. **Apply global constraints** (palette, material, lighting, shadow).
+3. **Choose composition pattern** for the asset type (defined below).
+4. **Insert the single teal accent** once (placement logic below).
+5. **Run QC checklist** before finalizing (end of doc).
 
 ---
 
-## 📝 Typography
+## 1) Brand Foundations
 
-### Font Family
-- **Primary Font:** Inter (Google Fonts)
-- **Weights:** 300, 400, 500, 600, 700, 800
-- **Fallback:** system-ui, sans-serif
+### 1.1 Keywords
+- Premium, minimal, systematic
+- Calm, confident, “tool you trust”
+- Tactile but not playful
+- High legibility at small sizes
 
-### Font Usage Guidelines
-
-#### Headings
-```css
-/* Hero Title */
-text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter
-
-/* Section Headings */
-text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl
-
-/* Subsection Headings */
-text-xl font-semibold
-```
-
-#### Body Text
-```css
-/* Large Body Text */
-text-xl leading-relaxed
-
-/* Standard Body Text */
-text-base leading-relaxed
-
-/* Small Text */
-text-sm
-```
-
-#### Navigation
-```css
-/* Navigation Links */
-text-sm font-medium
-```
+### 1.2 Non-Negotiables
+- **No extra colors** beyond neutrals + **#00A6A1**
+- No glow, neon, or gradients on objects
+- No noisy micro-details, no text on icons
+- One light direction for the whole ecosystem (top-left)
 
 ---
 
-## 🎨 Design Elements
+## 2) Color System
 
-### Shadows
+### 2.1 Accent
+- **Teal Accent:** `#00A6A1`
+- Use as a **recessed insert / inlay** (never as light/glow).
+- Exactly once per icon or single-object asset.
+- For complex screens/illustrations: prefer **once per screen**.
 
-```css
-/* Soft Shadow */
-shadow-soft: "0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)"
+### 2.2 Neutrals (Cool Only)
+- Off-white base: `#F6F7F8`
+- White: `#FFFFFF`
+- Cool gray (surface shadow): `#E7ECEF`
+- Cool gray (depth plane): `#C9D3DA`
+- Cool gray (edge definition): `#9AA7B2`
+- Near-black (UI text): `#0B0F14`
+- Secondary text gray: `#55626E`
 
-/* Soft Medium Shadow */
-shadow-soft-md: "0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)"
-
-/* Soft Large Shadow */
-shadow-soft-lg: "0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02)"
-
-/* Soft Extra Large Shadow */
-shadow-soft-xl: "0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.01)"
-
-/* Hover Shadow */
-shadow-hover: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
-```
-
-### Border Radius
-```css
-/* Small radius */
-rounded-lg    /* 8px */
-
-/* Medium radius */
-rounded-xl    /* 12px */
-
-/* Large radius */
-rounded-2xl   /* 16px */
-
-/* Extra large radius */
-rounded-3xl   /* 24px */
-
-/* Full circle */
-rounded-full  /* 50% */
-```
-
-### Gradients
-
-#### Hero Background
-```css
-.bg-gradient-to-b {
-    background: linear-gradient(to bottom, from-slate-50 to-white);
-}
-```
-
-#### Brand Background
-```css
-.bg-brand {
-    background-color: #007AFF;
-}
-```
+### 2.3 Color Rules
+- No warm grays, no beige, no cream.
+- Shadows stay neutral/cool (no colored shadows).
+- Teal never appears twice.
 
 ---
 
-## 🎭 Component Styles
+## 3) Material + Depth Model (Variant C)
 
-### Buttons
+### 3.1 Material
+- Matte ceramic/polymer
+- Extremely subtle microtexture (nearly invisible)
+- No glossy highlights
 
-#### Primary Button
-```css
-.btn-primary {
-    background-color: #007AFF;
-    color: white;
-    font-weight: 500;
-    padding: 0.5rem 1rem;
-    border-radius: 0.375rem;
-    transition: all 0.2s;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-}
+### 3.2 Depth Style
+- **Soft-emboss bas-relief:** raised/debossed forms with subtle depth
+- Avoid full 3D realism; keep it “designed,” not rendered-heavy
 
-.btn-primary:hover {
-    background-color: #0056b3;
-}
-```
-
-#### Secondary Button
-```css
-.btn-secondary {
-    background-color: hsl(240 4.8% 95.9%);
-    color: hsl(240 5.9% 10%);
-    font-weight: 500;
-    padding: 0.5rem 1rem;
-    border-radius: 0.375rem;
-    transition: all 0.2s;
-}
-
-.btn-secondary:hover {
-    background-color: rgba(244, 244, 245, 0.8);
-}
-```
-
-#### Outline Button
-```css
-.btn-outline {
-    border: 1px solid hsl(240 5.9% 90%);
-    background-color: hsl(0 0% 100%);
-    color: hsl(240 10% 3.9%);
-    font-weight: 500;
-    padding: 0.5rem 1rem;
-    border-radius: 0.375rem;
-    transition: all 0.2s;
-}
-
-.btn-outline:hover {
-    background-color: hsl(240 4.8% 95.9%);
-    color: hsl(240 5.9% 10%);
-}
-```
-
-### Form Elements
-
-#### Input Fields
-```css
-.form-input {
-    width: 100%;
-    border-radius: 0.375rem;
-    border: 1px solid hsl(240 5.9% 90%);
-    background-color: hsl(0 0% 100%);
-    padding: 0.5rem 0.75rem;
-    font-size: 0.875rem;
-    transition: all 0.2s;
-}
-
-.form-input:focus {
-    outline: none;
-    border-color: #007AFF;
-    box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.25);
-}
-```
-
-### Cards
-
-#### Feature Cards
-```css
-.feature-card {
-    background: white;
-    border-radius: 16px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-    border: 1px solid hsl(240 5.9% 90%);
-    transition: all 0.3s ease;
-}
-
-.feature-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-}
-```
-
-#### Icon Containers
-```css
-/* Feature icons */
-w-12 h-12 bg-brand/10 rounded-2xl flex items-center justify-center mb-4
-
-/* Success icons */
-w-5 h-5 text-success mr-2 mt-1
-```
+### 3.3 Bricks Signature Detail
+- **Micro-groove seam** on every object (tiny recessed manufacturing line)
+- Seam is subtle: visible at medium size, not noisy at small sizes
 
 ---
 
-## 🎬 Animations & Interactions
+## 4) Lighting + Shadow
 
-### Floating Animation
-```css
-.animate-float {
-    animation: float 4s ease-in-out infinite;
-}
+### 4.1 Lighting
+- Key light: **top-left**
+- Fill: soft, low-contrast
+- Ambient occlusion: subtle where forms meet
 
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0.1px);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-}
-```
+### 4.2 Shadow
+- Single shadow direction: **down-right**
+- Soft shadow: small offset, large blur, low opacity
+- No double shadows, no hard edges
 
-### Pulse Animation
-```css
-@keyframes pulse {
-    0%, 100% {
-        opacity: 0.3;
-        transform: scale(0.97);
-    }
-    50% {
-        opacity: 0.5;
-        transform: scale(1);
-    }
-}
-```
-
-### Hover Effects
-```css
-.hover-lift {
-    transition: transform 0.3s ease;
-}
-
-.hover-lift:hover {
-    transform: translateY(-3px);
-}
-```
-
-### Transitions
-```css
-/* Standard transition */
-transition: all 0.2s
-
-/* Smooth transition */
-transition: all 0.3s ease
-```
+### 4.3 Background Lighting
+- Background is off-white studio sweep OR transparent
+- Optional: very subtle vignette to focus attention
 
 ---
 
-## 📱 Layout Guidelines
+## 5) Shape Language
 
-### Spacing System
-```css
-/* Section padding */
-py-12 md:py-24
+### 5.1 Geometry Rules
+- 2–3 defining features max
+- Chunky, friendly radii
+- No thin fragile parts; avoid hairlines
 
-/* Container max width */
-max-w-7xl mx-auto
+### 5.2 Corner Radius Family (Consistency)
+Use one radius family across all assets:
+- **R1:** small details
+- **R2:** inner cutouts
+- **R3:** primary silhouette (largest)
 
-/* Grid gaps */
-gap-8    /* Cards */
-gap-16   /* Hero sections */
-gap-12   /* Footer sections */
-```
-
-### Responsive Breakpoints
-```css
-/* Mobile first approach */
-sm: 640px   /* Small screens */
-md: 768px   /* Medium screens */
-lg: 1024px  /* Large screens */
-xl: 1280px  /* Extra large screens */
-2xl: 1200px /* Custom breakpoint for container */
-```
-
-### Grid Layouts
-```css
-/* Hero section */
-grid gap-12 md:grid-cols-2 md:gap-16 items-center
-
-/* Feature cards */
-grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8
-
-/* Pricing cards */
-grid grid-cols-1 md:grid-cols-3 gap-8
-```
+### 5.3 Perspective
+- Default: **straight-on bas-relief** (recommended for system consistency)
+- If isometric is used for a specific series, it must be used **everywhere in that series** (never mixed).
 
 ---
 
-## 🎨 Visual Hierarchy
+## 6) Teal Accent Placement Logic (System-Wide)
+**Accent must be #00A6A1 exactly once**, applied as:
+- recessed plate
+- inset strip
+- notch fill
+- small pill insert
+- single facet insert (for gem-like forms)
 
-### Text Sizes
-```css
-/* Hero title */
-text-4xl md:text-5xl lg:text-6xl
-
-/* Section headings */
-text-3xl sm:text-4xl md:text-5xl
-
-/* Subsection headings */
-text-xl
-
-/* Body text */
-text-xl (large)
-text-base (standard)
-text-sm (small)
-```
-
-### Icon Sizes
-```css
-/* Large icons */
-text-4xl
-
-/* Medium icons */
-text-3xl
-
-/* Small icons */
-text-2xl
-
-/* Feature icons */
-w-12 h-12
-```
+**Placement by category:**
+- **Utility objects** (document, folder, trash, tag): teal insert in **lower-right quadrant**
+- **Inspect/search** (magnifier): teal insert on **handle underside/end cap**
+- **Capture/scan** (scanner): teal insert on **scan bar/button area**
+- **Badges** (crown/rocket/gem): teal insert on **one jewel/fin/facet only**
+- **UI components** (sliders/toggles): teal on **one knob only**
 
 ---
 
-## 🔧 Technical Implementation
+## 7) Typography (for UI, Website, Social, Screenshots)
+*(Use when text is required; do not put text on icons.)*
 
-### TailwindCSS Configuration
-```javascript
-tailwind.config = {
-    theme: {
-        container: {
-            center: true,
-            padding: "1rem",
-            screens: {
-                DEFAULT: "100%",
-                sm: "640px",
-                md: "768px",
-                lg: "1024px",
-                xl: "1200px",
-                "2xl": "1200px"
-            }
-        },
-        extend: {
-            colors: {
-                border: "hsl(240 5.9% 90%)",
-                input: "hsl(240 5.9% 90%)",
-                ring: "hsl(240 5% 64.9%)",
-                background: "hsl(0 0% 100%)",
-                foreground: "hsl(240 10% 3.9%)",
-                primary: {
-                    DEFAULT: "hsl(240 5.9% 10%)",
-                    foreground: "hsl(0 0% 98%)"
-                },
-                secondary: {
-                    DEFAULT: "hsl(240 4.8% 95.9%)",
-                    foreground: "hsl(240 5.9% 10%)"
-                },
-                destructive: {
-                    DEFAULT: "hsl(0 84.2% 60.2%)",
-                    foreground: "hsl(0 0% 98%)"
-                },
-                muted: {
-                    DEFAULT: "hsl(240 4.8% 95.9%)",
-                    foreground: "hsl(240 3.8% 46.1%)"
-                },
-                accent: {
-                    DEFAULT: "hsl(240 4.8% 95.9%)",
-                    foreground: "hsl(240 5.9% 10%)"
-                },
-                popover: {
-                    DEFAULT: "hsl(0 0% 100%)",
-                    foreground: "hsl(240 10% 3.9%)"
-                },
-                card: {
-                    DEFAULT: "hsl(0 0% 100%)",
-                    foreground: "hsl(240 10% 3.9%)"
-                },
-                brand: {
-                    DEFAULT: "#007AFF",
-                    foreground: "hsl(0 0% 98%)"
-                },
-                success: {
-                    DEFAULT: "#34C85A",
-                    foreground: "hsl(0 0% 98%)"
-                }
-            },
-            borderRadius: {
-                lg: "var(--radius)",
-                md: "calc(var(--radius) - 2px)",
-                sm: "calc(var(--radius) - 4px)"
-            },
-            fontFamily: {
-                sans: ["Inter", "sans-serif"]
-            },
-            boxShadow: {
-                "soft-md": "0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)",
-                "soft-lg": "0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02)",
-                "soft-xl": "0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.01)"
-            }
-        }
-    }
-}
-```
+### 7.1 Typeface Direction
+- Clean, modern, highly legible
+- Prefer iOS-native feel for app content
+- Headlines: neutral, minimal, not “techy loud”
 
-### CSS Custom Properties
-```css
-:root {
-    --accent-color: #007aff;
-    --accent-hover: #0056b3;
-    --success-color: #34c85a;
-    --animation-timing: 0.3s ease;
-    --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-    --shadow-hover: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    --radius: 0.5rem;
-}
-```
-
-### Custom Scrollbar
-```css
-::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #007AFF;
-    border-radius: 40px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #0056b3;
-}
-```
+### 7.2 Typesetting Rules
+- Large headings, generous line-height
+- Avoid all-caps unless labeling micro UI
+- Keep emphasis through weight/scale, not color
+- Use teal sparingly: only for one key highlight per composition (or none)
 
 ---
 
-## 📋 Usage Guidelines
+## 8) Layout System (Universal Composition Patterns)
 
-### Do's ✅
-- Use the brand blue (#007AFF) for primary actions and branding
-- Maintain consistent spacing with the defined system
-- Use Inter font family for all text
-- Apply hover effects on interactive elements
-- Use soft shadows for depth and hierarchy
-- Maintain proper contrast ratios for accessibility
-- Use rounded corners consistently (rounded-lg, rounded-xl, rounded-2xl)
-- Implement smooth transitions (0.2s or 0.3s ease)
+### 8.1 Grid + Spacing
+- Use an 8pt grid logic
+- Prefer generous negative space
+- Align to a consistent baseline grid when text exists
 
-### Don'ts ❌
-- Don't use colors outside the defined palette
-- Don't mix different font families
-- Don't skip hover states on interactive elements
-- Don't use hard shadows (always use the defined shadow system)
-- Don't use border radius values outside the defined system
-- Don't use gradients unless specified in the guidelines
-- Don't use animations that are too fast or jarring
+### 8.2 Composition Patterns (Pick One Per Asset)
+1. **Centered Hero Object** (single icon/illustration)
+2. **Stacked Cards** (UI + layered depth)
+3. **Split Layout** (text left, object right)
+4. **Feature Trio** (3 equal modules, consistent icon scale)
+5. **Screenshot Frame** (device frame + minimal callouts)
 
-### Accessibility
-- Ensure sufficient color contrast (WCAG AA compliant)
-- Use semantic HTML elements
-- Provide focus indicators for keyboard navigation
-- Maintain readable font sizes (minimum 16px for body text)
-- Use proper heading hierarchy (h1, h2, h3, etc.)
+### 8.3 Do / Don’t
+- Do: bold silhouette, consistent depth
+- Don’t: clutter, multiple focal points, repeated accents
 
 ---
 
-## 🎯 Brand Consistency
+## 9) Asset Specifications by Category (Prompts + Rules)
 
-### Design Principles
-- **Simplicity:** Clean, uncluttered interfaces
-- **Clarity:** Easy-to-understand information hierarchy
-- **Trust:** Professional appearance that builds confidence
-- **Accessibility:** Inclusive design for all users
-- **Modern:** Contemporary design patterns and interactions
+# 9A) In-App Icons (App UI)
+**Purpose:** Functional symbols in app UI, must read small.
 
-### Component Patterns
-- **Cards:** Always use rounded corners and soft shadows
-- **Buttons:** Consistent padding, border-radius, and hover states
-- **Forms:** Clear labels, proper spacing, and focus states
-- **Navigation:** Simple, intuitive menu structures
-- **Typography:** Consistent font weights and sizes
+**Rules**
+- Single object only
+- 2–3 features max
+- Off-white/gray bas-relief
+- Teal accent once
 
-### File Structure
-```
-Bricks-Calc-Page/
-├── index.html          /* Main landing page */
-├── styles.css          /* Custom styles and animations */
-├── scripts.js          /* Interactive functionality */
-├── images/             /* Brand assets and screenshots */
-│   ├── hero-en-us.png  /* Hero mockup */
-│   ├── hero-es-pe.png  /* Spanish hero mockup */
-│   └── carousel/       /* App screenshots */
-├── favicon.ico         /* Site favicon */
-└── Bricks-Branding.md  /* This file */
-```
+**Prompt Template**
+> “Create an in-app icon for Bricks Apps in Variant C: soft-emboss monochrome bas-relief on off-white. Matte premium material, extremely subtle microtexture, clean minimal geometry, 2–3 defining features. Add the Bricks micro-groove seam. Use #00A6A1 exactly once as a recessed inlay (no glow). Lighting: soft studio, key top-left, single soft shadow down-right. Background: transparent or #F6F7F8. Centered with generous padding. No text.”
 
 ---
 
-## 🔄 Version History
+# 9B) App Store Icons
+**Purpose:** Brand recognition + premium feel at small size.
 
-### v2.0 (Current)
-- Updated to reflect actual implemented styles
-- Added comprehensive TailwindCSS configuration
-- Included all color variations and semantic naming
-- Added detailed component specifications
-- Enhanced accessibility guidelines
-- Included animation and interaction patterns
+**Rules**
+- Same object language as in-app icons
+- Slightly stronger silhouette and depth
+- Off-white tile background allowed (still monochrome)
+- Teal once
 
-### v1.0 (Previous)
-- Initial brand implementation
-- Basic color and typography guidelines
-- Simple component specifications
+**Prompt Template**
+> “Design an App Store icon for Bricks Apps using Variant C: monochrome soft-emboss bas-relief on an off-white tile. Matte premium finish, subtle depth, minimal geometry, bold silhouette. Bricks micro-groove seam detail. Use #00A6A1 exactly once as a recessed inlay. Lighting top-left, single soft shadow down-right. Background #F6F7F8 with subtle vignette. No text, no extra colors.”
 
 ---
 
-## 🎨 Implementation Notes
+# 9C) App Store Screenshots (iOS)
+**Purpose:** Communicate value quickly, consistent brand.
 
-### Key Design Decisions
-1. **Apple Blue (#007AFF):** Chosen for its association with trust, technology, and accessibility
-2. **Inter Font:** Selected for excellent readability and modern appearance
-3. **Soft Shadows:** Used to create subtle depth without being overwhelming
-4. **Rounded Corners:** Applied consistently to create a friendly, approachable feel
-5. **HSL Color System:** Used in Tailwind config for better color manipulation
+**Rules**
+- Screenshots sit on off-white background
+- Device frames optional but consistent across set
+- Only one teal accent per screenshot (or per set if you want ultra-minimal)
+- Callouts use neutral text; teal used sparingly
 
-### Performance Considerations
-- Use CSS custom properties for consistent theming
-- Implement efficient animations with transform and opacity
-- Optimize images and assets for web delivery
-- Use semantic HTML for better SEO and accessibility
+**Composition Options**
+- **Phone centered + headline above**
+- **Phone left + benefit bullets right**
+- **Multi-screen carousel** (3 screens staggered)
+
+**Prompt Template**
+> “Create an App Store screenshot composition for Bricks Apps in Variant C. Background off-white #F6F7F8 with subtle vignette. Place iPhone UI screenshot(s) as primary focus with clean spacing. Add minimal callouts in near-black #0B0F14 and secondary gray #55626E. Use #00A6A1 exactly once as a small highlight (single underline, pill, or icon accent). Keep everything calm, premium, and highly legible. No extra colors.”
 
 ---
 
-*This document should be updated whenever brand changes are made to maintain consistency across all Bricks products. Last updated: January 2025* 
+# 9D) Website (Hero, Features, Sections)
+**Purpose:** Brand story + product clarity.
+
+**Rules**
+- Off-white base, neutral UI cards, bas-relief objects as visuals
+- Use teal once per section max (or once per page for very premium feel)
+- Strong hierarchy, generous spacing
+
+**Hero Patterns**
+1. Headline + Subhead + CTA + embossed hero object
+2. Split hero: copy left, product mock right
+3. Centered hero with stacked cards behind
+
+**Prompt Template**
+> “Design a website section for Bricks Apps in Variant C: off-white base #F6F7F8, monochrome embossed UI cards, and a single bas-relief hero object. Matte premium look, soft shadows down-right, lighting top-left. Typography clean and modern, high legibility. Use #00A6A1 exactly once as a subtle highlight (CTA fill or small underline). No additional colors.”
+
+---
+
+# 9E) Social Media Generated Images (Posts, Ads, Stories)
+**Purpose:** Fast comprehension + brand consistency in feed.
+
+**Rules**
+- Use one composition pattern (center hero, split, or feature trio)
+- Strong headline, minimal copy
+- One teal accent total
+- Keep object count low (1 hero object or 3 small icons max)
+
+**Prompt Template**
+> “Create a social media post image for Bricks Apps using Variant C. Off-white background #F6F7F8 with subtle vignette. One primary embossed bas-relief object or UI card. Clean typography in near-black and cool gray. Use #00A6A1 exactly once as a single highlight (small pill, underline, or accent insert). Soft studio lighting top-left, one soft shadow down-right. Premium, minimal, no extra colors.”
+
+---
+
+# 9F) User Feedback Board Images (Feature Requests, Bugs, Praise)
+**Purpose:** Friendly but consistent; avoid playful color.
+
+**Rules**
+- Use paired symbols sparingly (two icons max)
+- Keep forms chunky and soft
+- Teal once (often on one symbol only)
+
+**Prompt Template**
+> “Create a user feedback board icon image for Bricks Apps in Variant C. Two simple embossed symbols on off-white. Matte bas-relief, soft shadows, minimal detail. Bricks micro-groove seam. Use #00A6A1 exactly once as a recessed inlay on one symbol only. No extra colors, no text.”
+
+---
+
+# 9G) Onboarding Graphics
+**Purpose:** Explain features quickly, in the same material world as the app.
+
+**Rules**
+- Embossed UI frames/cards
+- One focal element
+- Teal once per screen
+- No tiny UI details; keep it symbolic
+
+**Prompt Template**
+> “Create an onboarding illustration for Bricks Apps in Variant C: embossed UI card(s) on off-white #F6F7F8, minimal placeholders (no readable text). Soft studio lighting top-left, single soft shadow down-right. Add one bas-relief object that matches the feature theme. Use #00A6A1 exactly once as a recessed insert. Calm, premium, minimal.”
+
+---
+
+## 10) Subject Library (Naming + Constraints)
+Use this list to keep icon meanings consistent.
+
+### Core Utility Subjects
+- Document (fold corner)
+- Folder (tab + opening)
+- Tag (hole + simple contour)
+- Trash (cylinder + 2–3 grooves)
+- Magnifier (thick ring + handle)
+- Scanner device (slot + scan bar)
+
+### Badge / Status Subjects
+- Crown (chunky, 3 points max)
+- Rocket (simple silhouette)
+- Gem (few facets)
+
+### Feedback Subjects
+- Heart, thumbs-up
+- Bug, warning triangle
+- Puzzle piece
+- Phone + laptop
+- Controls panel (sliders/toggles)
+
+---
+
+## 11) Output Requirements (Always Specify)
+- Background: **transparent** or **#F6F7F8**
+- No text on icons
+- No extra objects
+- Clean edges, professional finish
+- Consistent shadow direction and softness
+
+---
+
+## 12) Quality Control Checklist (Run Before Final)
+- [ ] Teal (#00A6A1) used **exactly once**
+- [ ] Neutrals are cool; no warm tones
+- [ ] Soft-emboss bas-relief (not heavy 3D)
+- [ ] Key light top-left; shadow down-right
+- [ ] 2–3 defining features only
+- [ ] Bricks micro-groove seam present but subtle
+- [ ] Silhouette readable at small sizes
+- [ ] No text on icons; no patterns; no glow
+
+---
+
+## 13) Prompt Assembly Template (Fill-In Form)
+Use this to generate any new asset quickly:
+
+**ASSET TYPE:** (in-app icon / app store icon / screenshot / website hero / social post / onboarding / feedback)  
+**SUBJECT:** (single object or scene)  
+**COMPOSITION PATTERN:** (center hero / split / stacked cards / trio / screenshot frame)  
+**ACCENT PLACEMENT:** (where the single teal insert goes)  
+**BACKGROUND:** (transparent or #F6F7F8)  
+**NOTES:** (avoid X, emphasize Y)
+
+**FINAL PROMPT:**
+> “Create [ASSET TYPE] for Bricks Apps using Variant C: soft-emboss monochrome bas-relief on off-white. Matte premium material, extremely subtle microtexture, minimal geometry, 2–3 defining features. Include the Bricks micro-groove seam. Use #00A6A1 exactly once as a recessed inlay at [ACCENT PLACEMENT] (no glow). Lighting: soft studio, key top-left, single soft shadow down-right. Composition: [COMPOSITION PATTERN], generous negative space, crisp edges, professional. Background: [BACKGROUND]. No extra colors, no patterns, no text unless required for the asset type (if text is required, keep it minimal, near-black/gray only).”
