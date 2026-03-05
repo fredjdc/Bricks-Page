@@ -169,13 +169,59 @@
                         making a decision.</span>
                 </p>
 
-                <div class="cta-group reveal-on-scroll delay-200">
-                    <a id="app_store_download_button" href="https://apps.apple.com/app/id6754506837"
-                        class="btn btn-primary">
-                        <div class="accent-notch"></div>
-                        <span lang="es">Descargar en App Store</span>
-                        <span lang="en" class="hidden">Download on the App Store</span>
-                    </a>
+                <div class="hero-trust-badge reveal-on-scroll delay-200"
+                    style="display: flex; align-items: center; justify-content: flex-start; gap: 6px; margin-top: 16px; margin-bottom: 12px; color: var(--text-tertiary); font-size: 13px; font-weight: 500;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                        style="width: 14px; height: 14px; opacity: 0.8;">
+                        <path fill-rule="evenodd"
+                            d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    <span lang="es">100% Privado. Sin recolección de datos.</span>
+                    <span lang="en" class="hidden">100% Private. No data collection.</span>
+                </div>
+                <div class="cta-group reveal-on-scroll delay-200"
+                    style="display: flex; flex-direction: column; align-items: flex-start; gap: 16px;">
+                    <div style="display: flex; align-items: center; gap: 16px;">
+                        <a id="app_store_download_button" href="https://apps.apple.com/app/id6754506837"
+                            class="btn btn-primary">
+                            <div class="accent-notch"></div>
+                            <span lang="es">Descargar en App Store</span>
+                            <span lang="en" class="hidden">Download on the App Store</span>
+                        </a>
+
+                        <!-- Desktop QR Code -->
+                        <div class="desktop-qr hidden md:flex"
+                            style="align-items: center; gap: 12px; background: var(--surface-secondary); padding: 8px; border-radius: 12px; border: 1px solid var(--surface-shadow);">
+                            <div
+                                style="width: 40px; height: 40px; background: var(--bg-primary); border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--surface-shadow);">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor"
+                                    style="width: 24px; height: 24px; color: var(--text-primary);">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M3.75 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 013.75 9.375v-4.5zM3.75 14.625c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 01-1.125-1.125v-4.5zM13.5 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0113.5 9.375v-4.5z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M6.75 6.75h.75v.75h-.75v-.75zM6.75 16.5h.75v.75h-.75v-.75zM16.5 6.75h.75v.75h-.75v-.75zM13.5 13.5h.75v.75h-.75v-.75zM13.5 19.5h.75v.75h-.75v-.75zM19.5 13.5h.75v.75h-.75v-.75zM19.5 19.5h.75v.75h-.75v-.75zM16.5 16.5h.75v.75h-.75v-.75z" />
+                                </svg>
+                            </div>
+                            <div style="display: flex; flex-direction: column; align-items: flex-start;">
+                                <span class="body-text"
+                                    style="font-size: 13px; line-height: 1.2; font-weight: 600; color: var(--text-primary);">
+                                    <span lang="es">¿Visitas desde tu PC?</span>
+                                    <span lang="en" class="hidden">Visiting from a PC?</span>
+                                </span>
+                                <span class="body-text"
+                                    style="font-size: 12px; line-height: 1.2; color: var(--text-tertiary);">
+                                    <span lang="es">Escanea para descargar</span>
+                                    <span lang="en" class="hidden">Scan to download</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="body-text" style="font-size: 13px; color: var(--text-tertiary); margin: 0;">
+                        <span lang="es">Gratis. Sin registro previo.</span>
+                        <span lang="en" class="hidden">Free to download. No account required.</span>
+                    </p>
                 </div>
             </div>
 
@@ -200,19 +246,60 @@
                 <span lang="en" class="hidden">Why use Bricks Calc?</span>
             </h2>
             <div class="problem-content mt-sm reveal-on-scroll delay-100">
-                <p class="body-text mb-sm" style="margin-left: auto; margin-right: auto;">
-                    <span lang="es">Comprar una vivienda es una de las decisiones financieras más importantes.</span>
-                    <span lang="en" class="hidden">Buying a home is one of the most important financial
-                        decisions.</span>
-                </p>
-                <p class="body-text" style="margin-left: auto; margin-right: auto;">
-                    <span lang="es">Pero entender los números puede ser confuso. Con Bricks Calc, puedes analizar tu
-                        préstamo hipotecario sin complicaciones. Diseñado para compradores, agentes y profesionales del
-                        sector.</span>
-                    <span lang="en" class="hidden">But making sense of the numbers can be confusing. With Bricks Calc,
-                        you can analyze your mortgage without complications—built for buyers, agents, and industry
-                        professionals.</span>
-                </p>
+                <ul class="body-text"
+                    style="list-style: none; padding: 0; margin: 0 auto; max-width: 600px; display: flex; flex-direction: column; gap: 16px; text-align: left;">
+                    <li style="display: flex; align-items: flex-start; gap: 12px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                            stroke="currentColor"
+                            style="width: 20px; height: 20px; color: var(--text-primary); flex-shrink: 0; margin-top: 2px;">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                        </svg>
+                        <span>
+                            <strong style="color: var(--text-primary);">
+                                <span lang="es">Cero planillas complicadas:</span>
+                                <span lang="en" class="hidden">No complicated spreadsheets:</span>
+                            </strong>
+                            <span lang="es" style="color: var(--text-secondary);">Olvídate del viejo Excel y los
+                                cálculos manuales.</span>
+                            <span lang="en" class="hidden" style="color: var(--text-secondary);">Forget about old Excel
+                                and manual calculations.</span>
+                        </span>
+                    </li>
+                    <li style="display: flex; align-items: flex-start; gap: 12px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                            stroke="currentColor"
+                            style="width: 20px; height: 20px; color: var(--text-primary); flex-shrink: 0; margin-top: 2px;">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                        </svg>
+                        <span>
+                            <strong style="color: var(--text-primary);">
+                                <span lang="es">Análisis al instante:</span>
+                                <span lang="en" class="hidden">Instant analysis:</span>
+                            </strong>
+                            <span lang="es" style="color: var(--text-secondary);">Toma decisiones informadas en tiempo
+                                real.</span>
+                            <span lang="en" class="hidden" style="color: var(--text-secondary);">Make informed decisions
+                                in real time.</span>
+                        </span>
+                    </li>
+                    <li style="display: flex; align-items: flex-start; gap: 12px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                            stroke="currentColor"
+                            style="width: 20px; height: 20px; color: var(--text-primary); flex-shrink: 0; margin-top: 2px;">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                        </svg>
+                        <span>
+                            <strong style="color: var(--text-primary);">
+                                <span lang="es">Claridad financiera total:</span>
+                                <span lang="en" class="hidden">Total financial clarity:</span>
+                            </strong>
+                            <span lang="es" style="color: var(--text-secondary);">Entiende exactamente a dónde va cada
+                                centavo.</span>
+                            <span lang="en" class="hidden" style="color: var(--text-secondary);">Understand exactly
+                                where every penny goes.</span>
+                        </span>
+                    </li>
+                </ul>
             </div>
         </div>
     </section>
@@ -263,8 +350,8 @@
                     data-app-image="bricks-calc-feature-03"
                     style="width: auto; height: 120px; border-radius: 12px; filter: none; object-fit: cover;" />
                 <h3 class="subheading">
-                    <span lang="es">Amortización</span>
-                    <span lang="en" class="hidden">Amortization</span>
+                    <span lang="es">Visualiza tu futuro</span>
+                    <span lang="en" class="hidden">Visualize your future</span>
                 </h3>
                 <p class="body-text" style="font-size: 16px;">
                     <span lang="es">Entiende cómo cambia tu deuda a lo largo del tiempo.</span>
@@ -292,8 +379,8 @@
                     data-app-image="bricks-calc-feature-05"
                     style="width: auto; height: 120px; border-radius: 12px; filter: none; object-fit: cover;" />
                 <h3 class="subheading">
-                    <span lang="es">Multiplataforma</span>
-                    <span lang="en" class="hidden">Multiplatform</span>
+                    <span lang="es">Analiza donde sea</span>
+                    <span lang="en" class="hidden">Analyze anywhere</span>
                 </h3>
                 <p class="body-text" style="font-size: 16px;">
                     <span lang="es">Disponible para iPhone, iPad, Mac y Apple Vision Pro. Tu experiencia se adapta sin
@@ -321,13 +408,17 @@
                 <span lang="en" class="hidden">Start analyzing your mortgage today. Download free on the App
                     Store.</span>
             </p>
-            <div class="cta-group mt-md">
+            <div class="cta-group mt-md" style="display: flex; flex-direction: column; align-items: center; gap: 12px;">
                 <a id="app_store_download_button" href="https://apps.apple.com/app/id6754506837" class="btn btn-primary"
                     style="margin: 0 auto;">
                     <div class="accent-notch"></div>
                     <span lang="es">Descargar en App Store</span>
                     <span lang="en" class="hidden">Download on the App Store</span>
                 </a>
+                <p class="body-text" style="font-size: 13px; color: var(--text-tertiary); margin: 0;">
+                    <span lang="es">Gratis. Sin registro previo.</span>
+                    <span lang="en" class="hidden">Free to download. No account required.</span>
+                </p>
             </div>
         </div>
     </section>
