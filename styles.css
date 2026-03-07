@@ -657,7 +657,7 @@ a:hover {
     z-index: 3;
     width: 100%;
     border-radius: var(--r3-primary);
-    box-shadow: var(--emboss-raised);
+    box-shadow: 0 32px 64px rgba(11, 15, 20, 0.4);
 }
 
 .screenshot-side {
@@ -666,7 +666,7 @@ a:hover {
     width: 80%;
     z-index: 1;
     border-radius: var(--r3-primary);
-    box-shadow: 6px 6px 16px var(--surface-shadow);
+    box-shadow: 0 16px 32px rgba(11, 15, 20, 0.25);
     transition: transform 0.1s linear;
 }
 

@@ -888,10 +888,10 @@
 
             // Solution Section Fan-out Animation Logic
             const stackContainer = document.querySelector('.screenshot-stack');
-            const leftScreenshot = stackContainer ? stackContainer.querySelector('.screenshot-side.left') : null;
-            const rightScreenshot = stackContainer ? stackContainer.querySelector('.screenshot-side.right') : null;
+            const leftScreenshots = stackContainer ? stackContainer.querySelectorAll('.screenshot-side.left') : [];
+            const rightScreenshots = stackContainer ? stackContainer.querySelectorAll('.screenshot-side.right') : [];
 
-            if (stackContainer && leftScreenshot && rightScreenshot) {
+            if (stackContainer && leftScreenshots.length > 0 && rightScreenshots.length > 0) {
                 const handleSolutionScroll = () => {
                     const rect = stackContainer.getBoundingClientRect();
                     const windowHeight = window.innerHeight;
@@ -915,8 +915,12 @@
                     const currentTranslateX = maxTranslateX * progress;
                     const currentTranslateY = maxTranslateY * progress;
 
-                    leftScreenshot.style.transform = `translateX(-${currentTranslateX}px) translateY(${currentTranslateY}px) rotate(-${currentRotation}deg)`;
-                    rightScreenshot.style.transform = `translateX(${currentTranslateX}px) translateY(${currentTranslateY}px) rotate(${currentRotation}deg)`;
+                    leftScreenshots.forEach(el => {
+                        el.style.transform = `translateX(-${currentTranslateX}px) translateY(${currentTranslateY}px) rotate(-${currentRotation}deg)`;
+                    });
+                    rightScreenshots.forEach(el => {
+                        el.style.transform = `translateX(${currentTranslateX}px) translateY(${currentTranslateY}px) rotate(${currentRotation}deg)`;
+                    });
                 };
 
                 window.addEventListener('scroll', handleSolutionScroll, { passive: true });
