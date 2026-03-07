@@ -111,7 +111,55 @@
     <!-- End Meta Pixel Code -->
 
     <style>
+        /* Pentagram-style Custom Easing & Animations */
+        :root {
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.15);
+        }
+
         /* ── Index-page overrides ────────────────────────────────────── */
+
+        /* Typographic Polish */
+        .hero-title,
+        .section-title {
+            letter-spacing: -0.03em !important;
+        }
+
+        .hero-app-label,
+        .metadata {
+            letter-spacing: 0.05em !important;
+        }
+
+        /* Language Globe Swivel */
+        #language-switcher .language-globe-icon {
+            transition: transform 0.6s var(--ease-out-expo);
+        }
+
+        #language-switcher:active .language-globe-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Masked Hero Title Reveal */
+        .hero-title.reveal-on-scroll {
+            clip-path: inset(100% 0 0 0);
+            transform: translateY(40px);
+            opacity: 0;
+            transition: transform 1.2s var(--ease-out-expo), opacity 1.2s var(--ease-out-expo), clip-path 1.2s var(--ease-out-expo);
+        }
+
+        .hero-title.reveal-on-scroll.is-visible {
+            transform: translateY(0);
+            opacity: 1;
+            clip-path: inset(-20% 0 -20% 0);
+        }
+
+        /* Tactile Press State */
+        .btn:active,
+        .hero-app-item:active .hero-app-icon,
+        .value-card:active {
+            transform: scale(0.97) translateY(0) !important;
+            transition: transform 0.1s ease !important;
+        }
 
         /* Hero: full-viewport, off-white base */
         .index-hero {
@@ -129,6 +177,20 @@
             z-index: 0;
         }
 
+        @keyframes ambient-breathe {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+        }
+
         /* Soft radial accent — single teal hint per brand rules */
         .index-hero .hero-bg::after {
             content: "";
@@ -137,6 +199,8 @@
             background:
                 radial-gradient(ellipse 70% 50% at 60% 40%, rgba(0, 166, 161, 0.07) 0%, transparent 70%),
                 radial-gradient(ellipse 50% 60% at 10% 80%, rgba(201, 211, 218, 0.18) 0%, transparent 60%);
+            animation: ambient-breathe 18s ease-in-out infinite;
+            transform-origin: center center;
         }
 
         /* Hero grid: copy left, icons right */
@@ -185,12 +249,23 @@
             height: 72px;
             border-radius: 18px;
             box-shadow: 4px 6px 16px var(--surface-shadow), -2px -2px 6px #ffffff;
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            transform: translateY(20px) scale(0.95) rotate(-2deg);
+            opacity: 0;
+            transition: all 0.8s var(--ease-out-expo);
+        }
+
+        .hero-app-item.is-visible .hero-app-icon {
+            transform: translateY(0) scale(1) rotate(0);
+            opacity: 1;
         }
 
         .hero-app-item:hover .hero-app-icon {
-            transform: translateY(-4px);
-            box-shadow: 6px 10px 24px var(--surface-shadow), -2px -2px 8px #ffffff;
+            transform: translateY(-4px) scale(1.02);
+            box-shadow:
+                6px 14px 28px var(--surface-shadow),
+                -2px -2px 8px #ffffff,
+                inset 0 1px 1px rgba(255, 255, 255, 0.6);
+            transition: transform 0.5s var(--ease-out-expo), box-shadow 0.5s var(--ease-out-expo);
         }
 
         .hero-app-label {
@@ -204,11 +279,16 @@
         /* Teal accent line under hero title — exactly once */
         .hero-accent-line {
             display: block;
-            width: 40px;
+            width: 0;
             height: 3px;
             background: var(--accent);
             border-radius: 2px;
             margin: 20px 0 0;
+            transition: width 1.2s var(--ease-out-expo);
+        }
+
+        .hero-accent-line.is-visible {
+            width: 40px;
         }
 
         /* ── Apps Overview ───────────────────────────────────────────── */
@@ -239,13 +319,26 @@
             display: block;
         }
 
-        /* Testimonials */
         .index-testimonial {
             background: var(--bg-secondary);
             border: 1px solid var(--depth-plane);
             border-radius: 20px;
             padding: 32px;
             box-shadow: 4px 6px 16px var(--surface-shadow), -2px -2px 6px #ffffff;
+            transition: all 0.4s var(--ease-out-expo);
+        }
+
+        .testimonials-grid:hover .index-testimonial {
+            opacity: 0.5;
+            transform: scale(0.98);
+        }
+
+        .testimonials-grid .index-testimonial:hover {
+            opacity: 1;
+            transform: scale(1.02) translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+            z-index: 2;
+            position: relative;
         }
 
         .index-testimonial .quote {
@@ -466,7 +559,7 @@
                 </div>
 
                 <!-- App Icon Cluster -->
-                <div class="reveal-on-scroll delay-200"
+                <div class=""
                     style="display: flex; flex-direction: column; align-items: center; justify-self: end; gap: 12px; width: fit-content; margin-left: auto;">
                     <div class="hero-app-label"
                         style="display: flex; align-items: center; gap: 6px; font-weight: 500; text-transform: uppercase;">
@@ -479,16 +572,16 @@
                         <span lang="en" class="hidden">Available in the Apple ecosystem</span>
                     </div>
                     <div class="hero-apps-grid">
-                        <a href="bricks-scan.html" class="hero-app-item">
+                        <a href="bricks-scan.html" class="hero-app-item reveal-on-scroll delay-200">
                             <img src="images-bricks-scan/bricks-scan-web-icon.png" alt="Bricks Scan"
                                 class="hero-app-icon">
                             <span class="hero-app-label">Scan</span>
                         </a>
-                        <a href="bricks-calc.html" class="hero-app-item">
+                        <a href="bricks-calc.html" class="hero-app-item reveal-on-scroll delay-300">
                             <img src="images/bricks-calc-web-icon.png" alt="Bricks Calc" class="hero-app-icon">
                             <span class="hero-app-label">Calc</span>
                         </a>
-                        <a href="https://leads.bricks.pe" class="hero-app-item">
+                        <a href="https://leads.bricks.pe" class="hero-app-item reveal-on-scroll delay-400">
                             <img src="images/bricks-leads-web-icon.png" alt="Bricks Leads" class="hero-app-icon">
                             <span class="hero-app-label">Leads</span>
                         </a>
@@ -910,6 +1003,15 @@
             }, observerOptions);
 
             document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+
+            // Parallax Scroll for Hero Background
+            const heroBg = document.querySelector('.hero-bg');
+            if (heroBg && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                window.addEventListener('scroll', () => {
+                    const scrollY = window.scrollY;
+                    heroBg.style.transform = `translateY(${scrollY * 0.5}px)`;
+                }, { passive: true });
+            }
         });
     </script>
 </body>
