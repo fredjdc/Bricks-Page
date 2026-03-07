@@ -72,6 +72,85 @@
             src="https://www.facebook.com/tr?id=1088148306858128&ev=PageView&noscript=1" />
     </noscript>
     <!-- End Meta Pixel Code -->
+    <style>
+        /* Pentagram-style Custom Easing & Animations */
+        :root {
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.15);
+        }
+
+        /* Typographic Polish */
+        .hero-title,
+        .section-title {
+            letter-spacing: -0.03em !important;
+        }
+
+        .metadata {
+            letter-spacing: 0.05em !important;
+        }
+
+        /* Language Globe Swivel */
+        #language-switcher .language-globe-icon {
+            transition: transform 0.6s var(--ease-out-expo);
+        }
+
+        #language-switcher:active .language-globe-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Masked Hero Title Reveal */
+        .hero-title.reveal-on-scroll {
+            clip-path: inset(100% 0 0 0);
+            transform: translateY(40px);
+            opacity: 0;
+            transition: transform 1.2s var(--ease-out-expo), opacity 1.2s var(--ease-out-expo), clip-path 1.2s var(--ease-out-expo);
+        }
+
+        .hero-title.reveal-on-scroll.is-visible {
+            transform: translateY(0);
+            opacity: 1;
+            clip-path: inset(-20% 0 -20% 0);
+        }
+
+        /* Tactile Press State */
+        .btn:active,
+        .ecosystem-card:active,
+        .testimonial:active {
+            transform: scale(0.97) translateY(0) !important;
+            transition: transform 0.1s ease !important;
+        }
+
+        /* Breathing Hero Background */
+        @keyframes ambient-breathe {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+        }
+
+        .hero-bg::after {
+            animation: ambient-breathe 18s ease-in-out infinite;
+        }
+
+        /* Focus Control for Grids */
+        .grid-3:hover .ecosystem-card:not(:hover),
+        .testimonials-grid:hover .testimonial:not(:hover) {
+            opacity: 0.4;
+            transform: scale(0.98);
+        }
+
+        .ecosystem-card,
+        .testimonial {
+            transition: opacity 0.4s var(--ease-out-expo), transform 0.4s var(--ease-out-expo), box-shadow 0.4s ease;
+        }
+    </style>
 </head>
 
 <body>
