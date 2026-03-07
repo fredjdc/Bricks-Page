@@ -708,15 +708,17 @@ a:hover {
 
     .btn {
         width: 100%;
+        height: auto;
+        padding: 20px 24px;
     }
 
     .solution-text {
-        text-align: center;
+        text-align: left;
         margin-bottom: 32px;
     }
 
     .feature-list {
-        display: inline-block;
+        display: block;
         text-align: left;
         border-left: none;
         padding-left: 0;
@@ -2109,7 +2111,8 @@ button:focus {
     .btn-primary,
     .btn-secondary {
         width: 100%;
-        padding: 12px 16px;
+        height: auto;
+        padding: 20px 20px;
         font-size: 16px;
     }
 

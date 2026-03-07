@@ -576,12 +576,12 @@ const updateAppScreenshots = (lang) => {
                 en: 'images-bricks-scan/fusion-en-02.png'
             },
             'bricks-scan-feature-01': {
-                es: 'images-bricks-scan/feature-es-01.jpg',
-                en: 'images-bricks-scan/feature-en-01.jpg'
+                es: 'images-bricks-scan/scan-feature-es-01.jpg',
+                en: 'images-bricks-scan/scan-feature-en-01.jpg'
             },
             'bricks-scan-feature-02': {
-                es: 'images-bricks-scan/feature-es-02.jpg',
-                en: 'images-bricks-scan/feature-en-02.jpg'
+                es: 'images-bricks-scan/scan-feature-es-02.jpg',
+                en: 'images-bricks-scan/scan-feature-en-02.jpg'
             },
             'bricks-scan-feature-03': {
                 es: 'images-bricks-scan/feature-es-03.jpg',
