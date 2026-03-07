@@ -287,7 +287,7 @@ Use one radius family across all assets:
 **Purpose:** Brand consistency across all site pages (Thank You pages, form confirmations, standard marketing pages).
 
 **Rules**
-- **No Tailwind CSS**: Explicitly deprecate the use of Tailwind classes, CDN scripts, or configuration blocks. Use `new-bricks-scan.css` exclusively for standard branding compliance.
+- **No Tailwind CSS**: Explicitly deprecate the use of Tailwind classes, CDN scripts, or configuration blocks. Use `styles.css` exclusively for standard branding compliance.
 - **Header**: Use `<header class="container site-header">`. Place the logo on the left. On the right side of the header bar, explicitly incorporate the language selection button (`<button id="language-switcher">`) to toggle between English and Spanish instead of a generic back button. Ensure textual content inside elements adopts a dual `<span lang="en">` / `<span lang="es" class="hidden">` structure.
 - **Hero Layout**: Build the primary focal section with `<section class="section section-hero hero">` and `<div class="hero-bg">`.
 - **Standard UI Typography**: Utilize design system classes `.hero-title`, `.subheading`, and `.body-text` instead of inline styles. 
