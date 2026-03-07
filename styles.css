@@ -319,7 +319,8 @@ a:hover {
     align-items: center;
     justify-content: center;
     padding: 20px 36px;
-    width: 250px;
+    min-width: 250px;
+    width: auto;
     height: 60px;
     border-radius: 9999px;
     font-size: 17px;
@@ -343,6 +344,10 @@ a:hover {
     min-width: unset;
     border-radius: 9999px;
     padding: 10px 24px;
+}
+
+.site-header .btn .accent-notch {
+    display: none;
 }
 
 /* Add micro-groove seam to buttons */
@@ -372,12 +377,14 @@ a:hover {
 
 /* The single teal accent on the primary button */
 .btn-primary .accent-notch {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
     width: 6px;
     height: 18px;
     background-color: var(--accent-teal);
     border-radius: 4px;
-    margin-left: -12px;
-    margin-right: 12px;
     box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
 
@@ -1815,17 +1822,6 @@ button:focus {
     cursor: pointer;
 }
 
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    white-space: nowrap;
-    border-radius: 0.375rem;
-    font-size: 0.875rem;
-    font-weight: 500;
-    transition: all 0.2s;
-}
-
 .btn:focus-visible {
     outline: none;
     box-shadow: 0 0 0 2px var(--ring, #a1a1aa);
@@ -1834,27 +1830,6 @@ button:focus {
 .btn:disabled {
     pointer-events: none;
     opacity: 0.5;
-}
-
-.btn-primary {
-    background-color: var(--accent-color);
-    color: white;
-    box-shadow: var(--shadow-soft);
-    padding: 0.5rem 1rem;
-}
-
-.btn-primary:hover {
-    background-color: var(--accent-hover);
-}
-
-.btn-secondary {
-    background-color: var(--secondary, #f4f4f5);
-    color: var(--secondary-foreground, #18181b);
-    padding: 0.5rem 1rem;
-}
-
-.btn-secondary:hover {
-    background-color: rgba(244, 244, 245, 0.8);
 }
 
 /* Mobile Centering Styles - Ensure all content is properly centered on mobile devices */
@@ -1969,7 +1944,7 @@ button:focus {
         margin-right: -1rem;
     }
 
-    /* Center list items */
+    /* Center list items by default */
     ul,
     ol {
         text-align: center;
@@ -1979,25 +1954,30 @@ button:focus {
         text-align: center;
     }
 
-    /* Center footer content */
+    /* Center general footer content */
     footer {
         text-align: center;
     }
 
-    /* Center cookie consent banner */
-    #cookie-consent-banner {
+    /* Left-align footer titles and list items for typographic structure */
+    footer .subheading,
+    footer ul,
+    footer ol,
+    footer li {
+        text-align: left;
+    }
+
+    /* Center cookie consent banner and its child elements */
+    #cookie-consent-banner,
+    #cookie-consent-banner>div {
         text-align: center;
+        justify-content: center !important;
     }
 
     /* Center desktop app banner */
     .desktop-app-banner {
         text-align: center;
     }
-
-    /* Ensure proper spacing for centered content */
-    .space-y-4>*+*,
-    .space-y-8>*+*,
-    .space-y-16>*+
 
     /* Center overlapping hero images */
     .relative.flex.justify-center {

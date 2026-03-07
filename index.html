@@ -215,6 +215,10 @@
         }
 
         @media (max-width: 768px) {
+            .site-header {
+                flex-wrap: nowrap;
+            }
+
             .index-hero .hero-grid {
                 grid-template-columns: 1fr;
                 gap: 48px;
@@ -224,6 +228,12 @@
 
             .index-hero .hero-apps-grid {
                 justify-content: center;
+            }
+
+            /* Center the App Icon Cluster wrapper on mobile */
+            .index-hero .hero-grid>div:last-child {
+                justify-self: center !important;
+                margin-left: 0 !important;
             }
         }
 
@@ -477,7 +487,7 @@
                     ¿Nos permite recopilar datos anónimos de uso?</span>
             </p>
         </div>
-        <div style="display: flex; gap: 8px;">
+        <div style="display: flex; align-items: right; justify-content: flex-end; gap: 12px; ">
             <button onclick="updateConsent('denied')" class="btn btn-secondary"
                 style="padding: 10px 20px; font-size: 14px;">
                 <span lang="en">Decline</span>
@@ -499,11 +509,13 @@
                     style="height: 24px;">
             </a>
         </div>
-        <button id="language-switcher" class="btn btn-secondary" style="padding: 8px 16px; font-size: 14px;"
-            title="Change language / Cambiar idioma">
-            <img src="images/globe-icon.svg" alt="" class="language-globe-icon">
-            <span id="current-language">English</span>
-        </button>
+        <div style="display: flex; align-items: right; justify-content: flex-end;">
+            <button id="language-switcher" class="btn btn-secondary" style="padding: 8px 16px; font-size: 14px;"
+                title="Change language / Cambiar idioma">
+                <img src="images/globe-icon.svg" alt="" class="language-globe-icon">
+                <span id="current-language">English</span>
+            </button>
+        </div>
     </header>
 
     <!-- ═══════════════════════════════════════════════════════════ -->
@@ -520,7 +532,7 @@
                         <span lang="es" class="hidden">Apps inteligentes para profesionales inmobiliarios.</span>
                     </h1>
                     <div class="hero-trust-badge reveal-on-scroll delay-100"
-                        style="display: flex; align-items: center; justify-content: flex-start; gap: 8px; margin-bottom: 12px; margin-top: 16px; color: var(--text-tertiary); font-size: 13px; font-weight: 500;">
+                        style="display: contents; align-items: center; justify-content: flex-start; gap: 8px; margin-bottom: 12px; margin-top: 16px; color: var(--text-tertiary); font-size: 13px; font-weight: 500;">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" style="width: 14px; height: 14px; opacity: 0.8;">
                             <path stroke-linecap="round" stroke-linejoin="round"

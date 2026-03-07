@@ -236,7 +236,7 @@ Use one radius family across all assets:
 **Rules**
 - Use `<header class="container site-header">` without `sticky` positioning.
 - Include the logo on the left.
-- Include a simple language switcher button on the right, styled with `.btn.btn-secondary`.
+- Include a simple language switcher button on the right, styled with `.btn.btn-secondary`. Wrap this button (and any other right-aligned items) in a container with `display: flex; align-items: center; justify-content: flex-end; flex: 1;` to ensure it pushes to the right side of the header.
 - Include the globe icon (`images/globe-icon.svg`) alongside the language text (e.g., `English`). On mobile sizing, the text should be hidden and only the globe icon displayed. On mobile, use equal padding on all sides (e.g., `padding: 8px`) so the button is compact and square rather than wide.
 - Do not include material symbol icons from external fonts.
 
@@ -296,6 +296,7 @@ Use one radius family across all assets:
   - **Apps**: Bricks Scan, Bricks Calc, Bricks Leads.
   - **Company**: About us, Purchase Guide, Email (hello@bricks.pe).
   - **Support**: Help & Feedback, Apps Guides, Survey.
+  - **Mobile Alignment**: On mobile devices, ensure footer block titles (`.subheading`) and list items are left-aligned for clear read-ability and structural hierarchy.
 
 ---
 
