@@ -198,7 +198,6 @@ a:hover {
     border-radius: var(--r3-primary);
     z-index: -1;
     will-change: width, border-radius;
-    transition: width 0.1s linear, border-radius 0.1s linear;
 }
 
 .section-hero {
