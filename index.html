@@ -479,6 +479,42 @@
             will-change: top, left;
         }
 
+        /* ── Hero Dot Grid ───────────────────────────────────────
+           A tiled dot pattern, fully hidden until the cursor
+           moves over the hero — then a spotlight mask reveals
+           the teal dots around the cursor, exact & immediate.
+           The glow underneath provides the soft aura.
+        ─────────────────────────────────────────────────────── */
+        .hero-dot-grid {
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(
+                circle 1.5px at 1.5px 1.5px,
+                rgba(0, 166, 161, 0.32) 1.5px,
+                transparent 0
+            );
+            background-size: 26px 26px;
+            /* Spotlight mask: only dots near the cursor are visible */
+            -webkit-mask-image: radial-gradient(
+                ellipse 260px 260px at var(--dot-x, 50%) var(--dot-y, 50%),
+                black 0%,
+                transparent 100%
+            );
+            mask-image: radial-gradient(
+                ellipse 260px 260px at var(--dot-x, 50%) var(--dot-y, 50%),
+                black 0%,
+                transparent 100%
+            );
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .hero-dot-grid.is-active {
+            opacity: 1;
+        }
+
         /* ── Floating App Icons ───────────────────────────────── */
         @keyframes float-icon {
             0%, 100% { transform: translateY(0)    scale(1) rotate(0deg); }
@@ -630,6 +666,7 @@
     <section class="index-hero">
         <div class="hero-bg" aria-hidden="true"></div>
         <div class="hero-cursor-glow" aria-hidden="true"></div>
+        <div class="hero-dot-grid" aria-hidden="true"></div>
         <div class="container index-hero">
             <div class="hero-grid" style="width: 100%;">
                 <!-- Hero Copy -->
@@ -1158,15 +1195,34 @@
                 });
             }, { passive: true });
 
-            // ── Cursor-Tracking Hero Glow ──────────────────────────────
+            // ── Cursor-Tracking Hero Glow + Dot Grid ──────────────────
             const heroSection = document.querySelector('.index-hero');
             const cursorGlow  = document.querySelector('.hero-cursor-glow');
+            const dotGrid     = document.querySelector('.hero-dot-grid');
 
-            if (heroSection && cursorGlow) {
+            if (heroSection && (cursorGlow || dotGrid)) {
                 heroSection.addEventListener('mousemove', (e) => {
                     const rect = heroSection.getBoundingClientRect();
-                    cursorGlow.style.left = (((e.clientX - rect.left) / rect.width)  * 100).toFixed(2) + '%';
-                    cursorGlow.style.top  = (((e.clientY - rect.top)  / rect.height) * 100).toFixed(2) + '%';
+                    const xPct = (((e.clientX - rect.left) / rect.width)  * 100).toFixed(2) + '%';
+                    const yPct = (((e.clientY - rect.top)  / rect.height) * 100).toFixed(2) + '%';
+
+                    // Soft glow — follows with CSS transition lag (feels airy)
+                    if (cursorGlow) {
+                        cursorGlow.style.left = xPct;
+                        cursorGlow.style.top  = yPct;
+                    }
+
+                    // Dot grid mask — snaps to cursor exactly (feels precise)
+                    if (dotGrid) {
+                        dotGrid.style.setProperty('--dot-x', xPct);
+                        dotGrid.style.setProperty('--dot-y', yPct);
+                        dotGrid.classList.add('is-active');
+                    }
+                }, { passive: true });
+
+                // Fade dots out when cursor leaves the hero
+                heroSection.addEventListener('mouseleave', () => {
+                    if (dotGrid) dotGrid.classList.remove('is-active');
                 }, { passive: true });
             }
         });
