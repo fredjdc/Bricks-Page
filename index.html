@@ -433,10 +433,111 @@
         .hero-title.reveal-on-scroll {
             animation: none;
         }
+
+        /* ── Scroll Progress Bar ──────────────────────────────── */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            width: 0%;
+            background: #00A6A1;
+            z-index: 9999;
+            border-radius: 0 2px 2px 0;
+            pointer-events: none;
+            will-change: width;
+        }
+
+        /* ── Header Scroll-State ──────────────────────────────── */
+        .site-header {
+            transition: top 0.4s var(--ease-out-expo),
+                        box-shadow 0.4s var(--ease-out-expo),
+                        background-color 0.4s ease !important;
+        }
+
+        .site-header.scrolled {
+            top: 8px !important;
+            box-shadow:
+                0 16px 48px rgba(11, 15, 20, 0.10),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.5) !important;
+            background-color: rgba(246, 247, 248, 0.92) !important;
+        }
+
+        /* ── Hero Cursor Glow ─────────────────────────────────── */
+        .hero-cursor-glow {
+            position: absolute;
+            width: 680px;
+            height: 680px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 166, 161, 0.08) 0%, transparent 65%);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            top: 40%;
+            left: 60%;
+            transition: top 1s var(--ease-out-expo), left 1s var(--ease-out-expo);
+            z-index: 0;
+            will-change: top, left;
+        }
+
+        /* ── Floating App Icons ───────────────────────────────── */
+        @keyframes float-icon {
+            0%, 100% { transform: translateY(0)    scale(1) rotate(0deg); }
+            50%       { transform: translateY(-7px) scale(1) rotate(0deg); }
+        }
+
+        .hero-apps-grid .hero-app-item:nth-child(1).is-visible .hero-app-icon {
+            animation: float-icon 3.8s ease-in-out infinite 0s;
+        }
+
+        .hero-apps-grid .hero-app-item:nth-child(2).is-visible .hero-app-icon {
+            animation: float-icon 3.8s ease-in-out infinite 0.6s;
+        }
+
+        .hero-apps-grid .hero-app-item:nth-child(3).is-visible .hero-app-icon {
+            animation: float-icon 3.8s ease-in-out infinite 1.2s;
+        }
+
+        /* Cancel float on hover so hover transform takes over cleanly */
+        .hero-app-item:hover .hero-app-icon {
+            animation: none !important;
+        }
+
+        /* ── Final CTA Ambient Gradient ───────────────────────── */
+        .section-hero {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 55% 70% at 15% 50%, rgba(0, 166, 161, 0.06) 0%, transparent 65%),
+                radial-gradient(ellipse 45% 55% at 85% 40%, rgba(201, 211, 218, 0.14) 0%, transparent 60%);
+            animation: ambient-breathe 14s ease-in-out infinite reverse;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .section-hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ── Stagger Delays (wider spread = more choreography) ── */
+        .delay-100 { transition-delay: 0.13s !important; }
+        .delay-200 { transition-delay: 0.28s !important; }
+        .delay-300 { transition-delay: 0.44s !important; }
+        .delay-400 { transition-delay: 0.60s !important; }
     </style>
 </head>
 
 <body>
+
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress" aria-hidden="true"></div>
+
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P5P8LRC2" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
@@ -528,6 +629,7 @@
     <!-- ═══════════════════════════════════════════════════════════ -->
     <section class="index-hero">
         <div class="hero-bg" aria-hidden="true"></div>
+        <div class="hero-cursor-glow" aria-hidden="true"></div>
         <div class="container index-hero">
             <div class="hero-grid" style="width: 100%;">
                 <!-- Hero Copy -->
@@ -1006,32 +1108,65 @@
     </footer>
 
     <script>
-        // Intersection Observer for Reveal on Scroll
         document.addEventListener('DOMContentLoaded', () => {
-            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-            const observer = new IntersectionObserver((entries, observer) => {
+            // ── Reveal on Scroll ───────────────────────────────────────
+            const observer = new IntersectionObserver((entries, obs) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target);
+                        obs.unobserve(entry.target);
                     }
                 });
-            }, observerOptions);
+            }, { root: null, rootMargin: '0px', threshold: 0.1 });
 
             document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
 
-            // Parallax Scroll for Hero Background
-            const heroBg = document.querySelector('.hero-bg');
-            if (heroBg && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                let parallaxTicking = false;
-                window.addEventListener('scroll', () => {
-                    if (parallaxTicking) return;
-                    parallaxTicking = true;
-                    requestAnimationFrame(() => {
-                        heroBg.style.transform = `translateY(${window.scrollY * 0.5}px)`;
-                        parallaxTicking = false;
-                    });
+            if (prefersReducedMotion) return;
+
+            // ── Single rAF scroll loop (progress + header + parallax) ──
+            const progressBar = document.getElementById('scroll-progress');
+            const header      = document.querySelector('.site-header');
+            const heroBg      = document.querySelector('.hero-bg');
+
+            let scrollTicking = false;
+
+            window.addEventListener('scroll', () => {
+                if (scrollTicking) return;
+                scrollTicking = true;
+                requestAnimationFrame(() => {
+                    const scrollTop  = window.scrollY;
+                    const docHeight  = document.documentElement.scrollHeight - window.innerHeight;
+
+                    // Scroll progress bar
+                    if (progressBar) {
+                        progressBar.style.width = ((scrollTop / docHeight) * 100).toFixed(2) + '%';
+                    }
+
+                    // Header: shrink + deepen shadow past 60 px
+                    if (header) {
+                        header.classList.toggle('scrolled', scrollTop > 60);
+                    }
+
+                    // Parallax hero background (reduced from 0.5 → 0.35 for subtlety)
+                    if (heroBg) {
+                        heroBg.style.transform = `translateY(${scrollTop * 0.35}px)`;
+                    }
+
+                    scrollTicking = false;
+                });
+            }, { passive: true });
+
+            // ── Cursor-Tracking Hero Glow ──────────────────────────────
+            const heroSection = document.querySelector('.index-hero');
+            const cursorGlow  = document.querySelector('.hero-cursor-glow');
+
+            if (heroSection && cursorGlow) {
+                heroSection.addEventListener('mousemove', (e) => {
+                    const rect = heroSection.getBoundingClientRect();
+                    cursorGlow.style.left = (((e.clientX - rect.left) / rect.width)  * 100).toFixed(2) + '%';
+                    cursorGlow.style.top  = (((e.clientY - rect.top)  / rect.height) * 100).toFixed(2) + '%';
                 }, { passive: true });
             }
         });
