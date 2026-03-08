@@ -161,6 +161,28 @@
             transition: none;
             will-change: transform;
         }
+
+        /* Problem Section — Editorial Number Markers */
+        .problem-number {
+            width: 32px;
+            height: 32px;
+            margin: 0 auto 16px;
+            border: 1px solid var(--depth-plane);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            color: var(--text-secondary);
+            opacity: 0.55;
+        }
+
+        /* Feature List — Teal Accent on Key Terms */
+        .feature-list .feature-item strong {
+            color: var(--accent-teal);
+        }
     </style>
 </head>
 
@@ -172,7 +194,7 @@
 
     <!-- Cookie Consent Banner -->
     <div id="cookie-consent-banner"
-        style="display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg-primary); padding: 24px; z-index: 50; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; box-shadow: 0 -4px 16px var(--surface-shadow); border-top: 1px solid var(--depth-plane);">
+        style="display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg-primary); padding: 24px; z-index: 50; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; box-shadow: 0 -4px 16px var(--surface-shadow); border-top: 1px solid var(--depth-plane);">
         <div>
             <p class="body-text" style="font-size: 14px; margin: 0;">
                 <span lang="en">We use cookies to analyze site usage and improve your experience. May we collect
@@ -267,8 +289,7 @@
             </h2>
             <div class="container grid-3 mt-md reveal-on-scroll delay-100">
                 <div class="center-text">
-                    <img src="images/checkmark.svg" alt="Check" class="checkmark-icon"
-                        style="margin: 0 auto 16px; display: block;">
+                    <div class="problem-number">01</div>
                     <h3 class="subheading" style="font-size: 18px;">
                         <span lang="en">Endless paperwork</span>
                         <span lang="es" class="hidden">Papeleo interminable</span>
@@ -281,8 +302,7 @@
                     </p>
                 </div>
                 <div class="center-text">
-                    <img src="images/checkmark.svg" alt="Check" class="checkmark-icon"
-                        style="margin: 0 auto 16px; display: block;">
+                    <div class="problem-number">02</div>
                     <h3 class="subheading" style="font-size: 18px;">
                         <span lang="en">Scattered files</span>
                         <span lang="es" class="hidden">Archivos dispersos</span>
@@ -295,8 +315,7 @@
                     </p>
                 </div>
                 <div class="center-text">
-                    <img src="images/checkmark.svg" alt="Check" class="checkmark-icon"
-                        style="margin: 0 auto 16px; display: block;">
+                    <div class="problem-number">03</div>
                     <h3 class="subheading" style="font-size: 18px;">
                         <span lang="en">Wasted time</span>
                         <span lang="es" class="hidden">Tiempo perdido</span>
@@ -378,6 +397,10 @@
                     <img src="images-bricks-scan/screenshot-01-es.png" alt="Bricks Scan Organizing Documents"
                         class="screenshot-main hidden" lang="es">
                 </div>
+                <p class="metadata" style="text-align: center; margin-top: 20px; opacity: 0.5; font-size: 12px; letter-spacing: 0.06em;">
+                    <span lang="en">Transaction folders named and organized automatically</span>
+                    <span lang="es" class="hidden">Carpetas de transacciones nombradas y organizadas automáticamente</span>
+                </p>
             </div>
         </div>
     </section>
@@ -389,13 +412,17 @@
                 <span lang="en">Privacy-first by default.</span>
                 <span lang="es" class="hidden">Privacidad primero por defecto.</span>
             </h2>
-            <p class="body-text mb-md reveal-on-scroll delay-100" style="margin-left: auto; margin-right: auto;">
+            <p class="body-text mb-sm reveal-on-scroll delay-100" style="margin-left: auto; margin-right: auto;">
                 <span lang="en">Your documents are personal — so we treat them that way. Bricks is built to keep your
                     files private, with clear controls and no surprises. You decide what you scan, what you save, and
                     what you share.</span>
                 <span lang="es" class="hidden">Tus documentos son personales — así que los tratamos de esa manera.
                     Bricks está creado para mantener tus archivos privados, con controles claros y sin sorpresas. Tú
                     decides qué escaneas, qué guardas y qué compartes.</span>
+            </p>
+            <p class="body-text mb-md reveal-on-scroll delay-100" style="margin-left: auto; margin-right: auto;">
+                <span lang="en">Documents are processed on your device. Accounts are optional. Tracking is minimal and transparent.</span>
+                <span lang="es" class="hidden">Los documentos se procesan en tu dispositivo. Las cuentas son opcionales. El rastreo es mínimo y transparente.</span>
             </p>
         </div>
 
@@ -524,7 +551,8 @@
 
             <div class="grid-3">
                 <!-- Bricks Scan -->
-                <div class="ecosystem-card embossed-card reveal-on-scroll delay-100">
+                <div class="ecosystem-card embossed-card reveal-on-scroll delay-100" style="border: 1.5px solid var(--accent-teal); position: relative;">
+                    <span style="position: absolute; top: 12px; right: 14px; font-size: 10px; font-weight: 600; letter-spacing: 0.08em; color: var(--accent-teal); text-transform: uppercase;">Current</span>
                     <img src="images-bricks-scan/bricks-scan-web-icon.png" alt="Scan" class="app-icon">
                     <h3 class="subheading">Bricks Scan</h3>
                     <p class="body-text" style="font-size: 16px;">
@@ -558,26 +586,6 @@
         </div>
     </section>
 
-    <!-- SECTION — PRIVACY & CONTROL -->
-    <section class="section">
-        <div class="container reading-column center-text">
-            <h2 class="section-title reveal-on-scroll">
-                <span lang="en">Designed with control in mind.</span>
-                <span lang="es" class="hidden">Diseñado con el control en mente.</span>
-            </h2>
-            <p class="body-text mb-sm reveal-on-scroll delay-100">
-                <span lang="en">Documents are processed on your device. Accounts are optional. Tracking is minimal and
-                    transparent.</span>
-                <span lang="es" class="hidden">Los documentos se procesan en tu dispositivo. Las cuentas son opcionales.
-                    El rastreo es mínimo y transparente.</span>
-            </p>
-            <p class="body-text reveal-on-scroll delay-100">
-                <span lang="en">Bricks is built to respect your workflow and your data.</span>
-                <span lang="es" class="hidden">Bricks está construido para respetar tu flujo de trabajo y tus
-                    datos.</span>
-            </p>
-        </div>
-    </section>
 
     <!-- SECTION — TESTIMONIALS (Hidden until real reviews are available)
     <section class="section" style="border-top: 1px solid var(--divider); border-bottom: 1px solid var(--divider);">
@@ -698,9 +706,8 @@
                     <span lang="es" class="hidden">Descargar en App Store</span>
                 </a>
                 <p class="metadata" style="margin: 0; opacity: 0.8; text-align: center;">
-                    <span lang="en">Free to try. Simple subscriptions or a one-time lifetime unlock.</span>
-                    <span lang="es" class="hidden">Gratis para probar. Suscripciones simples o un pago único de por
-                        vida.</span>
+                    <span lang="en">Free to download. iPhone, iPad, and Mac.</span>
+                    <span lang="es" class="hidden">Descarga gratuita. iPhone, iPad y Mac.</span>
                 </p>
             </div>
         </div>
