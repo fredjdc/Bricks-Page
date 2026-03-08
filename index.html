@@ -507,11 +507,6 @@
             );
             pointer-events: none;
             z-index: 0;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        .hero-dot-grid.is-active {
             opacity: 1;
         }
 
@@ -1195,35 +1190,76 @@
                 });
             }, { passive: true });
 
-            // ── Cursor-Tracking Hero Glow + Dot Grid ──────────────────
+            // ── Dot Grid + Glow: Autonomous drift + cursor override ───
             const heroSection = document.querySelector('.index-hero');
             const cursorGlow  = document.querySelector('.hero-cursor-glow');
             const dotGrid     = document.querySelector('.hero-dot-grid');
 
-            if (heroSection && (cursorGlow || dotGrid)) {
-                heroSection.addEventListener('mousemove', (e) => {
-                    const rect = heroSection.getBoundingClientRect();
-                    const xPct = (((e.clientX - rect.left) / rect.width)  * 100).toFixed(2) + '%';
-                    const yPct = (((e.clientY - rect.top)  / rect.height) * 100).toFixed(2) + '%';
+            if (dotGrid || cursorGlow) {
+                // Lerp state — starts at centre of hero
+                let dotX = 50, dotY = 42;
+                let cursorActive = false;
+                let targetX = 50, targetY = 42;
 
-                    // Soft glow — follows with CSS transition lag (feels airy)
-                    if (cursorGlow) {
+                // Lissajous figure — slow, smooth, non-repeating path across the hero
+                function autoPos(t) {
+                    return {
+                        x: 50 + 32 * Math.sin(t * 0.22),
+                        y: 42 + 20 * Math.sin(t * 0.37 + 1.0)
+                    };
+                }
+
+                function tick() {
+                    const t      = Date.now() / 1000;
+                    const target = cursorActive ? { x: targetX, y: targetY } : autoPos(t);
+
+                    // Cursor mode: snappier lerp so dots feel precise
+                    // Auto mode: slower lerp so the drift feels organic
+                    const speed = cursorActive ? 0.12 : 0.04;
+                    dotX += (target.x - dotX) * speed;
+                    dotY += (target.y - dotY) * speed;
+
+                    const xPct = dotX.toFixed(2) + '%';
+                    const yPct = dotY.toFixed(2) + '%';
+
+                    // Dot spotlight — always driven by rAF
+                    if (dotGrid) {
+                        dotGrid.style.setProperty('--dot-x', xPct);
+                        dotGrid.style.setProperty('--dot-y', yPct);
+                    }
+
+                    // Glow: in auto mode follow dots via rAF;
+                    // in cursor mode CSS transition creates the physical lag
+                    if (cursorGlow && !cursorActive) {
                         cursorGlow.style.left = xPct;
                         cursorGlow.style.top  = yPct;
                     }
 
-                    // Dot grid mask — snaps to cursor exactly (feels precise)
-                    if (dotGrid) {
-                        dotGrid.style.setProperty('--dot-x', xPct);
-                        dotGrid.style.setProperty('--dot-y', yPct);
-                        dotGrid.classList.add('is-active');
-                    }
-                }, { passive: true });
+                    requestAnimationFrame(tick);
+                }
 
-                // Fade dots out when cursor leaves the hero
-                heroSection.addEventListener('mouseleave', () => {
-                    if (dotGrid) dotGrid.classList.remove('is-active');
-                }, { passive: true });
+                requestAnimationFrame(tick);
+
+                // Cursor takes control while inside the hero
+                if (heroSection) {
+                    heroSection.addEventListener('mousemove', (e) => {
+                        const rect = heroSection.getBoundingClientRect();
+                        targetX = ((e.clientX - rect.left) / rect.width)  * 100;
+                        targetY = ((e.clientY - rect.top)  / rect.height) * 100;
+                        cursorActive = true;
+
+                        // Glow lags behind cursor via CSS transition (feels airy)
+                        if (cursorGlow) {
+                            cursorGlow.style.left = targetX.toFixed(2) + '%';
+                            cursorGlow.style.top  = targetY.toFixed(2) + '%';
+                        }
+                    }, { passive: true });
+
+                    // Hand control back to autonomous drift on mouse leave
+                    heroSection.addEventListener('mouseleave', () => {
+                        cursorActive = false;
+                    }, { passive: true });
+                }
             }
         });
     </script>
