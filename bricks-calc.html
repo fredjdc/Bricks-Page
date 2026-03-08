@@ -174,6 +174,11 @@
         .testimonial {
             transition: opacity 0.4s var(--ease-out-expo), transform 0.4s var(--ease-out-expo), box-shadow 0.4s ease;
         }
+
+        /* Fix: Cancel conflicting global fadeInUp animation — reveal-on-scroll transition handles this instead */
+        .hero-title.reveal-on-scroll {
+            animation: none;
+        }
     </style>
 </head>
 
