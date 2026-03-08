@@ -125,16 +125,15 @@
 
         /* Masked Hero Title Reveal */
         .hero-title.reveal-on-scroll {
-            clip-path: inset(100% 0 0 0);
             transform: translateY(40px);
             opacity: 0;
-            transition: transform 1.2s var(--ease-out-expo), opacity 1.2s var(--ease-out-expo), clip-path 1.2s var(--ease-out-expo);
+            will-change: transform, opacity;
+            transition: transform 1.2s var(--ease-out-expo), opacity 1.2s var(--ease-out-expo);
         }
 
         .hero-title.reveal-on-scroll.is-visible {
             transform: translateY(0);
             opacity: 1;
-            clip-path: inset(-20% 0 -20% 0);
         }
 
         /* Tactile Press State */

@@ -103,7 +103,7 @@
             transform: translateY(40px);
             opacity: 0;
             will-change: transform, opacity;
-            transition: transform 1.2s var(--ease-out-expo), opacity 1.2s var(--ease-out-expo);
+            transition: transform 1.2s var(--ease-out-expo), opacity 1.0s var(--ease-out-expo);
         }
 
         .hero-title.reveal-on-scroll.is-visible {
@@ -148,6 +148,18 @@
         .ecosystem-card,
         .testimonial {
             transition: opacity 0.4s var(--ease-out-expo), transform 0.4s var(--ease-out-expo), box-shadow 0.4s ease;
+        }
+
+        /* Fix: Cancel the global fadeInUp CSS animation — reveal-on-scroll transition handles this instead */
+        .hero-title.reveal-on-scroll {
+            animation: none;
+        }
+
+        /* Fix: JS fan-out handler owns the transform on screenshot-side; CSS transition restarts it on every
+           scroll event causing stutter. Remove transition so JS drives it smoothly via rAF. */
+        .screenshot-side {
+            transition: none;
+            will-change: transform;
         }
     </style>
 </head>
@@ -852,33 +864,32 @@
             const expandingBg = problemSection ? problemSection.querySelector('.expanding-bg') : null;
 
             if (problemSection && expandingBg) {
+                let bgTicking = false;
                 const handleScroll = () => {
-                    const rect = problemSection.getBoundingClientRect();
-                    const windowHeight = window.innerHeight;
+                    if (bgTicking) return;
+                    bgTicking = true;
+                    requestAnimationFrame(() => {
+                        const rect = problemSection.getBoundingClientRect();
+                        const windowHeight = window.innerHeight;
 
-                    // Calculate progress based on section position
-                    // 0 = section top is at bottom of viewport
-                    // 1 = section top is near top of viewport (trigger point)
-                    // trigger point: define how far up it needs to be to be full width
-                    const triggerPoint = windowHeight * 0.2; // 20% from top
-                    const totalDistance = windowHeight - triggerPoint;
+                        const triggerPoint = windowHeight * 0.2;
+                        const totalDistance = windowHeight - triggerPoint;
 
-                    let progress = (windowHeight - rect.top) / totalDistance;
+                        let progress = (windowHeight - rect.top) / totalDistance;
+                        progress = Math.min(Math.max(progress, 0), 1);
 
-                    // Clamp progress between 0 and 1
-                    progress = Math.min(Math.max(progress, 0), 1);
+                        const startWidth = 50;
+                        const endWidth = 100;
+                        const startRadius = 24;
+                        const endRadius = 0;
 
-                    // Interpolate values
-                    const startWidth = 50; // percentage
-                    const endWidth = 100;
-                    const startRadius = 24; // px
-                    const endRadius = 0;
+                        const currentWidth = startWidth + ((endWidth - startWidth) * progress);
+                        const currentRadius = startRadius - ((startRadius - endRadius) * progress);
 
-                    const currentWidth = startWidth + ((endWidth - startWidth) * progress);
-                    const currentRadius = startRadius - ((startRadius - endRadius) * progress);
-
-                    expandingBg.style.width = `${currentWidth}%`;
-                    expandingBg.style.borderRadius = `${currentRadius}px`;
+                        expandingBg.style.width = `${currentWidth}%`;
+                        expandingBg.style.borderRadius = `${currentRadius}px`;
+                        bgTicking = false;
+                    });
                 };
 
                 window.addEventListener('scroll', handleScroll, { passive: true });
@@ -891,34 +902,37 @@
             const rightScreenshots = stackContainer ? stackContainer.querySelectorAll('.screenshot-side.right') : [];
 
             if (stackContainer && leftScreenshots.length > 0 && rightScreenshots.length > 0) {
+                let fanoutTicking = false;
                 const handleSolutionScroll = () => {
-                    const rect = stackContainer.getBoundingClientRect();
-                    const windowHeight = window.innerHeight;
+                    if (fanoutTicking) return;
+                    fanoutTicking = true;
+                    requestAnimationFrame(() => {
+                        const rect = stackContainer.getBoundingClientRect();
+                        const windowHeight = window.innerHeight;
 
-                    // Start animation when the stack enters viewport
-                    // Finish when stack is near center
-                    const startPoint = windowHeight * 0.9;
-                    const endPoint = windowHeight * 0.3;
-                    const totalDistance = startPoint - endPoint;
+                        const startPoint = windowHeight * 0.9;
+                        const endPoint = windowHeight * 0.3;
+                        const totalDistance = startPoint - endPoint;
 
-                    let progress = (startPoint - rect.top) / totalDistance;
-                    progress = Math.min(Math.max(progress, 0), 1);
+                        let progress = (startPoint - rect.top) / totalDistance;
+                        progress = Math.min(Math.max(progress, 0), 1);
 
-                    // Interpolate values for fan-out
-                    const isMobile = window.innerWidth <= 768;
-                    const maxRotation = isMobile ? 3 : 4; // degrees
-                    const maxTranslateX = isMobile ? 40 : 80; // pixels
-                    const maxTranslateY = isMobile ? -10 : -20; // pixels
+                        const isMobile = window.innerWidth <= 768;
+                        const maxRotation = isMobile ? 3 : 4;
+                        const maxTranslateX = isMobile ? 40 : 80;
+                        const maxTranslateY = isMobile ? -10 : -20;
 
-                    const currentRotation = maxRotation * progress;
-                    const currentTranslateX = maxTranslateX * progress;
-                    const currentTranslateY = maxTranslateY * progress;
+                        const currentRotation = maxRotation * progress;
+                        const currentTranslateX = maxTranslateX * progress;
+                        const currentTranslateY = maxTranslateY * progress;
 
-                    leftScreenshots.forEach(el => {
-                        el.style.transform = `translateX(-${currentTranslateX}px) translateY(${currentTranslateY}px) rotate(-${currentRotation}deg)`;
-                    });
-                    rightScreenshots.forEach(el => {
-                        el.style.transform = `translateX(${currentTranslateX}px) translateY(${currentTranslateY}px) rotate(${currentRotation}deg)`;
+                        leftScreenshots.forEach(el => {
+                            el.style.transform = `translateX(-${currentTranslateX}px) translateY(${currentTranslateY}px) rotate(-${currentRotation}deg)`;
+                        });
+                        rightScreenshots.forEach(el => {
+                            el.style.transform = `translateX(${currentTranslateX}px) translateY(${currentTranslateY}px) rotate(${currentRotation}deg)`;
+                        });
+                        fanoutTicking = false;
                     });
                 };
 
