@@ -451,27 +451,89 @@ a:hover {
     }
 }
 
-/* Language Switcher */
+/* Language Picker */
+.language-picker {
+    position: relative;
+    display: inline-block;
+}
+
 #language-switcher {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border-radius: 50%;
+    background-color: var(--bg-primary);
+    box-shadow: var(--emboss-raised);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#language-switcher:active {
+    box-shadow: var(--emboss-recessed);
+    transform: scale(0.95);
 }
 
 .language-globe-icon {
-    width: 16px;
-    height: 16px;
-    opacity: 0.7;
+    width: 20px;
+    height: 20px;
+    opacity: 0.8;
+}
+
+.language-menu {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: var(--r2-inner);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 12px 32px rgba(11, 15, 20, 0.08);
+    padding: 8px;
+    min-width: 140px;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+    transition: all 0.3s var(--ease-out-expo);
+}
+
+.language-menu.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.lang-option {
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    border-radius: var(--r1-small);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.lang-option:hover {
+    background-color: rgba(0, 166, 161, 0.08);
+    color: var(--accent-teal);
+}
+
+.lang-option.active {
+    color: var(--text-primary);
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 @media (max-width: 768px) {
-    #language-switcher #current-language {
-        display: none;
-    }
-
     #language-switcher {
-        padding: 8px !important;
-        width: auto !important;
+        width: 36px;
+        height: 36px;
     }
 }
 

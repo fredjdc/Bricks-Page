@@ -435,6 +435,15 @@ const changeLanguage = (lang) => {
         // Update app screenshot images based on language
         updateAppScreenshots(lang);
 
+        // Update active state in language menu
+        document.querySelectorAll('.lang-option').forEach(option => {
+            if (option.getAttribute('data-lang') === lang) {
+                option.classList.add('active');
+            } else {
+                option.classList.remove('active');
+            }
+        });
+
         // Restart hero headline animation for the freshly selected language
         updateHeroWordSwapForLanguage(lang);
     } catch (error) {
@@ -799,6 +808,7 @@ function formatFileSize(bytes) {
 // Language switcher setup
 const setupLanguageSwitcher = () => {
     const languageSwitcher = document.getElementById('language-switcher');
+    const languageMenu = document.getElementById('language-menu');
     const mobileLanguageSwitcher = document.getElementById('mobile-language-switcher');
 
     // Initial language
@@ -806,22 +816,42 @@ const setupLanguageSwitcher = () => {
     const initialLang = savedLang || detectUserLanguage();
     changeLanguage(initialLang);
 
-    // Toggle language onClick
-    const toggleLanguage = () => {
-        const currentLang = document.documentElement.getAttribute('lang') || 'en';
-        const languages = ['en', 'es'];
-        const currentIndex = languages.indexOf(currentLang);
-        const nextLang = languages[(currentIndex + 1) % languages.length];
-        changeLanguage(nextLang);
-    };
+    // Toggle menu
+    if (languageSwitcher && languageMenu) {
+        languageSwitcher.addEventListener('click', (e) => {
+            e.stopPropagation();
+            languageMenu.classList.toggle('is-visible');
+        });
 
-    // Language switchers
-    if (languageSwitcher) {
-        languageSwitcher.addEventListener('click', toggleLanguage);
+        // Close menu on outside click
+        document.addEventListener('click', () => {
+            languageMenu.classList.remove('is-visible');
+        });
+
+        // Prevent menu from closing when clicking inside it
+        languageMenu.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        // Handle language selection from menu
+        languageMenu.querySelectorAll('.lang-option').forEach(option => {
+            option.addEventListener('click', () => {
+                const lang = option.getAttribute('data-lang');
+                changeLanguage(lang);
+                languageMenu.classList.remove('is-visible');
+            });
+        });
     }
 
+    // Toggle language onClick for mobile (legacy toggle behavior)
     if (mobileLanguageSwitcher) {
-        mobileLanguageSwitcher.addEventListener('click', toggleLanguage);
+        mobileLanguageSwitcher.addEventListener('click', () => {
+            const currentLang = document.documentElement.getAttribute('lang') || 'en';
+            const languages = ['en', 'es'];
+            const currentIndex = languages.indexOf(currentLang);
+            const nextLang = languages[(currentIndex + 1) % languages.length];
+            changeLanguage(nextLang);
+        });
     }
 };
 

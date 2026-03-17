@@ -136,11 +136,15 @@
                     style="height: 24px;" />
             </a>
         </div>
-        <button id="language-switcher" class="btn btn-secondary" style="padding: 8px 16px; font-size: 14px;"
-            title="Cambiar idioma / Change language">
-            <img src="images/globe-icon.svg" alt="" class="language-globe-icon">
-            <span id="current-language">Español</span>
-        </button>
+        <div class="language-picker">
+            <button id="language-switcher" title="Cambiar idioma / Change language">
+                <img src="images/globe-icon.svg" alt="" class="language-globe-icon" />
+            </button>
+            <div id="language-menu" class="language-menu">
+                <div class="lang-option" data-lang="en">English</div>
+                <div class="lang-option" data-lang="es">Español</div>
+            </div>
+        </div>
     </header>
 
     <!-- SECTION — HERO -->
