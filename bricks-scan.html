@@ -284,6 +284,10 @@
             border-collapse: collapse;
             text-align: left;
         }
+        .comparison-table th:nth-child(2), .comparison-table td:nth-child(2),
+        .comparison-table th:nth-child(3), .comparison-table td:nth-child(3) {
+            text-align: center;
+        }
         .comparison-table th, .comparison-table td {
             padding: 16px;
             border-bottom: 1px solid var(--depth-plane);
@@ -423,13 +427,9 @@
     <!-- 2. Workflow Section -->
     <section class="section">
         <div class="container center-text">
-            <p class="metadata reveal-on-scroll" style="color: var(--text-secondary); letter-spacing: 0.1em; text-transform: uppercase;">
-                <span lang="en">Workflow</span>
-                <span lang="es" class="hidden">Flujo de trabajo</span>
-            </p>
             <h2 class="section-title reveal-on-scroll delay-100">
-                <span lang="en">Scan &rarr; Organize &rarr; Done</span>
-                <span lang="es" class="hidden">Escanear &rarr; Organizar &rarr; Listo</span>
+                <span lang="en">Scan &rarr; Auto-Sort &rarr; Done</span>
+                <span lang="es" class="hidden">Escanear &rarr; Clasificar &rarr; Listo</span>
             </h2>
 
             <div class="workflow-grid reveal-on-scroll delay-200">
@@ -449,12 +449,12 @@
                     <img src="images-bricks-scan/screenshot-02-en.png" alt="Organize Step" style="width: 100%; max-width: 260px; border-radius: 32px; box-shadow: 0 12px 24px rgba(0,0,0,0.08); margin-bottom: 24px;" lang="en">
                     <img src="images-bricks-scan/screenshot-02-es.png" alt="Paso Organizar" style="width: 100%; max-width: 260px; border-radius: 32px; box-shadow: 0 12px 24px rgba(0,0,0,0.08); margin-bottom: 24px;" class="hidden" lang="es">
                     <h3 class="subheading" style="font-size: 20px;">
-                        <span lang="en">Organize</span>
-                        <span lang="es" class="hidden">Organizar</span>
+                        <span lang="en">Auto-Sort</span>
+                        <span lang="es" class="hidden">Clasificar</span>
                     </h3>
                     <p class="body-text" style="font-size: 16px;">
-                        <span lang="en">Auto-Sort creates a clear name, and organizes the document automatically.</span>
-                        <span lang="es" class="hidden">Clasificar crea un nombre claro y organiza el documento automáticamente.</span>
+                        <span lang="en">Auto-Sort name and organizes your document automatically.</span>
+                        <span lang="es" class="hidden">Clasificar nombra y organiza tu documento automáticamente.</span>
                     </p>
                 </div>
                 <div class="center-text">
@@ -466,71 +466,17 @@
                     </h3>
                     <p class="body-text" style="font-size: 16px;">
                         <span lang="en">Your document is ready to find, review, and share. No renaming. No manual filing.</span>
-                        <span lang="es" class="hidden">Tu documento listo para buscar, revisar y compartir. Sin escribir manualmente.</span>
+                        <span lang="es" class="hidden">Tu documento listo para buscar, revisar y compartir.</span>
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 3. Auto-Sort Section (Standalone) 
-    <section class="section section-alt">
-        <div class="container auto-sort-grid">
-            <div class="reveal-on-scroll">
-                <p class="metadata mb-sm" style="color: var(--accent-teal); letter-spacing: 0.1em; text-transform: uppercase;">
-                    <span lang="en">Auto-Sort</span>
-                    <span lang="es" class="hidden">Auto-Sort</span>
-                </p>
-                <h2 class="section-title">
-                    <span lang="en">Auto-Sort organizes documents automatically.</span>
-                    <span lang="es" class="hidden">Auto-Sort organiza los documentos automáticamente.</span>
-                </h2>
-                <p class="body-text mb-sm">
-                    <span lang="en">Bricks Scan uses on-device intelligence to understand your documents the moment you scan them.</span>
-                    <span lang="es" class="hidden">Bricks Scan usa inteligencia en el dispositivo para entender tus documentos en el momento que los escaneas.</span>
-                </p>
-                <p class="body-text mb-md">
-                    <span lang="en">Each document becomes searchable text, receives a clear name, and is organized automatically using Smart Tags and Smart Folders. All processing happens directly on your device.</span>
-                    <span lang="es" class="hidden">Cada documento se convierte en texto buscable, recibe un nombre claro y se organiza automáticamente mediante Etiquetas Inteligentes y Carpetas Inteligentes. Todo el procesamiento ocurre directamente en tu dispositivo.</span>
-                </p>
-
-                <h3 class="subheading mb-sm" style="font-size: 18px;">
-                    <span lang="en">What Auto-Sort does</span>
-                    <span lang="es" class="hidden">Qué hace Auto-Sort</span>
-                </h3>
-                <ul class="feature-list" style="margin-top: 16px;">
-                    <li class="feature-item">
-                        <img src="images/checkmark.svg" alt="Check" class="checkmark-icon">
-                        <span lang="en"><strong>Searchable text:</strong> Every word inside the document becomes searchable.</span>
-                        <span lang="es" class="hidden"><strong>Texto buscable:</strong> Cada palabra dentro del documento se vuelve buscable.</span>
-                    </li>
-                    <li class="feature-item">
-                        <img src="images/checkmark.svg" alt="Check" class="checkmark-icon">
-                        <span lang="en"><strong>Automatic document names:</strong> Each scan receives a clear, readable name automatically.</span>
-                        <span lang="es" class="hidden"><strong>Nombres automáticos:</strong> Cada escaneo recibe un nombre claro, legible automáticamente.</span>
-                    </li>
-                    <li class="feature-item">
-                        <img src="images/checkmark.svg" alt="Check" class="checkmark-icon">
-                        <span lang="en"><strong>Automatic organization:</strong> Smart Tags and Smart Folders keep documents organized.</span>
-                        <span lang="es" class="hidden"><strong>Organización automática:</strong> Las Etiquetas Inteligentes y Carpetas Inteligentes mantienen los documentos organizados.</span>
-                    </li>
-                </ul>
-            </div>
-            <div class="reveal-on-scroll delay-200">
-                <img src="images-bricks-scan/screenshot-01-en.png" alt="Auto-Sort in action" style="width: 100%; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);" lang="en">
-                <img src="images-bricks-scan/screenshot-01-es.png" alt="Auto-Sort en acción" style="width: 100%; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);" class="hidden" lang="es">
-            </div>
-        </div>
-    </section> -->
-
     <!-- 4. Features Bento Grid -->
     <section class="section">
         <div class="container">
             <div class="center-text mb-md reveal-on-scroll">
-                <p class="metadata" style="color: var(--text-secondary); letter-spacing: 0.1em; text-transform: uppercase;">
-                    <span lang="en">Features</span>
-                    <span lang="es" class="hidden">Características</span>
-                </p>
                 <h2 class="section-title">
                     <span lang="en">Everything you need after scanning.</span>
                     <span lang="es" class="hidden">Todo lo que necesitas después de escanear.</span>
@@ -560,7 +506,7 @@
                     </h3>
                     <p class="body-text" style="font-size: 15px;">
                         <span lang="en">Find names, addresses, dates, and words inside your documents.</span>
-                        <span lang="es" class="hidden">Encuentra nombres, direcciones, fechas y palabras dentro de tus documentos.</span>
+                        <span lang="es" class="hidden">Encuentra nombres, direcciones, y más dentro de tus documentos.</span>
                     </p>
                     <img src="images-bricks-scan/bento-feature-en-02.jpg" alt="Instant Search Feature" class="bento-img" style="margin-top: auto;" lang="en">
                     <img src="images-bricks-scan/bento-feature-es-02.jpg" alt="Instant Search Feature" class="bento-img hidden" style="margin-top: auto;" lang="es">
@@ -602,7 +548,7 @@
                     </h3>
                     <p class="body-text" style="font-size: 15px;">
                         <span lang="en">Highlight, draw, or add notes directly on your scans.</span>
-                        <span lang="es" class="hidden">Resalta, dibuja o añade notas directamente en tus escaneos.</span>
+                        <span lang="es" class="hidden">Resalta, dibuja o añade notas en tus escaneos.</span>
                     </p>
                     <img src="images-bricks-scan/bento-feature-en-05.jpg" alt="Markup & Notes Feature" class="bento-img" style="margin-top: auto;" lang="en">
                     <img src="images-bricks-scan/bento-feature-es-05.jpg" alt="Markup & Notes Feature" class="bento-img hidden" style="margin-top: auto;" lang="es">
@@ -646,21 +592,13 @@
     <!-- 5. Privacy Section -->
     <section class="section section-alt">
         <div class="container reading-column center-text">
-            <p class="metadata reveal-on-scroll" style="color: var(--text-secondary); letter-spacing: 0.1em; text-transform: uppercase;">
-                <span lang="en">Privacy</span>
-                <span lang="es" class="hidden">Privacidad</span>
-            </p>
             <h2 class="section-title reveal-on-scroll">
                 <span lang="en">Private by design.</span>
                 <span lang="es" class="hidden">Privacidad primero por diseño.</span>
             </h2>
             <p class="body-text mb-sm reveal-on-scroll delay-100" style="margin-left: auto; margin-right: auto;">
-                <span lang="en">All document processing happens directly on your device.</span>
-                <span lang="es" class="hidden">Todo el procesamiento de documentos ocurre directamente en tu dispositivo.</span>
-            </p>
-            <p class="body-text mb-md reveal-on-scroll delay-100" style="margin-left: auto; margin-right: auto;">
-                <span lang="en">Your documents are not uploaded to external servers for analysis or processing.</span>
-                <span lang="es" class="hidden">Tus documentos no se suben a servidores externos para análisis o procesamiento.</span>
+                <span lang="en">All document processing happens directly on your device. Your documents are not uploaded to external servers for analysis or processing.</span>
+                <span lang="es" class="hidden">Todo el procesamiento de documentos ocurre directamente en tu dispositivo. Tus documentos no se suben a servidores externos para análisis o procesamiento.</span>
             </p>
         </div>
 
@@ -680,7 +618,7 @@
                 <img src="images/checkmark.svg" alt="Check" class="checkmark-icon" style="margin: 0 auto 16px; display: block;">
                 <h3 class="subheading" style="font-size: 18px;">
                     <span lang="en">On-device processing</span>
-                    <span lang="es" class="hidden">Procesamiento local</span>
+                    <span lang="es" class="hidden">Procesamiento Local</span>
                 </h3>
                 <p class="body-text" style="font-size: 15px; margin: 0 auto;">
                     <span lang="en">Your data is not sent away for processing.</span>
@@ -691,11 +629,11 @@
                 <img src="images/checkmark.svg" alt="Check" class="checkmark-icon" style="margin: 0 auto 16px; display: block;">
                 <h3 class="subheading" style="font-size: 18px;">
                     <span lang="en">Optional iCloud Sync</span>
-                    <span lang="es" class="hidden">Sincronización opcional</span>
+                    <span lang="es" class="hidden">Apple iCloud Sync</span>
                 </h3>
                 <p class="body-text" style="font-size: 15px; margin: 0 auto;">
                     <span lang="en">Access your documents across Apple devices.</span>
-                    <span lang="es" class="hidden">Accede a tus documentos en todos tus dispositivos Apple.</span>
+                    <span lang="es" class="hidden">Trabaja desde cualquiera de tus dispositivos.</span>
                 </p>
             </div>
         </div>
@@ -710,10 +648,6 @@
                 data-app-image="bricks-scan-feature-01" lang="es">
         </div>
         <div class="container container-large center-text">
-            <p class="metadata reveal-on-scroll" style="color: var(--text-secondary); letter-spacing: 0.1em; text-transform: uppercase;">
-                <span lang="en">Perfect For</span>
-                <span lang="es" class="hidden">Perfecto Para</span>
-            </p>
             <h2 class="section-title reveal-on-scroll delay-100">
                 <span lang="en">Perfect for professionals who handle documents every day.</span>
                 <span lang="es" class="hidden">Perfecto para profesionales que manejan documentos</span>
@@ -722,8 +656,8 @@
             <div class="perfect-for-grid reveal-on-scroll delay-200">
                 <div class="perfect-card">
                     <h3 class="subheading" style="font-size: 18px;">
-                        <span lang="en">Real estate agents</span>
-                        <span lang="es" class="hidden">Agentes inmobiliarios</span>
+                        <span lang="en">Real Estate<br>Agents</span>
+                        <span lang="es" class="hidden">Agentes<br>Inmobiliarios</span>
                     </h3>
                     <p class="body-text" style="font-size: 15px;">
                         <span lang="en">Keep contracts, IDs, and transaction documents organized.</span>
@@ -732,8 +666,8 @@
                 </div>
                 <div class="perfect-card">
                     <h3 class="subheading" style="font-size: 18px;">
-                        <span lang="en">Property managers</span>
-                        <span lang="es" class="hidden">Administradores de propiedades</span>
+                        <span lang="en">Property<br>Managers</span>
+                        <span lang="es" class="hidden">Administradores<br>de Propiedades</span>
                     </h3>
                     <p class="body-text" style="font-size: 15px;">
                         <span lang="en">Store and retrieve building and tenant paperwork faster.</span>
@@ -742,8 +676,8 @@
                 </div>
                 <div class="perfect-card">
                     <h3 class="subheading" style="font-size: 18px;">
-                        <span lang="en">Mortgage professionals</span>
-                        <span lang="es" class="hidden">Profesionales hipotecarios</span>
+                        <span lang="en">Mortgage<br>Professionals</span>
+                        <span lang="es" class="hidden">Profesionales<br>Hipotecarios</span>
                     </h3>
                     <p class="body-text" style="font-size: 15px;">
                         <span lang="en">Handle client documents without manual filing.</span>
@@ -752,8 +686,8 @@
                 </div>
                 <div class="perfect-card">
                     <h3 class="subheading" style="font-size: 18px;">
-                        <span lang="en">Independent professionals</span>
-                        <span lang="es" class="hidden">Profesionales independientes</span>
+                        <span lang="en">Independent<br> Professionals</span>
+                        <span lang="es" class="hidden">Profesionales<br>Independientes</span>
                     </h3>
                     <p class="body-text" style="font-size: 15px;">
                         <span lang="en">Scan and organize important paperwork effortlessly.</span>
@@ -781,7 +715,7 @@
                     <thead>
                         <tr>
                             <th>Feature</th>
-                            <th>Typical scanner apps</th>
+                            <th>Typical Scanner Apps</th>
                             <th style="color: var(--accent-teal);">Bricks Scan</th>
                         </tr>
                     </thead>
