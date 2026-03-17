@@ -1,407 +1,490 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Bricks Scan - Built for real estate agents on Apple</title>
-        <meta
-            name="description"
-            content="Eliminate document chaos and MLS paperwork overload. Organize every document instantly from your iPhone, iPad, or Mac." />
 
-        <!-- Design System CSS -->
-        <link rel="stylesheet" href="styles.css" />
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bricks Scan - Built for real estate agents on Apple</title>
+    <meta name="description"
+        content="Eliminate document chaos and MLS paperwork overload. Organize every document instantly from your iPhone, iPad, or Mac." />
 
-        <!-- Favicon -->
-        <link rel="icon" href="favicon.ico" sizes="32x32" />
-        <link rel="icon" type="image/png" href="images-bricks-scan/favicon-32x32.png" sizes="32x32" />
-        <link rel="apple-touch-icon" href="images-bricks-scan/apple-touch-icon.png" />
-        <!-- Alpine and scripts -->
-        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-        <script src="scripts.js" defer></script>
+    <!-- Design System CSS -->
+    <link rel="stylesheet" href="styles.css" />
 
-        <!-- Google Tag Manager -->
-        <script>
-            (function (w, d, s, l, i) {
-                w[l] = w[l] || [];
-                w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-                var f = d.getElementsByTagName(s)[0],
-                    j = d.createElement(s),
-                    dl = l != "dataLayer" ? "&l=" + l : "";
-                j.async = true;
-                j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-                f.parentNode.insertBefore(j, f);
-            })(window, document, "script", "dataLayer", "GTM-P5P8LRC2");
-        </script>
-        <!-- End Google Tag Manager -->
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/png" href="images-bricks-scan/favicon-32x32.png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="images-bricks-scan/apple-touch-icon.png" />
+    <!-- Alpine and scripts -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="scripts.js" defer></script>
 
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-0NE96SRV4V"></script>
-        <script>
-            // GA4 tracker ensures product marketing funnels capture download conversions.
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != "dataLayer" ? "&l=" + l : "";
+            j.async = true;
+            j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", "GTM-P5P8LRC2");
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0NE96SRV4V"></script>
+    <script>
+        // GA4 tracker ensures product marketing funnels capture download conversions.
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+        gtag("config", "G-0NE96SRV4V");
+    </script>
+
+    <!-- Meta Pixel Code -->
+    <script>
+        !(function (f, b, e, v, n, t, s) {
+            if (f.fbq) return;
+            n = f.fbq = function () {
+                n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+            };
+            if (!f._fbq) f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = "2.0";
+            n.queue = [];
+            t = b.createElement(e);
+            t.async = !0;
+            t.src = v;
+            s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s);
+        })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+        fbq("init", "1088148306858128");
+        fbq("track", "PageView");
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display: none"
+            src="https://www.facebook.com/tr?id=1088148306858128&ev=PageView&noscript=1" />
+    </noscript>
+    <!-- End Meta Pixel Code -->
+    <style>
+        /* Pentagram-style Custom Easing & Animations */
+        :root {
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.15);
+        }
+
+        /* Typographic Polish */
+        .hero-title,
+        .section-title {
+            letter-spacing: -0.03em !important;
+        }
+
+        .metadata {
+            letter-spacing: 0.05em !important;
+        }
+
+        /* Language Globe Swivel */
+        #language-switcher .language-globe-icon {
+            transition: transform 0.6s var(--ease-out-expo);
+        }
+
+        #language-switcher:active .language-globe-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Masked Hero Title Reveal */
+        .hero-title.reveal-on-scroll {
+            transform: translateY(40px);
+            opacity: 0;
+            will-change: transform, opacity;
+            transition:
+                transform 1.2s var(--ease-out-expo),
+                opacity 1s var(--ease-out-expo);
+        }
+
+        .hero-title.reveal-on-scroll.is-visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Tactile Press State */
+        .btn:active,
+        .ecosystem-card:active,
+        .testimonial:active {
+            transform: scale(0.97) translateY(0) !important;
+            transition: transform 0.1s ease !important;
+        }
+
+        /* Breathing Hero Background */
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: var(--bg-primary);
+            z-index: 0;
+            will-change: transform;
+            pointer-events: none;
+        }
+
+        @keyframes ambient-breathe {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.8;
             }
-            gtag("js", new Date());
-            gtag("config", "G-0NE96SRV4V");
-        </script>
 
-        <!-- Meta Pixel Code -->
-        <script>
-            !(function (f, b, e, v, n, t, s) {
-                if (f.fbq) return;
-                n = f.fbq = function () {
-                    n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
-                };
-                if (!f._fbq) f._fbq = n;
-                n.push = n;
-                n.loaded = !0;
-                n.version = "2.0";
-                n.queue = [];
-                t = b.createElement(e);
-                t.async = !0;
-                t.src = v;
-                s = b.getElementsByTagName(e)[0];
-                s.parentNode.insertBefore(t, s);
-            })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
-            fbq("init", "1088148306858128");
-            fbq("track", "PageView");
-        </script>
-        <noscript>
-            <img
-                height="1"
-                width="1"
-                style="display: none"
-                src="https://www.facebook.com/tr?id=1088148306858128&ev=PageView&noscript=1" />
-        </noscript>
-        <!-- End Meta Pixel Code -->
-        <style>
-            /* Pentagram-style Custom Easing & Animations */
-            :root {
-                --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-                --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.15);
-            }
-
-            /* Typographic Polish */
-            .hero-title,
-            .section-title {
-                letter-spacing: -0.03em !important;
-            }
-
-            .metadata {
-                letter-spacing: 0.05em !important;
-            }
-
-            /* Language Globe Swivel */
-            #language-switcher .language-globe-icon {
-                transition: transform 0.6s var(--ease-out-expo);
-            }
-
-            #language-switcher:active .language-globe-icon {
-                transform: rotate(180deg);
-            }
-
-            /* Masked Hero Title Reveal */
-            .hero-title.reveal-on-scroll {
-                transform: translateY(40px);
-                opacity: 0;
-                will-change: transform, opacity;
-                transition:
-                    transform 1.2s var(--ease-out-expo),
-                    opacity 1s var(--ease-out-expo);
-            }
-
-            .hero-title.reveal-on-scroll.is-visible {
-                transform: translateY(0);
+            50% {
+                transform: scale(1.05);
                 opacity: 1;
             }
+        }
 
-            /* Tactile Press State */
-            .btn:active,
-            .ecosystem-card:active,
-            .testimonial:active {
-                transform: scale(0.97) translateY(0) !important;
-                transition: transform 0.1s ease !important;
-            }
+        .hero-bg::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 70% 50% at 60% 40%, rgba(0, 166, 161, 0.07) 0%, transparent 70%),
+                radial-gradient(ellipse 50% 60% at 10% 80%, rgba(201, 211, 218, 0.18) 0%, transparent 60%);
+            animation: ambient-breathe 18s ease-in-out infinite;
+            transform-origin: center center;
+        }
 
-            /* Breathing Hero Background */
-            @keyframes ambient-breathe {
-                0%,
-                100% {
-                    transform: scale(1);
-                    opacity: 0.8;
-                }
+        /* ── Hero Cursor Glow ─────────────────────────────────── */
+        .hero-cursor-glow {
+            position: absolute;
+            width: 680px;
+            height: 680px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 166, 161, 0.08) 0%, transparent 65%);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            top: 40%;
+            left: 60%;
+            transition: top 1s var(--ease-out-expo), left 1s var(--ease-out-expo);
+            z-index: 0;
+            will-change: top, left;
+            opacity: 1;
+        }
 
-                50% {
-                    transform: scale(1.05);
-                    opacity: 1;
-                }
-            }
+        /* ── Hero Dot Grid ─────────────────────────────────────── */
+        .hero-dot-grid {
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle 1.5px at 1.5px 1.5px,
+                    rgba(0, 166, 161, 0.32) 1.5px,
+                    transparent 0);
+            background-size: 26px 26px;
+            -webkit-mask-image: radial-gradient(ellipse 260px 260px at var(--dot-x, 50%) var(--dot-y, 50%),
+                    black 0%,
+                    transparent 100%);
+            mask-image: radial-gradient(ellipse 260px 260px at var(--dot-x, 50%) var(--dot-y, 50%),
+                    black 0%,
+                    transparent 100%);
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.8;
+        }
 
-            .hero-bg::after {
-                animation: ambient-breathe 18s ease-in-out infinite;
-            }
+        .section-hero {
+            position: relative;
+            overflow: hidden;
+            background: transparent !important;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 120px;
+            padding-bottom: 80px;
+        }
 
-            /* Focus Control for Grids */
-            .grid-3:hover .ecosystem-card:not(:hover),
-            .testimonials-grid:hover .testimonial:not(:hover) {
-                opacity: 0.4;
-                transform: scale(0.98);
-            }
+        .section-hero .container {
+            position: relative;
+            z-index: 2;
+        }
 
-            .ecosystem-card,
-            .testimonial {
-                transition:
-                    opacity 0.4s var(--ease-out-expo),
-                    transform 0.4s var(--ease-out-expo),
-                    box-shadow 0.4s ease;
-            }
+        /* Focus Control for Grids */
+        .grid-3:hover .ecosystem-card:not(:hover),
+        .testimonials-grid:hover .testimonial:not(:hover) {
+            opacity: 0.4;
+            transform: scale(0.98);
+        }
 
-            /* Fix: Cancel the global fadeInUp CSS animation — reveal-on-scroll transition handles this instead */
-            .hero-title.reveal-on-scroll {
-                animation: none;
-            }
+        .ecosystem-card,
+        .testimonial {
+            transition:
+                opacity 0.4s var(--ease-out-expo),
+                transform 0.4s var(--ease-out-expo),
+                box-shadow 0.4s ease;
+        }
 
-            /* Fix: JS fan-out handler owns the transform on screenshot-side; CSS transition restarts it on every
+        /* Fix: Cancel the global fadeInUp CSS animation — reveal-on-scroll transition handles this instead */
+        .hero-title.reveal-on-scroll {
+            animation: none;
+        }
+
+        /* Fix: JS fan-out handler owns the transform on screenshot-side; CSS transition restarts it on every
            scroll event causing stutter. Remove transition so JS drives it smoothly via rAF. */
-            .screenshot-side {
-                transition: none;
-                will-change: transform;
+        .screenshot-side {
+            transition: none;
+            will-change: transform;
+        }
+
+        /* Problem Section — Editorial Number Markers */
+        .problem-number {
+            width: 32px;
+            height: 32px;
+            margin: 0 auto 16px;
+            border: 1px solid var(--depth-plane);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            color: var(--text-secondary);
+            opacity: 0.55;
+        }
+
+        /* Feature List — Teal Accent on Key Terms */
+        .feature-list .feature-item strong {
+            color: var(--accent-teal);
+        }
+
+        /* New Landing Page Refactor Grids */
+        .workflow-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 64px;
+        }
+
+        .auto-sort-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: minmax(140px, auto);
+            gap: 20px;
+        }
+
+        .bento-card {
+            background-color: var(--bg-alt, #f7f7fa);
+            border-radius: 20px;
+            padding: 32px;
+            border: 1px solid var(--depth-plane, #e5e5ea);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .bento-card>p.body-text {
+            margin-bottom: 32px;
+        }
+
+        .bento-card img.bento-img {
+            width: calc(100% + 64px);
+            margin: 24px -32px -32px -32px;
+            border-radius: 0 0 20px 20px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .bento-icon {
+            width: 32px;
+            height: 32px;
+            margin-bottom: 16px;
+        }
+
+        .bento-auto-sort {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .bento-search {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+
+        .bento-pdf {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+
+        .bento-ai {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+
+        .bento-markup {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+
+        .bento-sign {
+            grid-column: span 2;
+            grid-row: span 1;
+            padding: 24px;
+        }
+
+        .bento-devices {
+            grid-column: span 2;
+            grid-row: span 1;
+            padding: 24px;
+        }
+
+        .bento-card-horizontal {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .bento-card-horizontal .bento-content {
+            flex: 1;
+            padding-right: 24px;
+        }
+
+        .bento-card-horizontal img.bento-img-horizontal {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 12px;
+            display: block;
+        }
+
+        .privacy-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 64px;
+        }
+
+        .perfect-for-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 64px;
+        }
+
+        .perfect-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--depth-plane);
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .comparison-table-wrapper {
+            max-width: 900px;
+            margin: 64px auto 0;
+            overflow-x: auto;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        .comparison-table th:nth-child(2),
+        .comparison-table td:nth-child(2),
+        .comparison-table th:nth-child(3),
+        .comparison-table td:nth-child(3) {
+            text-align: center;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 16px;
+            border-bottom: 1px solid var(--depth-plane);
+        }
+
+        .comparison-table th {
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .section-padding-large {
+            padding: 120px 0;
+        }
+
+        .feature-strip {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-top: 16px;
+            margin-bottom: 32px;
+        }
+
+        @media (max-width: 1024px) {
+
+            .bento-grid,
+            .perfect-for-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            /* Problem Section — Editorial Number Markers */
-            .problem-number {
-                width: 32px;
-                height: 32px;
-                margin: 0 auto 16px;
-                border: 1px solid var(--depth-plane);
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 11px;
-                font-weight: 600;
-                letter-spacing: 0.08em;
-                color: var(--text-secondary);
-                opacity: 0.55;
-            }
-
-            /* Feature List — Teal Accent on Key Terms */
-            .feature-list .feature-item strong {
-                color: var(--accent-teal);
-            }
-
-            /* New Landing Page Refactor Grids */
-            .workflow-grid {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 32px;
-                margin-top: 64px;
-            }
-
-            .auto-sort-grid {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 64px;
-                align-items: center;
-            }
-
-            .bento-grid {
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                grid-auto-rows: minmax(140px, auto);
-                gap: 20px;
-            }
-            .bento-card {
-                background-color: var(--bg-alt, #f7f7fa);
-                border-radius: 20px;
-                padding: 32px;
-                border: 1px solid var(--depth-plane, #e5e5ea);
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-                overflow: hidden;
-                display: flex;
-                flex-direction: column;
-                position: relative;
-            }
-            .bento-card > p.body-text {
-                margin-bottom: 32px;
-            }
-            .bento-card img.bento-img {
-                width: calc(100% + 64px);
-                margin: 24px -32px -32px -32px;
-                border-radius: 0 0 20px 20px;
-                object-fit: cover;
-                display: block;
-            }
-            .bento-icon {
-                width: 32px;
-                height: 32px;
-                margin-bottom: 16px;
-            }
-
-            .bento-auto-sort {
-                grid-column: span 2;
-                grid-row: span 2;
-            }
-            .bento-search {
-                grid-column: span 1;
-                grid-row: span 1;
-            }
-            .bento-pdf {
-                grid-column: span 1;
-                grid-row: span 1;
-            }
-            .bento-ai {
-                grid-column: span 1;
-                grid-row: span 1;
-            }
-            .bento-markup {
-                grid-column: span 1;
-                grid-row: span 1;
-            }
-            .bento-sign {
-                grid-column: span 2;
-                grid-row: span 1;
-                padding: 24px;
-            }
+            .bento-auto-sort,
+            .bento-sign,
             .bento-devices {
                 grid-column: span 2;
-                grid-row: span 1;
-                padding: 24px;
             }
+        }
 
-            .bento-card-horizontal {
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-between;
-            }
-            .bento-card-horizontal .bento-content {
-                flex: 1;
-                padding-right: 24px;
-            }
-            .bento-card-horizontal img.bento-img-horizontal {
-                width: 100px;
-                height: 100px;
-                object-fit: cover;
-                border-radius: 12px;
-                display: block;
-            }
+        @media (max-width: 768px) {
 
+            .workflow-grid,
+            .auto-sort-grid,
             .privacy-grid {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 32px;
-                margin-top: 64px;
+                grid-template-columns: 1fr;
             }
 
+            .bento-grid,
             .perfect-for-grid {
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                gap: 24px;
-                margin-top: 64px;
-            }
-            .perfect-card {
-                background: var(--bg-primary);
-                border: 1px solid var(--depth-plane);
-                border-radius: 16px;
-                padding: 24px;
+                grid-template-columns: 1fr;
             }
 
-            .comparison-table-wrapper {
-                max-width: 900px;
-                margin: 64px auto 0;
-                overflow-x: auto;
+            .bento-auto-sort,
+            .bento-search,
+            .bento-pdf,
+            .bento-ai,
+            .bento-markup,
+            .bento-sign,
+            .bento-devices {
+                grid-column: span 1;
+                grid-row: span 1;
             }
-            .comparison-table {
-                width: 100%;
-                border-collapse: collapse;
-                text-align: left;
-            }
-            .comparison-table th:nth-child(2),
-            .comparison-table td:nth-child(2),
-            .comparison-table th:nth-child(3),
-            .comparison-table td:nth-child(3) {
-                text-align: center;
-            }
-            .comparison-table th,
-            .comparison-table td {
-                padding: 16px;
-                border-bottom: 1px solid var(--depth-plane);
-            }
-            .comparison-table th {
-                font-weight: 600;
-                font-size: 18px;
-            }
-            .comparison-table tr:last-child td {
-                border-bottom: none;
-            }
+        }
+    </style>
+</head>
 
-            .section-padding-large {
-                padding: 120px 0;
-            }
-            .feature-strip {
-                display: flex;
-                justify-content: center;
-                flex-wrap: wrap;
-                gap: 8px;
-                font-size: 14px;
-                font-weight: 500;
-                color: var(--text-secondary);
-                margin-top: 16px;
-                margin-bottom: 32px;
-            }
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P5P8LRC2" height="0" width="0"
+            style="display: none; visibility: hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
-            @media (max-width: 1024px) {
-                .bento-grid,
-                .perfect-for-grid {
-                    grid-template-columns: repeat(2, 1fr);
-                }
-                .bento-auto-sort,
-                .bento-sign,
-                .bento-devices {
-                    grid-column: span 2;
-                }
-            }
-
-            @media (max-width: 768px) {
-                .workflow-grid,
-                .auto-sort-grid,
-                .privacy-grid {
-                    grid-template-columns: 1fr;
-                }
-                .bento-grid,
-                .perfect-for-grid {
-                    grid-template-columns: 1fr;
-                }
-                .bento-auto-sort,
-                .bento-search,
-                .bento-pdf,
-                .bento-ai,
-                .bento-markup,
-                .bento-sign,
-                .bento-devices {
-                    grid-column: span 1;
-                    grid-row: span 1;
-                }
-            }
-        </style>
-    </head>
-
-    <body>
-        <!-- Google Tag Manager (noscript) -->
-        <noscript
-            ><iframe
-                src="https://www.googletagmanager.com/ns.html?id=GTM-P5P8LRC2"
-                height="0"
-                width="0"
-                style="display: none; visibility: hidden"></iframe
-        ></noscript>
-        <!-- End Google Tag Manager (noscript) -->
-
-        <!-- Cookie Consent Banner -->
-        <div
-            id="cookie-consent-banner"
-            style="
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent-banner" style="
                 display: none;
                 position: fixed;
                 bottom: 0;
@@ -417,90 +500,73 @@
                 box-shadow: 0 -4px 16px var(--surface-shadow);
                 border-top: 1px solid var(--depth-plane);
             ">
-            <div>
-                <p class="body-text" style="font-size: 14px; margin: 0">
-                    <span lang="en"
-                        >We use cookies to analyze site usage and improve your experience. May we collect anonymous
-                        usage data?</span
-                    >
-                    <span lang="es" class="hidden"
-                        >Usamos cookies para analizar el uso del sitio y mejorar su experiencia. ¿Nos permite recopilar
-                        datos anónimos de uso?</span
-                    >
-                </p>
-            </div>
-            <div style="display: flex; gap: 8px">
-                <button
-                    onclick="updateConsent('denied')"
-                    class="btn btn-secondary"
-                    style="padding: 10px 20px; font-size: 14px">
-                    <span lang="en">Decline</span>
-                    <span lang="es" class="hidden">Rechazar</span>
-                </button>
-                <button
-                    onclick="updateConsent('granted')"
-                    class="btn btn-primary"
-                    style="padding: 10px 20px; font-size: 14px">
-                    <span lang="en">Accept</span>
-                    <span lang="es" class="hidden">Aceptar</span>
-                </button>
-            </div>
+        <div>
+            <p class="body-text" style="font-size: 14px; margin: 0">
+                <span lang="en">We use cookies to analyze site usage and improve your experience. May we collect
+                    anonymous
+                    usage data?</span>
+                <span lang="es" class="hidden">Usamos cookies para analizar el uso del sitio y mejorar su experiencia.
+                    ¿Nos permite recopilar
+                    datos anónimos de uso?</span>
+            </p>
         </div>
+        <div style="display: flex; gap: 8px">
+            <button onclick="updateConsent('denied')" class="btn btn-secondary"
+                style="padding: 10px 20px; font-size: 14px">
+                <span lang="en">Decline</span>
+                <span lang="es" class="hidden">Rechazar</span>
+            </button>
+            <button onclick="updateConsent('granted')" class="btn btn-primary"
+                style="padding: 10px 20px; font-size: 14px">
+                <span lang="en">Accept</span>
+                <span lang="es" class="hidden">Aceptar</span>
+            </button>
+        </div>
+    </div>
 
-        <!-- Header / Nav -->
-        <header class="container site-header">
-            <div class="logo">
-                <a href="index.html" class="flex items-center" style="display: flex; align-items: center">
-                    <img
-                        src="images-bricks-scan/Bricks Logo-dark.svg"
-                        onerror="this.src='images/Bricks Logo.svg'"
-                        alt="Bricks Logo"
-                        style="height: 24px" />
-                </a>
-            </div>
-            <div style="display: flex; align-items: center; gap: 12px">
-                <a
-                    href="https://apps.apple.com/app/idYOUR_APP_ID"
-                    class="btn btn-primary"
-                    style="padding: 8px 20px; font-size: 14px">
-                    <div class="accent-notch"></div>
-                    <span lang="en">Download</span>
-                    <span lang="es" class="hidden">Descargar</span>
-                </a>
-                <button
-                    id="language-switcher"
-                    class="btn btn-secondary"
-                    style="padding: 8px 16px; font-size: 14px"
-                    title="Change language / Cambiar idioma">
-                    <img src="images/globe-icon.svg" alt="" class="language-globe-icon" />
-                    <span id="current-language">English</span>
-                </button>
-            </div>
-        </header>
+    <!-- Header / Nav -->
+    <header class="container site-header">
+        <div class="logo">
+            <a href="index.html" class="flex items-center" style="display: flex; align-items: center">
+                <img src="images-bricks-scan/Bricks Logo-dark.svg" onerror="this.src='images/Bricks Logo.svg'"
+                    alt="Bricks Logo" style="height: 24px" />
+            </a>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px">
+            <a href="https://apps.apple.com/app/idYOUR_APP_ID" class="btn btn-primary"
+                style="padding: 8px 20px; font-size: 14px">
+                <div class="accent-notch"></div>
+                <span lang="en">Download</span>
+                <span lang="es" class="hidden">Descargar</span>
+            </a>
+            <button id="language-switcher" class="btn btn-secondary" style="padding: 8px 16px; font-size: 14px"
+                title="Change language / Cambiar idioma">
+                <img src="images/globe-icon.svg" alt="" class="language-globe-icon" />
+                <span id="current-language">English</span>
+            </button>
+        </div>
+    </header>
 
-        <!-- 1. Hero Section -->
-        <section class="section section-hero hero">
-            <div class="hero-bg" aria-hidden="true"></div>
-            <div class="container hero-grid">
-                <div class="hero-content" style="text-align: center; margin: 0 auto">
-                    <h1 class="hero-title reveal-on-scroll" style="max-width: 800px; margin: 0 auto">
-                        <span lang="en">The scanner that organizes your documents</span>
-                        <span lang="es" class="hidden">El escáner que organiza tus documentos.</span>
-                    </h1>
-                    <p class="body-text reveal-on-scroll delay-100" style="max-width: 600px; margin: 16px auto">
-                        <span lang="en"
-                            >Scan contracts, IDs, and paperwork into searchable files — no renaming, no manual
-                            filing.</span
-                        >
-                        <span lang="es" class="hidden"
-                            >Convierte el papeleo en documentos que se nombran y organizan automáticamente al momento
-                            que escaneas</span
-                        >
-                    </p>
+    <!-- 1. Hero Section -->
+    <section class="section section-hero hero2">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="hero-cursor-glow" aria-hidden="true"></div>
+        <div class="hero-dot-grid" aria-hidden="true"></div>
+        <div class="container hero-grid">
+            <div class="hero-content" style="text-align: center; margin: 0 auto">
+                <h1 class="hero-title reveal-on-scroll" style="margin: 0 auto">
+                    <span lang="en">The scanner that organizes your documents</span>
+                    <span lang="es" class="hidden">El escáner que organiza tus documentos.</span>
+                </h1>
+                <p class="body-text reveal-on-scroll delay-100" style="margin: 16px auto">
+                    <span lang="en">Scan contracts, IDs, and paperwork into searchable files — no renaming, no manual
+                        filing.</span>
+                    <span lang="es" class="hidden">Convierte el papeleo en documentos que se nombran y organizan
+                        automáticamente al momento
+                        que escaneas</span>
+                </p>
 
-                    <div
-                        class="cta-group reveal-on-scroll delay-200;"
-                        style="
+                <div class="cta-group reveal-on-scroll delay-200;" style="
                             display: flex;
                             flex-direction: column;
                             align-items: center;
@@ -509,706 +575,545 @@
                             margin: 0 auto;
                             margin-top: 80px;
                         ">
-                        <a href="https://apps.apple.com/app/idYOUR_APP_ID" class="btn btn-primary">
-                            <span lang="en">Download on the App Store</span>
-                            <span lang="es" class="hidden">Descargar en App Store</span>
-                        </a>
-                        <p class="metadata" style="margin: 0; opacity: 0.8; text-align: center; margin-top: 8px">
-                            <span lang="en">No account required</span>
-                            <span lang="es" class="hidden">No requiere cuenta</span>
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Hero Image -->
-                <div class="hero-image-wrapper reveal-on-scroll delay-300" style="margin-top: 48px">
-                    <img
-                        src="images-bricks-scan/hero-image-en.png"
-                        alt="Bricks Scan App Interface"
-                        class="hero-img"
-                        lang="en" />
-                    <img
-                        src="images-bricks-scan/hero-image-es.png"
-                        alt="Bricks Scan App Interface"
-                        class="hero-img hidden"
-                        lang="es" />
-                </div>
-            </div>
-
-            <div class="feature-strip reveal-on-scroll delay-100">
-                <span lang="en">Instant Search &middot; Auto-Sort &middot; 100% Offline</span>
-                <span lang="es" class="hidden"
-                    >Búsqueda &middot; Clasificar &middot; 100% Sin Conexión &middot; 100% Privacidad</span
-                >
-            </div>
-        </section>
-
-        <!-- 2. Workflow Section -->
-        <section class="section">
-            <div class="container center-text">
-                <img
-                    src="images-bricks-scan/icon-section2.svg"
-                    alt="Workflow"
-                    class="reveal-on-scroll delay-100"
-                    style="width: 64px; height: 64px; margin: 0 auto 16px; display: block" />
-                <h2 class="section-title reveal-on-scroll delay-100">
-                    <span lang="en">Scan. Auto-Sort. Done.</span>
-                    <span lang="es" class="hidden"
-                        >Escanear <span style="color: var(--text-secondary)">&rarr;</span> Clasificar
-                        <span style="color: var(--text-secondary)">&rarr;</span> Listo</span
-                    >
-                </h2>
-
-                <div class="workflow-grid reveal-on-scroll delay-200">
-                    <div class="center-text">
-                        <img
-                            src="images-bricks-scan/screenshot-01-en.png"
-                            alt="Scan Step"
-                            style="
-                                width: 100%;
-                                max-width: 260px;
-                                border-radius: 32px;
-                                box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-                                margin-bottom: 24px;
-                            "
-                            lang="en" />
-                        <img
-                            src="images-bricks-scan/screenshot-01-es.png"
-                            alt="Paso Escanear"
-                            style="
-                                width: 100%;
-                                max-width: 260px;
-                                border-radius: 32px;
-                                box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-                                margin-bottom: 24px;
-                            "
-                            class="hidden"
-                            lang="es" />
-                        <h3 class="subheading" style="font-size: 20px">
-                            <span lang="en">Scan</span>
-                            <span lang="es" class="hidden">Escanear</span>
-                        </h3>
-                        <p class="body-text" style="font-size: 16px">
-                            <span lang="en">Capture contracts, IDs, receipts, and paperwork.</span>
-                            <span lang="es" class="hidden"
-                                >Captura contratos, identificaciones, recibos y papeleo en segundos.</span
-                            >
-                        </p>
-                    </div>
-                    <div class="center-text">
-                        <img
-                            src="images-bricks-scan/screenshot-02-en.png"
-                            alt="Organize Step"
-                            style="
-                                width: 100%;
-                                max-width: 260px;
-                                border-radius: 32px;
-                                box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-                                margin-bottom: 24px;
-                            "
-                            lang="en" />
-                        <img
-                            src="images-bricks-scan/screenshot-02-es.png"
-                            alt="Paso Organizar"
-                            style="
-                                width: 100%;
-                                max-width: 260px;
-                                border-radius: 32px;
-                                box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-                                margin-bottom: 24px;
-                            "
-                            class="hidden"
-                            lang="es" />
-                        <h3 class="subheading" style="font-size: 20px">
-                            <span lang="en">Auto-Sort</span>
-                            <span lang="es" class="hidden">Clasificar</span>
-                        </h3>
-                        <p class="body-text" style="font-size: 16px">
-                            <span lang="en"
-                                >Makes text searchable, names the document, and organizes it automatically.</span
-                            >
-                            <span lang="es" class="hidden"
-                                >Clasificar nombra y organiza tu documento automáticamente.</span
-                            >
-                        </p>
-                    </div>
-                    <div class="center-text">
-                        <img
-                            src="images-bricks-scan/screenshot-03-en.png"
-                            alt="Done Step"
-                            style="
-                                width: 100%;
-                                max-width: 260px;
-                                border-radius: 32px;
-                                box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-                                margin-bottom: 24px;
-                            "
-                            lang="en" />
-                        <img
-                            src="images-bricks-scan/screenshot-03-es.png"
-                            alt="Paso Listo"
-                            style="
-                                width: 100%;
-                                max-width: 260px;
-                                border-radius: 32px;
-                                box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-                                margin-bottom: 24px;
-                            "
-                            class="hidden"
-                            lang="es" />
-                        <h3 class="subheading" style="font-size: 20px">
-                            <span lang="en">Done</span>
-                            <span lang="es" class="hidden">Listo</span>
-                        </h3>
-                        <p class="body-text" style="font-size: 16px">
-                            <span lang="en">Ready to find, review, and share.</span>
-                            <span lang="es" class="hidden">Tu documento listo para buscar, revisar y compartir.</span>
-                        </p>
-                    </div>
-                </div>
-                <p class="reveal-on-scroll delay-100 subheading" style="margin-top: 48px; color: var(--accent-teal)">
-                    <span lang="en">Powered by on-device intelligence</span>
-                    <span lang="es" class="hidden">Impulsado por Apple Intelligence</span>
-                </p>
-            </div>
-        </section>
-
-        <!-- 4. Features Bento Grid -->
-        <section class="section">
-            <div class="container">
-                <div class="center-text mb-md reveal-on-scroll">
-                    <h2 class="section-title">
-                        <span lang="en">Built for the work after scanning.</span>
-                        <span lang="es" class="hidden">Todo lo que necesitas después de escanear.</span>
-                    </h2>
-                </div>
-
-                <div class="bento-grid reveal-on-scroll delay-100">
-                    <!-- Auto-Sort (Large) -->
-                    <div class="bento-card bento-auto-sort">
-                        <h3 class="subheading" style="font-size: 24px">
-                            <span lang="en">Auto-Sort</span>
-                            <span lang="es" class="hidden">Clasificar</span>
-                        </h3>
-                        <p class="body-text" style="font-size: 16px">
-                            <span lang="en"
-                                >Makes text searchable, names each document, and organizes everything automatically.
-                                Powered by on-device intelligence.</span
-                            >
-                            <span lang="es" class="hidden"
-                                >Vuelve el texto buscable, crea un nombre claro y organiza cada escaneo
-                                automáticamente.</span
-                            >
-                        </p>
-                        <img
-                            src="images-bricks-scan/bento-feature-en-01.png"
-                            alt="Auto-Sort Feature"
-                            class="bento-img"
-                            style="margin-top: auto"
-                            lang="en" />
-                        <img
-                            src="images-bricks-scan/bento-feature-es-01.png"
-                            alt="Auto-Sort Feature"
-                            class="bento-img hidden"
-                            style="margin-top: auto"
-                            lang="es" />
-                    </div>
-
-                    <!-- Instant Search -->
-                    <div class="bento-card bento-search">
-                        <h3 class="subheading" style="font-size: 20px">
-                            <span lang="en">Instant Search</span>
-                            <span lang="es" class="hidden">Búsqueda</span>
-                        </h3>
-                        <p class="body-text" style="font-size: 15px">
-                            <span lang="en">Find names, addresses, dates, and anything.</span>
-                            <span lang="es" class="hidden"
-                                >Encuentra nombres, direcciones, y más dentro de tus documentos.</span
-                            >
-                        </p>
-                        <img
-                            src="images-bricks-scan/bento-feature-en-02.png"
-                            alt="Instant Search Feature"
-                            class="bento-img"
-                            style="margin-top: auto"
-                            lang="en" />
-                        <img
-                            src="images-bricks-scan/bento-feature-es-02.png"
-                            alt="Instant Search Feature"
-                            class="bento-img hidden"
-                            style="margin-top: auto"
-                            lang="es" />
-                    </div>
-
-                    <!-- Professional PDF -->
-                    <div class="bento-card bento-pdf">
-                        <h3 class="subheading" style="font-size: 20px">
-                            <span lang="en">Ready-to-Share</span>
-                            <span lang="es" class="hidden">PDF Profesional</span>
-                        </h3>
-                        <p class="body-text" style="font-size: 15px">
-                            <span lang="en">Generate clean PDFs ready to send.</span>
-                            <span lang="es" class="hidden"
-                                >Genera PDFs limpios y de alta calidad listos para compartir.</span
-                            >
-                        </p>
-                        <img
-                            src="images-bricks-scan/bento-feature-en-03.png"
-                            alt="Professional PDF Feature"
-                            class="bento-img"
-                            style="margin-top: auto"
-                            lang="en" />
-                        <img
-                            src="images-bricks-scan/bento-feature-es-03.png"
-                            alt="Professional PDF Feature"
-                            class="bento-img hidden"
-                            style="margin-top: auto"
-                            lang="es" />
-                    </div>
-
-                    <!-- AI Summary -->
-                    <div class="bento-card bento-ai">
-                        <h3 class="subheading" style="font-size: 20px">
-                            <span lang="en">AI Summary</span>
-                            <span lang="es" class="hidden">Resumen con IA</span>
-                        </h3>
-                        <p class="body-text" style="font-size: 15px">
-                            <span lang="en">Get a quick summary of long documents.</span>
-                            <span lang="es" class="hidden">Obtén un resumen rápido de documentos largos.</span>
-                        </p>
-                        <img
-                            src="images-bricks-scan/bento-feature-en-04.png"
-                            alt="AI Summary Feature"
-                            class="bento-img"
-                            style="margin-top: auto"
-                            lang="en" />
-                        <img
-                            src="images-bricks-scan/bento-feature-es-04.png"
-                            alt="AI Summary Feature"
-                            class="bento-img hidden"
-                            style="margin-top: auto"
-                            lang="es" />
-                    </div>
-
-                    <!-- Markup -->
-                    <div class="bento-card bento-markup">
-                        <h3 class="subheading" style="font-size: 20px">
-                            <span lang="en">Markup &amp; Notes</span>
-                            <span lang="es" class="hidden">Marcado y Notas</span>
-                        </h3>
-                        <p class="body-text" style="font-size: 15px">
-                            <span lang="en">Highlight, draw, or add notes.</span>
-                            <span lang="es" class="hidden">Resalta, dibuja o añade notas en tus escaneos.</span>
-                        </p>
-                        <img
-                            src="images-bricks-scan/bento-feature-en-05.png"
-                            alt="Markup & Notes Feature"
-                            class="bento-img"
-                            style="margin-top: auto"
-                            lang="en" />
-                        <img
-                            src="images-bricks-scan/bento-feature-es-05.png"
-                            alt="Markup & Notes Feature"
-                            class="bento-img hidden"
-                            style="margin-top: auto"
-                            lang="es" />
-                    </div>
-
-                    <!-- Sign -->
-                    <div class="bento-card bento-card-horizontal bento-sign">
-                        <div class="bento-content">
-                            <h3 class="subheading" style="font-size: 20px">
-                                <span lang="en">Sign Documents</span>
-                                <span lang="es" class="hidden">Firmar Documentos</span>
-                            </h3>
-                            <p class="body-text" style="font-size: 15px; margin-bottom: 0">
-                                <span lang="en">Sign paperwork quickly without printing.</span>
-                                <span lang="es" class="hidden">Firma el papeleo rápidamente sin imprimir.</span>
-                            </p>
-                        </div>
-                        <img
-                            src="images-bricks-scan/bento-feature-en-06.png"
-                            alt="Sign Documents Feature"
-                            class="bento-img-horizontal"
-                            lang="en" />
-                        <img
-                            src="images-bricks-scan/bento-feature-es-06.png"
-                            alt="Sign Documents Feature"
-                            class="bento-img-horizontal hidden"
-                            lang="es" />
-                    </div>
-
-                    <!-- Devices -->
-                    <div class="bento-card bento-card-horizontal bento-devices">
-                        <div class="bento-content">
-                            <h3 class="subheading" style="font-size: 20px">
-                                <span lang="en">Across Your Devices</span>
-                                <span lang="es" class="hidden">En Todos tus Dispositivos</span>
-                            </h3>
-                            <p class="body-text" style="font-size: 15px; margin-bottom: 0">
-                                <span lang="en">Available on iPhone, iPad and Mac.</span>
-                                <span lang="es" class="hidden">Escanea en iPhone y continúa en iPad o Mac.</span>
-                            </p>
-                        </div>
-                        <img
-                            src="images-bricks-scan/bento-feature-en-07.png"
-                            alt="Across Your Devices Feature"
-                            class="bento-img-horizontal"
-                            lang="en" />
-                        <img
-                            src="images-bricks-scan/bento-feature-es-07.png"
-                            alt="Across Your Devices Feature"
-                            class="bento-img-horizontal hidden"
-                            lang="es" />
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 5. Privacy Section -->
-        <section class="section section-alt">
-            <div class="container reading-column center-text">
-                <img
-                    src="images-bricks-scan/icon-section5.svg"
-                    alt="Workflow"
-                    class="reveal-on-scroll delay-100"
-                    style="width: 64px; height: 64px; margin: 0 auto 16px; display: block" />
-                <h2 class="section-title reveal-on-scroll">
-                    <span lang="en">Private by design.</span>
-                    <span lang="es" class="hidden">Privacidad primero por diseño.</span>
-                </h2>
-                <p class="body-text mb-sm reveal-on-scroll delay-100" style="margin-left: auto; margin-right: auto">
-                    <span lang="en"
-                        >All processing happens on your device. Your documents are not uploaded for analysis or
-                        processing.</span
-                    >
-                    <span lang="es" class="hidden"
-                        >Todo el procesamiento de documentos ocurre directamente en tu dispositivo. Tus documentos no se
-                        suben a servidores externos para análisis o procesamiento.</span
-                    >
-                </p>
-            </div>
-
-            <div class="container privacy-grid reveal-on-scroll delay-200">
-                <div class="center-text">
-                    <img
-                        src="images/checkmark.svg"
-                        alt="Check"
-                        class="checkmark-icon"
-                        style="margin: 0 auto 16px; display: block" />
-                    <h3 class="subheading" style="font-size: 18px">
-                        <span lang="en">100% Offline</span>
-                        <span lang="es" class="hidden">100% Sin Conexión</span>
-                    </h3>
-                    <p class="body-text" style="font-size: 15px; margin: 0 auto">
-                        <span lang="en">Works without internet.</span>
-                        <span lang="es" class="hidden">Funciona sin internet.</span>
-                    </p>
-                </div>
-                <div class="center-text">
-                    <img
-                        src="images/checkmark.svg"
-                        alt="Check"
-                        class="checkmark-icon"
-                        style="margin: 0 auto 16px; display: block" />
-                    <h3 class="subheading" style="font-size: 18px">
-                        <span lang="en">On-Device Processing</span>
-                        <span lang="es" class="hidden">Procesamiento Local</span>
-                    </h3>
-                    <p class="body-text" style="font-size: 15px; margin: 0 auto">
-                        <span lang="en">Your data stays on your device.</span>
-                        <span lang="es" class="hidden">Tus datos no se envían a procesar.</span>
-                    </p>
-                </div>
-                <div class="center-text">
-                    <img
-                        src="images/checkmark.svg"
-                        alt="Check"
-                        class="checkmark-icon"
-                        style="margin: 0 auto 16px; display: block" />
-                    <h3 class="subheading" style="font-size: 18px">
-                        <span lang="en">Optional iCloud Sync</span>
-                        <span lang="es" class="hidden">Apple iCloud Sync</span>
-                    </h3>
-                    <p class="body-text" style="font-size: 15px; margin: 0 auto">
-                        <span lang="en">Access your documents across Apple devices.</span>
-                        <span lang="es" class="hidden">Trabaja desde cualquiera de tus dispositivos.</span>
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 6. Perfect For Section -->
-        <section class="section">
-            <div
-                class="container reveal-on-scroll delay-200"
-                style="max-width: 1100px; text-align: center; margin-bottom: 48px">
-                <img
-                    src="images-bricks-scan/scan-feature-en-01.jpg"
-                    alt="Perfect For Feature"
-                    class="hero-img"
-                    data-app-image="bricks-scan-feature-01"
-                    lang="en" />
-                <img
-                    src="images-bricks-scan/scan-feature-es-01.jpg"
-                    alt="Perfect For Feature"
-                    class="hero-img hidden"
-                    data-app-image="bricks-scan-feature-01"
-                    lang="es" />
-            </div>
-            <div class="container container-large center-text">
-                <h2 class="section-title reveal-on-scroll delay-100">
-                    <span lang="en">Perfect for how you work.</span>
-                    <span lang="es" class="hidden">Perfecto para profesionales que manejan documentos</span>
-                </h2>
-
-                <div class="perfect-for-grid reveal-on-scroll delay-200">
-                    <div class="perfect-card">
-                        <h3 class="subheading" style="font-size: 18px">
-                            <span lang="en">Professionals</span>
-                            <span lang="es" class="hidden">Agentes<br />Inmobiliarios</span>
-                        </h3>
-                        <p class="body-text" style="font-size: 15px">
-                            <span lang="en"
-                                >Contracts, client files, and important documents — organized and ready when you need
-                                them.</span
-                            >
-                            <span lang="es" class="hidden"
-                                >Mantén contratos, identificaciones y documentos de transacciones organizados.</span
-                            >
-                        </p>
-                    </div>
-                    <div class="perfect-card">
-                        <h3 class="subheading" style="font-size: 18px">
-                            <span lang="en">Students &amp; Academics</span>
-                            <span lang="es" class="hidden">Administradores<br />de Propiedades</span>
-                        </h3>
-                        <p class="body-text" style="font-size: 15px">
-                            <span lang="en"
-                                >Notes, slides, and study material — all searchable and easy to review.</span
-                            >
-                            <span lang="es" class="hidden"
-                                >Almacena y recupera el papeleo de edificios e inquilinos más rápido.</span
-                            >
-                        </p>
-                    </div>
-                    <div class="perfect-card">
-                        <h3 class="subheading" style="font-size: 18px">
-                            <span lang="en">Business Owners</span>
-                            <span lang="es" class="hidden">Profesionales<br />Hipotecarios</span>
-                        </h3>
-                        <p class="body-text" style="font-size: 15px">
-                            <span lang="en"
-                                >Invoices, receipts, and tax records — organized without manual filing.</span
-                            >
-                            <span lang="es" class="hidden"
-                                >Maneja los documentos de clientes sin archivar manualmente.</span
-                            >
-                        </p>
-                    </div>
-                    <div class="perfect-card">
-                        <h3 class="subheading" style="font-size: 18px">
-                            <span lang="en">Travel &amp; Expenses</span>
-                            <span lang="es" class="hidden">Profesionales<br />Independientes</span>
-                        </h3>
-                        <p class="body-text" style="font-size: 15px">
-                            <span lang="en">Receipts and expense reports — captured and ready for reimbursement.</span>
-                            <span lang="es" class="hidden">Escanea y organiza papeles importantes sin esfuerzo.</span>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 7. Competitive Comparison Section -->
-        <section class="section section-alt">
-            <div class="container center-text">
-                <img
-                    src="images-bricks-scan/icon-section7.svg"
-                    alt="Workflow"
-                    class="reveal-on-scroll delay-100"
-                    style="width: 64px; height: 64px; margin: 0 auto 16px; display: block" />
-                <h2 class="section-title reveal-on-scroll">
-                    <span lang="en">Built to do more than scan.</span>
-                    <span lang="es" class="hidden">Más que una típica app de escáner.</span>
-                </h2>
-                <p
-                    class="body-text mb-sm reveal-on-scroll delay-100"
-                    style="max-width: 600px; margin-left: auto; margin-right: auto">
-                    <span lang="en"
-                        >Bricks Scan continues by making documents searchable, named, and automatically organized.</span
-                    >
-                    <span lang="es" class="hidden"
-                        >La mayoría de las apps se detienen tras crear un PDF. Bricks Scan continúa organizando tus
-                        documentos automáticamente.</span
-                    >
-                </p>
-
-                <div class="comparison-table-wrapper reveal-on-scroll delay-200">
-                    <table class="comparison-table">
-                        <thead>
-                            <tr>
-                                <th>Feature</th>
-                                <th>Typical Apps</th>
-                                <th style="color: var(--accent-teal)">Bricks Scan</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <span lang="en">Scan documents</span
-                                    ><span lang="es" class="hidden">Escanear documentos</span>
-                                </td>
-                                <td>✓</td>
-                                <td style="color: var(--accent-teal); font-weight: bold">✓</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span lang="en">Search inside documents</span
-                                    ><span lang="es" class="hidden">Buscar dentro de documentos</span>
-                                </td>
-                                <td>✓</td>
-                                <td style="color: var(--accent-teal); font-weight: bold">✓</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span lang="en">Automatic document names</span
-                                    ><span lang="es" class="hidden">Nombres automáticos</span>
-                                </td>
-                                <td>✗</td>
-                                <td style="color: var(--accent-teal); font-weight: bold">✓</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span lang="en">Automatic organization</span
-                                    ><span lang="es" class="hidden">Organización automática</span>
-                                </td>
-                                <td>✗</td>
-                                <td style="color: var(--accent-teal); font-weight: bold">✓</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span lang="en">On-device processing</span
-                                    ><span lang="es" class="hidden">Procesamiento local</span>
-                                </td>
-                                <td><span lang="en">Rare</span><span lang="es" class="hidden">Raro</span></td>
-                                <td style="color: var(--accent-teal); font-weight: bold">✓</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span lang="en">Works offline</span
-                                    ><span lang="es" class="hidden">Funciona sin conexión</span>
-                                </td>
-                                <td><span lang="en">Rare</span><span lang="es" class="hidden">Raro</span></td>
-                                <td style="color: var(--accent-teal); font-weight: bold">✓</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <p class="metadata mt-md reveal-on-scroll delay-300" style="font-weight: 500">
-                    <span lang="en">Built for people who manage documents &mdash; not just scan them.</span>
-                    <span lang="es" class="hidden"
-                        >Creado para personas que manejan documentos &mdash; no solo los escanean.</span
-                    >
-                </p>
-            </div>
-        </section>
-
-        <!-- 8. Final CTA Section -->
-        <section class="section section-padding-large">
-            <div
-                class="container reveal-on-scroll delay-200"
-                style="max-width: 1100px; text-align: center; margin-bottom: 48px">
-                <img
-                    src="images-bricks-scan/scan-feature-en-02.jpg"
-                    alt="Time Saving Feature"
-                    class="hero-img"
-                    data-app-image="bricks-scan-feature-02"
-                    lang="en" />
-                <img
-                    src="images-bricks-scan/scan-feature-es-02.jpg"
-                    alt="Time Saving Feature"
-                    class="hero-img hidden"
-                    data-app-image="bricks-scan-feature-02"
-                    lang="es" />
-            </div>
-
-            <div class="container reading-column center-text">
-                <h2 class="section-title reveal-on-scroll" style="font-size: 40px">
-                    <span lang="en">Spend less time organizing documents.</span>
-                    <span lang="es" class="hidden">Pasa menos tiempo organizando documentos.</span>
-                </h2>
-                <p
-                    class="body-text mb-md reveal-on-scroll delay-100"
-                    style="max-width: 500px; margin-left: auto; margin-right: auto">
-                    <span lang="en">Scan, sort, and find your documents in seconds.</span>
-                    <span lang="es" class="hidden"
-                        >Escanea, organiza y encuentra documentos al instante con el escáner que organiza tus documentos
-                        automáticamente.</span
-                    >
-                </p>
-                <div
-                    class="cta-group reveal-on-scroll delay-200"
-                    style="display: flex; flex-direction: column; align-items: center; gap: 12px">
-                    <a
-                        href="https://apps.apple.com/app/idYOUR_APP_ID"
-                        class="btn btn-primary"
-                        style="padding: 16px 32px; font-size: 16px">
-                        <span lang="en">Download Bricks Scan</span>
-                        <span lang="es" class="hidden">Descargar Bricks Scan</span>
+                    <a href="https://apps.apple.com/app/idYOUR_APP_ID" class="btn btn-primary">
+                        <span lang="en">Download on the App Store</span>
+                        <span lang="es" class="hidden">Descargar en App Store</span>
                     </a>
-                    <p class="metadata" style="margin: 0; opacity: 0.8; text-align: center">
-                        <span lang="en">iPhone &middot; iPad &middot; Mac</span>
-                        <span lang="es" class="hidden">Disponible en iPhone &middot; iPad &middot; Mac</span>
+                    <p class="metadata" style="margin: 0; opacity: 0.8; text-align: center; margin-top: 8px">
+                        <span lang="en">No account required</span>
+                        <span lang="es" class="hidden">No requiere cuenta</span>
                     </p>
                 </div>
             </div>
-        </section>
 
-        <!-- Footer -->
-        <footer class="site-footer">
-            <div class="container reveal-on-scroll">
-                <div
-                    style="
+            <!-- Hero Image -->
+            <div class="hero-image-wrapper reveal-on-scroll delay-300" style="margin-top: 48px">
+                <img src="images-bricks-scan/hero-image-en.png" alt="Bricks Scan App Interface" class="hero-img"
+                    lang="en" />
+                <img src="images-bricks-scan/hero-image-es.png" alt="Bricks Scan App Interface" class="hero-img hidden"
+                    lang="es" />
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Workflow Section -->
+    <section class="section">
+        <div class="container center-text">
+            <img src="images-bricks-scan/icon-section2.svg" alt="Workflow" class="reveal-on-scroll delay-100"
+                style="width: 64px; height: 64px; margin: 0 auto 16px; display: block" />
+            <h2 class="section-title reveal-on-scroll delay-100">
+                <span lang="en">Scan. Auto-Sort. Done.</span>
+                <span lang="es" class="hidden">Escanear <span style="color: var(--text-secondary)">&rarr;</span>
+                    Clasificar
+                    <span style="color: var(--text-secondary)">&rarr;</span> Listo</span>
+            </h2>
+
+            <div class="workflow-grid reveal-on-scroll delay-200">
+                <div class="center-text">
+                    <img src="images-bricks-scan/screenshot-01-en.png" alt="Scan Step" style="
+                                width: 100%;
+                                max-width: 260px;
+                                border-radius: 32px;
+                                box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+                                margin-bottom: 24px;
+                            " lang="en" />
+                    <img src="images-bricks-scan/screenshot-01-es.png" alt="Paso Escanear" style="
+                                width: 100%;
+                                max-width: 260px;
+                                border-radius: 32px;
+                                box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+                                margin-bottom: 24px;
+                            " class="hidden" lang="es" />
+                    <h3 class="subheading" style="font-size: 20px">
+                        <span lang="en">Scan</span>
+                        <span lang="es" class="hidden">Escanear</span>
+                    </h3>
+                    <p class="body-text" style="font-size: 16px">
+                        <span lang="en">Capture contracts, IDs, receipts, and paperwork.</span>
+                        <span lang="es" class="hidden">Captura contratos, identificaciones, recibos y papeleo en
+                            segundos.</span>
+                    </p>
+                </div>
+                <div class="center-text">
+                    <img src="images-bricks-scan/screenshot-02-en.png" alt="Organize Step" style="
+                                width: 100%;
+                                max-width: 260px;
+                                border-radius: 32px;
+                                box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+                                margin-bottom: 24px;
+                            " lang="en" />
+                    <img src="images-bricks-scan/screenshot-02-es.png" alt="Paso Organizar" style="
+                                width: 100%;
+                                max-width: 260px;
+                                border-radius: 32px;
+                                box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+                                margin-bottom: 24px;
+                            " class="hidden" lang="es" />
+                    <h3 class="subheading" style="font-size: 20px">
+                        <span lang="en">Auto-Sort</span>
+                        <span lang="es" class="hidden">Clasificar</span>
+                    </h3>
+                    <p class="body-text" style="font-size: 16px">
+                        <span lang="en">Makes text searchable, names the document, and organizes it
+                            automatically.</span>
+                        <span lang="es" class="hidden">Clasificar nombra y organiza tu documento automáticamente.</span>
+                    </p>
+                </div>
+                <div class="center-text">
+                    <img src="images-bricks-scan/screenshot-03-en.png" alt="Done Step" style="
+                                width: 100%;
+                                max-width: 260px;
+                                border-radius: 32px;
+                                box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+                                margin-bottom: 24px;
+                            " lang="en" />
+                    <img src="images-bricks-scan/screenshot-03-es.png" alt="Paso Listo" style="
+                                width: 100%;
+                                max-width: 260px;
+                                border-radius: 32px;
+                                box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+                                margin-bottom: 24px;
+                            " class="hidden" lang="es" />
+                    <h3 class="subheading" style="font-size: 20px">
+                        <span lang="en">Done</span>
+                        <span lang="es" class="hidden">Listo</span>
+                    </h3>
+                    <p class="body-text" style="font-size: 16px">
+                        <span lang="en">Ready to find, review, and share. Instant Search, Auto-Sort, 100%
+                            Offline.</span>
+                        <span lang="es" class="hidden">Tu documento listo para buscar, revisar y compartir.</span>
+                    </p>
+                </div>
+            </div>
+            <p class="reveal-on-scroll delay-100 subheading"
+                style="margin-top: 48px; color: var(--accent-teal); font-weight: bold;">
+                <span lang="en">Powered by on-device intelligence</span>
+                <span lang="es" class="hidden">Impulsado por Apple Intelligence</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- 4. Features Bento Grid -->
+    <section class="section">
+        <div class="container">
+            <div class="center-text mb-md reveal-on-scroll">
+                <h2 class="section-title">
+                    <span lang="en">Built for the work after scanning.</span>
+                    <span lang="es" class="hidden">Todo lo que necesitas después de escanear.</span>
+                </h2>
+            </div>
+
+            <div class="bento-grid reveal-on-scroll delay-100">
+                <!-- Auto-Sort (Large) -->
+                <div class="bento-card bento-auto-sort">
+                    <h3 class="subheading" style="font-size: 24px">
+                        <span lang="en">Auto-Sort</span>
+                        <span lang="es" class="hidden">Clasificar</span>
+                    </h3>
+                    <p class="body-text" style="font-size: 16px">
+                        <span lang="en">Makes text searchable, names each document, and organizes everything
+                            automatically.
+                            Powered by on-device intelligence.</span>
+                        <span lang="es" class="hidden">Vuelve el texto buscable, crea un nombre claro y organiza cada
+                            escaneo
+                            automáticamente.</span>
+                    </p>
+                    <img src="images-bricks-scan/bento-feature-en-01.png" alt="Auto-Sort Feature" class="bento-img"
+                        style="margin-top: auto" lang="en" />
+                    <img src="images-bricks-scan/bento-feature-es-01.png" alt="Auto-Sort Feature"
+                        class="bento-img hidden" style="margin-top: auto" lang="es" />
+                </div>
+
+                <!-- Instant Search -->
+                <div class="bento-card bento-search">
+                    <h3 class="subheading" style="font-size: 20px">
+                        <span lang="en">Instant Search</span>
+                        <span lang="es" class="hidden">Búsqueda</span>
+                    </h3>
+                    <p class="body-text" style="font-size: 15px">
+                        <span lang="en">Find names, addresses, dates, and anything.</span>
+                        <span lang="es" class="hidden">Encuentra nombres, direcciones, y más dentro de tus
+                            documentos.</span>
+                    </p>
+                    <img src="images-bricks-scan/bento-feature-en-02.png" alt="Instant Search Feature" class="bento-img"
+                        style="margin-top: auto" lang="en" />
+                    <img src="images-bricks-scan/bento-feature-es-02.png" alt="Instant Search Feature"
+                        class="bento-img hidden" style="margin-top: auto" lang="es" />
+                </div>
+
+                <!-- Professional PDF -->
+                <div class="bento-card bento-pdf">
+                    <h3 class="subheading" style="font-size: 20px">
+                        <span lang="en">Ready-to-Share</span>
+                        <span lang="es" class="hidden">PDF Profesional</span>
+                    </h3>
+                    <p class="body-text" style="font-size: 15px">
+                        <span lang="en">Generate clean PDFs ready to send.</span>
+                        <span lang="es" class="hidden">Genera PDFs limpios y de alta calidad listos para
+                            compartir.</span>
+                    </p>
+                    <img src="images-bricks-scan/bento-feature-en-03.png" alt="Professional PDF Feature"
+                        class="bento-img" style="margin-top: auto" lang="en" />
+                    <img src="images-bricks-scan/bento-feature-es-03.png" alt="Professional PDF Feature"
+                        class="bento-img hidden" style="margin-top: auto" lang="es" />
+                </div>
+
+                <!-- AI Summary -->
+                <div class="bento-card bento-ai">
+                    <h3 class="subheading" style="font-size: 20px">
+                        <span lang="en">AI Summary</span>
+                        <span lang="es" class="hidden">Resumen con IA</span>
+                    </h3>
+                    <p class="body-text" style="font-size: 15px">
+                        <span lang="en">Get a quick summary of long documents.</span>
+                        <span lang="es" class="hidden">Obtén un resumen rápido de documentos largos.</span>
+                    </p>
+                    <img src="images-bricks-scan/bento-feature-en-04.png" alt="AI Summary Feature" class="bento-img"
+                        style="margin-top: auto" lang="en" />
+                    <img src="images-bricks-scan/bento-feature-es-04.png" alt="AI Summary Feature"
+                        class="bento-img hidden" style="margin-top: auto" lang="es" />
+                </div>
+
+                <!-- Markup -->
+                <div class="bento-card bento-markup">
+                    <h3 class="subheading" style="font-size: 20px">
+                        <span lang="en">Markup &amp; Notes</span>
+                        <span lang="es" class="hidden">Marcado y Notas</span>
+                    </h3>
+                    <p class="body-text" style="font-size: 15px">
+                        <span lang="en">Highlight, draw, or add notes.</span>
+                        <span lang="es" class="hidden">Resalta, dibuja o añade notas en tus escaneos.</span>
+                    </p>
+                    <img src="images-bricks-scan/bento-feature-en-05.png" alt="Markup & Notes Feature" class="bento-img"
+                        style="margin-top: auto" lang="en" />
+                    <img src="images-bricks-scan/bento-feature-es-05.png" alt="Markup & Notes Feature"
+                        class="bento-img hidden" style="margin-top: auto" lang="es" />
+                </div>
+
+                <!-- Sign -->
+                <div class="bento-card bento-card-horizontal bento-sign">
+                    <div class="bento-content">
+                        <h3 class="subheading" style="font-size: 20px">
+                            <span lang="en">Sign Documents</span>
+                            <span lang="es" class="hidden">Firmar Documentos</span>
+                        </h3>
+                        <p class="body-text" style="font-size: 15px; margin-bottom: 0">
+                            <span lang="en">Sign paperwork quickly without printing.</span>
+                            <span lang="es" class="hidden">Firma el papeleo rápidamente sin imprimir.</span>
+                        </p>
+                    </div>
+                    <img src="images-bricks-scan/bento-feature-en-06.png" alt="Sign Documents Feature"
+                        class="bento-img-horizontal" lang="en" />
+                    <img src="images-bricks-scan/bento-feature-es-06.png" alt="Sign Documents Feature"
+                        class="bento-img-horizontal hidden" lang="es" />
+                </div>
+
+                <!-- Devices -->
+                <div class="bento-card bento-card-horizontal bento-devices">
+                    <div class="bento-content">
+                        <h3 class="subheading" style="font-size: 20px">
+                            <span lang="en">Across Your Devices</span>
+                            <span lang="es" class="hidden">En Todos tus Dispositivos</span>
+                        </h3>
+                        <p class="body-text" style="font-size: 15px; margin-bottom: 0">
+                            <span lang="en">Available on iPhone, iPad and Mac.</span>
+                            <span lang="es" class="hidden">Escanea en iPhone y continúa en iPad o Mac.</span>
+                        </p>
+                    </div>
+                    <img src="images-bricks-scan/bento-feature-en-07.png" alt="Across Your Devices Feature"
+                        class="bento-img-horizontal" lang="en" />
+                    <img src="images-bricks-scan/bento-feature-es-07.png" alt="Across Your Devices Feature"
+                        class="bento-img-horizontal hidden" lang="es" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Privacy Section -->
+    <section class="section section-alt">
+        <div class="container reading-column center-text">
+            <img src="images-bricks-scan/icon-section5.svg" alt="Workflow" class="reveal-on-scroll delay-100"
+                style="width: 64px; height: 64px; margin: 0 auto 16px; display: block" />
+            <h2 class="section-title reveal-on-scroll">
+                <span lang="en">Private by design.</span>
+                <span lang="es" class="hidden">Privacidad primero por diseño.</span>
+            </h2>
+            <p class="body-text mb-sm reveal-on-scroll delay-100" style="margin-left: auto; margin-right: auto">
+                <span lang="en">All processing happens on your device. Your documents are not uploaded for analysis or
+                    processing.</span>
+                <span lang="es" class="hidden">Todo el procesamiento de documentos ocurre directamente en tu
+                    dispositivo. Tus documentos no se
+                    suben a servidores externos para análisis o procesamiento.</span>
+            </p>
+        </div>
+
+        <div class="container privacy-grid reveal-on-scroll delay-200">
+            <div class="center-text">
+                <img src="images/checkmark.svg" alt="Check" class="checkmark-icon"
+                    style="margin: 0 auto 16px; display: block" />
+                <h3 class="subheading" style="font-size: 18px">
+                    <span lang="en">100% Offline</span>
+                    <span lang="es" class="hidden">100% Sin Conexión</span>
+                </h3>
+                <p class="body-text" style="font-size: 15px; margin: 0 auto">
+                    <span lang="en">Works without internet.</span>
+                    <span lang="es" class="hidden">Funciona sin internet.</span>
+                </p>
+            </div>
+            <div class="center-text">
+                <img src="images/checkmark.svg" alt="Check" class="checkmark-icon"
+                    style="margin: 0 auto 16px; display: block" />
+                <h3 class="subheading" style="font-size: 18px">
+                    <span lang="en">On-Device Processing</span>
+                    <span lang="es" class="hidden">Procesamiento Local</span>
+                </h3>
+                <p class="body-text" style="font-size: 15px; margin: 0 auto">
+                    <span lang="en">Your data stays on your device.</span>
+                    <span lang="es" class="hidden">Tus datos no se envían a procesar.</span>
+                </p>
+            </div>
+            <div class="center-text">
+                <img src="images/checkmark.svg" alt="Check" class="checkmark-icon"
+                    style="margin: 0 auto 16px; display: block" />
+                <h3 class="subheading" style="font-size: 18px">
+                    <span lang="en">Optional iCloud Sync</span>
+                    <span lang="es" class="hidden">Apple iCloud Sync</span>
+                </h3>
+                <p class="body-text" style="font-size: 15px; margin: 0 auto">
+                    <span lang="en">Access your documents across Apple devices.</span>
+                    <span lang="es" class="hidden">Trabaja desde cualquiera de tus dispositivos.</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Perfect For Section -->
+    <section class="section">
+        <div class="container reveal-on-scroll delay-200"
+            style="max-width: 1100px; text-align: center; margin-bottom: 48px">
+            <img src="images-bricks-scan/scan-feature-en-01.jpg" alt="Perfect For Feature" class="hero-img"
+                data-app-image="bricks-scan-feature-01" lang="en" />
+            <img src="images-bricks-scan/scan-feature-es-01.jpg" alt="Perfect For Feature" class="hero-img hidden"
+                data-app-image="bricks-scan-feature-01" lang="es" />
+        </div>
+        <div class="container container-large center-text">
+            <h2 class="section-title reveal-on-scroll delay-100">
+                <span lang="en">Perfect for how you work.</span>
+                <span lang="es" class="hidden">Perfecto para profesionales que manejan documentos</span>
+            </h2>
+
+            <div class="perfect-for-grid reveal-on-scroll delay-200">
+                <div class="perfect-card">
+                    <h3 class="subheading" style="font-size: 18px">
+                        <span lang="en">Professionals</span>
+                        <span lang="es" class="hidden">Agentes<br />Inmobiliarios</span>
+                    </h3>
+                    <p class="body-text" style="font-size: 15px">
+                        <span lang="en">Contracts, client files, and important documents — organized and ready when you
+                            need
+                            them.</span>
+                        <span lang="es" class="hidden">Mantén contratos, identificaciones y documentos de transacciones
+                            organizados.</span>
+                    </p>
+                </div>
+                <div class="perfect-card">
+                    <h3 class="subheading" style="font-size: 18px">
+                        <span lang="en">Students &amp; Academics</span>
+                        <span lang="es" class="hidden">Administradores<br />de Propiedades</span>
+                    </h3>
+                    <p class="body-text" style="font-size: 15px">
+                        <span lang="en">Notes, slides, and study material — all searchable and easy to review.</span>
+                        <span lang="es" class="hidden">Almacena y recupera el papeleo de edificios e inquilinos más
+                            rápido.</span>
+                    </p>
+                </div>
+                <div class="perfect-card">
+                    <h3 class="subheading" style="font-size: 18px">
+                        <span lang="en">Business Owners</span>
+                        <span lang="es" class="hidden">Profesionales<br />Hipotecarios</span>
+                    </h3>
+                    <p class="body-text" style="font-size: 15px">
+                        <span lang="en">Invoices, receipts, and tax records — organized without manual filing.</span>
+                        <span lang="es" class="hidden">Maneja los documentos de clientes sin archivar
+                            manualmente.</span>
+                    </p>
+                </div>
+                <div class="perfect-card">
+                    <h3 class="subheading" style="font-size: 18px">
+                        <span lang="en">Travel &amp; Expenses</span>
+                        <span lang="es" class="hidden">Profesionales<br />Independientes</span>
+                    </h3>
+                    <p class="body-text" style="font-size: 15px">
+                        <span lang="en">Receipts and expense reports — captured and ready for reimbursement.</span>
+                        <span lang="es" class="hidden">Escanea y organiza papeles importantes sin esfuerzo.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Competitive Comparison Section -->
+    <section class="section section-alt">
+        <div class="container center-text">
+            <img src="images-bricks-scan/icon-section7.svg" alt="Workflow" class="reveal-on-scroll delay-100"
+                style="width: 64px; height: 64px; margin: 0 auto 16px; display: block" />
+            <h2 class="section-title reveal-on-scroll">
+                <span lang="en">Built to do more than scan.</span>
+                <span lang="es" class="hidden">Más que una típica app de escáner.</span>
+            </h2>
+            <p class="body-text mb-sm reveal-on-scroll delay-100"
+                style="max-width: 600px; margin-left: auto; margin-right: auto">
+                <span lang="en">Bricks Scan continues by making documents searchable, named, and automatically
+                    organized.</span>
+                <span lang="es" class="hidden">La mayoría de las apps se detienen tras crear un PDF. Bricks Scan
+                    continúa organizando tus
+                    documentos automáticamente.</span>
+            </p>
+
+            <div class="comparison-table-wrapper reveal-on-scroll delay-200">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Typical Apps</th>
+                            <th style="color: var(--accent-teal)">Bricks Scan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span lang="en">Scan documents</span><span lang="es" class="hidden">Escanear
+                                    documentos</span>
+                            </td>
+                            <td>✓</td>
+                            <td style="color: var(--accent-teal); font-weight: bold">✓</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span lang="en">Search inside documents</span><span lang="es" class="hidden">Buscar
+                                    dentro de documentos</span>
+                            </td>
+                            <td>✓</td>
+                            <td style="color: var(--accent-teal); font-weight: bold">✓</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span lang="en">Automatic document names</span><span lang="es" class="hidden">Nombres
+                                    automáticos</span>
+                            </td>
+                            <td>✗</td>
+                            <td style="color: var(--accent-teal); font-weight: bold">✓</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span lang="en">Automatic organization</span><span lang="es" class="hidden">Organización
+                                    automática</span>
+                            </td>
+                            <td>✗</td>
+                            <td style="color: var(--accent-teal); font-weight: bold">✓</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span lang="en">On-device processing</span><span lang="es" class="hidden">Procesamiento
+                                    local</span>
+                            </td>
+                            <td><span lang="en">Rare</span><span lang="es" class="hidden">Raro</span></td>
+                            <td style="color: var(--accent-teal); font-weight: bold">✓</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span lang="en">Works offline</span><span lang="es" class="hidden">Funciona sin
+                                    conexión</span>
+                            </td>
+                            <td><span lang="en">Rare</span><span lang="es" class="hidden">Raro</span></td>
+                            <td style="color: var(--accent-teal); font-weight: bold">✓</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="metadata mt-md reveal-on-scroll delay-300" style="font-weight: 500">
+                <span lang="en">Built for people who manage documents &mdash; not just scan them.</span>
+                <span lang="es" class="hidden">Creado para personas que manejan documentos &mdash; no solo los
+                    escanean.</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- 8. Final CTA Section -->
+    <section class="section section-padding-large">
+        <div class="container reveal-on-scroll delay-200"
+            style="max-width: 1100px; text-align: center; margin-bottom: 48px">
+            <img src="images-bricks-scan/scan-feature-en-02.jpg" alt="Time Saving Feature" class="hero-img"
+                data-app-image="bricks-scan-feature-02" lang="en" />
+            <img src="images-bricks-scan/scan-feature-es-02.jpg" alt="Time Saving Feature" class="hero-img hidden"
+                data-app-image="bricks-scan-feature-02" lang="es" />
+        </div>
+
+        <div class="container reading-column center-text">
+            <h2 class="section-title reveal-on-scroll" style="font-size: 40px">
+                <span lang="en">Spend less time organizing documents.</span>
+                <span lang="es" class="hidden">Pasa menos tiempo organizando documentos.</span>
+            </h2>
+            <p class="body-text mb-md reveal-on-scroll delay-100"
+                style="max-width: 500px; margin-left: auto; margin-right: auto">
+                <span lang="en">Scan, sort, and find your documents in seconds.</span>
+                <span lang="es" class="hidden">Escanea, organiza y encuentra documentos al instante con el escáner que
+                    organiza tus documentos
+                    automáticamente.</span>
+            </p>
+            <div class="cta-group reveal-on-scroll delay-200"
+                style="display: flex; flex-direction: column; align-items: center; gap: 12px">
+                <a href="https://apps.apple.com/app/idYOUR_APP_ID" class="btn btn-primary"
+                    style="padding: 16px 32px; font-size: 16px">
+                    <span lang="en">Download Bricks Scan</span>
+                    <span lang="es" class="hidden">Descargar Bricks Scan</span>
+                </a>
+                <p class="metadata" style="margin: 0; opacity: 0.8; text-align: center">
+                    <span lang="en">iPhone &middot; iPad &middot; Mac</span>
+                    <span lang="es" class="hidden">Disponible en iPhone &middot; iPad &middot; Mac</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container reveal-on-scroll">
+            <div style="
                         display: flex;
                         flex-wrap: wrap;
                         gap: 48px;
                         justify-content: space-between;
                         margin-bottom: 48px;
                     ">
-                    <!-- Brand Section -->
-                    <div style="flex: 1; min-width: 280px">
-                        <a href="index.html" style="display: inline-block; margin-bottom: 16px">
-                            <img
-                                src="images/Bricks Logo - Dark.svg"
-                                onerror="this.src='images/Bricks Logo.svg'"
-                                alt="Bricks Logo"
-                                style="height: 24px; opacity: 0.8" />
-                        </a>
-                        <p class="body-text" style="font-size: 15px">
-                            <span lang="en">We build apps for the real estate sector.</span>
-                            <span lang="es" class="hidden">Construimos apps para el sector inmobiliario.</span>
-                        </p>
-                    </div>
+                <!-- Brand Section -->
+                <div style="flex: 1; min-width: 280px">
+                    <a href="index.html" style="display: inline-block; margin-bottom: 16px">
+                        <img src="images/Bricks Logo - Dark.svg" onerror="this.src='images/Bricks Logo.svg'"
+                            alt="Bricks Logo" style="height: 24px; opacity: 0.8" />
+                    </a>
+                    <p class="body-text" style="font-size: 15px">
+                        <span lang="en">We build apps for the real estate sector.</span>
+                        <span lang="es" class="hidden">Construimos apps para el sector inmobiliario.</span>
+                    </p>
+                </div>
 
-                    <!-- Footer Links Grid -->
-                    <div
-                        style="
+                <!-- Footer Links Grid -->
+                <div style="
                             flex: 2;
                             min-width: 280px;
                             display: grid;
                             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
                             gap: 32px;
                         ">
-                        <!-- Apps Section -->
-                        <div>
-                            <h3 class="subheading" style="font-size: 16px; margin-bottom: 16px">
-                                <span lang="en">Apps</span>
-                                <span lang="es" class="hidden">Apps</span>
-                            </h3>
-                            <ul
-                                style="
+                    <!-- Apps Section -->
+                    <div>
+                        <h3 class="subheading" style="font-size: 16px; margin-bottom: 16px">
+                            <span lang="en">Apps</span>
+                            <span lang="es" class="hidden">Apps</span>
+                        </h3>
+                        <ul style="
                                     list-style: none;
                                     padding: 0;
                                     margin: 0;
@@ -1216,35 +1121,34 @@
                                     flex-direction: column;
                                     gap: 12px;
                                 ">
-                                <li>
-                                    <a href="bricks-scan.html" class="body-text" style="font-size: 15px">
-                                        <span lang="en">Bricks Scan</span>
-                                        <span lang="es" class="hidden">Bricks Scan</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="bricks-calc.html" class="body-text" style="font-size: 15px">
-                                        <span lang="en">Bricks Calc</span>
-                                        <span lang="es" class="hidden">Bricks Calc</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://leads.bricks.pe" class="body-text" style="font-size: 15px">
-                                        <span lang="en">Bricks Leads</span>
-                                        <span lang="es" class="hidden">Bricks Leads</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                            <li>
+                                <a href="bricks-scan.html" class="body-text" style="font-size: 15px">
+                                    <span lang="en">Bricks Scan</span>
+                                    <span lang="es" class="hidden">Bricks Scan</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="bricks-calc.html" class="body-text" style="font-size: 15px">
+                                    <span lang="en">Bricks Calc</span>
+                                    <span lang="es" class="hidden">Bricks Calc</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://leads.bricks.pe" class="body-text" style="font-size: 15px">
+                                    <span lang="en">Bricks Leads</span>
+                                    <span lang="es" class="hidden">Bricks Leads</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
 
-                        <!-- Company Section -->
-                        <div>
-                            <h3 class="subheading" style="font-size: 16px; margin-bottom: 16px">
-                                <span lang="en">Company</span>
-                                <span lang="es" class="hidden">Compañía</span>
-                            </h3>
-                            <ul
-                                style="
+                    <!-- Company Section -->
+                    <div>
+                        <h3 class="subheading" style="font-size: 16px; margin-bottom: 16px">
+                            <span lang="en">Company</span>
+                            <span lang="es" class="hidden">Compañía</span>
+                        </h3>
+                        <ul style="
                                     list-style: none;
                                     padding: 0;
                                     margin: 0;
@@ -1252,35 +1156,34 @@
                                     flex-direction: column;
                                     gap: 12px;
                                 ">
-                                <li>
-                                    <a href="about.html" class="body-text" style="font-size: 15px">
-                                        <span lang="en">About us</span>
-                                        <span lang="es" class="hidden">Sobre nosotros</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="purchase-guide-01.html" class="body-text" style="font-size: 15px">
-                                        <span lang="en">Purchase Guide</span>
-                                        <span lang="es" class="hidden">Guía Rápida</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="mailto:hello@bricks.pe" class="body-text" style="font-size: 15px">
-                                        <span lang="en">Email: hello@bricks.pe</span>
-                                        <span lang="es" class="hidden">Email: hello@bricks.pe</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                            <li>
+                                <a href="about.html" class="body-text" style="font-size: 15px">
+                                    <span lang="en">About us</span>
+                                    <span lang="es" class="hidden">Sobre nosotros</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="purchase-guide-01.html" class="body-text" style="font-size: 15px">
+                                    <span lang="en">Purchase Guide</span>
+                                    <span lang="es" class="hidden">Guía Rápida</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="mailto:hello@bricks.pe" class="body-text" style="font-size: 15px">
+                                    <span lang="en">Email: hello@bricks.pe</span>
+                                    <span lang="es" class="hidden">Email: hello@bricks.pe</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
 
-                        <!-- Support Section -->
-                        <div>
-                            <h3 class="subheading" style="font-size: 16px; margin-bottom: 16px">
-                                <span lang="en">Support</span>
-                                <span lang="es" class="hidden">Soporte</span>
-                            </h3>
-                            <ul
-                                style="
+                    <!-- Support Section -->
+                    <div>
+                        <h3 class="subheading" style="font-size: 16px; margin-bottom: 16px">
+                            <span lang="en">Support</span>
+                            <span lang="es" class="hidden">Soporte</span>
+                        </h3>
+                        <ul style="
                                     list-style: none;
                                     padding: 0;
                                     margin: 0;
@@ -1288,32 +1191,31 @@
                                     flex-direction: column;
                                     gap: 12px;
                                 ">
-                                <li>
-                                    <a href="support.html" class="body-text" style="font-size: 15px">
-                                        <span lang="en">Help &amp; Feedback</span>
-                                        <span lang="es" class="hidden">Ayuda &amp; Feedback</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="help.html" class="body-text" style="font-size: 15px">
-                                        <span lang="en">Apps Guides</span>
-                                        <span lang="es" class="hidden">Guías de Apps</span>
-                                    </a>
-                                </li>
+                            <li>
+                                <a href="support.html" class="body-text" style="font-size: 15px">
+                                    <span lang="en">Help &amp; Feedback</span>
+                                    <span lang="es" class="hidden">Ayuda &amp; Feedback</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="help.html" class="body-text" style="font-size: 15px">
+                                    <span lang="en">Apps Guides</span>
+                                    <span lang="es" class="hidden">Guías de Apps</span>
+                                </a>
+                            </li>
 
-                                <li>
-                                    <a href="survey.html" class="body-text" style="font-size: 15px">
-                                        <span lang="en">Survey</span>
-                                        <span lang="es" class="hidden">Encuesta</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                            <li>
+                                <a href="survey.html" class="body-text" style="font-size: 15px">
+                                    <span lang="en">Survey</span>
+                                    <span lang="es" class="hidden">Encuesta</span>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
+            </div>
 
-                <div
-                    style="
+            <div style="
                         border-top: 1px solid var(--surface-shadow);
                         padding-top: 32px;
                         display: flex;
@@ -1321,132 +1223,193 @@
                         align-items: center;
                         gap: 16px;
                     ">
-                    <p class="metadata" style="text-align: center">
-                        <span lang="en">© 2026 Bricks Apps. All rights reserved.</span>
-                        <span lang="es" class="hidden">© 2026 Bricks Apps. Todos los derechos reservados.</span>
-                    </p>
-                    <div
-                        class="footer-links"
-                        style="display: flex; justify-content: center; flex-wrap: wrap; gap: 24px">
-                        <a href="privacy.html" style="margin: 0">
-                            <span lang="en">Privacy Policy</span>
-                            <span lang="es" class="hidden">Política de Privacidad</span>
-                        </a>
-                        <a href="terms.html" style="margin: 0">
-                            <span lang="en">Terms of Service</span>
-                            <span lang="es" class="hidden">Términos de Servicio</span>
-                        </a>
-                    </div>
+                <p class="metadata" style="text-align: center">
+                    <span lang="en">© 2026 Bricks Apps. All rights reserved.</span>
+                    <span lang="es" class="hidden">© 2026 Bricks Apps. Todos los derechos reservados.</span>
+                </p>
+                <div class="footer-links" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 24px">
+                    <a href="privacy.html" style="margin: 0">
+                        <span lang="en">Privacy Policy</span>
+                        <span lang="es" class="hidden">Política de Privacidad</span>
+                    </a>
+                    <a href="terms.html" style="margin: 0">
+                        <span lang="en">Terms of Service</span>
+                        <span lang="es" class="hidden">Términos de Servicio</span>
+                    </a>
                 </div>
             </div>
-        </footer>
+        </div>
+    </footer>
 
-        <script>
-            // Intersection Observer for Reveal on Scroll
-            document.addEventListener("DOMContentLoaded", () => {
-                const observerOptions = {
-                    root: null,
-                    rootMargin: "0px",
-                    threshold: 0.1
+    <script>
+        // Intersection Observer for Reveal on Scroll
+        document.addEventListener("DOMContentLoaded", () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: "0px",
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("is-visible");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const animatedElements = document.querySelectorAll(".reveal-on-scroll");
+            animatedElements.forEach((el) => {
+                observer.observe(el);
+            });
+
+            // Expanding Background Logic
+            const problemSection = document.getElementById("problem-section");
+            const expandingBg = problemSection ? problemSection.querySelector(".expanding-bg") : null;
+
+            if (problemSection && expandingBg) {
+                let bgTicking = false;
+                const handleScroll = () => {
+                    if (bgTicking) return;
+                    bgTicking = true;
+                    requestAnimationFrame(() => {
+                        const rect = problemSection.getBoundingClientRect();
+                        const windowHeight = window.innerHeight;
+
+                        const triggerPoint = windowHeight * 0.2;
+                        const totalDistance = windowHeight - triggerPoint;
+
+                        let progress = (windowHeight - rect.top) / totalDistance;
+                        progress = Math.min(Math.max(progress, 0), 1);
+
+                        const startWidth = 50;
+                        const endWidth = 100;
+                        const startRadius = 24;
+                        const endRadius = 0;
+
+                        const currentWidth = startWidth + (endWidth - startWidth) * progress;
+                        const currentRadius = startRadius - (startRadius - endRadius) * progress;
+
+                        expandingBg.style.width = `${currentWidth}%`;
+                        expandingBg.style.borderRadius = `${currentRadius}px`;
+                        bgTicking = false;
+                    });
                 };
 
-                const observer = new IntersectionObserver((entries, observer) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add("is-visible");
-                            observer.unobserve(entry.target);
-                        }
+                window.addEventListener("scroll", handleScroll, { passive: true });
+                handleScroll(); // Initial call
+            }
+
+            // Solution Section Fan-out Animation Logic
+            const stackContainer = document.querySelector(".screenshot-stack");
+            const leftScreenshots = stackContainer ? stackContainer.querySelectorAll(".screenshot-side.left") : [];
+            const rightScreenshots = stackContainer
+                ? stackContainer.querySelectorAll(".screenshot-side.right")
+                : [];
+
+            if (stackContainer && leftScreenshots.length > 0 && rightScreenshots.length > 0) {
+                let fanoutTicking = false;
+                const handleSolutionScroll = () => {
+                    if (fanoutTicking) return;
+                    fanoutTicking = true;
+                    requestAnimationFrame(() => {
+                        const rect = stackContainer.getBoundingClientRect();
+                        const windowHeight = window.innerHeight;
+
+                        const startPoint = windowHeight * 0.9;
+                        const endPoint = windowHeight * 0.3;
+                        const totalDistance = startPoint - endPoint;
+
+                        let progress = (startPoint - rect.top) / totalDistance;
+                        progress = Math.min(Math.max(progress, 0), 1);
+
+                        const isMobile = window.innerWidth <= 768;
+                        const maxRotation = isMobile ? 3 : 4;
+                        const maxTranslateX = isMobile ? 40 : 80;
+                        const maxTranslateY = isMobile ? -10 : -20;
+
+                        const currentRotation = maxRotation * progress;
+                        const currentTranslateX = maxTranslateX * progress;
+                        const currentTranslateY = maxTranslateY * progress;
+
+                        leftScreenshots.forEach((el) => {
+                            el.style.transform = `translateX(-${currentTranslateX}px) translateY(${currentTranslateY}px) rotate(-${currentRotation}deg)`;
+                        });
+                        rightScreenshots.forEach((el) => {
+                            el.style.transform = `translateX(${currentTranslateX}px) translateY(${currentTranslateY}px) rotate(${currentRotation}deg)`;
+                        });
+                        fanoutTicking = false;
                     });
-                }, observerOptions);
+                };
 
-                const animatedElements = document.querySelectorAll(".reveal-on-scroll");
-                animatedElements.forEach((el) => {
-                    observer.observe(el);
-                });
+                window.addEventListener("scroll", handleSolutionScroll, { passive: true });
+                handleSolutionScroll(); // Initial call
+            }
 
-                // Expanding Background Logic
-                const problemSection = document.getElementById("problem-section");
-                const expandingBg = problemSection ? problemSection.querySelector(".expanding-bg") : null;
+            // ── Dot Grid + Glow: Autonomous drift + cursor override ───
+            const heroSection = document.querySelector('.section-hero');
+            const cursorGlow = document.querySelector('.hero-cursor-glow');
+            const dotGrid = document.querySelector('.hero-dot-grid');
 
-                if (problemSection && expandingBg) {
-                    let bgTicking = false;
-                    const handleScroll = () => {
-                        if (bgTicking) return;
-                        bgTicking = true;
-                        requestAnimationFrame(() => {
-                            const rect = problemSection.getBoundingClientRect();
-                            const windowHeight = window.innerHeight;
+            if (dotGrid || cursorGlow) {
+                let dotX = 50, dotY = 42;
+                let cursorActive = false;
+                let targetX = 50, targetY = 42;
 
-                            const triggerPoint = windowHeight * 0.2;
-                            const totalDistance = windowHeight - triggerPoint;
-
-                            let progress = (windowHeight - rect.top) / totalDistance;
-                            progress = Math.min(Math.max(progress, 0), 1);
-
-                            const startWidth = 50;
-                            const endWidth = 100;
-                            const startRadius = 24;
-                            const endRadius = 0;
-
-                            const currentWidth = startWidth + (endWidth - startWidth) * progress;
-                            const currentRadius = startRadius - (startRadius - endRadius) * progress;
-
-                            expandingBg.style.width = `${currentWidth}%`;
-                            expandingBg.style.borderRadius = `${currentRadius}px`;
-                            bgTicking = false;
-                        });
+                function autoPos(t) {
+                    return {
+                        x: 50 + 32 * Math.sin(t * 0.22),
+                        y: 42 + 20 * Math.sin(t * 0.37 + 1.0)
                     };
-
-                    window.addEventListener("scroll", handleScroll, { passive: true });
-                    handleScroll(); // Initial call
                 }
 
-                // Solution Section Fan-out Animation Logic
-                const stackContainer = document.querySelector(".screenshot-stack");
-                const leftScreenshots = stackContainer ? stackContainer.querySelectorAll(".screenshot-side.left") : [];
-                const rightScreenshots = stackContainer
-                    ? stackContainer.querySelectorAll(".screenshot-side.right")
-                    : [];
+                function tick() {
+                    const t = Date.now() / 1000;
+                    const target = cursorActive ? { x: targetX, y: targetY } : autoPos(t);
 
-                if (stackContainer && leftScreenshots.length > 0 && rightScreenshots.length > 0) {
-                    let fanoutTicking = false;
-                    const handleSolutionScroll = () => {
-                        if (fanoutTicking) return;
-                        fanoutTicking = true;
-                        requestAnimationFrame(() => {
-                            const rect = stackContainer.getBoundingClientRect();
-                            const windowHeight = window.innerHeight;
+                    const speed = cursorActive ? 0.12 : 0.04;
+                    dotX += (target.x - dotX) * speed;
+                    dotY += (target.y - dotY) * speed;
 
-                            const startPoint = windowHeight * 0.9;
-                            const endPoint = windowHeight * 0.3;
-                            const totalDistance = startPoint - endPoint;
+                    const xPct = dotX.toFixed(2) + '%';
+                    const yPct = dotY.toFixed(2) + '%';
 
-                            let progress = (startPoint - rect.top) / totalDistance;
-                            progress = Math.min(Math.max(progress, 0), 1);
+                    if (dotGrid) {
+                        dotGrid.style.setProperty('--dot-x', xPct);
+                        dotGrid.style.setProperty('--dot-y', yPct);
+                    }
 
-                            const isMobile = window.innerWidth <= 768;
-                            const maxRotation = isMobile ? 3 : 4;
-                            const maxTranslateX = isMobile ? 40 : 80;
-                            const maxTranslateY = isMobile ? -10 : -20;
+                    if (cursorGlow && !cursorActive) {
+                        cursorGlow.style.left = xPct;
+                        cursorGlow.style.top = yPct;
+                    }
 
-                            const currentRotation = maxRotation * progress;
-                            const currentTranslateX = maxTranslateX * progress;
-                            const currentTranslateY = maxTranslateY * progress;
-
-                            leftScreenshots.forEach((el) => {
-                                el.style.transform = `translateX(-${currentTranslateX}px) translateY(${currentTranslateY}px) rotate(-${currentRotation}deg)`;
-                            });
-                            rightScreenshots.forEach((el) => {
-                                el.style.transform = `translateX(${currentTranslateX}px) translateY(${currentTranslateY}px) rotate(${currentRotation}deg)`;
-                            });
-                            fanoutTicking = false;
-                        });
-                    };
-
-                    window.addEventListener("scroll", handleSolutionScroll, { passive: true });
-                    handleSolutionScroll(); // Initial call
+                    requestAnimationFrame(tick);
                 }
-            });
-        </script>
-    </body>
+
+                requestAnimationFrame(tick);
+
+                if (heroSection) {
+                    heroSection.addEventListener('mousemove', (e) => {
+                        const rect = heroSection.getBoundingClientRect();
+                        targetX = ((e.clientX - rect.left) / rect.width) * 100;
+                        targetY = ((e.clientY - rect.top) / rect.height) * 100;
+                        cursorActive = true;
+
+                        if (cursorGlow) {
+                            cursorGlow.style.left = targetX.toFixed(2) + '%';
+                            cursorGlow.style.top = targetY.toFixed(2) + '%';
+                        }
+                    }, { passive: true });
+
+                    heroSection.addEventListener('mouseleave', () => {
+                        cursorActive = false;
+                    }, { passive: true });
+                }
+            }
+        });
+    </script>
+</body>
+
 </html>
