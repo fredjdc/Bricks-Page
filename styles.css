@@ -768,7 +768,7 @@ a:hover {
     }
 
     .btn {
-        width: 100%;
+        width: auto;
         height: auto;
         padding: 20px 24px;
     }
