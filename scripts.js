@@ -603,6 +603,14 @@ const updateAppScreenshots = (lang) => {
             'bricks-scan-feature-05': {
                 es: 'images-bricks-scan/scan-feature-es-05.png',
                 en: 'images-bricks-scan/scan-feature-en-05.png'
+            },
+            'bricks-scan-feature-06': {
+                es: 'images-bricks-scan/scan-feature-es-06.png',
+                en: 'images-bricks-scan/scan-feature-en-06.png'
+            },
+            'bricks-scan-feature-07': {
+                es: 'images-bricks-scan/scan-feature-es-07.png',
+                en: 'images-bricks-scan/scan-feature-en-07.png'
             }
         };
 
