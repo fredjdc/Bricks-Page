@@ -709,6 +709,19 @@ a:hover {
     margin-top: var(--space-lg);
 }
 
+.footer-brand {
+    text-align: left;
+}
+
+.footer-brand p {
+    text-align: left;
+}
+
+.footer-brand img {
+    margin: 0 !important;
+    display: inline-block !important;
+}
+
 .footer-links a {
     color: var(--text-secondary);
     text-decoration: none;
@@ -2040,6 +2053,10 @@ button:focus {
     /* Center general footer content */
     footer {
         text-align: center;
+    }
+
+    .footer-social {
+        justify-content: left;
     }
 
     /* Left-align footer titles and list items for typographic structure */
