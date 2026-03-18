@@ -417,6 +417,26 @@ a:hover {
     transition-delay: 0.3s;
 }
 
+.delay-400 {
+    transition-delay: 0.4s;
+}
+
+.delay-500 {
+    transition-delay: 0.5s;
+}
+
+.delay-600 {
+    transition-delay: 0.6s;
+}
+
+.delay-700 {
+    transition-delay: 0.7s;
+}
+
+.delay-800 {
+    transition-delay: 0.8s;
+}
+
 /* Components */
 
 /* Header */
