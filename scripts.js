@@ -585,24 +585,24 @@ const updateAppScreenshots = (lang) => {
                 en: 'images-bricks-scan/fusion-en-02.png'
             },
             'bricks-scan-feature-01': {
-                es: 'images-bricks-scan/scan-feature-es-01.jpg',
-                en: 'images-bricks-scan/scan-feature-en-01.jpg'
+                es: 'images-bricks-scan/scan-feature-es-01.png',
+                en: 'images-bricks-scan/scan-feature-en-01.png'
             },
             'bricks-scan-feature-02': {
-                es: 'images-bricks-scan/scan-feature-es-02.jpg',
-                en: 'images-bricks-scan/scan-feature-en-02.jpg'
+                es: 'images-bricks-scan/scan-feature-es-02.png',
+                en: 'images-bricks-scan/scan-feature-en-02.png'
             },
             'bricks-scan-feature-03': {
-                es: 'images-bricks-scan/feature-es-03.jpg',
-                en: 'images-bricks-scan/feature-en-03.jpg'
+                es: 'images-bricks-scan/scan-feature-es-03.png',
+                en: 'images-bricks-scan/scan-feature-en-03.png'
             },
             'bricks-scan-feature-04': {
-                es: 'images-bricks-scan/feature-es-04.jpg',
-                en: 'images-bricks-scan/feature-en-04.jpg'
+                es: 'images-bricks-scan/scan-feature-es-04.png',
+                en: 'images-bricks-scan/scan-feature-en-04.png'
             },
             'bricks-scan-feature-05': {
-                es: 'images-bricks-scan/feature-es-05.jpg',
-                en: 'images-bricks-scan/feature-en-05.jpg'
+                es: 'images-bricks-scan/scan-feature-es-05.png',
+                en: 'images-bricks-scan/scan-feature-en-05.png'
             }
         };
 
