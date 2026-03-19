@@ -467,44 +467,6 @@
                 grid-row: span 1;
             }
         }
-
-        .coming-soon-badge {
-            display: inline-block;
-            padding: 8px 16px;
-            background-color: rgba(0, 166, 161, 0.1);
-            color: var(--accent-teal);
-            font-size: 13px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            border-radius: 100px;
-            margin-bottom: 24px;
-            border: 1px solid rgba(0, 166, 161, 0.2);
-        }
-
-        .waitlist-form-container {
-            max-width: 480px;
-            width: 100%;
-            margin: 40px auto 0;
-            text-align: center;
-        }
-
-        .waitlist-form {
-            display: flex;
-            gap: 12px;
-            width: 100%;
-            margin-top: 24px;
-        }
-
-        @media (max-width: 600px) {
-            .waitlist-form {
-                flex-direction: column;
-            }
-
-            .waitlist-form .btn {
-                width: 100%;
-            }
-        }
     </style>
 </head>
 
@@ -562,10 +524,11 @@
             </a>
         </div>
         <div style="display: flex; align-items: center; gap: 12px">
-            <a href="#waitlist" class="btn btn-primary"
+            <a href="https://apps.apple.com/app/idYOUR_APP_ID" class="btn btn-primary"
                 style="padding: 10px 24px; font-size: 14px; gap: 8px; display: inline-flex; align-items: center;">
-                <span lang="en">Join Waitlist</span>
-                <span lang="es" class="hidden">Lista de espera</span>
+                <img src="images-bricks-scan/icon-apple-light-hero.svg" alt="" style="width: 16px; height: 16px;" />
+                <span lang="en">Download</span>
+                <span lang="es" class="hidden">Descargar</span>
             </a>
             <div class="language-picker">
                 <button id="language-switcher" title="Change language / Cambiar idioma">
@@ -580,16 +543,12 @@
     </header>
 
     <!-- 1. Hero Section -->
-    <section id="waitlist" class="section section-hero hero2">
+    <section class="section section-hero hero2">
         <div class="hero-bg" aria-hidden="true"></div>
         <div class="hero-cursor-glow" aria-hidden="true"></div>
         <div class="hero-dot-grid" aria-hidden="true"></div>
         <div class="container hero-grid">
             <div class="hero-content" style="text-align: center; margin: 0 auto">
-                <div class="coming-soon-badge reveal-on-scroll">
-                    <span lang="en">Coming Soon</span>
-                    <span lang="es" class="hidden">Próximamente</span>
-                </div>
                 <h1 class="hero-title reveal-on-scroll" style="margin: 0 auto">
                     <span lang="en">Scan it once. Find it instantly.</span>
                     <span lang="es" class="hidden">Escanea una vez. Encuentra al instante.</span>
@@ -603,21 +562,19 @@
                         dispositivo.</span>
                 </p>
 
-                <div class="waitlist-form-container reveal-on-scroll delay-200">
-                    <p class="body-text" style="font-size: 16px; margin: 0 auto;">
-                        <span lang="en">I can notify you when it’s ready. No spam. No ads.</span>
-                        <span lang="es" class="hidden">Puedo avisarte cuando esté listo. Sin spam. Sin anuncios.</span>
+                <div class="cta-group reveal-on-scroll delay-200"
+                    style="display: flex; flex-direction: column; align-items: center; width: fit-content; gap: 12px; margin: 0 auto; margin-top: 80px;">
+                    <a href="https://apps.apple.com/app/idYOUR_APP_ID" class="btn btn-primary"
+                        style="gap: 10px; display: inline-flex; align-items: center; white-space: nowrap;">
+                        <img src="images-bricks-scan/icon-apple-light-hero.svg" alt=""
+                            style="width: 22px; height: 22px;" />
+                        <span lang="en">Download on the App Store</span>
+                        <span lang="es" class="hidden">Descargar en App Store</span>
+                    </a>
+                    <p class="metadata" style="margin: 0; opacity: 0.8; text-align: center; margin-top: 8px">
+                        <span lang="en">No account required.</span>
+                        <span lang="es" class="hidden">Sin cuentas.</span>
                     </p>
-                    <form action="https://formsubmit.co/707e6e012fa931048784ff0f766aa0df" method="POST"
-                        class="waitlist-form">
-                        <input type="hidden" name="_subject" value="Bricks Scan - Waitlist Signup">
-                        <input type="email" name="email" class="form-input-ds" placeholder="hello@mail.com" required
-                            style="margin-bottom: 0;">
-                        <button type="submit" class="btn btn-primary" style="min-width: 160px; height: 50px;">
-                            <span lang="en">Notify Me</span>
-                            <span lang="es" class="hidden">Avisarme</span>
-                        </button>
-                    </form>
                 </div>
             </div>
 
@@ -1150,11 +1107,16 @@
 
             <div class="cta-group reveal-on-scroll delay-200"
                 style="display: flex; flex-direction: column; align-items: center; width: fit-content; gap: 12px; margin: 0 auto; margin-top: 40px;">
-                <a href="#waitlist" class="btn btn-primary"
-                    style="padding: 10px 24px; font-size: 16px; gap: 8px; display: inline-flex; align-items: center;">
-                    <span lang="en">Join Waitlist</span>
-                    <span lang="es" class="hidden">Lista de espera</span>
+                <a href="https://apps.apple.com/app/idYOUR_APP_ID" class="btn btn-primary"
+                    style="gap: 10px; display: inline-flex; align-items: center; white-space: nowrap;">
+                    <img src="images-bricks-scan/icon-apple-light-hero.svg" alt="" style="width: 22px; height: 22px;" />
+                    <span lang="en">Download on the App Store</span>
+                    <span lang="es" class="hidden">Descargar en App Store</span>
                 </a>
+                <p class="metadata" style="margin: 0; opacity: 0.8; text-align: center; margin-top: 8px">
+                    <span lang="en">iPhone &middot; iPad &middot; Mac</span>
+                    <span lang="es" class="hidden">iPhone &middot; iPad &middot; Mac</span>
+                </p>
             </div>
         </div>
     </section>
