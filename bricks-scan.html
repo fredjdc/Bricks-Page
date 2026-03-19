@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bricks Scan - Built for real estate agents on Apple</title>
-    <meta name="description" content="Scan documents. They organize themselves." />
+    <title>Bricks Scan - Searchable PDF Scanner for iPhone, iPad, and Mac</title>
+    <meta name="description"
+        content="Turn contracts and paperwork into searchable PDFs. Bricks Scan names and organizes documents automatically on your device — private, offline, and built for iPhone, iPad, and Mac." />
 
     <!-- Design System CSS -->
     <link rel="stylesheet" href="styles.css" />
@@ -14,6 +15,7 @@
     <link rel="icon" href="favicon.ico" sizes="32x32" />
     <link rel="icon" type="image/png" href="images-bricks-scan/favicon-32x32.png" sizes="32x32" />
     <link rel="apple-touch-icon" href="images-bricks-scan/apple-touch-icon.png" />
+
     <!-- Alpine and scripts -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="scripts.js" defer></script>
@@ -36,7 +38,6 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-0NE96SRV4V"></script>
     <script>
-        // GA4 tracker ensures product marketing funnels capture download conversions.
         window.dataLayer = window.dataLayer || [];
         function gtag() {
             dataLayer.push(arguments);
@@ -71,14 +72,13 @@
             src="https://www.facebook.com/tr?id=1088148306858128&ev=PageView&noscript=1" />
     </noscript>
     <!-- End Meta Pixel Code -->
+
     <style>
-        /* Pentagram-style Custom Easing & Animations */
         :root {
             --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
             --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.15);
         }
 
-        /* Typographic Polish */
         .hero-title,
         .section-title {
             letter-spacing: -0.01em !important;
@@ -88,7 +88,6 @@
             letter-spacing: 0.05em !important;
         }
 
-        /* Language Globe Swivel */
         #language-switcher .language-globe-icon {
             transition: transform 0.6s var(--ease-out-expo);
         }
@@ -97,7 +96,6 @@
             transform: rotate(180deg);
         }
 
-        /* Masked Hero Title Reveal */
         .hero-title.reveal-on-scroll {
             transform: translateY(40px);
             opacity: 0;
@@ -112,7 +110,6 @@
             opacity: 1;
         }
 
-        /* Tactile Press State */
         .btn:active,
         .ecosystem-card:active,
         .testimonial:active {
@@ -120,7 +117,6 @@
             transition: transform 0.1s ease !important;
         }
 
-        /* Breathing Hero Background */
         .hero-bg {
             position: absolute;
             inset: 0;
@@ -155,7 +151,6 @@
             transform-origin: center center;
         }
 
-        /* ── Hero Cursor Glow ─────────────────────────────────── */
         .hero-cursor-glow {
             position: absolute;
             width: 680px;
@@ -172,7 +167,6 @@
             opacity: 1;
         }
 
-        /* ── Hero Dot Grid ─────────────────────────────────────── */
         .hero-dot-grid {
             position: absolute;
             inset: 0;
@@ -207,7 +201,6 @@
             z-index: 2;
         }
 
-        /* Focus Control for Grids */
         .grid-3:hover .ecosystem-card:not(:hover),
         .testimonials-grid:hover .testimonial:not(:hover) {
             opacity: 0.4;
@@ -222,19 +215,15 @@
                 box-shadow 0.4s ease;
         }
 
-        /* Fix: Cancel the global fadeInUp CSS animation — reveal-on-scroll transition handles this instead */
         .hero-title.reveal-on-scroll {
             animation: none;
         }
 
-        /* Fix: JS fan-out handler owns the transform on screenshot-side; CSS transition restarts it on every
-           scroll event causing stutter. Remove transition so JS drives it smoothly via rAF. */
         .screenshot-side {
             transition: none;
             will-change: transform;
         }
 
-        /* Problem Section — Editorial Number Markers */
         .problem-number {
             width: 32px;
             height: 32px;
@@ -251,12 +240,10 @@
             opacity: 0.55;
         }
 
-        /* Feature List — Teal Accent on Key Terms */
         .feature-list .feature-item strong {
             color: var(--accent-teal);
         }
 
-        /* New Landing Page Refactor Grids */
         .workflow-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -508,12 +495,8 @@
             ">
         <div>
             <p class="body-text" style="font-size: 14px; margin: 0">
-                <span lang="en">We use cookies to analyze site usage and improve your experience. May we collect
-                    anonymous
-                    usage data?</span>
-                <span lang="es" class="hidden">Usamos cookies para analizar el uso del sitio y mejorar su experiencia.
-                    ¿Nos permite recopilar
-                    datos anónimos de uso?</span>
+                <span lang="en">We use cookies to analyze site usage and improve your experience. May we collect anonymous usage data?</span>
+                <span lang="es" class="hidden">Usamos cookies para analizar el uso del sitio y mejorar tu experiencia. ¿Nos permites recopilar datos anónimos de uso?</span>
             </p>
         </div>
         <div style="display: flex; gap: 8px">
@@ -565,13 +548,13 @@
         <div class="container hero-grid">
             <div class="hero-content" style="text-align: center; margin: 0 auto">
                 <h1 class="hero-title reveal-on-scroll" style="margin: 0 auto">
-                    <span lang="en">Scan documents. They organize themselves.</span>
-                    <span lang="es" class="hidden">El escáner que organiza tus documentos.</span>
+                    <span lang="en">Searchable documents, from the first scan.</span>
+                    <span lang="es" class="hidden">Documentos buscables desde el primer escaneo.</span>
                 </h1>
+
                 <p class="body-text reveal-on-scroll delay-100" style="margin: 16px auto">
-                    <span lang="en">Make scans searchable, named, and organized automatically on your device.</span>
-                    <span lang="es" class="hidden">Convierte el papeleo en archivos buscables — sin renombrar ni
-                        organizar manualmente.</span>
+                    <span lang="en">Bricks Scan turns contracts and paperwork into searchable documents, then names and organizes them automatically — on your device.</span>
+                    <span lang="es" class="hidden">Bricks Scan convierte contratos y documentos en archivos buscables, luego los nombra y organiza automáticamente — en tu dispositivo.</span>
                 </p>
 
                 <div class="cta-group reveal-on-scroll delay-200"
@@ -585,16 +568,17 @@
                     </a>
                     <p class="metadata" style="margin: 0; opacity: 0.8; text-align: center; margin-top: 8px">
                         <span lang="en">No account required.</span>
-                        <span lang="es" class="hidden">Sin cuentas, sin correos.</span>
+                        <span lang="es" class="hidden">Sin cuenta.</span>
                     </p>
                 </div>
             </div>
 
-            <!-- Hero Image -->
             <div class="hero-image-wrapper reveal-on-scroll delay-300" style="margin-top: 48px">
-                <img src="images-bricks-scan/hero-image-en.png" alt="Bricks Scan App Interface" class="hero-img"
+                <img src="images-bricks-scan/hero-image-en.png"
+                    alt="Bricks Scan showing searchable documents and automatic organization" class="hero-img"
                     lang="en" />
-                <img src="images-bricks-scan/hero-image-es.png" alt="Bricks Scan App Interface" class="hero-img hidden"
+                <img src="images-bricks-scan/hero-image-es.png"
+                    alt="Bricks Scan mostrando documentos buscables y organización automática" class="hero-img hidden"
                     lang="es" />
             </div>
         </div>
@@ -605,245 +589,258 @@
         <div class="container center-text">
             <img src="images-bricks-scan/icon-section2.svg" alt="Workflow" class="reveal-on-scroll delay-100"
                 style="width: 64px; height: 64px; margin: 0 auto 16px; display: block" />
+
             <h2 class="section-title reveal-on-scroll delay-100">
-                <span lang="en">Scan. Auto-Sort. Done.</span>
-                <span lang="es" class="hidden">Escanea. Organiza. Listo.</span>
+                <span lang="en">From scan to searchable document — automatically.</span>
+                <span lang="es" class="hidden">Del escaneo al documento buscable — automáticamente.</span>
             </h2>
 
             <div class="workflow-grid">
                 <div class="center-text reveal-on-scroll delay-200">
-                    <img src="images-bricks-scan/screenshot-01-en.png" alt="Scan Step" style="
+                    <img src="images-bricks-scan/screenshot-01-en.png" alt="Scanning a contract with Bricks Scan" style="
                                 width: 100%;
                                 max-width: 260px;
                                 border-radius: 32px;
                                 box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
                                 margin-bottom: 24px;
                             " lang="en" />
-                    <img src="images-bricks-scan/screenshot-01-es.png" alt="Paso Escanear" style="
+                    <img src="images-bricks-scan/screenshot-01-es.png"
+                        alt="Escaneando un contrato con Bricks Scan" style="
                                 width: 100%;
                                 max-width: 260px;
                                 border-radius: 32px;
                                 box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
                                 margin-bottom: 24px;
                             " class="hidden" lang="es" />
+
                     <h3 class="subheading" style="font-size: 20px">
                         <span lang="en">Scan</span>
                         <span lang="es" class="hidden">Escanear</span>
                     </h3>
                     <p class="body-text" style="font-size: 16px">
-                        <span lang="en">Capture contracts, IDs, receipts, and paperwork.</span>
-                        <span lang="es" class="hidden">Captura contratos, identificaciones, recibos y documentos.</span>
+                        <span lang="en">Capture contracts, forms, IDs, and recurring paperwork.</span>
+                        <span lang="es" class="hidden">Captura contratos, formularios, identificaciones y documentos recurrentes.</span>
                     </p>
                 </div>
+
                 <div class="center-text reveal-on-scroll delay-300">
-                    <img src="images-bricks-scan/screenshot-02-en.png" alt="Organize Step" style="
+                    <img src="images-bricks-scan/screenshot-02-en.png"
+                        alt="Auto-Sort making a document searchable and organized" style="
                                 width: 100%;
                                 max-width: 260px;
                                 border-radius: 32px;
                                 box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
                                 margin-bottom: 24px;
                             " lang="en" />
-                    <img src="images-bricks-scan/screenshot-02-es.png" alt="Paso Organizar" style="
+                    <img src="images-bricks-scan/screenshot-02-es.png"
+                        alt="Auto-Sort haciendo un documento buscable y organizado" style="
                                 width: 100%;
                                 max-width: 260px;
                                 border-radius: 32px;
                                 box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
                                 margin-bottom: 24px;
                             " class="hidden" lang="es" />
+
                     <h3 class="subheading" style="font-size: 20px">
                         <span lang="en">Auto-Sort</span>
-                        <span lang="es" class="hidden">Organizar</span>
+                        <span lang="es" class="hidden">Auto-Sort</span>
                     </h3>
                     <p class="body-text" style="font-size: 16px">
-                        <span lang="en">Makes text searchable, names the document, and organizes it
-                            automatically.</span>
-                        <span lang="es" class="hidden">Clasificar hace el texto buscable, nombra y organiza
-                            automáticamente.</span>
+                        <span lang="en">Makes it searchable, names it, and organizes it automatically.</span>
+                        <span lang="es" class="hidden">Lo hace buscable, lo nombra y lo organiza automáticamente.</span>
                     </p>
                 </div>
+
                 <div class="center-text reveal-on-scroll delay-400">
-                    <img src="images-bricks-scan/screenshot-03-en.png" alt="Done Step" style="
+                    <img src="images-bricks-scan/screenshot-03-en.png"
+                        alt="Finished document ready to find, review, and share" style="
                                 width: 100%;
                                 max-width: 260px;
                                 border-radius: 32px;
                                 box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
                                 margin-bottom: 24px;
                             " lang="en" />
-                    <img src="images-bricks-scan/screenshot-03-es.png" alt="Paso Listo" style="
+                    <img src="images-bricks-scan/screenshot-03-es.png"
+                        alt="Documento listo para encontrar, revisar y compartir" style="
                                 width: 100%;
                                 max-width: 260px;
                                 border-radius: 32px;
                                 box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
                                 margin-bottom: 24px;
                             " class="hidden" lang="es" />
+
                     <h3 class="subheading" style="font-size: 20px">
-                        <span lang="en">Done</span>
+                        <span lang="en">Ready</span>
                         <span lang="es" class="hidden">Listo</span>
                     </h3>
                     <p class="body-text" style="font-size: 16px">
-                        <span lang="en">Ready to find, review, and share. 100%
-                            Offline.</span>
-                        <span lang="es" class="hidden">Listo para buscar, revisar y compartir. Funciona 100% sin
-                            conexión.</span>
+                        <span lang="en">Ready to find, review, and share — private and 100% offline.</span>
+                        <span lang="es" class="hidden">Listo para encontrar, revisar y compartir — privado y 100% sin conexión.</span>
                     </p>
                 </div>
             </div>
+
             <p class="reveal-on-scroll delay-100 subheading"
                 style="margin-top: 48px; color: var(--accent-teal); font-weight: bold; display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
                 <img src="images-bricks-scan/icon-ai-how-works.svg" alt="" style="width: 24px; height: 24px;" />
-                <span lang="en">Powered by on-device Apple Intelligence</span>
-                <span lang="es" class="hidden">Impulsado por Apple Intelligence en el dispositivo.</span>
+                <span lang="en">Auto-Sort is powered by on-device Apple Intelligence</span>
+                <span lang="es" class="hidden">Auto-Sort está impulsado por Apple Intelligence en el dispositivo</span>
             </p>
         </div>
     </section>
 
-    <!-- 4. Features Bento Grid -->
+    <!-- 3. Features Bento Grid -->
     <section class="section">
         <div class="container">
             <div class="center-text mb-md reveal-on-scroll">
                 <h2 class="section-title">
-                    <span lang="en">Built for the work after scanning.</span>
-                    <span lang="es" class="hidden">Hecho para lo que viene después de escanear.</span>
+                    <span lang="en">Everything after scanning — handled for you.</span>
+                    <span lang="es" class="hidden">Todo después de escanear — resuelto automáticamente.</span>
                 </h2>
             </div>
 
             <div class="bento-grid">
-                <!-- Auto-Sort (Large) -->
+                <!-- Auto-Sort -->
                 <div class="bento-card bento-auto-sort reveal-on-scroll delay-100">
                     <h3 class="subheading" style="font-size: 24px">
                         <span lang="en">Auto-Sort</span>
-                        <span lang="es" class="hidden">Clasificar</span>
+                        <span lang="es" class="hidden">Auto-Sort</span>
                     </h3>
                     <p class="body-text" style="font-size: 16px">
-                        <span lang="en">Makes text searchable, names each document, and organizes everything
-                            automatically.
-                            Powered by on-device intelligence.</span>
-                        <span lang="es" class="hidden">Hace el texto buscable, nombra cada documento y organiza todo
-                            automáticamente.</span>
+                        <span lang="en">Turns captured documents into searchable, named, and organized records automatically.</span>
+                        <span lang="es" class="hidden">Convierte documentos capturados en archivos buscables, nombrados y organizados automáticamente.</span>
                     </p>
-                    <img src="images-bricks-scan/bento-feature-en-01.png" alt="Auto-Sort Feature" class="bento-img"
+                    <img src="images-bricks-scan/bento-feature-en-01.png"
+                        alt="Auto-Sort organizing documents automatically" class="bento-img"
                         style="margin-top: auto" lang="en" />
-                    <img src="images-bricks-scan/bento-feature-es-01.png" alt="Auto-Sort Feature"
-                        class="bento-img hidden" style="margin-top: auto" lang="es" />
+                    <img src="images-bricks-scan/bento-feature-es-01.png"
+                        alt="Auto-Sort organizando documentos automáticamente" class="bento-img hidden"
+                        style="margin-top: auto" lang="es" />
                 </div>
 
                 <!-- Instant Search -->
                 <div class="bento-card bento-search reveal-on-scroll delay-200">
                     <h3 class="subheading" style="font-size: 20px">
                         <span lang="en">Instant Search</span>
-                        <span lang="es" class="hidden">Búsqueda</span>
+                        <span lang="es" class="hidden">Búsqueda instantánea</span>
                     </h3>
                     <p class="body-text" style="font-size: 15px">
-                        <span lang="en">Find names, addresses, dates, and anything.</span>
-                        <span lang="es" class="hidden">Encuentra nombres, direcciones y más.</span>
+                        <span lang="en">Find anything in your documents — instantly.</span>
+                        <span lang="es" class="hidden">Encuentra nombres, fechas, direcciones y más — al instante.</span>
                     </p>
-                    <img src="images-bricks-scan/bento-feature-en-02.png" alt="Instant Search Feature" class="bento-img"
+                    <img src="images-bricks-scan/bento-feature-en-02.png"
+                        alt="Instant Search finding text inside documents" class="bento-img"
                         style="margin-top: auto" lang="en" />
-                    <img src="images-bricks-scan/bento-feature-es-02.png" alt="Instant Search Feature"
-                        class="bento-img hidden" style="margin-top: auto" lang="es" />
+                    <img src="images-bricks-scan/bento-feature-es-02.png"
+                        alt="Búsqueda instantánea encontrando texto dentro de documentos" class="bento-img hidden"
+                        style="margin-top: auto" lang="es" />
                 </div>
 
-                <!-- Professional PDF -->
+                <!-- Ready to Share -->
                 <div class="bento-card bento-pdf reveal-on-scroll delay-300">
                     <h3 class="subheading" style="font-size: 20px">
-                        <span lang="en">Ready-to-Share</span>
-                        <span lang="es" class="hidden">Listo para Compartir</span>
+                        <span lang="en">Ready to Share</span>
+                        <span lang="es" class="hidden">Listo para compartir</span>
                     </h3>
                     <p class="body-text" style="font-size: 15px">
-                        <span lang="en">Generate clean PDFs ready to send.</span>
-                        <span lang="es" class="hidden">Genera PDFs listos para enviar.</span>
+                        <span lang="en">Your documents are ready to send — no extra steps.</span>
+                        <span lang="es" class="hidden">Tus documentos quedan listos para enviar — sin pasos extra.</span>
                     </p>
-                    <img src="images-bricks-scan/bento-feature-en-03.png" alt="Professional PDF Feature"
-                        class="bento-img" style="margin-top: auto" lang="en" />
-                    <img src="images-bricks-scan/bento-feature-es-03.png" alt="Professional PDF Feature"
-                        class="bento-img hidden" style="margin-top: auto" lang="es" />
+                    <img src="images-bricks-scan/bento-feature-en-03.png"
+                        alt="Document ready to share as a PDF" class="bento-img" style="margin-top: auto" lang="en" />
+                    <img src="images-bricks-scan/bento-feature-es-03.png"
+                        alt="Documento listo para compartir como PDF" class="bento-img hidden"
+                        style="margin-top: auto" lang="es" />
                 </div>
 
                 <!-- AI Summary -->
                 <div class="bento-card bento-ai reveal-on-scroll delay-400">
                     <h3 class="subheading" style="font-size: 20px">
                         <span lang="en">AI Summary</span>
-                        <span lang="es" class="hidden">Resumen con IA.</span>
+                        <span lang="es" class="hidden">Resumen con IA</span>
                     </h3>
                     <p class="body-text" style="font-size: 15px">
-                        <span lang="en">Get a quick summary of long documents.</span>
-                        <span lang="es" class="hidden">Obtén un resumen rápido.</span>
+                        <span lang="en">Understand long documents in seconds.</span>
+                        <span lang="es" class="hidden">Entiende documentos largos en segundos.</span>
                     </p>
-                    <img src="images-bricks-scan/bento-feature-en-04.png" alt="AI Summary Feature" class="bento-img"
+                    <img src="images-bricks-scan/bento-feature-en-04.png"
+                        alt="AI Summary showing a quick document overview" class="bento-img"
                         style="margin-top: auto" lang="en" />
-                    <img src="images-bricks-scan/bento-feature-es-04.png" alt="AI Summary Feature"
-                        class="bento-img hidden" style="margin-top: auto" lang="es" />
+                    <img src="images-bricks-scan/bento-feature-es-04.png"
+                        alt="Resumen con IA mostrando una vista rápida del documento" class="bento-img hidden"
+                        style="margin-top: auto" lang="es" />
                 </div>
 
                 <!-- Markup -->
                 <div class="bento-card bento-markup reveal-on-scroll delay-500">
                     <h3 class="subheading" style="font-size: 20px">
                         <span lang="en">Markup &amp; Notes</span>
-                        <span lang="es" class="hidden">Marcado y Notas</span>
+                        <span lang="es" class="hidden">Marcado y notas</span>
                     </h3>
                     <p class="body-text" style="font-size: 15px">
-                        <span lang="en">Highlight, draw, or add notes.</span>
-                        <span lang="es" class="hidden">Resalta o añade notas.</span>
+                        <span lang="en">Highlight, annotate, and keep context with the document.</span>
+                        <span lang="es" class="hidden">Resalta, anota y conserva el contexto junto al documento.</span>
                     </p>
-                    <img src="images-bricks-scan/bento-feature-en-05.png" alt="Markup & Notes Feature" class="bento-img"
+                    <img src="images-bricks-scan/bento-feature-en-05.png"
+                        alt="Markup and notes added to a document" class="bento-img"
                         style="margin-top: auto" lang="en" />
-                    <img src="images-bricks-scan/bento-feature-es-05.png" alt="Markup & Notes Feature"
-                        class="bento-img hidden" style="margin-top: auto" lang="es" />
+                    <img src="images-bricks-scan/bento-feature-es-05.png"
+                        alt="Marcado y notas añadidos a un documento" class="bento-img hidden"
+                        style="margin-top: auto" lang="es" />
                 </div>
 
                 <!-- Sign -->
                 <div class="bento-card bento-card-horizontal bento-sign reveal-on-scroll delay-600">
                     <div class="bento-content">
                         <h3 class="subheading" style="font-size: 20px">
-                            <span lang="en">Sign Documents</span>
-                            <span lang="es" class="hidden">Firmar Documentos</span>
+                            <span lang="en">Paperless Signing</span>
+                            <span lang="es" class="hidden">Firma sin imprimir</span>
                         </h3>
                         <p class="body-text" style="font-size: 15px; margin-bottom: 0">
-                            <span lang="en">Sign paperwork quickly without printing.</span>
-                            <span lang="es" class="hidden">Firma documentos sin imprimir.</span>
+                            <span lang="en">Sign documents without printing or rescanning.</span>
+                            <span lang="es" class="hidden">Firma documentos sin imprimir ni escanear otra vez.</span>
                         </p>
                     </div>
-                    <img src="images-bricks-scan/bento-feature-en-06.png" alt="Sign Documents Feature"
-                        class="bento-img-horizontal" lang="en" />
-                    <img src="images-bricks-scan/bento-feature-es-06.png" alt="Sign Documents Feature"
-                        class="bento-img-horizontal hidden" lang="es" />
+                    <img src="images-bricks-scan/bento-feature-en-06.png"
+                        alt="Signing a document without printing" class="bento-img-horizontal" lang="en" />
+                    <img src="images-bricks-scan/bento-feature-es-06.png"
+                        alt="Firmando un documento sin imprimir" class="bento-img-horizontal hidden" lang="es" />
                 </div>
 
                 <!-- Devices -->
                 <div class="bento-card bento-card-horizontal bento-devices reveal-on-scroll delay-700">
                     <div class="bento-content">
                         <h3 class="subheading" style="font-size: 20px">
-                            <span lang="en">Across Your Devices</span>
-                            <span lang="es" class="hidden">En Todos tus Dispositivos</span>
+                            <span lang="en">On iPhone, iPad, and Mac</span>
+                            <span lang="es" class="hidden">En iPhone, iPad y Mac</span>
                         </h3>
                         <p class="body-text" style="font-size: 15px; margin-bottom: 0">
-                            <span lang="en">Available on iPhone, iPad and Mac.</span>
-                            <span lang="es" class="hidden">Disponible en iPhone, iPad y Mac.</span>
+                            <span lang="en">Access your documents across all your Apple devices.</span>
+                            <span lang="es" class="hidden">Accede a tus documentos desde todos tus dispositivos Apple.</span>
                         </p>
                     </div>
-                    <img src="images-bricks-scan/bento-feature-en-07.png" alt="Across Your Devices Feature"
-                        class="bento-img-horizontal" lang="en" />
-                    <img src="images-bricks-scan/bento-feature-es-07.png" alt="Across Your Devices Feature"
-                        class="bento-img-horizontal hidden" lang="es" />
+                    <img src="images-bricks-scan/bento-feature-en-07.png"
+                        alt="Bricks Scan available on iPhone, iPad, and Mac" class="bento-img-horizontal" lang="en" />
+                    <img src="images-bricks-scan/bento-feature-es-07.png"
+                        alt="Bricks Scan disponible en iPhone, iPad y Mac" class="bento-img-horizontal hidden"
+                        lang="es" />
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 5. Privacy Section -->
+    <!-- 4. Privacy Section -->
     <section class="section section-alt">
         <div class="container reading-column center-text">
-            <img src="images-bricks-scan/icon-section5.svg" alt="Workflow" class="reveal-on-scroll delay-100"
+            <img src="images-bricks-scan/icon-section5.svg" alt="Privacy" class="reveal-on-scroll delay-100"
                 style="width: 64px; height: 64px; margin: 0 auto 16px; display: block" />
             <h2 class="section-title reveal-on-scroll">
                 <span lang="en">Private by design.</span>
                 <span lang="es" class="hidden">Privado por diseño.</span>
             </h2>
             <p class="body-text mb-sm reveal-on-scroll delay-100" style="margin-left: auto; margin-right: auto">
-                <span lang="en">All processing happens on your device. Your documents are not uploaded for analysis or
-                    processing.</span>
-                <span lang="es" class="hidden">Todo el procesamiento ocurre en tu dispositivo. Nada se sube para
-                    analizar o procesar.</span>
+                <span lang="en">All processing happens on your device, so your documents are not uploaded for analysis or organization.</span>
+                <span lang="es" class="hidden">Todo el procesamiento ocurre en tu dispositivo, así que tus documentos no se suben para análisis ni organización.</span>
             </p>
         </div>
 
@@ -860,6 +857,7 @@
                     <span lang="es" class="hidden">Funciona sin internet.</span>
                 </p>
             </div>
+
             <div class="center-text reveal-on-scroll delay-300">
                 <img src="images/checkmark.svg" alt="Check" class="checkmark-icon"
                     style="margin: 0 auto 16px; display: block" />
@@ -869,37 +867,41 @@
                 </h3>
                 <p class="body-text" style="font-size: 15px; margin: 0 auto">
                     <span lang="en">Your data stays on your device.</span>
-                    <span lang="es" class="hidden">Tus datos no salen de tu dispositivo.</span>
+                    <span lang="es" class="hidden">Tus datos se quedan en tu dispositivo.</span>
                 </p>
             </div>
+
             <div class="center-text reveal-on-scroll delay-400">
                 <img src="images/checkmark.svg" alt="Check" class="checkmark-icon"
                     style="margin: 0 auto 16px; display: block" />
                 <h3 class="subheading" style="font-size: 18px">
                     <span lang="en">Optional iCloud Sync</span>
-                    <span lang="es" class="hidden">Sincronización con iCloud</span>
+                    <span lang="es" class="hidden">Sincronización opcional con iCloud</span>
                 </h3>
                 <p class="body-text" style="font-size: 15px; margin: 0 auto">
                     <span lang="en">Access your documents across Apple devices.</span>
-                    <span lang="es" class="hidden">Accede desde todos tus dispositivos Apple.</span>
+                    <span lang="es" class="hidden">Accede a tus documentos desde dispositivos Apple.</span>
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- 6. Perfect For Section -->
+    <!-- 5. Perfect For Section -->
     <section class="section">
         <div class="container reveal-on-scroll delay-200"
             style="max-width: 1100px; text-align: center; margin-bottom: 48px">
-            <img src="images-bricks-scan/scan-feature-en-01.png" alt="Perfect For Feature" class="hero-img"
+            <img src="images-bricks-scan/scan-feature-en-01.png"
+                alt="Bricks Scan interface for recurring paperwork workflows" class="hero-img"
                 data-app-image="bricks-scan-feature-01" lang="en" />
-            <img src="images-bricks-scan/scan-feature-es-01.png" alt="Perfect For Feature" class="hero-img hidden"
+            <img src="images-bricks-scan/scan-feature-es-01.png"
+                alt="Interfaz de Bricks Scan para flujos de documentos recurrentes" class="hero-img hidden"
                 data-app-image="bricks-scan-feature-01" lang="es" />
         </div>
+
         <div class="container container-large center-text">
             <h2 class="section-title reveal-on-scroll delay-100">
-                <span lang="en">Perfect for how you work.</span>
-                <span lang="es" class="hidden">Perfecto para tu forma de trabajar.</span>
+                <span lang="en">Built for recurring paperwork.</span>
+                <span lang="es" class="hidden">Hecho para documentos recurrentes.</span>
             </h2>
 
             <div class="perfect-for-grid">
@@ -910,125 +912,146 @@
                         <span lang="es" class="hidden">Profesionales</span>
                     </h3>
                     <p class="body-text" style="font-size: 15px">
-                        <span lang="en">Contracts, client files, and key documents — organized fast.</span>
-                        <span lang="es" class="hidden">Contratos, archivos de clientes y documentos clave — organizados
-                            al instante.</span>
+                        <span lang="en">Contracts, client files, and key documents — searchable and organized fast.</span>
+                        <span lang="es" class="hidden">Contratos, archivos de clientes y documentos clave — buscables y organizados rápido.</span>
                     </p>
                 </div>
+
                 <div class="perfect-card reveal-on-scroll delay-300">
-                    <img src="images-bricks-scan/icon-02-perfect-for.svg" alt="Students & Academics"
+                    <img src="images-bricks-scan/icon-02-perfect-for.svg" alt="Students and academics"
                         class="perfect-icon" />
                     <h3 class="subheading" style="font-size: 18px">
                         <span lang="en">Students &amp; Academics</span>
-                        <span lang="es" class="hidden">Estudiantes</span>
+                        <span lang="es" class="hidden">Estudiantes y académicos</span>
                     </h3>
                     <p class="body-text" style="font-size: 15px">
-                        <span lang="en">Notes, slides, and study material — all searchable and easy to review.</span>
-                        <span lang="es" class="hidden">Apuntes, clases y material de estudio — siempre
-                            accesibles.</span>
+                        <span lang="en">Notes, readings, and study material — searchable and easy to review.</span>
+                        <span lang="es" class="hidden">Apuntes, lecturas y material de estudio — buscables y fáciles de revisar.</span>
                     </p>
                 </div>
+
                 <div class="perfect-card reveal-on-scroll delay-400">
-                    <img src="images-bricks-scan/icon-03-perfect-for.svg" alt="Business Owners" class="perfect-icon" />
+                    <img src="images-bricks-scan/icon-03-perfect-for.svg" alt="Business owners"
+                        class="perfect-icon" />
                     <h3 class="subheading" style="font-size: 18px">
                         <span lang="en">Business Owners</span>
                         <span lang="es" class="hidden">Emprendedores</span>
                     </h3>
                     <p class="body-text" style="font-size: 15px">
-                        <span lang="en">Invoices, receipts, and tax records — organized without manual filing.</span>
-                        <span lang="es" class="hidden">Facturas, recibos y documentos fiscales — sin organizar
-                            manualmente.</span>
+                        <span lang="en">Invoices, receipts, and records — searchable without manual filing.</span>
+                        <span lang="es" class="hidden">Facturas, recibos y registros — buscables sin archivado manual.</span>
                     </p>
                 </div>
+
                 <div class="perfect-card reveal-on-scroll delay-500">
-                    <img src="images-bricks-scan/icon-04-perfect-for.svg" alt="Travel & Expenses"
+                    <img src="images-bricks-scan/icon-04-perfect-for.svg" alt="Travel and expenses"
                         class="perfect-icon" />
                     <h3 class="subheading" style="font-size: 18px">
                         <span lang="en">Travel &amp; Expenses</span>
-                        <span lang="es" class="hidden">Viajes y Gastos</span>
+                        <span lang="es" class="hidden">Viajes y gastos</span>
                     </h3>
                     <p class="body-text" style="font-size: 15px">
-                        <span lang="en">Receipts and expense reports — captured and ready for reimbursement.</span>
-                        <span lang="es" class="hidden">Recibos y gastos — listos para reembolso.</span>
+                        <span lang="en">Receipts and expense documents — ready to find and share later.</span>
+                        <span lang="es" class="hidden">Recibos y documentos de gastos — listos para encontrar y compartir después.</span>
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 7. Competitive Comparison Section -->
+    <!-- 6. Competitive Comparison Section -->
     <section class="section section-alt">
         <div class="container center-text">
-            <img src="images-bricks-scan/icon-section7.svg" alt="Workflow" class="reveal-on-scroll delay-100"
+            <img src="images-bricks-scan/icon-section7.svg" alt="Comparison" class="reveal-on-scroll delay-100"
                 style="width: 64px; height: 64px; margin: 0 auto 16px; display: block" />
+
             <h2 class="section-title reveal-on-scroll">
-                <span lang="en">Built to do more than scan.</span>
-                <span lang="es" class="hidden">Mucho más que un escáner.</span>
+                <span lang="en">Most apps stop at scanning. Bricks Scan finishes the job.</span>
+                <span lang="es" class="hidden">La mayoría se queda en escanear. Bricks Scan deja tus documentos listos.</span>
             </h2>
+
             <p class="body-text mb-sm reveal-on-scroll delay-100"
-                style="max-width: 600px; margin-left: auto; margin-right: auto">
-                <span lang="en">Bricks Scan continues by making documents searchable, named, and automatically
-                    organized.</span>
-                <span lang="es" class="hidden">La mayoría se detiene en el PDF. Bricks Scan sigue organizando
-                    automáticamente.</span>
+                style="max-width: 640px; margin-left: auto; margin-right: auto">
+                <span lang="en">Your documents end up searchable, named, and organized — automatically.</span>
+                <span lang="es" class="hidden">Tus documentos quedan buscables, nombrados y organizados — automáticamente.</span>
             </p>
 
             <div class="comparison-table-wrapper">
                 <table class="comparison-table">
                     <thead>
                         <tr class="reveal-on-scroll delay-200">
-                            <th>Feature</th>
-                            <th>Typical Apps</th>
-                            <th style="color: var(--accent-teal)">Bricks Scan</th>
+                            <th>
+                                <span lang="en">Feature</span>
+                                <span lang="es" class="hidden">Función</span>
+                            </th>
+                            <th>
+                                <span lang="en">Typical Apps</span>
+                                <span lang="es" class="hidden">Apps típicas</span>
+                            </th>
+                            <th style="color: var(--accent-teal)">
+                                <span lang="en">Bricks Scan</span>
+                                <span lang="es" class="hidden">Bricks Scan</span>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="reveal-on-scroll delay-300">
                             <td>
-                                <span lang="en">Scan documents</span><span lang="es" class="hidden">Escanear
-                                    documentos</span>
+                                <span lang="en">Scan</span>
+                                <span lang="es" class="hidden">Escaneo</span>
                             </td>
                             <td>✓</td>
                             <td style="color: var(--accent-teal); font-weight: bold">✓</td>
                         </tr>
+
                         <tr class="reveal-on-scroll delay-400">
                             <td>
-                                <span lang="en">Search inside documents</span><span lang="es" class="hidden">Buscar
-                                    dentro de documentos</span>
+                                <span lang="en">Search</span>
+                                <span lang="es" class="hidden">Búsqueda</span>
                             </td>
                             <td>✓</td>
                             <td style="color: var(--accent-teal); font-weight: bold">✓</td>
                         </tr>
+
                         <tr class="reveal-on-scroll delay-500">
                             <td>
-                                <span lang="en">Automatic document names</span><span lang="es" class="hidden">Nombres
-                                    automáticos</span>
+                                <span lang="en">Auto Naming</span>
+                                <span lang="es" class="hidden">Nombres automáticos</span>
                             </td>
                             <td>✗</td>
                             <td style="color: var(--accent-teal); font-weight: bold">✓</td>
                         </tr>
+
                         <tr class="reveal-on-scroll delay-600">
                             <td>
-                                <span lang="en">Automatic organization</span><span lang="es" class="hidden">Organización
-                                    automática</span>
+                                <span lang="en">Auto Organization</span>
+                                <span lang="es" class="hidden">Organización automática</span>
                             </td>
                             <td>✗</td>
                             <td style="color: var(--accent-teal); font-weight: bold">✓</td>
                         </tr>
+
                         <tr class="reveal-on-scroll delay-700">
                             <td>
-                                <span lang="en">On-device processing</span><span lang="es" class="hidden">Procesamiento
-                                    en el dispositivo</span>
+                                <span lang="en">On-Device Processing</span>
+                                <span lang="es" class="hidden">Procesamiento en el dispositivo</span>
                             </td>
-                            <td><span lang="en">Rare</span><span lang="es" class="hidden">Poco común</span></td>
+                            <td>
+                                <span lang="en">Rare</span>
+                                <span lang="es" class="hidden">Poco común</span>
+                            </td>
                             <td style="color: var(--accent-teal); font-weight: bold">✓</td>
                         </tr>
+
                         <tr class="reveal-on-scroll delay-800">
                             <td>
-                                <span lang="en">Works offline</span><span lang="es" class="hidden">Funciona sin
-                                    conexión</span>
+                                <span lang="en">Works Offline</span>
+                                <span lang="es" class="hidden">Funciona sin conexión</span>
                             </td>
-                            <td><span lang="en">Rare</span><span lang="es" class="hidden">Poco común</span></td>
+                            <td>
+                                <span lang="en">Rare</span>
+                                <span lang="es" class="hidden">Poco común</span>
+                            </td>
                             <td style="color: var(--accent-teal); font-weight: bold">✓</td>
                         </tr>
                     </tbody>
@@ -1036,41 +1059,45 @@
             </div>
 
             <p class="metadata mt-md reveal-on-scroll delay-300" style="font-weight: 500">
-                <span lang="en">Built for people who manage documents &mdash; not just scan them.</span>
-                <span lang="es" class="hidden">Para quienes gestionan documentos — no solo los escanean.</span>
+                <span lang="en">For people who need documents ready — not just scanned.</span>
+                <span lang="es" class="hidden">Para quienes necesitan documentos listos — no solo escaneados.</span>
             </p>
         </div>
     </section>
 
-    <!-- 8. Final CTA Section -->
+    <!-- 7. Final CTA Section -->
     <section class="section section-padding-large">
         <div class="container reveal-on-scroll delay-200"
             style="max-width: 1100px; text-align: center; margin-bottom: 48px">
-            <img src="images-bricks-scan/scan-feature-en-02.png" alt="Time Saving Feature" class="hero-img"
+            <img src="images-bricks-scan/scan-feature-en-02.png"
+                alt="Bricks Scan helping save time on document organization" class="hero-img"
                 data-app-image="bricks-scan-feature-02" lang="en" />
-            <img src="images-bricks-scan/scan-feature-es-02.png" alt="Time Saving Feature" class="hero-img hidden"
+            <img src="images-bricks-scan/scan-feature-es-02.png"
+                alt="Bricks Scan ayudando a ahorrar tiempo en organización de documentos" class="hero-img hidden"
                 data-app-image="bricks-scan-feature-02" lang="es" />
         </div>
 
         <div class="container reading-column center-text">
             <h2 class="section-title reveal-on-scroll" style="font-size: 40px">
-                <span lang="en">Spend less time organizing documents.</span>
-                <span lang="es" class="hidden">Dedica menos tiempo a organizar documentos.</span>
+                <span lang="en">Your documents, ready from the first scan.</span>
+                <span lang="es" class="hidden">Tus documentos, listos desde el primer escaneo.</span>
             </h2>
+
             <p class="body-text mb-md reveal-on-scroll delay-100"
-                style="max-width: 500px; margin-left: auto; margin-right: auto">
-                <span lang="en">Scan, sort, and find your documents in seconds.</span>
-                <span lang="es" class="hidden">Escanea, organiza y encuentra documentos en segundos.</span>
+                style="max-width: 560px; margin-left: auto; margin-right: auto">
+                <span lang="en">No renaming. No organizing. No extra steps.</span>
+                <span lang="es" class="hidden">Sin renombrar. Sin organizar. Sin pasos extra.</span>
             </p>
+
             <div class="cta-group reveal-on-scroll delay-200"
-                style="display: flex; flex-direction: column; align-items: center; gap: 12px">
+                style="display: flex; flex-direction: column; align-items: center; width: fit-content; gap: 12px; margin: 0 auto; margin-top: 40px;">
                 <a href="https://apps.apple.com/app/idYOUR_APP_ID" class="btn btn-primary"
-                    style="padding: 16px 32px; font-size: 16px; gap: 10px; display: inline-flex; align-items: center; white-space: nowrap;">
+                    style="gap: 10px; display: inline-flex; align-items: center; white-space: nowrap;">
                     <img src="images-bricks-scan/icon-apple-light-hero.svg" alt="" style="width: 22px; height: 22px;" />
                     <span lang="en">Download on the App Store</span>
                     <span lang="es" class="hidden">Descargar en App Store</span>
                 </a>
-                <p class="metadata" style="margin: 0; opacity: 0.8; text-align: center">
+                <p class="metadata" style="margin: 0; opacity: 0.8; text-align: center; margin-top: 8px">
                     <span lang="en">iPhone &middot; iPad &middot; Mac</span>
                     <span lang="es" class="hidden">iPhone &middot; iPad &middot; Mac</span>
                 </p>
@@ -1227,7 +1254,6 @@
                                     <span lang="es" class="hidden">Guías</span>
                                 </a>
                             </li>
-
                             <li>
                                 <a href="survey.html" class="body-text" style="font-size: 15px">
                                     <span lang="en">Survey</span>
@@ -1249,7 +1275,7 @@
                     ">
                 <p class="metadata" style="text-align: center">
                     <span lang="en">© 2026 Bricks Apps. All rights reserved.</span>
-                    <span lang="es" class="hidden">© 2026 Bricks Apps. Todos los derechos reservados</span>
+                    <span lang="es" class="hidden">© 2026 Bricks Apps. Todos los derechos reservados.</span>
                 </p>
                 <div class="footer-links" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 24px">
                     <a href="privacy.html" style="margin: 0">
@@ -1266,7 +1292,6 @@
     </footer>
 
     <script>
-        // Intersection Observer for Reveal on Scroll
         document.addEventListener("DOMContentLoaded", () => {
             const observerOptions = {
                 root: null,
@@ -1288,7 +1313,6 @@
                 observer.observe(el);
             });
 
-            // Expanding Background Logic
             const problemSection = document.getElementById("problem-section");
             const expandingBg = problemSection ? problemSection.querySelector(".expanding-bg") : null;
 
@@ -1322,10 +1346,9 @@
                 };
 
                 window.addEventListener("scroll", handleScroll, { passive: true });
-                handleScroll(); // Initial call
+                handleScroll();
             }
 
-            // Solution Section Fan-out Animation Logic
             const stackContainer = document.querySelector(".screenshot-stack");
             const leftScreenshots = stackContainer ? stackContainer.querySelectorAll(".screenshot-side.left") : [];
             const rightScreenshots = stackContainer
@@ -1368,10 +1391,9 @@
                 };
 
                 window.addEventListener("scroll", handleSolutionScroll, { passive: true });
-                handleSolutionScroll(); // Initial call
+                handleSolutionScroll();
             }
 
-            // ── Dot Grid + Glow: Autonomous drift + cursor override ───
             const heroSection = document.querySelector('.section-hero');
             const cursorGlow = document.querySelector('.hero-cursor-glow');
             const dotGrid = document.querySelector('.hero-dot-grid');
