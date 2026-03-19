@@ -451,8 +451,8 @@
         /* ── Header Scroll-State ──────────────────────────────── */
         .site-header {
             transition: top 0.4s var(--ease-out-expo),
-                        box-shadow 0.4s var(--ease-out-expo),
-                        background-color 0.4s ease !important;
+                box-shadow 0.4s var(--ease-out-expo),
+                background-color 0.4s ease !important;
         }
 
         .site-header.scrolled {
@@ -488,23 +488,17 @@
         .hero-dot-grid {
             position: absolute;
             inset: 0;
-            background-image: radial-gradient(
-                circle 1.5px at 1.5px 1.5px,
-                rgba(0, 166, 161, 0.32) 1.5px,
-                transparent 0
-            );
+            background-image: radial-gradient(circle 1.5px at 1.5px 1.5px,
+                    rgba(0, 166, 161, 0.32) 1.5px,
+                    transparent 0);
             background-size: 26px 26px;
             /* Spotlight mask: only dots near the cursor are visible */
-            -webkit-mask-image: radial-gradient(
-                ellipse 260px 260px at var(--dot-x, 50%) var(--dot-y, 50%),
-                black 0%,
-                transparent 100%
-            );
-            mask-image: radial-gradient(
-                ellipse 260px 260px at var(--dot-x, 50%) var(--dot-y, 50%),
-                black 0%,
-                transparent 100%
-            );
+            -webkit-mask-image: radial-gradient(ellipse 260px 260px at var(--dot-x, 50%) var(--dot-y, 50%),
+                    black 0%,
+                    transparent 100%);
+            mask-image: radial-gradient(ellipse 260px 260px at var(--dot-x, 50%) var(--dot-y, 50%),
+                    black 0%,
+                    transparent 100%);
             pointer-events: none;
             z-index: 0;
             opacity: 1;
@@ -534,10 +528,21 @@
         }
 
         /* ── Stagger Delays (wider spread = more choreography) ── */
-        .delay-100 { transition-delay: 0.13s !important; }
-        .delay-200 { transition-delay: 0.28s !important; }
-        .delay-300 { transition-delay: 0.44s !important; }
-        .delay-400 { transition-delay: 0.60s !important; }
+        .delay-100 {
+            transition-delay: 0.13s !important;
+        }
+
+        .delay-200 {
+            transition-delay: 0.28s !important;
+        }
+
+        .delay-300 {
+            transition-delay: 0.44s !important;
+        }
+
+        .delay-400 {
+            transition-delay: 0.60s !important;
+        }
     </style>
 </head>
 
@@ -889,11 +894,12 @@
                     <svg viewBox="0 0 651.25 651.75" fill="currentColor"
                         style="width: 32px; height: 32px; color: var(--accent); opacity: 0.15; margin-bottom: 8px;">
                         <g>
-                            <path d="M325.5,651.25c179.75,0,325.75-145.75,325.75-325.5S505.25,0,325.5,0
+                            <path
+                                d="M325.5,651.25c179.75,0,325.75-145.75,325.75-325.5S505.25,0,325.5,0
                                 S0,146,0,325.75S145.75,651.25,325.5,651.25z M325.5,604.75c-154.25,0-279-124.75-279-279s124.75-279,279-279s279,124.75,279,279
                                 S479.75,604.75,325.5,604.75z M545.25,536.75l-0.75-3c-17.25-46.5-101.75-99.5-219-99.5c-116.75,0-201.25,52.75-219,99l-0.75,3.5
                                 c57.75,57.75,152,92.25,220,92.25S486.5,595.25,545.25,536.75z M325.5,379.25c62,0.5,110.25-52.5,110.25-121.5
-                                c0-65-48.75-119-110.25-119s-110.5,54-110.25,119C215.5,326.75,263.5,378.75,325.5,379.25z"/>
+                                c0-65-48.75-119-110.25-119s-110.5,54-110.25,119C215.5,326.75,263.5,378.75,325.5,379.25z" />
                         </g>
                     </svg>
                     <p class="body-text quote">
@@ -911,11 +917,12 @@
                     <svg viewBox="0 0 651.25 651.75" fill="currentColor"
                         style="width: 32px; height: 32px; color: var(--accent); opacity: 0.15; margin-bottom: 8px;">
                         <g>
-                            <path d="M325.5,651.25c179.75,0,325.75-145.75,325.75-325.5S505.25,0,325.5,0
+                            <path
+                                d="M325.5,651.25c179.75,0,325.75-145.75,325.75-325.5S505.25,0,325.5,0
                                 S0,146,0,325.75S145.75,651.25,325.5,651.25z M325.5,604.75c-154.25,0-279-124.75-279-279s124.75-279,279-279s279,124.75,279,279
                                 S479.75,604.75,325.5,604.75z M545.25,536.75l-0.75-3c-17.25-46.5-101.75-99.5-219-99.5c-116.75,0-201.25,52.75-219,99l-0.75,3.5
                                 c57.75,57.75,152,92.25,220,92.25S486.5,595.25,545.25,536.75z M325.5,379.25c62,0.5,110.25-52.5,110.25-121.5
-                                c0-65-48.75-119-110.25-119s-110.5,54-110.25,119C215.5,326.75,263.5,378.75,325.5,379.25z"/>
+                                c0-65-48.75-119-110.25-119s-110.5,54-110.25,119C215.5,326.75,263.5,378.75,325.5,379.25z" />
                         </g>
                     </svg>
                     <p class="body-text quote">
@@ -932,11 +939,12 @@
                     <svg viewBox="0 0 651.25 651.75" fill="currentColor"
                         style="width: 32px; height: 32px; color: var(--accent); opacity: 0.15; margin-bottom: 8px;">
                         <g>
-                            <path d="M325.5,651.25c179.75,0,325.75-145.75,325.75-325.5S505.25,0,325.5,0
+                            <path
+                                d="M325.5,651.25c179.75,0,325.75-145.75,325.75-325.5S505.25,0,325.5,0
                                 S0,146,0,325.75S145.75,651.25,325.5,651.25z M325.5,604.75c-154.25,0-279-124.75-279-279s124.75-279,279-279s279,124.75,279,279
                                 S479.75,604.75,325.5,604.75z M545.25,536.75l-0.75-3c-17.25-46.5-101.75-99.5-219-99.5c-116.75,0-201.25,52.75-219,99l-0.75,3.5
                                 c57.75,57.75,152,92.25,220,92.25S486.5,595.25,545.25,536.75z M325.5,379.25c62,0.5,110.25-52.5,110.25-121.5
-                                c0-65-48.75-119-110.25-119s-110.5,54-110.25,119C215.5,326.75,263.5,378.75,325.5,379.25z"/>
+                                c0-65-48.75-119-110.25-119s-110.5,54-110.25,119C215.5,326.75,263.5,378.75,325.5,379.25z" />
                         </g>
                     </svg>
                     <p class="body-text quote">
@@ -1012,7 +1020,8 @@
                     </a>
                     <p class="body-text" style="font-size: 15px">
                         <span lang="en">We build Apple apps for work and everyday life.</span>
-                        <span lang="es" class="hidden">CDesarrollamos Apple apps para el trabajo y la vida diaria.</span>
+                        <span lang="es" class="hidden">Desarrollamos Apple apps para el trabajo y la vida
+                            diaria.</span>
                     </p>
                     <div class="footer-social" style="display: flex; gap: 16px; margin-top: 24px">
                         <a href="https://www.instagram.com/hellobricksapps/" target="_blank" rel="noopener"
@@ -1201,8 +1210,8 @@
 
             // ── Single rAF scroll loop (progress + header + parallax) ──
             const progressBar = document.getElementById('scroll-progress');
-            const header      = document.querySelector('.site-header');
-            const heroBg      = document.querySelector('.hero-bg');
+            const header = document.querySelector('.site-header');
+            const heroBg = document.querySelector('.hero-bg');
 
             let scrollTicking = false;
 
@@ -1210,8 +1219,8 @@
                 if (scrollTicking) return;
                 scrollTicking = true;
                 requestAnimationFrame(() => {
-                    const scrollTop  = window.scrollY;
-                    const docHeight  = document.documentElement.scrollHeight - window.innerHeight;
+                    const scrollTop = window.scrollY;
+                    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
 
                     // Scroll progress bar
                     if (progressBar) {
@@ -1234,8 +1243,8 @@
 
             // ── Dot Grid + Glow: Autonomous drift + cursor override ───
             const heroSection = document.querySelector('.index-hero');
-            const cursorGlow  = document.querySelector('.hero-cursor-glow');
-            const dotGrid     = document.querySelector('.hero-dot-grid');
+            const cursorGlow = document.querySelector('.hero-cursor-glow');
+            const dotGrid = document.querySelector('.hero-dot-grid');
 
             if (dotGrid || cursorGlow) {
                 // Lerp state — starts at centre of hero
@@ -1252,7 +1261,7 @@
                 }
 
                 function tick() {
-                    const t      = Date.now() / 1000;
+                    const t = Date.now() / 1000;
                     const target = cursorActive ? { x: targetX, y: targetY } : autoPos(t);
 
                     // Cursor mode: snappier lerp so dots feel precise
@@ -1274,7 +1283,7 @@
                     // in cursor mode CSS transition creates the physical lag
                     if (cursorGlow && !cursorActive) {
                         cursorGlow.style.left = xPct;
-                        cursorGlow.style.top  = yPct;
+                        cursorGlow.style.top = yPct;
                     }
 
                     requestAnimationFrame(tick);
@@ -1286,14 +1295,14 @@
                 if (heroSection) {
                     heroSection.addEventListener('mousemove', (e) => {
                         const rect = heroSection.getBoundingClientRect();
-                        targetX = ((e.clientX - rect.left) / rect.width)  * 100;
-                        targetY = ((e.clientY - rect.top)  / rect.height) * 100;
+                        targetX = ((e.clientX - rect.left) / rect.width) * 100;
+                        targetY = ((e.clientY - rect.top) / rect.height) * 100;
                         cursorActive = true;
 
                         // Glow lags behind cursor via CSS transition (feels airy)
                         if (cursorGlow) {
                             cursorGlow.style.left = targetX.toFixed(2) + '%';
-                            cursorGlow.style.top  = targetY.toFixed(2) + '%';
+                            cursorGlow.style.top = targetY.toFixed(2) + '%';
                         }
                     }, { passive: true });
 
