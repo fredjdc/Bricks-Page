@@ -288,14 +288,16 @@ Use one radius family across all assets:
 
 **Rules**
 - **No Tailwind CSS**: Explicitly deprecate the use of Tailwind classes, CDN scripts, or configuration blocks. Use `styles.css` exclusively for standard branding compliance.
-- **Header**: Use `<header class="container site-header">`. Place the logo on the left. On the right side of the header bar, explicitly incorporate the language selection button (`<button id="language-switcher">`) to toggle between English and Spanish instead of a generic back button. Ensure textual content inside elements adopts a dual `<span lang="en">` / `<span lang="es" class="hidden">` structure.
-- **Hero Layout**: Build the primary focal section with `<section class="section section-hero hero">` and `<div class="hero-bg">`.
-- **Standard UI Typography**: Utilize design system classes `.hero-title`, `.subheading`, and `.body-text` instead of inline styles. 
-- **Buttons**: Use `.btn.btn-primary` and `.btn.btn-secondary` for a uniform look.
-- **Footer**: Implement `.site-footer` structure consistently across all endpoints. The standard footer includes three columns of links:
+- **Header**: Use `<header class="container site-header">`. Place the logo on the left. On the right side of the header bar, incorporate the primary action button (e.g., `<a href="#waitlist" class="btn btn-primary">Join Waitlist</a>`) alongside the language selection globe button (`<button id="language-switcher">`) inside a flex container. Ensure textual content inside elements adopts a dual `<span lang="en">` / `<span lang="es" class="hidden">` structure.
+- **Hero Layout**: Build the primary focal section with `<section class="section section-hero hero2">` (using `hero2` for the updated design). Include the interactive background layers: `<div class="hero-bg" aria-hidden="true"></div>`, `<div class="hero-cursor-glow" aria-hidden="true"></div>`, and `<div class="hero-dot-grid" aria-hidden="true"></div>`. Wrap the text/form content inside `<div class="container hero-grid">`.
+- **Hero Components (Coming Soon)**: For unreleased products, use a coming-soon badge (`<div class="coming-soon-badge reveal-on-scroll">`) above the hero title, and replace standard CTA buttons with a waitlist form (`<div class="waitlist-form-container">` containing `.form-input-ds` and a submit button).
+- **Animations & Layouts**: Apply `.reveal-on-scroll` along with `.delay-XXX` classes to sequentially animate elements like headings, grid cards (e.g. `.bento-grid`, `.workflow-grid`), and table rows.
+- **Standard UI Typography**: Utilize design system classes `.hero-title`, `.section-title`, `.subheading`, and `.body-text` instead of inline styles.
+- **Buttons**: Use `.btn.btn-primary` and `.btn.btn-secondary` for a uniform look. Incorporate subtle scale animations on active states (`transform: scale(0.97)`).
+- **Footer**: Implement `.site-footer` structure consistently across all endpoints. The standard footer includes a brand section with social media icons (`.footer-social`) and three columns of links:
   - **Apps**: Bricks Scan, Bricks Calc, Bricks Leads.
   - **Company**: About us, Purchase Guide, Email (hello@bricks.pe).
-  - **Support**: Help & Feedback, Apps Guides, Survey.
+  - **Support**: Contact, Vote on Features, Apps Guides, Survey.
   - **Mobile Alignment**: On mobile devices, ensure footer block titles (`.subheading`) and list items are left-aligned for clear read-ability and structural hierarchy.
 
 ---
