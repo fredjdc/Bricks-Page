@@ -1,5 +1,8 @@
 /* 2️⃣ Color System & Global Variables */
 :root {
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.15);
+
     --accent-color: #000000;
     --accent-hover: #333333;
     --success-color: #34c85a;
@@ -1339,6 +1342,420 @@ a:hover {
 }
 
 
+/* --- Styles Migrated from bricks-scan.html --- */
+.hero-title,
+        .section-title {
+            letter-spacing: -0.01em !important;
+        }
+
+        .metadata {
+            letter-spacing: 0.05em !important;
+        }
+
+        #language-switcher .language-globe-icon {
+            transition: transform 0.6s var(--ease-out-expo);
+        }
+
+        #language-switcher:active .language-globe-icon {
+            transform: rotate(180deg);
+        }
+
+        .hero-title.reveal-on-scroll {
+            transform: translateY(40px);
+            opacity: 0;
+            will-change: transform, opacity;
+            transition:
+                transform 1.2s var(--ease-out-expo),
+                opacity 1s var(--ease-out-expo);
+        }
+
+        .hero-title.reveal-on-scroll.is-visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .btn:active,
+        .ecosystem-card:active,
+        .testimonial:active {
+            transform: scale(0.97) translateY(0) !important;
+            transition: transform 0.1s ease !important;
+        }
+
+        
+
+        
+
+        
+
+        .hero-cursor-glow {
+            position: absolute;
+            width: 680px;
+            height: 680px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 166, 161, 0.08) 0%, transparent 65%);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            top: 40%;
+            left: 60%;
+            transition: top 1s var(--ease-out-expo), left 1s var(--ease-out-expo);
+            z-index: 0;
+            will-change: top, left;
+            opacity: 1;
+        }
+
+        .hero-dot-grid {
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle 1.5px at 1.5px 1.5px,
+                    rgba(0, 166, 161, 0.32) 1.5px,
+                    transparent 0);
+            background-size: 26px 26px;
+            -webkit-mask-image: radial-gradient(ellipse 260px 260px at var(--dot-x, 50%) var(--dot-y, 50%),
+                    black 0%,
+                    transparent 100%);
+            mask-image: radial-gradient(ellipse 260px 260px at var(--dot-x, 50%) var(--dot-y, 50%),
+                    black 0%,
+                    transparent 100%);
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.8;
+        }
+
+        .section-hero {
+            position: relative;
+            overflow: hidden;
+            background: transparent !important;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 120px;
+            padding-bottom: 80px;
+        }
+
+        .section-hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .grid-3:hover .ecosystem-card:not(:hover),
+        .testimonials-grid:hover .testimonial:not(:hover) {
+            opacity: 0.4;
+            transform: scale(0.98);
+        }
+
+        .ecosystem-card,
+        .testimonial {
+            transition:
+                opacity 0.4s var(--ease-out-expo),
+                transform 0.4s var(--ease-out-expo),
+                box-shadow 0.4s ease;
+        }
+
+        .hero-title.reveal-on-scroll {
+            animation: none;
+        }
+
+        .screenshot-side {
+            transition: none;
+            will-change: transform;
+        }
+
+        .problem-number {
+            width: 32px;
+            height: 32px;
+            margin: 0 auto 16px;
+            border: 1px solid var(--depth-plane);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            color: var(--text-secondary);
+            opacity: 0.55;
+        }
+
+        .feature-list .feature-item strong {
+            color: var(--accent-teal);
+        }
+
+        .workflow-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 64px;
+        }
+
+        .auto-sort-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: minmax(140px, auto);
+            gap: 20px;
+        }
+
+        .bento-card {
+            background-color: var(--bg-alt, #f7f7fa);
+            border-radius: 20px;
+            padding: 32px;
+            border: 1px solid var(--depth-plane, #e5e5ea);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .bento-card>p.body-text {
+            margin-bottom: 32px;
+        }
+
+        .bento-card img.bento-img {
+            width: calc(100% + 64px);
+            margin: 24px -32px -32px -32px;
+            border-radius: 0 0 20px 20px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .bento-icon {
+            width: 32px;
+            height: 32px;
+            margin-bottom: 16px;
+        }
+
+        .bento-auto-sort {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .bento-search {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+
+        .bento-pdf {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+
+        .bento-ai {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+
+        .bento-markup {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+
+        .bento-sign {
+            grid-column: span 2;
+            grid-row: span 1;
+            padding: 24px;
+        }
+
+        .bento-devices {
+            grid-column: span 2;
+            grid-row: span 1;
+            padding: 24px;
+        }
+
+        .bento-card-horizontal {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .bento-card-horizontal .bento-content {
+            flex: 1;
+            padding-right: 24px;
+        }
+
+        .bento-card-horizontal img.bento-img-horizontal {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 12px;
+            display: block;
+        }
+
+        .privacy-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 64px;
+        }
+
+        .perfect-for-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 64px;
+        }
+
+        .perfect-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--depth-plane);
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .perfect-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 20px;
+            display: block;
+        }
+
+        .comparison-table-wrapper {
+            max-width: 900px;
+            margin: 64px auto 0;
+            overflow-x: auto;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        .comparison-table th:nth-child(2),
+        .comparison-table td:nth-child(2),
+        .comparison-table th:nth-child(3),
+        .comparison-table td:nth-child(3) {
+            text-align: center;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 16px;
+            border-bottom: 1px solid var(--depth-plane);
+        }
+
+        .comparison-table th {
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .section-padding-large {
+            padding: 120px 0;
+        }
+
+        .feature-strip {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-top: 16px;
+            margin-bottom: 32px;
+        }
+
+        @media (max-width: 1024px) {
+
+            .bento-grid,
+            .perfect-for-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .bento-auto-sort,
+            .bento-sign,
+            .bento-devices {
+                grid-column: span 2;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .workflow-grid,
+            .auto-sort-grid,
+            .privacy-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bento-grid,
+            .perfect-for-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bento-auto-sort,
+            .bento-search,
+            .bento-pdf,
+            .bento-ai,
+            .bento-markup,
+            .bento-sign,
+            .bento-devices {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+        }
+
+        .coming-soon-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: rgba(0, 166, 161, 0.1);
+            color: var(--accent-teal);
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border-radius: 100px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(0, 166, 161, 0.2);
+        }
+
+        .waitlist-form-container {
+            max-width: 480px;
+            width: 100%;
+            margin: 40px auto 0;
+            text-align: center;
+        }
+
+        .waitlist-form {
+            display: flex;
+            gap: 12px;
+            width: 100%;
+            margin-top: 24px;
+        }
+
+        @media (max-width: 600px) {
+            .waitlist-form {
+                flex-direction: column;
+            }
+
+            .waitlist-form .btn {
+                width: 100%;
+            }
+        }
+
+@media (max-width: 1024px){
+
+            .bento-grid,
+            .perfect-for-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .bento-auto-sort,
+            .bento-sign,
+            .bento-devices {
+                grid-column: span 2;
+            }
+    }
+
 /* Responsive styles combined for better maintainability */
 @media (max-width: 768px) {
 
@@ -1591,6 +2008,30 @@ a:hover {
         height: 100% !important;
         width: 100% !important;
     }
+
+
+            .workflow-grid,
+            .auto-sort-grid,
+            .privacy-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bento-grid,
+            .perfect-for-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bento-auto-sort,
+            .bento-search,
+            .bento-pdf,
+            .bento-ai,
+            .bento-markup,
+            .bento-sign,
+            .bento-devices {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+    
 }
 
 /* Additional mobile optimizations for very small screens */
@@ -1624,3 +2065,13 @@ a:hover {
     }
 }
 
+
+@media (max-width: 600px){
+            .waitlist-form {
+                flex-direction: column;
+            }
+
+            .waitlist-form .btn {
+                width: 100%;
+            }
+    }
