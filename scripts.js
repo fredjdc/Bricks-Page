@@ -906,6 +906,171 @@ window.updateConsent = function (consent) {
     }
 };
 
+// Bricks Scan specific animations
+const initBricksScanAnimations = () => {
+    const observerOptions = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    const animatedElements = document.querySelectorAll(".reveal-on-scroll");
+    animatedElements.forEach((el) => {
+        observer.observe(el);
+    });
+
+    const problemSection = document.getElementById("problem-section");
+    const expandingBg = problemSection ? problemSection.querySelector(".expanding-bg") : null;
+
+    if (problemSection && expandingBg) {
+        let bgTicking = false;
+        const handleScroll = () => {
+            if (bgTicking) return;
+            bgTicking = true;
+            requestAnimationFrame(() => {
+                const rect = problemSection.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+
+                const triggerPoint = windowHeight * 0.2;
+                const totalDistance = windowHeight - triggerPoint;
+
+                let progress = (windowHeight - rect.top) / totalDistance;
+                progress = Math.min(Math.max(progress, 0), 1);
+
+                const startWidth = 50;
+                const endWidth = 100;
+                const startRadius = 24;
+                const endRadius = 0;
+
+                const currentWidth = startWidth + (endWidth - startWidth) * progress;
+                const currentRadius = startRadius - (startRadius - endRadius) * progress;
+
+                expandingBg.style.width = `${currentWidth}%`;
+                expandingBg.style.borderRadius = `${currentRadius}px`;
+                bgTicking = false;
+            });
+        };
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        handleScroll();
+    }
+
+    const stackContainer = document.querySelector(".screenshot-stack");
+    const leftScreenshots = stackContainer ? stackContainer.querySelectorAll(".screenshot-side.left") : [];
+    const rightScreenshots = stackContainer
+        ? stackContainer.querySelectorAll(".screenshot-side.right")
+        : [];
+
+    if (stackContainer && leftScreenshots.length > 0 && rightScreenshots.length > 0) {
+        let fanoutTicking = false;
+        const handleSolutionScroll = () => {
+            if (fanoutTicking) return;
+            fanoutTicking = true;
+            requestAnimationFrame(() => {
+                const rect = stackContainer.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+
+                const startPoint = windowHeight * 0.9;
+                const endPoint = windowHeight * 0.3;
+                const totalDistance = startPoint - endPoint;
+
+                let progress = (startPoint - rect.top) / totalDistance;
+                progress = Math.min(Math.max(progress, 0), 1);
+
+                const isMobile = window.innerWidth <= 768;
+                const maxRotation = isMobile ? 3 : 4;
+                const maxTranslateX = isMobile ? 40 : 80;
+                const maxTranslateY = isMobile ? -10 : -20;
+
+                const currentRotation = maxRotation * progress;
+                const currentTranslateX = maxTranslateX * progress;
+                const currentTranslateY = maxTranslateY * progress;
+
+                leftScreenshots.forEach((el) => {
+                    el.style.transform = `translateX(-${currentTranslateX}px) translateY(${currentTranslateY}px) rotate(-${currentRotation}deg)`;
+                });
+                rightScreenshots.forEach((el) => {
+                    el.style.transform = `translateX(${currentTranslateX}px) translateY(${currentTranslateY}px) rotate(${currentRotation}deg)`;
+                });
+                fanoutTicking = false;
+            });
+        };
+
+        window.addEventListener("scroll", handleSolutionScroll, { passive: true });
+        handleSolutionScroll();
+    }
+
+    const heroSection = document.querySelector('.section-hero');
+    const cursorGlow = document.querySelector('.hero-cursor-glow');
+    const dotGrid = document.querySelector('.hero-dot-grid');
+
+    if (dotGrid || cursorGlow) {
+        let dotX = 50, dotY = 42;
+        let cursorActive = false;
+        let targetX = 50, targetY = 42;
+
+        function autoPos(t) {
+            return {
+                x: 50 + 32 * Math.sin(t * 0.22),
+                y: 42 + 20 * Math.sin(t * 0.37 + 1.0)
+            };
+        }
+
+        function tick() {
+            const t = Date.now() / 1000;
+            const target = cursorActive ? { x: targetX, y: targetY } : autoPos(t);
+
+            const speed = cursorActive ? 0.12 : 0.04;
+            dotX += (target.x - dotX) * speed;
+            dotY += (target.y - dotY) * speed;
+
+            const xPct = dotX.toFixed(2) + '%';
+            const yPct = dotY.toFixed(2) + '%';
+
+            if (dotGrid) {
+                dotGrid.style.setProperty('--dot-x', xPct);
+                dotGrid.style.setProperty('--dot-y', yPct);
+            }
+
+            if (cursorGlow && !cursorActive) {
+                cursorGlow.style.left = xPct;
+                cursorGlow.style.top = yPct;
+            }
+
+            requestAnimationFrame(tick);
+        }
+
+        requestAnimationFrame(tick);
+
+        if (heroSection) {
+            heroSection.addEventListener('mousemove', (e) => {
+                const rect = heroSection.getBoundingClientRect();
+                targetX = ((e.clientX - rect.left) / rect.width) * 100;
+                targetY = ((e.clientY - rect.top) / rect.height) * 100;
+                cursorActive = true;
+
+                if (cursorGlow) {
+                    cursorGlow.style.left = targetX.toFixed(2) + '%';
+                    cursorGlow.style.top = targetY.toFixed(2) + '%';
+                }
+            }, { passive: true });
+
+            heroSection.addEventListener('mouseleave', () => {
+                cursorActive = false;
+            }, { passive: true });
+        }
+    }
+};
+
 // Initialize all functionality when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize element references
@@ -937,6 +1102,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Activate the apps overview parallax effect when the cards are present
     initAppsParallax();
+
+    // Initialize Bricks Scan specific animations
+    initBricksScanAnimations();
 
     // Initialize cookie consent
     initializeCookieConsent();
