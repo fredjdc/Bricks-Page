@@ -85,83 +85,7 @@ const debounce = (fn, delay) => {
     };
 };
 
-// DOM Elements cache
-let elements = {};
 
-// Function to initialize DOM elements
-const initializeElements = () => {
-    elements = {
-        menuButton: document.getElementById('mobile-menu-button'),
-        mobileMenu: document.getElementById('mobile-menu'),
-        carousel: document.getElementById('screenshot-carousel'),
-        langElement: document.getElementById('current-language'),
-        videoModal: document.getElementById('video-modal'),
-        openVideoBtn: document.getElementById('open-video-modal'),
-        closeVideoBtn: document.getElementById('close-video-modal'),
-        modalVideo: document.getElementById('modal-video'),
-        // Support page elements
-        issueForm: document.getElementById('issue-report-form'),
-        fileInput: document.getElementById('file-upload'),
-        fileList: document.getElementById('file-list'),
-        successAlert: document.getElementById('success-alert'),
-        closeSuccess: document.getElementById('close-success'),
-        referenceNumber: document.getElementById('reference-number')
-    };
-};
-
-// Event Handlers
-const handleMobileMenu = () => {
-    if (elements.mobileMenu) {
-        elements.mobileMenu.classList.toggle('hidden');
-        if (elements.mobileMenu.__x) {
-            elements.mobileMenu.__x.updateElements(elements.mobileMenu);
-        }
-    }
-};
-
-const handleCarousel = (container) => {
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-
-    // Common handler functions
-    const handleStart = (e) => {
-        isDown = true;
-        container.classList.add('active');
-        // Works for both mouse and touch events
-        const pageX = e.pageX || (e.touches && e.touches[0].pageX);
-        startX = pageX - container.offsetLeft;
-        scrollLeft = container.scrollLeft;
-        e.preventDefault();
-    };
-
-    const handleEnd = () => {
-        isDown = false;
-        container.classList.remove('active');
-    };
-
-    const handleMove = (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        // Works for both mouse and touch events
-        const pageX = e.pageX || (e.touches && e.touches[0].pageX);
-        const x = pageX - container.offsetLeft;
-        const walk = (x - startX) * 1.5;
-        container.scrollLeft = scrollLeft - walk;
-    };
-
-    // Mouse events
-    container.addEventListener('mousedown', handleStart);
-    container.addEventListener('mouseleave', handleEnd);
-    container.addEventListener('mouseup', handleEnd);
-    container.addEventListener('mousemove', handleMove);
-
-    // Touch events
-    container.addEventListener('touchstart', handleStart, { passive: false });
-    container.addEventListener('touchend', handleEnd);
-    container.addEventListener('touchcancel', handleEnd);
-    container.addEventListener('touchmove', handleMove, { passive: false });
-};
 
 // Intersection Observer for animations
 const setupIntersectionObserver = () => {
@@ -390,17 +314,6 @@ const changeLanguage = (lang) => {
         // Store user preference
         localStorage.setItem('bricksLanguage', lang);
 
-        // Update language display in UI
-        if (elements.langElement) {
-            const langNames = {
-                'en': 'English',
-                'es': 'Español',
-                'fr': 'Français',
-                'pt': 'Português'
-            };
-            elements.langElement.textContent = langNames[lang] || 'English';
-        }
-
         // Update document language attribute
         document.documentElement.setAttribute('lang', lang);
 
@@ -413,21 +326,6 @@ const changeLanguage = (lang) => {
         document.querySelectorAll(`[lang="${lang}"]`).forEach(el => {
             el.classList.remove('hidden');
         });
-
-        // Handle mobile language display
-        const mobileLangBtn = document.getElementById('mobile-language-switcher');
-        if (mobileLangBtn) {
-            const mobileLabel = mobileLangBtn.querySelector('span:not(.material-symbols-outlined)');
-            if (mobileLabel) {
-                const langNames = {
-                    'en': 'English',
-                    'es': 'Español',
-                    'fr': 'Français',
-                    'pt': 'Português'
-                };
-                mobileLabel.textContent = langNames[lang] || 'English';
-            }
-        }
 
         // Update placeholders based on language
         updatePlaceholders(lang);
@@ -716,108 +614,12 @@ const initAppsParallax = () => {
     scheduleUpdate();
 };
 
-// Video Modal Handler
-const handleVideoModal = () => {
-    if (!elements.videoModal || !elements.openVideoBtn || !elements.closeVideoBtn) {
-        console.error('Video modal elements not found');
-        return;
-    }
 
-    const openModal = (e) => {
-        e.preventDefault();
-
-        // Load the correct video source based on current language
-        if (elements.modalVideo) {
-            const currentLang = localStorage.getItem('bricksLanguage') || detectUserLanguage();
-
-            // More direct approach to set the correct source
-            const videoEl = elements.modalVideo;
-
-            // Define video paths based on language
-            const videoSources = {
-                'en': 'images/app-preview-en.mp4',
-                'es': 'images/app-preview-es.mp4',
-                'fr': 'images/app-preview-en.mp4', // Fallback
-                'pt': 'images/app-preview-en.mp4'  // Fallback
-            };
-
-            // Get the appropriate source for the current language
-            const sourcePath = videoSources[currentLang] || videoSources['en']; // Fallback to English
-
-            // Directly set the src attribute on the video element
-            videoEl.src = sourcePath;
-            videoEl.load();
-        }
-
-        elements.videoModal.classList.add('opacity-100');
-        elements.videoModal.classList.remove('opacity-0', 'pointer-events-none');
-        document.body.style.overflow = 'hidden';
-
-        // Only try to play the video after the modal transition completes
-        if (elements.modalVideo) {
-            setTimeout(() => {
-                elements.modalVideo.play()
-                    .catch(err => console.error('Error playing video:', err));
-            }, 300); // Match the transition duration
-        }
-    };
-
-    const closeModal = () => {
-        elements.videoModal.classList.remove('opacity-100');
-        elements.videoModal.classList.add('opacity-0', 'pointer-events-none');
-        document.body.style.overflow = '';
-        if (elements.modalVideo) {
-            elements.modalVideo.pause();
-        }
-    };
-
-    elements.openVideoBtn.addEventListener('click', openModal);
-    elements.closeVideoBtn.addEventListener('click', closeModal);
-
-    // Close modal when clicking outside the content
-    elements.videoModal.addEventListener('click', (e) => {
-        if (e.target === elements.videoModal) {
-            closeModal();
-        }
-    });
-
-    // Close modal with escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && !elements.videoModal.classList.contains('pointer-events-none')) {
-            closeModal();
-        }
-    });
-};
-
-
-
-// Format file size to human-readable format
-function formatFileSize(bytes) {
-    if (bytes === 0) return '0 Bytes';
-
-    const k = 1024;
-    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
-    let i = 0;
-    let tempBytes = bytes;
-
-    while (tempBytes >= k && i < sizes.length - 1) {
-        tempBytes /= k;
-        i++;
-    }
-
-    if (parseFloat(tempBytes.toFixed(2)) >= k && i < sizes.length - 1) {
-        tempBytes /= k;
-        i++;
-    }
-
-    return parseFloat(tempBytes.toFixed(2)) + ' ' + sizes[i];
-}
 
 // Language switcher setup
 const setupLanguageSwitcher = () => {
     const languageSwitcher = document.getElementById('language-switcher');
     const languageMenu = document.getElementById('language-menu');
-    const mobileLanguageSwitcher = document.getElementById('mobile-language-switcher');
 
     // Initial language
     const savedLang = localStorage.getItem('bricksLanguage');
@@ -848,17 +650,6 @@ const setupLanguageSwitcher = () => {
                 changeLanguage(lang);
                 languageMenu.classList.remove('is-visible');
             });
-        });
-    }
-
-    // Toggle language onClick for mobile (legacy toggle behavior)
-    if (mobileLanguageSwitcher) {
-        mobileLanguageSwitcher.addEventListener('click', () => {
-            const currentLang = document.documentElement.getAttribute('lang') || 'en';
-            const languages = ['en', 'es'];
-            const currentIndex = languages.indexOf(currentLang);
-            const nextLang = languages[(currentIndex + 1) % languages.length];
-            changeLanguage(nextLang);
         });
     }
 };
@@ -1073,26 +864,8 @@ const initBricksScanAnimations = () => {
 
 // Initialize all functionality when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize element references
-    initializeElements();
-
     // Prepare hero word swap controllers before language toggles run
     initializeHeroWordSwap();
-
-    // Add event listeners
-    if (elements.menuButton) {
-        elements.menuButton.addEventListener('click', handleMobileMenu);
-    }
-
-    if (elements.carousel) {
-        handleCarousel(elements.carousel);
-    }
-
-    // Video modal handling
-    if (elements.openVideoBtn && elements.videoModal) {
-        handleVideoModal();
-    }
-
 
     // Setup language switcher if available
     setupLanguageSwitcher();
@@ -1116,14 +889,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Add resize event listener for layout adjustments
     window.addEventListener('resize', debounce(() => {
-        // Recalculate or adjust UI elements on resize if needed
-        if (window.innerWidth >= 640) {
-            // Reset mobile menu visibility on desktop
-            if (elements.mobileMenu) {
-                elements.mobileMenu.classList.add('hidden');
-            }
-        }
-
         // Keep hero word width in sync when viewport changes
         heroWordControllers.forEach((controller) => controller.refresh());
     }, 250));
