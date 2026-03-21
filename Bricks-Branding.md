@@ -26,7 +26,7 @@ When generating or updating any asset:
 
 ### 1.2 Non-Negotiables
 - **No extra colors** beyond neutrals + **#00A6A1**
-- No glow, neon, or gradients on objects
+- No glow, neon, or gradients on objects (subtle ambient background glows using teal in web layouts are permitted)
 - No noisy micro-details, no text on icons
 - One light direction for the whole ecosystem (top-left)
 
@@ -36,9 +36,10 @@ When generating or updating any asset:
 
 ### 2.1 Accent
 - **Teal Accent:** `#00A6A1`
-- Use as a **recessed insert / inlay** (never as light/glow).
+- On icons/forms: Use as a **recessed insert / inlay**.
+- On web layouts: Permitted for subtle ambient glows (e.g., `rgba(0, 166, 161, 0.07)`), interactive cursor highlights, dot grids, text emphasis, and badge treatments.
 - Exactly once per icon or single-object asset.
-- For complex screens/illustrations: prefer **once per screen**.
+- For complex screens/illustrations: keep usage restrained to preserve the premium feel.
 
 ### 2.2 Neutrals (Cool Only)
 - Off-white base: `#F6F7F8`
@@ -46,13 +47,14 @@ When generating or updating any asset:
 - Cool gray (surface shadow): `#E7ECEF`
 - Cool gray (depth plane): `#C9D3DA`
 - Cool gray (edge definition): `#9AA7B2`
+- Pure Black (Headings): `#000000`
 - Near-black (UI text): `#0B0F14`
 - Secondary text gray: `#55626E`
 
 ### 2.3 Color Rules
 - No warm grays, no beige, no cream.
 - Shadows stay neutral/cool (no colored shadows).
-- Teal never appears twice.
+- Teal is the only allowed color accent. Guide attention cleanly without overwhelming the primary monochrome palette.
 
 ---
 
@@ -136,10 +138,10 @@ Use one radius family across all assets:
 - Headlines: neutral, minimal, not “techy loud”
 
 ### 7.2 Typesetting Rules
-- Large headings, generous line-height
-- Avoid all-caps unless labeling micro UI
+- Large headings (in `#000000`), generous line-height
+- Avoid all-caps unless labeling micro UI or coming-soon badges
 - Keep emphasis through weight/scale, not color
-- Use teal sparingly: only for one key highlight per composition (or none)
+- Use teal sparingly: only for key highlights, badges, or buttons per composition.
 
 ---
 
@@ -217,7 +219,8 @@ Use one radius family across all assets:
 
 **Rules**
 - Off-white base, neutral UI cards, bas-relief objects as visuals
-- Use teal once per section max (or once per page for very premium feel)
+- Backgrounds may incorporate subtle ambient teal glows or dot-grids to increase dynamism.
+- Teal is used purposefully as the sole accent for interactive states, badges, text highlights, and subtle atmospheric glows.
 - Strong hierarchy, generous spacing
 
 **Hero Patterns**
