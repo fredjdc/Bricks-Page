@@ -659,6 +659,14 @@ a:hover {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s var(--ease-out-expo);
+}
+
+.ecosystem-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px var(--surface-shadow);
 }
 
 .app-icon {
