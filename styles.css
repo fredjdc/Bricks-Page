@@ -204,13 +204,13 @@ a:hover {
 }
 
 .section-hero {
-    padding-top: var(--space-md);
+
     padding-bottom: var(--space-md);
 }
 
 .hero-grid {
     display: grid;
-    grid-template-columns: minmax(0, 520px) auto;
+    grid-template-columns: minmax(0, 620px) auto;
     gap: 64px;
     align-items: center;
     justify-content: center;
@@ -219,7 +219,7 @@ a:hover {
 .hero-content {
     text-align: left;
     width: 100%;
-    max-width: 520px;
+    max-width: 620px;
 }
 
 .hero-content .cta-group {
