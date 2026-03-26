@@ -342,6 +342,12 @@ const changeLanguage = (lang) => {
             }
         });
 
+        // Sync footer dropdown select if present
+        const languageSelect = document.getElementById('language-select');
+        if (languageSelect) {
+            languageSelect.value = lang;
+        }
+
         // Restart hero headline animation for the freshly selected language
         updateHeroWordSwapForLanguage(lang);
     } catch (error) {
@@ -620,13 +626,22 @@ const initAppsParallax = () => {
 const setupLanguageSwitcher = () => {
     const languageSwitcher = document.getElementById('language-switcher');
     const languageMenu = document.getElementById('language-menu');
+    const languageSelect = document.getElementById('language-select');
 
     // Initial language
     const savedLang = localStorage.getItem('bricksLanguage');
     const initialLang = savedLang || detectUserLanguage();
     changeLanguage(initialLang);
 
-    // Toggle menu
+    // Sync the footer dropdown select to the initial language
+    if (languageSelect) {
+        languageSelect.value = initialLang;
+        languageSelect.addEventListener('change', () => {
+            changeLanguage(languageSelect.value);
+        });
+    }
+
+    // Legacy toggle menu (globe button) – still used on other pages
     if (languageSwitcher && languageMenu) {
         languageSwitcher.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -649,6 +664,10 @@ const setupLanguageSwitcher = () => {
                 const lang = option.getAttribute('data-lang');
                 changeLanguage(lang);
                 languageMenu.classList.remove('is-visible');
+                // Keep the select dropdown in sync if present
+                if (languageSelect) {
+                    languageSelect.value = lang;
+                }
             });
         });
     }

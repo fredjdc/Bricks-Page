@@ -609,6 +609,51 @@ a:hover {
     }
 }
 
+/* Footer Language Dropdown */
+.footer-language-dropdown {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    position: relative;
+}
+
+.footer-globe-icon {
+    width: 16px;
+    height: 16px;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.footer-language-dropdown select {
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent;
+    border: 1px solid var(--surface-shadow);
+    border-radius: var(--r1-small);
+    padding: 6px 28px 6px 10px;
+    font-family: var(--font-stack);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%2355626E' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px;
+}
+
+.footer-language-dropdown select:hover {
+    border-color: var(--edge-def);
+    color: var(--text-primary);
+}
+
+.footer-language-dropdown select:focus {
+    outline: none;
+    border-color: var(--accent-teal);
+    box-shadow: 0 0 0 2px rgba(0, 166, 161, 0.15);
+}
+
 .logo img {
     height: 24px;
     display: block;
@@ -635,7 +680,7 @@ a:hover {
     width: 100%;
     height: auto;
     object-fit: contain;
-    border-radius: 32px;
+    border-radius: 48px;
     display: block;
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
 }
@@ -863,10 +908,6 @@ a:hover {
 
     .hero-image-wrapper {
         max-width: 360px;
-    }
-
-    .hero-img {
-        border-radius: 32px;
     }
 
     .cta-group {
