@@ -121,14 +121,6 @@
                     style="height: 24px;" />
             </a>
         </div>
-        <div class="language-picker">
-            <button id="language-switcher" title="Cambiar idioma / Change language">
-                <img src="images/globe-icon.svg" alt="" class="language-globe-icon" />
-            </button>
-            <div id="language-menu" class="language-menu">
-                <div class="lang-option" data-lang="en">English</div>
-                <div class="lang-option" data-lang="es">Español</div>
-            </div>
         </div>
     </header>
 
@@ -911,7 +903,8 @@
                     <span lang="en">© 2026 Bricks Apps. All rights reserved.</span>
                     <span lang="es" class="hidden">© 2026 Bricks Apps. Todos los derechos reservados</span>
                 </p>
-                <div class="footer-links" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 24px">
+                <div class="footer-bottom-row" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 24px; align-items: center">
+                    <div class="footer-links" style="display: flex; flex-wrap: wrap; gap: 24px">
                     <a href="privacy.html" style="margin: 0">
                         <span lang="en">Privacy Policy</span>
                         <span lang="es" class="hidden">Política de privacidad</span>
@@ -920,6 +913,14 @@
                         <span lang="en">Terms of Service</span>
                         <span lang="es" class="hidden">Términos de servicio</span>
                     </a>
+                </div>
+                    <div class="footer-language-dropdown">
+                        <img src="images/globe-icon.svg" alt="" class="footer-globe-icon" />
+                        <select id="language-select" title="Change language / Cambiar idioma">
+                            <option value="en">English</option>
+                            <option value="es">Español</option>
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>
