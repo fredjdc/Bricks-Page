@@ -273,7 +273,7 @@ a:hover {
 
     .hero-image-wrapper {
         width: 100%;
-        max-width: 260px;
+        max-width: 360px;
         margin-top: 0;
         padding: 0;
         overflow: visible;
@@ -620,7 +620,7 @@ a:hover {
 .hero-image-wrapper {
     margin-top: 48px;
     width: 100%;
-    max-width: 260px;
+    max-width: 360px;
     margin-left: auto;
     margin-right: auto;
     position: relative;
@@ -862,7 +862,7 @@ a:hover {
     }
 
     .hero-image-wrapper {
-        max-width: 260px;
+        max-width: 360px;
     }
 
     .hero-img {
@@ -2108,7 +2108,7 @@ a:hover {
     }
 
     .hero-image-wrapper {
-        max-width: 260px;
+        max-width: 360px;
     }
 
     .hero-img {
