@@ -210,17 +210,29 @@ a:hover {
 
 .hero-grid {
     display: grid;
-    grid-template-columns: 1fr 1.25fr;
-    gap: 48px;
+    grid-template-columns: minmax(0, 520px) auto;
+    gap: 64px;
     align-items: center;
+    justify-content: center;
 }
 
 .hero-content {
     text-align: left;
+    width: 100%;
+    max-width: 520px;
 }
 
 .hero-content .cta-group {
     justify-content: flex-start;
+}
+
+.hero-content .body-text {
+    margin: 16px 0;
+}
+
+.hero-content .waitlist-form-container {
+    margin: 40px 0 0;
+    text-align: left;
 }
 
 /* Mobile Hero Layout */
@@ -230,39 +242,45 @@ a:hover {
         flex-direction: column-reverse;
         gap: 24px;
         text-align: center;
-        align-items: center;
     }
 
     .hero-content {
         text-align: center;
-        width: 100%;
+        max-width: 100%;
     }
 
     .hero-content .cta-group {
         justify-content: center;
     }
 
+    .hero-content .body-text {
+        margin: 16px auto;
+    }
+
+    .hero-content .waitlist-form-container {
+        margin: 40px auto 0;
+        text-align: center;
+    }
+
     .section-hero {
         height: auto;
         max-height: none;
-        min-height: 0;
         align-items: flex-start;
-        padding-top: 164px;
-        padding-bottom: 56px;
+        padding-top: 208px;
+        padding-bottom: 72px;
+        min-height: calc(100svh + 120px);
     }
 
     .hero-image-wrapper {
         width: 100%;
-        max-width: 420px;
+        max-width: 260px;
         margin-top: 0;
         padding: 0;
-        max-height: none;
         overflow: visible;
     }
 
     .hero-img {
         height: auto;
-        max-height: min(52vh, 520px);
         object-position: top center;
     }
 }
@@ -601,26 +619,25 @@ a:hover {
 /* Hero Image Wrapper */
 .hero-image-wrapper {
     margin-top: 48px;
-    max-width: 1000px;
+    width: 100%;
+    max-width: 260px;
     margin-left: auto;
     margin-right: auto;
     position: relative;
-    max-height: 70vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
-    border-radius: var(--r3-primary);
-    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.12), 0 10px 40px rgba(0, 0, 0, 0.06);
+    overflow: visible;
+    border-radius: 32px;
 }
 
 .hero-img {
     width: 100%;
-    height: 100%;
-    max-height: 70vh;
+    height: auto;
     object-fit: contain;
-    border-radius: var(--r3-primary);
+    border-radius: 32px;
     display: block;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
 }
 
 /* Interactive Parallax Artwork Stacking */
@@ -841,16 +858,15 @@ a:hover {
     .section-hero {
         padding-top: 152px;
         padding-bottom: 48px;
+        min-height: 920px;
     }
 
     .hero-image-wrapper {
-        max-width: 360px;
-        border-radius: 36px;
+        max-width: 260px;
     }
 
     .hero-img {
-        max-height: min(46vh, 420px);
-        border-radius: 36px;
+        border-radius: 32px;
     }
 
     .cta-group {
@@ -1471,8 +1487,7 @@ a:hover {
     position: relative;
     overflow: hidden;
     background: transparent !important;
-    height: 100vh;
-    max-height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     padding-top: 80px;
@@ -2089,14 +2104,15 @@ a:hover {
     .section-hero {
         padding-top: 144px;
         padding-bottom: 40px;
+        min-height: 860px;
     }
 
     .hero-image-wrapper {
-        max-width: 320px;
+        max-width: 260px;
     }
 
     .hero-img {
-        max-height: 40vh;
+        max-height: none;
     }
 
     .btn-primary,
