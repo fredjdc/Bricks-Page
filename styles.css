@@ -228,22 +228,42 @@ a:hover {
     .hero-grid {
         display: flex;
         flex-direction: column-reverse;
-        gap: 32px;
+        gap: 24px;
         text-align: center;
+        align-items: center;
     }
 
     .hero-content {
         text-align: center;
+        width: 100%;
     }
 
     .hero-content .cta-group {
         justify-content: center;
     }
 
+    .section-hero {
+        height: auto;
+        max-height: none;
+        min-height: 0;
+        align-items: flex-start;
+        padding-top: 164px;
+        padding-bottom: 56px;
+    }
+
     .hero-image-wrapper {
         width: 100%;
-        max-width: 600px;
-        padding: 20px 0;
+        max-width: 420px;
+        margin-top: 0;
+        padding: 0;
+        max-height: none;
+        overflow: visible;
+    }
+
+    .hero-img {
+        height: auto;
+        max-height: min(52vh, 520px);
+        object-position: top center;
     }
 }
 
@@ -819,7 +839,18 @@ a:hover {
     }
 
     .section-hero {
-        padding-top: 48px;
+        padding-top: 152px;
+        padding-bottom: 48px;
+    }
+
+    .hero-image-wrapper {
+        max-width: 360px;
+        border-radius: 36px;
+    }
+
+    .hero-img {
+        max-height: min(46vh, 420px);
+        border-radius: 36px;
     }
 
     .cta-group {
@@ -2055,6 +2086,18 @@ a:hover {
 
 /* Additional mobile optimizations for very small screens */
 @media (max-width: 480px) {
+    .section-hero {
+        padding-top: 144px;
+        padding-bottom: 40px;
+    }
+
+    .hero-image-wrapper {
+        max-width: 320px;
+    }
+
+    .hero-img {
+        max-height: 40vh;
+    }
 
     .btn-primary,
     .btn-secondary {
