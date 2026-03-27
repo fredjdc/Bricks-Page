@@ -125,7 +125,7 @@ h6 {
 h1.hero-title {
     font-size: 56px;
     font-weight: 900;
-    color: #000000;
+    color: var(--text-primary);
     line-height: 1.05;
     margin-bottom: 24px;
 }
@@ -133,7 +133,7 @@ h1.hero-title {
 h2.section-title {
     font-size: 36px;
     font-weight: 900;
-    color: #000000;
+    color: var(--text-primary);
     margin-bottom: 24px;
 }
 
@@ -663,6 +663,15 @@ a:hover {
     border-radius: var(--r3-primary);
     display: block;
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+.feature-screenshot {
+    width: 100%;
+    max-width: 260px;
+    border-radius: var(--r3-primary);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+    margin-bottom: 24px;
+    display: block;
 }
 
 /* Interactive Parallax Artwork Stacking */

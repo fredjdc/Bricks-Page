@@ -90,7 +90,7 @@ const debounce = (fn, delay) => {
 // Intersection Observer for animations
 const setupIntersectionObserver = () => {
     // Hero image special handling - make it visible immediately
-    document.querySelectorAll('.hero-image').forEach(element => {
+    document.querySelectorAll('.hero-img').forEach(element => {
         if (element) {
             // Make hero image visible immediately
             requestAnimationFrame(() => {
