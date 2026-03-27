@@ -44,9 +44,9 @@
     --reading-width: 720px;
 
     /* Border Radius Families */
-    --r1-small: 8px;
+    --r1-small: 12px;
     /* small details */
-    --r2-inner: 16px;
+    --r2-inner: 24px;
     /* inner cutouts */
     --r3-primary: 48px;
     /* primary silhouette */
@@ -1683,7 +1683,7 @@ a:hover {
     width: 100px;
     height: 100px;
     object-fit: cover;
-    border-radius: var(--r3-primary);
+    border-radius: var(--r2-inner);
     display: block;
 }
 
