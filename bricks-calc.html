@@ -110,6 +110,47 @@
 </head>
 
 <body class="min-h-screen">
+    <!-- Desktop App Banner (shown on macOS browsers only) -->
+    <div id="desktop-app-banner" class="desktop-app-banner" style="display: none;">
+        <div class="desktop-app-banner-content">
+            <img src="images/bricks-calc-web-icon.png" alt="Bricks Calc Icon" class="desktop-app-banner-icon" />
+            <div>
+                <p class="desktop-app-banner-title">Bricks Calc</p>
+                <p class="desktop-app-banner-subtitle">
+                    <span lang="en">Mortgage Calculator and Analysis App</span>
+                    <span lang="es" class="hidden">App de Calculadora y Análisis Hipotecario</span>
+                </p>
+            </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <a id="app_desktop_banner_button" href="https://apps.apple.com/app/id6754506837" target="_blank"
+                rel="noopener noreferrer" class="desktop-app-banner-button">
+                <span lang="en">View on App Store</span>
+                <span lang="es" class="hidden">Ver en App Store</span>
+            </a>
+            <button id="desktop-app-banner-close" class="desktop-app-banner-close">×</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            const isMacOS = navigator.platform.toUpperCase().indexOf("MAC") >= 0;
+            const bannerElement = document.getElementById("desktop-app-banner");
+            const closeBannerButton = document.getElementById("desktop-app-banner-close");
+            const bannerDismissed = localStorage.getItem("app_banner_dismissed");
+            if (isMacOS && !isMobile && !bannerDismissed) {
+                bannerElement.style.display = "flex";
+            }
+            if (closeBannerButton) {
+                closeBannerButton.addEventListener("click", function () {
+                    bannerElement.style.display = "none";
+                    localStorage.setItem("app_banner_dismissed", "true");
+                });
+            }
+        });
+    </script>
+
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P5P8LRC2" height="0" width="0"
             style="display: none; visibility: hidden"></iframe></noscript>
