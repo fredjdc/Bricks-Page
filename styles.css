@@ -216,7 +216,7 @@ a:hover {
 .hero-content {
     text-align: left;
     width: 100%;
-    max-width: 620px;
+    max-width: 420px;
 }
 
 .hero-content .cta-group {
@@ -356,7 +356,7 @@ a:hover {
     align-items: center;
     justify-content: center;
     padding: 20px 36px;
-    min-width: 250px;
+    min-width: 180px;
     width: auto;
     height: 60px;
     border-radius: var(--r2-inner);
