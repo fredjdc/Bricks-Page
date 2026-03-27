@@ -88,40 +88,36 @@ const debounce = (fn, delay) => {
 
 
 // Intersection Observer for animations
+/**
+ * ── Site-Wide Intersection Observer ────────────────────────────
+ * Unified engine for scroll-triggered animations (Reveal, Fade, Slide).
+ */
 const setupIntersectionObserver = () => {
-    // Hero image special handling - make it visible immediately
-    document.querySelectorAll('.hero-img').forEach(element => {
-        if (element) {
-            // Make hero image visible immediately
-            requestAnimationFrame(() => {
-                element.style.opacity = '1';
-            });
-        }
-    });
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -60px 0px',
+        threshold: 0.1
+    };
 
-    const observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // Get animation delay from data attribute if present
-                const delay = parseInt(entry.target.getAttribute('data-animation-delay')) || 0;
+                // Support both legacy 'animate-in' and new 'is-visible' classes
+                entry.target.classList.add('is-visible');
+                entry.target.classList.add('animate-in');
+                
+                // Also handle the hero accent line specifically if found
+                const accentLine = entry.target.querySelector('.hero-accent-line');
+                if (accentLine) accentLine.classList.add('is-visible');
 
-                // Apply animation with delay for smoother, more subtle appearance
-                setTimeout(() => {
-                    entry.target.classList.add('animate-in');
-                }, delay);
-
-                // Stop observing once animated
                 observer.unobserve(entry.target);
             }
         });
-    }, {
-        threshold: 0.05, // Trigger earlier for smoother appearance
-        rootMargin: '0px 0px -80px 0px' // Start animation earlier for more subtle entrance
-    });
+    }, observerOptions);
 
-    document.querySelectorAll('.animate-on-scroll').forEach(element => {
-        observer.observe(element);
-    });
+    // Target all common animation classes used across the site
+    const targets = document.querySelectorAll('.reveal-on-scroll, .animate-on-scroll, .hero-app-item, .ecosystem-card, .bento-card, .value-card, .testimonial');
+    targets.forEach(el => observer.observe(el));
 };
 
 // Hero word swap animation settings keep timing centralized
@@ -716,27 +712,9 @@ window.updateConsent = function (consent) {
     }
 };
 
-// Bricks Scan specific animations
+// Bricks Scan specific layout logic (Parallax, Scroll Progress, etc.)
 const initBricksScanAnimations = () => {
-    const observerOptions = {
-        root: null,
-        rootMargin: "0px",
-        threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("is-visible");
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    const animatedElements = document.querySelectorAll(".reveal-on-scroll");
-    animatedElements.forEach((el) => {
-        observer.observe(el);
-    });
+    // Note: Intersection Observer for .reveal-on-scroll is now handled by setupIntersectionObserver()
 
     const problemSection = document.getElementById("problem-section");
     const expandingBg = problemSection ? problemSection.querySelector(".expanding-bg") : null;
@@ -881,34 +859,157 @@ const initBricksScanAnimations = () => {
     }
 };
 
-// Initialize all functionality when DOM is loaded
+/**
+ * ── Centralized Micro-Animations ─────────────────────────────
+ * Handles scroll progress, header scroll-states, and hero
+ * background interactivity (dot grid spotlight + glow).
+ */
+const setupMicroAnimations = () => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // ── Single rAF scroll loop (progress + header + parallax) ──
+    const progressBar = document.getElementById('scroll-progress');
+    const header = document.querySelector('.site-header');
+    
+    // Look for any hero background (supports .index-hero and .section-hero)
+    const heroBg = document.querySelector('.hero-bg');
+
+    let scrollTicking = false;
+
+    window.addEventListener('scroll', () => {
+        if (scrollTicking) return;
+        scrollTicking = true;
+        requestAnimationFrame(() => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+            // Scroll progress bar
+            if (progressBar && docHeight > 0) {
+                progressBar.style.width = ((scrollTop / docHeight) * 100).toFixed(2) + '%';
+            }
+
+            // Header: shrink + deepen shadow past 60 px
+            if (header) {
+                header.classList.toggle('scrolled', scrollTop > 60);
+            }
+
+            // Parallax hero background
+            if (heroBg) {
+                heroBg.style.transform = `translateY(${scrollTop * 0.35}px)`;
+            }
+
+            scrollTicking = false;
+        });
+    }, { passive: true });
+
+    if (prefersReducedMotion) return;
+
+    // ── Dot Grid + Glow: Autonomous drift + cursor override ───
+    // Targeted at hero sections (either .index-hero or .section-hero)
+    const heroSection = document.querySelector('.index-hero, .section-hero');
+    const cursorGlow = document.querySelector('.hero-cursor-glow');
+    const dotGrid = document.querySelector('.hero-dot-grid');
+
+    if (dotGrid || cursorGlow) {
+        // Lerp state — starts at offset to feel natural
+        let dotX = 50, dotY = 42;
+        let cursorActive = false;
+        let targetX = 50, targetY = 42;
+
+        // Lissajous figure — slow, smooth drift
+        function autoPos(t) {
+            return {
+                x: 50 + 32 * Math.sin(t * 0.22),
+                y: 42 + 20 * Math.sin(t * 0.37 + 1.0)
+            };
+        }
+
+        function tick() {
+            const t = Date.now() / 1000;
+            const target = cursorActive ? { x: targetX, y: targetY } : autoPos(t);
+
+            // Cursor mode: snappier; Auto mode: slower
+            const speed = cursorActive ? 0.12 : 0.04;
+            dotX += (target.x - dotX) * speed;
+            dotY += (target.y - dotY) * speed;
+
+            const xPct = dotX.toFixed(2) + '%';
+            const yPct = dotY.toFixed(2) + '%';
+
+            if (dotGrid) {
+                dotGrid.style.setProperty('--dot-x', xPct);
+                dotGrid.style.setProperty('--dot-y', yPct);
+            }
+
+            if (cursorGlow && !cursorActive) {
+                cursorGlow.style.left = xPct;
+                cursorGlow.style.top = yPct;
+            }
+
+            requestAnimationFrame(tick);
+        }
+
+        requestAnimationFrame(tick);
+
+        if (heroSection) {
+            heroSection.addEventListener('mousemove', (e) => {
+                const rect = heroSection.getBoundingClientRect();
+                targetX = ((e.clientX - rect.left) / rect.width) * 100;
+                targetY = ((e.clientY - rect.top) / rect.height) * 100;
+                cursorActive = true;
+
+                if (cursorGlow) {
+                    cursorGlow.style.left = targetX.toFixed(2) + '%';
+                    cursorGlow.style.top = targetY.toFixed(2) + '%';
+                }
+            }, { passive: true });
+
+            heroSection.addEventListener('mouseleave', () => {
+                cursorActive = false;
+            }, { passive: true });
+        }
+    }
+};
+
+/**
+ * ── Desktop App Banner ───────────────────────────────────────
+ * Shows a banner on macOS browsers to promote the App Store app.
+ */
+const initializeDesktopBanner = () => {
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    const isMacOS = navigator.platform && navigator.platform.toUpperCase().indexOf("MAC") >= 0;
+    const bannerElement = document.getElementById("desktop-app-banner");
+    const closeBannerButton = document.getElementById("desktop-app-banner-close");
+    const bannerDismissed = localStorage.getItem("app_banner_dismissed");
+    
+    if (bannerElement && closeBannerButton) {
+        if (isMacOS && !isMobile && !bannerDismissed) {
+            bannerElement.style.display = "flex";
+        }
+        
+        closeBannerButton.addEventListener("click", () => {
+            bannerElement.style.display = "none";
+            localStorage.setItem("app_banner_dismissed", "true");
+        });
+    }
+};
+
+// Global Initialization
 document.addEventListener('DOMContentLoaded', () => {
-    // Prepare hero word swap controllers before language toggles run
     initializeHeroWordSwap();
-
-    // Setup language switcher if available
     setupLanguageSwitcher();
-
-    // Setup intersection observer for animations
     setupIntersectionObserver();
-
-    // Activate the apps overview parallax effect when the cards are present
     initAppsParallax();
-
-    // Initialize Bricks Scan specific animations
     initBricksScanAnimations();
-
-    // Initialize cookie consent
+    setupMicroAnimations();
     initializeCookieConsent();
+    initializeDesktopBanner(); // Added banner logic
 
-    // Set language based on stored preference or browser language
     const storedLang = localStorage.getItem('bricksLanguage');
     const userLang = storedLang || detectUserLanguage();
     changeLanguage(userLang);
 
-    // Add resize event listener for layout adjustments
     window.addEventListener('resize', debounce(() => {
-        // Keep hero word width in sync when viewport changes
         heroWordControllers.forEach((controller) => controller.refresh());
     }, 250));
 });

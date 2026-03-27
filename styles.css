@@ -2,6 +2,7 @@
 :root {
     --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.15);
+    --ease-reveal: cubic-bezier(0.2, 0.8, 0.2, 1);
 
     --accent-color: #000000;
     --accent-hover: #333333;
@@ -164,6 +165,18 @@ a {
 
 a:hover {
     opacity: 0.7;
+}
+
+/* Typographic Polish */
+.hero-title,
+.section-title {
+    letter-spacing: -0.03em !important;
+}
+
+.hero-app-label,
+.coming-soon-badge,
+.metadata {
+    letter-spacing: 0.05em !important;
 }
 
 /* Layout Utilities */
@@ -397,7 +410,8 @@ a:hover {
 
 .btn:active {
     box-shadow: var(--emboss-recessed);
-    transform: scale(0.98);
+    transform: scale(0.97) translateY(0);
+    transition: transform 0.1s ease !important;
 }
 
 .btn-primary {
@@ -437,21 +451,361 @@ a:hover {
     transform: translateY(0);
 }
 
-.delay-100 {
-    transition-delay: 0.1s;
+/* Enhanced Reveal for Hero Titles */
+.hero-title.reveal-on-scroll {
+    transform: translateY(40px);
+    opacity: 0;
+    will-change: transform, opacity;
+    transition: transform 1.2s var(--ease-out-expo), opacity 1.2s var(--ease-out-expo);
+    animation: none !important;
 }
 
-.delay-200 {
-    transition-delay: 0.2s;
+.hero-title.reveal-on-scroll.is-visible {
+    transform: translateY(0);
+    opacity: 1;
 }
 
-.delay-300 {
-    transition-delay: 0.3s;
+/* ── Scroll Progress Bar ──────────────────────────────── */
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    width: 0%;
+    background: var(--accent-teal);
+    z-index: 9999;
+    border-radius: 0 2px 2px 0;
+    pointer-events: none;
+    will-change: width;
 }
 
-.delay-400 {
-    transition-delay: 0.4s;
+/* ── Header Scroll-State ──────────────────────────────── */
+.site-header {
+    transition: top 0.4s var(--ease-out-expo),
+        box-shadow 0.4s var(--ease-out-expo),
+        background-color 0.4s ease !important;
 }
+
+.site-header.scrolled {
+    top: 8px !important;
+    box-shadow:
+        0 16px 48px rgba(11, 15, 20, 0.10),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.5) !important;
+    background-color: rgba(246, 247, 248, 0.92) !important;
+}
+
+/* ── Hero Background & Interactive Elements ────────────── */
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    will-change: transform;
+}
+
+@keyframes ambient-breathe {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+}
+
+.hero-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 70% 50% at 60% 40%, rgba(0, 166, 161, 0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 60% at 10% 80%, rgba(201, 211, 218, 0.18) 0%, transparent 60%);
+    animation: ambient-breathe 18s ease-in-out infinite;
+    transform-origin: center center;
+    pointer-events: none;
+}
+
+.hero-cursor-glow {
+    position: absolute;
+    width: 680px;
+    height: 680px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 166, 161, 0.08) 0%, transparent 65%);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    top: 40%;
+    left: 60%;
+    transition: top 1s var(--ease-out-expo), left 1s var(--ease-out-expo);
+    z-index: 0;
+    will-change: top, left;
+}
+
+.hero-dot-grid {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle 1.5px at 1.5px 1.5px,
+            rgba(0, 166, 161, 0.32) 1.5px,
+            transparent 0);
+    background-size: 26px 26px;
+    -webkit-mask-image: radial-gradient(ellipse 260px 260px at var(--dot-x, 50%) var(--dot-y, 50%),
+            black 0%,
+            transparent 100%);
+    mask-image: radial-gradient(ellipse 260px 260px at var(--dot-x, 50%) var(--dot-y, 50%),
+            black 0%,
+            transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 1;
+}
+
+/* Card Hover Enhancements */
+.embossed-card, .bento-card, .perfect-card, .value-card, .ecosystem-card {
+    transition: transform 0.4s var(--ease-out-expo), box-shadow 0.4s var(--ease-out-expo) !important;
+}
+
+.embossed-card:hover, .bento-card:hover, .perfect-card:hover, .value-card:hover, .ecosystem-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(11, 15, 20, 0.08) !important;
+}
+
+.embossed-card:active, .bento-card:active, .perfect-card:active, .value-card:active, .ecosystem-card:active {
+    transform: scale(0.97) translateY(0) !important;
+    transition: transform 0.1s ease !important;
+}
+
+/* Hero App Items (Index Hero) */
+.hero-app-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 18px;
+    box-shadow: 4px 6px 16px var(--surface-shadow), -2px -2px 6px #ffffff;
+    transform: translateY(20px) scale(0.95) rotate(-2deg);
+    opacity: 0;
+    transition: all 0.8s var(--ease-out-expo);
+}
+
+.hero-app-item.is-visible .hero-app-icon {
+    transform: translateY(0) scale(1) rotate(0);
+    opacity: 1;
+}
+
+.hero-app-item:hover .hero-app-icon {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow:
+        6px 14px 28px var(--surface-shadow),
+        -2px -2px 8px #ffffff,
+        inset 0 1px 1px rgba(255, 255, 255, 0.6);
+    transition: transform 0.5s var(--ease-out-expo), box-shadow 0.5s var(--ease-out-expo);
+}
+
+.hero-app-item:active .hero-app-icon {
+    transform: scale(0.97) translateY(0) !important;
+    transition: transform 0.1s ease !important;
+}
+
+/* ── Index Hero & Grid ───────────────────────────────────────── */
+.index-hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.index-hero .hero-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    padding: 120px 0 96px;
+}
+
+.hero-apps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 80px);
+    gap: 20px;
+    align-items: center;
+    justify-content: end;
+}
+
+.hero-app-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.hero-accent-line {
+    display: block;
+    width: 0;
+    height: 3px;
+    background: var(--accent);
+    border-radius: 2px;
+    margin: 20px 0 0;
+    transition: width 1.2s var(--ease-out-expo);
+}
+
+.hero-accent-line.is-visible {
+    width: 40px;
+}
+
+@media (max-width: 768px) {
+    .index-hero .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        padding: 96px 0 72px;
+        text-align: center;
+    }
+
+    .index-hero .hero-apps-grid {
+        justify-content: center;
+    }
+
+    .index-hero .hero-grid > div:last-child {
+        justify-self: center !important;
+        margin-left: 0 !important;
+    }
+}
+
+/* ── Value Prop & Testimonials ───────────────────────────────── */
+.value-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--depth-plane);
+    border-radius: 20px;
+    padding: 36px 28px;
+    text-align: center;
+    box-shadow: 4px 6px 16px var(--surface-shadow), -2px -2px 6px #ffffff;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.value-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 6px 10px 24px var(--surface-shadow), -2px -2px 8px #ffffff;
+}
+
+.value-card-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 20px;
+    display: block;
+}
+
+.index-testimonial {
+    background: var(--bg-secondary);
+    border: 1px solid var(--depth-plane);
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 4px 6px 16px var(--surface-shadow), -2px -2px 6px #ffffff;
+    transition: all 0.4s var(--ease-out-expo);
+}
+
+.testimonials-grid:hover .index-testimonial {
+    opacity: 0.5;
+    transform: scale(0.98);
+}
+
+.testimonials-grid .index-testimonial:hover {
+    opacity: 1;
+    transform: scale(1.02) translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+    z-index: 2;
+    position: relative;
+}
+
+.index-testimonial .quote {
+    font-style: italic;
+    margin-bottom: 16px;
+}
+
+/* ── Desktop App Banner ───────────────────────────────────────── */
+.desktop-app-banner {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--depth-plane);
+    padding: 12px 24px;
+    z-index: 10000;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 2px 12px var(--surface-shadow);
+}
+
+.desktop-app-banner-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.desktop-app-banner-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.desktop-app-banner-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.desktop-app-banner-subtitle {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.desktop-app-banner-button {
+    display: inline-block;
+    padding: 8px 16px;
+    background: var(--accent);
+    color: #ffffff;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.desktop-app-banner-button:hover {
+    opacity: 0.85;
+}
+
+.desktop-app-banner-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: var(--text-secondary);
+    padding: 4px 8px;
+    line-height: 1;
+}
+
+/* ── Section Hero Ambient Background ─────────────────────────── */
+.section-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 55% 70% at 15% 50%, rgba(0, 166, 161, 0.06) 0%, transparent 65%),
+        radial-gradient(ellipse 45% 55% at 85% 40%, rgba(201, 211, 218, 0.14) 0%, transparent 60%);
+    animation: ambient-breathe 14s ease-in-out infinite reverse;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ── Stagger Delays (wider spread = more choreography) ── */
+.delay-100 { transition-delay: 0.13s !important; }
+.delay-200 { transition-delay: 0.28s !important; }
+.delay-300 { transition-delay: 0.44s !important; }
+.delay-400 { transition-delay: 0.60s !important; }
 
 .delay-500 {
     transition-delay: 0.5s;
