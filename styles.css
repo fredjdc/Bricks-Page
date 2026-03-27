@@ -359,7 +359,7 @@ a:hover {
     min-width: 250px;
     width: auto;
     height: 60px;
-    border-radius: 9999px;
+    border-radius: var(--r2-inner);
     font-size: 17px;
     font-weight: 500;
     transition: all 0.2s ease-in-out;
@@ -381,10 +381,6 @@ a:hover {
     min-width: unset;
     border-radius: 9999px;
     padding: 10px 24px;
-}
-
-.site-header .btn .accent-notch {
-    display: none;
 }
 
 /* Add micro-groove seam to buttons */
@@ -421,19 +417,6 @@ a:hover {
 .btn-primary:active {
     box-shadow: 0 4px 12px rgba(11, 15, 20, 0.2);
     transform: translateY(0) scale(0.98);
-}
-
-/* The single teal accent on the primary button */
-.btn-primary .accent-notch {
-    position: absolute;
-    left: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 6px;
-    height: 18px;
-    background-color: var(--accent-teal);
-    border-radius: var(--r1-small);
-    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .btn-secondary {
