@@ -16,8 +16,7 @@
     <link rel="icon" type="image/png" href="images-bricks-scan/favicon-32x32.png" sizes="32x32" />
     <link rel="apple-touch-icon" href="images-bricks-scan/apple-touch-icon.png" />
 
-    <!-- Alpine and scripts -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- Scripts -->
     <script src="scripts.js" defer></script>
 
     <!-- Google Tag Manager -->
@@ -72,6 +71,17 @@
             src="https://www.facebook.com/tr?id=1088148306858128&ev=PageView&noscript=1" />
     </noscript>
     <!-- End Meta Pixel Code -->
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:title" content="Bricks Scan - Searchable PDF Scanner for iPhone, iPad, and Mac" />
+    <meta property="og:description" content="Scan documents, find them fast, and keep everything organized. Bricks Scan makes text searchable, gives every file a clear name, and organizes it on your device." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://bricks.pe/bricks-scan.html" />
+    <meta property="og:image" content="https://bricks.pe/images-bricks-scan/hero_video-EN.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Noscript fallback for reveal-on-scroll -->
+    <noscript><style>.reveal-on-scroll{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 
 <body>
@@ -89,7 +99,7 @@
                 right: 0;
                 background: var(--bg-primary);
                 padding: 24px;
-                z-index: 50;
+                z-index: 101;
                 flex-wrap: wrap;
                 justify-content: space-between;
                 align-items: center;
@@ -137,7 +147,7 @@
     </header>
 
     <!-- 1. Hero Section -->
-    <section id="waitlist" class="section section-hero hero2">
+    <section id="waitlist" class="section section-hero">
         <div class="hero-bg" aria-hidden="true"></div>
         <div class="hero-cursor-glow" aria-hidden="true"></div>
         <div class="hero-dot-grid" aria-hidden="true"></div>
@@ -163,6 +173,7 @@
                     <form action="https://formsubmit.co/707e6e012fa931048784ff0f766aa0df" method="POST"
                         class="waitlist-form">
                         <input type="hidden" name="_subject" value="Bricks Scan - Waitlist Signup">
+                        <input type="hidden" name="_next" value="https://bricks.pe/bricks-scan.html">
                         <input type="email" name="email" class="form-input-ds" placeholder="hello@mail.com" required
                             style="margin-bottom: 0;">
                         <button type="submit" class="btn btn-primary" style="min-width: 160px; height: 50px;">
@@ -196,7 +207,7 @@
     <section class="section">
         <div class="container center-text">
             <img src="images-bricks-scan/icon-section2.svg" alt="Workflow" class="reveal-on-scroll delay-100"
-                style="width: 64px; height: 64px; margin: 0 auto 16px; display: block" />
+                style="width: 64px; height: 64px; margin: 0 auto 16px; display: block" loading="lazy" />
 
             <h2 class="section-title reveal-on-scroll delay-100">
                 <span lang="en">From scan to ready document.</span>
@@ -211,7 +222,7 @@
                                 border-radius: 32px;
                                 box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
                                 margin-bottom: 24px;
-                            " lang="en" />
+                            " lang="en" loading="lazy" />
                     <img src="images-bricks-scan/screenshot-01-es.png" alt="Escaneando un contrato con Bricks Scan"
                         style="
                                 width: 100%;
@@ -219,7 +230,7 @@
                                 border-radius: 32px;
                                 box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
                                 margin-bottom: 24px;
-                            " class="hidden" lang="es" />
+                            " class="hidden" lang="es" loading="lazy" />
 
                     <h3 class="subheading" style="font-size: 18px">
                         <span lang="en">Scan</span>
@@ -239,7 +250,7 @@
                                 border-radius: 32px;
                                 box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
                                 margin-bottom: 24px;
-                            " lang="en" />
+                            " lang="en" loading="lazy" />
                     <img src="images-bricks-scan/screenshot-02-es.png"
                         alt="Auto-Sort haciendo un documento buscable y organizado" style="
                                 width: 100%;
@@ -247,7 +258,7 @@
                                 border-radius: 32px;
                                 box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
                                 margin-bottom: 24px;
-                            " class="hidden" lang="es" />
+                            " class="hidden" lang="es" loading="lazy" />
 
                     <h3 class="subheading" style="font-size: 18px">
                         <span lang="en">Bricks Scan</span>
@@ -267,7 +278,7 @@
                                 border-radius: 32px;
                                 box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
                                 margin-bottom: 24px;
-                            " lang="en" />
+                            " lang="en" loading="lazy" />
                     <img src="images-bricks-scan/screenshot-03-es.png"
                         alt="Documento listo para encontrar, revisar y compartir" style="
                                 width: 100%;
@@ -275,7 +286,7 @@
                                 border-radius: 32px;
                                 box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
                                 margin-bottom: 24px;
-                            " class="hidden" lang="es" />
+                            " class="hidden" lang="es" loading="lazy" />
 
                     <h3 class="subheading" style="font-size: 18px">
                         <span lang="en">Ready</span>
@@ -320,10 +331,10 @@
                     </p>
                     <img src="images-bricks-scan/bento-feature-en-01.png"
                         alt="Auto-Sort organizing documents automatically" class="bento-img" style="margin-top: auto"
-                        lang="en" />
+                        lang="en" loading="lazy" />
                     <img src="images-bricks-scan/bento-feature-es-01.png"
                         alt="Auto-Sort organizando documentos automáticamente" class="bento-img hidden"
-                        style="margin-top: auto" lang="es" />
+                        style="margin-top: auto" lang="es" loading="lazy" />
                 </div>
 
                 <!-- Instant Search -->
@@ -338,10 +349,10 @@
                     </p>
                     <img src="images-bricks-scan/bento-feature-en-02.png"
                         alt="Instant Search finding text inside documents" class="bento-img" style="margin-top: auto"
-                        lang="en" />
+                        lang="en" loading="lazy" />
                     <img src="images-bricks-scan/bento-feature-es-02.png"
                         alt="Búsqueda instantánea encontrando texto dentro de documentos" class="bento-img hidden"
-                        style="margin-top: auto" lang="es" />
+                        style="margin-top: auto" lang="es" loading="lazy" />
                 </div>
 
                 <!-- Ready to Share -->
@@ -355,9 +366,9 @@
                         <span lang="es" class="hidden">PDFs limpios, listos para enviar.</span>
                     </p>
                     <img src="images-bricks-scan/bento-feature-en-03.png" alt="Document ready to share as a PDF"
-                        class="bento-img" style="margin-top: auto" lang="en" />
+                        class="bento-img" style="margin-top: auto" lang="en" loading="lazy" />
                     <img src="images-bricks-scan/bento-feature-es-03.png" alt="Documento listo para compartir como PDF"
-                        class="bento-img hidden" style="margin-top: auto" lang="es" />
+                        class="bento-img hidden" style="margin-top: auto" lang="es" loading="lazy" />
                 </div>
 
                 <!-- Smart Folders & Tags -->
@@ -372,10 +383,10 @@
                     </p>
                     <img src="images-bricks-scan/bento-feature-en-04.png"
                         alt="Smart Folders and Smart Tags organizing documents automatically" class="bento-img"
-                        style="margin-top: auto" lang="en" />
+                        style="margin-top: auto" lang="en" loading="lazy" />
                     <img src="images-bricks-scan/bento-feature-es-04.png"
                         alt="Smart Folders y Smart Tags organizando documentos automáticamente" class="bento-img hidden"
-                        style="margin-top: auto" lang="es" />
+                        style="margin-top: auto" lang="es" loading="lazy" />
                 </div>
 
                 <!-- Markup -->
@@ -389,9 +400,9 @@
                         <span lang="es" class="hidden">Resalta, anota y guarda notas.</span>
                     </p>
                     <img src="images-bricks-scan/bento-feature-en-05.png" alt="Markup and notes added to a document"
-                        class="bento-img" style="margin-top: auto" lang="en" />
+                        class="bento-img" style="margin-top: auto" lang="en" loading="lazy" />
                     <img src="images-bricks-scan/bento-feature-es-05.png" alt="Marcado y notas añadidos a un documento"
-                        class="bento-img hidden" style="margin-top: auto" lang="es" />
+                        class="bento-img hidden" style="margin-top: auto" lang="es" loading="lazy" />
                 </div>
 
                 <!-- Sign -->
@@ -407,9 +418,9 @@
                         </p>
                     </div>
                     <img src="images-bricks-scan/bento-feature-en-06.png" alt="Signing a document without printing"
-                        class="bento-img-horizontal" lang="en" />
+                        class="bento-img-horizontal" lang="en" loading="lazy" />
                     <img src="images-bricks-scan/bento-feature-es-06.png" alt="Firmando un documento sin imprimir"
-                        class="bento-img-horizontal hidden" lang="es" />
+                        class="bento-img-horizontal hidden" lang="es" loading="lazy" />
                 </div>
 
                 <!-- Devices -->
@@ -425,10 +436,10 @@
                         </p>
                     </div>
                     <img src="images-bricks-scan/bento-feature-en-07.png"
-                        alt="Bricks Scan available on iPhone, iPad, and Mac" class="bento-img-horizontal" lang="en" />
+                        alt="Bricks Scan available on iPhone, iPad, and Mac" class="bento-img-horizontal" lang="en" loading="lazy" />
                     <img src="images-bricks-scan/bento-feature-es-07.png"
                         alt="Bricks Scan disponible en iPhone, iPad y Mac" class="bento-img-horizontal hidden"
-                        lang="es" />
+                        lang="es" loading="lazy" />
                 </div>
             </div>
         </div>
@@ -438,7 +449,7 @@
     <section class="section section-alt">
         <div class="container reading-column center-text">
             <img src="images-bricks-scan/icon-section5.svg" alt="Privacy" class="reveal-on-scroll delay-100"
-                style="width: 64px; height: 64px; margin: 0 auto 16px; display: block" />
+                style="width: 64px; height: 64px; margin: 0 auto 16px; display: block" loading="lazy" />
             <h2 class="section-title reveal-on-scroll">
                 <span lang="en">Private by design.</span>
                 <span lang="es" class="hidden">Privado por diseño.</span>
@@ -500,10 +511,10 @@
             style="max-width: 1100px; text-align: center; margin-bottom: 48px">
             <img src="images-bricks-scan/scan-feature-en-01.png"
                 alt="Bricks Scan interface for recurring paperwork workflows" class="hero-img"
-                data-app-image="bricks-scan-feature-01" lang="en" />
+                data-app-image="bricks-scan-feature-01" lang="en" loading="lazy" />
             <img src="images-bricks-scan/scan-feature-es-01.png"
                 alt="Interfaz de Bricks Scan para flujos de documentos recurrentes" class="hero-img hidden"
-                data-app-image="bricks-scan-feature-01" lang="es" />
+                data-app-image="bricks-scan-feature-01" lang="es" loading="lazy" />
         </div>
 
         <div class="container container-large center-text">
@@ -514,7 +525,7 @@
 
             <div class="perfect-for-grid">
                 <div class="perfect-card reveal-on-scroll delay-200">
-                    <img src="images-bricks-scan/icon-01-perfect-for.svg" alt="Professionals" class="perfect-icon" />
+                    <img src="images-bricks-scan/icon-01-perfect-for.svg" alt="Professionals" class="perfect-icon" loading="lazy" />
                     <h3 class="subheading" style="font-size: 18px">
                         <span lang="en">Professionals</span>
                         <span lang="es" class="hidden">Profesionales</span>
@@ -572,7 +583,7 @@
     <section class="section section-alt">
         <div class="container center-text">
             <img src="images-bricks-scan/icon-section7.svg" alt="Comparison" class="reveal-on-scroll delay-100"
-                style="width: 64px; height: 64px; margin: 0 auto 16px; display: block" />
+                style="width: 64px; height: 64px; margin: 0 auto 16px; display: block" loading="lazy" />
 
             <h2 class="section-title reveal-on-scroll">
                 <span lang="en">Most scanner apps stop at the scan. Bricks Scan keeps going.</span>
@@ -681,10 +692,10 @@
             style="max-width: 1100px; text-align: center; margin-bottom: 48px">
             <img src="images-bricks-scan/scan-feature-en-02.png"
                 alt="Bricks Scan helping save time on document organization" class="hero-img"
-                data-app-image="bricks-scan-feature-02" lang="en" />
+                data-app-image="bricks-scan-feature-02" lang="en" loading="lazy" />
             <img src="images-bricks-scan/scan-feature-es-02.png"
                 alt="Bricks Scan ayudando a ahorrar tiempo en organización de documentos" class="hero-img hidden"
-                data-app-image="bricks-scan-feature-02" lang="es" />
+                data-app-image="bricks-scan-feature-02" lang="es" loading="lazy" />
         </div>
 
         <div class="container reading-column center-text">
@@ -723,7 +734,7 @@
                 <!-- Brand Section -->
                 <div class="footer-brand" style="flex: 1; min-width: 280px">
                     <a href="index.html" style="display: inline-block; margin-bottom: 16px">
-                        <img src="images/Bricks Logo - Dark.svg" onerror="this.src='images/Bricks Logo.svg'"
+                        <img src="images-bricks-scan/Bricks Logo-dark.svg" onerror="this.src='images/Bricks Logo.svg'"
                             alt="Bricks Logo" style="height: 32px; opacity: 0.8" />
                     </a>
                     <p class="body-text" style="font-size: 15px">
