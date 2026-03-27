@@ -207,7 +207,7 @@ a:hover {
 
 .hero-grid {
     display: grid;
-    grid-template-columns: minmax(0, 620px) auto;
+    grid-template-columns: minmax(0, 620px) minmax(300px, 480px);
     gap: 64px;
     align-items: center;
     justify-content: center;
@@ -1898,12 +1898,12 @@ a:hover {
     }
 
     /* Move hero images to top on mobile */
-    .hero-section .mobile-centered-grid {
+    .section-hero .mobile-centered-grid {
         display: flex;
         flex-direction: column;
     }
 
-    .hero-section .mobile-centered-grid>div:last-child {
+    .section-hero .mobile-centered-grid>div:last-child {
         order: -1;
         margin-bottom: 2rem;
     }
@@ -1921,21 +1921,21 @@ a:hover {
     }
 
     /* Center hero section content */
-    .hero-section {
+    .section-hero {
         text-align: center;
     }
 
-    .hero-section .space-y-16 {
+    .section-hero .space-y-16 {
         margin-top: 0;
         padding-top: 0;
     }
 
-    .hero-section .container {
+    .section-hero .container {
         padding-left: 1rem;
         padding-right: 1rem;
     }
 
-    .hero-section .container .mobile-centered-grid>div:last-child {
+    .section-hero .container .mobile-centered-grid>div:last-child {
         padding-left: 0;
         padding-right: 0;
         margin-left: -1rem;
@@ -2000,7 +2000,7 @@ a:hover {
         margin: 0 auto;
     }
 
-    .hero-section .relative.flex.justify-center {
+    .section-hero .relative.flex.justify-center {
         margin-top: 0;
         margin-bottom: 2rem;
         padding-top: 0;
@@ -2103,7 +2103,7 @@ a:hover {
 
 
 
-    .hero-section img {
+    .section-hero img {
         max-width: 100%;
         height: auto;
     }
