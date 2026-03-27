@@ -395,7 +395,7 @@ a:hover {
     left: 2px;
     right: 2px;
     bottom: 2px;
-    border-radius: 98px;
+    border-radius: 9999px;
     pointer-events: none;
 }
 
@@ -432,7 +432,7 @@ a:hover {
     width: 6px;
     height: 18px;
     background-color: var(--accent-teal);
-    border-radius: 4px;
+    border-radius: var(--r1-small);
     box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
 
@@ -670,14 +670,14 @@ a:hover {
     align-items: center;
     justify-content: center;
     overflow: visible;
-    border-radius: 32px;
+    border-radius: var(--r3-primary);
 }
 
 .hero-img {
     width: 100%;
     height: auto;
     object-fit: contain;
-    border-radius: 48px;
+    border-radius: var(--r3-primary);
     display: block;
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
 }
@@ -1309,7 +1309,7 @@ a:hover {
 .desktop-app-banner-icon {
     width: 48px;
     height: 48px;
-    border-radius: 8px;
+    border-radius: var(--r1-small);
     overflow: hidden;
 }
 
@@ -1335,7 +1335,7 @@ a:hover {
     background-color: var(--accent-color);
     color: white;
     border: none;
-    border-radius: 12px;
+    border-radius: var(--r2-inner);
     padding: 6px 12px;
     font-size: 13px;
     font-weight: 500;
@@ -1381,7 +1381,7 @@ a:hover {
 .form-input,
 .form-textarea {
     width: 100%;
-    border-radius: 0.375rem;
+    border-radius: var(--r2-inner);
     border: 1px solid var(--input, #e5e7eb);
     background-color: var(--background, #fff);
     padding: 0.5rem 0.75rem;
@@ -1408,7 +1408,7 @@ a:hover {
     position: relative;
     width: 100%;
     border: 1px dashed var(--input, #e5e7eb);
-    border-radius: 0.375rem;
+    border-radius: var(--r2-inner);
     padding: 1.5rem 1rem;
     display: flex;
     flex-direction: column;
@@ -1603,7 +1603,7 @@ a:hover {
 
 .bento-card {
     background-color: var(--bg-primary);
-    border-radius: 20px;
+    border-radius: var(--r3-primary);
     padding: 32px;
     border: 1px solid var(--depth-plane);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
@@ -1620,7 +1620,7 @@ a:hover {
 .bento-card img.bento-img {
     width: calc(100% + 64px);
     margin: 24px -32px -32px -32px;
-    border-radius: 0 0 20px 20px;
+    border-radius: 0 0 var(--r3-primary) var(--r3-primary);
     object-fit: cover;
     display: block;
 }
@@ -1683,7 +1683,7 @@ a:hover {
     width: 100px;
     height: 100px;
     object-fit: cover;
-    border-radius: 12px;
+    border-radius: var(--r3-primary);
     display: block;
 }
 
@@ -1704,7 +1704,7 @@ a:hover {
 .perfect-card {
     background: var(--bg-primary);
     border: 1px solid var(--depth-plane);
-    border-radius: 16px;
+    border-radius: var(--r3-primary);
     padding: 24px;
 }
 
@@ -1813,7 +1813,7 @@ a:hover {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    border-radius: 100px;
+    border-radius: 9999px;
     margin-bottom: 24px;
     border: 1px solid rgba(0, 166, 161, 0.2);
 }
