@@ -120,7 +120,6 @@
         </style>
     </noscript>
 </head>
-</head>
 
 <body>
 
@@ -158,16 +157,27 @@
     </div>
 
     <!-- Header / Nav -->
-    <header class="container site-header">
+    <header class="container site-header" style="display: flex; justify-content: space-between; align-items: center; padding-top: 24px; padding-bottom: 24px;">
         <div class="logo">
             <a href="index.html" style="display: flex; align-items: center;">
                 <img src="images/Bricks Logo - Dark.svg" onerror="this.src='images/Bricks Logo.svg'" alt="Bricks Logo"
                     style="height: 24px;">
             </a>
         </div>
-        <div style="display: flex; align-items: right; justify-content: flex-end;">
-        </div>
-        </div>
+        <nav style="display: flex; align-items: center; justify-content: flex-end; gap: 24px;">
+            <a href="bricks-scan.html" class="body-text" style="font-size: 15px; font-weight: 500; margin: 0;">
+                <span lang="en">Bricks Scan</span>
+                <span lang="es" class="hidden">Bricks Scan</span>
+            </a>
+            <a href="bricks-calc.html" class="body-text" style="font-size: 15px; font-weight: 500; margin: 0;">
+                <span lang="en">Bricks Calc</span>
+                <span lang="es" class="hidden">Bricks Calc</span>
+            </a>
+            <a href="https://leads.bricks.pe" class="body-text" style="font-size: 15px; font-weight: 500; margin: 0;">
+                <span lang="en">Bricks Leads</span>
+                <span lang="es" class="hidden">Bricks Leads</span>
+            </a>
+        </nav>
     </header>
 
     <!-- ═══════════════════════════════════════════════════════════ -->
@@ -206,16 +216,6 @@
             <!-- App Icon Cluster -->
             <div class=""
                 style="display: flex; flex-direction: column; align-items: center; justify-self: end; gap: 12px; width: fit-content; margin-left: auto;">
-                <div class="hero-app-label"
-                    style="display: flex; align-items: center; gap: 6px; font-weight: 500; text-transform: uppercase;">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"
-                        style="width: 12px; height: 12px; fill: currentColor;"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                        <path
-                            d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.3 48.6-.7 90.4-84.3 103.6-119.5-65.9-34.1-62.8-109.1-62.7-109.1zM281.3 84.5c16.3-19.5 27.2-46.7 24.1-74.5-23.2 1-56.1 16-74.2 35.8-15.1 15.9-27.1 43.6-23.4 70.6 26.6 2 53.6-12.4 73.5-31.9z" />
-                    </svg>
-                    <span lang="es">Disponible en el ecosistema Apple</span>
-                    <span lang="en" class="hidden">Available in the Apple ecosystem</span>
-                </div>
                 <div class="hero-apps-grid">
                     <a href="bricks-scan.html" class="hero-app-item reveal-on-scroll delay-200">
                         <img src="images-bricks-scan/bricks-scan-web-icon.png" alt="Bricks Scan" class="hero-app-icon">
@@ -512,71 +512,83 @@
             </h2>
 
             <div class="testimonials-grid">
+                <!-- Testimonial 1 -->
                 <div class="index-testimonial reveal-on-scroll delay-100">
-                    <svg viewBox="0 0 651.25 651.75" fill="currentColor"
-                        style="width: 32px; height: 32px; color: var(--accent); opacity: 0.15; margin-bottom: 8px;">
-                        <g>
-                            <path
-                                d="M325.5,651.25c179.75,0,325.75-145.75,325.75-325.5S505.25,0,325.5,0
-                                S0,146,0,325.75S145.75,651.25,325.5,651.25z M325.5,604.75c-154.25,0-279-124.75-279-279s124.75-279,279-279s279,124.75,279,279
-                                S479.75,604.75,325.5,604.75z M545.25,536.75l-0.75-3c-17.25-46.5-101.75-99.5-219-99.5c-116.75,0-201.25,52.75-219,99l-0.75,3.5
-                                c57.75,57.75,152,92.25,220,92.25S486.5,595.25,545.25,536.75z M325.5,379.25c62,0.5,110.25-52.5,110.25-121.5
-                                c0-65-48.75-119-110.25-119s-110.5,54-110.25,119C215.5,326.75,263.5,378.75,325.5,379.25z" />
-                        </g>
-                    </svg>
-                    <p class="body-text quote">
+                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background-color: rgba(0, 166, 161, 0.1); color: var(--accent-teal); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 18px; border: 1px solid rgba(0, 166, 161, 0.2); flex-shrink: 0;">
+                            RA
+                        </div>
+                        <div>
+                            <div style="display: flex; gap: 4px; margin-bottom: 4px; color: #F59E0B;">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            </div>
+                            <p class="metadata" style="margin: 0; font-weight: 500; font-size: 13px;">
+                                <span lang="en">Residential Agent, Texas</span>
+                                <span lang="es" class="hidden">Agente Residencial, Texas</span>
+                            </p>
+                        </div>
+                    </div>
+                    <p class="body-text quote" style="margin: 0; color: var(--text-primary); font-size: 16px;">
                         <span lang="en">"I can find any disclosure or amendment in seconds. It removed a layer of
                             stress from every deal."</span>
                         <span lang="es" class="hidden">"Puedo encontrar cualquier divulgación o enmienda en segundos.
                             Eliminó una capa de estrés de cada trato."</span>
                     </p>
-                    <p class="metadata">
-                        <span lang="en">— Residential Agent, Texas</span>
-                        <span lang="es" class="hidden">— Agente Residencial, Texas</span>
-                    </p>
                 </div>
+                <!-- Testimonial 2 -->
                 <div class="index-testimonial reveal-on-scroll delay-200">
-                    <svg viewBox="0 0 651.25 651.75" fill="currentColor"
-                        style="width: 32px; height: 32px; color: var(--accent); opacity: 0.15; margin-bottom: 8px;">
-                        <g>
-                            <path
-                                d="M325.5,651.25c179.75,0,325.75-145.75,325.75-325.5S505.25,0,325.5,0
-                                S0,146,0,325.75S145.75,651.25,325.5,651.25z M325.5,604.75c-154.25,0-279-124.75-279-279s124.75-279,279-279s279,124.75,279,279
-                                S479.75,604.75,325.5,604.75z M545.25,536.75l-0.75-3c-17.25-46.5-101.75-99.5-219-99.5c-116.75,0-201.25,52.75-219,99l-0.75,3.5
-                                c57.75,57.75,152,92.25,220,92.25S486.5,595.25,545.25,536.75z M325.5,379.25c62,0.5,110.25-52.5,110.25-121.5
-                                c0-65-48.75-119-110.25-119s-110.5,54-110.25,119C215.5,326.75,263.5,378.75,325.5,379.25z" />
-                        </g>
-                    </svg>
-                    <p class="body-text quote">
+                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background-color: rgba(16, 185, 129, 0.1); color: #10B981; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 18px; border: 1px solid rgba(16, 185, 129, 0.2); flex-shrink: 0;">
+                            BA
+                        </div>
+                        <div>
+                            <div style="display: flex; gap: 4px; margin-bottom: 4px; color: #F59E0B;">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            </div>
+                            <p class="metadata" style="margin: 0; font-weight: 500; font-size: 13px;">
+                                <span lang="en">Broker Associate, California</span>
+                                <span lang="es" class="hidden">Agente Asociado, California</span>
+                            </p>
+                        </div>
+                    </div>
+                    <p class="body-text quote" style="margin: 0; color: var(--text-primary); font-size: 16px;">
                         <span lang="en">"The mortgage calculator alone saves time during client meetings."</span>
                         <span lang="es" class="hidden">"Solo la calculadora de hipotecas ahorra tiempo durante las
                             reuniones con clientes."</span>
                     </p>
-                    <p class="metadata">
-                        <span lang="en">— Broker Associate, California</span>
-                        <span lang="es" class="hidden">— Agente Asociado, California</span>
-                    </p>
                 </div>
+                <!-- Testimonial 3 -->
                 <div class="index-testimonial reveal-on-scroll delay-300">
-                    <svg viewBox="0 0 651.25 651.75" fill="currentColor"
-                        style="width: 32px; height: 32px; color: var(--accent); opacity: 0.15; margin-bottom: 8px;">
-                        <g>
-                            <path
-                                d="M325.5,651.25c179.75,0,325.75-145.75,325.75-325.5S505.25,0,325.5,0
-                                S0,146,0,325.75S145.75,651.25,325.5,651.25z M325.5,604.75c-154.25,0-279-124.75-279-279s124.75-279,279-279s279,124.75,279,279
-                                S479.75,604.75,325.5,604.75z M545.25,536.75l-0.75-3c-17.25-46.5-101.75-99.5-219-99.5c-116.75,0-201.25,52.75-219,99l-0.75,3.5
-                                c57.75,57.75,152,92.25,220,92.25S486.5,595.25,545.25,536.75z M325.5,379.25c62,0.5,110.25-52.5,110.25-121.5
-                                c0-65-48.75-119-110.25-119s-110.5,54-110.25,119C215.5,326.75,263.5,378.75,325.5,379.25z" />
-                        </g>
-                    </svg>
-                    <p class="body-text quote">
+                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background-color: rgba(37, 99, 235, 0.1); color: #2563EB; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 18px; border: 1px solid rgba(37, 99, 235, 0.2); flex-shrink: 0;">
+                            IA
+                        </div>
+                        <div>
+                            <div style="display: flex; gap: 4px; margin-bottom: 4px; color: #F59E0B;">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            </div>
+                            <p class="metadata" style="margin: 0; font-weight: 500; font-size: 13px;">
+                                <span lang="en">Independent Agent, Florida</span>
+                                <span lang="es" class="hidden">Agente Independiente, Florida</span>
+                            </p>
+                        </div>
+                    </div>
+                    <p class="body-text quote" style="margin: 0; color: var(--text-primary); font-size: 16px;">
                         <span lang="en">"It feels like a system app made for real estate."</span>
                         <span lang="es" class="hidden">"Se siente como una aplicación del sistema creada para bienes
                             raíces."</span>
-                    </p>
-                    <p class="metadata">
-                        <span lang="en">— Independent Agent, Florida</span>
-                        <span lang="es" class="hidden">— Agente Independiente, Florida</span>
                     </p>
                 </div>
             </div>

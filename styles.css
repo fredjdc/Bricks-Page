@@ -124,7 +124,7 @@ h6 {
 }
 
 h1.hero-title {
-    font-size: 56px;
+    font-size: 48px;
     font-weight: 900;
     color: var(--text-primary);
     line-height: 1.05;
@@ -229,7 +229,7 @@ a:hover {
 .hero-content {
     text-align: left;
     width: 100%;
-    max-width: 420px;
+    max-width: 580px;
 }
 
 .hero-content .cta-group {
@@ -503,10 +503,13 @@ a:hover {
 }
 
 @keyframes ambient-breathe {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: scale(1);
         opacity: 0.8;
     }
+
     50% {
         transform: scale(1.05);
         opacity: 1;
@@ -559,16 +562,28 @@ a:hover {
 }
 
 /* Card Hover Enhancements */
-.embossed-card, .bento-card, .perfect-card, .value-card, .ecosystem-card {
+.embossed-card,
+.bento-card,
+.perfect-card,
+.value-card,
+.ecosystem-card {
     transition: transform 0.4s var(--ease-out-expo), box-shadow 0.4s var(--ease-out-expo) !important;
 }
 
-.embossed-card:hover, .bento-card:hover, .perfect-card:hover, .value-card:hover, .ecosystem-card:hover {
+.embossed-card:hover,
+.bento-card:hover,
+.perfect-card:hover,
+.value-card:hover,
+.ecosystem-card:hover {
     transform: translateY(-6px);
     box-shadow: 0 12px 32px rgba(11, 15, 20, 0.08) !important;
 }
 
-.embossed-card:active, .bento-card:active, .perfect-card:active, .value-card:active, .ecosystem-card:active {
+.embossed-card:active,
+.bento-card:active,
+.perfect-card:active,
+.value-card:active,
+.ecosystem-card:active {
     transform: scale(0.97) translateY(0) !important;
     transition: transform 0.1s ease !important;
 }
@@ -664,7 +679,7 @@ a:hover {
         justify-content: center;
     }
 
-    .index-hero .hero-grid > div:last-child {
+    .index-hero .hero-grid>div:last-child {
         justify-self: center !important;
         margin-left: 0 !important;
     }
@@ -802,10 +817,21 @@ a:hover {
 }
 
 /* ── Stagger Delays (wider spread = more choreography) ── */
-.delay-100 { transition-delay: 0.13s !important; }
-.delay-200 { transition-delay: 0.28s !important; }
-.delay-300 { transition-delay: 0.44s !important; }
-.delay-400 { transition-delay: 0.60s !important; }
+.delay-100 {
+    transition-delay: 0.13s !important;
+}
+
+.delay-200 {
+    transition-delay: 0.28s !important;
+}
+
+.delay-300 {
+    transition-delay: 0.44s !important;
+}
+
+.delay-400 {
+    transition-delay: 0.60s !important;
+}
 
 .delay-500 {
     transition-delay: 0.5s;
