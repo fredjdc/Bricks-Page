@@ -234,6 +234,7 @@ a:hover {
 
 .hero-content .cta-group {
     justify-content: flex-start;
+    align-items: flex-start;
 }
 
 .hero-content .body-text {
@@ -261,6 +262,7 @@ a:hover {
 
     .hero-content .cta-group {
         justify-content: center;
+        align-items: center;
     }
 
     .hero-content .body-text {
