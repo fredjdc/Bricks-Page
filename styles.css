@@ -739,32 +739,6 @@ a:hover {
     display: block;
 }
 
-.index-testimonial {
-    background: var(--bg-secondary);
-    border: 1px solid var(--depth-plane);
-    border-radius: 20px;
-    padding: 32px;
-    box-shadow: 4px 6px 16px var(--surface-shadow), -2px -2px 6px #ffffff;
-    transition: all 0.4s var(--ease-out-expo);
-}
-
-.testimonials-grid:hover .index-testimonial {
-    opacity: 0.5;
-    transform: scale(0.98);
-}
-
-.testimonials-grid .index-testimonial:hover {
-    opacity: 1;
-    transform: scale(1.02) translateY(-4px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
-    z-index: 2;
-    position: relative;
-}
-
-.index-testimonial .quote {
-    font-style: italic;
-    margin-bottom: 16px;
-}
 
 /* ── Desktop App Banner ───────────────────────────────────────── */
 .desktop-app-banner {
