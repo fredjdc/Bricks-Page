@@ -2088,7 +2088,7 @@ a:hover {
 .comparison-table-wrapper {
     max-width: 900px;
     margin: 64px auto 0;
-    overflow-x: auto;
+    overflow: hidden;
 }
 
 .comparison-table {
