@@ -2599,31 +2599,31 @@ a:hover {
     display: block;
 }
 
-/* 3D slide-in / slide-out animation */
+/* 3D slide-in / slide-out — now driven by GSAP ScrollTrigger (scrub).
+   CSS initial state removed to avoid conflicts with GSAP inline styles.
+   .panel-visible kept as reduced-motion fallback only. */
 .feature-panel-screen-mobile,
 .feature-panel-copy {
-    transform: perspective(900px) rotateX(-10deg) translateY(36px);
-    opacity: 0;
-    transition: transform 0.65s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.55s cubic-bezier(0.2, 0.8, 0.2, 1);
     will-change: transform, opacity;
 }
 
-/* Copy lags slightly behind the image */
+/* Copy lags slightly behind the image (GSAP handles via stagger) */
 .feature-panel-copy {
-    transition-delay: 0.08s;
+    transition-delay: 0s;
 }
 
+/* Reduced-motion fallback */
 .feature-panel-screen-mobile.panel-visible,
 .feature-panel-copy.panel-visible {
     transform: perspective(900px) rotateX(0deg) translateY(0);
     opacity: 1;
 }
 
+/* Legacy exit class kept for non-GSAP fallback */
 .feature-panel-screen-mobile.panel-exited,
 .feature-panel-copy.panel-exited {
     transform: perspective(900px) rotateX(8deg) translateY(-24px);
     opacity: 0;
-    transition: transform 0.45s cubic-bezier(0.4, 0, 1, 1), opacity 0.35s cubic-bezier(0.4, 0, 1, 1);
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -19,6 +19,10 @@
     <!-- Scripts -->
     <script src="scripts.js" defer></script>
 
+    <!-- GSAP + ScrollTrigger (Free Tier) -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js" defer></script>
+
     <!-- Google Tag Manager -->
     <script>
         (function (w, d, s, l, i) {
@@ -304,17 +308,11 @@
             cursor: default;
         }
 
-        /* 3D scroll-entrance — override the generic reveal-on-scroll translateY */
-        .privacy-card.reveal-on-scroll {
+        /* 3D scroll-entrance — handled by GSAP ScrollTrigger */
+        .privacy-card.gsap-reveal {
             transform: perspective(900px) rotateX(-10deg) translateY(36px);
             opacity: 0;
-            transition: transform 0.65s cubic-bezier(0.2, 0.8, 0.2, 1),
-                opacity 0.55s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-
-        .privacy-card.reveal-on-scroll.is-visible {
-            transform: perspective(900px) rotateX(0deg) translateY(0);
-            opacity: 1;
+            will-change: transform, opacity;
         }
 
         /* Hover state — mouse-move JS overrides this, but keep as fallback */
@@ -405,12 +403,9 @@
                 transform: none !important;
             }
 
-            .privacy-card.reveal-on-scroll {
-                transform: translateY(20px);
-            }
-
-            .privacy-card.reveal-on-scroll.is-visible {
-                transform: translateY(0);
+            .privacy-card.gsap-reveal {
+                transform: none;
+                opacity: 1;
             }
 
             .feature-panel-copy:hover .feature-panel-icon {
@@ -755,7 +750,7 @@
         </div>
 
         <div class="container privacy-grid">
-            <div class="privacy-card center-text reveal-on-scroll delay-200">
+            <div class="privacy-card center-text gsap-reveal">
                 <img src="images/checkmark.svg" alt="Check" class="checkmark-icon"
                     style="margin: 0 auto 16px; display: block" />
                 <h3 class="subheading" style="font-size: 18px">
@@ -768,7 +763,7 @@
                 </p>
             </div>
 
-            <div class="privacy-card center-text reveal-on-scroll delay-300">
+            <div class="privacy-card center-text gsap-reveal">
                 <img src="images/checkmark.svg" alt="Check" class="checkmark-icon"
                     style="margin: 0 auto 16px; display: block" />
                 <h3 class="subheading" style="font-size: 18px">
@@ -781,7 +776,7 @@
                 </p>
             </div>
 
-            <div class="privacy-card center-text reveal-on-scroll delay-400">
+            <div class="privacy-card center-text gsap-reveal">
                 <img src="images/checkmark.svg" alt="Check" class="checkmark-icon"
                     style="margin: 0 auto 16px; display: block" />
                 <h3 class="subheading" style="font-size: 18px">
@@ -818,7 +813,7 @@
             <div class="comparison-table-wrapper">
                 <table class="comparison-table">
                     <thead>
-                        <tr class="reveal-on-scroll delay-200">
+                        <tr class="gsap-table-row">
                             <th>
                                 <span lang="en">Feature</span>
                                 <span lang="es" class="hidden">Función</span>
@@ -834,7 +829,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="reveal-on-scroll delay-300">
+                        <tr class="gsap-table-row">
                             <td>
                                 <span lang="en">Scan</span>
                                 <span lang="es" class="hidden">Escaneo</span>
@@ -843,7 +838,7 @@
                             <td class="teal-check" style="color: var(--accent-teal); font-weight: bold">✓</td>
                         </tr>
 
-                        <tr class="reveal-on-scroll delay-400">
+                        <tr class="gsap-table-row">
                             <td>
                                 <span lang="en">Search</span>
                                 <span lang="es" class="hidden">Búsqueda</span>
@@ -852,7 +847,7 @@
                             <td class="teal-check" style="color: var(--accent-teal); font-weight: bold">✓</td>
                         </tr>
 
-                        <tr class="reveal-on-scroll delay-500">
+                        <tr class="gsap-table-row">
                             <td>
                                 <span lang="en">Name Documents</span>
                                 <span lang="es" class="hidden">Nombrar Documentos</span>
@@ -861,7 +856,7 @@
                             <td class="teal-check" style="color: var(--accent-teal); font-weight: bold">✓</td>
                         </tr>
 
-                        <tr class="reveal-on-scroll delay-600">
+                        <tr class="gsap-table-row">
                             <td>
                                 <span lang="en">Automate Organization</span>
                                 <span lang="es" class="hidden">Automatizar Organización</span>
@@ -870,7 +865,7 @@
                             <td class="teal-check" style="color: var(--accent-teal); font-weight: bold">✓</td>
                         </tr>
 
-                        <tr class="reveal-on-scroll delay-700">
+                        <tr class="gsap-table-row">
                             <td>
                                 <span lang="en">On-Device Processing</span>
                                 <span lang="es" class="hidden">Procesamiento en el dispositivo</span>
@@ -882,7 +877,7 @@
                             <td class="teal-check" style="color: var(--accent-teal); font-weight: bold">✓</td>
                         </tr>
 
-                        <tr class="reveal-on-scroll delay-800">
+                        <tr class="gsap-table-row">
                             <td>
                                 <span lang="en">No Account Required</span>
                                 <span lang="es" class="hidden">No Requiere Cuenta</span>
@@ -894,7 +889,7 @@
                             <td class="teal-check" style="color: var(--accent-teal); font-weight: bold">✓</td>
                         </tr>
 
-                        <tr class="reveal-on-scroll delay-800">
+                        <tr class="gsap-table-row">
                             <td>
                                 <span lang="en">Works Offline</span>
                                 <span lang="es" class="hidden">Funciona sin conexión</span>
@@ -919,18 +914,18 @@
     <!-- 5. Final CTA Section -->
     <section class="section section-padding-large">
         <div class="container reading-column center-text">
-            <h2 class="section-title reveal-on-scroll" style="font-size: 40px">
+            <h2 class="section-title gsap-cta-el" style="font-size: 40px">
                 <span lang="en">Your documents, ready from the first scan.</span>
                 <span lang="es" class="hidden">Tus documentos, listos desde el primer escaneo.</span>
             </h2>
 
-            <p class="body-text mb-md reveal-on-scroll delay-100"
+            <p class="body-text mb-md gsap-cta-el"
                 style="max-width: 560px; margin-left: auto; margin-right: auto">
                 <span lang="en">No manual renaming. No manual filing. No extra steps.</span>
                 <span lang="es" class="hidden">Sin renombrar a mano. Sin archivar a mano. Sin pasos extra.</span>
             </p>
 
-            <div class="cta-group reveal-on-scroll delay-200"
+            <div class="cta-group gsap-cta-el"
                 style="display: flex; flex-direction: column; align-items: center; gap: 12px; margin: 0 auto; margin-top: 40px;">
                 <a href="" class="btn btn-primary">
                     <svg aria-hidden="true" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:16px;height:16px;fill:currentColor;margin-right:7px;flex-shrink:0;vertical-align:middle;position:relative;top:-0.5px"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.46 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
@@ -1239,29 +1234,10 @@
 
                 panels.forEach(panel => panelObserver.observe(panel));
 
-                // 3D entrance / exit animation observer
-                if (!prefersReducedMotion) {
-                    const panel3DObserver = new IntersectionObserver((entries) => {
-                        entries.forEach(entry => {
-                            const copy = entry.target.querySelector('.feature-panel-copy');
-                            const img = entry.target.querySelector('.feature-panel-screen-mobile');
-                            const els = [copy, img].filter(Boolean);
-                            const isLastPanel = entry.target === panels[panels.length - 1];
-                            if (entry.isIntersecting) {
-                                els.forEach(el => { el.classList.add('panel-visible'); el.classList.remove('panel-exited'); });
-                                if (isLastPanel) panel3DObserver.unobserve(entry.target);
-                            } else {
-                                const aboveViewport = entry.boundingClientRect.top < (entry.rootBounds?.top ?? 0);
-                                els.forEach(el => {
-                                    el.classList.remove('panel-visible');
-                                    if (aboveViewport) { el.classList.add('panel-exited'); }
-                                    else { el.classList.remove('panel-exited'); }
-                                });
-                            }
-                        });
-                    }, { threshold: 0.15 });
-                    panels.forEach(panel => panel3DObserver.observe(panel));
-                } else {
+                // 3D entrance/exit is now handled by GSAP ScrollTrigger
+                // (see the consolidated GSAP script block below)
+                if (prefersReducedMotion) {
+                    // Fallback: make all panels visible immediately
                     panels.forEach(panel => {
                         panel.querySelector('.feature-panel-copy')?.classList.add('panel-visible');
                         panel.querySelector('.feature-panel-screen-mobile')?.classList.add('panel-visible');
@@ -1309,125 +1285,243 @@
         })();
     </script>
 
-    <!-- Seamless Hero → Feature Showcase Transition -->
+    <!-- GSAP ScrollTrigger Animations + Page-Specific Enhancements -->
     <script>
         (function () {
             'use strict';
 
-            const heroWrapper = document.querySelector('.section-hero .hero-image-wrapper');
-            const stickyCol = document.getElementById('featureStickyCol');
-            const showcaseWrapper = document.querySelector('.feature-showcase-wrapper');
-
-            if (!heroWrapper) return;
-
-            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            if (prefersReducedMotion) return;
-
-            /* ── Desktop: animate sticky column entrance ── */
-            const desktopMQ = window.matchMedia('(min-width: 901px)');
-            if (stickyCol && desktopMQ.matches && showcaseWrapper) {
-                stickyCol.classList.add('sticky-entering');
-
-                const stickyObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            stickyCol.classList.remove('sticky-entering');
-                        } else if (entry.boundingClientRect.top > 0) {
-                            stickyCol.classList.add('sticky-entering');
-                        }
+            // Wait for GSAP to be available (loaded with defer)
+            const initGSAPAnimations = () => {
+                if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+                    // Fallback: make GSAP-managed elements visible if GSAP fails to load
+                    document.querySelectorAll('.gsap-reveal, .gsap-cta-el').forEach(el => {
+                        el.style.opacity = '1';
+                        el.style.transform = 'none';
                     });
-                }, { threshold: 0.02 });
-
-                stickyObserver.observe(showcaseWrapper);
-            }
-
-            /* ── Scroll-linked hero video fade-out ── */
-            let scrollActive = false;
-            let ticking = false;
-
-            const enableScrollFade = () => {
-                scrollActive = true;
-                heroWrapper.classList.add('scroll-fade-active');
-                updateHeroFade();
-            };
-
-            // Wait for the reveal-on-scroll entrance to finish before enabling
-            setTimeout(enableScrollFade, 2000);
-
-            const updateHeroFade = () => {
-                ticking = false;
-                if (!scrollActive) return;
-
-                const rect = heroWrapper.getBoundingClientRect();
-                const vh = window.innerHeight;
-                const centerY = rect.top + rect.height / 2;
-
-                // Fade zone: 45% → 5% of viewport height
-                const fadeStart = vh * 0.45;
-                const fadeEnd = vh * 0.05;
-
-                if (centerY >= fadeStart) {
-                    heroWrapper.style.opacity = '';
-                    heroWrapper.style.transform = '';
+                    document.querySelectorAll('.gsap-table-row').forEach(el => {
+                        el.style.opacity = '1';
+                    });
                     return;
                 }
 
-                if (centerY <= fadeEnd) {
-                    heroWrapper.style.opacity = '0';
-                    heroWrapper.style.transform = 'scale(0.92) translateY(-20px)';
+                gsap.registerPlugin(ScrollTrigger);
+
+                const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+                // ─── Respect reduced motion globally ───
+                if (reduceMotion) {
+                    // Just make everything visible, no animations
+                    document.querySelectorAll('.gsap-reveal, .gsap-cta-el').forEach(el => {
+                        el.style.opacity = '1';
+                        el.style.transform = 'none';
+                    });
+                    document.querySelectorAll('.gsap-table-row').forEach(el => {
+                        el.style.opacity = '1';
+                    });
                     return;
                 }
 
-                const t = (fadeStart - centerY) / (fadeStart - fadeEnd);
-                const eased = 1 - Math.pow(1 - t, 2.5); // ease-out curve
-                heroWrapper.style.opacity = String(1 - eased);
-                heroWrapper.style.transform =
-                    'scale(' + (1 - eased * 0.08).toFixed(4) + ') translateY(' + (-eased * 20).toFixed(2) + 'px)';
-            };
-
-            window.addEventListener('scroll', () => {
-                if (!ticking) {
-                    requestAnimationFrame(updateHeroFade);
-                    ticking = true;
-                }
-            }, { passive: true });
-        })();
-    </script>
-
-    <!-- Page-Specific Animation Enhancements -->
-    <script>
-        (function () {
-            'use strict';
-            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-            /* ── 1. Hero float loop — add after entrance, remove when scroll-fade kicks in ── */
-            if (!reduceMotion) {
+                // ═══════════════════════════════════════════
+                // 1. HERO FADE-OUT (scrub-linked)
+                // ═══════════════════════════════════════════
                 const heroWrapper = document.querySelector('.section-hero .hero-image-wrapper');
                 if (heroWrapper) {
+                    // Let the reveal-on-scroll entrance finish first
+                    gsap.delayedCall(2, () => {
+                        heroWrapper.classList.add('scroll-fade-active');
+
+                        gsap.to(heroWrapper, {
+                            opacity: 0,
+                            scale: 0.92,
+                            y: -20,
+                            ease: 'power2.in',
+                            scrollTrigger: {
+                                trigger: '.section-hero',
+                                start: 'center center',
+                                end: 'bottom 5%',
+                                scrub: 0.6,
+                                onUpdate: (self) => {
+                                    // Remove float animation once fading begins
+                                    if (self.progress > 0.05) {
+                                        heroWrapper.classList.remove('is-floating');
+                                    }
+                                }
+                            }
+                        });
+                    });
+
+                    // Hero float loop — add after entrance animation settles
                     setTimeout(() => {
                         const op = parseFloat(heroWrapper.style.opacity);
                         if (isNaN(op) || op > 0.95) {
                             heroWrapper.classList.add('is-floating');
                         }
-                        window.addEventListener('scroll', function removeFloat() {
-                            const o = parseFloat(heroWrapper.style.opacity);
-                            if (!isNaN(o) && o < 0.98) {
-                                heroWrapper.classList.remove('is-floating');
-                                window.removeEventListener('scroll', removeFloat);
-                            }
-                        }, { passive: true });
                     }, 2000);
                 }
-            }
 
-            /* ── 2. Pause badge shimmer when tab is hidden ── */
+                // ═══════════════════════════════════════════
+                // 2. STICKY COLUMN ENTRANCE (ScrollTrigger)
+                // ═══════════════════════════════════════════
+                const stickyCol = document.getElementById('featureStickyCol');
+                const showcaseWrapper = document.querySelector('.feature-showcase-wrapper');
+                const desktopMQ = window.matchMedia('(min-width: 901px)');
+
+                if (stickyCol && desktopMQ.matches && showcaseWrapper) {
+                    gsap.set(stickyCol, { opacity: 0, y: 24, scale: 0.95 });
+
+                    gsap.to(stickyCol, {
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                        duration: 0.7,
+                        ease: 'power3.out',
+                        scrollTrigger: {
+                            trigger: showcaseWrapper,
+                            start: 'top 80%',
+                            toggleActions: 'play none none reverse',
+                        }
+                    });
+                }
+
+                // ═══════════════════════════════════════════
+                // 3. FEATURE PANEL 3D ENTRANCE (scrub)
+                // ═══════════════════════════════════════════
+                const panels = document.querySelectorAll('.feature-panel[data-feature-index]');
+                panels.forEach((panel, i) => {
+                    const copy = panel.querySelector('.feature-panel-copy');
+                    const img = panel.querySelector('.feature-panel-screen-mobile');
+                    const targets = [copy, img].filter(Boolean);
+                    const isLast = i === panels.length - 1;
+
+                    // Entrance animation
+                    gsap.from(targets, {
+                        opacity: 0,
+                        rotateX: -10,
+                        y: 36,
+                        stagger: 0.08,
+                        ease: 'power2.out',
+                        scrollTrigger: {
+                            trigger: panel,
+                            start: 'top 80%',
+                            end: 'top 30%',
+                            scrub: 0.5,
+                        }
+                    });
+
+                    // Exit animation (skip for last panel — it should stay visible)
+                    if (!isLast) {
+                        gsap.to(targets, {
+                            opacity: 0,
+                            rotateX: 8,
+                            y: -24,
+                            ease: 'power2.in',
+                            scrollTrigger: {
+                                trigger: panel,
+                                start: 'bottom 40%',
+                                end: 'bottom 10%',
+                                scrub: 0.4,
+                            }
+                        });
+                    }
+                });
+
+                // ═══════════════════════════════════════════
+                // 4. PRIVACY CARDS (scrub-based 3D entrance)
+                // ═══════════════════════════════════════════
+                const privacyCards = document.querySelectorAll('.privacy-card.gsap-reveal');
+                privacyCards.forEach((card, i) => {
+                    gsap.fromTo(card, {
+                        opacity: 0,
+                        rotateX: -10,
+                        y: 36,
+                        transformPerspective: 900
+                    }, {
+                        opacity: 1,
+                        rotateX: 0,
+                        y: 0,
+                        duration: 1,
+                        ease: 'power2.out',
+                        scrollTrigger: {
+                            trigger: card,
+                            start: 'top 85%',
+                            end: 'top 50%',
+                            scrub: 0.5,
+                        }
+                    });
+                });
+
+                // ═══════════════════════════════════════════
+                // 5. COMPARISON TABLE ROWS (stagger reveal)
+                // ═══════════════════════════════════════════
+                const tableRows = document.querySelectorAll('.gsap-table-row');
+                if (tableRows.length) {
+                    gsap.set(tableRows, { opacity: 0, y: 20 });
+
+                    ScrollTrigger.batch(tableRows, {
+                        onEnter: (batch) => {
+                            gsap.to(batch, {
+                                opacity: 1,
+                                y: 0,
+                                duration: 0.6,
+                                ease: 'power2.out',
+                                stagger: 0.08,
+                                overwrite: true
+                            });
+                        },
+                        start: 'top 88%',
+                        once: true
+                    });
+                }
+
+                // ═══════════════════════════════════════════
+                // 6. TEAL-CHECK PULSE (GSAP stagger)
+                // ═══════════════════════════════════════════
+                const checkCells = document.querySelectorAll('.teal-check');
+                if (checkCells.length) {
+                    ScrollTrigger.batch(checkCells, {
+                        onEnter: (batch) => {
+                            batch.forEach((el, i) => {
+                                gsap.delayedCall(i * 0.08, () => el.classList.add('pulse-in'));
+                            });
+                        },
+                        start: 'top 85%',
+                        once: true
+                    });
+                }
+
+                // ═══════════════════════════════════════════
+                // 7. FINAL CTA SECTION (parallax entrance)
+                // ═══════════════════════════════════════════
+                const ctaEls = document.querySelectorAll('.gsap-cta-el');
+                if (ctaEls.length) {
+                    gsap.set(ctaEls, { opacity: 0, y: 40 });
+
+                    gsap.to(ctaEls, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.8,
+                        ease: 'power3.out',
+                        stagger: 0.12,
+                        scrollTrigger: {
+                            trigger: '.section-padding-large',
+                            start: 'top 75%',
+                            toggleActions: 'play none none none',
+                        }
+                    });
+                }
+            };
+
+            // ─── Non-GSAP enhancements (always run) ───
+
+            /* Pause badge shimmer when tab is hidden */
             document.addEventListener('visibilitychange', () => {
                 document.querySelectorAll('.app-store-badge').forEach(el => {
                     el.style.animationPlayState = document.hidden ? 'paused' : 'running';
                 });
             });
 
-            /* ── 3. Privacy card 3D mouse-tilt ── */
+            /* Privacy card 3D mouse-tilt */
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             if (!reduceMotion) {
                 document.querySelectorAll('.privacy-card').forEach(card => {
                     card.addEventListener('mousemove', (e) => {
@@ -1445,21 +1539,14 @@
                 });
             }
 
-            /* ── 4. Teal-check pulse on scroll entry (one-shot, staggered) ── */
-            if (!reduceMotion) {
-                const checkCells = document.querySelectorAll('.teal-check');
-                if (checkCells.length) {
-                    const obs = new IntersectionObserver((entries, observer) => {
-                        entries.forEach(entry => {
-                            if (entry.isIntersecting) {
-                                const idx = Array.from(checkCells).indexOf(entry.target);
-                                setTimeout(() => entry.target.classList.add('pulse-in'), idx * 80);
-                                observer.unobserve(entry.target);
-                            }
-                        });
-                    }, { rootMargin: '0px 0px -80px 0px', threshold: 0.5 });
-                    checkCells.forEach(c => obs.observe(c));
-                }
+            // Init GSAP after DOM is ready and scripts have loaded
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', () => {
+                    // Small delay to ensure GSAP deferred scripts have executed
+                    requestAnimationFrame(() => requestAnimationFrame(initGSAPAnimations));
+                });
+            } else {
+                requestAnimationFrame(() => requestAnimationFrame(initGSAPAnimations));
             }
         })();
     </script>
