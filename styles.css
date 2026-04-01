@@ -2544,13 +2544,13 @@ a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: opacity 0.55s var(--ease-out-expo), transform 0.55s var(--ease-out-expo);
     pointer-events: none;
 }
 
 .feature-sticky-col.frame-exited {
     opacity: 0;
     transform: translateX(-28px) scale(0.96);
+    transition: opacity 0.55s var(--ease-out-expo), transform 0.55s var(--ease-out-expo);
 }
 
 .feature-frame {
@@ -2612,6 +2612,7 @@ a:hover {
    .panel-visible kept as reduced-motion fallback only. */
 .feature-panel-screen-mobile,
 .feature-panel-copy {
+    opacity: 0;
     will-change: transform, opacity;
 }
 
