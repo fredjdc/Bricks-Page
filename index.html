@@ -69,9 +69,6 @@
     <link rel="manifest" href="site.webmanifest" />
     <meta name="theme-color" content="#F6F7F8" />
 
-    <!-- Alpine.js for interactive components -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
     <!-- Common scripts with language detection -->
     <script src="scripts.js" defer></script>
 
@@ -119,6 +116,263 @@
             }
         </style>
     </noscript>
+
+    <!-- Page-Specific Micro-Animations -->
+    <style>
+        /* ── KEYFRAMES ─────────────────────────────────────── */
+        @keyframes idx-logo-enter {
+            from {
+                opacity: 0;
+                transform: translateX(-8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes idx-shimmer-sweep {
+            0% {
+                background-position: -200% center;
+            }
+
+            100% {
+                background-position: 200% center;
+            }
+        }
+
+        @keyframes idx-float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes idx-dot-pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 199, 178, 0.6), 0 0 6px 2px rgba(0, 199, 178, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 0 0 4px rgba(0, 199, 178, 0), 0 0 12px 4px rgba(0, 199, 178, 0.5);
+            }
+        }
+
+        @keyframes idx-icon-bob {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* ── 1. HEADER LOGO ENTRANCE ─────────────────────── */
+        .header-logo-img {
+            opacity: 0;
+            transform: translateX(-8px);
+            animation: idx-logo-enter 0.7s var(--ease-out-expo) 0.3s forwards;
+        }
+
+        /* ── 2. SUITE BADGE ──────────────────────────────── */
+        .suite-badge {
+            display: inline-flex;
+            align-items: center;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            background: linear-gradient(135deg,
+                    transparent 0%, transparent 40%,
+                    rgba(0, 199, 178, 0.22) 50%,
+                    transparent 60%, transparent 100%);
+            background-size: 400% auto;
+            padding: 6px 14px;
+            border-radius: 9999px;
+            border: 1px solid var(--depth-plane);
+            box-shadow: var(--emboss-raised);
+            margin-bottom: 20px;
+            animation: idx-shimmer-sweep 14s linear infinite;
+        }
+
+        /* ── 3. HERO IMAGE FLOAT LOOP ────────────────────── */
+        .hero-image-wrapper {
+            animation: idx-float 6s ease-in-out infinite;
+            will-change: transform;
+        }
+
+        /* ── 4. CTA BUTTON SHIMMER ON HOVER ──────────────── */
+        .btn-primary {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(105deg,
+                    transparent 20%,
+                    rgba(255, 255, 255, 0.18) 50%,
+                    transparent 80%);
+            transform: skewX(-15deg);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .btn-primary:hover::before {
+            left: 160%;
+            transition: left 0.55s var(--ease-out-expo);
+        }
+
+        .btn-primary:not(:hover)::before {
+            transition: none;
+            left: -100%;
+        }
+
+        /* ── 5. SCROLL PROGRESS BAR GLOW DOT ─────────────── */
+        #scroll-progress::after {
+            content: '';
+            position: absolute;
+            right: -3px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent-teal);
+            animation: idx-dot-pulse 1.6s ease-in-out infinite;
+        }
+
+        /* ── 6. APP ICON FLOAT BOB ────────────────────────── */
+        .app-icon-bob {
+            animation: idx-icon-bob 4s ease-in-out infinite;
+            animation-delay: 0.6s;
+            will-change: transform;
+        }
+
+        /* ── 7. APP ROW SCREENSHOT ──────────────────────── */
+        .app-row-img {
+            width: 100%;
+            max-width: 440px;
+            border-radius: var(--r3-primary);
+            box-shadow: var(--emboss-raised);
+            transition: transform 0.45s var(--ease-out-expo),
+                box-shadow 0.45s var(--ease-out-expo);
+            display: block;
+        }
+
+        .app-row-img:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--emboss-raised-hover);
+        }
+
+        /* ── 8. APP ROW ACCENT INDICATOR ────────────────── */
+        .app-row-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .app-row-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* ── 9. APP CTA CARD ─────────────────────────────── */
+        .app-cta-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            padding: 28px 24px;
+            border-radius: var(--r2-inner);
+            border: 1px solid var(--depth-plane);
+            background: var(--bg-white);
+            text-decoration: none;
+            color: inherit;
+            box-shadow: var(--emboss-raised);
+            transition: transform 0.35s var(--ease-out-expo),
+                box-shadow 0.35s var(--ease-out-expo);
+        }
+
+        .app-cta-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--emboss-raised-hover);
+        }
+
+        /* ── 10. FOOTER NAV ANIMATED UNDERLINE ───────────── */
+        .footer-nav-link {
+            position: relative;
+            display: inline-block;
+            opacity: 1 !important;
+        }
+
+        .footer-nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0%;
+            height: 1px;
+            background-color: var(--text-primary);
+            transition: width 0.28s var(--ease-out-expo);
+        }
+
+        .footer-nav-link:hover::after {
+            width: 100%;
+        }
+
+        .footer-nav-link:hover {
+            opacity: 0.85 !important;
+        }
+
+        /* ── REDUCED MOTION OVERRIDES ─────────────────────── */
+        @media (prefers-reduced-motion: reduce) {
+
+            .hero-image-wrapper,
+            .suite-badge,
+            .app-icon-bob,
+            #scroll-progress::after {
+                animation: none !important;
+            }
+
+            .header-logo-img {
+                opacity: 1 !important;
+                transform: none !important;
+                animation: none !important;
+            }
+
+            .btn-primary::before {
+                display: none;
+            }
+
+            .app-row-img:hover,
+            .app-cta-card:hover {
+                transform: none !important;
+                box-shadow: var(--emboss-raised) !important;
+            }
+        }
+    </style>
+
 </head>
 
 <body>
@@ -131,20 +385,18 @@
             style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-
-
     <!-- Cookie Consent Banner -->
     <div id="cookie-consent-banner"
         style="display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg-primary); padding: 24px; z-index: 50; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; box-shadow: 0 -4px 16px var(--surface-shadow); border-top: 1px solid var(--depth-plane);">
         <div>
             <p class="body-text" style="font-size: 14px; margin: 0;">
-                <span lang="en">We use cookies to analyze site usage and improve your experience. May we collect
+                <span lang="en">We use cookies to understand site usage and improve the experience. May we collect
                     anonymous usage data?</span>
-                <span lang="es" class="hidden">Usamos cookies para analizar el uso del sitio y mejorar su experiencia.
-                    ¿Nos permite recopilar datos anónimos de uso?</span>
+                <span lang="es" class="hidden">Usamos cookies para entender cómo se usa el sitio y mejorar la
+                    experiencia. ¿Nos permites recopilar datos anónimos de uso?</span>
             </p>
         </div>
-        <div style="display: flex; align-items: right; justify-content: flex-end; gap: 12px; ">
+        <div style="display: flex; gap: 8px;">
             <button onclick="updateConsent('denied')" class="btn btn-secondary">
                 <span lang="en">Decline</span>
                 <span lang="es" class="hidden">Rechazar</span>
@@ -162,19 +414,22 @@
         <div class="logo">
             <a href="index.html" style="display: flex; align-items: center;">
                 <img src="images/bricks-dark-logo.svg" onerror="this.src='images/bricks-light-logo.svg'"
-                    alt="Bricks Logo" style="height: 24px;">
+                    alt="Bricks Logo" style="height: 24px;" class="header-logo-img">
             </a>
         </div>
         <nav style="display: flex; align-items: center; justify-content: flex-end; gap: 24px;">
-            <a href="bricks-scan.html" class="body-text" style="font-size: 15px; font-weight: 500; margin: 0;">
+            <a href="bricks-scan.html" class="body-text footer-nav-link"
+                style="font-size: 15px; font-weight: 500; margin: 0;">
                 <span lang="en">Bricks Scan</span>
                 <span lang="es" class="hidden">Bricks Scan</span>
             </a>
-            <a href="bricks-calc.html" class="body-text" style="font-size: 15px; font-weight: 500; margin: 0;">
+            <a href="bricks-calc.html" class="body-text footer-nav-link"
+                style="font-size: 15px; font-weight: 500; margin: 0;">
                 <span lang="en">Bricks Calc</span>
                 <span lang="es" class="hidden">Bricks Calc</span>
             </a>
-            <a href="https://leads.bricks.pe" class="body-text" style="font-size: 15px; font-weight: 500; margin: 0;">
+            <a href="https://leads.bricks.pe" class="body-text footer-nav-link"
+                style="font-size: 15px; font-weight: 500; margin: 0;">
                 <span lang="en">Bricks Leads</span>
                 <span lang="es" class="hidden">Bricks Leads</span>
             </a>
@@ -190,75 +445,93 @@
         <div class="hero-dot-grid" aria-hidden="true"></div>
         <div class="container hero-grid">
             <div class="hero-content">
-                <!-- Hero Copy -->
-                <div class="hero-content">
-                    <h1 class="hero-title reveal-on-scroll">
-                        <span lang="en">Scan documents.<br>Calculate mortgages.<br>Manage clients.</span>
-                        <span lang="es" class="hidden">Escanea documentos.<br>Calcula hipotecas.<br>Gestiona
-                            clientes.</span>
-                    </h1>
-                    <span class="hero-accent-line reveal-on-scroll delay-100"></span>
-                    <p class="body-text reveal-on-scroll delay-200" style="margin-top: 24px;">
-                        <span lang="en">Three focused apps for real estate agents on Apple. Each one built to remove a
-                            specific operational burden from your day.</span>
-                        <span lang="es" class="hidden">Tres apps enfocadas para agentes inmobiliarios en Apple. Cada una
-                            diseñada para eliminar una carga operativa específica de tu día.</span>
+                <h1 class="hero-title reveal-on-scroll">
+                    <span lang="en">Scan documents.<br>Calculate mortgages.<br>Manage clients.</span>
+                    <span lang="es" class="hidden">Escanea documentos.<br>Calcula hipotecas.<br>Gestiona
+                        clientes.</span>
+                </h1>
+                <span class="hero-accent-line reveal-on-scroll delay-100"></span>
+                <p class="body-text reveal-on-scroll delay-200" style="margin-top: 24px; max-width: 440px;">
+                    <span lang="en">Three focused apps for real estate agents on Apple. Each one built to remove a
+                        specific operational burden from your day.</span>
+                    <span lang="es" class="hidden">Tres apps enfocadas para agentes inmobiliarios en Apple. Cada una
+                        diseñada para eliminar una carga operativa específica de tu día.</span>
+                </p>
+                <div class="reveal-on-scroll delay-300"
+                    style="margin-top: 36px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+                    <a href="#apps-suite" class="btn btn-primary" style="scroll-behavior: smooth;">
+                        <span lang="en">Explore the suite ↓</span>
+                        <span lang="es" class="hidden">Ver las apps ↓</span>
+                    </a>
+                    <p class="body-text" style="font-size: 13px; color: var(--text-tertiary); margin: 0;">
+                        <span lang="en">Free to start. For iPhone, iPad, and Mac.</span>
+                        <span lang="es" class="hidden">Gratis para empezar. Para iPhone, iPad y Mac.</span>
                     </p>
-                    <div class="reveal-on-scroll delay-300"
-                        style="margin-top: 36px; display: flex; flex-direction: column; align-items: flex-start;">
-                        <p class="body-text"
-                            style="font-size: 13px; color: var(--text-tertiary); margin-top: 16px; margin-bottom: 0;">
-                            <span lang="en">Free apps available. Designed for iOS and Mac.</span>
-                            <span lang="es" class="hidden">Apps gratuitas disponibles. Diseñadas para iOS y Mac.</span>
-                        </p>
-                    </div>
                 </div>
             </div>
-            <!-- App Hero Image -->
-            <div class="reveal-on-scroll delay-200"
+
+            <!-- Hero image — three apps together -->
+            <div class="hero-image-wrapper reveal-on-scroll delay-200"
                 style="display: flex; justify-content: center; align-items: center; margin-left: auto; width: 100%; max-width: 480px;">
-                <img src="images/bricks-apps-hero-en.png" alt="Bricks Apps - Scan, Calc, Leads" lang="en"
+                <img src="images/bricks-apps-hero-en.png" alt="Bricks Apps — Scan, Calc, Leads" lang="en"
                     style="width: 100%; height: auto;">
-                <img src="images/bricks-apps-hero-es.png" alt="Bricks Apps - Escanear, Calcular, Gestionar" lang="es"
+                <img src="images/bricks-apps-hero-es.png" alt="Bricks Apps — Escanear, Calcular, Gestionar" lang="es"
                     class="hidden" style="width: 100%; height: auto;">
             </div>
-
         </div>
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════ -->
-    <!-- Bricks Scan Spotlight Section                             -->
+    <!-- Apps Suite — Hub Section                                   -->
     <!-- ═══════════════════════════════════════════════════════════ -->
-    <section id="bricks-scan-spotlight" class="section">
+    <section id="apps-suite" class="section section-alt" style="border-top: 1px solid var(--divider);">
         <div class="container">
-            <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin-bottom: 32px;">
-                <div style="display: flex; align-items: center; gap: 12px;">
-                    <img src="images-bricks-scan/bricks-scan-web-icon.png" alt="Bricks Scan"
-                        style="width: 48px; height: 48px; border-radius: 12px;">
-                    <div>
-                        <p class="metadata"
-                            style="margin: 0; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-tertiary);">
-                            <span lang="en">Coming Soon</span>
-                            <span lang="es" class="hidden">Muy Pronto</span>
-                        </p>
-                        <p class="subheading" style="margin: 0; font-size: 15px; font-weight: 600;">Bricks Scan</p>
-                    </div>
-                </div>
+            <div class="reading-column center-text mb-md">
+                <h2 class="section-title reveal-on-scroll">
+                    <span lang="en">Three tools. One suite.</span>
+                    <span lang="es" class="hidden">Tres herramientas. Una suite.</span>
+                </h2>
+                <p class="body-text reveal-on-scroll delay-100">
+                    <span lang="en">Each Bricks app handles one job. None of them try to do everything.</span>
+                    <span lang="es" class="hidden">Cada app de Bricks hace un trabajo. Ninguna intenta hacerlo
+                        todo.</span>
+                </p>
             </div>
+        </div>
+    </section>
 
-            <div class="hero-grid" style="gap: 48px; align-items: center;">
+    <!-- ─── Row 1: Bricks Scan (Teal) ─────────────────────────── -->
+    <section class="section" style="padding-top: 48px;">
+        <div class="container">
+            <div class="hero-grid" style="gap: 64px; align-items: center;">
+
                 <!-- Copy column -->
-                <div>
-                    <h2 class="section-title reveal-on-scroll" style="text-align: left; max-width: 480px;">
-                        <span lang="en">Scan documents. Search any word inside them.</span>
+                <div class="reveal-on-scroll">
+                    <div class="app-row-label">
+                        <img src="images-bricks-scan/bricks-scan-web-icon.png" alt="Bricks Scan" class="app-icon-bob"
+                            style="width: 48px; height: 48px; border-radius: 12px;">
+                        <div>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <span class="app-row-dot" style="background: var(--accent-teal);"></span>
+                                <p class="metadata"
+                                    style="margin: 0; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-tertiary);">
+                                    <span lang="en">Bricks Scan</span>
+                                    <span lang="es" class="hidden">Bricks Scan</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 class="section-title reveal-on-scroll delay-100" style="text-align: left; max-width: 460px;">
+                        <span lang="en">Scan documents. Find any word inside them.</span>
                         <span lang="es" class="hidden">Escanea documentos. Busca cualquier palabra dentro de
                             ellos.</span>
                     </h2>
-                    <p class="body-text reveal-on-scroll delay-100" style="margin-top: 16px; max-width: 440px;">
+                    <p class="body-text reveal-on-scroll delay-200" style="margin-top: 16px; max-width: 420px;">
                         <span lang="en">Every scan gets a clear name, becomes fully searchable, and stays organized on
                             your device — without manual work.</span>
-                        <span lang="es" class="hidden">Cada escaneo recibe un nombre claro, queda completamente buscable
-                            y se organiza en tu dispositivo — sin trabajo manual.</span>
+                        <span lang="es" class="hidden">Cada escaneo recibe un nombre claro, queda completamente
+                            buscable y se organiza en tu dispositivo — sin trabajo manual.</span>
                     </p>
 
                     <!-- Feature trio -->
@@ -266,7 +539,7 @@
                         <div class="reveal-on-scroll delay-200"
                             style="display: flex; gap: 16px; align-items: flex-start;">
                             <div
-                                style="width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-top: 8px; flex-shrink: 0;">
+                                style="width: 6px; height: 6px; border-radius: 50%; background: var(--accent-teal); margin-top: 8px; flex-shrink: 0;">
                             </div>
                             <div>
                                 <p class="subheading" style="font-size: 15px; margin: 0 0 4px;">
@@ -274,8 +547,8 @@
                                     <span lang="es" class="hidden">Auto-Sort</span>
                                 </p>
                                 <p class="body-text" style="font-size: 15px; margin: 0; color: var(--text-secondary);">
-                                    <span lang="en">Every file gets a clear name and the right folder. You don't
-                                        decide.</span>
+                                    <span lang="en">Every file gets a clear name and the right folder. You
+                                        don't decide.</span>
                                     <span lang="es" class="hidden">Cada archivo recibe un nombre claro y la carpeta
                                         correcta. Sin decidir.</span>
                                 </p>
@@ -284,7 +557,7 @@
                         <div class="reveal-on-scroll delay-300"
                             style="display: flex; gap: 16px; align-items: flex-start;">
                             <div
-                                style="width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-top: 8px; flex-shrink: 0;">
+                                style="width: 6px; height: 6px; border-radius: 50%; background: var(--accent-teal); margin-top: 8px; flex-shrink: 0;">
                             </div>
                             <div>
                                 <p class="subheading" style="font-size: 15px; margin: 0 0 4px;">
@@ -292,7 +565,8 @@
                                     <span lang="es" class="hidden">Búsqueda Instantánea</span>
                                 </p>
                                 <p class="body-text" style="font-size: 15px; margin: 0; color: var(--text-secondary);">
-                                    <span lang="en">Find any name, address, or clause inside any document.</span>
+                                    <span lang="en">Find any name, address, or clause inside any
+                                        document.</span>
                                     <span lang="es" class="hidden">Encuentra nombres, direcciones o cláusulas dentro de
                                         cualquier documento.</span>
                                 </p>
@@ -301,7 +575,7 @@
                         <div class="reveal-on-scroll delay-400"
                             style="display: flex; gap: 16px; align-items: flex-start;">
                             <div
-                                style="width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-top: 8px; flex-shrink: 0;">
+                                style="width: 6px; height: 6px; border-radius: 50%; background: var(--accent-teal); margin-top: 8px; flex-shrink: 0;">
                             </div>
                             <div>
                                 <p class="subheading" style="font-size: 15px; margin: 0 0 4px;">
@@ -316,11 +590,15 @@
                         </div>
                     </div>
 
-                    <!-- CTA -->
                     <div class="reveal-on-scroll delay-400" style="margin-top: 36px;">
-                        <a href="bricks-scan.html#waitlist" class="btn btn-primary">
-                            <span lang="en">Join the Waitlist →</span>
-                            <span lang="es" class="hidden">Unirme a la lista →</span>
+                        <a href="bricks-scan.html" class="btn btn-primary">
+                            <svg aria-hidden="true" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                                style="width:16px;height:16px;fill:currentColor;margin-right:7px;flex-shrink:0;vertical-align:middle;position:relative;top:-0.5px">
+                                <path
+                                    d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.46 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701" />
+                            </svg>
+                            <span lang="en">Download on App Store</span>
+                            <span lang="es" class="hidden">Descargar en App Store</span>
                         </a>
                         <p class="body-text"
                             style="font-size: 13px; color: var(--text-tertiary); margin-top: 12px; margin-bottom: 0;">
@@ -332,82 +610,236 @@
 
                 <!-- Screenshot column -->
                 <div class="reveal-on-scroll delay-200" style="display: flex; justify-content: center;">
-                    <img src="images-bricks-scan/hero-video-img-en.png"
-                        alt="Bricks Scan — documents organized and searchable on iPhone" lang="en"
-                        style="max-width: 320px; width: 100%; border-radius: var(--r3-primary);">
-                    <img src="images-bricks-scan/hero-video-img-en.png"
-                        alt="Bricks Scan — documentos organizados y buscables en iPhone" lang="es" class="hidden"
-                        style="max-width: 320px; width: 100%; border-radius: var(--r3-primary);">
+                    <img src="images-bricks-scan/hero-video-img-en.png" lang="en"
+                        alt="Bricks Scan — documents organized and searchable on iPhone" class="app-row-img">
+                    <img src="images-bricks-scan/hero-video-img-es.png" lang="es"
+                        alt="Bricks Scan — documentos organizados y buscables en iPhone" class="hidden app-row-img">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════════════ -->
-    <!-- Apps Overview Section                                      -->
-    <!-- ═══════════════════════════════════════════════════════════ -->
-    <section id="apps-overview" class="section section-alt">
+    <!-- ─── Row 2: Bricks Calc (Blue) — image left, copy right ── -->
+    <section class="section section-alt" style="border-top: 1px solid var(--divider);">
         <div class="container">
-            <div class="reading-column center-text mb-md">
-                <h2 class="section-title reveal-on-scroll">
-                    <span lang="en">Three tools. One suite.</span>
-                    <span lang="es" class="hidden">Tres herramientas. Una suite.</span>
-                </h2>
-                <p class="body-text reveal-on-scroll delay-100">
-                    <span lang="en">Each Bricks app handles one job. None of them try to do everything.</span>
-                    <span lang="es" class="hidden">Cada app de Bricks hace un trabajo. Ninguna intenta hacerlo
-                        todo.</span>
-                </p>
+            <div class="hero-grid" style="gap: 64px; align-items: center;">
+
+                <!-- Screenshot column (left on desktop) -->
+                <div class="reveal-on-scroll delay-200" style="display: flex; justify-content: center;">
+                    <img src="images-bricks-calc/hero-video-img-en.png" lang="en"
+                        alt="Bricks Calc — mortgage calculator on iPhone" class="app-row-img">
+                    <img src="images-bricks-calc/hero-video-img-es.png" lang="es"
+                        alt="Bricks Calc — calculadora hipotecaria en iPhone" class="hidden app-row-img">
+                </div>
+
+                <!-- Copy column (right on desktop) -->
+                <div class="reveal-on-scroll">
+                    <div class="app-row-label">
+                        <img src="images/bricks-calc-web-icon.png" alt="Bricks Calc" class="app-icon-bob"
+                            style="width: 48px; height: 48px; border-radius: 12px;">
+                        <div>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <span class="app-row-dot" style="background: #007AFF;"></span>
+                                <p class="metadata"
+                                    style="margin: 0; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-tertiary);">
+                                    <span lang="en">Bricks Calc</span>
+                                    <span lang="es" class="hidden">Bricks Calc</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 class="section-title reveal-on-scroll delay-100" style="text-align: left; max-width: 460px;">
+                        <span lang="en">Model deals on the spot.</span>
+                        <span lang="es" class="hidden">Modela operaciones al instante.</span>
+                    </h2>
+                    <p class="body-text reveal-on-scroll delay-200" style="margin-top: 16px; max-width: 420px;">
+                        <span lang="en">Estimate payments, rates, and financing scenarios during client meetings.
+                            No spreadsheet needed.</span>
+                        <span lang="es" class="hidden">Estima pagos, tasas y escenarios de financiamiento durante
+                            reuniones con clientes. Sin hojas de cálculo.</span>
+                    </p>
+
+                    <!-- Feature trio -->
+                    <div style="margin-top: 32px; display: flex; flex-direction: column; gap: 20px;">
+                        <div class="reveal-on-scroll delay-200"
+                            style="display: flex; gap: 16px; align-items: flex-start;">
+                            <div
+                                style="width: 6px; height: 6px; border-radius: 50%; background: #007AFF; margin-top: 8px; flex-shrink: 0;">
+                            </div>
+                            <div>
+                                <p class="subheading" style="font-size: 15px; margin: 0 0 4px;">
+                                    <span lang="en">Payment Calculator</span>
+                                    <span lang="es" class="hidden">Calculadora de Cuotas</span>
+                                </p>
+                                <p class="body-text" style="font-size: 15px; margin: 0; color: var(--text-secondary);">
+                                    <span lang="en">Monthly payments, down payment, and amortization — fast and
+                                        clear.</span>
+                                    <span lang="es" class="hidden">Cuotas mensuales, enganche y amortización — rápido y
+                                        claro.</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="reveal-on-scroll delay-300"
+                            style="display: flex; gap: 16px; align-items: flex-start;">
+                            <div
+                                style="width: 6px; height: 6px; border-radius: 50%; background: #007AFF; margin-top: 8px; flex-shrink: 0;">
+                            </div>
+                            <div>
+                                <p class="subheading" style="font-size: 15px; margin: 0 0 4px;">
+                                    <span lang="en">Rate Scenarios</span>
+                                    <span lang="es" class="hidden">Escenarios de Tasa</span>
+                                </p>
+                                <p class="body-text" style="font-size: 15px; margin: 0; color: var(--text-secondary);">
+                                    <span lang="en">Compare multiple rate and term options side by side.</span>
+                                    <span lang="es" class="hidden">Compara múltiples tasas y plazos lado a lado.</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="reveal-on-scroll delay-400"
+                            style="display: flex; gap: 16px; align-items: flex-start;">
+                            <div
+                                style="width: 6px; height: 6px; border-radius: 50%; background: #007AFF; margin-top: 8px; flex-shrink: 0;">
+                            </div>
+                            <div>
+                                <p class="subheading" style="font-size: 15px; margin: 0 0 4px;">
+                                    <span lang="en">Built for client meetings</span>
+                                    <span lang="es" class="hidden">Hecho para reuniones con clientes</span>
+                                </p>
+                                <p class="body-text" style="font-size: 15px; margin: 0; color: var(--text-secondary);">
+                                    <span lang="en">Works offline. Answers questions on the spot.</span>
+                                    <span lang="es" class="hidden">Funciona sin internet. Responde preguntas al
+                                        instante.</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="reveal-on-scroll delay-400" style="margin-top: 36px;">
+                        <a href="bricks-calc.html" class="btn btn-secondary">
+                            <span lang="en">Learn more →</span>
+                            <span lang="es" class="hidden">Más información →</span>
+                        </a>
+                        <p class="body-text"
+                            style="font-size: 13px; color: var(--text-tertiary); margin-top: 12px; margin-bottom: 0;">
+                            <span lang="en">Free to download. For iPhone, iPad, and Mac.</span>
+                            <span lang="es" class="hidden">Gratis para descargar. Para iPhone, iPad y Mac.</span>
+                        </p>
+                    </div>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <div class="grid-3">
-                <!-- Bricks Scan -->
-                <div class="ecosystem-card embossed-card reveal-on-scroll delay-100">
-                    <img src="images-bricks-scan/bricks-scan-web-icon.png" alt="Bricks Scan Icon" class="app-icon">
-                    <h3 class="subheading">Bricks Scan</h3>
-                    <p class="body-text" style="font-size: 16px; margin-bottom: 20px;">
-                        <span lang="en">Scan documents. Make them searchable, named, and organized on your
-                            device.</span>
-                        <span lang="es" class="hidden">Escanea documentos. Hazlos buscables, con nombre claro y
-                            organizados en tu dispositivo.</span>
+    <!-- ─── Row 3: Bricks Leads (Orange) ─────────────────────── -->
+    <section class="section" style="border-top: 1px solid var(--divider);">
+        <div class="container">
+            <div class="hero-grid" style="gap: 64px; align-items: center;">
+
+                <!-- Copy column -->
+                <div class="reveal-on-scroll">
+                    <div class="app-row-label">
+                        <img src="images/bricks-leads-web-icon.png" alt="Bricks Leads" class="app-icon-bob"
+                            style="width: 48px; height: 48px; border-radius: 12px;">
+                        <div>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <span class="app-row-dot" style="background: #FF9500;"></span>
+                                <p class="metadata"
+                                    style="margin: 0; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-tertiary);">
+                                    <span lang="en">Bricks Leads</span>
+                                    <span lang="es" class="hidden">Bricks Leads</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 class="section-title reveal-on-scroll delay-100" style="text-align: left; max-width: 460px;">
+                        <span lang="en">Track clients. Follow up fast.</span>
+                        <span lang="es" class="hidden">Rastrea clientes. Da seguimiento rápido.</span>
+                    </h2>
+                    <p class="body-text reveal-on-scroll delay-200" style="margin-top: 16px; max-width: 420px;">
+                        <span lang="en">A clean CRM built for real estate agents. No bloated dashboards — just the
+                            contacts and follow-ups that move deals forward.</span>
+                        <span lang="es" class="hidden">Un CRM limpio para agentes inmobiliarios. Sin paneles
+                            complicados — solo los contactos y seguimientos que avanzan los tratos.</span>
                     </p>
-                    <a href="bricks-scan.html#waitlist" class="btn btn-secondary">
-                        <span lang="en">Join the Waitlist →</span>
-                        <span lang="es" class="hidden">Unirme a la lista →</span>
-                    </a>
+
+                    <!-- Feature trio -->
+                    <div style="margin-top: 32px; display: flex; flex-direction: column; gap: 20px;">
+                        <div class="reveal-on-scroll delay-200"
+                            style="display: flex; gap: 16px; align-items: flex-start;">
+                            <div
+                                style="width: 6px; height: 6px; border-radius: 50%; background: #FF9500; margin-top: 8px; flex-shrink: 0;">
+                            </div>
+                            <div>
+                                <p class="subheading" style="font-size: 15px; margin: 0 0 4px;">
+                                    <span lang="en">Client Tracking</span>
+                                    <span lang="es" class="hidden">Gestión de Clientes</span>
+                                </p>
+                                <p class="body-text" style="font-size: 15px; margin: 0; color: var(--text-secondary);">
+                                    <span lang="en">Keep every lead, buyer, and seller organized and
+                                        accessible.</span>
+                                    <span lang="es" class="hidden">Mantén cada lead, comprador y vendedor organizado y
+                                        accesible.</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="reveal-on-scroll delay-300"
+                            style="display: flex; gap: 16px; align-items: flex-start;">
+                            <div
+                                style="width: 6px; height: 6px; border-radius: 50%; background: #FF9500; margin-top: 8px; flex-shrink: 0;">
+                            </div>
+                            <div>
+                                <p class="subheading" style="font-size: 15px; margin: 0 0 4px;">
+                                    <span lang="en">Follow-up Reminders</span>
+                                    <span lang="es" class="hidden">Recordatorios de Seguimiento</span>
+                                </p>
+                                <p class="body-text" style="font-size: 15px; margin: 0; color: var(--text-secondary);">
+                                    <span lang="en">Never let a promising lead go cold. Stay on schedule.</span>
+                                    <span lang="es" class="hidden">Nunca dejes enfriar un lead prometedor. Mantén el
+                                        ritmo.</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="reveal-on-scroll delay-400"
+                            style="display: flex; gap: 16px; align-items: flex-start;">
+                            <div
+                                style="width: 6px; height: 6px; border-radius: 50%; background: #FF9500; margin-top: 8px; flex-shrink: 0;">
+                            </div>
+                            <div>
+                                <p class="subheading" style="font-size: 15px; margin: 0 0 4px;">
+                                    <span lang="en">Apple-native</span>
+                                    <span lang="es" class="hidden">Nativo en Apple</span>
+                                </p>
+                                <p class="body-text" style="font-size: 15px; margin: 0; color: var(--text-secondary);">
+                                    <span lang="en">Designed to feel like a system app. Fast, private, on your
+                                        device.</span>
+                                    <span lang="es" class="hidden">Diseñado para sentirse como una app del sistema.
+                                        Rápido, privado, en tu dispositivo.</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="reveal-on-scroll delay-400" style="margin-top: 36px;">
+                        <a href="https://leads.bricks.pe" class="btn btn-secondary">
+                            <span lang="en">Learn more →</span>
+                            <span lang="es" class="hidden">Más información →</span>
+                        </a>
+                        <p class="body-text"
+                            style="font-size: 13px; color: var(--text-tertiary); margin-top: 12px; margin-bottom: 0;">
+                            <span lang="en">For iPhone, iPad, and Mac.</span>
+                            <span lang="es" class="hidden">Para iPhone, iPad y Mac.</span>
+                        </p>
+                    </div>
                 </div>
 
-                <!-- Bricks Calc -->
-                <div class="ecosystem-card embossed-card reveal-on-scroll delay-200">
-                    <img src="images/bricks-calc-web-icon.png" alt="Bricks Calc Icon" class="app-icon">
-                    <h3 class="subheading">Bricks Calc</h3>
-                    <p class="body-text" style="font-size: 16px; margin-bottom: 20px;">
-                        <span lang="en">Model deals quickly. Estimate payments, rates, and financing scenarios on the
-                            spot during client meetings.</span>
-                        <span lang="es" class="hidden">Modela ofertas rápidamente. Estima pagos, tasas y escenarios de
-                            financiamiento al instante durante reuniones con clientes.</span>
-                    </p>
-                    <a href="bricks-calc.html" class="btn btn-secondary">
-                        <span lang="en">Learn more →</span>
-                        <span lang="es" class="hidden">Más información →</span>
-                    </a>
-                </div>
-
-                <!-- Bricks Leads -->
-                <div class="ecosystem-card embossed-card reveal-on-scroll delay-300">
-                    <img src="images/bricks-leads-web-icon.png" alt="Bricks Leads Icon" class="app-icon">
-                    <h3 class="subheading">Bricks Leads</h3>
-                    <p class="body-text" style="font-size: 16px; margin-bottom: 20px;">
-                        <span lang="en">Track clients and follow-ups without bloated dashboards. A clean CRM built for
-                            real estate agents on Apple.</span>
-                        <span lang="es" class="hidden">Rastrea clientes y seguimientos sin paneles complicados. Un CRM
-                            limpio creado para agentes inmobiliarios en Apple.</span>
-                    </p>
-                    <a href="https://leads.bricks.pe" class="btn btn-secondary"
-                        style="font-size: 14px; padding: 10px 20px;">
-                        <span lang="en">Learn more →</span>
-                        <span lang="es" class="hidden">Más información →</span>
-                    </a>
+                <!-- Screenshot column -->
+                <div class="reveal-on-scroll delay-200" style="display: flex; justify-content: center;">
+                    <img src="images-bricks-leads/hero-video-img-en.png" lang="en"
+                        alt="Bricks Leads — client management for real estate agents" class="app-row-img">
+                    <img src="images-bricks-leads/hero-video-img-es.png" lang="es"
+                        alt="Bricks Leads — gestión de clientes para agentes inmobiliarios" class="hidden app-row-img">
                 </div>
             </div>
         </div>
@@ -416,7 +848,7 @@
     <!-- ═══════════════════════════════════════════════════════════ -->
     <!-- Why Bricks Section                                         -->
     <!-- ═══════════════════════════════════════════════════════════ -->
-    <section class="section">
+    <section class="section section-alt" style="border-top: 1px solid var(--divider);">
         <div class="container">
             <div class="reading-column center-text mb-md">
                 <h2 class="section-title reveal-on-scroll">
@@ -429,7 +861,7 @@
                 <!-- On your device -->
                 <div class="value-card reveal-on-scroll delay-100">
                     <div
-                        style="width: 56px; height: 56px; background: rgba(0,166,161,0.1); color: #00C7B2; border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                        style="width: 56px; height: 56px; background: rgba(0, 199, 178, 0.08); color: var(--accent-teal); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
                         <svg style="width: 28px; height: 28px;" fill="currentColor" viewBox="0 0 24 24">
                             <path
                                 d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4m0 4a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3m5.13 12A9.05 9.05 0 0 1 12 19.93 9.05 9.05 0 0 1 6.87 17c.43-1.84 2.26-3 5.13-3s4.7 1.16 5.13 3Z" />
@@ -450,7 +882,7 @@
                 <!-- Built for Apple -->
                 <div class="value-card reveal-on-scroll delay-200">
                     <div
-                        style="width: 56px; height: 56px; background: rgba(16,185,129,0.1); color: #10B981; border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                        style="width: 56px; height: 56px; background: rgba(0, 122, 255, 0.08); color: #007AFF; border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
                         <svg style="width: 28px; height: 28px;" fill="currentColor" viewBox="0 0 24 24">
                             <path
                                 d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.3 48.6-.7 90.4-84.3 103.6-119.5-65.9-34.1-62.8-109.1-62.7-109.1zM281.3 84.5c16.3-19.5 27.2-46.7 24.1-74.5-23.2 1-56.1 16-74.2 35.8-15.1 15.9-27.1 43.6-23.4 70.6 26.6 2 53.6-12.4 73.5-31.9z" />
@@ -461,7 +893,8 @@
                         <span lang="es" class="hidden">Construido para Apple</span>
                     </h3>
                     <p class="body-text" style="font-size: 15px; margin: 0 auto;">
-                        <span lang="en">Native apps for iPhone, iPad, and Mac. Designed to feel like they belong.</span>
+                        <span lang="en">Native apps for iPhone, iPad, and Mac. Designed to feel like they
+                            belong.</span>
                         <span lang="es" class="hidden">Apps nativas para iPhone, iPad y Mac. Diseñadas para sentirse
                             parte del sistema.</span>
                     </p>
@@ -470,7 +903,7 @@
                 <!-- One job per app -->
                 <div class="value-card reveal-on-scroll delay-300">
                     <div
-                        style="width: 56px; height: 56px; background: rgba(37,99,235,0.1); color: #2563EB; border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                        style="width: 56px; height: 56px; background: rgba(255, 149, 0, 0.08); color: #FF9500; border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
                         <svg style="width: 28px; height: 28px;" fill="currentColor" viewBox="0 0 24 24">
                             <path
                                 d="M17.9 17.39c-.26-.8-1.01-1.39-1.9-1.39h-1v-3a1 1 0 0 0-1-1H8v-2h2a1 1 0 0 0 1-1V7h2a2 2 0 0 0 2-2v-.41a7.984 7.984 0 0 1 2.9 12.8M11 19.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1a2 2 0 0 0 2 2m1-16A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2Z" />
@@ -494,8 +927,7 @@
     <!-- ═══════════════════════════════════════════════════════════ -->
     <!-- Testimonials Section                                       -->
     <!-- ═══════════════════════════════════════════════════════════ -->
-    <section class="section section-alt"
-        style="border-top: 1px solid var(--divider); border-bottom: 1px solid var(--divider);">
+    <section class="section" style="border-top: 1px solid var(--divider); border-bottom: 1px solid var(--divider);">
         <div class="container">
             <h2 class="section-title center-text reveal-on-scroll" style="margin-bottom: 48px;">
                 <span lang="en">Used by working agents.</span>
@@ -507,7 +939,7 @@
                 <div class="index-testimonial reveal-on-scroll delay-100">
                     <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
                         <div
-                            style="width: 48px; height: 48px; border-radius: 50%; background-color: rgba(0, 166, 161, 0.1); color: var(--accent-teal); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 18px; border: 1px solid rgba(0, 166, 161, 0.2); flex-shrink: 0;">
+                            style="width: 48px; height: 48px; border-radius: 50%; background-color: rgba(0, 199, 178, 0.08); color: var(--accent-teal); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 18px; border: 1px solid rgba(0, 199, 178, 0.2); flex-shrink: 0;">
                             RA
                         </div>
                         <div>
@@ -546,11 +978,12 @@
                             Eliminó una capa de estrés de cada trato."</span>
                     </p>
                 </div>
+
                 <!-- Testimonial 2 -->
                 <div class="index-testimonial reveal-on-scroll delay-200">
                     <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
                         <div
-                            style="width: 48px; height: 48px; border-radius: 50%; background-color: rgba(16, 185, 129, 0.1); color: #10B981; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 18px; border: 1px solid rgba(16, 185, 129, 0.2); flex-shrink: 0;">
+                            style="width: 48px; height: 48px; border-radius: 50%; background-color: rgba(0, 122, 255, 0.08); color: #007AFF; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 18px; border: 1px solid rgba(0, 122, 255, 0.2); flex-shrink: 0;">
                             BA
                         </div>
                         <div>
@@ -588,11 +1021,12 @@
                             reuniones con clientes."</span>
                     </p>
                 </div>
+
                 <!-- Testimonial 3 -->
                 <div class="index-testimonial reveal-on-scroll delay-300">
                     <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
                         <div
-                            style="width: 48px; height: 48px; border-radius: 50%; background-color: rgba(37, 99, 235, 0.1); color: #2563EB; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 18px; border: 1px solid rgba(37, 99, 235, 0.2); flex-shrink: 0;">
+                            style="width: 48px; height: 48px; border-radius: 50%; background-color: rgba(255, 149, 0, 0.08); color: #FF9500; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 18px; border: 1px solid rgba(255, 149, 0, 0.2); flex-shrink: 0;">
                             IA
                         </div>
                         <div>
@@ -635,43 +1069,75 @@
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════ -->
-    <!-- Final CTA Section                                          -->
+    <!-- Final CTA — Three-App Suite Close                          -->
     <!-- ═══════════════════════════════════════════════════════════ -->
     <section class="section section-hero">
         <div class="container reading-column center-text">
             <h2 class="section-title reveal-on-scroll">
-                <span lang="en">Start with Bricks Scan.</span>
-                <span lang="es" class="hidden">Empieza con Bricks Scan.</span>
+                <span lang="en">Start with one. Use all three.</span>
+                <span lang="es" class="hidden">Empieza con una. Usa las tres.</span>
             </h2>
             <p class="body-text mb-sm reveal-on-scroll delay-100">
-                <span lang="en">Free to download. Runs privately on your iPhone.</span>
-                <span lang="es" class="hidden">Gratis para descargar. Funciona de forma privada en tu iPhone.</span>
+                <span lang="en">Each Bricks app removes one friction from your day. Free to start, private by design,
+                    native on Apple.</span>
+                <span lang="es" class="hidden">Cada app de Bricks elimina una fricción de tu día. Gratis para empezar,
+                    privado por diseño, nativo en Apple.</span>
             </p>
-            <div class="cta-group reveal-on-scroll delay-200"
-                style="display: flex; flex-direction: column; align-items: center;">
-                <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 12px;">
-                    <a href="bricks-scan.html#waitlist" class="btn btn-primary">
-                        <span lang="en">Join the Waitlist</span>
-                        <span lang="es" class="hidden">Unirme a la lista</span>
-                    </a>
-                </div>
-                <p class="body-text"
-                    style="font-size: 13px; color: var(--text-tertiary); margin-top: 16px; margin-bottom: 0;">
-                    <span lang="en">No account required. — Also available: <a href="bricks-calc.html"
-                            style="color: var(--text-tertiary); text-decoration: underline;">Bricks Calc</a></span>
-                    <span lang="es" class="hidden">Sin cuenta requerida. — También disponible: <a
-                            href="bricks-calc.html"
-                            style="color: var(--text-tertiary); text-decoration: underline;">Bricks Calc</a></span>
-                </p>
-            </div>
 
-            <!-- Leads coming soon -->
-            <p class="body-text reveal-on-scroll delay-300"
-                style="font-size: 13px; color: var(--text-tertiary); margin-top: 48px; margin-bottom: 0; opacity: 0.6;">
-                <span lang="en">Bricks Leads — client management for real estate agents. Coming soon.</span>
-                <span lang="es" class="hidden">Bricks Leads — gestión de clientes para agentes inmobiliarios.
-                    Próximamente.</span>
-            </p>
+            <!-- Three app CTA cards -->
+            <div class="reveal-on-scroll delay-200"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-top: 48px; max-width: 640px; margin-left: auto; margin-right: auto;">
+
+                <!-- Bricks Scan -->
+                <a href="bricks-scan.html" class="app-cta-card">
+                    <img src="images-bricks-scan/bricks-scan-web-icon.png" alt="Bricks Scan"
+                        style="width: 52px; height: 52px; border-radius: 14px;">
+                    <p class="subheading" style="font-size: 15px; margin: 0;">Bricks Scan</p>
+                    <p class="body-text"
+                        style="font-size: 13px; color: var(--text-secondary); margin: 0; text-align: center;">
+                        <span lang="en">Scan &amp; search documents</span>
+                        <span lang="es" class="hidden">Escanear y buscar documentos</span>
+                    </p>
+                    <span
+                        style="font-size: 13px; font-weight: 600; color: var(--accent-teal); letter-spacing: -0.01em;">
+                        <span lang="en">Download →</span>
+                        <span lang="es" class="hidden">Descargar →</span>
+                    </span>
+                </a>
+
+                <!-- Bricks Calc -->
+                <a href="bricks-calc.html" class="app-cta-card">
+                    <img src="images/bricks-calc-web-icon.png" alt="Bricks Calc"
+                        style="width: 52px; height: 52px; border-radius: 14px;">
+                    <p class="subheading" style="font-size: 15px; margin: 0;">Bricks Calc</p>
+                    <p class="body-text"
+                        style="font-size: 13px; color: var(--text-secondary); margin: 0; text-align: center;">
+                        <span lang="en">Mortgage calculator</span>
+                        <span lang="es" class="hidden">Calculadora hipotecaria</span>
+                    </p>
+                    <span style="font-size: 13px; font-weight: 600; color: #007AFF; letter-spacing: -0.01em;">
+                        <span lang="en">Explore →</span>
+                        <span lang="es" class="hidden">Explorar →</span>
+                    </span>
+                </a>
+
+                <!-- Bricks Leads -->
+                <a href="https://leads.bricks.pe" class="app-cta-card">
+                    <img src="images/bricks-leads-web-icon.png" alt="Bricks Leads"
+                        style="width: 52px; height: 52px; border-radius: 14px;">
+                    <p class="subheading" style="font-size: 15px; margin: 0;">Bricks Leads</p>
+                    <p class="body-text"
+                        style="font-size: 13px; color: var(--text-secondary); margin: 0; text-align: center;">
+                        <span lang="en">CRM for real estate</span>
+                        <span lang="es" class="hidden">CRM para bienes raíces</span>
+                    </p>
+                    <span style="font-size: 13px; font-weight: 600; color: #FF9500; letter-spacing: -0.01em;">
+                        <span lang="en">Open →</span>
+                        <span lang="es" class="hidden">Abrir →</span>
+                    </span>
+                </a>
+
+            </div>
         </div>
     </section>
 
@@ -739,19 +1205,20 @@
                                     gap: 12px;
                                 ">
                             <li>
-                                <a href="bricks-scan.html" class="body-text" style="font-size: 15px">
+                                <a href="bricks-scan.html" class="body-text footer-nav-link" style="font-size: 15px">
                                     <span lang="en">Bricks Scan</span>
                                     <span lang="es" class="hidden">Bricks Scan</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="bricks-calc.html" class="body-text" style="font-size: 15px">
+                                <a href="bricks-calc.html" class="body-text footer-nav-link" style="font-size: 15px">
                                     <span lang="en">Bricks Calc</span>
                                     <span lang="es" class="hidden">Bricks Calc</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="https://leads.bricks.pe" class="body-text" style="font-size: 15px">
+                                <a href="https://leads.bricks.pe" class="body-text footer-nav-link"
+                                    style="font-size: 15px">
                                     <span lang="en">Bricks Leads</span>
                                     <span lang="es" class="hidden">Bricks Leads</span>
                                 </a>
@@ -774,19 +1241,21 @@
                                     gap: 12px;
                                 ">
                             <li>
-                                <a href="about.html" class="body-text" style="font-size: 15px">
+                                <a href="about.html" class="body-text footer-nav-link" style="font-size: 15px">
                                     <span lang="en">About us</span>
                                     <span lang="es" class="hidden">Sobre nosotros</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="purchase-guide-01.html" class="body-text" style="font-size: 15px">
+                                <a href="purchase-guide-01.html" class="body-text footer-nav-link"
+                                    style="font-size: 15px">
                                     <span lang="en">Purchase Guide</span>
                                     <span lang="es" class="hidden">Guía de compra</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="mailto:hello@bricks.pe" class="body-text" style="font-size: 15px">
+                                <a href="mailto:hello@bricks.pe" class="body-text footer-nav-link"
+                                    style="font-size: 15px">
                                     <span lang="en">Email: hello@bricks.pe</span>
                                     <span lang="es" class="hidden">Email: hello@bricks.pe</span>
                                 </a>
@@ -809,26 +1278,26 @@
                                     gap: 12px;
                                 ">
                             <li>
-                                <a href="support.html" class="body-text" style="font-size: 15px;">
+                                <a href="support.html" class="body-text footer-nav-link" style="font-size: 15px;">
                                     <span lang="en">Contact</span>
                                     <span lang="es" class="hidden">Contacto</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="https://bricksapps.userjot.com" class="body-text" style="font-size: 15px;">
+                                <a href="https://bricksapps.userjot.com" class="body-text footer-nav-link"
+                                    style="font-size: 15px;">
                                     <span lang="en">Vote on Features</span>
                                     <span lang="es" class="hidden">Votar funciones</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="help.html" class="body-text" style="font-size: 15px;">
+                                <a href="help.html" class="body-text footer-nav-link" style="font-size: 15px;">
                                     <span lang="en">Apps Guides</span>
                                     <span lang="es" class="hidden">Guías</span>
                                 </a>
                             </li>
-
                             <li>
-                                <a href="survey.html" class="body-text" style="font-size: 15px">
+                                <a href="survey.html" class="body-text footer-nav-link" style="font-size: 15px">
                                     <span lang="en">Survey</span>
                                     <span lang="es" class="hidden">Encuesta</span>
                                 </a>
@@ -873,6 +1342,7 @@
             </div>
         </div>
     </footer>
+
 </body>
 
 </html>
