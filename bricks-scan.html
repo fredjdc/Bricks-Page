@@ -248,7 +248,8 @@
                             class="hidden" loading="lazy" />
                     </div>
                     <div class="feature-panel-copy">
-                        <img class="feature-panel-icon" src="images-bricks-scan/feature-icon-01.svg" alt="" aria-hidden="true" />
+                        <img class="feature-panel-icon" src="images-bricks-scan/feature-icon-01.svg" alt=""
+                            aria-hidden="true" />
                         <h3 class="subheading">
                             <span lang="en">Auto-Sort</span>
                             <span lang="es" class="hidden">Auto-Sort</span>
@@ -271,7 +272,8 @@
                             lang="es" class="hidden" loading="lazy" />
                     </div>
                     <div class="feature-panel-copy">
-                        <img class="feature-panel-icon" src="images-bricks-scan/feature-icon-02.svg" alt="" aria-hidden="true" />
+                        <img class="feature-panel-icon" src="images-bricks-scan/feature-icon-02.svg" alt=""
+                            aria-hidden="true" />
                         <h3 class="subheading">
                             <span lang="en">Instant Search</span>
                             <span lang="es" class="hidden">Búsqueda Instantánea</span>
@@ -293,7 +295,8 @@
                             lang="es" class="hidden" loading="lazy" />
                     </div>
                     <div class="feature-panel-copy">
-                        <img class="feature-panel-icon" src="images-bricks-scan/feature-icon-03.svg" alt="" aria-hidden="true" />
+                        <img class="feature-panel-icon" src="images-bricks-scan/feature-icon-03.svg" alt=""
+                            aria-hidden="true" />
                         <h3 class="subheading">
                             <span lang="en">Ready to Share</span>
                             <span lang="es" class="hidden">Listo para Compartir</span>
@@ -316,7 +319,8 @@
                             alt="Smart Folders y Tags organizando documentos" lang="es" class="hidden" loading="lazy" />
                     </div>
                     <div class="feature-panel-copy">
-                        <img class="feature-panel-icon" src="images-bricks-scan/feature-icon-04.svg" alt="" aria-hidden="true" />
+                        <img class="feature-panel-icon" src="images-bricks-scan/feature-icon-04.svg" alt=""
+                            aria-hidden="true" />
                         <h3 class="subheading">
                             <span lang="en">Smart Folders &amp; Tags</span>
                             <span lang="es" class="hidden">Smart Folders &amp; Tags</span>
@@ -339,7 +343,8 @@
                             class="hidden" loading="lazy" />
                     </div>
                     <div class="feature-panel-copy">
-                        <img class="feature-panel-icon" src="images-bricks-scan/feature-icon-05.svg" alt="" aria-hidden="true" />
+                        <img class="feature-panel-icon" src="images-bricks-scan/feature-icon-05.svg" alt=""
+                            aria-hidden="true" />
                         <h3 class="subheading">
                             <span lang="en">Markup &amp; Notes</span>
                             <span lang="es" class="hidden">Marcado y Notas</span>
@@ -362,7 +367,8 @@
                             lang="es" class="hidden" loading="lazy" />
                     </div>
                     <div class="feature-panel-copy">
-                        <img class="feature-panel-icon" src="images-bricks-scan/feature-icon-06.svg" alt="" aria-hidden="true" />
+                        <img class="feature-panel-icon" src="images-bricks-scan/feature-icon-06.svg" alt=""
+                            aria-hidden="true" />
                         <h3 class="subheading">
                             <span lang="en">Paperless Signing</span>
                             <span lang="es" class="hidden">Firma sin Imprimir</span>
@@ -385,7 +391,8 @@
                             lang="es" class="hidden" loading="lazy" />
                     </div>
                     <div class="feature-panel-copy">
-                        <img class="feature-panel-icon" src="images-bricks-scan/feature-icon-07.svg" alt="" aria-hidden="true" />
+                        <img class="feature-panel-icon" src="images-bricks-scan/feature-icon-07.svg" alt=""
+                            aria-hidden="true" />
                         <h3 class="subheading">
                             <span lang="en">iPhone, iPad &amp; Mac</span>
                             <span lang="es" class="hidden">iPhone, iPad y Mac</span>
@@ -398,9 +405,6 @@
                         </p>
                     </div>
                 </div>
-
-                <!-- Exit sentinel — triggers frame fade-out before comparison section -->
-                <div class="feature-exit-sentinel" id="featureExitSentinel" aria-hidden="true"></div>
 
             </div><!-- /feature-scroll-col -->
         </div><!-- /feature-showcase-wrapper -->
@@ -897,8 +901,10 @@
                             const copy = entry.target.querySelector('.feature-panel-copy');
                             const img = entry.target.querySelector('.feature-panel-screen-mobile');
                             const els = [copy, img].filter(Boolean);
+                            const isLastPanel = entry.target === panels[panels.length - 1];
                             if (entry.isIntersecting) {
                                 els.forEach(el => { el.classList.add('panel-visible'); el.classList.remove('panel-exited'); });
+                                if (isLastPanel) panel3DObserver.unobserve(entry.target);
                             } else {
                                 const aboveViewport = entry.boundingClientRect.top < (entry.rootBounds?.top ?? 0);
                                 els.forEach(el => {
