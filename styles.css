@@ -2105,7 +2105,7 @@ a:hover {
 .comparison-table th,
 .comparison-table td {
     padding: 16px;
-    border-bottom: 1px solid var(--depth-plane);
+    border-bottom: 1px solid rgb(229, 229, 229);
 }
 
 .comparison-table th {
