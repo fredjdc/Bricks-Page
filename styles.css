@@ -255,6 +255,30 @@ a:hover {
         text-align: center;
     }
 
+    /* Center align copy column contents */
+    .hero-grid h2.section-title,
+    .hero-grid p.body-text,
+    .hero-grid .metadata {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    .hero-grid .app-row-label {
+        justify-content: center;
+    }
+
+    .hero-grid .feature-trio-item {
+        flex-direction: column;
+        align-items: center !important;
+        text-align: center;
+    }
+
+    .hero-grid .feature-trio-item > div:first-child {
+        margin-top: 0 !important;
+        margin-bottom: 4px;
+    }
+
     .hero-content {
         text-align: center;
         max-width: 100%;
