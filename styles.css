@@ -255,6 +255,10 @@ a:hover {
         text-align: center;
     }
 
+    .hero-grid.hero-grid-reverse {
+        flex-direction: column;
+    }
+
     /* Center align copy column contents */
     .hero-grid h2.section-title,
     .hero-grid p.body-text,
