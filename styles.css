@@ -2470,7 +2470,7 @@ a:hover {
 /* Additional mobile optimizations for very small screens */
 @media (max-width: 480px) {
     .section-hero {
-        padding-top: 144px;
+        padding-top: 80px;
         padding-bottom: 40px;
         min-height: 860px;
     }
