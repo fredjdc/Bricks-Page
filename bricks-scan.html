@@ -287,53 +287,11 @@
             pointer-events: none;
         }
 
-        /* ── 8b. PRIVACY CARDS — LIQUID GLASS + 3D ──────────── */
-        .privacy-card-wrapper {
-            height: 100%;
-        }
-
-        .privacy-card {
-            height: 100%;
-            padding: 32px 24px;
-            border-radius: var(--r3-primary);
-            background: rgba(255, 255, 255, 0.62);
-            backdrop-filter: blur(24px) saturate(1.6);
-            -webkit-backdrop-filter: blur(24px) saturate(1.6);
-            border: 1px solid rgba(255, 255, 255, 0.85);
-            border-top-color: rgba(255, 255, 255, 0.98);
-            border-left-color: rgba(255, 255, 255, 0.98);
-            box-shadow:
-                0 4px 24px rgba(11, 15, 20, 0.07),
-                0 1px 0 rgba(255, 255, 255, 0.9) inset,
-                0 -1px 0 rgba(11, 15, 20, 0.03) inset;
-            transform-style: preserve-3d;
-            will-change: transform;
-            transition: transform 0.4s var(--ease-out-expo),
-                box-shadow 0.4s var(--ease-out-expo);
-            cursor: default;
-        }
-
         /* 3D scroll-entrance — handled by GSAP ScrollTrigger */
         .privacy-card-wrapper.gsap-reveal {
             transform: perspective(900px) rotateX(-10deg) translateY(36px);
             opacity: 0;
             will-change: transform, opacity;
-        }
-
-        /* Hover state — mouse-move JS overrides this, but keep as fallback */
-        .privacy-card:hover {
-            box-shadow:
-                0 12px 40px rgba(11, 15, 20, 0.10),
-                0 1px 0 rgba(255, 255, 255, 0.9) inset,
-                0 -1px 0 rgba(11, 15, 20, 0.04) inset;
-        }
-
-        .privacy-card .checkmark-icon {
-            transition: filter 0.3s ease;
-        }
-
-        .privacy-card:hover .checkmark-icon {
-            filter: saturate(100%);
         }
 
         /* ── 9. COMPARISON TABLE POLISH ──────────────────── */
@@ -1570,24 +1528,7 @@
                 });
             });
 
-            /* Privacy card 3D mouse-tilt */
-            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            if (!reduceMotion) {
-                document.querySelectorAll('.privacy-card').forEach(card => {
-                    card.addEventListener('mousemove', (e) => {
-                        const r = card.getBoundingClientRect();
-                        const dx = (e.clientX - (r.left + r.width / 2)) / (r.width / 2);
-                        const dy = (e.clientY - (r.top + r.height / 2)) / (r.height / 2);
-                        card.style.transform =
-                            `perspective(600px) rotateX(${(-dy * 7).toFixed(2)}deg) rotateY(${(dx * 7).toFixed(2)}deg) translateY(-6px)`;
-                        card.style.transition = 'transform 0.1s ease, box-shadow 0.1s ease';
-                    }, { passive: true });
-                    card.addEventListener('mouseleave', () => {
-                        card.style.transform = '';
-                        card.style.transition = 'transform 0.4s var(--ease-out-expo), box-shadow 0.4s var(--ease-out-expo)';
-                    }, { passive: true });
-                });
-            }
+
 
             // Init GSAP after DOM is ready and scripts have loaded
             if (document.readyState === 'loading') {

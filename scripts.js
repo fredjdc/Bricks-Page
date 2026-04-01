@@ -994,6 +994,31 @@ const initializeDesktopBanner = () => {
     }
 };
 
+/**
+ * ── Privacy Cards 3D Mouse Tilt ──────────────────────────────
+ * Applies a liquid glass 3D hover effect to elements with the `.privacy-card` class.
+ */
+const initPrivacyCards = () => {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) return;
+    
+    document.querySelectorAll('.privacy-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const r = card.getBoundingClientRect();
+            // Calculate hover position relative to the center of the card
+            const dx = (e.clientX - (r.left + r.width / 2)) / (r.width / 2);
+            const dy = (e.clientY - (r.top + r.height / 2)) / (r.height / 2);
+            card.style.transform =
+                `perspective(600px) rotateX(${(-dy * 7).toFixed(2)}deg) rotateY(${(dx * 7).toFixed(2)}deg) translateY(-6px)`;
+            card.style.transition = 'transform 0.1s ease, box-shadow 0.1s ease';
+        }, { passive: true });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = '';
+            card.style.transition = 'transform 0.4s var(--ease-out-expo), box-shadow 0.4s var(--ease-out-expo)';
+        }, { passive: true });
+    });
+};
+
 // Global Initialization
 document.addEventListener('DOMContentLoaded', () => {
     initializeHeroWordSwap();
@@ -1004,6 +1029,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupMicroAnimations();
     initializeCookieConsent();
     initializeDesktopBanner(); // Added banner logic
+    initPrivacyCards();
 
     const storedLang = localStorage.getItem('bricksLanguage');
     const userLang = storedLang || detectUserLanguage();
