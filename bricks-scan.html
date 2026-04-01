@@ -205,8 +205,8 @@
                     Your browser does not support the video tag.
                 </video>
                 <video autoplay loop muted playsinline class="hero-img hidden"
-                    poster="images-bricks-scan/hero-video-img-en.png" lang="es">
-                    <source src="images-bricks-scan/hero-video-en.mp4" type="video/mp4">
+                    poster="images-bricks-scan/hero-video-img-es.png" lang="es">
+                    <source src="images-bricks-scan/hero-video-es.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>
@@ -830,7 +830,7 @@
                 const panels = document.querySelectorAll('.feature-panel[data-feature-index]');
                 const sentinel = document.getElementById('featureExitSentinel');
 
-                if (!stickyCol || !screenEn || !panels.length) return;
+                if (!stickyCol || !screenEn || !screenEs || !panels.length) return;
 
                 // Respect reduced-motion preference
                 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -857,8 +857,10 @@
 
                     img.classList.add('fading');
                     setTimeout(() => {
-                        img.src = newSrc;
-                        img.classList.remove('fading');
+                        const currentImg = getActiveImg();
+                        currentImg.src = newSrc;
+                        currentImg.classList.remove('fading');
+                        if (currentImg !== img) img.classList.remove('fading');
                     }, 220);
                 };
 
