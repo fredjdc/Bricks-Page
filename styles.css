@@ -2715,3 +2715,26 @@ a:hover {
         padding-bottom: var(--space-md);
     }
 }
+
+/* ── Seamless Hero → Feature Transition ──────────────────── */
+
+/* Pull the feature showcase closer to the hero section */
+.section-hero + .feature-showcase {
+    margin-top: -48px;
+    position: relative;
+    z-index: 2;
+}
+
+/* When JS scroll-fade takes over, disable CSS transition so inline styles are instant */
+.hero-image-wrapper.scroll-fade-active {
+    transition: none !important;
+    will-change: opacity, transform;
+}
+
+/* Desktop: sticky column entrance state (toggled by JS) */
+@media (min-width: 901px) {
+    .feature-sticky-col.sticky-entering {
+        opacity: 0 !important;
+        transform: translateY(24px) scale(0.95) !important;
+    }
+}

@@ -964,6 +964,91 @@
         })();
     </script>
 
+    <!-- Seamless Hero → Feature Showcase Transition -->
+    <script>
+        (function () {
+            'use strict';
+
+            const heroWrapper = document.querySelector('.section-hero .hero-image-wrapper');
+            const stickyCol = document.getElementById('featureStickyCol');
+            const showcaseWrapper = document.querySelector('.feature-showcase-wrapper');
+
+            if (!heroWrapper) return;
+
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (prefersReducedMotion) return;
+
+            /* ── Desktop: animate sticky column entrance ── */
+            const desktopMQ = window.matchMedia('(min-width: 901px)');
+            if (stickyCol && desktopMQ.matches && showcaseWrapper) {
+                stickyCol.classList.add('sticky-entering');
+
+                const stickyObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            stickyCol.classList.remove('sticky-entering');
+                        } else if (entry.boundingClientRect.top > 0) {
+                            stickyCol.classList.add('sticky-entering');
+                        }
+                    });
+                }, { threshold: 0.02 });
+
+                stickyObserver.observe(showcaseWrapper);
+            }
+
+            /* ── Scroll-linked hero video fade-out ── */
+            let scrollActive = false;
+            let ticking = false;
+
+            const enableScrollFade = () => {
+                scrollActive = true;
+                heroWrapper.classList.add('scroll-fade-active');
+                updateHeroFade();
+            };
+
+            // Wait for the reveal-on-scroll entrance to finish before enabling
+            setTimeout(enableScrollFade, 2000);
+
+            const updateHeroFade = () => {
+                ticking = false;
+                if (!scrollActive) return;
+
+                const rect = heroWrapper.getBoundingClientRect();
+                const vh = window.innerHeight;
+                const centerY = rect.top + rect.height / 2;
+
+                // Fade zone: 45% → 5% of viewport height
+                const fadeStart = vh * 0.45;
+                const fadeEnd = vh * 0.05;
+
+                if (centerY >= fadeStart) {
+                    heroWrapper.style.opacity = '';
+                    heroWrapper.style.transform = '';
+                    return;
+                }
+
+                if (centerY <= fadeEnd) {
+                    heroWrapper.style.opacity = '0';
+                    heroWrapper.style.transform = 'scale(0.92) translateY(-20px)';
+                    return;
+                }
+
+                const t = (fadeStart - centerY) / (fadeStart - fadeEnd);
+                const eased = 1 - Math.pow(1 - t, 2.5); // ease-out curve
+                heroWrapper.style.opacity = String(1 - eased);
+                heroWrapper.style.transform =
+                    'scale(' + (1 - eased * 0.08).toFixed(4) + ') translateY(' + (-eased * 20).toFixed(2) + 'px)';
+            };
+
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    requestAnimationFrame(updateHeroFade);
+                    ticking = true;
+                }
+            }, { passive: true });
+        })();
+    </script>
+
 </body>
 
 </html>
