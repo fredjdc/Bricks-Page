@@ -1361,20 +1361,27 @@
                     gsap.delayedCall(2, () => {
                         heroWrapper.classList.add('scroll-fade-active');
 
-                        gsap.to(heroWrapper, {
+                        gsap.fromTo(heroWrapper, {
+                            opacity: 1,
+                            scale: 1,
+                            y: 0
+                        }, {
                             opacity: 0,
                             scale: 0.92,
                             y: -20,
                             ease: 'power2.in',
+                            immediateRender: false,
                             scrollTrigger: {
                                 trigger: '.section-hero',
                                 start: 'center center',
                                 end: 'bottom 5%',
                                 scrub: 0.6,
                                 onUpdate: (self) => {
-                                    // Remove float animation once fading begins
+                                    // Remove float animation once fading begins, restore when back
                                     if (self.progress > 0.05) {
                                         heroWrapper.classList.remove('is-floating');
+                                    } else if (self.progress === 0 && !heroWrapper.classList.contains('is-floating') && !reduceMotion) {
+                                        heroWrapper.classList.add('is-floating');
                                     }
                                 }
                             }
