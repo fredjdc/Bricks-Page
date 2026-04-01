@@ -91,6 +91,208 @@
         </style>
     </noscript>
 
+    <!-- Page-Specific Micro-Animations -->
+    <style>
+        /* ── KEYFRAMES ─────────────────────────────────────── */
+        @keyframes bs-float {
+            0%, 100% { transform: translateY(0px); }
+            50%       { transform: translateY(-10px); }
+        }
+        @keyframes bs-icon-bob {
+            0%, 100% { transform: translateY(0px); }
+            50%       { transform: translateY(-5px); }
+        }
+        @keyframes bs-shimmer-sweep {
+            0%   { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+        @keyframes bs-dot-pulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(0,199,178,0.6), 0 0 6px 2px rgba(0,199,178,0.3);
+            }
+            50% {
+                box-shadow: 0 0 0 4px rgba(0,199,178,0), 0 0 12px 4px rgba(0,199,178,0.5);
+            }
+        }
+        @keyframes bs-check-pulse {
+            0%   { transform: scale(1); }
+            35%  { transform: scale(1.35); }
+            70%  { transform: scale(0.92); }
+            100% { transform: scale(1); }
+        }
+        @keyframes bs-logo-enter {
+            from { opacity: 0; transform: translateX(-8px); }
+            to   { opacity: 1; transform: translateX(0); }
+        }
+
+        /* ── 1. HEADER LOGO ENTRANCE ─────────────────────── */
+        .header-logo-img {
+            opacity: 0;
+            transform: translateX(-8px);
+            animation: bs-logo-enter 0.7s var(--ease-out-expo) 0.3s forwards;
+        }
+
+        /* ── 2. APP STORE BADGE ──────────────────────────── */
+        .app-store-badge {
+            display: inline-flex;
+            align-items: center;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            background: linear-gradient(
+                90deg,
+                transparent 0%, transparent 40%,
+                rgba(0,199,178,0.25) 50%,
+                transparent 60%, transparent 100%
+            );
+            background-size: 200% auto;
+            padding: 6px 14px;
+            border-radius: 9999px;
+            border: 1px solid var(--depth-plane);
+            box-shadow: var(--emboss-raised);
+            margin-bottom: 20px;
+            animation: bs-shimmer-sweep 3s linear infinite;
+            animation-play-state: paused;
+        }
+        .app-store-badge.is-visible {
+            animation-play-state: running;
+        }
+
+        /* ── 3. HERO VIDEO FLOAT LOOP ────────────────────── */
+        .hero-image-wrapper.is-floating {
+            animation: bs-float 5s ease-in-out infinite;
+            will-change: transform;
+        }
+
+        /* ── 4. CTA BUTTON SHIMMER ON HOVER ──────────────── */
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 60%; height: 100%;
+            background: linear-gradient(
+                105deg,
+                transparent 20%,
+                rgba(255,255,255,0.18) 50%,
+                transparent 80%
+            );
+            transform: skewX(-15deg);
+            pointer-events: none;
+            z-index: 1;
+        }
+        .btn-primary:hover::before {
+            left: 160%;
+            transition: left 0.55s var(--ease-out-expo);
+        }
+        .btn-primary:not(:hover)::before {
+            transition: none;
+            left: -100%;
+        }
+
+        /* ── 5. SCROLL PROGRESS BAR GLOW DOT ─────────────── */
+        #scroll-progress::after {
+            content: '';
+            position: absolute;
+            right: -3px; top: 50%;
+            transform: translateY(-50%);
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--accent-teal);
+            animation: bs-dot-pulse 1.6s ease-in-out infinite;
+        }
+
+        /* ── 6. SECTION ICONS FLOAT BOB ──────────────────── */
+        .section-icon-float.is-visible {
+            animation: bs-icon-bob 3.5s ease-in-out infinite;
+            animation-delay: 0.9s;
+        }
+
+        /* ── 7. FEATURE PANEL ICON HOVER ─────────────────── */
+        .feature-panel-icon {
+            transition: transform 0.35s var(--ease-spring);
+            transform-origin: center center;
+        }
+        .feature-panel-copy:hover .feature-panel-icon {
+            transform: scale(1.12) rotate(5deg);
+        }
+
+        /* ── 8. PRIVACY CARDS — HOVER LIFT + TEAL CHECK ──── */
+        .privacy-card {
+            padding: 32px 24px;
+            border-radius: var(--r2-inner);
+            background-color: var(--bg-primary);
+            box-shadow: var(--emboss-raised);
+            border: 1px solid rgba(255,255,255,0.4);
+            transition: transform 0.4s var(--ease-out-expo),
+                        box-shadow 0.4s var(--ease-out-expo);
+        }
+        .privacy-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--emboss-raised), 0 12px 32px rgba(0,0,0,0.06);
+        }
+        .privacy-card .checkmark-icon {
+            transition: filter 0.3s ease;
+        }
+        .privacy-card:hover .checkmark-icon {
+            filter: invert(62%) sepia(90%) saturate(400%) hue-rotate(139deg) brightness(1.05);
+        }
+
+        /* ── 9. COMPARISON TABLE POLISH ──────────────────── */
+        .comparison-table th:nth-child(3),
+        .comparison-table td:nth-child(3) {
+            background-color: rgba(0,199,178,0.04);
+            box-shadow:
+                inset 1px 0 0 rgba(0,199,178,0.12),
+                inset -1px 0 0 rgba(0,199,178,0.12);
+        }
+        .comparison-table tbody tr {
+            transition: background-color 0.2s ease;
+        }
+        .comparison-table tbody tr:hover {
+            background-color: rgba(0,199,178,0.03);
+        }
+        .teal-check.pulse-in {
+            animation: bs-check-pulse 0.55s var(--ease-spring) forwards;
+        }
+
+        /* ── 10. FOOTER NAV ANIMATED UNDERLINE ───────────── */
+        .footer-nav-link {
+            position: relative;
+            display: inline-block;
+            opacity: 1 !important;
+        }
+        .footer-nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px; left: 0;
+            width: 0%; height: 1px;
+            background-color: var(--text-primary);
+            transition: width 0.28s var(--ease-out-expo);
+        }
+        .footer-nav-link:hover::after { width: 100%; }
+        .footer-nav-link:hover { opacity: 0.85 !important; }
+
+        /* ── REDUCED MOTION OVERRIDES ────────────────────── */
+        @media (prefers-reduced-motion: reduce) {
+            .hero-image-wrapper.is-floating,
+            .app-store-badge,
+            .section-icon-float.is-visible,
+            .teal-check.pulse-in,
+            #scroll-progress::after {
+                animation: none !important;
+            }
+            .header-logo-img {
+                opacity: 1 !important;
+                transform: none !important;
+                animation: none !important;
+            }
+            .btn-primary::before { display: none; }
+            .privacy-card:hover { transform: none !important; }
+            .feature-panel-copy:hover .feature-panel-icon { transform: none !important; }
+        }
+    </style>
 
 </head>
 
@@ -145,7 +347,7 @@
         <div class="logo">
             <a href="index.html" class="flex items-center" style="display: flex; align-items: center">
                 <img src="images/bricks-dark-logo.svg" onerror="this.src='images/bricks-light-logo.svg'"
-                    alt="Bricks Logo" style="height: 24px" />
+                    alt="Bricks Logo" style="height: 24px" class="header-logo-img" />
             </a>
         </div>
         <div style="display: flex; align-items: center; gap: 12px">
@@ -163,6 +365,8 @@
         <div class="hero-dot-grid" aria-hidden="true"></div>
         <div class="container hero-grid">
             <div class="hero-content">
+
+                <p class="app-store-badge reveal-on-scroll" aria-label="Available on the App Store">Available on App Store ↗</p>
 
                 <h1 class="hero-title reveal-on-scroll">
                     <span lang="en">Scan once.<br />Find instantly.</span>
@@ -206,7 +410,7 @@
     <section class="section section-alt">
         <!-- Section intro -->
         <div class="container reading-column center-text" style="margin-top: 80px;">
-            <img src="images-bricks-scan/bricks-scan-web-icon.png" alt="Bricks Scan" class="reveal-on-scroll delay-100"
+            <img src="images-bricks-scan/bricks-scan-web-icon.png" alt="Bricks Scan" class="reveal-on-scroll delay-100 section-icon-float"
                 style="width: 64px; height: 64px; margin: 0 auto 16px; display: block; border-radius: 14px;"
                 loading="lazy" />
             <h2 class="section-title">
@@ -405,7 +609,7 @@
     <!-- 3. Privacy Section -->
     <section class="section section-alt">
         <div class="container reading-column center-text">
-            <img src="images-bricks-scan/icon-section5.svg" alt="Privacy" class="reveal-on-scroll delay-100"
+            <img src="images-bricks-scan/icon-section5.svg" alt="Privacy" class="reveal-on-scroll delay-100 section-icon-float"
                 style="width: 64px; height: 64px; margin: 0 auto 16px; display: block" loading="lazy" />
             <h2 class="section-title reveal-on-scroll">
                 <span lang="en">Private by design.</span>
@@ -420,7 +624,7 @@
         </div>
 
         <div class="container privacy-grid">
-            <div class="center-text reveal-on-scroll delay-200">
+            <div class="privacy-card center-text reveal-on-scroll delay-200">
                 <img src="images/checkmark.svg" alt="Check" class="checkmark-icon"
                     style="margin: 0 auto 16px; display: block" />
                 <h3 class="subheading" style="font-size: 18px">
@@ -433,7 +637,7 @@
                 </p>
             </div>
 
-            <div class="center-text reveal-on-scroll delay-300">
+            <div class="privacy-card center-text reveal-on-scroll delay-300">
                 <img src="images/checkmark.svg" alt="Check" class="checkmark-icon"
                     style="margin: 0 auto 16px; display: block" />
                 <h3 class="subheading" style="font-size: 18px">
@@ -446,7 +650,7 @@
                 </p>
             </div>
 
-            <div class="center-text reveal-on-scroll delay-400">
+            <div class="privacy-card center-text reveal-on-scroll delay-400">
                 <img src="images/checkmark.svg" alt="Check" class="checkmark-icon"
                     style="margin: 0 auto 16px; display: block" />
                 <h3 class="subheading" style="font-size: 18px">
@@ -464,7 +668,7 @@
     <!-- 4. Competitive Comparison Section -->
     <section class="section">
         <div class="container center-text">
-            <img src="images-bricks-scan/icon-section7.svg" alt="Comparison" class="reveal-on-scroll delay-100"
+            <img src="images-bricks-scan/icon-section7.svg" alt="Comparison" class="reveal-on-scroll delay-100 section-icon-float"
                 style="width: 64px; height: 64px; margin: 0 auto 16px; display: block" loading="lazy" />
 
             <h2 class="section-title reveal-on-scroll">
@@ -504,7 +708,7 @@
                                 <span lang="es" class="hidden">Escaneo</span>
                             </td>
                             <td>✓</td>
-                            <td style="color: var(--accent-teal); font-weight: bold">✓</td>
+                            <td class="teal-check" style="color: var(--accent-teal); font-weight: bold">✓</td>
                         </tr>
 
                         <tr class="reveal-on-scroll delay-400">
@@ -513,7 +717,7 @@
                                 <span lang="es" class="hidden">Búsqueda</span>
                             </td>
                             <td>✓</td>
-                            <td style="color: var(--accent-teal); font-weight: bold">✓</td>
+                            <td class="teal-check" style="color: var(--accent-teal); font-weight: bold">✓</td>
                         </tr>
 
                         <tr class="reveal-on-scroll delay-500">
@@ -522,7 +726,7 @@
                                 <span lang="es" class="hidden">Nombrar Documentos</span>
                             </td>
                             <td>✗</td>
-                            <td style="color: var(--accent-teal); font-weight: bold">✓</td>
+                            <td class="teal-check" style="color: var(--accent-teal); font-weight: bold">✓</td>
                         </tr>
 
                         <tr class="reveal-on-scroll delay-600">
@@ -531,7 +735,7 @@
                                 <span lang="es" class="hidden">Automatizar Organización</span>
                             </td>
                             <td>✗</td>
-                            <td style="color: var(--accent-teal); font-weight: bold">✓</td>
+                            <td class="teal-check" style="color: var(--accent-teal); font-weight: bold">✓</td>
                         </tr>
 
                         <tr class="reveal-on-scroll delay-700">
@@ -543,7 +747,7 @@
                                 <span lang="en">Rare</span>
                                 <span lang="es" class="hidden">Poco común</span>
                             </td>
-                            <td style="color: var(--accent-teal); font-weight: bold">✓</td>
+                            <td class="teal-check" style="color: var(--accent-teal); font-weight: bold">✓</td>
                         </tr>
 
                         <tr class="reveal-on-scroll delay-800">
@@ -555,7 +759,7 @@
                                 <span lang="en">Rare</span>
                                 <span lang="es" class="hidden">Poco común</span>
                             </td>
-                            <td style="color: var(--accent-teal); font-weight: bold">✓</td>
+                            <td class="teal-check" style="color: var(--accent-teal); font-weight: bold">✓</td>
                         </tr>
 
                         <tr class="reveal-on-scroll delay-800">
@@ -567,7 +771,7 @@
                                 <span lang="en">Rare</span>
                                 <span lang="es" class="hidden">Poco común</span>
                             </td>
-                            <td style="color: var(--accent-teal); font-weight: bold">✓</td>
+                            <td class="teal-check" style="color: var(--accent-teal); font-weight: bold">✓</td>
                         </tr>
                     </tbody>
                 </table>
@@ -624,7 +828,7 @@
                         <img src="images/bricks-dark-logo.svg" onerror="this.src='images/bricks-light-logo.svg'"
                             alt="Bricks Logo" style="height: 32px; opacity: 0.8" />
                     </a>
-                    <p class="body-text" style="font-size: 15px">
+                    <p class="body-text footer-nav-link" style="font-size: 15px">
                         <span lang="en">Focused apps for real estate agents on Apple.</span>
                         <span lang="es" class="hidden">Apps enfocadas para agentes inmobiliarios en Apple.</span>
                     </p>
@@ -670,19 +874,19 @@
                                     gap: 12px;
                                 ">
                             <li>
-                                <a href="bricks-scan.html" class="body-text" style="font-size: 15px">
+                                <a href="bricks-scan.html" class="body-text footer-nav-link" style="font-size: 15px">
                                     <span lang="en">Bricks Scan</span>
                                     <span lang="es" class="hidden">Bricks Scan</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="bricks-calc.html" class="body-text" style="font-size: 15px">
+                                <a href="bricks-calc.html" class="body-text footer-nav-link" style="font-size: 15px">
                                     <span lang="en">Bricks Calc</span>
                                     <span lang="es" class="hidden">Bricks Calc</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="https://leads.bricks.pe" class="body-text" style="font-size: 15px">
+                                <a href="https://leads.bricks.pe" class="body-text footer-nav-link" style="font-size: 15px">
                                     <span lang="en">Bricks Leads</span>
                                     <span lang="es" class="hidden">Bricks Leads</span>
                                 </a>
@@ -705,19 +909,19 @@
                                     gap: 12px;
                                 ">
                             <li>
-                                <a href="about.html" class="body-text" style="font-size: 15px">
+                                <a href="about.html" class="body-text footer-nav-link" style="font-size: 15px">
                                     <span lang="en">About Us</span>
                                     <span lang="es" class="hidden">Sobre Nosotros</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="purchase-guide-01.html" class="body-text" style="font-size: 15px">
+                                <a href="purchase-guide-01.html" class="body-text footer-nav-link" style="font-size: 15px">
                                     <span lang="en">Purchase Guide</span>
                                     <span lang="es" class="hidden">Guía de Compra</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="mailto:hello@bricks.pe" class="body-text" style="font-size: 15px">
+                                <a href="mailto:hello@bricks.pe" class="body-text footer-nav-link" style="font-size: 15px">
                                     <span lang="en">Email: hello@bricks.pe</span>
                                     <span lang="es" class="hidden">Email: hello@bricks.pe</span>
                                 </a>
@@ -740,25 +944,25 @@
                                     gap: 12px;
                                 ">
                             <li>
-                                <a href="support.html" class="body-text" style="font-size: 15px;">
+                                <a href="support.html" class="body-text footer-nav-link" style="font-size: 15px;">
                                     <span lang="en">Contact</span>
                                     <span lang="es" class="hidden">Contacto</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="https://bricksapps.userjot.com" class="body-text" style="font-size: 15px;">
+                                <a href="https://bricksapps.userjot.com" class="body-text footer-nav-link" style="font-size: 15px;">
                                     <span lang="en">Vote on Features</span>
                                     <span lang="es" class="hidden">Votar Funciones</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="help.html" class="body-text" style="font-size: 15px;">
+                                <a href="help.html" class="body-text footer-nav-link" style="font-size: 15px;">
                                     <span lang="en">App Guides</span>
                                     <span lang="es" class="hidden">Guías de Apps</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="survey.html" class="body-text" style="font-size: 15px">
+                                <a href="survey.html" class="body-text footer-nav-link" style="font-size: 15px">
                                     <span lang="en">Survey</span>
                                     <span lang="es" class="hidden">Encuesta</span>
                                 </a>
@@ -1050,6 +1254,58 @@
                     ticking = true;
                 }
             }, { passive: true });
+        })();
+    </script>
+
+    <!-- Page-Specific Animation Enhancements -->
+    <script>
+        (function () {
+            'use strict';
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            /* ── 1. Hero float loop — add after entrance, remove when scroll-fade kicks in ── */
+            if (!reduceMotion) {
+                const heroWrapper = document.querySelector('.section-hero .hero-image-wrapper');
+                if (heroWrapper) {
+                    setTimeout(() => {
+                        const op = parseFloat(heroWrapper.style.opacity);
+                        if (isNaN(op) || op > 0.95) {
+                            heroWrapper.classList.add('is-floating');
+                        }
+                        window.addEventListener('scroll', function removeFloat() {
+                            const o = parseFloat(heroWrapper.style.opacity);
+                            if (!isNaN(o) && o < 0.98) {
+                                heroWrapper.classList.remove('is-floating');
+                                window.removeEventListener('scroll', removeFloat);
+                            }
+                        }, { passive: true });
+                    }, 2000);
+                }
+            }
+
+            /* ── 2. Pause badge shimmer when tab is hidden ── */
+            document.addEventListener('visibilitychange', () => {
+                document.querySelectorAll('.app-store-badge').forEach(el => {
+                    el.style.animationPlayState = document.hidden ? 'paused' : 'running';
+                });
+            });
+
+            /* ── 3. Teal-check pulse on scroll entry (one-shot, staggered) ── */
+            if (!reduceMotion) {
+                const checkCells = document.querySelectorAll('.teal-check');
+                if (checkCells.length) {
+                    const obs = new IntersectionObserver((entries, observer) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                const idx = Array.from(checkCells).indexOf(entry.target);
+                                setTimeout(() => entry.target.classList.add('pulse-in'), idx * 80);
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    }, { rootMargin: '0px 0px -80px 0px', threshold: 0.5 });
+                    checkCells.forEach(c => obs.observe(c));
+                }
+            }
         })();
     </script>
 
