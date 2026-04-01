@@ -2592,6 +2592,12 @@ a:hover {
     padding: 64px 0;
 }
 
+/* Last panel content sits higher so it's visible before scrolling */
+.feature-panel:last-of-type {
+    justify-content: flex-start;
+    padding-top: 4vh;
+}
+
 .feature-panel-icon {
     width: 40px;
     height: 40px;
@@ -2702,6 +2708,8 @@ a:hover {
 
     .feature-panel:last-of-type {
         border-bottom: none;
+        justify-content: center;
+        padding-top: 40px;
     }
 
     .feature-panel-screen-mobile {
