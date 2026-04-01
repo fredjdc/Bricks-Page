@@ -95,34 +95,79 @@
     <style>
         /* ── KEYFRAMES ─────────────────────────────────────── */
         @keyframes bs-float {
-            0%, 100% { transform: translateY(0px); }
-            50%       { transform: translateY(-10px); }
-        }
-        @keyframes bs-icon-bob {
-            0%, 100% { transform: translateY(0px); }
-            50%       { transform: translateY(-5px); }
-        }
-        @keyframes bs-shimmer-sweep {
-            0%   { background-position: -200% center; }
-            100% { background-position: 200% center; }
-        }
-        @keyframes bs-dot-pulse {
-            0%, 100% {
-                box-shadow: 0 0 0 0 rgba(0,199,178,0.6), 0 0 6px 2px rgba(0,199,178,0.3);
+
+            0%,
+            100% {
+                transform: translateY(0px);
             }
+
             50% {
-                box-shadow: 0 0 0 4px rgba(0,199,178,0), 0 0 12px 4px rgba(0,199,178,0.5);
+                transform: translateY(-10px);
             }
         }
-        @keyframes bs-check-pulse {
-            0%   { transform: scale(1); }
-            35%  { transform: scale(1.35); }
-            70%  { transform: scale(0.92); }
-            100% { transform: scale(1); }
+
+        @keyframes bs-icon-bob {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-5px);
+            }
         }
+
+        @keyframes bs-shimmer-sweep {
+            0% {
+                background-position: -200% center;
+            }
+
+            100% {
+                background-position: 200% center;
+            }
+        }
+
+        @keyframes bs-dot-pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 199, 178, 0.6), 0 0 6px 2px rgba(0, 199, 178, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 0 0 4px rgba(0, 199, 178, 0), 0 0 12px 4px rgba(0, 199, 178, 0.5);
+            }
+        }
+
+        @keyframes bs-check-pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            35% {
+                transform: scale(1.35);
+            }
+
+            70% {
+                transform: scale(0.92);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
         @keyframes bs-logo-enter {
-            from { opacity: 0; transform: translateX(-8px); }
-            to   { opacity: 1; transform: translateX(0); }
+            from {
+                opacity: 0;
+                transform: translateX(-8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         /* ── 1. HEADER LOGO ENTRANCE ─────────────────────── */
@@ -141,21 +186,20 @@
             letter-spacing: 0.06em;
             text-transform: uppercase;
             color: var(--text-secondary);
-            background: linear-gradient(
-                90deg,
-                transparent 0%, transparent 40%,
-                rgba(0,199,178,0.25) 50%,
-                transparent 60%, transparent 100%
-            );
+            background: linear-gradient(90deg,
+                    transparent 0%, transparent 40%,
+                    rgba(0, 199, 178, 0.25) 50%,
+                    transparent 60%, transparent 100%);
             background-size: 200% auto;
             padding: 6px 14px;
             border-radius: 9999px;
             border: 1px solid var(--depth-plane);
             box-shadow: var(--emboss-raised);
             margin-bottom: 20px;
-            animation: bs-shimmer-sweep 3s linear infinite;
+            animation: bs-shimmer-sweep 12s linear infinite;
             animation-play-state: paused;
         }
+
         .app-store-badge.is-visible {
             animation-play-state: running;
         }
@@ -170,22 +214,24 @@
         .btn-primary::before {
             content: '';
             position: absolute;
-            top: 0; left: -100%;
-            width: 60%; height: 100%;
-            background: linear-gradient(
-                105deg,
-                transparent 20%,
-                rgba(255,255,255,0.18) 50%,
-                transparent 80%
-            );
+            top: 0;
+            left: -100%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(105deg,
+                    transparent 20%,
+                    rgba(255, 255, 255, 0.18) 50%,
+                    transparent 80%);
             transform: skewX(-15deg);
             pointer-events: none;
             z-index: 1;
         }
+
         .btn-primary:hover::before {
             left: 160%;
             transition: left 0.55s var(--ease-out-expo);
         }
+
         .btn-primary:not(:hover)::before {
             transition: none;
             left: -100%;
@@ -195,9 +241,11 @@
         #scroll-progress::after {
             content: '';
             position: absolute;
-            right: -3px; top: 50%;
+            right: -3px;
+            top: 50%;
             transform: translateY(-50%);
-            width: 6px; height: 6px;
+            width: 6px;
+            height: 6px;
             border-radius: 50%;
             background: var(--accent-teal);
             animation: bs-dot-pulse 1.6s ease-in-out infinite;
@@ -214,6 +262,7 @@
             transition: transform 0.35s var(--ease-spring);
             transform-origin: center center;
         }
+
         .feature-panel-copy:hover .feature-panel-icon {
             transform: scale(1.12) rotate(5deg);
         }
@@ -223,13 +272,14 @@
             position: relative;
             overflow: hidden;
         }
+
         .privacy-section::before {
             content: '';
             position: absolute;
             inset: 0;
             background:
-                radial-gradient(ellipse 70% 80% at 20% 60%, rgba(0,199,178,0.07) 0%, transparent 65%),
-                radial-gradient(ellipse 60% 70% at 80% 30%, rgba(0,199,178,0.05) 0%, transparent 60%);
+                radial-gradient(ellipse 70% 80% at 20% 60%, rgba(0, 199, 178, 0.07) 0%, transparent 65%),
+                radial-gradient(ellipse 60% 70% at 80% 30%, rgba(0, 199, 178, 0.05) 0%, transparent 60%);
             pointer-events: none;
         }
 
@@ -250,20 +300,23 @@
             transform-style: preserve-3d;
             will-change: transform;
             transition: transform 0.4s var(--ease-out-expo),
-                        box-shadow 0.4s var(--ease-out-expo);
+                box-shadow 0.4s var(--ease-out-expo);
             cursor: default;
         }
+
         /* 3D scroll-entrance — override the generic reveal-on-scroll translateY */
         .privacy-card.reveal-on-scroll {
             transform: perspective(900px) rotateX(-10deg) translateY(36px);
             opacity: 0;
             transition: transform 0.65s cubic-bezier(0.2, 0.8, 0.2, 1),
-                        opacity 0.55s cubic-bezier(0.2, 0.8, 0.2, 1);
+                opacity 0.55s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
+
         .privacy-card.reveal-on-scroll.is-visible {
             transform: perspective(900px) rotateX(0deg) translateY(0);
             opacity: 1;
         }
+
         /* Hover state — mouse-move JS overrides this, but keep as fallback */
         .privacy-card:hover {
             box-shadow:
@@ -271,9 +324,11 @@
                 0 1px 0 rgba(255, 255, 255, 0.9) inset,
                 0 -1px 0 rgba(11, 15, 20, 0.04) inset;
         }
+
         .privacy-card .checkmark-icon {
             transition: filter 0.3s ease;
         }
+
         .privacy-card:hover .checkmark-icon {
             filter: invert(62%) sepia(90%) saturate(400%) hue-rotate(139deg) brightness(1.05);
         }
@@ -281,17 +336,20 @@
         /* ── 9. COMPARISON TABLE POLISH ──────────────────── */
         .comparison-table th:nth-child(3),
         .comparison-table td:nth-child(3) {
-            background-color: rgba(0,199,178,0.04);
+            background-color: rgba(0, 199, 178, 0.04);
             box-shadow:
-                inset 1px 0 0 rgba(0,199,178,0.12),
-                inset -1px 0 0 rgba(0,199,178,0.12);
+                inset 1px 0 0 rgba(0, 199, 178, 0.12),
+                inset -1px 0 0 rgba(0, 199, 178, 0.12);
         }
+
         .comparison-table tbody tr {
             transition: background-color 0.2s ease;
         }
+
         .comparison-table tbody tr:hover {
-            background-color: rgba(0,199,178,0.03);
+            background-color: rgba(0, 199, 178, 0.03);
         }
+
         .teal-check.pulse-in {
             animation: bs-check-pulse 0.55s var(--ease-spring) forwards;
         }
@@ -302,19 +360,29 @@
             display: inline-block;
             opacity: 1 !important;
         }
+
         .footer-nav-link::after {
             content: '';
             position: absolute;
-            bottom: -2px; left: 0;
-            width: 0%; height: 1px;
+            bottom: -2px;
+            left: 0;
+            width: 0%;
+            height: 1px;
             background-color: var(--text-primary);
             transition: width 0.28s var(--ease-out-expo);
         }
-        .footer-nav-link:hover::after { width: 100%; }
-        .footer-nav-link:hover { opacity: 0.85 !important; }
+
+        .footer-nav-link:hover::after {
+            width: 100%;
+        }
+
+        .footer-nav-link:hover {
+            opacity: 0.85 !important;
+        }
 
         /* ── REDUCED MOTION OVERRIDES ────────────────────── */
         @media (prefers-reduced-motion: reduce) {
+
             .hero-image-wrapper.is-floating,
             .app-store-badge,
             .section-icon-float.is-visible,
@@ -322,16 +390,32 @@
             #scroll-progress::after {
                 animation: none !important;
             }
+
             .header-logo-img {
                 opacity: 1 !important;
                 transform: none !important;
                 animation: none !important;
             }
-            .btn-primary::before { display: none; }
-            .privacy-card:hover { transform: none !important; }
-            .privacy-card.reveal-on-scroll { transform: translateY(20px); }
-            .privacy-card.reveal-on-scroll.is-visible { transform: translateY(0); }
-            .feature-panel-copy:hover .feature-panel-icon { transform: none !important; }
+
+            .btn-primary::before {
+                display: none;
+            }
+
+            .privacy-card:hover {
+                transform: none !important;
+            }
+
+            .privacy-card.reveal-on-scroll {
+                transform: translateY(20px);
+            }
+
+            .privacy-card.reveal-on-scroll.is-visible {
+                transform: translateY(0);
+            }
+
+            .feature-panel-copy:hover .feature-panel-icon {
+                transform: none !important;
+            }
         }
     </style>
 
@@ -393,6 +477,7 @@
         </div>
         <div style="display: flex; align-items: center; gap: 12px">
             <a href="" class="btn btn-primary">
+                <svg aria-hidden="true" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:16px;height:16px;fill:currentColor;margin-right:7px;flex-shrink:0;vertical-align:middle;position:relative;top:-0.5px"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.46 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
                 <span lang="en">Download</span>
                 <span lang="es" class="hidden">Descargar</span>
             </a>
@@ -407,7 +492,8 @@
         <div class="container hero-grid">
             <div class="hero-content">
 
-                <p class="app-store-badge reveal-on-scroll" aria-label="Available on the App Store">Available on App Store ↗</p>
+                <p class="app-store-badge reveal-on-scroll" aria-label="Available on the App Store">Available on App
+                    Store ↗</p>
 
                 <h1 class="hero-title reveal-on-scroll">
                     <span lang="en">Scan once.<br />Find instantly.</span>
@@ -420,8 +506,10 @@
                         dispositivo.</span>
                 </p>
 
-                <div class="cta-group reveal-on-scroll delay-200" style="display: flex; flex-direction: column; align-items: flex-start; margin-top: 32px;">
+                <div class="cta-group reveal-on-scroll delay-200"
+                    style="display: flex; flex-direction: column; align-items: flex-start; margin-top: 32px;">
                     <a href="" class="btn btn-primary">
+                        <svg aria-hidden="true" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:16px;height:16px;fill:currentColor;margin-right:7px;flex-shrink:0;vertical-align:middle;position:relative;top:-0.5px"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.46 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
                         <span lang="en">Download</span>
                         <span lang="es" class="hidden">Descargar</span>
                     </a>
@@ -451,7 +539,8 @@
     <section class="section section-alt">
         <!-- Section intro -->
         <div class="container reading-column center-text" style="margin-top: 80px;">
-            <img src="images-bricks-scan/bricks-scan-web-icon.png" alt="Bricks Scan" class="reveal-on-scroll delay-100 section-icon-float"
+            <img src="images-bricks-scan/bricks-scan-web-icon.png" alt="Bricks Scan"
+                class="reveal-on-scroll delay-100 section-icon-float"
                 style="width: 64px; height: 64px; margin: 0 auto 16px; display: block; border-radius: 14px;"
                 loading="lazy" />
             <h2 class="section-title">
@@ -650,7 +739,8 @@
     <!-- 3. Privacy Section -->
     <section class="section section-alt privacy-section">
         <div class="container reading-column center-text">
-            <img src="images-bricks-scan/icon-section5.svg" alt="Privacy" class="reveal-on-scroll delay-100 section-icon-float"
+            <img src="images-bricks-scan/icon-section5.svg" alt="Privacy"
+                class="reveal-on-scroll delay-100 section-icon-float"
                 style="width: 64px; height: 64px; margin: 0 auto 16px; display: block" loading="lazy" />
             <h2 class="section-title reveal-on-scroll">
                 <span lang="en">Private by design.</span>
@@ -709,7 +799,8 @@
     <!-- 4. Competitive Comparison Section -->
     <section class="section">
         <div class="container center-text">
-            <img src="images-bricks-scan/icon-section7.svg" alt="Comparison" class="reveal-on-scroll delay-100 section-icon-float"
+            <img src="images-bricks-scan/icon-section7.svg" alt="Comparison"
+                class="reveal-on-scroll delay-100 section-icon-float"
                 style="width: 64px; height: 64px; margin: 0 auto 16px; display: block" loading="lazy" />
 
             <h2 class="section-title reveal-on-scroll">
@@ -842,6 +933,7 @@
             <div class="cta-group reveal-on-scroll delay-200"
                 style="display: flex; flex-direction: column; align-items: center; gap: 12px; margin: 0 auto; margin-top: 40px;">
                 <a href="" class="btn btn-primary">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:16px;height:16px;fill:currentColor;margin-right:7px;flex-shrink:0;vertical-align:middle;position:relative;top:-0.5px"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.46 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
                     <span lang="en">Download</span>
                     <span lang="es" class="hidden">Descargar</span>
                 </a>
@@ -927,7 +1019,8 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="https://leads.bricks.pe" class="body-text footer-nav-link" style="font-size: 15px">
+                                <a href="https://leads.bricks.pe" class="body-text footer-nav-link"
+                                    style="font-size: 15px">
                                     <span lang="en">Bricks Leads</span>
                                     <span lang="es" class="hidden">Bricks Leads</span>
                                 </a>
@@ -956,13 +1049,15 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="purchase-guide-01.html" class="body-text footer-nav-link" style="font-size: 15px">
+                                <a href="purchase-guide-01.html" class="body-text footer-nav-link"
+                                    style="font-size: 15px">
                                     <span lang="en">Purchase Guide</span>
                                     <span lang="es" class="hidden">Guía de Compra</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="mailto:hello@bricks.pe" class="body-text footer-nav-link" style="font-size: 15px">
+                                <a href="mailto:hello@bricks.pe" class="body-text footer-nav-link"
+                                    style="font-size: 15px">
                                     <span lang="en">Email: hello@bricks.pe</span>
                                     <span lang="es" class="hidden">Email: hello@bricks.pe</span>
                                 </a>
@@ -991,7 +1086,8 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="https://bricksapps.userjot.com" class="body-text footer-nav-link" style="font-size: 15px;">
+                                <a href="https://bricksapps.userjot.com" class="body-text footer-nav-link"
+                                    style="font-size: 15px;">
                                     <span lang="en">Vote on Features</span>
                                     <span lang="es" class="hidden">Votar Funciones</span>
                                 </a>
@@ -1336,8 +1432,8 @@
                 document.querySelectorAll('.privacy-card').forEach(card => {
                     card.addEventListener('mousemove', (e) => {
                         const r = card.getBoundingClientRect();
-                        const dx = (e.clientX - (r.left + r.width  / 2)) / (r.width  / 2);
-                        const dy = (e.clientY - (r.top  + r.height / 2)) / (r.height / 2);
+                        const dx = (e.clientX - (r.left + r.width / 2)) / (r.width / 2);
+                        const dy = (e.clientY - (r.top + r.height / 2)) / (r.height / 2);
                         card.style.transform =
                             `perspective(600px) rotateX(${(-dy * 7).toFixed(2)}deg) rotateY(${(dx * 7).toFixed(2)}deg) translateY(-6px)`;
                         card.style.transition = 'transform 0.1s ease, box-shadow 0.1s ease';
