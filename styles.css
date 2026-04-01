@@ -29,7 +29,7 @@
     --text-secondary: #55626E;
     /* Secondary text gray */
 
-    --accent-teal: #00A6A1;
+    --accent-teal: #00C7B2;
     /* The ONLY color accent */
 
     /* 3️⃣ Typography */
@@ -1362,7 +1362,7 @@ a:hover {
     position: absolute;
     inset: -20%;
     pointer-events: none;
-    /* ONE radial gradient with #00A6A1 fading out */
+    /* ONE radial gradient with #00C7B2 fading out */
     background: radial-gradient(circle at 75% 35%, rgba(0, 166, 161, 0.07) 0%, transparent 45%);
     z-index: 2;
     animation: heroBloomDrift 45s ease-in-out infinite alternate;
@@ -2627,6 +2627,7 @@ a:hover {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     .feature-panel-screen-mobile,
     .feature-panel-copy,
     .feature-panel-screen-mobile.panel-exited,
@@ -2635,6 +2636,7 @@ a:hover {
         transition: opacity 0.3s ease;
         transition-delay: 0s;
     }
+
     .feature-panel-screen-mobile.panel-visible,
     .feature-panel-copy.panel-visible {
         transform: none;
@@ -2719,7 +2721,7 @@ a:hover {
 /* ── Seamless Hero → Feature Transition ──────────────────── */
 
 /* Pull the feature showcase closer to the hero section */
-.section-hero + .feature-showcase {
+.section-hero+.feature-showcase {
     margin-top: -48px;
     position: relative;
     z-index: 2;
