@@ -269,6 +269,7 @@ a:hover {
     }
 
     .hero-grid .app-row-label {
+        flex-direction: column;
         justify-content: center;
     }
 
