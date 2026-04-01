@@ -2584,6 +2584,13 @@ a:hover {
     padding: 64px 0;
 }
 
+.feature-panel-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 16px;
+    display: block;
+}
+
 .feature-panel-copy .subheading {
     font-size: 26px;
     margin-bottom: 16px;
