@@ -288,7 +288,12 @@
         }
 
         /* ── 8b. PRIVACY CARDS — LIQUID GLASS + 3D ──────────── */
+        .privacy-card-wrapper {
+            height: 100%;
+        }
+
         .privacy-card {
+            height: 100%;
             padding: 32px 24px;
             border-radius: var(--r3-primary);
             background: rgba(255, 255, 255, 0.62);
@@ -309,7 +314,7 @@
         }
 
         /* 3D scroll-entrance — handled by GSAP ScrollTrigger */
-        .privacy-card.gsap-reveal {
+        .privacy-card-wrapper.gsap-reveal {
             transform: perspective(900px) rotateX(-10deg) translateY(36px);
             opacity: 0;
             will-change: transform, opacity;
@@ -403,7 +408,7 @@
                 transform: none !important;
             }
 
-            .privacy-card.gsap-reveal {
+            .privacy-card-wrapper.gsap-reveal {
                 transform: none;
                 opacity: 1;
             }
@@ -759,43 +764,49 @@
         </div>
 
         <div class="container privacy-grid">
-            <div class="privacy-card center-text gsap-reveal">
-                <img src="images/checkmark.svg" alt="Check" class="checkmark-icon"
-                    style="margin: 0 auto 16px; display: block" />
-                <h3 class="subheading" style="font-size: 18px">
-                    <span lang="en">100% Offline</span>
-                    <span lang="es" class="hidden">100% sin conexión</span>
-                </h3>
-                <p class="body-text" style="font-size: 15px; margin: 0 auto">
-                    <span lang="en">Works offline wherever you need to scan.</span>
-                    <span lang="es" class="hidden">Funciona sin internet donde necesites escanear.</span>
-                </p>
+            <div class="privacy-card-wrapper gsap-reveal">
+                <div class="privacy-card center-text">
+                    <img src="images/checkmark.svg" alt="Check" class="checkmark-icon"
+                        style="margin: 0 auto 16px; display: block" />
+                    <h3 class="subheading" style="font-size: 18px">
+                        <span lang="en">100% Offline</span>
+                        <span lang="es" class="hidden">100% sin conexión</span>
+                    </h3>
+                    <p class="body-text" style="font-size: 15px; margin: 0 auto">
+                        <span lang="en">Works offline wherever you need to scan.</span>
+                        <span lang="es" class="hidden">Funciona sin internet donde necesites escanear.</span>
+                    </p>
+                </div>
             </div>
 
-            <div class="privacy-card center-text gsap-reveal">
-                <img src="images/checkmark.svg" alt="Check" class="checkmark-icon"
-                    style="margin: 0 auto 16px; display: block" />
-                <h3 class="subheading" style="font-size: 18px">
-                    <span lang="en">On-Device Processing</span>
-                    <span lang="es" class="hidden">Procesamiento Local</span>
-                </h3>
-                <p class="body-text" style="font-size: 15px; margin: 0 auto">
-                    <span lang="en">Your data stays on your device from the first scan.</span>
-                    <span lang="es" class="hidden">Tus datos se quedan en tu dispositivo desde el primer escaneo.</span>
-                </p>
+            <div class="privacy-card-wrapper gsap-reveal">
+                <div class="privacy-card center-text">
+                    <img src="images/checkmark.svg" alt="Check" class="checkmark-icon"
+                        style="margin: 0 auto 16px; display: block" />
+                    <h3 class="subheading" style="font-size: 18px">
+                        <span lang="en">On-Device Processing</span>
+                        <span lang="es" class="hidden">Procesamiento Local</span>
+                    </h3>
+                    <p class="body-text" style="font-size: 15px; margin: 0 auto">
+                        <span lang="en">Your data stays on your device from the first scan.</span>
+                        <span lang="es" class="hidden">Tus datos se quedan en tu dispositivo desde el primer escaneo.</span>
+                    </p>
+                </div>
             </div>
 
-            <div class="privacy-card center-text gsap-reveal">
-                <img src="images/checkmark.svg" alt="Check" class="checkmark-icon"
-                    style="margin: 0 auto 16px; display: block" />
-                <h3 class="subheading" style="font-size: 18px">
-                    <span lang="en">Optional iCloud Sync</span>
-                    <span lang="es" class="hidden">iCloud Sync Opcional</span>
-                </h3>
-                <p class="body-text" style="font-size: 15px; margin: 0 auto">
-                    <span lang="en">Sync across devices only when you choose to.</span>
-                    <span lang="es" class="hidden">Sincroniza entre dispositivos solo cuando lo elijas.</span>
-                </p>
+            <div class="privacy-card-wrapper gsap-reveal">
+                <div class="privacy-card center-text">
+                    <img src="images/checkmark.svg" alt="Check" class="checkmark-icon"
+                        style="margin: 0 auto 16px; display: block" />
+                    <h3 class="subheading" style="font-size: 18px">
+                        <span lang="en">Optional iCloud Sync</span>
+                        <span lang="es" class="hidden">iCloud Sync Opcional</span>
+                    </h3>
+                    <p class="body-text" style="font-size: 15px; margin: 0 auto">
+                        <span lang="en">Sync across devices only when you choose to.</span>
+                        <span lang="es" class="hidden">Sincroniza entre dispositivos solo cuando lo elijas.</span>
+                    </p>
+                </div>
             </div>
         </div>
     </section>
@@ -1460,7 +1471,7 @@
                 // ═══════════════════════════════════════════
                 // 4. PRIVACY CARDS (scrub-based 3D entrance)
                 // ═══════════════════════════════════════════
-                const privacyCards = document.querySelectorAll('.privacy-card.gsap-reveal');
+                const privacyCards = document.querySelectorAll('.privacy-card-wrapper.gsap-reveal');
                 privacyCards.forEach((card, i) => {
                     gsap.fromTo(card, {
                         opacity: 0,
