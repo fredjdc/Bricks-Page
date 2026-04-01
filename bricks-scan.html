@@ -1384,7 +1384,7 @@
                 }
 
                 // ═══════════════════════════════════════════
-                // 3. FEATURE PANEL 3D ENTRANCE (scrub)
+                // 3. FEATURE PANEL 3D ENTRANCE + EXIT (single timeline per panel)
                 // ═══════════════════════════════════════════
                 const panels = document.querySelectorAll('.feature-panel[data-feature-index]');
                 panels.forEach((panel, i) => {
@@ -1393,24 +1393,34 @@
                     const targets = [copy, img].filter(Boolean);
                     const isLast = i === panels.length - 1;
 
-                    // Entrance animation
-                    gsap.from(targets, {
+                    // Entrance: animate from hidden → visible
+                    // Uses fromTo so the "resting" (progress=1) state is always fully visible.
+                    // toggleActions 'play reverse play reverse' ensures it reverses properly on scroll-up.
+                    gsap.fromTo(targets, {
                         opacity: 0,
                         rotateX: -10,
                         y: 36,
+                    }, {
+                        opacity: 1,
+                        rotateX: 0,
+                        y: 0,
                         stagger: 0.08,
                         ease: 'power2.out',
                         scrollTrigger: {
                             trigger: panel,
-                            start: 'top 80%',
-                            end: 'top 30%',
+                            start: 'top 85%',
+                            end: 'top 40%',
                             scrub: 0.5,
                         }
                     });
 
                     // Exit animation (skip for last panel — it should stay visible)
                     if (!isLast) {
-                        gsap.to(targets, {
+                        gsap.fromTo(targets, {
+                            opacity: 1,
+                            rotateX: 0,
+                            y: 0,
+                        }, {
                             opacity: 0,
                             rotateX: 8,
                             y: -24,
