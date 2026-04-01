@@ -2509,3 +2509,152 @@ a:hover {
         padding-right: 1rem;
     }
 }
+
+/* ── Feature Showcase ───────────────────────────────────────── */
+
+.feature-showcase {
+    padding: var(--space-md) 0 0;
+    overflow: visible;
+}
+
+.feature-showcase-intro {
+    text-align: center;
+    padding: 0 24px;
+    margin-bottom: var(--space-md);
+}
+
+.feature-showcase-wrapper {
+    display: flex;
+    align-items: flex-start;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+    gap: 80px;
+}
+
+/* Left: sticky iPhone frame */
+.feature-sticky-col {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 42%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.55s var(--ease-out-expo), transform 0.55s var(--ease-out-expo);
+    pointer-events: none;
+}
+
+.feature-sticky-col.frame-exited {
+    opacity: 0;
+    transform: translateX(-28px) scale(0.96);
+}
+
+.feature-frame {
+    width: 100%;
+    max-width: 300px;
+    position: relative;
+}
+
+.feature-screen-img {
+    width: 100%;
+    height: auto;
+    border-radius: 28px;
+    box-shadow: var(--emboss-raised);
+    display: block;
+    transition: opacity 0.22s ease;
+}
+
+.feature-screen-img.fading {
+    opacity: 0;
+}
+
+/* Right: scrollable feature panels */
+.feature-scroll-col {
+    flex: 1;
+    min-width: 0;
+}
+
+.feature-panel {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 64px 0;
+}
+
+.feature-panel-copy .subheading {
+    font-size: 26px;
+    margin-bottom: 16px;
+}
+
+.feature-panel-copy .body-text {
+    font-size: 18px;
+    line-height: 1.65;
+    max-width: 420px;
+}
+
+/* Mobile screenshot per panel (hidden on desktop) */
+.feature-panel-screen-mobile {
+    display: none;
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+.feature-panel-screen-mobile img {
+    width: 100%;
+    max-width: 260px;
+    height: auto;
+    border-radius: 22px;
+    box-shadow: var(--emboss-raised);
+    display: block;
+    margin: 0 auto;
+}
+
+.feature-exit-sentinel {
+    height: 40vh;
+}
+
+/* ── Mobile: no sticky, inline screenshots ────────────────── */
+@media (max-width: 900px) {
+    .feature-sticky-col {
+        display: none;
+    }
+
+    .feature-showcase-wrapper {
+        flex-direction: column;
+        gap: 0;
+        padding: 0 24px;
+    }
+
+    .feature-scroll-col {
+        width: 100%;
+    }
+
+    .feature-panel {
+        min-height: auto;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 40px 0;
+        border-bottom: 1px solid var(--surface-shadow);
+    }
+
+    .feature-panel:last-of-type {
+        border-bottom: none;
+    }
+
+    .feature-panel-screen-mobile {
+        display: block;
+    }
+
+    .feature-panel-copy .body-text {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    .feature-showcase {
+        padding-bottom: var(--space-md);
+    }
+}
