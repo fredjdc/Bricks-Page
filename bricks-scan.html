@@ -868,7 +868,11 @@
                         currentImg.src = newSrc;
                         currentImg.classList.remove('fading');
                         if (currentImg !== img) img.classList.remove('fading');
-                    }, 220);
+                        currentImg.classList.add('img-entering');
+                        requestAnimationFrame(() => requestAnimationFrame(() => {
+                            currentImg.classList.remove('img-entering');
+                        }));
+                    }, 450);
                 };
 
                 // Panel observer — swap screenshot when panel enters mid-viewport
@@ -885,6 +889,33 @@
                 });
 
                 panels.forEach(panel => panelObserver.observe(panel));
+
+                // 3D entrance / exit animation observer
+                if (!prefersReducedMotion) {
+                    const panel3DObserver = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            const copy = entry.target.querySelector('.feature-panel-copy');
+                            const img = entry.target.querySelector('.feature-panel-screen-mobile');
+                            const els = [copy, img].filter(Boolean);
+                            if (entry.isIntersecting) {
+                                els.forEach(el => { el.classList.add('panel-visible'); el.classList.remove('panel-exited'); });
+                            } else {
+                                const aboveViewport = entry.boundingClientRect.top < (entry.rootBounds?.top ?? 0);
+                                els.forEach(el => {
+                                    el.classList.remove('panel-visible');
+                                    if (aboveViewport) { el.classList.add('panel-exited'); }
+                                    else { el.classList.remove('panel-exited'); }
+                                });
+                            }
+                        });
+                    }, { threshold: 0.15 });
+                    panels.forEach(panel => panel3DObserver.observe(panel));
+                } else {
+                    panels.forEach(panel => {
+                        panel.querySelector('.feature-panel-copy')?.classList.add('panel-visible');
+                        panel.querySelector('.feature-panel-screen-mobile')?.classList.add('panel-visible');
+                    });
+                }
 
                 // Exit sentinel — fade frame out when user nears end of showcase
                 if (sentinel) {

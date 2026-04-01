@@ -2563,11 +2563,19 @@ a:hover {
     border-radius: 28px;
     box-shadow: var(--emboss-raised);
     display: block;
-    transition: opacity 0.22s ease;
+    transition: opacity 0.55s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.65s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .feature-screen-img.fading {
     opacity: 0;
+    transform: perspective(900px) rotateX(10deg) translateY(-20px);
+    transition: opacity 0.35s cubic-bezier(0.4, 0, 1, 1), transform 0.45s cubic-bezier(0.4, 0, 1, 1);
+}
+
+.feature-screen-img.img-entering {
+    opacity: 0;
+    transform: perspective(900px) rotateX(-10deg) translateY(20px);
+    transition: none;
 }
 
 /* Right: scrollable feature panels */
@@ -2589,6 +2597,48 @@ a:hover {
     height: 40px;
     margin-bottom: 16px;
     display: block;
+}
+
+/* 3D slide-in / slide-out animation */
+.feature-panel-screen-mobile,
+.feature-panel-copy {
+    transform: perspective(900px) rotateX(-10deg) translateY(36px);
+    opacity: 0;
+    transition: transform 0.65s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.55s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: transform, opacity;
+}
+
+/* Copy lags slightly behind the image */
+.feature-panel-copy {
+    transition-delay: 0.08s;
+}
+
+.feature-panel-screen-mobile.panel-visible,
+.feature-panel-copy.panel-visible {
+    transform: perspective(900px) rotateX(0deg) translateY(0);
+    opacity: 1;
+}
+
+.feature-panel-screen-mobile.panel-exited,
+.feature-panel-copy.panel-exited {
+    transform: perspective(900px) rotateX(8deg) translateY(-24px);
+    opacity: 0;
+    transition: transform 0.45s cubic-bezier(0.4, 0, 1, 1), opacity 0.35s cubic-bezier(0.4, 0, 1, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .feature-panel-screen-mobile,
+    .feature-panel-copy,
+    .feature-panel-screen-mobile.panel-exited,
+    .feature-panel-copy.panel-exited {
+        transform: none;
+        transition: opacity 0.3s ease;
+        transition-delay: 0s;
+    }
+    .feature-panel-screen-mobile.panel-visible,
+    .feature-panel-copy.panel-visible {
+        transform: none;
+    }
 }
 
 .feature-panel-copy .subheading {
