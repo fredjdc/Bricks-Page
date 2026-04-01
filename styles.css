@@ -220,7 +220,7 @@ a:hover {
 
 .hero-grid {
     display: grid;
-    grid-template-columns: minmax(0, 620px) minmax(300px, 480px);
+    grid-template-columns: 1fr 1fr;
     gap: 64px;
     align-items: center;
     justify-content: center;
