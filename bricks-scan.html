@@ -218,19 +218,58 @@
             transform: scale(1.12) rotate(5deg);
         }
 
-        /* ── 8. PRIVACY CARDS — HOVER LIFT + TEAL CHECK ──── */
+        /* ── 8. PRIVACY SECTION — GLASS BACKGROUND ─────────── */
+        .privacy-section {
+            position: relative;
+            overflow: hidden;
+        }
+        .privacy-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 70% 80% at 20% 60%, rgba(0,199,178,0.07) 0%, transparent 65%),
+                radial-gradient(ellipse 60% 70% at 80% 30%, rgba(0,199,178,0.05) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        /* ── 8b. PRIVACY CARDS — LIQUID GLASS + 3D ──────────── */
         .privacy-card {
             padding: 32px 24px;
-            border-radius: var(--r2-inner);
-            background-color: var(--bg-primary);
-            box-shadow: var(--emboss-raised);
-            border: 1px solid rgba(255,255,255,0.4);
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.62);
+            backdrop-filter: blur(24px) saturate(1.6);
+            -webkit-backdrop-filter: blur(24px) saturate(1.6);
+            border: 1px solid rgba(255, 255, 255, 0.85);
+            border-top-color: rgba(255, 255, 255, 0.98);
+            border-left-color: rgba(255, 255, 255, 0.98);
+            box-shadow:
+                0 4px 24px rgba(11, 15, 20, 0.07),
+                0 1px 0 rgba(255, 255, 255, 0.9) inset,
+                0 -1px 0 rgba(11, 15, 20, 0.03) inset;
+            transform-style: preserve-3d;
+            will-change: transform;
             transition: transform 0.4s var(--ease-out-expo),
                         box-shadow 0.4s var(--ease-out-expo);
+            cursor: default;
         }
+        /* 3D scroll-entrance — override the generic reveal-on-scroll translateY */
+        .privacy-card.reveal-on-scroll {
+            transform: perspective(900px) rotateX(-10deg) translateY(36px);
+            opacity: 0;
+            transition: transform 0.65s cubic-bezier(0.2, 0.8, 0.2, 1),
+                        opacity 0.55s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .privacy-card.reveal-on-scroll.is-visible {
+            transform: perspective(900px) rotateX(0deg) translateY(0);
+            opacity: 1;
+        }
+        /* Hover state — mouse-move JS overrides this, but keep as fallback */
         .privacy-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--emboss-raised), 0 12px 32px rgba(0,0,0,0.06);
+            box-shadow:
+                0 12px 40px rgba(11, 15, 20, 0.10),
+                0 1px 0 rgba(255, 255, 255, 0.9) inset,
+                0 -1px 0 rgba(11, 15, 20, 0.04) inset;
         }
         .privacy-card .checkmark-icon {
             transition: filter 0.3s ease;
@@ -290,6 +329,8 @@
             }
             .btn-primary::before { display: none; }
             .privacy-card:hover { transform: none !important; }
+            .privacy-card.reveal-on-scroll { transform: translateY(20px); }
+            .privacy-card.reveal-on-scroll.is-visible { transform: translateY(0); }
             .feature-panel-copy:hover .feature-panel-icon { transform: none !important; }
         }
     </style>
@@ -607,7 +648,7 @@
     </section>
 
     <!-- 3. Privacy Section -->
-    <section class="section section-alt">
+    <section class="section section-alt privacy-section">
         <div class="container reading-column center-text">
             <img src="images-bricks-scan/icon-section5.svg" alt="Privacy" class="reveal-on-scroll delay-100 section-icon-float"
                 style="width: 64px; height: 64px; margin: 0 auto 16px; display: block" loading="lazy" />
@@ -1290,7 +1331,25 @@
                 });
             });
 
-            /* ── 3. Teal-check pulse on scroll entry (one-shot, staggered) ── */
+            /* ── 3. Privacy card 3D mouse-tilt ── */
+            if (!reduceMotion) {
+                document.querySelectorAll('.privacy-card').forEach(card => {
+                    card.addEventListener('mousemove', (e) => {
+                        const r = card.getBoundingClientRect();
+                        const dx = (e.clientX - (r.left + r.width  / 2)) / (r.width  / 2);
+                        const dy = (e.clientY - (r.top  + r.height / 2)) / (r.height / 2);
+                        card.style.transform =
+                            `perspective(600px) rotateX(${(-dy * 7).toFixed(2)}deg) rotateY(${(dx * 7).toFixed(2)}deg) translateY(-6px)`;
+                        card.style.transition = 'transform 0.1s ease, box-shadow 0.1s ease';
+                    }, { passive: true });
+                    card.addEventListener('mouseleave', () => {
+                        card.style.transform = '';
+                        card.style.transition = 'transform 0.4s var(--ease-out-expo), box-shadow 0.4s var(--ease-out-expo)';
+                    }, { passive: true });
+                });
+            }
+
+            /* ── 4. Teal-check pulse on scroll entry (one-shot, staggered) ── */
             if (!reduceMotion) {
                 const checkCells = document.querySelectorAll('.teal-check');
                 if (checkCells.length) {
