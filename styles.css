@@ -28,9 +28,17 @@
     /* Near-black (UI text) */
     --text-secondary: #55626E;
     /* Secondary text gray */
+    --text-tertiary: rgba(11, 15, 20, 0.38);
+    /* Tertiary / disabled text */
 
     --accent-teal: #00C7B2;
-    /* The ONLY color accent */
+    /* Bricks brand teal */
+    --accent-blue: #007AFF;
+    /* iOS system blue — Bricks Calc */
+    --accent-orange: #FF9500;
+    /* iOS system orange — Bricks Leads */
+    --accent-amber: #F59E0B;
+    /* Amber — star ratings */
 
     /* 3️⃣ Typography */
     --font-stack: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", system-ui, sans-serif;

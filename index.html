@@ -352,6 +352,37 @@
             }
         }
 
+        /* ── Type-scale utilities (index.html component overrides) ── */
+        /* Use these instead of inline font-size to keep sizing in CSS */
+        .text-sm {
+            font-size: 15px;
+        }
+
+        .text-xs {
+            font-size: 13px;
+        }
+
+        .text-quote {
+            font-size: 16px;
+        }
+
+        .text-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-tertiary);
+        }
+
+        .subheading-md {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .subheading-sm {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
         /* ═══════════════════════════════════════════════════════════
            CINEMATIC HERO — Editorial Background Treatment
            ═══════════════════════════════════════════════════════════ */
@@ -723,8 +754,7 @@
                         <div>
                             <div style="display: flex; align-items: center; gap: 8px;">
                                 <span class="app-row-dot" style="background: var(--accent-teal);"></span>
-                                <p class="metadata"
-                                    style="margin: 0; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-tertiary);">
+                                <p class="metadata subheading-md" style="margin: 0;">
                                     <span lang="en">Bricks Scan</span>
                                     <span lang="es" class="hidden">Bricks Scan</span>
                                 </p>
@@ -752,11 +782,11 @@
                                 style="width: 6px; height: 6px; border-radius: 50%; background: var(--accent-teal); margin-top: 8px; flex-shrink: 0;">
                             </div>
                             <div>
-                                <p class="subheading" style="font-size: 15px; margin: 0 0 4px;">
+                                <p class="subheading subheading-md" style="margin: 0 0 4px;">
                                     <span lang="en">Auto-Sort</span>
                                     <span lang="es" class="hidden">Auto-Sort</span>
                                 </p>
-                                <p class="body-text" style="font-size: 15px; margin: 0; color: var(--text-secondary);">
+                                <p class="body-text text-sm" style="margin: 0;">
                                     <span lang="en">Every file gets a clear name and the right folder. You
                                         don't decide.</span>
                                     <span lang="es" class="hidden">Cada archivo recibe un nombre claro y la carpeta
@@ -770,11 +800,11 @@
                                 style="width: 6px; height: 6px; border-radius: 50%; background: var(--accent-teal); margin-top: 8px; flex-shrink: 0;">
                             </div>
                             <div>
-                                <p class="subheading" style="font-size: 15px; margin: 0 0 4px;">
+                                <p class="subheading subheading-md" style="margin: 0 0 4px;">
                                     <span lang="en">Instant Search</span>
                                     <span lang="es" class="hidden">Búsqueda Instantánea</span>
                                 </p>
-                                <p class="body-text" style="font-size: 15px; margin: 0; color: var(--text-secondary);">
+                                <p class="body-text text-sm" style="margin: 0;">
                                     <span lang="en">Find any name, address, or clause inside any
                                         document.</span>
                                     <span lang="es" class="hidden">Encuentra nombres, direcciones o cláusulas dentro de
@@ -788,11 +818,11 @@
                                 style="width: 6px; height: 6px; border-radius: 50%; background: var(--accent-teal); margin-top: 8px; flex-shrink: 0;">
                             </div>
                             <div>
-                                <p class="subheading" style="font-size: 15px; margin: 0 0 4px;">
+                                <p class="subheading subheading-md" style="margin: 0 0 4px;">
                                     <span lang="en">Private by design</span>
                                     <span lang="es" class="hidden">Privado por diseño</span>
                                 </p>
-                                <p class="body-text" style="font-size: 15px; margin: 0; color: var(--text-secondary);">
+                                <p class="body-text text-sm" style="margin: 0;">
                                     <span lang="en">Processed on your iPhone. Nothing is uploaded.</span>
                                     <span lang="es" class="hidden">Procesado en tu iPhone. No se sube nada.</span>
                                 </p>
@@ -841,9 +871,8 @@
                             style="width: 48px; height: 48px; border-radius: 12px;">
                         <div>
                             <div style="display: flex; align-items: center; gap: 8px;">
-                                <span class="app-row-dot" style="background: #007AFF;"></span>
-                                <p class="metadata"
-                                    style="margin: 0; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-tertiary);">
+                                <span class="app-row-dot" style="background: var(--accent-blue);"></span>
+                                <p class="metadata subheading-md" style="margin: 0;">
                                     <span lang="en">Bricks Calc</span>
                                     <span lang="es" class="hidden">Bricks Calc</span>
                                 </p>
@@ -867,14 +896,14 @@
                         <div class="reveal-on-scroll delay-200 feature-trio-item"
                             style="display: flex; gap: 16px; align-items: flex-start;">
                             <div
-                                style="width: 6px; height: 6px; border-radius: 50%; background: #007AFF; margin-top: 8px; flex-shrink: 0;">
+                                style="width: 6px; height: 6px; border-radius: 50%; background: var(--accent-blue); margin-top: 8px; flex-shrink: 0;">
                             </div>
                             <div>
-                                <p class="subheading" style="font-size: 15px; margin: 0 0 4px;">
+                                <p class="subheading subheading-md" style="margin: 0 0 4px;">
                                     <span lang="en">Payment Calculator</span>
                                     <span lang="es" class="hidden">Calculadora de Cuotas</span>
                                 </p>
-                                <p class="body-text" style="font-size: 15px; margin: 0; color: var(--text-secondary);">
+                                <p class="body-text text-sm" style="margin: 0;">
                                     <span lang="en">Monthly payments, down payment, and amortization — fast and
                                         clear.</span>
                                     <span lang="es" class="hidden">Cuotas mensuales, enganche y amortización — rápido y
@@ -885,14 +914,14 @@
                         <div class="reveal-on-scroll delay-300 feature-trio-item"
                             style="display: flex; gap: 16px; align-items: flex-start;">
                             <div
-                                style="width: 6px; height: 6px; border-radius: 50%; background: #007AFF; margin-top: 8px; flex-shrink: 0;">
+                                style="width: 6px; height: 6px; border-radius: 50%; background: var(--accent-blue); margin-top: 8px; flex-shrink: 0;">
                             </div>
                             <div>
-                                <p class="subheading" style="font-size: 15px; margin: 0 0 4px;">
+                                <p class="subheading subheading-md" style="margin: 0 0 4px;">
                                     <span lang="en">Rate Scenarios</span>
                                     <span lang="es" class="hidden">Escenarios de Tasa</span>
                                 </p>
-                                <p class="body-text" style="font-size: 15px; margin: 0; color: var(--text-secondary);">
+                                <p class="body-text text-sm" style="margin: 0;">
                                     <span lang="en">Compare multiple rate and term options side by side.</span>
                                     <span lang="es" class="hidden">Compara múltiples tasas y plazos lado a lado.</span>
                                 </p>
@@ -901,14 +930,14 @@
                         <div class="reveal-on-scroll delay-400 feature-trio-item"
                             style="display: flex; gap: 16px; align-items: flex-start;">
                             <div
-                                style="width: 6px; height: 6px; border-radius: 50%; background: #007AFF; margin-top: 8px; flex-shrink: 0;">
+                                style="width: 6px; height: 6px; border-radius: 50%; background: var(--accent-blue); margin-top: 8px; flex-shrink: 0;">
                             </div>
                             <div>
-                                <p class="subheading" style="font-size: 15px; margin: 0 0 4px;">
+                                <p class="subheading subheading-md" style="margin: 0 0 4px;">
                                     <span lang="en">Built for client meetings</span>
                                     <span lang="es" class="hidden">Hecho para reuniones con clientes</span>
                                 </p>
-                                <p class="body-text" style="font-size: 15px; margin: 0; color: var(--text-secondary);">
+                                <p class="body-text text-sm" style="margin: 0;">
                                     <span lang="en">Works offline. Answers questions on the spot.</span>
                                     <span lang="es" class="hidden">Funciona sin internet. Responde preguntas al
                                         instante.</span>
@@ -942,9 +971,8 @@
                             style="width: 48px; height: 48px; border-radius: 12px;">
                         <div>
                             <div style="display: flex; align-items: center; gap: 8px;">
-                                <span class="app-row-dot" style="background: #FF9500;"></span>
-                                <p class="metadata"
-                                    style="margin: 0; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-tertiary);">
+                                <span class="app-row-dot" style="background: var(--accent-orange);"></span>
+                                <p class="metadata subheading-md" style="margin: 0;">
                                     <span lang="en">Bricks Leads</span>
                                     <span lang="es" class="hidden">Bricks Leads</span>
                                 </p>
@@ -968,14 +996,14 @@
                         <div class="reveal-on-scroll delay-200 feature-trio-item"
                             style="display: flex; gap: 16px; align-items: flex-start;">
                             <div
-                                style="width: 6px; height: 6px; border-radius: 50%; background: #FF9500; margin-top: 8px; flex-shrink: 0;">
+                                style="width: 6px; height: 6px; border-radius: 50%; background: var(--accent-orange); margin-top: 8px; flex-shrink: 0;">
                             </div>
                             <div>
-                                <p class="subheading" style="font-size: 15px; margin: 0 0 4px;">
+                                <p class="subheading subheading-md" style="margin: 0 0 4px;">
                                     <span lang="en">Client Tracking</span>
                                     <span lang="es" class="hidden">Gestión de Clientes</span>
                                 </p>
-                                <p class="body-text" style="font-size: 15px; margin: 0; color: var(--text-secondary);">
+                                <p class="body-text text-sm" style="margin: 0;">
                                     <span lang="en">Keep every lead, buyer, and seller organized and
                                         accessible.</span>
                                     <span lang="es" class="hidden">Mantén cada lead, comprador y vendedor organizado y
@@ -986,14 +1014,14 @@
                         <div class="reveal-on-scroll delay-300 feature-trio-item"
                             style="display: flex; gap: 16px; align-items: flex-start;">
                             <div
-                                style="width: 6px; height: 6px; border-radius: 50%; background: #FF9500; margin-top: 8px; flex-shrink: 0;">
+                                style="width: 6px; height: 6px; border-radius: 50%; background: var(--accent-orange); margin-top: 8px; flex-shrink: 0;">
                             </div>
                             <div>
-                                <p class="subheading" style="font-size: 15px; margin: 0 0 4px;">
+                                <p class="subheading subheading-md" style="margin: 0 0 4px;">
                                     <span lang="en">Follow-up Reminders</span>
                                     <span lang="es" class="hidden">Recordatorios de Seguimiento</span>
                                 </p>
-                                <p class="body-text" style="font-size: 15px; margin: 0; color: var(--text-secondary);">
+                                <p class="body-text text-sm" style="margin: 0;">
                                     <span lang="en">Never let a promising lead go cold. Stay on schedule.</span>
                                     <span lang="es" class="hidden">Nunca dejes enfriar un lead prometedor. Mantén el
                                         ritmo.</span>
@@ -1003,14 +1031,14 @@
                         <div class="reveal-on-scroll delay-400 feature-trio-item"
                             style="display: flex; gap: 16px; align-items: flex-start;">
                             <div
-                                style="width: 6px; height: 6px; border-radius: 50%; background: #FF9500; margin-top: 8px; flex-shrink: 0;">
+                                style="width: 6px; height: 6px; border-radius: 50%; background: var(--accent-orange); margin-top: 8px; flex-shrink: 0;">
                             </div>
                             <div>
-                                <p class="subheading" style="font-size: 15px; margin: 0 0 4px;">
+                                <p class="subheading subheading-md" style="margin: 0 0 4px;">
                                     <span lang="en">Apple-native</span>
                                     <span lang="es" class="hidden">Nativo en Apple</span>
                                 </p>
-                                <p class="body-text" style="font-size: 15px; margin: 0; color: var(--text-secondary);">
+                                <p class="body-text text-sm" style="margin: 0;">
                                     <span lang="en">Designed to feel like a system app. Fast, private, on your
                                         device.</span>
                                     <span lang="es" class="hidden">Diseñado para sentirse como una app del sistema.
@@ -1058,17 +1086,17 @@
                 <div class="privacy-card-wrapper reveal-on-scroll delay-100">
                     <div class="privacy-card center-text">
                         <div
-                            style="width: 56px; height: 56px; background:  rgba(0, 122, 255, 0.08); color: #007AFF; border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                            style="width: 56px; height: 56px; background:  color-mix(in srgb, var(--accent-blue) 8%, transparent); color: var(--accent-blue); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
                             <svg style="width: 28px; height: 28px;" fill="currentColor" viewBox="0 0 24 24">
                                 <path
                                     d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4m0 4a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3m5.13 12A9.05 9.05 0 0 1 12 19.93 9.05 9.05 0 0 1 6.87 17c.43-1.84 2.26-3 5.13-3s4.7 1.16 5.13 3Z" />
                             </svg>
                         </div>
-                        <h3 class="subheading" style="margin-bottom: 12px; font-size: 18px;">
+                        <h3 class="subheading subheading-md" style="margin-bottom: 12px;">
                             <span lang="en">On your device</span>
                             <span lang="es" class="hidden">En tu dispositivo</span>
                         </h3>
-                        <p class="body-text" style="font-size: 15px; margin: 0 auto;">
+                        <p class="body-text text-sm" style="margin: 0 auto;">
                             <span lang="en">Documents and data processed locally. No uploads. No account required to
                                 start.</span>
                             <span lang="es" class="hidden">Documentos y datos procesados en local. Sin subir nada. Sin
@@ -1084,11 +1112,11 @@
                             style="width: 56px; height: 56px; background: rgba(0, 199, 178, 0.08); color: var(--accent-teal); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
                             <img src="images/apple-icon.svg" alt="Apple Icon" style="width: 28px; height: 28px;">
                         </div>
-                        <h3 class="subheading" style="margin-bottom: 12px; font-size: 18px;">
+                        <h3 class="subheading subheading-md" style="margin-bottom: 12px;">
                             <span lang="en">Built for Apple</span>
                             <span lang="es" class="hidden">Construido para Apple</span>
                         </h3>
-                        <p class="body-text" style="font-size: 15px; margin: 0 auto;">
+                        <p class="body-text text-sm" style="margin: 0 auto;">
                             <span lang="en">Native apps for iPhone, iPad, and Mac. Designed to feel like they
                                 belong.</span>
                             <span lang="es" class="hidden">Apps nativas para iPhone, iPad y Mac. Diseñadas para sentirse
@@ -1101,17 +1129,17 @@
                 <div class="privacy-card-wrapper reveal-on-scroll delay-300">
                     <div class="privacy-card center-text">
                         <div
-                            style="width: 56px; height: 56px; background: rgba(255, 149, 0, 0.08); color: #FF9500; border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                            style="width: 56px; height: 56px; background: color-mix(in srgb, var(--accent-orange) 8%, transparent); color: var(--accent-orange); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
                             <svg style="width: 28px; height: 28px;" fill="currentColor" viewBox="0 0 24 24">
                                 <path
                                     d="M17.9 17.39c-.26-.8-1.01-1.39-1.9-1.39h-1v-3a1 1 0 0 0-1-1H8v-2h2a1 1 0 0 0 1-1V7h2a2 2 0 0 0 2-2v-.41a7.984 7.984 0 0 1 2.9 12.8M11 19.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1a2 2 0 0 0 2 2m1-16A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2Z" />
                             </svg>
                         </div>
-                        <h3 class="subheading" style="margin-bottom: 12px; font-size: 18px;">
+                        <h3 class="subheading subheading-md" style="margin-bottom: 12px;">
                             <span lang="en">One job per app</span>
                             <span lang="es" class="hidden">Un trabajo por app</span>
                         </h3>
-                        <p class="body-text" style="font-size: 15px; margin: 0 auto;">
+                        <p class="body-text text-sm" style="margin: 0 auto;">
                             <span lang="en">No bloat. No dashboards you don't need. Each tool solves one problem
                                 well.</span>
                             <span lang="es" class="hidden">Sin relleno. Sin paneles que no necesitas. Cada herramienta
@@ -1143,7 +1171,7 @@
                                 RA
                             </div>
                             <div>
-                                <div style="display: flex; gap: 4px; margin-bottom: 4px; color: #F59E0B;">
+                                <div style="display: flex; gap: 4px; margin-bottom: 4px; color: var(--accent-amber);">
                                     <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                                         <path
                                             d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
@@ -1165,13 +1193,13 @@
                                             d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                                     </svg>
                                 </div>
-                                <p class="metadata" style="margin: 0; font-weight: 500; font-size: 13px;">
+                                <p class="metadata text-xs" style="margin: 0; font-weight: 500;">
                                     <span lang="en">Real Estate Agent, Lima</span>
                                     <span lang="es" class="hidden">Agente Inmobiliario, Lima</span>
                                 </p>
                             </div>
                         </div>
-                        <p class="body-text quote" style="margin: 0; color: var(--text-primary); font-size: 16px;">
+                        <p class="body-text quote text-quote" style="margin: 0; color: var(--text-primary);">
                             <span lang="en">"I can find any disclosure or amendment in seconds. It removed a layer of
                                 stress from every deal."</span>
                             <span lang="es" class="hidden">"Puedo encontrar cualquier divulgación o enmienda en
@@ -1186,11 +1214,11 @@
                     <div class="privacy-card" style="padding: 32px">
                         <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
                             <div
-                                style="width: 48px; height: 48px; border-radius: 50%; background-color: rgba(0, 122, 255, 0.08); color: #007AFF; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 18px; border: 1px solid rgba(0, 122, 255, 0.2); flex-shrink: 0;">
+                                style="width: 48px; height: 48px; border-radius: 50%; background-color: color-mix(in srgb, var(--accent-blue) 8%, transparent); color: var(--accent-blue); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 18px; border: 1px solid color-mix(in srgb, var(--accent-blue) 20%, transparent); flex-shrink: 0;">
                                 BA
                             </div>
                             <div>
-                                <div style="display: flex; gap: 4px; margin-bottom: 4px; color: #F59E0B;">
+                                <div style="display: flex; gap: 4px; margin-bottom: 4px; color: var(--accent-amber);">
                                     <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                                         <path
                                             d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
@@ -1212,13 +1240,13 @@
                                             d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                                     </svg>
                                 </div>
-                                <p class="metadata" style="margin: 0; font-weight: 500; font-size: 13px;">
+                                <p class="metadata text-xs" style="margin: 0; font-weight: 500;">
                                     <span lang="en">Broker Associate, Lima</span>
                                     <span lang="es" class="hidden">Agente Asociado, Lima</span>
                                 </p>
                             </div>
                         </div>
-                        <p class="body-text quote" style="margin: 0; color: var(--text-primary); font-size: 16px;">
+                        <p class="body-text quote text-quote" style="margin: 0; color: var(--text-primary);">
                             <span lang="en">"The mortgage calculator alone saves time during client meetings."</span>
                             <span lang="es" class="hidden">"Solo la calculadora de hipotecas ahorra tiempo durante las
                                 reuniones con clientes."</span>
@@ -1231,11 +1259,11 @@
                     <div class="privacy-card" style="padding: 32px">
                         <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
                             <div
-                                style="width: 48px; height: 48px; border-radius: 50%; background-color: rgba(255, 149, 0, 0.08); color: #FF9500; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 18px; border: 1px solid rgba(255, 149, 0, 0.2); flex-shrink: 0;">
+                                style="width: 48px; height: 48px; border-radius: 50%; background-color: color-mix(in srgb, var(--accent-orange) 8%, transparent); color: var(--accent-orange); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 18px; border: 1px solid color-mix(in srgb, var(--accent-orange) 20%, transparent); flex-shrink: 0;">
                                 IA
                             </div>
                             <div>
-                                <div style="display: flex; gap: 4px; margin-bottom: 4px; color: #F59E0B;">
+                                <div style="display: flex; gap: 4px; margin-bottom: 4px; color: var(--accent-amber);">
                                     <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                                         <path
                                             d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
@@ -1257,13 +1285,13 @@
                                             d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                                     </svg>
                                 </div>
-                                <p class="metadata" style="margin: 0; font-weight: 500; font-size: 13px;">
+                                <p class="metadata text-xs" style="margin: 0; font-weight: 500;">
                                     <span lang="en">Independent Agent, Lima</span>
                                     <span lang="es" class="hidden">Agente Independiente, Lima</span>
                                 </p>
                             </div>
                         </div>
-                        <p class="body-text quote" style="margin: 0; color: var(--text-primary); font-size: 16px;">
+                        <p class="body-text quote text-quote" style="margin: 0; color: var(--text-primary);">
                             <span lang="en">"It feels like a system app made for real estate."</span>
                             <span lang="es" class="hidden">"Se siente como una aplicación del sistema creada para bienes
                                 raíces."</span>
@@ -1309,15 +1337,14 @@
                         style="display: flex; flex-direction: column; align-items: center; gap: 12px; text-decoration: none;">
                         <img src="images-bricks-scan/bricks-scan-web-icon.png" alt="Bricks Scan"
                             style="width: 52px; height: 52px; border-radius: 14px;">
-                        <p class="subheading" style="font-size: 15px; margin: 0; color: var(--text-primary);">Bricks
+                        <p class="subheading subheading-md" style="margin: 0;">Bricks
                             Scan</p>
-                        <p class="body-text"
-                            style="font-size: 13px; color: var(--text-secondary); margin: 0; text-align: center;">
+                        <p class="body-text text-xs" style="margin: 0; text-align: center;">
                             <span lang="en">Scan documents</span>
                             <span lang="es" class="hidden">Escanear documentos</span>
                         </p>
-                        <span
-                            style="font-size: 13px; font-weight: 600; color: var(--accent-teal); letter-spacing: -0.01em;">
+                        <span class="text-xs"
+                            style="font-weight: 600; color: var(--accent-teal); letter-spacing: -0.01em;">
                             <span lang="en">Explore →</span>
                             <span lang="es" class="hidden">Explorar →</span>
                         </span>
@@ -1330,14 +1357,14 @@
                         style="display: flex; flex-direction: column; align-items: center; gap: 12px; text-decoration: none;">
                         <img src="images/bricks-calc-web-icon.png" alt="Bricks Calc"
                             style="width: 52px; height: 52px; border-radius: 14px;">
-                        <p class="subheading" style="font-size: 15px; margin: 0; color: var(--text-primary);">Bricks
+                        <p class="subheading subheading-md" style="margin: 0;">Bricks
                             Calc</p>
-                        <p class="body-text"
-                            style="font-size: 13px; color: var(--text-secondary); margin: 0; text-align: center;">
+                        <p class="body-text text-xs" style="margin: 0; text-align: center;">
                             <span lang="en">Mortgage calculator</span>
                             <span lang="es" class="hidden">Calculadora hipotecaria</span>
                         </p>
-                        <span style="font-size: 13px; font-weight: 600; color: #007AFF; letter-spacing: -0.01em;">
+                        <span class="text-xs"
+                            style="font-weight: 600; color: var(--accent-blue); letter-spacing: -0.01em;">
                             <span lang="en">Explore →</span>
                             <span lang="es" class="hidden">Explorar →</span>
                         </span>
@@ -1350,14 +1377,14 @@
                         style="display: flex; flex-direction: column; align-items: center; gap: 12px; text-decoration: none;">
                         <img src="images/bricks-leads-web-icon.png" alt="Bricks Leads"
                             style="width: 52px; height: 52px; border-radius: 14px;">
-                        <p class="subheading" style="font-size: 15px; margin: 0; color: var(--text-primary);">Bricks
+                        <p class="subheading subheading-md" style="margin: 0;">Bricks
                             Leads</p>
-                        <p class="body-text"
-                            style="font-size: 13px; color: var(--text-secondary); margin: 0; text-align: center;">
+                        <p class="body-text text-xs" style="margin: 0; text-align: center;">
                             <span lang="en">CRM for real estate</span>
                             <span lang="es" class="hidden">CRM para bienes raíces</span>
                         </p>
-                        <span style="font-size: 13px; font-weight: 600; color: #FF9500; letter-spacing: -0.01em;">
+                        <span class="text-xs"
+                            style="font-weight: 600; color: var(--accent-orange); letter-spacing: -0.01em;">
                             <span lang="en">Explore →</span>
                             <span lang="es" class="hidden">Explorar →</span>
                         </span>
@@ -1386,7 +1413,7 @@
                         <img src="images/bricks-dark-logo.svg" onerror="this.src='images/bricks-light-logo.svg'"
                             alt="Bricks Logo" style="height: 32px; opacity: 0.8" />
                     </a>
-                    <p class="body-text" style="font-size: 15px">
+                    <p class="body-text text-sm">
                         <span lang="en">Focused apps for real estate agents on Apple.</span>
                         <span lang="es" class="hidden">Apps enfocadas para agentes inmobiliarios en Apple.</span>
                     </p>
@@ -1419,7 +1446,7 @@
                         ">
                     <!-- Apps Section -->
                     <div>
-                        <h3 class="subheading" style="font-size: 16px; margin-bottom: 16px">
+                        <h3 class="subheading subheading-sm" style="margin-bottom: 16px;">
                             <span lang="en">Apps</span>
                             <span lang="es" class="hidden">Apps</span>
                         </h3>
@@ -1432,20 +1459,19 @@
                                     gap: 12px;
                                 ">
                             <li>
-                                <a href="bricks-scan.html" class="body-text footer-nav-link" style="font-size: 15px">
+                                <a href="bricks-scan.html" class="body-text footer-nav-link text-sm">
                                     <span lang="en">Bricks Scan</span>
                                     <span lang="es" class="hidden">Bricks Scan</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="bricks-calc.html" class="body-text footer-nav-link" style="font-size: 15px">
+                                <a href="bricks-calc.html" class="body-text footer-nav-link text-sm">
                                     <span lang="en">Bricks Calc</span>
                                     <span lang="es" class="hidden">Bricks Calc</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="https://leads.bricks.pe" class="body-text footer-nav-link"
-                                    style="font-size: 15px">
+                                <a href="https://leads.bricks.pe" class="body-text footer-nav-link text-sm">
                                     <span lang="en">Bricks Leads</span>
                                     <span lang="es" class="hidden">Bricks Leads</span>
                                 </a>
@@ -1455,7 +1481,7 @@
 
                     <!-- Company Section -->
                     <div>
-                        <h3 class="subheading" style="font-size: 16px; margin-bottom: 16px">
+                        <h3 class="subheading subheading-sm" style="margin-bottom: 16px;">
                             <span lang="en">Company</span>
                             <span lang="es" class="hidden">Empresa</span>
                         </h3>
@@ -1468,21 +1494,19 @@
                                     gap: 12px;
                                 ">
                             <li>
-                                <a href="about.html" class="body-text footer-nav-link" style="font-size: 15px">
+                                <a href="about.html" class="body-text footer-nav-link text-sm">
                                     <span lang="en">About us</span>
                                     <span lang="es" class="hidden">Sobre nosotros</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="purchase-guide-01.html" class="body-text footer-nav-link"
-                                    style="font-size: 15px">
+                                <a href="purchase-guide-01.html" class="body-text footer-nav-link text-sm">
                                     <span lang="en">Purchase Guide</span>
                                     <span lang="es" class="hidden">Guía de compra</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="mailto:hello@bricks.pe" class="body-text footer-nav-link"
-                                    style="font-size: 15px">
+                                <a href="mailto:hello@bricks.pe" class="body-text footer-nav-link text-sm">
                                     <span lang="en">Email: hello@bricks.pe</span>
                                     <span lang="es" class="hidden">Email: hello@bricks.pe</span>
                                 </a>
@@ -1492,7 +1516,7 @@
 
                     <!-- Support Section -->
                     <div>
-                        <h3 class="subheading" style="font-size: 16px; margin-bottom: 16px">
+                        <h3 class="subheading subheading-sm" style="margin-bottom: 16px;">
                             <span lang="en">Support</span>
                             <span lang="es" class="hidden">Soporte</span>
                         </h3>
@@ -1505,26 +1529,25 @@
                                     gap: 12px;
                                 ">
                             <li>
-                                <a href="support.html" class="body-text footer-nav-link" style="font-size: 15px;">
+                                <a href="support.html" class="body-text footer-nav-link text-sm">
                                     <span lang="en">Contact</span>
                                     <span lang="es" class="hidden">Contacto</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="https://bricksapps.userjot.com" class="body-text footer-nav-link"
-                                    style="font-size: 15px;">
+                                <a href="https://bricksapps.userjot.com" class="body-text footer-nav-link text-sm">
                                     <span lang="en">Vote on Features</span>
                                     <span lang="es" class="hidden">Votar funciones</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="help.html" class="body-text footer-nav-link" style="font-size: 15px;">
+                                <a href="help.html" class="body-text footer-nav-link text-sm">
                                     <span lang="en">Apps Guides</span>
                                     <span lang="es" class="hidden">Guías</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="survey.html" class="body-text footer-nav-link" style="font-size: 15px">
+                                <a href="survey.html" class="body-text footer-nav-link text-sm">
                                     <span lang="en">Survey</span>
                                     <span lang="es" class="hidden">Encuesta</span>
                                 </a>
