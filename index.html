@@ -358,24 +358,53 @@
 
         /* Slow-drift Ken Burns — just enough movement to feel alive */
         @keyframes idx-hero-pan {
-            from { transform: scale(1.06) translate(0, 0); }
-            to   { transform: scale(1.06) translate(-1.4%, -0.7%); }
+            from {
+                transform: scale(1.06) translate(0, 0);
+            }
+
+            to {
+                transform: scale(1.06) translate(-1.4%, -0.7%);
+            }
         }
 
         /* Film grain animation */
         @keyframes idx-grain-drift {
-            0%   { transform: translate(0px,  0px); }
-            20%  { transform: translate(-3px,  4px); }
-            40%  { transform: translate( 4px, -2px); }
-            60%  { transform: translate(-2px, -4px); }
-            80%  { transform: translate( 3px,  2px); }
-            100% { transform: translate(0px,  0px); }
+            0% {
+                transform: translate(0px, 0px);
+            }
+
+            20% {
+                transform: translate(-3px, 4px);
+            }
+
+            40% {
+                transform: translate(4px, -2px);
+            }
+
+            60% {
+                transform: translate(-2px, -4px);
+            }
+
+            80% {
+                transform: translate(3px, 2px);
+            }
+
+            100% {
+                transform: translate(0px, 0px);
+            }
         }
 
         /* Light-leak breath */
         @keyframes idx-leak-breathe {
-            0%, 100% { opacity: 0.10; }
-            50%       { opacity: 0.18; }
+
+            0%,
+            100% {
+                opacity: 0.10;
+            }
+
+            50% {
+                opacity: 0.18;
+            }
         }
 
         /* ── Hero photo ──────────────────────────────────────────── */
@@ -457,23 +486,23 @@
         /* ── Cursor glow — intensify for dark field ──────────────── */
         .section-hero .hero-cursor-glow {
             background: radial-gradient(circle,
-                rgba(0, 166, 161, 0.14) 0%,
-                transparent 65%);
+                    rgba(0, 166, 161, 0.14) 0%,
+                    transparent 65%);
             z-index: 1;
         }
 
         /* ── Dot grid — light dots on dark field ────────────────── */
         .section-hero .hero-dot-grid {
             background-image: radial-gradient(circle 1px at 1px 1px,
-                rgba(255, 255, 255, 0.16) 1px,
-                transparent 0);
+                    rgba(255, 255, 255, 0.16) 1px,
+                    transparent 0);
             background-size: 28px 28px;
             opacity: 0.5;
             z-index: 1;
             -webkit-mask-image: radial-gradient(ellipse 300px 300px at var(--dot-x, 50%) var(--dot-y, 50%),
-                black 0%, transparent 100%);
+                    black 0%, transparent 100%);
             mask-image: radial-gradient(ellipse 300px 300px at var(--dot-x, 50%) var(--dot-y, 50%),
-                black 0%, transparent 100%);
+                    black 0%, transparent 100%);
         }
 
         /* ── Typography on dark hero field ──────────────────────── */
@@ -498,11 +527,11 @@
             border-color: rgba(255, 255, 255, 0.14);
             box-shadow: none;
             background: linear-gradient(135deg,
-                rgba(255, 255, 255, 0.05) 0%,
-                rgba(255, 255, 255, 0.05) 40%,
-                rgba(0, 199, 178, 0.20) 50%,
-                rgba(255, 255, 255, 0.05) 60%,
-                rgba(255, 255, 255, 0.05) 100%);
+                    rgba(255, 255, 255, 0.05) 0%,
+                    rgba(255, 255, 255, 0.05) 40%,
+                    rgba(0, 199, 178, 0.20) 50%,
+                    rgba(255, 255, 255, 0.05) 60%,
+                    rgba(255, 255, 255, 0.05) 100%);
             background-size: 400% auto;
         }
 
@@ -512,9 +541,11 @@
                 animation: none !important;
                 transform: scale(1.0) !important;
             }
+
             .hero-grain {
                 animation: none !important;
             }
+
             .hero-bg::after {
                 animation: none !important;
             }
@@ -589,7 +620,7 @@
     <!-- ═══════════════════════════════════════════════════════════ -->
     <section class="section section-hero">
         <div class="hero-bg" aria-hidden="true">
-            <img class="hero-bg-image" src="images/hero-image.png" alt="" draggable="false">
+            <img class="hero-bg-image" src="images/hero-image.jpg" alt="" draggable="false">
         </div>
         <div class="hero-grain" aria-hidden="true"></div>
         <div class="hero-cursor-glow" aria-hidden="true"></div>
@@ -1207,7 +1238,7 @@
     <!-- ═══════════════════════════════════════════════════════════ -->
     <section class="section section-hero">
         <div class="hero-bg" aria-hidden="true">
-            <img class="hero-bg-image" src="images/hero-image.png" alt="" draggable="false">
+            <img class="hero-bg-image" src="images/hero-image-top.jpg" alt="" draggable="false">
         </div>
         <div class="hero-grain" aria-hidden="true"></div>
         <div class="hero-cursor-glow" aria-hidden="true"></div>
@@ -1219,9 +1250,11 @@
                     <span lang="es" class="hidden">Empieza con una. Usa las tres.</span>
                 </h2>
                 <p class="body-text mb-sm reveal-on-scroll delay-100">
-                    <span lang="en">Each Bricks app removes one friction from your day. Free to start, private by design,
+                    <span lang="en">Each Bricks app removes one friction from your day. Free to start, private by
+                        design,
                         native on Apple.</span>
-                    <span lang="es" class="hidden">Cada app de Bricks elimina una fricción de tu día. Gratis para empezar,
+                    <span lang="es" class="hidden">Cada app de Bricks elimina una fricción de tu día. Gratis para
+                        empezar,
                         privado por diseño, nativo en Apple.</span>
                 </p>
             </div>
