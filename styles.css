@@ -287,7 +287,7 @@ a:hover {
         text-align: center;
     }
 
-    .hero-grid .feature-trio-item > div:first-child {
+    .hero-grid .feature-trio-item>div:first-child {
         margin-top: 0 !important;
         margin-bottom: 4px;
     }
@@ -1053,7 +1053,7 @@ a:hover {
     width: 100%;
     height: auto;
     object-fit: contain;
-    border-radius: var(--r3-primary);
+    border-radius: var(--r2-inner);
     display: block;
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
 }
