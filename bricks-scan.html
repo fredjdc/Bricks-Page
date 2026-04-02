@@ -779,8 +779,8 @@
                 style="width: 64px; height: 64px; margin: 0 auto 16px; display: block" loading="lazy" />
 
             <h2 class="section-title reveal-on-scroll">
-                <span lang="en">Most scanner apps stop at the scan.<br />Bricks Scan keeps going.</span>
-                <span lang="es" class="hidden">La mayoría de apps de escaneo se queda en el escaneo.<br />Bricks Scan
+                <span lang="en">Most scanner apps stop at the scan. Bricks Scan keeps going.</span>
+                <span lang="es" class="hidden">La mayoría de apps de escaneo se queda en el escaneo. Bricks Scan
                     sigue.</span>
             </h2>
 
@@ -1201,6 +1201,16 @@
                                 { opacity: 0, y: 12, rotateX: 0 },
                                 { opacity: 1, y: 0, duration: 0.45, ease: 'power2.out', clearProps: 'transform' }
                             );
+                            const frame = document.querySelector('.feature-frame');
+                            if (frame) {
+                                gsap.fromTo(frame,
+                                    { scale: 1 },
+                                    {
+                                        scale: 1.02, duration: 0.15, ease: 'power2.out',
+                                        yoyo: true, repeat: 1, clearProps: 'scale'
+                                    }
+                                );
+                            }
                         } else {
                             currentImg.classList.add('img-entering');
                             requestAnimationFrame(() => requestAnimationFrame(() => {
@@ -1358,6 +1368,23 @@
                 }
 
                 // ═══════════════════════════════════════════
+                // 1b. HERO DOT-GRID PARALLAX
+                // ═══════════════════════════════════════════
+                const dotGrid = document.querySelector('.section-hero .hero-dot-grid');
+                if (dotGrid) {
+                    gsap.to(dotGrid, {
+                        y: () => -window.innerHeight * 0.3,
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: '.section-hero',
+                            start: 'top top',
+                            end: 'bottom top',
+                            scrub: true,
+                        }
+                    });
+                }
+
+                // ═══════════════════════════════════════════
                 // 2. STICKY COLUMN ENTRANCE (ScrollTrigger)
                 // ═══════════════════════════════════════════
                 const stickyCol = document.getElementById('featureStickyCol');
@@ -1392,13 +1419,12 @@
                 panels.forEach((panel, i) => {
                     const copy = panel.querySelector('.feature-panel-copy');
                     const img = panel.querySelector('.feature-panel-screen-mobile');
-                    const targets = [copy, img].filter(Boolean);
+                    // On desktop, the image is hidden so we don't animate it (avoids hidden element layout thrashing)
+                    const targets = isMobile ? [copy, img].filter(Boolean) : [copy].filter(Boolean);
                     const isLast = i === panels.length - 1;
 
                     if (isMobile) {
                         // ── Mobile: entrance only, no exit ──
-                        // Panels fade/slide in and stay visible. No exit animation
-                        // since the sticky-image-swap UI isn't present on mobile.
                         gsap.fromTo(targets, {
                             opacity: 0,
                             y: 36,
@@ -1432,6 +1458,7 @@
                             opacity: 0,
                             rotateX: -10,
                             y: 36,
+                            transformPerspective: 900
                         }, {
                             opacity: 1,
                             rotateX: 0,
@@ -1479,8 +1506,24 @@
                     });
                 });
 
+                // ── Post-entrance parallax drift ──
+                privacyCards.forEach((card, i) => {
+                    // Middle card (index 1) drifts slower; outer cards drift more
+                    const yOffset = i === 1 ? 20 : 40;
+                    gsap.to(card, {
+                        y: -yOffset,
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: '.privacy-section',
+                            start: 'top bottom',
+                            end: 'bottom top',
+                            scrub: true,
+                        }
+                    });
+                });
+
                 // ═══════════════════════════════════════════
-                // 5. COMPARISON TABLE ROWS (stagger reveal)
+                // 5. COMPARISON TABLE ROWS (sequential fade-in)
                 // ═══════════════════════════════════════════
                 const tableRows = document.querySelectorAll('.gsap-table-row');
                 if (tableRows.length) {
@@ -1491,9 +1534,9 @@
                             gsap.to(batch, {
                                 opacity: 1,
                                 y: 0,
-                                duration: 0.6,
+                                duration: 0.5,
                                 ease: 'power2.out',
-                                stagger: 0.08,
+                                stagger: 0.06,
                                 overwrite: true
                             });
                         },
@@ -1501,6 +1544,51 @@
                         once: true
                     });
                 }
+
+                // ═══════════════════════════════════════════
+                // 8. SECTION TITLES — WORD-BY-WORD STAGGER
+                // ═══════════════════════════════════════════
+                document.querySelectorAll('.section-title').forEach(title => {
+                    // Skip if already processed or is a GSAP CTA element
+                    if (title.classList.contains('words-split') || title.classList.contains('gsap-cta-el')) return;
+
+                    title.querySelectorAll(':scope > span[lang]').forEach(langSpan => {
+                        const html = langSpan.innerHTML;
+                        // Split on word boundaries, preserving <br> tags
+                        langSpan.innerHTML = html
+                            .replace(/<br\s*\/?>/gi, '⌊BR⌋')
+                            .split(/\s+/)
+                            .map(word => `<span class="word-reveal">${word}</span>`)
+                            .join(' ')
+                            .replace(/⌊BR⌋/g, '<br>');
+                    });
+
+                    title.classList.add('words-split');
+
+                    // Remove the reveal-on-scroll class so it doesn't conflict
+                    title.classList.remove('reveal-on-scroll');
+                    title.style.opacity = '1';
+                    title.style.transform = 'none';
+
+                    const words = title.querySelectorAll('.word-reveal');
+                    if (words.length) {
+                        gsap.set(words, { opacity: 0, y: 18 });
+                        ScrollTrigger.batch(words, {
+                            onEnter: (batch) => {
+                                gsap.to(batch, {
+                                    opacity: 1,
+                                    y: 0,
+                                    duration: 0.5,
+                                    ease: 'power2.out',
+                                    stagger: 0.04,
+                                    overwrite: true
+                                });
+                            },
+                            start: 'top 88%',
+                            once: true
+                        });
+                    }
+                });
 
                 // ═══════════════════════════════════════════
                 // 6. TEAL-CHECK PULSE (GSAP stagger)

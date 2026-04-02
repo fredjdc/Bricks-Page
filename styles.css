@@ -504,6 +504,12 @@ a:hover {
     opacity: 1;
 }
 
+/* Word-by-word stagger reveal for section titles */
+.word-reveal {
+    display: inline-block;
+    will-change: transform, opacity;
+}
+
 /* ── Scroll Progress Bar ──────────────────────────────── */
 #scroll-progress {
     position: fixed;
@@ -1053,7 +1059,7 @@ a:hover {
     width: 100%;
     height: auto;
     object-fit: contain;
-    border-radius: var(--r2-inner);
+    border-radius: var(--r3-primary);
     display: block;
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
 }
@@ -2610,6 +2616,7 @@ a:hover {
     width: 100%;
     max-width: 300px;
     position: relative;
+    will-change: transform;
 }
 
 .feature-screen-img {
