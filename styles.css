@@ -631,7 +631,7 @@ a:hover {
 .hero-app-icon {
     width: 72px;
     height: 72px;
-    border-radius: 18px;
+    border-radius: var(--r2-inner);
     box-shadow: 4px 6px 16px var(--surface-shadow), -2px -2px 6px #ffffff;
     transform: translateY(20px) scale(0.95) rotate(-2deg);
     opacity: 0;
@@ -697,7 +697,7 @@ a:hover {
     width: 0;
     height: 3px;
     background: var(--accent);
-    border-radius: 2px;
+    border-radius: var(--r1-small);
     margin: 20px 0 0;
     transition: width 1.2s var(--ease-out-expo);
 }
@@ -728,7 +728,7 @@ a:hover {
 .value-card {
     background: var(--bg-secondary);
     border: 1px solid var(--depth-plane);
-    border-radius: 20px;
+    border-radius: var(--r2-inner);
     padding: 36px 28px;
     text-align: center;
     box-shadow: 4px 6px 16px var(--surface-shadow), -2px -2px 6px #ffffff;
@@ -774,7 +774,7 @@ a:hover {
 .desktop-app-banner-icon {
     width: 40px;
     height: 40px;
-    border-radius: 10px;
+    border-radius: var(--r1-small);
 }
 
 .desktop-app-banner-title {
@@ -795,7 +795,7 @@ a:hover {
     padding: 8px 16px;
     background: var(--accent);
     color: #ffffff;
-    border-radius: 20px;
+    border-radius: var(--r2-inner);
     font-size: 13px;
     font-weight: 600;
     text-decoration: none;
