@@ -1908,6 +1908,7 @@ a:hover {
 .section-hero .container {
     position: relative;
     z-index: 2;
+    width: 100%;
 }
 
 .grid-3:hover .ecosystem-card:not(:hover),

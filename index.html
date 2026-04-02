@@ -351,6 +351,172 @@
                 box-shadow: var(--emboss-raised) !important;
             }
         }
+
+        /* ═══════════════════════════════════════════════════════════
+           CINEMATIC HERO — Editorial Background Treatment
+           ═══════════════════════════════════════════════════════════ */
+
+        /* Slow-drift Ken Burns — just enough movement to feel alive */
+        @keyframes idx-hero-pan {
+            from { transform: scale(1.06) translate(0, 0); }
+            to   { transform: scale(1.06) translate(-1.4%, -0.7%); }
+        }
+
+        /* Film grain animation */
+        @keyframes idx-grain-drift {
+            0%   { transform: translate(0px,  0px); }
+            20%  { transform: translate(-3px,  4px); }
+            40%  { transform: translate( 4px, -2px); }
+            60%  { transform: translate(-2px, -4px); }
+            80%  { transform: translate( 3px,  2px); }
+            100% { transform: translate(0px,  0px); }
+        }
+
+        /* Light-leak breath */
+        @keyframes idx-leak-breathe {
+            0%, 100% { opacity: 0.10; }
+            50%       { opacity: 0.18; }
+        }
+
+        /* ── Hero photo ──────────────────────────────────────────── */
+        .hero-bg-image {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 28%;
+            transform: scale(1.06);
+            animation: idx-hero-pan 30s ease-in-out infinite alternate;
+            will-change: transform;
+            /* Desaturate + darken for editorial restraint */
+            filter: saturate(0.72) brightness(0.62) contrast(1.08);
+            pointer-events: none;
+            user-select: none;
+        }
+
+        /* ── Cinematic overlay stack (overrides global ambient) ──── */
+        .section-hero::before {
+            /* Layered from bottom up: bottom lift → top seal → vignette → cool grade → brand bloom */
+            background:
+                linear-gradient(to top,
+                    rgba(4, 8, 14, 0.92) 0%,
+                    rgba(4, 8, 14, 0.52) 26%,
+                    transparent 54%),
+                linear-gradient(to bottom,
+                    rgba(4, 8, 14, 0.55) 0%,
+                    transparent 20%),
+                radial-gradient(ellipse 90% 100% at 50% 50%,
+                    transparent 28%,
+                    rgba(4, 8, 14, 0.52) 100%),
+                linear-gradient(122deg,
+                    rgba(0, 12, 22, 0.20) 0%,
+                    transparent 52%),
+                radial-gradient(ellipse 52% 48% at 80% 16%,
+                    rgba(0, 166, 161, 0.08) 0%,
+                    transparent 72%);
+            animation: none !important;
+            z-index: 1;
+        }
+
+        /* ── Kill global hero-bg backdrop blur on this page ─────── */
+        .hero-bg::before {
+            -webkit-backdrop-filter: none !important;
+            backdrop-filter: none !important;
+            background: none !important;
+        }
+
+        /* ── Cinematic light leak — upper-left teal bleed ──────── */
+        .hero-bg::after {
+            background:
+                radial-gradient(ellipse 38% 58% at -4% 2%,
+                    rgba(0, 166, 161, 0.16) 0%,
+                    transparent 70%);
+            animation: idx-leak-breathe 14s ease-in-out infinite !important;
+            inset: 0;
+            z-index: 2;
+        }
+
+        /* ── Film grain overlay ──────────────────────────────────── */
+        .hero-grain {
+            position: absolute;
+            inset: -50%;
+            width: 200%;
+            height: 200%;
+            background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.70' numOctaves='4' stitchTiles='stitch'/></filter><rect width='256' height='256' filter='url(%23g)' opacity='1'/></svg>");
+            background-repeat: repeat;
+            background-size: 192px 192px;
+            opacity: 0.032;
+            pointer-events: none;
+            user-select: none;
+            z-index: 10;
+            mix-blend-mode: overlay;
+            animation: idx-grain-drift 7s steps(3) infinite;
+        }
+
+        /* ── Cursor glow — intensify for dark field ──────────────── */
+        .section-hero .hero-cursor-glow {
+            background: radial-gradient(circle,
+                rgba(0, 166, 161, 0.14) 0%,
+                transparent 65%);
+            z-index: 1;
+        }
+
+        /* ── Dot grid — light dots on dark field ────────────────── */
+        .section-hero .hero-dot-grid {
+            background-image: radial-gradient(circle 1px at 1px 1px,
+                rgba(255, 255, 255, 0.16) 1px,
+                transparent 0);
+            background-size: 28px 28px;
+            opacity: 0.5;
+            z-index: 1;
+            -webkit-mask-image: radial-gradient(ellipse 300px 300px at var(--dot-x, 50%) var(--dot-y, 50%),
+                black 0%, transparent 100%);
+            mask-image: radial-gradient(ellipse 300px 300px at var(--dot-x, 50%) var(--dot-y, 50%),
+                black 0%, transparent 100%);
+        }
+
+        /* ── Typography on dark hero field ──────────────────────── */
+        .section-hero .hero-title {
+            color: rgba(255, 255, 255, 0.97);
+            text-shadow: 0 2px 32px rgba(0, 0, 0, 0.28);
+        }
+
+        .section-hero .body-text {
+            color: rgba(255, 255, 255, 0.64);
+        }
+
+        .section-hero .hero-accent-line {
+            background: rgba(0, 199, 178, 0.55);
+        }
+
+        /* ── Suite badge adapted for dark field ──────────────────── */
+        .section-hero .suite-badge {
+            color: rgba(255, 255, 255, 0.65);
+            border-color: rgba(255, 255, 255, 0.14);
+            box-shadow: none;
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.05) 0%,
+                rgba(255, 255, 255, 0.05) 40%,
+                rgba(0, 199, 178, 0.20) 50%,
+                rgba(255, 255, 255, 0.05) 60%,
+                rgba(255, 255, 255, 0.05) 100%);
+            background-size: 400% auto;
+        }
+
+        /* ── Reduced motion ──────────────────────────────────────── */
+        @media (prefers-reduced-motion: reduce) {
+            .hero-bg-image {
+                animation: none !important;
+                transform: scale(1.0) !important;
+            }
+            .hero-grain {
+                animation: none !important;
+            }
+            .hero-bg::after {
+                animation: none !important;
+            }
+        }
     </style>
 
 </head>
@@ -420,7 +586,10 @@
     <!-- Hero Section                                               -->
     <!-- ═══════════════════════════════════════════════════════════ -->
     <section class="section section-hero">
-        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="hero-bg" aria-hidden="true">
+            <img class="hero-bg-image" src="images/hero-image.png" alt="" draggable="false">
+        </div>
+        <div class="hero-grain" aria-hidden="true"></div>
         <div class="hero-cursor-glow" aria-hidden="true"></div>
         <div class="hero-dot-grid" aria-hidden="true"></div>
         <div class="container hero-grid">
@@ -1043,21 +1212,22 @@
     <!-- Final CTA — Three-App Suite Close                          -->
     <!-- ═══════════════════════════════════════════════════════════ -->
     <section class="section section-hero">
-        <div class="container reading-column center-text">
-            <h2 class="section-title reveal-on-scroll">
-                <span lang="en">Start with one. Use all three.</span>
-                <span lang="es" class="hidden">Empieza con una. Usa las tres.</span>
-            </h2>
-            <p class="body-text mb-sm reveal-on-scroll delay-100">
-                <span lang="en">Each Bricks app removes one friction from your day. Free to start, private by design,
-                    native on Apple.</span>
-                <span lang="es" class="hidden">Cada app de Bricks elimina una fricción de tu día. Gratis para empezar,
-                    privado por diseño, nativo en Apple.</span>
-            </p>
+        <div class="container">
+            <div class="reading-column center-text">
+                <h2 class="section-title reveal-on-scroll">
+                    <span lang="en">Start with one. Use all three.</span>
+                    <span lang="es" class="hidden">Empieza con una. Usa las tres.</span>
+                </h2>
+                <p class="body-text mb-sm reveal-on-scroll delay-100">
+                    <span lang="en">Each Bricks app removes one friction from your day. Free to start, private by design,
+                        native on Apple.</span>
+                    <span lang="es" class="hidden">Cada app de Bricks elimina una fricción de tu día. Gratis para empezar,
+                        privado por diseño, nativo en Apple.</span>
+                </p>
+            </div>
 
             <!-- Three app CTA cards -->
-            <div class="reveal-on-scroll delay-200"
-                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-top: 48px; max-width: 640px; margin-left: auto; margin-right: auto;">
+            <div class="testimonials-grid reveal-on-scroll delay-200">
 
                 <!-- Bricks Scan -->
                 <div class="privacy-card-wrapper">
