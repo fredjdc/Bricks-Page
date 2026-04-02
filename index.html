@@ -550,6 +550,65 @@
                 animation: none !important;
             }
         }
+
+        /* ═══════════════════════════════════════════════════════════
+           FINAL CTA — Frosted Light Treatment
+           Overrides the cinematic dark treatment for the closing section.
+           ═══════════════════════════════════════════════════════════ */
+
+        /* Photo: lighter, blurred, no movement — ambient texture only */
+        .section-hero--frosted .hero-bg-image {
+            filter: saturate(0.80) brightness(0.94) contrast(1.0) blur(20px);
+            /* Scale up to prevent blur edge artifacts at container boundary */
+            transform: scale(1.10);
+            animation: none;
+        }
+
+        /* Overlay: replace dark cinematic stack with a soft light veil */
+        .section-hero--frosted::before {
+            background:
+                linear-gradient(to bottom,
+                    rgba(246, 247, 248, 0.76) 0%,
+                    rgba(246, 247, 248, 0.64) 100%);
+            animation: none !important;
+        }
+
+        /* Kill the teal light leak — not right for a light field */
+        .section-hero--frosted .hero-bg::after {
+            background: none !important;
+            animation: none !important;
+        }
+
+        /* Dot grid — dark dots on light field */
+        .section-hero--frosted .hero-dot-grid {
+            background-image: radial-gradient(circle 1px at 1px 1px,
+                    rgba(0, 0, 0, 0.10) 1px,
+                    transparent 0);
+            opacity: 0.45;
+        }
+
+        /* Cursor glow — subtler on light field */
+        .section-hero--frosted .hero-cursor-glow {
+            background: radial-gradient(circle,
+                    rgba(0, 166, 161, 0.06) 0%,
+                    transparent 65%);
+        }
+
+        /* Grain — barely visible on light */
+        .section-hero--frosted .hero-grain {
+            opacity: 0.016;
+        }
+
+        /* Typography — revert to dark for light field */
+        .section-hero--frosted .hero-title,
+        .section-hero--frosted .section-title {
+            color: var(--text-primary);
+            text-shadow: none;
+        }
+
+        .section-hero--frosted .body-text {
+            color: var(--text-secondary);
+        }
     </style>
 
 </head>
@@ -596,23 +655,6 @@
                     alt="Bricks Logo" style="height: 24px;" class="header-logo-img">
             </a>
         </div>
-        <nav style="display: flex; align-items: center; justify-content: flex-end; gap: 24px;">
-            <a href="bricks-scan.html" class="body-text footer-nav-link"
-                style="font-size: 15px; font-weight: 500; margin: 0;">
-                <span lang="en">Bricks Scan</span>
-                <span lang="es" class="hidden">Bricks Scan</span>
-            </a>
-            <a href="bricks-calc.html" class="body-text footer-nav-link"
-                style="font-size: 15px; font-weight: 500; margin: 0;">
-                <span lang="en">Bricks Calc</span>
-                <span lang="es" class="hidden">Bricks Calc</span>
-            </a>
-            <a href="https://leads.bricks.pe" class="body-text footer-nav-link"
-                style="font-size: 15px; font-weight: 500; margin: 0;">
-                <span lang="en">Bricks Leads</span>
-                <span lang="es" class="hidden">Bricks Leads</span>
-            </a>
-        </nav>
     </header>
 
     <!-- ═══════════════════════════════════════════════════════════ -->
@@ -632,7 +674,6 @@
                     <span lang="es" class="hidden">Escanea documentos.<br>Calcula hipotecas.<br>Gestiona
                         clientes.</span>
                 </h1>
-                <span class="hero-accent-line reveal-on-scroll delay-100"></span>
                 <p class="body-text reveal-on-scroll delay-200" style="margin-top: 24px; max-width: 440px;">
                     <span lang="en">Three focused apps for real estate agents on Apple. Each one built to remove a
                         specific operational burden from your day.</span>
@@ -1236,7 +1277,7 @@
     <!-- ═══════════════════════════════════════════════════════════ -->
     <!-- Final CTA — Three-App Suite Close                          -->
     <!-- ═══════════════════════════════════════════════════════════ -->
-    <section class="section section-hero">
+    <section class="section section-hero section-hero--frosted">
         <div class="hero-bg" aria-hidden="true">
             <img class="hero-bg-image" src="images/hero-image-top.jpg" alt="" draggable="false">
         </div>
@@ -1249,7 +1290,7 @@
                     <span lang="en">Start with one. Use all three.</span>
                     <span lang="es" class="hidden">Empieza con una. Usa las tres.</span>
                 </h2>
-                <p class="body-text mb-sm reveal-on-scroll delay-100">
+                <p class="body-text mb-sm reveal-on-scroll delay-100" style="color: var(--text-secondary);">
                     <span lang="en">Each Bricks app removes one friction from your day. Free to start, private by
                         design,
                         native on Apple.</span>
