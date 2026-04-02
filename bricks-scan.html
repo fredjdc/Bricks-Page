@@ -1381,56 +1381,75 @@
                 }
 
                 // ═══════════════════════════════════════════
-                // 3. FEATURE PANEL 3D ENTRANCE + EXIT (single timeline per panel)
+                // 3. FEATURE PANEL 3D ENTRANCE + EXIT
+                // Desktop: single timeline per panel (entrance → exit) avoids competing tweens.
+                // Mobile (≤900px): entrance only — no exit, panels stay visible.
                 // ═══════════════════════════════════════════
                 const panels = document.querySelectorAll('.feature-panel[data-feature-index]');
+                const isMobile = window.matchMedia('(max-width: 900px)').matches;
+
                 panels.forEach((panel, i) => {
                     const copy = panel.querySelector('.feature-panel-copy');
                     const img = panel.querySelector('.feature-panel-screen-mobile');
                     const targets = [copy, img].filter(Boolean);
                     const isLast = i === panels.length - 1;
 
-                    // Entrance: animate from hidden → visible
-                    // Uses fromTo so the "resting" (progress=1) state is always fully visible.
-                    // toggleActions 'play reverse play reverse' ensures it reverses properly on scroll-up.
-                    gsap.fromTo(targets, {
-                        opacity: 0,
-                        rotateX: -10,
-                        y: 36,
-                    }, {
-                        opacity: 1,
-                        rotateX: 0,
-                        y: 0,
-                        stagger: 0.08,
-                        ease: 'power2.out',
-                        scrollTrigger: {
-                            trigger: panel,
-                            start: 'top 85%',
-                            end: 'top 40%',
-                            scrub: 0.5,
-                        }
-                    });
-
-                    // Exit animation (skip for last panel — it should stay visible)
-                    if (!isLast) {
+                    if (isMobile) {
+                        // ── Mobile: entrance only, no exit ──
+                        // Panels fade/slide in and stay visible. No exit animation
+                        // since the sticky-image-swap UI isn't present on mobile.
                         gsap.fromTo(targets, {
+                            opacity: 0,
+                            y: 36,
+                        }, {
+                            opacity: 1,
+                            y: 0,
+                            stagger: 0.08,
+                            ease: 'power2.out',
+                            scrollTrigger: {
+                                trigger: panel,
+                                start: 'top 90%',
+                                end: 'top 55%',
+                                scrub: 0.5,
+                            }
+                        });
+                    } else {
+                        // ── Desktop: single timeline with entrance + exit ──
+                        // Using a single timeline avoids two separate tweens competing
+                        // on the same properties (opacity, rotateX, y) with overwrite conflicts.
+                        const tl = gsap.timeline({
+                            scrollTrigger: {
+                                trigger: panel,
+                                start: 'top 85%',
+                                end: isLast ? 'top 40%' : 'bottom 10%',
+                                scrub: 0.5,
+                            }
+                        });
+
+                        // Entrance phase
+                        tl.fromTo(targets, {
+                            opacity: 0,
+                            rotateX: -10,
+                            y: 36,
+                        }, {
                             opacity: 1,
                             rotateX: 0,
                             y: 0,
-                        }, {
-                            opacity: 0,
-                            rotateX: 8,
-                            y: -24,
-                            ease: 'power2.in',
-                            immediateRender: false,
-                            overwrite: 'auto',
-                            scrollTrigger: {
-                                trigger: panel,
-                                start: 'bottom 40%',
-                                end: 'bottom 10%',
-                                scrub: 0.4,
-                            }
+                            stagger: 0.08,
+                            ease: 'power2.out',
+                            duration: 0.4,
                         });
+
+                        // Exit phase (skip for last panel — it stays visible)
+                        if (!isLast) {
+                            tl.to(targets, {
+                                opacity: 0,
+                                rotateX: 8,
+                                y: -24,
+                                ease: 'power2.in',
+                                duration: 0.3,
+                            }, '>0.3'); // hold visible briefly before exiting
+                        }
                     }
                 });
 
