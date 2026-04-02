@@ -477,12 +477,14 @@
         }
 
         /* ── Typography on dark hero field ──────────────────────── */
-        .section-hero .hero-title {
+        .section-hero .hero-title,
+        .section-hero .section-title {
             color: rgba(255, 255, 255, 0.97);
             text-shadow: 0 2px 32px rgba(0, 0, 0, 0.28);
         }
 
-        .section-hero .body-text {
+        .section-hero .hero-content .body-text,
+        .section-hero .reading-column .body-text {
             color: rgba(255, 255, 255, 0.64);
         }
 
@@ -1204,9 +1206,15 @@
     <!-- Final CTA — Three-App Suite Close                          -->
     <!-- ═══════════════════════════════════════════════════════════ -->
     <section class="section section-hero">
+        <div class="hero-bg" aria-hidden="true">
+            <img class="hero-bg-image" src="images/hero-image.png" alt="" draggable="false">
+        </div>
+        <div class="hero-grain" aria-hidden="true"></div>
+        <div class="hero-cursor-glow" aria-hidden="true"></div>
+        <div class="hero-dot-grid" aria-hidden="true"></div>
         <div class="container">
             <div class="reading-column center-text">
-                <h2 class="section-title reveal-on-scroll">
+                <h2 class="section-title hero-title reveal-on-scroll">
                     <span lang="en">Start with one. Use all three.</span>
                     <span lang="es" class="hidden">Empieza con una. Usa las tres.</span>
                 </h2>
