@@ -17,5 +17,6 @@ Canonical website documentation now lives in `Bricks-Documentation`.
 
 | File | Purpose |
 |---|---|
+| [CONTRIBUTING.md](./CONTRIBUTING.md) | Local contributor routing and rules |
 | [local-setup.md](./local-setup.md) | Repo-specific setup and run steps |
 | [repo-map.md](./repo-map.md) | Fast map of the site structure |
