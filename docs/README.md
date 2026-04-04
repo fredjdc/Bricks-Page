@@ -1,21 +1,21 @@
-# Bricks Website — Engineering Docs
+# Bricks Website Local Docs
 
-Engineering documentation for the Bricks marketing website at bricks.pe.
+This folder is for repo-specific workflow docs only.
 
-Product and brand context lives in `Bricks-Documentation/website/` and `Bricks-Documentation/brand/`.
+Canonical website documentation now lives in `Bricks-Documentation`.
 
----
+## Canonical Docs
 
-## Contents
-
-| File | Contents |
+| Topic | Canonical file |
 |---|---|
-| [dev-guide.md](./dev-guide.md) | Site structure, pages, conventions, deployment |
+| Website overview | [`Bricks-Documentation/apps/bricks-website/product/overview.md`](../../Bricks-Documentation/apps/bricks-website/product/overview.md) |
+| Development guide | [`Bricks-Documentation/apps/bricks-website/engineering/dev-guide.md`](../../Bricks-Documentation/apps/bricks-website/engineering/dev-guide.md) |
+| Brand foundation | [`Bricks-Documentation/shared/brand/brand-foundation.md`](../../Bricks-Documentation/shared/brand/brand-foundation.md) |
+| Brand system | [`Bricks-Documentation/shared/brand/brand-system.md`](../../Bricks-Documentation/shared/brand/brand-system.md) |
 
----
+## Local Docs
 
-## Cross-App Standards
-
-Brand and visual system:
-- [`Bricks-Documentation/brand/brand-foundation.md`](../Bricks-Documentation/brand/brand-foundation.md)
-- [`Bricks-Documentation/brand/brand-system.md`](../Bricks-Documentation/brand/brand-system.md)
+| File | Purpose |
+|---|---|
+| [local-setup.md](./local-setup.md) | Repo-specific setup and run steps |
+| [repo-map.md](./repo-map.md) | Fast map of the site structure |

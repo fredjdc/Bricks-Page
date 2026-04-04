@@ -8,10 +8,10 @@ Bricks Page is the static marketing website for Bricks Apps at bricks.pe. It con
 
 Before editing any web content, read these:
 
-1. [`Bricks-Documentation/website/overview.md`](../Bricks-Documentation/website/overview.md) — what the site covers
-2. [`Bricks-Documentation/brand/brand-foundation.md`](../Bricks-Documentation/brand/brand-foundation.md) — brand voice and personality
-3. [`Bricks-Documentation/brand/brand-system.md`](../Bricks-Documentation/brand/brand-system.md) — visual system, colors, typography
-4. [`docs/dev-guide.md`](./docs/dev-guide.md) — site structure and deployment
+1. [`Bricks-Documentation/apps/bricks-website/product/overview.md`](../Bricks-Documentation/apps/bricks-website/product/overview.md) — what the site covers
+2. [`Bricks-Documentation/shared/brand/brand-foundation.md`](../Bricks-Documentation/shared/brand/brand-foundation.md) — brand voice and personality
+3. [`Bricks-Documentation/shared/brand/brand-system.md`](../Bricks-Documentation/shared/brand/brand-system.md) — visual system, colors, typography
+4. [`Bricks-Documentation/apps/bricks-website/engineering/dev-guide.md`](../Bricks-Documentation/apps/bricks-website/engineering/dev-guide.md) — site structure and deployment
 
 ---
 
@@ -29,12 +29,12 @@ Before editing any web content, read these:
 
 - Do not use hardcoded hex colors — reference CSS custom properties or the values defined in brand-system.md.
 - Do not introduce JavaScript frameworks (React, Vue, etc.) — the site uses vanilla JS.
-- Do not add copy that contradicts product positioning — check `Bricks-Documentation/bricks-[product]/positioning.md` before writing product descriptions.
+- Do not add copy that contradicts product positioning — check `Bricks-Documentation/apps/[product]/product/positioning.md` before writing product descriptions.
 
 ---
 
 ## Product & Brand Context
 
-For brand voice: [`Bricks-Documentation/brand/brand-foundation.md`](../Bricks-Documentation/brand/brand-foundation.md)
+For brand voice: [`Bricks-Documentation/shared/brand/brand-foundation.md`](../Bricks-Documentation/shared/brand/brand-foundation.md)
 
-For product positioning: [`Bricks-Documentation/bricks-scan/positioning.md`](../Bricks-Documentation/bricks-scan/positioning.md), [`Bricks-Documentation/bricks-calc/positioning.md`](../Bricks-Documentation/bricks-calc/positioning.md)
+For product positioning: [`Bricks-Documentation/apps/bricks-scan/product/positioning.md`](../Bricks-Documentation/apps/bricks-scan/product/positioning.md), [`Bricks-Documentation/apps/bricks-calc/product/positioning.md`](../Bricks-Documentation/apps/bricks-calc/product/positioning.md)
