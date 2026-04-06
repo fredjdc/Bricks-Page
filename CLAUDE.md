@@ -34,6 +34,30 @@ Before editing any web content, read these:
 
 ---
 
+## Documentation Requirement
+
+Documentation is part of the deliverable. The task is not complete until code and relevant documentation are aligned.
+
+When implementation changes behavior, structure, workflow, or limits:
+
+- Identify the affected canonical docs in `Bricks-Documentation`.
+- Update those canonical docs in the same pass.
+- Update local `docs/` files only when repo-specific workflow changed.
+- Add new canonical docs only if they fit the approved structure, then update `docs-manifest.yaml` and `documentation-backlog.md` in the same pass.
+- Never leave new behavior undocumented.
+- Never move a doc to `active`. At most, move it to `needs-review`.
+- If no docs need changes, state why explicitly.
+
+Update docs when changes affect any of:
+
+- user-facing behavior or feature scope
+- architecture, state ownership, or persistence
+- setup, testing, or release workflow
+- support guidance, limits, or pricing-related behavior
+- AI routing or agent instructions
+
+---
+
 ## Product & Brand Context
 
 For brand voice: [`Bricks-Documentation/shared/brand/brand-foundation.md`](../Bricks-Documentation/shared/brand/brand-foundation.md)
