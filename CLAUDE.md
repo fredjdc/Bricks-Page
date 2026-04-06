@@ -1,6 +1,6 @@
 # Bricks Page — Claude Context
 
-Bricks Page is the static marketing website for Bricks Apps at bricks.pe. It contains product pages for Bricks Scan, Bricks Calc, and Bricks Leads, plus legal, support, and help pages. No build system — pure HTML, CSS, and JavaScript.
+Bricks Page is the static public web surface for Bricks Apps. Its primary domain is `bricks.pe`, with related `leads.bricks.pe` routes used by some Bricks Leads landing and thank-you flows. It contains product pages for Bricks Scan, Bricks Calc, and Bricks Leads, plus legal, support, help, and supporting marketing pages. No build system — pure HTML, CSS, and JavaScript.
 
 ---
 
@@ -11,7 +11,7 @@ Before editing any web content, read these:
 1. [`Bricks-Documentation/apps/bricks-website/product/overview.md`](../Bricks-Documentation/apps/bricks-website/product/overview.md) — what the site covers
 2. [`Bricks-Documentation/shared/brand/brand-foundation.md`](../Bricks-Documentation/shared/brand/brand-foundation.md) — brand voice and personality
 3. [`Bricks-Documentation/shared/brand/brand-system.md`](../Bricks-Documentation/shared/brand/brand-system.md) — visual system, colors, typography
-4. [`Bricks-Documentation/apps/bricks-website/engineering/dev-guide.md`](../Bricks-Documentation/apps/bricks-website/engineering/dev-guide.md) — site structure and deployment
+4. [`Bricks-Documentation/apps/bricks-website/engineering/dev-guide.md`](../Bricks-Documentation/apps/bricks-website/engineering/dev-guide.md) — site structure, routing, and deployment
 5. [`docs/README.md`](./docs/README.md) — local setup and site map
 
 ---
@@ -23,6 +23,7 @@ Before editing any web content, read these:
 - **No new frameworks or build tools** — the site is intentionally simple. No npm, no bundlers, no CSS preprocessors.
 - **Update sitemap.xml when adding pages** — keep the sitemap accurate for SEO.
 - **Never modify apple-app-site-association without coordination** — this file controls universal links for all Bricks apps on iOS/macOS.
+- **Treat `purrfect-yarn.html` as a non-core exception** — it is not part of the canonical Bricks website surface and should not be used as a pattern source for core pages.
 
 ---
 

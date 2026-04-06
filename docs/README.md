@@ -13,8 +13,6 @@ Canonical website documentation now lives in `Bricks-Documentation`.
 | Brand foundation | [`Bricks-Documentation/shared/brand/brand-foundation.md`](../../Bricks-Documentation/shared/brand/brand-foundation.md) |
 | Brand system | [`Bricks-Documentation/shared/brand/brand-system.md`](../../Bricks-Documentation/shared/brand/brand-system.md) |
 
-TODO: [Docs Drift Audit] The repo includes `purrfect-yarn.html` as a live standalone product page with its own Tailwind CDN and Google Fonts stack, but the canonical website overview still frames the site mainly around Bricks product pages and shared static assets. Queue a writer pass to decide whether Purrfect Yarn stays in scope and document its runtime/deployment boundaries explicitly.
-
 ## Local Docs
 
 | File | Purpose |
