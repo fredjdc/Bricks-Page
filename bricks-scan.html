@@ -316,7 +316,60 @@
             animation: bs-check-pulse 0.55s var(--ease-spring) forwards;
         }
 
-        /* ── 10. FOOTER NAV ANIMATED UNDERLINE ───────────── */
+        /* ── 10. TESTIMONY SECTION ───────────────────────── */
+        .scan-testimony-card {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 36px;
+            text-align: left;
+        }
+
+        .scan-testimony-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: rgba(0, 199, 178, 0.08);
+            border: 1px solid rgba(0, 199, 178, 0.18);
+            color: var(--accent-teal);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.08em !important;
+            text-transform: uppercase;
+        }
+
+        .scan-testimony-summary {
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid var(--divider);
+        }
+
+        .scan-testimony-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .scan-testimony-tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 12px;
+            border-radius: 999px;
+            border: 1px solid var(--depth-plane);
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            font-size: 13px;
+            line-height: 1.3;
+        }
+
+        @media (max-width: 767px) {
+            .scan-testimony-card {
+                padding: 28px;
+            }
+        }
+
+        /* ── 11. FOOTER NAV ANIMATED UNDERLINE ───────────── */
         .footer-nav-link {
             position: relative;
             display: inline-block;
@@ -892,7 +945,69 @@
         </div>
     </section>
 
-    <!-- 5. Final CTA Section -->
+    <!-- 5. Testimony Section -->
+    <section class="section section-alt" style="border-top: 1px solid var(--divider); border-bottom: 1px solid var(--divider);">
+        <div class="container reading-column center-text">
+            <h2 class="section-title reveal-on-scroll">
+                <span lang="en">A document solved on the spot.</span>
+                <span lang="es" class="hidden">Un documento resuelto en el momento.</span>
+            </h2>
+
+            <p class="body-text mb-sm reveal-on-scroll delay-100" style="margin-left: auto; margin-right: auto">
+                <span lang="en">One user needed a signed authorization letter immediately. Bricks Scan helped them finish it nearby and avoid making the trip again.</span>
+                <span lang="es" class="hidden">Un usuario necesitaba una carta de autorización firmada en ese momento. Bricks Scan le ayudó a terminarla cerca y a evitar perder el viaje.</span>
+            </p>
+        </div>
+
+        <div class="container">
+            <div class="testimonials-grid" style="max-width: 860px; margin: 48px auto 0;">
+                <div class="reveal-on-scroll delay-200">
+                    <div class="privacy-card testimonial scan-testimony-card">
+                        <p class="scan-testimony-eyebrow" style="margin: 0 0 20px;">
+                            <span lang="en">User testimony</span>
+                            <span lang="es" class="hidden">Testimonio de usuario</span>
+                        </p>
+
+                        <blockquote style="margin: 0;">
+                            <p class="body-text quote" style="margin: 0; max-width: none; color: var(--text-primary);">
+                                <span lang="en">"I was at the embassy to pick up my father's passport when they told me I needed a signed authorization letter from him. He wasn't with me and isn't tech savvy. He sent me a photo of his signature on paper, I added it to the letter in Bricks Scan, printed it nearby, and solved it on the spot. It saved me from wasting the trip and starting over."</span>
+                                <span lang="es" class="hidden">"Estaba en la embajada para recoger el pasaporte de mi papá cuando me dijeron que necesitaba una carta de autorización firmada por él. No estaba conmigo y no es muy hábil con la tecnología. Me envió una foto de su firma en papel, la añadí a la carta en Bricks Scan, la imprimí cerca y lo resolví en el momento. Me evitó perder el viaje y empezar de nuevo."</span>
+                            </p>
+                        </blockquote>
+
+                        <div class="scan-testimony-summary">
+                            <p class="body-text" style="font-size: 16px; margin: 0; max-width: none;">
+                                <span lang="en">The value was simple: extract the signature, place it on the letter, and export a clean document ready to print.</span>
+                                <span lang="es" class="hidden">El valor fue simple: extraer la firma, colocarla en la carta y exportar un documento limpio, listo para imprimir.</span>
+                            </p>
+
+                            <div class="scan-testimony-tags">
+                                <span class="scan-testimony-tag">
+                                    <span lang="en">Signature from paper</span>
+                                    <span lang="es" class="hidden">Firma desde papel</span>
+                                </span>
+                                <span class="scan-testimony-tag">
+                                    <span lang="en">Placed on document</span>
+                                    <span lang="es" class="hidden">Colocada en el documento</span>
+                                </span>
+                                <span class="scan-testimony-tag">
+                                    <span lang="en">Ready to print</span>
+                                    <span lang="es" class="hidden">Lista para imprimir</span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <p class="metadata" style="margin: 20px 0 0; font-weight: 500;">
+                            <span lang="en">Shared by a Bricks Scan user.</span>
+                            <span lang="es" class="hidden">Compartido por un usuario de Bricks Scan.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Final CTA Section -->
     <section class="section section-padding-large">
         <div class="container reading-column center-text">
             <h2 class="section-title gsap-cta-el reveal-on-scroll" style="font-size: 40px">
