@@ -41,6 +41,10 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="scripts.js" defer></script>
 
+    <!-- GSAP + ScrollTrigger (Free Tier) -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js" defer></script>
+
     <!-- App Store Meta App CLip
         <meta name="apple-itunes-app" content="app-id=6744432658, app-clip-bundle-id=com.bricks.bricksapp.Clip" /> -->
 
@@ -107,9 +111,11 @@
         </style>
     </noscript>
 </head>
-</head>
 
 <body class="min-h-screen">
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress" aria-hidden="true"></div>
+
     <!-- Desktop App Banner (shown on macOS browsers only) -->
     <div id="desktop-app-banner" class="desktop-app-banner" style="display: none;">
         <div class="desktop-app-banner-content">
@@ -157,8 +163,8 @@
     <!-- End Google Tag Manager (noscript) -->
 
     <!-- Cookie Consent Banner -->
-    <div id="cookie-consent-banner"
-        style="display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg-primary); padding: 24px; z-index: 50; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; box-shadow: 0 -4px 16px var(--surface-shadow); border-top: 1px solid var(--depth-plane);">
+    <div id="cookie-consent-banner" role="region" aria-label="Cookie Consent"
+        style="display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg-primary); padding: 24px; z-index: 101; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; box-shadow: 0 -4px 16px var(--surface-shadow); border-top: 1px solid var(--depth-plane);">
         <div>
             <p class="body-text" style="font-size: 14px; margin: 0;">
                 <span lang="en">We use cookies to analyze site usage and improve your experience. May we collect
@@ -178,32 +184,46 @@
             </button>
         </div>
     </div>
+
     <!-- Header / Nav -->
     <header class="container site-header">
         <div class="logo">
             <a href="index.html" class="flex items-center" style="display: flex; align-items: center;">
-                <!-- Reverting back to standard logo styling without white filter -->
                 <img src="images/bricks-dark-logo.svg" onerror="this.src='images/bricks-light-logo.svg'"
-                    alt="Bricks Apps" style="height: 24px;" />
+                    alt="Bricks Logo" style="height: 24px;" class="header-logo-img" />
             </a>
         </div>
         <div style="display: flex; align-items: center; gap: 12px;">
             <a href="https://apps.apple.com/app/id6754506837" class="btn btn-primary">
+                <svg aria-hidden="true" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                    style="width:16px;height:16px;fill:currentColor;margin-right:7px;flex-shrink:0;vertical-align:middle;position:relative;top:-0.5px">
+                    <path
+                        d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.46 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701" />
+                </svg>
                 <span lang="es">Descargar</span>
                 <span lang="en" class="hidden">Download</span>
             </a>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="section section-hero hero">
+    <!-- 1. Hero Section -->
+    <section id="waitlist" class="section section-hero">
         <div class="hero-bg" aria-hidden="true"></div>
+        <div class="hero-cursor-glow" aria-hidden="true"></div>
+        <div class="hero-dot-grid" aria-hidden="true"></div>
         <div class="container hero-grid">
             <div class="hero-content">
+
+                <p class="app-store-badge reveal-on-scroll" aria-label="Available on the App Store">
+                    <span lang="es">Disponible en App Store ↗</span>
+                    <span lang="en" class="hidden">Available on App Store ↗</span>
+                </p>
+
                 <h1 class="hero-title reveal-on-scroll">
-                    <span lang="es">Modela escenarios hipotecarios. Al instante.</span>
-                    <span lang="en" class="hidden">Model mortgage scenarios. On the spot.</span>
+                    <span lang="es">Modela escenarios<br />hipotecarios.<br />Al instante.</span>
+                    <span lang="en" class="hidden">Model mortgage<br />scenarios.<br />On the spot.</span>
                 </h1>
+
                 <p class="body-text reveal-on-scroll delay-100">
                     <span lang="es">Calcula pagos, compara tasas y muestra opciones a tus clientes — durante la reunión,
                         no después.</span>
@@ -211,137 +231,90 @@
                         during the meeting, not after.</span>
                 </p>
 
-                <div class="hero-trust-badge reveal-on-scroll delay-200"
-                    style="display: flex; align-items: center; justify-content: flex-start; gap: 6px; margin-top: 16px; margin-bottom: 12px; color: var(--text-tertiary); font-size: 13px; font-weight: 500;">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                        style="width: 14px; height: 14px; opacity: 0.8;">
-                        <path fill-rule="evenodd"
-                            d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z"
-                            clip-rule="evenodd" />
-                    </svg>
-                    <span lang="es">Privado por diseño. Sin recolección de datos.</span>
-                    <span lang="en" class="hidden">Private by design. No data collection.</span>
-                </div>
-                <div class="cta-group reveal-on-scroll delay-200"
-                    style="display: flex; flex-direction: column; align-items: flex-start; gap: 16px;">
-                    <div style="display: flex; align-items: center; gap: 16px;">
-                        <a id="app_store_download_button" href="https://apps.apple.com/app/id6754506837"
-                            class="btn btn-primary">
-
-                            <span lang="es">Descargar en App Store</span>
-                            <span lang="en" class="hidden">Download on the App Store</span>
-                        </a>
-
-                        <!-- Desktop QR Code -->
-                        <div class="desktop-qr hidden md:flex"
-                            style="align-items: center; gap: 12px; background: var(--surface-secondary); padding: 8px; border-radius: var(--r1-small); border: 1px solid var(--surface-shadow);">
-                            <div
-                                style="width: 40px; height: 40px; background: var(--bg-primary); border-radius: var(--r1-small); display: flex; align-items: center; justify-content: center; border: 1px solid var(--surface-shadow);">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor"
-                                    style="width: 24px; height: 24px; color: var(--text-primary);">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M3.75 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 013.75 9.375v-4.5zM3.75 14.625c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 01-1.125-1.125v-4.5zM13.5 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0113.5 9.375v-4.5z" />
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M6.75 6.75h.75v.75h-.75v-.75zM6.75 16.5h.75v.75h-.75v-.75zM16.5 6.75h.75v.75h-.75v-.75zM13.5 13.5h.75v.75h-.75v-.75zM13.5 19.5h.75v.75h-.75v-.75zM19.5 13.5h.75v.75h-.75v-.75zM19.5 19.5h.75v.75h-.75v-.75zM16.5 16.5h.75v.75h-.75v-.75z" />
-                                </svg>
-                            </div>
-                            <div style="display: flex; flex-direction: column; align-items: flex-start;">
-                                <span class="body-text"
-                                    style="font-size: 13px; line-height: 1.2; font-weight: 600; color: var(--text-primary);">
-                                    <span lang="es">¿Visitas desde tu PC?</span>
-                                    <span lang="en" class="hidden">Visiting from a PC?</span>
-                                </span>
-                                <span class="body-text"
-                                    style="font-size: 12px; line-height: 1.2; color: var(--text-tertiary);">
-                                    <span lang="es">Escanea para descargar</span>
-                                    <span lang="en" class="hidden">Scan to download</span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="body-text" style="font-size: 13px; color: var(--text-tertiary); margin: 0;">
-                        <span lang="es">Gratis. Sin cuenta obligatoria.</span>
-                        <span lang="en" class="hidden">Free to download. No account required.</span>
+                <div class="cta-group reveal-on-scroll delay-200" style="flex-direction: column;">
+                    <a id="app_store_download_button" href="https://apps.apple.com/app/id6754506837"
+                        class="btn btn-primary">
+                        <svg aria-hidden="true" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                            style="width:16px;height:16px;fill:currentColor;margin-right:7px;flex-shrink:0;vertical-align:middle;position:relative;top:-0.5px">
+                            <path
+                                d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.46 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701" />
+                        </svg>
+                        <span lang="es">Descargar en App Store</span>
+                        <span lang="en" class="hidden">Download on the App Store</span>
+                    </a>
+                    <p class="body-text" style="font-size: 13px; color: var(--text-tertiary); margin-top: 12px;">
+                        <span lang="es">Gratis para empezar. Sin cuenta obligatoria.</span>
+                        <span lang="en" class="hidden">Free to start. No account required.</span>
                     </p>
                 </div>
             </div>
 
-            <!-- Interactive Hero Artwork -->
-            <div class="hero-artwork reveal-on-scroll delay-200" aria-hidden="true" data-app-parallax>
-                <img src="images/back-layer-es-03.png" alt="" class="hero-layer layer-back"
-                    data-app-image="bricks-calc-hero-layer-back" data-parallax-depth="0.3">
-                <img src="images/mid-layer-es-02.png" alt="" class="hero-layer layer-middle"
-                    data-app-image="bricks-calc-hero-layer-middle" data-parallax-depth="0.6">
-                <img src="images/top-layer-es-01.png" alt="" class="hero-layer layer-front"
-                    data-app-image="bricks-calc-hero-layer-front" data-parallax-depth="0.9">
-                <div class="soft-glow-underlay"></div>
+            <div class="hero-image-wrapper reveal-on-scroll delay-300">
+                <video autoplay loop muted playsinline class="hero-img"
+                    poster="images-bricks-calc/hero-video-img-es.png" lang="es">
+                    <source src="images-bricks-calc/hero-video-es.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <video autoplay loop muted playsinline class="hero-img hidden"
+                    poster="images-bricks-calc/hero-video-img-en.png" lang="en">
+                    <source src="images-bricks-calc/hero-video-en.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
             </div>
         </div>
     </section>
 
-    <!-- Problem & Value -->
     <section class="section section-alt">
         <div class="container reading-column center-text">
             <h2 class="section-title reveal-on-scroll">
                 <span lang="es">Hecho para conversaciones con clientes.</span>
                 <span lang="en" class="hidden">Built for deal conversations.</span>
             </h2>
-            <div class="problem-content mt-sm reveal-on-scroll delay-100">
-                <ul class="body-text"
-                    style="list-style: none; padding: 0; margin: 0 auto; max-width: 600px; display: flex; flex-direction: column; gap: 16px; text-align: left;">
-                    <li style="display: flex; align-items: flex-start; gap: 12px;">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                            stroke="currentColor"
-                            style="width: 20px; height: 20px; color: var(--text-primary); flex-shrink: 0; margin-top: 2px;">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                        </svg>
-                        <span>
-                            <strong style="color: var(--text-primary);">
-                                <span lang="es">Sin planillas:</span>
-                                <span lang="en" class="hidden">No spreadsheets:</span>
-                            </strong>
-                            <span lang="es" style="color: var(--text-secondary);">Abre Bricks Calc mientras el cliente
-                                está frente a ti.</span>
-                            <span lang="en" class="hidden" style="color: var(--text-secondary);">Open Bricks Calc while
-                                the client is sitting with you.</span>
-                        </span>
-                    </li>
-                    <li style="display: flex; align-items: flex-start; gap: 12px;">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                            stroke="currentColor"
-                            style="width: 20px; height: 20px; color: var(--text-primary); flex-shrink: 0; margin-top: 2px;">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                        </svg>
-                        <span>
-                            <strong style="color: var(--text-primary);">
-                                <span lang="es">Escenarios en vivo:</span>
-                                <span lang="en" class="hidden">Live scenarios:</span>
-                            </strong>
-                            <span lang="es" style="color: var(--text-secondary);">Cambia tasas, plazos y montos en
-                                segundos.</span>
-                            <span lang="en" class="hidden" style="color: var(--text-secondary);">Adjust rates, terms,
-                                and amounts in seconds.</span>
-                        </span>
-                    </li>
-                    <li style="display: flex; align-items: flex-start; gap: 12px;">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                            stroke="currentColor"
-                            style="width: 20px; height: 20px; color: var(--text-primary); flex-shrink: 0; margin-top: 2px;">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                        </svg>
-                        <span>
-                            <strong style="color: var(--text-primary);">
-                                <span lang="es">Comparación lado a lado:</span>
-                                <span lang="en" class="hidden">Side-by-side comparison:</span>
-                            </strong>
-                            <span lang="es" style="color: var(--text-secondary);">Muestra opciones con claridad, no con
-                                aproximaciones.</span>
-                            <span lang="en" class="hidden" style="color: var(--text-secondary);">Show clients real
-                                options clearly, not rough estimates.</span>
-                        </span>
-                    </li>
-                </ul>
+        </div>
+        <div class="container privacy-grid mt-md">
+            <!-- Card 1 -->
+            <div class="privacy-card-wrapper reveal-on-scroll delay-100">
+                <div class="privacy-card center-text">
+                    <img src="images/checkmark.svg" alt="Check" class="checkmark-icon" style="margin: 0 auto 16px; display: block" />
+                    <h3 class="subheading" style="font-size: 18px">
+                        <span lang="es">Sin planillas</span>
+                        <span lang="en" class="hidden">No spreadsheets</span>
+                    </h3>
+                    <p class="body-text" style="font-size: 15px; margin: 0 auto">
+                        <span lang="es">Abre Bricks Calc mientras el cliente está frente a ti.</span>
+                        <span lang="en" class="hidden">Open Bricks Calc while the client is sitting with you.</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="privacy-card-wrapper reveal-on-scroll delay-200">
+                <div class="privacy-card center-text">
+                    <img src="images/checkmark.svg" alt="Check" class="checkmark-icon" style="margin: 0 auto 16px; display: block" />
+                    <h3 class="subheading" style="font-size: 18px">
+                        <span lang="es">Escenarios en vivo</span>
+                        <span lang="en" class="hidden">Live scenarios</span>
+                    </h3>
+                    <p class="body-text" style="font-size: 15px; margin: 0 auto">
+                        <span lang="es">Cambia tasas, plazos y montos en segundos.</span>
+                        <span lang="en" class="hidden">Adjust rates, terms, and amounts in seconds.</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="privacy-card-wrapper reveal-on-scroll delay-300">
+                <div class="privacy-card center-text">
+                    <img src="images/checkmark.svg" alt="Check" class="checkmark-icon" style="margin: 0 auto 16px; display: block" />
+                    <h3 class="subheading" style="font-size: 18px">
+                        <span lang="es">Comparación rápida</span>
+                        <span lang="en" class="hidden">Quick comparison</span>
+                    </h3>
+                    <p class="body-text" style="font-size: 15px; margin: 0 auto">
+                        <span lang="es">Muestra opciones con claridad, no con aproximaciones.</span>
+                        <span lang="en" class="hidden">Show clients real options clearly, not rough estimates.</span>
+                    </p>
+                </div>
             </div>
         </div>
     </section>
@@ -358,66 +331,65 @@
                 <span lang="en" class="hidden">What it does in a meeting.</span>
             </h2>
         </div>
-        <div class="container bento-grid">
+        <div class="container privacy-grid">
             <!-- Precise Calculations -->
-            <div class="bento-card reveal-on-scroll delay-100" style="grid-column: span 2;">
-                <h3 class="subheading" style="font-size: 18px;">
-                    <span lang="es">Pagos precisos</span>
-                    <span lang="en" class="hidden">Precise payments</span>
-                </h3>
-                <p class="body-text" style="font-size: 15px;">
-                    <span lang="es">Calcula cuotas, tasas y plazos con resultados claros al instante.</span>
-                    <span lang="en" class="hidden">Calculate payments, rates, and terms with clear results
-                        instantly.</span>
-                </p>
-                <img src="images/feature-es-01.jpg" alt="Cálculos precisos e inmediatos" class="bento-img"
-                    data-app-image="bricks-calc-feature-01" />
+            <div class="privacy-card-wrapper reveal-on-scroll delay-100">
+                <div class="privacy-card center-text">
+                    <h3 class="subheading" style="font-size: 18px;">
+                        <span lang="es">Pagos precisos</span>
+                        <span lang="en" class="hidden">Precise payments</span>
+                    </h3>
+                    <p class="body-text" style="font-size: 15px; margin-bottom: 24px;">
+                        <span lang="es">Calcula cuotas, tasas y plazos con resultados claros al instante.</span>
+                        <span lang="en" class="hidden">Calculate payments, rates, and terms with clear results instantly.</span>
+                    </p>
+                    <img src="images/feature-es-01.jpg" alt="Cálculos precisos e inmediatos" style="border-radius: var(--r1-small); width: 100%; border: 1px solid var(--surface-shadow);" data-app-image="bricks-calc-feature-01" />
+                </div>
             </div>
 
             <!-- Compare Scenarios -->
-            <div class="bento-card reveal-on-scroll delay-200" style="grid-column: span 2;">
-                <h3 class="subheading" style="font-size: 18px;">
-                    <span lang="es">Compara escenarios</span>
-                    <span lang="en" class="hidden">Compare scenarios</span>
-                </h3>
-                <p class="body-text" style="font-size: 15px;">
-                    <span lang="es">Compara múltiples opciones de crédito durante la misma conversación con tu
-                        cliente.</span>
-                    <span lang="en" class="hidden">Compare multiple loan options during the same client
-                        conversation.</span>
-                </p>
-                <img src="images/feature-es-02.jpg" alt="Comparación de escenarios" class="bento-img"
-                    data-app-image="bricks-calc-feature-02" />
+            <div class="privacy-card-wrapper reveal-on-scroll delay-200">
+                <div class="privacy-card center-text">
+                    <h3 class="subheading" style="font-size: 18px;">
+                        <span lang="es">Compara escenarios</span>
+                        <span lang="en" class="hidden">Compare scenarios</span>
+                    </h3>
+                    <p class="body-text" style="font-size: 15px; margin-bottom: 24px;">
+                        <span lang="es">Compara múltiples opciones de crédito durante la misma conversación con tu cliente.</span>
+                        <span lang="en" class="hidden">Compare multiple loan options during the same client conversation.</span>
+                    </p>
+                    <img src="images/feature-es-02.jpg" alt="Comparación de escenarios" style="border-radius: var(--r1-small); width: 100%; border: 1px solid var(--surface-shadow);" data-app-image="bricks-calc-feature-02" />
+                </div>
             </div>
 
             <!-- Amortization -->
-            <div class="bento-card reveal-on-scroll delay-100" style="grid-column: span 2;">
-                <h3 class="subheading" style="font-size: 18px;">
-                    <span lang="es">Desglose de amortización</span>
-                    <span lang="en" class="hidden">Amortization breakdown</span>
-                </h3>
-                <p class="body-text" style="font-size: 15px;">
-                    <span lang="es">Muestra a tus clientes cómo cambia el interés y el capital durante el
-                        préstamo.</span>
-                    <span lang="en" class="hidden">Show clients how interest and principal shift over the life of the
-                        loan.</span>
-                </p>
-                <img src="images/feature-es-03.jpg" alt="Visualiza tu amortización" class="bento-img"
-                    data-app-image="bricks-calc-feature-03" />
+            <div class="privacy-card-wrapper reveal-on-scroll delay-100">
+                <div class="privacy-card center-text">
+                    <h3 class="subheading" style="font-size: 18px;">
+                        <span lang="es">Desglose de amortización</span>
+                        <span lang="en" class="hidden">Amortization breakdown</span>
+                    </h3>
+                    <p class="body-text" style="font-size: 15px; margin-bottom: 24px;">
+                        <span lang="es">Muestra a tus clientes cómo cambia el interés y el capital durante el préstamo.</span>
+                        <span lang="en" class="hidden">Show clients how interest and principal shift over the life of the loan.</span>
+                    </p>
+                    <img src="images/feature-es-03.jpg" alt="Visualiza tu amortización" style="border-radius: var(--r1-small); width: 100%; border: 1px solid var(--surface-shadow);" data-app-image="bricks-calc-feature-03" />
+                </div>
             </div>
 
             <!-- Multiplatform -->
-            <div class="bento-card reveal-on-scroll delay-200" style="grid-column: span 2;">
-                <h3 class="subheading" style="font-size: 18px;">
-                    <span lang="es">En todos tus dispositivos Apple</span>
-                    <span lang="en" class="hidden">On all your Apple devices</span>
-                </h3>
-                <p class="body-text" style="font-size: 15px;">
-                    <span lang="es">Disponible en iPhone, iPad, Mac y Apple Vision Pro.</span>
-                    <span lang="en" class="hidden">Available on iPhone, iPad, Mac, and Apple Vision Pro.</span>
-                </p>
-                <img src="images/feature-es-05.jpg" alt="Multiplataforma" class="bento-img"
-                    data-app-image="bricks-calc-feature-05" />
+            <div class="privacy-card-wrapper reveal-on-scroll delay-200">
+                <div class="privacy-card center-text">
+                    <h3 class="subheading" style="font-size: 18px;">
+                        <span lang="es">En todos tus dispositivos</span>
+                        <span lang="en" class="hidden">On all your devices</span>
+                    </h3>
+                    <p class="body-text" style="font-size: 15px; margin-bottom: 24px;">
+                        <span lang="es">Disponible en iPhone, iPad, Mac y Apple Vision Pro.</span>
+                        <span lang="en" class="hidden">Available on iPhone, iPad, Mac, and Apple Vision Pro.</span>
+                    </p>
+                    <img src="images/feature-es-05.jpg" alt="Multiplataforma" style="border-radius: var(--r1-small); width: 100%; border: 1px solid var(--surface-shadow);" data-app-image="bricks-calc-feature-05" />
+                </div>
             </div>
         </div>
     </section>
@@ -463,7 +435,7 @@
         </div>
 
         <div class="container reading-column">
-            <div class="embossed-card" style="padding: 0; background: var(--bg-primary); overflow: hidden;">
+            <div style="padding: 0; overflow: hidden; border: 1px solid var(--surface-shadow); border-radius: var(--r3-primary); background: var(--bg-primary);">
                 <!-- FAQ entries include bilingual spans so the language toggle keeps answers in sync -->
                 <!-- Item 1 -->
                 <div x-data="{ open: false }">
@@ -728,55 +700,59 @@
                 </p>
             </div>
 
-            <div class="grid-3">
+            <div class="privacy-grid">
                 <!-- Bricks Scan -->
-                <div class="ecosystem-card embossed-card reveal-on-scroll delay-100">
-                    <img src="images-bricks-scan/bricks-scan-web-icon.png" alt="Bricks Scan Icon" class="app-icon">
-                    <h3 class="subheading">Bricks Scan</h3>
-                    <p class="body-text" style="font-size: 16px; margin-bottom: 20px;">
-                        <span lang="en">Capture, name, and organize every transaction document automatically. Search
-                            inside any page in seconds.</span>
-                        <span lang="es" class="hidden">Captura, nombra y organiza cada documento de transacción
-                            automáticamente. Busca dentro de cualquier página en segundos.</span>
-                    </p>
-                    <a href="scan.html" class="btn btn-secondary">
-                        <span lang="en">Learn more →</span>
-                        <span lang="es" class="hidden">Más información →</span>
-                    </a>
+                <div class="privacy-card-wrapper reveal-on-scroll delay-100">
+                    <div class="privacy-card center-text">
+                        <img src="images-bricks-scan/bricks-scan-web-icon.png" alt="Bricks Scan Icon" class="app-icon">
+                        <h3 class="subheading">Bricks Scan</h3>
+                        <p class="body-text" style="font-size: 15px; margin: 0 auto 20px;">
+                            <span lang="en">Capture, name, and organize every transaction document automatically. Search
+                                inside any page in seconds.</span>
+                            <span lang="es" class="hidden">Captura, nombra y organiza cada documento de transacción
+                                automáticamente. Busca dentro de cualquier página en segundos.</span>
+                        </p>
+                        <a href="scan.html" class="btn btn-secondary">
+                            <span lang="en">Learn more →</span>
+                            <span lang="es" class="hidden">Más información →</span>
+                        </a>
+                    </div>
                 </div>
 
                 <!-- Bricks Calc (Current) -->
-                <div class="ecosystem-card embossed-card reveal-on-scroll delay-200"
-                    style="border: 1.5px solid var(--accent-teal); position: relative;">
-                    <img src="images/bricks-calc-web-icon.png" alt="Bricks Calc Icon" class="app-icon">
-                    <h3 class="subheading">Bricks Calc</h3>
-                    <p class="body-text" style="font-size: 16px; margin-bottom: 20px;">
-                        <span lang="en">Model deals quickly. Estimate payments, rates, and financing scenarios on the
-                            spot during client meetings.</span>
-                        <span lang="es" class="hidden">Modela ofertas rápidamente. Estima pagos, tasas y escenarios de
-                            financiamiento al instante durante reuniones con clientes.</span>
-                    </p>
-                    <div class="btn btn-secondary disabled" style="opacity: 0.5; cursor: default;">
-                        <span lang="en">Current App</span>
-                        <span lang="es" class="hidden">App Actual</span>
+                <div class="privacy-card-wrapper reveal-on-scroll delay-200">
+                    <div class="privacy-card center-text" style="border: 1.5px solid var(--accent-teal);">
+                        <img src="images/bricks-calc-web-icon.png" alt="Bricks Calc Icon" class="app-icon">
+                        <h3 class="subheading">Bricks Calc</h3>
+                        <p class="body-text" style="font-size: 15px; margin: 0 auto 20px;">
+                            <span lang="en">Model deals quickly. Estimate payments, rates, and financing scenarios on the
+                                spot during client meetings.</span>
+                            <span lang="es" class="hidden">Modela ofertas rápidamente. Estima pagos, tasas y escenarios de
+                                financiamiento al instante durante reuniones con clientes.</span>
+                        </p>
+                        <div class="btn btn-secondary disabled" style="opacity: 0.5; pointer-events: none;">
+                            <span lang="en">Current App</span>
+                            <span lang="es" class="hidden">App Actual</span>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Bricks Leads -->
-                <div class="ecosystem-card embossed-card reveal-on-scroll delay-300">
-                    <img src="images/bricks-leads-web-icon.png" alt="Bricks Leads Icon" class="app-icon">
-                    <h3 class="subheading">Bricks Leads</h3>
-                    <p class="body-text" style="font-size: 16px; margin-bottom: 20px;">
-                        <span lang="en">Track clients and follow-ups without bloated dashboards. A clean CRM built for
-                            real estate agents on Apple.</span>
-                        <span lang="es" class="hidden">Rastrea clientes y seguimientos sin paneles complicados. Un CRM
-                            limpio creado para agentes inmobiliarios en Apple.</span>
-                    </p>
-                    <a href="https://leads.bricks.pe" class="btn btn-secondary"
-                        style="font-size: 14px; padding: 10px 20px;">
-                        <span lang="en">Learn more →</span>
-                        <span lang="es" class="hidden">Más información →</span>
-                    </a>
+                <div class="privacy-card-wrapper reveal-on-scroll delay-300">
+                    <div class="privacy-card center-text">
+                        <img src="images/bricks-leads-web-icon.png" alt="Bricks Leads Icon" class="app-icon">
+                        <h3 class="subheading">Bricks Leads</h3>
+                        <p class="body-text" style="font-size: 15px; margin: 0 auto 20px;">
+                            <span lang="en">Track clients and follow-ups without bloated dashboards. A clean CRM built for
+                                real estate agents on Apple.</span>
+                            <span lang="es" class="hidden">Rastrea clientes y seguimientos sin paneles complicados. Un CRM
+                                limpio creado para agentes inmobiliarios en Apple.</span>
+                        </p>
+                        <a href="https://leads.bricks.pe" class="btn btn-secondary">
+                            <span lang="en">Learn more →</span>
+                            <span lang="es" class="hidden">Más información →</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

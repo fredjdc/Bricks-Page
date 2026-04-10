@@ -341,11 +341,6 @@ a:hover {
     align-items: center;
 }
 
-.grid-3 {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 48px;
-}
 
 .center-text {
     text-align: center;
@@ -608,27 +603,21 @@ a:hover {
 
 /* Card Hover Enhancements */
 .embossed-card,
-.bento-card,
 .perfect-card,
-.value-card,
-.ecosystem-card {
+.value-card {
     transition: transform 0.4s var(--ease-out-expo), box-shadow 0.4s var(--ease-out-expo) !important;
 }
 
 .embossed-card:hover,
-.bento-card:hover,
 .perfect-card:hover,
-.value-card:hover,
-.ecosystem-card:hover {
+.value-card:hover {
     transform: translateY(-6px);
     box-shadow: 0 12px 32px rgba(11, 15, 20, 0.08) !important;
 }
 
 .embossed-card:active,
-.bento-card:active,
 .perfect-card:active,
-.value-card:active,
-.ecosystem-card:active {
+.value-card:active {
     transform: scale(0.97) translateY(0) !important;
     transition: transform 0.1s ease !important;
 }
@@ -1168,29 +1157,11 @@ a:hover {
     flex-shrink: 0;
 }
 
-/* Ecosystem Cards */
-.ecosystem-card {
-    padding: 40px 32px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    text-decoration: none;
-    color: inherit;
-    transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s var(--ease-out-expo);
-}
-
-.ecosystem-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 24px var(--surface-shadow);
-}
-
 .app-icon {
     width: 64px;
     height: 64px;
     margin-bottom: 24px;
     border-radius: var(--r2-inner);
-    /* Make the images look embossed if they are transparent */
     filter: drop-shadow(6px 6px 12px var(--surface-shadow)) drop-shadow(-4px -4px 8px var(--bg-white));
 }
 
@@ -1901,7 +1872,6 @@ a:hover {
 }
 
 .btn:active,
-.ecosystem-card:active,
 .testimonial:active {
     transform: scale(0.97) translateY(0) !important;
     transition: transform 0.1s ease !important;
@@ -1964,13 +1934,11 @@ a:hover {
     width: 100%;
 }
 
-.grid-3:hover .ecosystem-card:not(:hover),
 .testimonials-grid:hover .testimonial:not(:hover) {
     opacity: 0.4;
     transform: scale(0.98);
 }
 
-.ecosystem-card,
 .testimonial {
     transition:
         opacity 0.4s var(--ease-out-expo),
@@ -2021,98 +1989,7 @@ a:hover {
     align-items: center;
 }
 
-.bento-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: minmax(140px, auto);
-    gap: 20px;
-}
 
-.bento-card {
-    background-color: var(--bg-primary);
-    border-radius: var(--r3-primary);
-    padding: 32px;
-    border: 1px solid var(--depth-plane);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-}
-
-.bento-card>p.body-text {
-    margin-bottom: 32px;
-}
-
-.bento-card img.bento-img {
-    width: calc(100% + 64px);
-    margin: 24px -32px -32px -32px;
-    border-radius: 0 0 var(--r3-primary) var(--r3-primary);
-    object-fit: cover;
-    display: block;
-}
-
-.bento-icon {
-    width: 32px;
-    height: 32px;
-    margin-bottom: 16px;
-}
-
-.bento-auto-sort {
-    grid-column: span 2;
-    grid-row: span 2;
-}
-
-.bento-search {
-    grid-column: span 1;
-    grid-row: span 1;
-}
-
-.bento-pdf {
-    grid-column: span 1;
-    grid-row: span 1;
-}
-
-.bento-ai {
-    grid-column: span 1;
-    grid-row: span 1;
-}
-
-.bento-markup {
-    grid-column: span 1;
-    grid-row: span 1;
-}
-
-.bento-sign {
-    grid-column: span 2;
-    grid-row: span 1;
-    padding: 24px;
-}
-
-.bento-devices {
-    grid-column: span 2;
-    grid-row: span 1;
-    padding: 24px;
-}
-
-.bento-card-horizontal {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.bento-card-horizontal .bento-content {
-    flex: 1;
-    padding-right: 24px;
-}
-
-.bento-card-horizontal img.bento-img-horizontal {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: var(--r2-inner);
-    display: block;
-}
 
 .privacy-grid {
     display: grid;
@@ -2234,41 +2111,20 @@ a:hover {
 }
 
 @media (max-width: 1024px) {
-
-    .bento-grid,
     .perfect-for-grid {
         grid-template-columns: repeat(2, 1fr);
-    }
-
-    .bento-auto-sort,
-    .bento-sign,
-    .bento-devices {
-        grid-column: span 2;
     }
 }
 
 @media (max-width: 768px) {
-
     .workflow-grid,
     .auto-sort-grid,
     .privacy-grid {
         grid-template-columns: 1fr;
     }
 
-    .bento-grid,
     .perfect-for-grid {
         grid-template-columns: 1fr;
-    }
-
-    .bento-auto-sort,
-    .bento-search,
-    .bento-pdf,
-    .bento-ai,
-    .bento-markup,
-    .bento-sign,
-    .bento-devices {
-        grid-column: span 1;
-        grid-row: span 1;
     }
 }
 
