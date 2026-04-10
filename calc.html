@@ -1,0 +1,985 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO Meta Tags -->
+    <title>Bricks Calc – Analiza tu crédito hipotecario con claridad</title>
+    <meta name="description"
+        content="Bricks Calc te ayuda a comparar tasas, analizar escenarios y entender tus pagos con más claridad." />
+    <meta name="keywords"
+        content="calculadora hipotecaria, préstamo hipotecario, crédito hipotecario, 30 year mortgage, 50 year mortgage, mortgage loan, simulador hipotecario, tasas de interés, amortización, liquid glass, black friday deals 2025, iOS 26, calculadora de préstamos, análisis hipotecario" />
+    <link rel="canonical" href="https://bricks.pe/calc.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://bricks.pe/bricks-calc" />
+    <meta property="og:title" content="Bricks Calc – Analiza tu crédito hipotecario con claridad" />
+    <meta property="og:description"
+        content="Compara tasas, analiza escenarios y entiende tus pagos antes de decidir." />
+    <meta property="og:image" content="https://bricks.pe/images/bricks-calc-img-es.png" />
+
+    <!-- Favicon & Styles -->
+    <link rel="icon" href="favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="theme-color" content="#1E40AF" />
+
+    <!-- Fonts & Tailwind (match site) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <!-- Design System CSS -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Alpine and scripts -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="scripts.js" defer></script>
+
+    <!-- App Store Meta App CLip
+        <meta name="apple-itunes-app" content="app-id=6744432658, app-clip-bundle-id=com.bricks.bricksapp.Clip" /> -->
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != "dataLayer" ? "&l=" + l : "";
+            j.async = true;
+            j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", "GTM-P5P8LRC2");
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0NE96SRV4V"></script>
+    <script>
+        // GA4 tracker ensures product marketing funnels capture download conversions.
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+        gtag("config", "G-0NE96SRV4V");
+    </script>
+
+    <!-- Meta Pixel Code -->
+    <script>
+        !(function (f, b, e, v, n, t, s) {
+            if (f.fbq) return;
+            n = f.fbq = function () {
+                n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+            };
+            if (!f._fbq) f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = "2.0";
+            n.queue = [];
+            t = b.createElement(e);
+            t.async = !0;
+            t.src = v;
+            s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s);
+        })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+        fbq("init", "1088148306858128");
+        fbq("track", "PageView");
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display: none"
+            src="https://www.facebook.com/tr?id=1088148306858128&ev=PageView&noscript=1" />
+    </noscript>
+    <!-- End Meta Pixel Code -->
+    <!-- Noscript fallback for reveal-on-scroll -->
+    <noscript>
+        <style>
+            .reveal-on-scroll {
+                opacity: 1 !important;
+                transform: none !important
+            }
+        </style>
+    </noscript>
+</head>
+</head>
+
+<body class="min-h-screen">
+    <!-- Desktop App Banner (shown on macOS browsers only) -->
+    <div id="desktop-app-banner" class="desktop-app-banner" style="display: none;">
+        <div class="desktop-app-banner-content">
+            <img src="images/bricks-calc-web-icon.png" alt="Bricks Calc Icon" class="desktop-app-banner-icon" />
+            <div>
+                <p class="desktop-app-banner-title">Bricks Calc</p>
+                <p class="desktop-app-banner-subtitle">
+                    <span lang="en">Mortgage Calculator and Analysis App</span>
+                    <span lang="es" class="hidden">App de Calculadora y Análisis Hipotecario</span>
+                </p>
+            </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <a id="app_desktop_banner_button" href="https://apps.apple.com/app/id6754506837" target="_blank"
+                rel="noopener noreferrer" class="desktop-app-banner-button">
+                <span lang="en">View on App Store</span>
+                <span lang="es" class="hidden">Ver en App Store</span>
+            </a>
+            <button id="desktop-app-banner-close" class="desktop-app-banner-close">×</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            const isMacOS = navigator.platform.toUpperCase().indexOf("MAC") >= 0;
+            const bannerElement = document.getElementById("desktop-app-banner");
+            const closeBannerButton = document.getElementById("desktop-app-banner-close");
+            const bannerDismissed = localStorage.getItem("app_banner_dismissed");
+            if (isMacOS && !isMobile && !bannerDismissed) {
+                bannerElement.style.display = "flex";
+            }
+            if (closeBannerButton) {
+                closeBannerButton.addEventListener("click", function () {
+                    bannerElement.style.display = "none";
+                    localStorage.setItem("app_banner_dismissed", "true");
+                });
+            }
+        });
+    </script>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P5P8LRC2" height="0" width="0"
+            style="display: none; visibility: hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent-banner"
+        style="display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg-primary); padding: 24px; z-index: 50; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; box-shadow: 0 -4px 16px var(--surface-shadow); border-top: 1px solid var(--depth-plane);">
+        <div>
+            <p class="body-text" style="font-size: 14px; margin: 0;">
+                <span lang="en">We use cookies to analyze site usage and improve your experience. May we collect
+                    anonymous usage data?</span>
+                <span lang="es" class="hidden">Usamos cookies para analizar el uso del sitio y mejorar su experiencia.
+                    ¿Nos permite recopilar datos anónimos de uso?</span>
+            </p>
+        </div>
+        <div style="display: flex; gap: 8px;">
+            <button onclick="updateConsent('denied')" class="btn btn-secondary">
+                <span lang="en">Decline</span>
+                <span lang="es" class="hidden">Rechazar</span>
+            </button>
+            <button onclick="updateConsent('granted')" class="btn btn-primary">
+                <span lang="en">Accept</span>
+                <span lang="es" class="hidden">Aceptar</span>
+            </button>
+        </div>
+    </div>
+    <!-- Header / Nav -->
+    <header class="container site-header">
+        <div class="logo">
+            <a href="index.html" class="flex items-center" style="display: flex; align-items: center;">
+                <!-- Reverting back to standard logo styling without white filter -->
+                <img src="images/bricks-dark-logo.svg" onerror="this.src='images/bricks-light-logo.svg'"
+                    alt="Bricks Apps" style="height: 24px;" />
+            </a>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <a href="https://apps.apple.com/app/id6754506837" class="btn btn-primary">
+                <span lang="es">Descargar</span>
+                <span lang="en" class="hidden">Download</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="section section-hero hero">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <h1 class="hero-title reveal-on-scroll">
+                    <span lang="es">Modela escenarios hipotecarios. Al instante.</span>
+                    <span lang="en" class="hidden">Model mortgage scenarios. On the spot.</span>
+                </h1>
+                <p class="body-text reveal-on-scroll delay-100">
+                    <span lang="es">Calcula pagos, compara tasas y muestra opciones a tus clientes — durante la reunión,
+                        no después.</span>
+                    <span lang="en" class="hidden">Calculate payments, compare rates, and show clients their options —
+                        during the meeting, not after.</span>
+                </p>
+
+                <div class="hero-trust-badge reveal-on-scroll delay-200"
+                    style="display: flex; align-items: center; justify-content: flex-start; gap: 6px; margin-top: 16px; margin-bottom: 12px; color: var(--text-tertiary); font-size: 13px; font-weight: 500;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                        style="width: 14px; height: 14px; opacity: 0.8;">
+                        <path fill-rule="evenodd"
+                            d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    <span lang="es">Privado por diseño. Sin recolección de datos.</span>
+                    <span lang="en" class="hidden">Private by design. No data collection.</span>
+                </div>
+                <div class="cta-group reveal-on-scroll delay-200"
+                    style="display: flex; flex-direction: column; align-items: flex-start; gap: 16px;">
+                    <div style="display: flex; align-items: center; gap: 16px;">
+                        <a id="app_store_download_button" href="https://apps.apple.com/app/id6754506837"
+                            class="btn btn-primary">
+
+                            <span lang="es">Descargar en App Store</span>
+                            <span lang="en" class="hidden">Download on the App Store</span>
+                        </a>
+
+                        <!-- Desktop QR Code -->
+                        <div class="desktop-qr hidden md:flex"
+                            style="align-items: center; gap: 12px; background: var(--surface-secondary); padding: 8px; border-radius: var(--r1-small); border: 1px solid var(--surface-shadow);">
+                            <div
+                                style="width: 40px; height: 40px; background: var(--bg-primary); border-radius: var(--r1-small); display: flex; align-items: center; justify-content: center; border: 1px solid var(--surface-shadow);">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor"
+                                    style="width: 24px; height: 24px; color: var(--text-primary);">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M3.75 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 013.75 9.375v-4.5zM3.75 14.625c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 01-1.125-1.125v-4.5zM13.5 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0113.5 9.375v-4.5z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M6.75 6.75h.75v.75h-.75v-.75zM6.75 16.5h.75v.75h-.75v-.75zM16.5 6.75h.75v.75h-.75v-.75zM13.5 13.5h.75v.75h-.75v-.75zM13.5 19.5h.75v.75h-.75v-.75zM19.5 13.5h.75v.75h-.75v-.75zM19.5 19.5h.75v.75h-.75v-.75zM16.5 16.5h.75v.75h-.75v-.75z" />
+                                </svg>
+                            </div>
+                            <div style="display: flex; flex-direction: column; align-items: flex-start;">
+                                <span class="body-text"
+                                    style="font-size: 13px; line-height: 1.2; font-weight: 600; color: var(--text-primary);">
+                                    <span lang="es">¿Visitas desde tu PC?</span>
+                                    <span lang="en" class="hidden">Visiting from a PC?</span>
+                                </span>
+                                <span class="body-text"
+                                    style="font-size: 12px; line-height: 1.2; color: var(--text-tertiary);">
+                                    <span lang="es">Escanea para descargar</span>
+                                    <span lang="en" class="hidden">Scan to download</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="body-text" style="font-size: 13px; color: var(--text-tertiary); margin: 0;">
+                        <span lang="es">Gratis. Sin cuenta obligatoria.</span>
+                        <span lang="en" class="hidden">Free to download. No account required.</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Interactive Hero Artwork -->
+            <div class="hero-artwork reveal-on-scroll delay-200" aria-hidden="true" data-app-parallax>
+                <img src="images/back-layer-es-03.png" alt="" class="hero-layer layer-back"
+                    data-app-image="bricks-calc-hero-layer-back" data-parallax-depth="0.3">
+                <img src="images/mid-layer-es-02.png" alt="" class="hero-layer layer-middle"
+                    data-app-image="bricks-calc-hero-layer-middle" data-parallax-depth="0.6">
+                <img src="images/top-layer-es-01.png" alt="" class="hero-layer layer-front"
+                    data-app-image="bricks-calc-hero-layer-front" data-parallax-depth="0.9">
+                <div class="soft-glow-underlay"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem & Value -->
+    <section class="section section-alt">
+        <div class="container reading-column center-text">
+            <h2 class="section-title reveal-on-scroll">
+                <span lang="es">Hecho para conversaciones con clientes.</span>
+                <span lang="en" class="hidden">Built for deal conversations.</span>
+            </h2>
+            <div class="problem-content mt-sm reveal-on-scroll delay-100">
+                <ul class="body-text"
+                    style="list-style: none; padding: 0; margin: 0 auto; max-width: 600px; display: flex; flex-direction: column; gap: 16px; text-align: left;">
+                    <li style="display: flex; align-items: flex-start; gap: 12px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                            stroke="currentColor"
+                            style="width: 20px; height: 20px; color: var(--text-primary); flex-shrink: 0; margin-top: 2px;">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                        </svg>
+                        <span>
+                            <strong style="color: var(--text-primary);">
+                                <span lang="es">Sin planillas:</span>
+                                <span lang="en" class="hidden">No spreadsheets:</span>
+                            </strong>
+                            <span lang="es" style="color: var(--text-secondary);">Abre Bricks Calc mientras el cliente
+                                está frente a ti.</span>
+                            <span lang="en" class="hidden" style="color: var(--text-secondary);">Open Bricks Calc while
+                                the client is sitting with you.</span>
+                        </span>
+                    </li>
+                    <li style="display: flex; align-items: flex-start; gap: 12px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                            stroke="currentColor"
+                            style="width: 20px; height: 20px; color: var(--text-primary); flex-shrink: 0; margin-top: 2px;">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                        </svg>
+                        <span>
+                            <strong style="color: var(--text-primary);">
+                                <span lang="es">Escenarios en vivo:</span>
+                                <span lang="en" class="hidden">Live scenarios:</span>
+                            </strong>
+                            <span lang="es" style="color: var(--text-secondary);">Cambia tasas, plazos y montos en
+                                segundos.</span>
+                            <span lang="en" class="hidden" style="color: var(--text-secondary);">Adjust rates, terms,
+                                and amounts in seconds.</span>
+                        </span>
+                    </li>
+                    <li style="display: flex; align-items: flex-start; gap: 12px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                            stroke="currentColor"
+                            style="width: 20px; height: 20px; color: var(--text-primary); flex-shrink: 0; margin-top: 2px;">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                        </svg>
+                        <span>
+                            <strong style="color: var(--text-primary);">
+                                <span lang="es">Comparación lado a lado:</span>
+                                <span lang="en" class="hidden">Side-by-side comparison:</span>
+                            </strong>
+                            <span lang="es" style="color: var(--text-secondary);">Muestra opciones con claridad, no con
+                                aproximaciones.</span>
+                            <span lang="en" class="hidden" style="color: var(--text-secondary);">Show clients real
+                                options clearly, not rough estimates.</span>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Divider: separates Problem & Value from Key Features to improve visual hierarchy -->
+    <hr class="border-t border-gray-300 max-w-5xl mx-auto" aria-hidden="true"
+        style="margin: 48px auto; border-color: var(--surface-shadow);" />
+
+    <!-- Key Features -->
+    <section class="section">
+        <div class="container reading-column center-text mb-md">
+            <h2 class="section-title reveal-on-scroll">
+                <span lang="es">Lo esencial para cerrar conversaciones.</span>
+                <span lang="en" class="hidden">What it does in a meeting.</span>
+            </h2>
+        </div>
+        <div class="container bento-grid">
+            <!-- Precise Calculations -->
+            <div class="bento-card reveal-on-scroll delay-100" style="grid-column: span 2;">
+                <h3 class="subheading" style="font-size: 18px;">
+                    <span lang="es">Pagos precisos</span>
+                    <span lang="en" class="hidden">Precise payments</span>
+                </h3>
+                <p class="body-text" style="font-size: 15px;">
+                    <span lang="es">Calcula cuotas, tasas y plazos con resultados claros al instante.</span>
+                    <span lang="en" class="hidden">Calculate payments, rates, and terms with clear results
+                        instantly.</span>
+                </p>
+                <img src="images/feature-es-01.jpg" alt="Cálculos precisos e inmediatos" class="bento-img"
+                    data-app-image="bricks-calc-feature-01" />
+            </div>
+
+            <!-- Compare Scenarios -->
+            <div class="bento-card reveal-on-scroll delay-200" style="grid-column: span 2;">
+                <h3 class="subheading" style="font-size: 18px;">
+                    <span lang="es">Compara escenarios</span>
+                    <span lang="en" class="hidden">Compare scenarios</span>
+                </h3>
+                <p class="body-text" style="font-size: 15px;">
+                    <span lang="es">Compara múltiples opciones de crédito durante la misma conversación con tu
+                        cliente.</span>
+                    <span lang="en" class="hidden">Compare multiple loan options during the same client
+                        conversation.</span>
+                </p>
+                <img src="images/feature-es-02.jpg" alt="Comparación de escenarios" class="bento-img"
+                    data-app-image="bricks-calc-feature-02" />
+            </div>
+
+            <!-- Amortization -->
+            <div class="bento-card reveal-on-scroll delay-100" style="grid-column: span 2;">
+                <h3 class="subheading" style="font-size: 18px;">
+                    <span lang="es">Desglose de amortización</span>
+                    <span lang="en" class="hidden">Amortization breakdown</span>
+                </h3>
+                <p class="body-text" style="font-size: 15px;">
+                    <span lang="es">Muestra a tus clientes cómo cambia el interés y el capital durante el
+                        préstamo.</span>
+                    <span lang="en" class="hidden">Show clients how interest and principal shift over the life of the
+                        loan.</span>
+                </p>
+                <img src="images/feature-es-03.jpg" alt="Visualiza tu amortización" class="bento-img"
+                    data-app-image="bricks-calc-feature-03" />
+            </div>
+
+            <!-- Multiplatform -->
+            <div class="bento-card reveal-on-scroll delay-200" style="grid-column: span 2;">
+                <h3 class="subheading" style="font-size: 18px;">
+                    <span lang="es">En todos tus dispositivos Apple</span>
+                    <span lang="en" class="hidden">On all your Apple devices</span>
+                </h3>
+                <p class="body-text" style="font-size: 15px;">
+                    <span lang="es">Disponible en iPhone, iPad, Mac y Apple Vision Pro.</span>
+                    <span lang="en" class="hidden">Available on iPhone, iPad, Mac, and Apple Vision Pro.</span>
+                </p>
+                <img src="images/feature-es-05.jpg" alt="Multiplataforma" class="bento-img"
+                    data-app-image="bricks-calc-feature-05" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Download CTA -->
+    <section class="section section-alt">
+        <div class="container reading-column center-text recessed-well reveal-on-scroll" style="padding: 48px 24px;">
+            <div class="mb-sm" style="display: flex; justify-content: center;">
+                <img src="images/bricks-calc-web-icon.png" alt="Bricks Calc App Icon" class="app-icon"
+                    style="width: 80px; height: 80px;" />
+            </div>
+            <h2 class="section-title">
+                <span lang="es">Descarga Bricks Calc</span>
+                <span lang="en" class="hidden">Download Bricks Calc</span>
+            </h2>
+            <p class="body-text mt-sm" style="margin-left: auto; margin-right: auto;">
+                <span lang="es">Lista para tu próxima reunión con clientes. Descárgala gratis en App Store.</span>
+                <span lang="en" class="hidden">Ready for your next client meeting. Download it free on the App
+                    Store.</span>
+            </p>
+            <div class="cta-group mt-md" style="display: flex; flex-direction: column; align-items: center; gap: 12px;">
+                <a id="app_store_download_button" href="https://apps.apple.com/app/id6754506837" class="btn btn-primary"
+                    style="margin: 0 auto;">
+
+                    <span lang="es">Descargar en App Store</span>
+                    <span lang="en" class="hidden">Download on the App Store</span>
+                </a>
+                <p class="body-text" style="font-size: 13px; color: var(--text-tertiary); margin: 0;">
+                    <span lang="es">Gratis. Sin cuenta obligatoria.</span>
+                    <span lang="en" class="hidden">Free to download. No account required.</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+        <div class="container reading-column center-text mb-md">
+            <h2 class="section-title reveal-on-scroll">
+                <span lang="es">Preguntas frecuentes</span>
+                <span lang="en" class="hidden">Frequently asked questions</span>
+            </h2>
+        </div>
+
+        <div class="container reading-column">
+            <div class="embossed-card" style="padding: 0; background: var(--bg-primary); overflow: hidden;">
+                <!-- FAQ entries include bilingual spans so the language toggle keeps answers in sync -->
+                <!-- Item 1 -->
+                <div x-data="{ open: false }">
+                    <button
+                        style="width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 20px 24px; text-align: left; background: none; border: none; cursor: pointer; border-bottom: 1px solid var(--surface-shadow);"
+                        aria-controls="faq-1" :aria-expanded="open.toString()" @click="open = !open">
+                        <span class="subheading" style="flex: 1; text-align: left; margin: 0; font-size: 18px;">
+                            <span lang="es">¿Qué hace diferente a Bricks Calc?</span>
+                            <span lang="en" class="hidden">What makes Bricks Calc different?</span>
+                        </span>
+                        <span style="flex-shrink: 0; color: var(--text-tertiary);">
+                            <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                            </svg>
+                            <svg x-show="open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                            </svg>
+                        </span>
+                    </button>
+                    <div id="faq-1" x-show="open" x-transition class="body-text"
+                        style="padding: 0 24px 24px 24px; text-align: left;">
+                        <span lang="es">Bricks Calc no se queda en la cuota mensual. Te ayuda a comparar escenarios,
+                            guardar simulaciones y entender el préstamo con más claridad, desde intereses y tasas hasta
+                            pagos totales.</span>
+                        <span lang="en" class="hidden">Most calculators give you one number. Bricks Calc lets you run
+                            multiple scenarios — adjusting rate, term, and amount — so you can show clients real options
+                            during the conversation, not after it.</span>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div x-data="{ open: false }">
+                    <button
+                        style="width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 20px 24px; text-align: left; background: none; border: none; cursor: pointer; border-bottom: 1px solid var(--surface-shadow);"
+                        aria-controls="faq-2" :aria-expanded="open.toString()" @click="open = !open">
+                        <span class="subheading" style="flex: 1; text-align: left; margin: 0; font-size: 18px;">
+                            <span lang="es">¿Puedo comparar diferentes préstamos o escenarios?</span>
+                            <span lang="en" class="hidden">Can I compare different loans or scenarios?</span>
+                        </span>
+                        <span style="flex-shrink: 0; color: var(--text-tertiary);">
+                            <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                            </svg>
+                            <svg x-show="open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                            </svg>
+                        </span>
+                    </button>
+                    <div id="faq-2" x-show="open" x-transition class="body-text"
+                        style="padding: 0 24px 24px 24px; text-align: left;">
+                        <span lang="es">Sí. Puedes crear múltiples cálculos y ver cómo cambian tus pagos según el monto,
+                            la tasa o el plazo. Es una forma más clara de comparar opciones entre bancos o tipos de
+                            crédito.</span>
+                        <span lang="en" class="hidden">Yes. You can create multiple calculations and see how your
+                            payments change based on amount, rate, or term. It is a clearer way to compare options
+                            across banks or loan types.</span>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div x-data="{ open: false }">
+                    <button
+                        style="width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 20px 24px; text-align: left; background: none; border: none; cursor: pointer; border-bottom: 1px solid var(--surface-shadow);"
+                        aria-controls="faq-3" :aria-expanded="open.toString()" @click="open = !open">
+                        <span class="subheading" style="flex: 1; text-align: left; margin: 0; font-size: 18px;">
+                            <span lang="es">¿Necesito conexión a internet para usarla?</span>
+                            <span lang="en" class="hidden">Do I need an internet connection to use it?</span>
+                        </span>
+                        <span style="flex-shrink: 0; color: var(--text-tertiary);">
+                            <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                            </svg>
+                            <svg x-show="open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                            </svg>
+                        </span>
+                    </button>
+                    <div id="faq-3" x-show="open" x-transition class="body-text"
+                        style="padding: 0 24px 24px 24px; text-align: left;">
+                        <span lang="es">No. Bricks Calc funciona sin conexión para los cálculos principales. Solo
+                            necesitas internet si eliges sincronizar datos o usar futuras funciones conectadas.</span>
+                        <span lang="en" class="hidden">No. Bricks Calc works offline for the main calculations. You only
+                            need internet if you choose to sync data or use future connected features.</span>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div x-data="{ open: false }">
+                    <button
+                        style="width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 20px 24px; text-align: left; background: none; border: none; cursor: pointer; border-bottom: 1px solid var(--surface-shadow);"
+                        aria-controls="faq-4" :aria-expanded="open.toString()" @click="open = !open">
+                        <span class="subheading" style="flex: 1; text-align: left; margin: 0; font-size: 18px;">
+                            <span lang="es">¿Es gratuita?</span>
+                            <span lang="en" class="hidden">Is it free?</span>
+                        </span>
+                        <span style="flex-shrink: 0; color: var(--text-tertiary);">
+                            <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                            </svg>
+                            <svg x-show="open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                            </svg>
+                        </span>
+                    </button>
+                    <div id="faq-4" x-show="open" x-transition class="body-text"
+                        style="padding: 0 24px 24px 24px; text-align: left;">
+                        <span lang="es">Sí. Puedes empezar a usar Bricks Calc gratis. Más adelante, añadiremos funciones
+                            opcionales para análisis más avanzados.</span>
+                        <span lang="en" class="hidden">Yes. You can start using Bricks Calc for free. Optional features
+                            for more advanced analysis may be added later.</span>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div x-data="{ open: false }">
+                    <button
+                        style="width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 20px 24px; text-align: left; background: none; border: none; cursor: pointer; border-bottom: 1px solid var(--surface-shadow);"
+                        aria-controls="faq-5" :aria-expanded="open.toString()" @click="open = !open">
+                        <span class="subheading" style="flex: 1; text-align: left; margin: 0; font-size: 18px;">
+                            <span lang="es">¿Puedo usarla fuera del Perú?</span>
+                            <span lang="en" class="hidden">Can I use it outside Peru?</span>
+                        </span>
+                        <span style="flex-shrink: 0; color: var(--text-tertiary);">
+                            <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                            </svg>
+                            <svg x-show="open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                            </svg>
+                        </span>
+                    </button>
+                    <div id="faq-5" x-show="open" x-transition class="body-text"
+                        style="padding: 0 24px 24px 24px; text-align: left;">
+                        <span lang="es">Sí. Aunque está optimizada para el mercado peruano, puedes usar Bricks Calc en
+                            otros países ajustando la moneda y la tasa de interés. También está disponible en inglés y
+                            español.</span>
+                        <span lang="en" class="hidden">Yes. While it is optimized for the Peruvian market, you can use
+                            Bricks Calc in other countries by adjusting the currency and interest rate. It is also
+                            available in English and Spanish.</span>
+                    </div>
+                </div>
+
+                <!-- Item 6 -->
+                <div x-data="{ open: false }">
+                    <button
+                        style="width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 20px 24px; text-align: left; background: none; border: none; cursor: pointer; border-bottom: 1px solid var(--surface-shadow);"
+                        aria-controls="faq-6" :aria-expanded="open.toString()" @click="open = !open">
+                        <span class="subheading" style="flex: 1; text-align: left; margin: 0; font-size: 18px;">
+                            <span lang="es">¿Qué tan precisos son los cálculos?</span>
+                            <span lang="en" class="hidden">How accurate are the calculations?</span>
+                        </span>
+                        <span style="flex-shrink: 0; color: var(--text-tertiary);">
+                            <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                            </svg>
+                            <svg x-show="open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                            </svg>
+                        </span>
+                    </button>
+                    <div id="faq-6" x-show="open" x-transition class="body-text"
+                        style="padding: 0 24px 24px 24px; text-align: left;">
+                        <span lang="es">Los resultados se basan en fórmulas de amortización usadas por los bancos, por
+                            lo que son altamente precisos. Aun así, conviene confirmar las condiciones exactas con tu
+                            entidad financiera.</span>
+                        <span lang="en" class="hidden">The results rely on amortization formulas used by banks, so they
+                            are highly accurate. Still, it is worth confirming the exact terms with your financial
+                            institution.</span>
+                    </div>
+                </div>
+
+                <!-- Item 7 -->
+                <div x-data="{ open: false }">
+                    <button
+                        style="width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 20px 24px; text-align: left; background: none; border: none; cursor: pointer; border-bottom: 1px solid var(--surface-shadow);"
+                        aria-controls="faq-7" :aria-expanded="open.toString()" @click="open = !open">
+                        <span class="subheading" style="flex: 1; text-align: left; margin: 0; font-size: 18px;">
+                            <span lang="es">¿Puedo guardar mis cálculos o compartirlos?</span>
+                            <span lang="en" class="hidden">Can I save or share my calculations?</span>
+                        </span>
+                        <span style="flex-shrink: 0; color: var(--text-tertiary);">
+                            <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                            </svg>
+                            <svg x-show="open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                            </svg>
+                        </span>
+                    </button>
+                    <div id="faq-7" x-show="open" x-transition class="body-text"
+                        style="padding: 0 24px 24px 24px; text-align: left;">
+                        <span lang="es">Sí. Puedes guardar tus simulaciones para revisarlas después o compartirlas
+                            fácilmente por mensaje o correo. Es especialmente útil si trabajas con clientes o
+                            asesores.</span>
+                        <span lang="en" class="hidden">Yes. You can save your simulations to review later or share them
+                            easily by message or email. It is especially useful when working with clients or
+                            advisors.</span>
+                    </div>
+                </div>
+
+                <!-- Item 8 -->
+                <div x-data="{ open: false }">
+                    <button
+                        style="width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 20px 24px; text-align: left; background: none; border: none; cursor: pointer;"
+                        aria-controls="faq-8" :aria-expanded="open.toString()" @click="open = !open">
+                        <span class="subheading" style="flex: 1; text-align: left; margin: 0; font-size: 18px;">
+                            <span lang="es">¿Bricks Calc recopila mis datos personales?</span>
+                            <span lang="en" class="hidden">Does Bricks Calc collect my personal data?</span>
+                        </span>
+                        <span style="flex-shrink: 0; color: var(--text-tertiary);">
+                            <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                            </svg>
+                            <svg x-show="open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                            </svg>
+                        </span>
+                    </button>
+                    <div id="faq-8" x-show="open" x-transition class="body-text"
+                        style="padding: 0 24px 24px 24px; text-align: left;">
+                        <span lang="es">No. Bricks Calc no requiere una cuenta para funcionar y tus cálculos se guardan
+                            de forma privada en tu dispositivo. Si en el futuro activas funciones opcionales, se te
+                            pedirá tu consentimiento.</span>
+                        <span lang="en" class="hidden">No. Bricks Calc does not require an account to work, and your
+                            calculations stay private on your device. If you enable optional features in the future,
+                            your consent will be requested.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION — THE ECOSYSTEM -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="reading-column center-text mb-md">
+                <h2 class="section-title reveal-on-scroll">
+                    <span lang="en">A focused toolkit for agents.</span>
+                    <span lang="es" class="hidden">Un kit de herramientas enfocado para agentes.</span>
+                </h2>
+                <p class="body-text reveal-on-scroll delay-100">
+                    <span lang="en">Each Bricks app solves a specific operational burden. No unnecessary features. No
+                        enterprise complexity.</span>
+                    <span lang="es" class="hidden">Cada app de Bricks resuelve una carga operativa específica. Sin
+                        funciones innecesarias. Sin complejidad empresarial.</span>
+                </p>
+            </div>
+
+            <div class="grid-3">
+                <!-- Bricks Scan -->
+                <div class="ecosystem-card embossed-card reveal-on-scroll delay-100">
+                    <img src="images-bricks-scan/bricks-scan-web-icon.png" alt="Bricks Scan Icon" class="app-icon">
+                    <h3 class="subheading">Bricks Scan</h3>
+                    <p class="body-text" style="font-size: 16px; margin-bottom: 20px;">
+                        <span lang="en">Capture, name, and organize every transaction document automatically. Search
+                            inside any page in seconds.</span>
+                        <span lang="es" class="hidden">Captura, nombra y organiza cada documento de transacción
+                            automáticamente. Busca dentro de cualquier página en segundos.</span>
+                    </p>
+                    <a href="scan.html" class="btn btn-secondary">
+                        <span lang="en">Learn more →</span>
+                        <span lang="es" class="hidden">Más información →</span>
+                    </a>
+                </div>
+
+                <!-- Bricks Calc (Current) -->
+                <div class="ecosystem-card embossed-card reveal-on-scroll delay-200"
+                    style="border: 1.5px solid var(--accent-teal); position: relative;">
+                    <img src="images/bricks-calc-web-icon.png" alt="Bricks Calc Icon" class="app-icon">
+                    <h3 class="subheading">Bricks Calc</h3>
+                    <p class="body-text" style="font-size: 16px; margin-bottom: 20px;">
+                        <span lang="en">Model deals quickly. Estimate payments, rates, and financing scenarios on the
+                            spot during client meetings.</span>
+                        <span lang="es" class="hidden">Modela ofertas rápidamente. Estima pagos, tasas y escenarios de
+                            financiamiento al instante durante reuniones con clientes.</span>
+                    </p>
+                    <div class="btn btn-secondary disabled" style="opacity: 0.5; cursor: default;">
+                        <span lang="en">Current App</span>
+                        <span lang="es" class="hidden">App Actual</span>
+                    </div>
+                </div>
+
+                <!-- Bricks Leads -->
+                <div class="ecosystem-card embossed-card reveal-on-scroll delay-300">
+                    <img src="images/bricks-leads-web-icon.png" alt="Bricks Leads Icon" class="app-icon">
+                    <h3 class="subheading">Bricks Leads</h3>
+                    <p class="body-text" style="font-size: 16px; margin-bottom: 20px;">
+                        <span lang="en">Track clients and follow-ups without bloated dashboards. A clean CRM built for
+                            real estate agents on Apple.</span>
+                        <span lang="es" class="hidden">Rastrea clientes y seguimientos sin paneles complicados. Un CRM
+                            limpio creado para agentes inmobiliarios en Apple.</span>
+                    </p>
+                    <a href="https://leads.bricks.pe" class="btn btn-secondary"
+                        style="font-size: 14px; padding: 10px 20px;">
+                        <span lang="en">Learn more →</span>
+                        <span lang="es" class="hidden">Más información →</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container reveal-on-scroll">
+            <div style="
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 48px;
+                        justify-content: space-between;
+                        margin-bottom: 48px;
+                    ">
+                <!-- Brand Section -->
+                <div class="footer-brand" style="flex: 1; min-width: 280px">
+                    <a href="index.html" style="display: inline-block; margin-bottom: 16px">
+                        <img src="images/bricks-dark-logo.svg" onerror="this.src='images/bricks-light-logo.svg'"
+                            alt="Bricks Logo" style="height: 32px; opacity: 0.8" />
+                    </a>
+                    <p class="body-text" style="font-size: 15px">
+                        <span lang="en">Focused apps for real estate agents on Apple.</span>
+                        <span lang="es" class="hidden">Apps enfocadas para agentes inmobiliarios en Apple.</span>
+                    </p>
+                    <div class="footer-social" style="display: flex; gap: 16px; margin-top: 24px">
+                        <a href="https://www.instagram.com/hellobricksapps/" target="_blank" rel="noopener"
+                            style="color: var(--text-secondary); opacity: 0.6; transition: opacity 0.2s"
+                            onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'">
+                            <img src="images/icon-instagram.svg" alt="Instagram" style="width: 20px; height: 20px" />
+                        </a>
+                        <a href="https://x.com/hellobricksapps" target="_blank" rel="noopener"
+                            style="color: var(--text-secondary); opacity: 0.6; transition: opacity 0.2s"
+                            onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'">
+                            <img src="images/icon-x.svg" alt="X" style="width: 20px; height: 20px" />
+                        </a>
+                        <a href="https://www.linkedin.com/company/bricksapps/" target="_blank" rel="noopener"
+                            style="color: var(--text-secondary); opacity: 0.6; transition: opacity 0.2s"
+                            onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'">
+                            <img src="images/icon-linkedin.svg" alt="LinkedIn" style="width: 20px; height: 20px" />
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Footer Links Grid -->
+                <div style="
+                            flex: 2;
+                            min-width: 280px;
+                            display: grid;
+                            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                            gap: 32px;
+                        ">
+                    <!-- Apps Section -->
+                    <div>
+                        <h3 class="subheading" style="font-size: 16px; margin-bottom: 16px">
+                            <span lang="en">Apps</span>
+                            <span lang="es" class="hidden">Apps</span>
+                        </h3>
+                        <ul style="
+                                    list-style: none;
+                                    padding: 0;
+                                    margin: 0;
+                                    display: flex;
+                                    flex-direction: column;
+                                    gap: 12px;
+                                ">
+                            <li>
+                                <a href="scan.html" class="body-text" style="font-size: 15px">
+                                    <span lang="en">Bricks Scan</span>
+                                    <span lang="es" class="hidden">Bricks Scan</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="calc.html" class="body-text" style="font-size: 15px">
+                                    <span lang="en">Bricks Calc</span>
+                                    <span lang="es" class="hidden">Bricks Calc</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://leads.bricks.pe" class="body-text" style="font-size: 15px">
+                                    <span lang="en">Bricks Leads</span>
+                                    <span lang="es" class="hidden">Bricks Leads</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Company Section -->
+                    <div>
+                        <h3 class="subheading" style="font-size: 16px; margin-bottom: 16px">
+                            <span lang="en">Business</span>
+                            <span lang="es" class="hidden">Empresa</span>
+                        </h3>
+                        <ul style="
+                                    list-style: none;
+                                    padding: 0;
+                                    margin: 0;
+                                    display: flex;
+                                    flex-direction: column;
+                                    gap: 12px;
+                                ">
+                            <li>
+                                <a href="about.html" class="body-text" style="font-size: 15px">
+                                    <span lang="en">About us</span>
+                                    <span lang="es" class="hidden">Sobre nosotros</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="purchase-guide-01.html" class="body-text" style="font-size: 15px">
+                                    <span lang="en">Purchase Guide</span>
+                                    <span lang="es" class="hidden">Guía de compra</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="mailto:hello@bricks.pe" class="body-text" style="font-size: 15px">
+                                    <span lang="en">Email: hello@bricks.pe</span>
+                                    <span lang="es" class="hidden">Email: hello@bricks.pe</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Support Section -->
+                    <div>
+                        <h3 class="subheading" style="font-size: 16px; margin-bottom: 16px">
+                            <span lang="en">Support</span>
+                            <span lang="es" class="hidden">Soporte</span>
+                        </h3>
+                        <ul style="
+                                    list-style: none;
+                                    padding: 0;
+                                    margin: 0;
+                                    display: flex;
+                                    flex-direction: column;
+                                    gap: 12px;
+                                ">
+                            <li>
+                                <a href="support.html" class="body-text" style="font-size: 15px;">
+                                    <span lang="en">Contact</span>
+                                    <span lang="es" class="hidden">Contacto</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://bricksapps.userjot.com" class="body-text" style="font-size: 15px;">
+                                    <span lang="en">Vote on Features</span>
+                                    <span lang="es" class="hidden">Votar funciones</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="help.html" class="body-text" style="font-size: 15px;">
+                                    <span lang="en">Apps Guides</span>
+                                    <span lang="es" class="hidden">Guías</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="survey.html" class="body-text" style="font-size: 15px">
+                                    <span lang="en">Survey</span>
+                                    <span lang="es" class="hidden">Encuesta</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div style="
+                        border-top: 1px solid var(--surface-shadow);
+                        padding-top: 32px;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 16px;
+                    ">
+                <p class="metadata" style="text-align: center">
+                    <span lang="en">© 2026 Bricks Apps. All rights reserved.</span>
+                    <span lang="es" class="hidden">© 2026 Bricks Apps. Todos los derechos reservados</span>
+                </p>
+                <div class="footer-bottom-row"
+                    style="display: flex; justify-content: center; flex-wrap: wrap; gap: 24px; align-items: center">
+                    <div class="footer-links" style="display: flex; flex-wrap: wrap; gap: 24px">
+                        <a href="privacy.html" style="margin: 0">
+                            <span lang="en">Privacy Policy</span>
+                            <span lang="es" class="hidden">Política de privacidad</span>
+                        </a>
+                        <a href="terms.html" style="margin: 0">
+                            <span lang="en">Terms of Service</span>
+                            <span lang="es" class="hidden">Términos de servicio</span>
+                        </a>
+                    </div>
+                    <div class="footer-language-dropdown">
+                        <img src="images/globe-icon.svg" alt="" class="footer-globe-icon" />
+                        <select id="language-select" title="Change language / Cambiar idioma">
+                            <option value="en">English</option>
+                            <option value="es">Español</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</body>
+
+</html>
