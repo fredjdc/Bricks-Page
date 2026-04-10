@@ -1991,6 +1991,13 @@ a:hover {
 
 
 
+.privacy-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    margin-top: 64px;
+}
+
 .privacy-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -2119,7 +2126,8 @@ a:hover {
 @media (max-width: 768px) {
     .workflow-grid,
     .auto-sort-grid,
-    .privacy-grid {
+    .privacy-grid,
+    .privacy-grid-2 {
         grid-template-columns: 1fr;
     }
 
