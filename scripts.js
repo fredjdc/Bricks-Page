@@ -452,16 +452,16 @@ const updateAppScreenshots = (lang) => {
                 pt: 'images/bricks-leads-img-en.png'  // Fallback
             },
             'bricks-leads-layer-back': {
-                es: 'images/leads-back-layer-es-03.png',
-                en: 'images/leads-back-layer-en-03.png'
+                es: 'images-bricks-leads/leads-back-layer-es.png',
+                en: 'images-bricks-leads/leads-back-layer-en.png'
             },
             'bricks-leads-layer-middle': {
-                es: 'images/leads-mid-layer-es-02.png',
-                en: 'images/leads-mid-layer-en-02.png'
+                es: 'images-bricks-leads/leads-mid-layer-es.png',
+                en: 'images-bricks-leads/leads-mid-layer-en.png'
             },
             'bricks-leads-layer-front': {
-                es: 'images/leads-top-layer-es-01.png',
-                en: 'images/leads-top-layer-en-01.png'
+                es: 'images-bricks-leads/leads-top-layer-es.png',
+                en: 'images-bricks-leads/leads-top-layer-en.png'
             },
             // Bricks Scan
             'bricks-scan-hero-layer-back': {
