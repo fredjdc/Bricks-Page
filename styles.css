@@ -332,25 +332,6 @@ a:hover {
         height: auto;
         object-position: top center;
     }
-
-    /* Hero Artwork (fan-out layers) — contain on mobile */
-    .hero-artwork {
-        max-width: 280px;
-        margin: 0 auto 24px;
-        aspect-ratio: 1 / 1.2;
-    }
-
-    .hero-artwork.is-visible .wrapper-back {
-        transform: translateX(-50px) translateY(-28px) rotate(-4deg);
-    }
-
-    .hero-artwork.is-visible .wrapper-mid {
-        transform: translateX(0) translateY(0) rotate(0.5deg);
-    }
-
-    .hero-artwork.is-visible .wrapper-front {
-        transform: translateX(50px) translateY(28px) rotate(4deg);
-    }
 }
 
 .grid-2 {
@@ -2627,19 +2608,6 @@ a:hover {
         padding-left: 1rem;
         padding-right: 1rem;
     }
-
-    /* Further reduce fan-out on very small screens */
-    .hero-artwork {
-        max-width: 240px;
-    }
-
-    .hero-artwork.is-visible .wrapper-back {
-        transform: translateX(-36px) translateY(-20px) rotate(-3.5deg);
-    }
-
-    .hero-artwork.is-visible .wrapper-front {
-        transform: translateX(36px) translateY(20px) rotate(3.5deg);
-    }
 }
 
 /* ── Feature Showcase ───────────────────────────────────────── */
@@ -2882,6 +2850,7 @@ a:hover {
         transform: translateY(24px) scale(0.95) !important;
     }
 }
+
 /* Page-Specific Micro-Animations (Extracted from scan.html) */
 /* ── KEYFRAMES ─────────────────────────────────────── */
 @keyframes bs-float {
@@ -3214,4 +3183,3 @@ a:hover {
         transform: none !important;
     }
 }
-
