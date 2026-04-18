@@ -796,6 +796,32 @@ a:hover {
     transition-delay: 0.8s;
 }
 
+/* Download Dropdown Menu Items */
+.download-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 14px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: background 0.15s ease;
+}
+
+.download-dropdown-item:hover {
+    background: var(--surface-shadow);
+    opacity: 1;
+}
+
+.download-dropdown-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
 /* Components */
 
 /* Header */

@@ -390,11 +390,30 @@ window.useTheme = function useTheme() {
 
 
 // ==== Header.jsx ====
-// Floating pill header with scroll-hide
+// Floating pill header with scroll-hide + download dropdown
 window.Header = function Header({ t, lang }) {
   const { dir, atTop } = window.useScrollDirection();
   const isMobile = window.useIsMobile();
   const hidden = dir === 'down' && !atTop;
+  const [dlOpen, setDlOpen] = React.useState(false);
+  const dlRef = React.useRef(null);
+
+  // Close dropdown on outside click
+  React.useEffect(() => {
+    if (!dlOpen) return;
+    const handler = (e) => {
+      if (dlRef.current && !dlRef.current.contains(e.target)) setDlOpen(false);
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, [dlOpen]);
+
+  const downloadItems = [
+    { label: 'Bricks Calc', href: 'https://apps.apple.com/us/app/bricks-calc-loan-calculator/id6754506837', accent: window.ACCENTS.calc.light, external: true },
+    { label: 'Bricks Scan', href: 'https://apps.apple.com/us/app/bricks-scan-scan-to-pdf/id6758148083', accent: window.ACCENTS.scan.light, external: true },
+    { label: 'Bricks Leads', href: 'leads.html', accent: window.ACCENTS.leads.light, external: false },
+  ];
+
   return (
     <header style={{
       position: 'fixed', top: isMobile ? 12 : 24,
@@ -433,20 +452,79 @@ window.Header = function Header({ t, lang }) {
              onMouseLeave={(e) => e.currentTarget.style.opacity = 0.8}
           >{link.label}</a>
         ))}
-        <button
-          onClick={() => window.smoothScrollTo('download')}
-          style={{
-            marginLeft: isMobile ? 0 : 6,
-            padding: isMobile ? '9px 16px' : '10px 18px', borderRadius: 100,
-            background: 'var(--b-text)', color: 'var(--b-bg)',
-            border: 'none', fontSize: 14, fontWeight: 600, cursor: 'pointer',
-            fontFamily: 'inherit', letterSpacing: '-0.01em',
-            boxShadow: '0 8px 20px rgba(11,15,20,0.18)',
-            transition: 'transform 0.15s ease, box-shadow 0.2s',
-          }}
-          onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-1px)'; }}
-          onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; }}
-        >{t.nav.download}</button>
+        {/* Download dropdown */}
+        <div ref={dlRef} style={{ position: 'relative' }}>
+          <button
+            onClick={() => setDlOpen(v => !v)}
+            style={{
+              marginLeft: isMobile ? 0 : 6,
+              padding: isMobile ? '9px 16px' : '10px 18px', borderRadius: 100,
+              background: 'var(--b-text)', color: 'var(--b-bg)',
+              border: 'none', fontSize: 14, fontWeight: 600, cursor: 'pointer',
+              fontFamily: 'inherit', letterSpacing: '-0.01em',
+              display: 'inline-flex', alignItems: 'center', gap: 6,
+              boxShadow: '0 8px 20px rgba(11,15,20,0.18)',
+              transition: 'transform 0.15s ease, box-shadow 0.2s',
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-1px)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; }}
+          >
+            {t.nav.download}
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" style={{
+              transform: dlOpen ? 'rotate(180deg)' : 'rotate(0)',
+              transition: 'transform 0.25s ease',
+            }}>
+              <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+          {/* Dropdown popover */}
+          <div style={{
+            position: 'absolute', top: 'calc(100% + 10px)', right: 0,
+            minWidth: 220,
+            background: 'color-mix(in srgb, var(--b-bg-elevated) 85%, transparent)',
+            backdropFilter: 'blur(24px) saturate(180%)',
+            WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+            borderRadius: 20, border: '1px solid var(--b-border)',
+            boxShadow: '0 16px 48px rgba(11,15,20,0.16)',
+            padding: 8,
+            opacity: dlOpen ? 1 : 0,
+            transform: dlOpen ? 'translateY(0) scale(1)' : 'translateY(-8px) scale(0.96)',
+            pointerEvents: dlOpen ? 'auto' : 'none',
+            transition: 'opacity 0.25s ease, transform 0.3s cubic-bezier(0.16,1,0.3,1)',
+          }}>
+            {downloadItems.map((item, i) => (
+              <a key={i} href={item.href}
+                 target={item.external ? '_blank' : undefined}
+                 rel={item.external ? 'noopener noreferrer' : undefined}
+                 onClick={() => setDlOpen(false)}
+                 style={{
+                   display: 'flex', alignItems: 'center', gap: 12,
+                   padding: '12px 16px', borderRadius: 14,
+                   fontSize: 14, fontWeight: 500, color: 'var(--b-text)',
+                   transition: 'background 0.15s ease',
+                   textDecoration: 'none',
+                 }}
+                 onMouseEnter={(e) => e.currentTarget.style.background = 'var(--b-bg)'}
+                 onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+              >
+                <div style={{
+                  width: 8, height: 8, borderRadius: 4,
+                  background: item.accent, flexShrink: 0,
+                }}/>
+                <span style={{ flex: 1 }}>{item.label}</span>
+                {item.external ? (
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style={{ opacity: 0.4 }}>
+                    <path d="M4 2h6v6M10 2L3 9" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                ) : (
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style={{ opacity: 0.4 }}>
+                    <path d="M4 2l5 4-5 4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                )}
+              </a>
+            ))}
+          </div>
+        </div>
       </nav>
     </header>
   );
@@ -1184,10 +1262,18 @@ window.Changelog = function Changelog({ t }) {
 
 
 // ==== DownloadCTA.jsx ====
-// Download CTA
+// Download CTA with per-app buttons
 window.DownloadCTA = function DownloadCTA({ t }) {
   const reveal = window.useReveal();
   const isMobile = window.useIsMobile();
+  const [hovered, setHovered] = React.useState(null);
+
+  const apps = [
+    { label: 'Bricks Calc', href: 'https://apps.apple.com/us/app/bricks-calc-loan-calculator/id6754506837', accent: window.ACCENTS.calc.light, external: true },
+    { label: 'Bricks Scan', href: 'https://apps.apple.com/us/app/bricks-scan-scan-to-pdf/id6758148083', accent: window.ACCENTS.scan.light, external: true },
+    { label: 'Bricks Leads', href: 'leads.html', accent: window.ACCENTS.leads.light, external: false },
+  ];
+
   return (
     <section id="download" ref={reveal} style={{
       padding: isMobile ? '32px 20px 64px' : '60px 48px 120px', maxWidth: 1200, margin: '0 auto',
@@ -1209,17 +1295,39 @@ window.DownloadCTA = function DownloadCTA({ t }) {
         <p style={{ fontSize: isMobile ? 16 : 18, color: 'var(--b-bg)', opacity: 0.7, lineHeight: 1.6, margin: '0 auto 40px', maxWidth: 520, position: 'relative' }}>
           {t.cta.sub}
         </p>
-        <div style={{ position: 'relative' }}>
-          <button style={{
-            display: 'inline-flex', alignItems: 'center', gap: 12,
-            padding: '16px 28px', background: 'var(--b-bg)', color: 'var(--b-text)',
-            border: 'none', borderRadius: 100, fontSize: 15, fontWeight: 600,
-            fontFamily: 'inherit', cursor: 'pointer', letterSpacing: '-0.01em',
-            boxShadow: '0 12px 28px rgba(0,0,0,0.25)',
-          }}>
-            <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor"><path d="M13.5 5.3c-1.4-.1-2.6.8-3.3.8-.7 0-1.8-.8-3-.8-1.5 0-2.9.9-3.7 2.2-1.6 2.8-.4 6.9 1.1 9.1.7 1.1 1.6 2.3 2.8 2.3 1.1-.1 1.5-.7 2.8-.7 1.4 0 1.8.7 3 .7 1.2 0 2-1.1 2.8-2.2.9-1.3 1.2-2.5 1.3-2.6-.1-.1-2.4-.9-2.4-3.7 0-2.3 1.9-3.4 2-3.5-1.1-1.5-2.7-1.7-3.3-1.7zm-.9-1.5c.6-.8 1-1.8 0.9-2.8-.9.1-2 .6-2.6 1.3-.6.7-1.1 1.8-.9 2.7 1 .1 2-.5 2.6-1.2z"/></svg>
-            {t.cta.primary}
-          </button>
+        <div style={{ position: 'relative', display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
+          {apps.map((app, i) => (
+            <a key={i} href={app.href}
+               target={app.external ? '_blank' : undefined}
+               rel={app.external ? 'noopener noreferrer' : undefined}
+               onMouseEnter={() => setHovered(i)}
+               onMouseLeave={() => setHovered(null)}
+               style={{
+                 display: 'inline-flex', alignItems: 'center', gap: 10,
+                 padding: isMobile ? '14px 22px' : '16px 28px',
+                 background: hovered === i ? app.accent : 'var(--b-bg)',
+                 color: hovered === i ? '#fff' : 'var(--b-text)',
+                 textDecoration: 'none',
+                 border: 'none', borderRadius: 100, fontSize: 15, fontWeight: 600,
+                 fontFamily: 'inherit', letterSpacing: '-0.01em',
+                 boxShadow: '0 12px 28px rgba(0,0,0,0.25)',
+                 transition: 'background 0.25s ease, color 0.25s ease, transform 0.15s ease',
+                 transform: hovered === i ? 'translateY(-2px)' : 'translateY(0)',
+               }}
+            >
+              <div style={{ width: 8, height: 8, borderRadius: 4, background: hovered === i ? 'rgba(255,255,255,0.6)' : app.accent, flexShrink: 0, transition: 'background 0.25s ease' }}/>
+              {app.label}
+              {app.external ? (
+                <svg width="14" height="14" viewBox="0 0 12 12" fill="none" style={{ opacity: 0.5 }}>
+                  <path d="M4 2h6v6M10 2L3 9" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              ) : (
+                <svg width="14" height="14" viewBox="0 0 12 12" fill="none" style={{ opacity: 0.5 }}>
+                  <path d="M4 2l5 4-5 4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              )}
+            </a>
+          ))}
         </div>
       </div>
     </section>
