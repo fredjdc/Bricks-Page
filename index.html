@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>Bricks — Quiet software for real estate</title>
-<meta name="viewport" content="width=1280">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="styles.css">
 
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
@@ -362,17 +362,31 @@ window.useScrollDirection = function useScrollDirection() {
   return state;
 };
 
+window.useIsMobile = function useIsMobile(breakpoint = 768) {
+  const [isMobile, setIsMobile] = React.useState(() => window.innerWidth <= breakpoint);
+  React.useEffect(() => {
+    const mq = window.matchMedia(`(max-width: ${breakpoint}px)`);
+    setIsMobile(mq.matches);
+    const handler = (e) => setIsMobile(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, [breakpoint]);
+  return isMobile;
+};
+
 
 // ==== Header.jsx ====
 // Floating pill header with scroll-hide
 window.Header = function Header({ t, lang }) {
   const { dir, atTop } = window.useScrollDirection();
+  const isMobile = window.useIsMobile();
   const hidden = dir === 'down' && !atTop;
   return (
     <header style={{
-      position: 'fixed', top: 24, left: 48, right: 48, zIndex: 100,
+      position: 'fixed', top: isMobile ? 12 : 24,
+      left: isMobile ? 16 : 48, right: isMobile ? 16 : 48, zIndex: 100,
       display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-      padding: '12px 14px 12px 24px',
+      padding: isMobile ? '10px 10px 10px 18px' : '12px 14px 12px 24px',
       background: 'color-mix(in srgb, var(--b-bg-elevated) 65%, transparent)',
       backdropFilter: 'blur(20px) saturate(180%)',
       WebkitBackdropFilter: 'blur(20px) saturate(180%)',
@@ -388,8 +402,8 @@ window.Header = function Header({ t, lang }) {
         <window.ThemeLogo height={24} />
       </a>
       <nav style={{ display:'flex', gap: 6, alignItems: 'center' }}>
-        {[
-          { id: 'products', label: t.nav.products },
+        {!isMobile && [
+          { id: 'product-scan', label: t.nav.products },
           { id: 'philosophy', label: t.nav.philosophy },
           { id: 'changelog', label: t.nav.changelog },
         ].map(link => (
@@ -408,7 +422,8 @@ window.Header = function Header({ t, lang }) {
         <button
           onClick={() => window.smoothScrollTo('download')}
           style={{
-            marginLeft: 6, padding: '10px 18px', borderRadius: 100,
+            marginLeft: isMobile ? 0 : 6,
+            padding: isMobile ? '9px 16px' : '10px 18px', borderRadius: 100,
             background: 'var(--b-text)', color: 'var(--b-bg)',
             border: 'none', fontSize: 14, fontWeight: 600, cursor: 'pointer',
             fontFamily: 'inherit', letterSpacing: '-0.01em',
@@ -455,6 +470,7 @@ function BricksWordmark() {
 window.HeroSplit = function HeroSplit({ t, lang }) {
   const [hover, setHover] = React.useState(null);
   const ref = window.useReveal();
+  const isMobile = window.useIsMobile();
   const products = [
     { id: 'scan',  accent: window.ACCENTS.scan,  section: 'product-scan'  },
     { id: 'calc',  accent: window.ACCENTS.calc,  section: 'product-calc'  },
@@ -462,7 +478,7 @@ window.HeroSplit = function HeroSplit({ t, lang }) {
   ];
   return (
     <section id="top" ref={ref} style={{
-      position: 'relative', minHeight: '100vh', paddingTop: 120,
+      position: 'relative', minHeight: '100vh', paddingTop: isMobile ? 80 : 120,
       display: 'flex', flexDirection: 'column', overflow: 'hidden',
       background: 'var(--b-bg)',
     }}>
@@ -476,23 +492,28 @@ window.HeroSplit = function HeroSplit({ t, lang }) {
       {/* Top copy */}
       <div className="reveal" style={{
         position:'relative', zIndex:2, maxWidth: 1200, margin: '0 auto',
-        padding: '80px 48px 56px', width: '100%',
+        padding: isMobile ? '56px 20px 36px' : '80px 48px 56px', width: '100%',
       }}>
         <div style={{
           display:'inline-block', padding:'6px 14px', borderRadius: 100,
           background: 'var(--b-bg-elevated)', boxShadow: 'var(--emboss-soft)',
           fontSize: 12, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase',
-          color: 'var(--b-text-2)', marginBottom: 32,
+          color: 'var(--b-text-2)', marginBottom: isMobile ? 20 : 32,
         }}>{t.hero.eyebrow}</div>
         <h1 style={{
-          fontSize: 96, fontWeight: 900, letterSpacing: '-0.04em', lineHeight: 0.98,
+          fontSize: isMobile ? 52 : 96, fontWeight: 900, letterSpacing: '-0.04em', lineHeight: 0.98,
           margin: 0, maxWidth: 1100,
         }}>
           {t.hero.title[0]}<br/>
           <span style={{ color: 'var(--b-text-2)' }}>{t.hero.title[1]}</span>
         </h1>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginTop: 40, gap: 48 }}>
-          <p style={{ fontSize: 20, lineHeight: 1.55, color: 'var(--b-text-2)', margin: 0, maxWidth: 520 }}>
+        <div style={{
+          display: 'flex',
+          flexDirection: isMobile ? 'column' : 'row',
+          justifyContent: 'space-between', alignItems: isMobile ? 'flex-start' : 'flex-end',
+          marginTop: isMobile ? 20 : 40, gap: isMobile ? 12 : 48,
+        }}>
+          <p style={{ fontSize: isMobile ? 17 : 20, lineHeight: 1.55, color: 'var(--b-text-2)', margin: 0, maxWidth: 520 }}>
             {t.hero.body}
           </p>
           <div style={{ fontSize: 12, fontWeight: 600, color: 'var(--b-text-3)', letterSpacing: '0.1em', textTransform: 'uppercase', whiteSpace: 'nowrap', paddingBottom: 6 }}>
@@ -503,11 +524,17 @@ window.HeroSplit = function HeroSplit({ t, lang }) {
 
       {/* Split panels */}
       <div className="reveal reveal-d1" style={{
-        position:'relative', zIndex:2, flex: 1, display: 'grid',
-        gridTemplateColumns: products.map(p => hover === p.id ? '1.4fr' : hover == null ? '1fr' : '0.9fr').join(' '),
-        gap: 0, maxWidth: 1400, width: 'calc(100% - 96px)', margin: '0 auto',
-        minHeight: 420, transition: 'grid-template-columns 0.6s cubic-bezier(0.16,1,0.3,1)',
-        paddingBottom: 80,
+        position:'relative', zIndex:2, flex: 1,
+        display: isMobile ? 'flex' : 'grid',
+        flexDirection: isMobile ? 'column' : undefined,
+        gridTemplateColumns: isMobile ? undefined : products.map(p => hover === p.id ? '1.4fr' : hover == null ? '1fr' : '0.9fr').join(' '),
+        gap: isMobile ? 8 : 0,
+        maxWidth: 1400,
+        width: isMobile ? 'calc(100% - 32px)' : 'calc(100% - 96px)',
+        margin: '0 auto',
+        minHeight: isMobile ? 'auto' : 420,
+        transition: 'grid-template-columns 0.6s cubic-bezier(0.16,1,0.3,1)',
+        paddingBottom: isMobile ? 40 : 80,
       }}>
         {products.map((p, i) => {
           const info = t.products[p.id];
@@ -521,21 +548,23 @@ window.HeroSplit = function HeroSplit({ t, lang }) {
                  position: 'relative', overflow: 'hidden', cursor: 'pointer',
                  background: 'var(--b-bg-elevated)',
                  boxShadow: isHover ? 'var(--emboss-raised)' : 'var(--emboss-soft)',
-                 borderRadius: i === 0 ? '48px 0 0 48px' : i === 2 ? '0 48px 48px 0' : '0',
-                 padding: '40px 36px 36px',
-                 display: 'flex', flexDirection: 'column',
+                 borderRadius: isMobile ? 32 : (i === 0 ? '48px 0 0 48px' : i === 2 ? '0 48px 48px 0' : '0'),
+                 padding: isMobile ? '24px 24px 24px' : '40px 36px 36px',
+                 display: 'flex', flexDirection: isMobile ? 'row' : 'column',
+                 alignItems: isMobile ? 'center' : undefined,
                  transition: 'box-shadow 0.4s ease, transform 0.4s ease',
                  transform: isHover ? 'translateY(-4px)' : 'translateY(0)',
-                 borderLeft: i === 0 ? 'none' : '1px solid var(--b-border)',
+                 borderLeft: isMobile ? 'none' : (i === 0 ? 'none' : '1px solid var(--b-border)'),
                }}
             >
-              {/* Product accent bar top */}
+              {/* Product accent bar */}
               <div style={{
-                position:'absolute', top: 0, left: 0, right: 0, height: 3,
+                position:'absolute', top: 0, left: 0, right: isMobile ? 0 : undefined, bottom: isMobile ? undefined : undefined,
+                width: isMobile ? undefined : undefined, height: isMobile ? 3 : 3,
                 background: p.accent.light, opacity: isHover ? 1 : 0.35,
                 transition: 'opacity 0.3s ease',
               }}/>
-              {/* Accent glow bottom */}
+              {/* Accent glow */}
               <div style={{
                 position:'absolute', inset: 0, pointerEvents:'none',
                 background: `radial-gradient(ellipse 380px 220px at 50% 115%, ${p.accent.light}22, transparent 70%)`,
@@ -543,34 +572,50 @@ window.HeroSplit = function HeroSplit({ t, lang }) {
                 transition: 'opacity 0.4s ease',
               }}/>
 
-              <div style={{ position: 'relative', zIndex: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                <div style={{ fontSize: 12, fontWeight: 700, color: p.accent.light, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-                  0{i+1} / Bricks {info.name}
-                </div>
-                <ArrowGlyph accent={p.accent.light} rotated={isHover}/>
-              </div>
-
-              <div style={{ flex: 1 }}/>
-
-              <div style={{ position: 'relative', zIndex: 1 }}>
-                <div style={{
-                  fontSize: isHover ? 100 : 84, fontWeight: 900, letterSpacing: '-0.04em', lineHeight: 0.95,
-                  color: 'var(--b-text)', transition: 'font-size 0.5s cubic-bezier(0.16,1,0.3,1)',
-                  marginBottom: 12,
-                }}>{info.name}</div>
-                <div style={{ fontSize: 22, fontWeight: 500, color: 'var(--b-text)', letterSpacing: '-0.01em', marginBottom: 6 }}>
-                  {info.tagline}
-                </div>
-                <div style={{ fontSize: 15, color: 'var(--b-text-2)', lineHeight: 1.5 }}>
-                  {info.pitch}
-                </div>
-              </div>
+              {/* Mobile: left label + name block */}
+              {isMobile ? (
+                <>
+                  <div style={{ position: 'relative', zIndex: 1, flex: 1 }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: p.accent.light, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 4 }}>
+                      0{i+1} / Bricks {info.name}
+                    </div>
+                    <div style={{ fontSize: 28, fontWeight: 900, letterSpacing: '-0.03em', lineHeight: 1, color: 'var(--b-text)', marginBottom: 2 }}>
+                      {info.name}
+                    </div>
+                    <div style={{ fontSize: 14, color: 'var(--b-text-2)' }}>{info.tagline}</div>
+                  </div>
+                  <ArrowGlyph accent={p.accent.light} rotated={false}/>
+                </>
+              ) : (
+                <>
+                  <div style={{ position: 'relative', zIndex: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                    <div style={{ fontSize: 12, fontWeight: 700, color: p.accent.light, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+                      0{i+1} / Bricks {info.name}
+                    </div>
+                    <ArrowGlyph accent={p.accent.light} rotated={isHover}/>
+                  </div>
+                  <div style={{ flex: 1 }}/>
+                  <div style={{ position: 'relative', zIndex: 1 }}>
+                    <div style={{
+                      fontSize: isHover ? 100 : 84, fontWeight: 900, letterSpacing: '-0.04em', lineHeight: 0.95,
+                      color: 'var(--b-text)', transition: 'font-size 0.5s cubic-bezier(0.16,1,0.3,1)',
+                      marginBottom: 12,
+                    }}>{info.name}</div>
+                    <div style={{ fontSize: 22, fontWeight: 500, color: 'var(--b-text)', letterSpacing: '-0.01em', marginBottom: 6 }}>
+                      {info.tagline}
+                    </div>
+                    <div style={{ fontSize: 15, color: 'var(--b-text-2)', lineHeight: 1.5 }}>
+                      {info.pitch}
+                    </div>
+                  </div>
+                </>
+              )}
             </a>
           );
         })}
       </div>
 
-      
+
     </section>
   );
 };
@@ -597,6 +642,7 @@ function ArrowGlyph({ accent, rotated }) {
 window.StatsBand = function StatsBand({ t }) {
   const ref = React.useRef(null);
   const [active, setActive] = React.useState(false);
+  const isMobile = window.useIsMobile();
   React.useEffect(() => {
     const el = ref.current;
     if (!el) return;
@@ -610,40 +656,43 @@ window.StatsBand = function StatsBand({ t }) {
 
   return (
     <section ref={reveal} style={{
-      padding: '120px 48px 120px', maxWidth: 1200, margin: '0 auto',
+      padding: isMobile ? '64px 20px' : '120px 48px 120px', maxWidth: 1200, margin: '0 auto',
     }}>
-      <div ref={ref} className="reveal" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 96, alignItems: 'end', marginBottom: 48 }}>
+      <div ref={ref} className="reveal" style={{
+        display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
+        gap: isMobile ? 16 : 96, alignItems: 'end', marginBottom: isMobile ? 32 : 48,
+      }}>
         <div>
           <div style={eyebrowStyle}>{t.stats.sub}</div>
-          <h2 style={{ fontSize: 52, fontWeight: 900, letterSpacing: '-0.03em', lineHeight: 1.05, margin: 0, color: 'var(--b-text)' }}>
+          <h2 style={{ fontSize: isMobile ? 36 : 52, fontWeight: 900, letterSpacing: '-0.03em', lineHeight: 1.05, margin: 0, color: 'var(--b-text)' }}>
             {t.stats.title}
           </h2>
         </div>
       </div>
       <div className="reveal reveal-d1" style={{
-        display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0,
-        background: 'var(--b-bg-elevated)', borderRadius: 48,
-        boxShadow: 'var(--emboss-raised)', padding: '44px 8px',
+        display: 'grid', gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)', gap: 0,
+        background: 'var(--b-bg-elevated)', borderRadius: isMobile ? 32 : 48,
+        boxShadow: 'var(--emboss-raised)', padding: isMobile ? '28px 4px' : '44px 8px',
       }}>
         {t.stats.items.map((s, i) => (
-          <StatCell key={i} item={s} active={active} />
+          <StatCell key={i} item={s} active={active} isMobile={isMobile} />
         ))}
       </div>
     </section>
   );
 };
 
-function StatCell({ item, active }) {
+function StatCell({ item, active, isMobile }) {
   const val = window.useCountUp(item.v, active, 1600);
   return (
     <div style={{
-      padding: '8px 40px', borderLeft: '1px solid var(--b-border)',
-      display: 'flex', flexDirection: 'column', gap: 10,
+      padding: isMobile ? '12px 16px' : '8px 40px', borderLeft: '1px solid var(--b-border)',
+      display: 'flex', flexDirection: 'column', gap: isMobile ? 6 : 10,
     }}>
-      <div style={{ fontSize: 56, fontWeight: 900, letterSpacing: '-0.035em', lineHeight: 1, color: 'var(--b-text)' }}>
+      <div style={{ fontSize: isMobile ? 36 : 56, fontWeight: 900, letterSpacing: '-0.035em', lineHeight: 1, color: 'var(--b-text)' }}>
         {item.suffix ? val + item.suffix : window.fmtNum(val)}
       </div>
-      <div style={{ fontSize: 14, color: 'var(--b-text-2)', lineHeight: 1.4 }}>
+      <div style={{ fontSize: isMobile ? 12 : 14, color: 'var(--b-text-2)', lineHeight: 1.4 }}>
         {item.l}
       </div>
     </div>
@@ -662,6 +711,7 @@ window.eyebrowStyle = {
 window.ScreenshotPhone = function ScreenshotPhone({ src, alt, accent, tilt = 0 }) {
   const ref = React.useRef(null);
   const [y, setY] = React.useState(0);
+  const isMobile = window.useIsMobile();
 
   React.useEffect(() => {
     let raf = 0;
@@ -696,7 +746,7 @@ window.ScreenshotPhone = function ScreenshotPhone({ src, alt, accent, tilt = 0 }
       position: 'relative',
       display: 'flex', justifyContent: 'center', alignItems: 'center',
       perspective: 1800,
-      minHeight: 640,
+      minHeight: isMobile ? 360 : 640,
     }}>
       {/* Ambient color wash behind */}
       <div aria-hidden="true" style={{
@@ -711,7 +761,8 @@ window.ScreenshotPhone = function ScreenshotPhone({ src, alt, accent, tilt = 0 }
         src={src + (window.location.search || '')}
         alt={alt}
         style={{
-          width: 340,
+          width: isMobile ? '100%' : 340,
+          maxWidth: isMobile ? 280 : 'none',
           height: 'auto',
           display: 'block',
           borderRadius: 48,
@@ -770,27 +821,32 @@ window.MoreInfoLink = function MoreInfoLink({ href, accent, label }) {
 // Product section: Scan — frameless floating screenshot
 window.ProductScan = function ProductScan({ t, lang }) {
   const reveal = window.useReveal();
+  const isMobile = window.useIsMobile();
   const accent = window.ACCENTS.scan.light;
 
   return (
     <section id="product-scan" ref={reveal} style={{
-      padding: '100px 48px', maxWidth: 1280, margin: '0 auto',
+      padding: isMobile ? '56px 20px' : '100px 48px', maxWidth: 1280, margin: '0 auto',
     }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.1fr', gap: 96, alignItems: 'center' }}>
+      <div style={{
+        display: isMobile ? 'flex' : 'grid',
+        flexDirection: isMobile ? 'column-reverse' : undefined,
+        gridTemplateColumns: isMobile ? undefined : '1fr 1.1fr',
+        gap: isMobile ? 36 : 96, alignItems: 'center',
+      }}>
         <div className="reveal">
           <div style={{ ...window.eyebrowStyle, color: accent }}>{t.scan.eyebrow}</div>
-          <h2 style={window.h2Big}>
+          <h2 style={{ ...window.h2Big, fontSize: isMobile ? 36 : 56 }}>
             {t.scan.title[0]}<br/>
             <span style={{ color: 'var(--b-text-2)' }}>{t.scan.title[1]}</span>
           </h2>
-          <p style={window.leadP}>{t.scan.body}</p>
+          <p style={{ ...window.leadP, fontSize: isMobile ? 16 : 18 }}>{t.scan.body}</p>
           <div style={{ display:'flex', flexDirection:'column', gap: 22, marginTop: 36 }}>
             {t.scan.bullets.map((b,i) => <window.Bullet key={i} accent={accent} {...b} />)}
           </div>
           <window.MoreInfoLink href="scan.html" accent={accent} label={t.scan.more} />
         </div>
 
-        {/* Right — screenshot */}
         <div className="reveal reveal-d1">
           <window.ScreenshotPhone
             src={`assets/bricks-scan-${lang}.png`}
@@ -829,14 +885,19 @@ window.leadP = {
 // Product section: Calc — frameless floating screenshot
 window.ProductCalc = function ProductCalc({ t, lang }) {
   const reveal = window.useReveal();
+  const isMobile = window.useIsMobile();
   const accent = window.ACCENTS.calc.light;
 
   return (
     <section id="product-calc" ref={reveal} style={{
-      padding: '100px 48px', maxWidth: 1280, margin: '0 auto',
+      padding: isMobile ? '56px 20px' : '100px 48px', maxWidth: 1280, margin: '0 auto',
     }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 1fr', gap: 96, alignItems: 'center' }}>
-        {/* Left: screenshot */}
+      <div style={{
+        display: isMobile ? 'flex' : 'grid',
+        flexDirection: isMobile ? 'column' : undefined,
+        gridTemplateColumns: isMobile ? undefined : '1.1fr 1fr',
+        gap: isMobile ? 36 : 96, alignItems: 'center',
+      }}>
         <div className="reveal">
           <window.ScreenshotPhone
             src={`assets/bricks-calc-${lang}.png`}
@@ -846,14 +907,13 @@ window.ProductCalc = function ProductCalc({ t, lang }) {
           />
         </div>
 
-        {/* Right copy */}
         <div className="reveal reveal-d1">
           <div style={{ ...window.eyebrowStyle, color: accent }}>{t.calc.eyebrow}</div>
-          <h2 style={window.h2Big}>
+          <h2 style={{ ...window.h2Big, fontSize: isMobile ? 36 : 56 }}>
             {t.calc.title[0]}<br/>
             <span style={{ color: 'var(--b-text-2)' }}>{t.calc.title[1]}</span>
           </h2>
-          <p style={window.leadP}>{t.calc.body}</p>
+          <p style={{ ...window.leadP, fontSize: isMobile ? 16 : 18 }}>{t.calc.body}</p>
           <div style={{ display:'flex', flexDirection:'column', gap: 22, marginTop: 36 }}>
             {t.calc.bullets.map((b,i) => <window.Bullet key={i} accent={accent} {...b} />)}
           </div>
@@ -869,20 +929,26 @@ window.ProductCalc = function ProductCalc({ t, lang }) {
 // Product section: Leads — frameless floating screenshot
 window.ProductLeads = function ProductLeads({ t, lang }) {
   const reveal = window.useReveal();
+  const isMobile = window.useIsMobile();
   const accent = window.ACCENTS.leads.light;
 
   return (
     <section id="product-leads" ref={reveal} style={{
-      padding: '100px 48px', maxWidth: 1280, margin: '0 auto',
+      padding: isMobile ? '56px 20px' : '100px 48px', maxWidth: 1280, margin: '0 auto',
     }}>
-      <div style={{ display:'grid', gridTemplateColumns:'1fr 1.1fr', gap: 96, alignItems:'center' }}>
+      <div style={{
+        display: isMobile ? 'flex' : 'grid',
+        flexDirection: isMobile ? 'column-reverse' : undefined,
+        gridTemplateColumns: isMobile ? undefined : '1fr 1.1fr',
+        gap: isMobile ? 36 : 96, alignItems: 'center',
+      }}>
         <div className="reveal">
           <div style={{ ...window.eyebrowStyle, color: accent }}>{t.leads.eyebrow}</div>
-          <h2 style={window.h2Big}>
+          <h2 style={{ ...window.h2Big, fontSize: isMobile ? 36 : 56 }}>
             {t.leads.title[0]}<br/>
             <span style={{ color: 'var(--b-text-2)' }}>{t.leads.title[1]}</span>
           </h2>
-          <p style={window.leadP}>{t.leads.body}</p>
+          <p style={{ ...window.leadP, fontSize: isMobile ? 16 : 18 }}>{t.leads.body}</p>
           <div style={{ display:'flex', flexDirection:'column', gap: 22, marginTop: 36 }}>
             {t.leads.bullets.map((b,i) => <window.Bullet key={i} accent={accent} {...b} />)}
           </div>
@@ -907,21 +973,22 @@ window.ProductLeads = function ProductLeads({ t, lang }) {
 // Philosophy / "Why trust Bricks" band
 window.PhilosophyBand = function PhilosophyBand({ t }) {
   const reveal = window.useReveal();
+  const isMobile = window.useIsMobile();
   return (
     <section id="philosophy" ref={reveal} style={{
-      padding: '120px 48px', maxWidth: 1200, margin: '0 auto',
+      padding: isMobile ? '64px 20px' : '120px 48px', maxWidth: 1200, margin: '0 auto',
     }}>
-      <div className="reveal" style={{ maxWidth: 780, marginBottom: 72 }}>
+      <div className="reveal" style={{ maxWidth: 780, marginBottom: isMobile ? 40 : 72 }}>
         <div style={window.eyebrowStyle}>{t.philosophy.eyebrow}</div>
-        <h2 style={{ fontSize: 64, fontWeight: 900, letterSpacing: '-0.035em', lineHeight: 1.02, margin: '0 0 24px', color: 'var(--b-text)' }}>
+        <h2 style={{ fontSize: isMobile ? 40 : 64, fontWeight: 900, letterSpacing: '-0.035em', lineHeight: 1.02, margin: '0 0 24px', color: 'var(--b-text)' }}>
           {t.philosophy.title[0]}<br/>
           <span style={{ color: 'var(--b-text-2)' }}>{t.philosophy.title[1]}</span>
         </h2>
-        <p style={{ fontSize: 20, color: 'var(--b-text-2)', lineHeight: 1.55, margin: 0 }}>
+        <p style={{ fontSize: isMobile ? 16 : 20, color: 'var(--b-text-2)', lineHeight: 1.55, margin: 0 }}>
           {t.philosophy.body}
         </p>
       </div>
-      <div style={{ display:'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
+      <div style={{ display:'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: isMobile ? 16 : 24 }}>
         {t.philosophy.pillars.map((p, i) => (
           <div key={i} className={`reveal reveal-d${i+1}`} style={{
             background: 'var(--b-bg-elevated)', borderRadius: 36, padding: '32px 32px 36px',
@@ -962,6 +1029,7 @@ function PhilosophyIcon({ index }) {
 // Testimonials — marquee-style big type carousel
 window.Testimonials = function Testimonials({ t }) {
   const reveal = window.useReveal();
+  const isMobile = window.useIsMobile();
   const [i, setI] = React.useState(0);
   const quotes = t.testimonials.quotes;
 
@@ -972,18 +1040,19 @@ window.Testimonials = function Testimonials({ t }) {
 
   return (
     <section ref={reveal} style={{
-      padding: '120px 48px', maxWidth: 1200, margin: '0 auto',
+      padding: isMobile ? '64px 20px' : '120px 48px', maxWidth: 1200, margin: '0 auto',
     }}>
       <div className="reveal" style={{ fontSize: 12, fontWeight: 700, color: 'var(--b-text-3)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 32, textAlign: 'center' }}>
         {t.testimonials.eyebrow}
       </div>
       <div className="reveal reveal-d1" style={{
-        background: 'var(--b-bg-elevated)', borderRadius: 48, padding: '72px 64px 56px',
+        background: 'var(--b-bg-elevated)', borderRadius: isMobile ? 32 : 48,
+        padding: isMobile ? '48px 24px 44px' : '72px 64px 56px',
         boxShadow: 'var(--emboss-raised)', position: 'relative',
-        minHeight: 340,
+        minHeight: isMobile ? 260 : 340,
       }}>
-        <div style={{ position:'absolute', top: 32, left: 48, fontSize: 120, lineHeight: 0.7, color: 'var(--b-text-3)', opacity: 0.3, fontFamily: 'Georgia, serif', fontWeight: 700 }}>“</div>
-        <div style={{ position: 'relative', minHeight: 200 }}>
+        <div style={{ position:'absolute', top: isMobile ? 16 : 32, left: isMobile ? 24 : 48, fontSize: isMobile ? 80 : 120, lineHeight: 0.7, color: 'var(--b-text-3)', opacity: 0.3, fontFamily: 'Georgia, serif', fontWeight: 700 }}>"</div>
+        <div style={{ position: 'relative', minHeight: isMobile ? 180 : 200 }}>
           {quotes.map((q, k) => (
             <div key={k} style={{
               position: 'absolute', inset: 0,
@@ -992,13 +1061,13 @@ window.Testimonials = function Testimonials({ t }) {
               transition: 'opacity 0.6s ease, transform 0.6s cubic-bezier(0.16,1,0.3,1)',
               pointerEvents: i === k ? 'auto' : 'none',
             }}>
-              <div style={{ fontSize: 36, fontWeight: 500, letterSpacing: '-0.02em', lineHeight: 1.25, color: 'var(--b-text)', maxWidth: 980, textWrap: 'pretty' }}>
-                “{q.q}”
+              <div style={{ fontSize: isMobile ? 20 : 36, fontWeight: 500, letterSpacing: '-0.02em', lineHeight: 1.35, color: 'var(--b-text)', maxWidth: 980, textWrap: 'pretty' }}>
+                "{q.q}"
               </div>
-              <div style={{ marginTop: 40, display: 'flex', alignItems: 'center', gap: 14 }}>
+              <div style={{ marginTop: isMobile ? 24 : 40, display: 'flex', alignItems: 'center', gap: 14 }}>
                 <div style={{
                   width: 44, height: 44, borderRadius: '50%', background: 'var(--b-bg)',
-                  boxShadow: 'var(--emboss-soft)',
+                  boxShadow: 'var(--emboss-soft)', flexShrink: 0,
                   display: 'flex', alignItems:'center', justifyContent:'center',
                   fontSize: 14, fontWeight: 700, color: 'var(--b-text)', letterSpacing: '-0.01em',
                 }}>{q.n.split(' ').map(s => s[0]).join('').slice(0,2)}</div>
@@ -1010,7 +1079,7 @@ window.Testimonials = function Testimonials({ t }) {
             </div>
           ))}
         </div>
-        <div style={{ position: 'absolute', bottom: 32, right: 40, display: 'flex', gap: 8 }}>
+        <div style={{ position: 'absolute', bottom: isMobile ? 16 : 32, right: isMobile ? 24 : 40, display: 'flex', gap: 8 }}>
           {quotes.map((_, k) => (
             <button key={k} onClick={() => setI(k)} style={{
               width: i === k ? 24 : 8, height: 8, borderRadius: 4,
@@ -1030,6 +1099,7 @@ window.Testimonials = function Testimonials({ t }) {
 // Changelog section
 window.Changelog = function Changelog({ t }) {
   const reveal = window.useReveal();
+  const isMobile = window.useIsMobile();
   const tagColors = {
     Scan: window.ACCENTS.scan.light,
     Calc: window.ACCENTS.calc.light,
@@ -1037,12 +1107,12 @@ window.Changelog = function Changelog({ t }) {
   };
   return (
     <section id="changelog" ref={reveal} style={{
-      padding: '120px 48px', maxWidth: 1200, margin: '0 auto',
+      padding: isMobile ? '64px 20px' : '120px 48px', maxWidth: 1200, margin: '0 auto',
     }}>
-      <div style={{ display:'grid', gridTemplateColumns: '1fr 1.6fr', gap: 96, alignItems: 'start' }}>
+      <div style={{ display:'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1.6fr', gap: isMobile ? 32 : 96, alignItems: 'start' }}>
         <div className="reveal">
           <div style={window.eyebrowStyle}>{t.changelog.eyebrow}</div>
-          <h2 style={{ fontSize: 52, fontWeight: 900, letterSpacing: '-0.035em', lineHeight: 1.05, margin: '0 0 18px', color: 'var(--b-text)' }}>
+          <h2 style={{ fontSize: isMobile ? 36 : 52, fontWeight: 900, letterSpacing: '-0.035em', lineHeight: 1.05, margin: '0 0 18px', color: 'var(--b-text)' }}>
             {t.changelog.title}
           </h2>
           <p style={{ fontSize: 16, color: 'var(--b-text-2)', lineHeight: 1.6, margin: 0 }}>
@@ -1055,22 +1125,38 @@ window.Changelog = function Changelog({ t }) {
         }}>
           {t.changelog.items.map((it, i) => (
             <div key={i} style={{
-              display: 'grid', gridTemplateColumns: '88px 72px 1fr', gap: 24,
-              alignItems: 'start', padding: '26px 0',
+              padding: '22px 0',
               borderBottom: i === t.changelog.items.length - 1 ? 'none' : '1px solid var(--b-border)',
             }}>
-              <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--b-text-2)', paddingTop: 3 }}>{it.date}</div>
-              <div>
-                <span style={{
-                  display: 'inline-block', padding: '3px 10px', borderRadius: 100,
-                  background: tagColors[it.tag] + '1A', color: tagColors[it.tag],
-                  fontSize: 11, fontWeight: 700, letterSpacing: '0.05em',
-                }}>{it.tag}</span>
-              </div>
-              <div>
-                <div style={{ fontSize: 18, fontWeight: 600, color: 'var(--b-text)', letterSpacing: '-0.01em', marginBottom: 4 }}>{it.title}</div>
-                <div style={{ fontSize: 14, color: 'var(--b-text-2)', lineHeight: 1.55 }}>{it.body}</div>
-              </div>
+              {isMobile ? (
+                <>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
+                    <span style={{ fontSize: 12, fontWeight: 600, color: 'var(--b-text-2)' }}>{it.date}</span>
+                    <span style={{
+                      display: 'inline-block', padding: '3px 10px', borderRadius: 100,
+                      background: tagColors[it.tag] + '1A', color: tagColors[it.tag],
+                      fontSize: 11, fontWeight: 700, letterSpacing: '0.05em',
+                    }}>{it.tag}</span>
+                  </div>
+                  <div style={{ fontSize: 16, fontWeight: 600, color: 'var(--b-text)', letterSpacing: '-0.01em', marginBottom: 4 }}>{it.title}</div>
+                  <div style={{ fontSize: 14, color: 'var(--b-text-2)', lineHeight: 1.55 }}>{it.body}</div>
+                </>
+              ) : (
+                <div style={{ display: 'grid', gridTemplateColumns: '88px 72px 1fr', gap: 24, alignItems: 'start' }}>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--b-text-2)', paddingTop: 3 }}>{it.date}</div>
+                  <div>
+                    <span style={{
+                      display: 'inline-block', padding: '3px 10px', borderRadius: 100,
+                      background: tagColors[it.tag] + '1A', color: tagColors[it.tag],
+                      fontSize: 11, fontWeight: 700, letterSpacing: '0.05em',
+                    }}>{it.tag}</span>
+                  </div>
+                  <div>
+                    <div style={{ fontSize: 18, fontWeight: 600, color: 'var(--b-text)', letterSpacing: '-0.01em', marginBottom: 4 }}>{it.title}</div>
+                    <div style={{ fontSize: 14, color: 'var(--b-text-2)', lineHeight: 1.55 }}>{it.body}</div>
+                  </div>
+                </div>
+              )}
             </div>
           ))}
         </div>
@@ -1084,12 +1170,14 @@ window.Changelog = function Changelog({ t }) {
 // Download CTA
 window.DownloadCTA = function DownloadCTA({ t }) {
   const reveal = window.useReveal();
+  const isMobile = window.useIsMobile();
   return (
     <section id="download" ref={reveal} style={{
-      padding: '60px 48px 120px', maxWidth: 1200, margin: '0 auto',
+      padding: isMobile ? '32px 20px 64px' : '60px 48px 120px', maxWidth: 1200, margin: '0 auto',
     }}>
       <div className="reveal" style={{
-        background: 'var(--b-text)', borderRadius: 48, padding: '96px 64px',
+        background: 'var(--b-text)', borderRadius: isMobile ? 32 : 48,
+        padding: isMobile ? '56px 24px' : '96px 64px',
         textAlign: 'center', position: 'relative', overflow: 'hidden',
         boxShadow: '0 20px 60px rgba(11,15,20,0.25)',
       }}>
@@ -1097,11 +1185,11 @@ window.DownloadCTA = function DownloadCTA({ t }) {
           position: 'absolute', inset: 0, pointerEvents:'none',
           background: 'radial-gradient(circle at 20% 10%, rgba(0,166,161,0.1), transparent 55%), radial-gradient(circle at 80% 90%, rgba(255,149,0,0.08), transparent 55%)',
         }}/>
-        <h2 style={{ fontSize: 64, fontWeight: 900, letterSpacing: '-0.035em', lineHeight: 1.02, margin: '0 0 20px', color: 'var(--b-bg)', position: 'relative' }}>
+        <h2 style={{ fontSize: isMobile ? 40 : 64, fontWeight: 900, letterSpacing: '-0.035em', lineHeight: 1.02, margin: '0 0 20px', color: 'var(--b-bg)', position: 'relative' }}>
           {t.cta.title[0]}<br/>
           <span style={{ opacity: 0.55 }}>{t.cta.title[1]}</span>
         </h2>
-        <p style={{ fontSize: 18, color: 'var(--b-bg)', opacity: 0.7, lineHeight: 1.6, margin: '0 auto 40px', maxWidth: 520, position: 'relative' }}>
+        <p style={{ fontSize: isMobile ? 16 : 18, color: 'var(--b-bg)', opacity: 0.7, lineHeight: 1.6, margin: '0 auto 40px', maxWidth: 520, position: 'relative' }}>
           {t.cta.sub}
         </p>
         <div style={{ position: 'relative' }}>
@@ -1125,17 +1213,20 @@ window.DownloadCTA = function DownloadCTA({ t }) {
 // ==== Footer.jsx ====
 // Footer with language + theme toggles
 window.Footer = function Footer({ t, lang, setLang, theme, setTheme }) {
+  const isMobile = window.useIsMobile();
   return (
     <footer style={{
-      padding: '80px 48px 48px', borderTop: '1px solid var(--b-border)',
+      padding: isMobile ? '48px 20px 32px' : '80px 48px 48px', borderTop: '1px solid var(--b-border)',
       background: 'var(--b-bg)',
     }}>
       <div style={{
         maxWidth: 1200, margin: '0 auto',
-        display: 'grid', gridTemplateColumns: '1.4fr 1fr 1fr 1fr', gap: 48,
-        marginBottom: 56,
+        display: 'grid',
+        gridTemplateColumns: isMobile ? 'repeat(3, 1fr)' : '1.4fr 1fr 1fr 1fr',
+        gap: isMobile ? 24 : 48,
+        marginBottom: isMobile ? 40 : 56,
       }}>
-        <div>
+        <div style={{ gridColumn: isMobile ? '1 / -1' : undefined }}>
           <window.ThemeLogo />
           <p style={{ fontSize: 14, color: 'var(--b-text-2)', lineHeight: 1.6, margin: '16px 0 24px', maxWidth: 300 }}>
             {t.footer.tag}
@@ -1171,8 +1262,8 @@ window.Footer = function Footer({ t, lang, setLang, theme, setTheme }) {
       {/* Toggles row */}
       <div style={{
         maxWidth: 1200, margin: '0 auto',
-        padding: '32px 0', borderTop: '1px solid var(--b-border)',
-        display: 'flex', gap: 32, flexWrap: 'wrap', alignItems: 'center',
+        padding: isMobile ? '24px 0' : '32px 0', borderTop: '1px solid var(--b-border)',
+        display: 'flex', gap: isMobile ? 20 : 32, flexWrap: 'wrap', alignItems: 'center',
       }}>
         <ToggleGroup
           label={t.footer.language}
