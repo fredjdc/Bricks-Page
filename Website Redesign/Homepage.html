@@ -4,7 +4,58 @@
 <meta charset="utf-8">
 <title>Bricks — Quiet software for real estate</title>
 <meta name="viewport" content="width=1280">
-<link rel="stylesheet" href="styles.css">
+<style>
+@font-face { font-family: "SF Pro Display"; font-style: normal; font-weight: 400; font-display: swap; src: url("fonts/SFPRODISPLAYREGULAR.OTF") format("opentype"); }
+@font-face { font-family: "SF Pro Display"; font-style: normal; font-weight: 500; font-display: swap; src: url("fonts/SFPRODISPLAYMEDIUM.OTF") format("opentype"); }
+@font-face { font-family: "SF Pro Display"; font-style: normal; font-weight: 700; font-display: swap; src: url("fonts/SFPRODISPLAYBOLD.OTF") format("opentype"); }
+:root {
+  --bricks-font-stack: "SF Pro Display", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", system-ui, sans-serif;
+  --bricks-bg-primary: #F6F7F8;
+  --bricks-text-primary: #0B0F14;
+}
+</style>
+<style>
+  html, body { margin:0; padding:0; background: var(--bricks-bg-primary); color: var(--bricks-text-primary); font-family: var(--bricks-font-stack); }
+  * { box-sizing: border-box; }
+  a { color: inherit; text-decoration: none; }
+  body { overflow-x: hidden; }
+  :root {
+    --b-bg: #F6F7F8;
+    --b-bg-elevated: #FFFFFF;
+    --b-surface-shadow: #E7ECEF;
+    --b-text: #0B0F14;
+    --b-text-2: #55626E;
+    --b-text-3: rgba(11,15,20,0.38);
+    --b-border: rgba(11,15,20,0.06);
+    --emboss-raised: 12px 12px 24px var(--b-surface-shadow), -12px -12px 24px #FFFFFF;
+    --emboss-recessed: inset 6px 6px 12px var(--b-surface-shadow), inset -6px -6px 12px #FFFFFF;
+    --emboss-soft: 4px 6px 16px var(--b-surface-shadow), -2px -2px 6px #FFFFFF;
+  }
+  [data-theme="dark"] {
+    --b-bg: #0B0F14;
+    --b-bg-elevated: #12181F;
+    --b-surface-shadow: #05080B;
+    --b-text: #F2F5F7;
+    --b-text-2: #8A96A2;
+    --b-text-3: rgba(242,245,247,0.4);
+    --b-border: rgba(255,255,255,0.08);
+    --emboss-raised: 12px 12px 24px #05080B, -12px -12px 24px #161D25;
+    --emboss-recessed: inset 6px 6px 12px #05080B, inset -6px -6px 12px #161D25;
+    --emboss-soft: 4px 6px 16px #05080B, -2px -2px 6px #161D25;
+  }
+  body { background: var(--b-bg); color: var(--b-text); transition: background 0.4s ease, color 0.4s ease; }
+
+  /* Reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+  .reveal-d1 { transition-delay: 0.08s; }
+  .reveal-d2 { transition-delay: 0.16s; }
+  .reveal-d3 { transition-delay: 0.24s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .reveal.in { transform: none !important; transition: none !important; }
+  }
+</style>
 
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
@@ -385,7 +436,7 @@ window.Header = function Header({ t, lang }) {
     }}>
       <a href="#top" onClick={(e) => { e.preventDefault(); window.scrollTo({ top:0, behavior:'smooth' }); }}
          style={{ display:'flex', alignItems:'center', gap: 10 }}>
-        <window.ThemeLogo height={24} />
+        <BricksWordmark />
       </a>
       <nav style={{ display:'flex', gap: 6, alignItems: 'center' }}>
         {[
@@ -570,7 +621,12 @@ window.HeroSplit = function HeroSplit({ t, lang }) {
         })}
       </div>
 
-      
+      <style>{`
+        @keyframes kenburns {
+          0% { transform: scale(1) translate(0,0); }
+          100% { transform: scale(1.08) translate(2%, -1%); }
+        }
+      `}</style>
     </section>
   );
 };
@@ -768,7 +824,7 @@ window.MoreInfoLink = function MoreInfoLink({ href, accent, label }) {
 
 // ==== ProductScan.jsx ====
 // Product section: Scan — frameless floating screenshot
-window.ProductScan = function ProductScan({ t, lang }) {
+window.ProductScan = function ProductScan({ t }) {
   const reveal = window.useReveal();
   const accent = window.ACCENTS.scan.light;
 
@@ -793,7 +849,7 @@ window.ProductScan = function ProductScan({ t, lang }) {
         {/* Right — screenshot */}
         <div className="reveal reveal-d1">
           <window.ScreenshotPhone
-            src={`assets/bricks-scan-${lang}.png`}
+            src="assets/bricks-scan-en.png"
             alt="Bricks Scan home screen"
             accent={accent}
             tilt={-1.5}
@@ -827,7 +883,7 @@ window.leadP = {
 
 // ==== ProductCalc.jsx ====
 // Product section: Calc — frameless floating screenshot
-window.ProductCalc = function ProductCalc({ t, lang }) {
+window.ProductCalc = function ProductCalc({ t }) {
   const reveal = window.useReveal();
   const accent = window.ACCENTS.calc.light;
 
@@ -839,7 +895,7 @@ window.ProductCalc = function ProductCalc({ t, lang }) {
         {/* Left: screenshot */}
         <div className="reveal">
           <window.ScreenshotPhone
-            src={`assets/bricks-calc-${lang}.png`}
+            src="assets/bricks-calc-en.png"
             alt="Bricks Calc amortization breakdown"
             accent={accent}
             tilt={1.5}
@@ -867,7 +923,7 @@ window.ProductCalc = function ProductCalc({ t, lang }) {
 
 // ==== ProductLeads.jsx ====
 // Product section: Leads — frameless floating screenshot
-window.ProductLeads = function ProductLeads({ t, lang }) {
+window.ProductLeads = function ProductLeads({ t }) {
   const reveal = window.useReveal();
   const accent = window.ACCENTS.leads.light;
 
@@ -891,7 +947,7 @@ window.ProductLeads = function ProductLeads({ t, lang }) {
 
         <div className="reveal reveal-d1">
           <window.ScreenshotPhone
-            src={`assets/bricks-leads-${lang}.png`}
+            src="assets/bricks-leads-en.png"
             alt="Bricks Leads daily schedule"
             accent={accent}
             tilt={-1.5}
@@ -1097,17 +1153,17 @@ window.DownloadCTA = function DownloadCTA({ t }) {
           position: 'absolute', inset: 0, pointerEvents:'none',
           background: 'radial-gradient(circle at 20% 10%, rgba(0,166,161,0.1), transparent 55%), radial-gradient(circle at 80% 90%, rgba(255,149,0,0.08), transparent 55%)',
         }}/>
-        <h2 style={{ fontSize: 64, fontWeight: 900, letterSpacing: '-0.035em', lineHeight: 1.02, margin: '0 0 20px', color: 'var(--b-bg)', position: 'relative' }}>
+        <h2 style={{ fontSize: 64, fontWeight: 900, letterSpacing: '-0.035em', lineHeight: 1.02, margin: '0 0 20px', color: '#fff', position: 'relative' }}>
           {t.cta.title[0]}<br/>
-          <span style={{ opacity: 0.55 }}>{t.cta.title[1]}</span>
+          <span style={{ color: 'rgba(255,255,255,0.55)' }}>{t.cta.title[1]}</span>
         </h2>
-        <p style={{ fontSize: 18, color: 'var(--b-bg)', opacity: 0.7, lineHeight: 1.6, margin: '0 auto 40px', maxWidth: 520, position: 'relative' }}>
+        <p style={{ fontSize: 18, color: 'rgba(255,255,255,0.7)', lineHeight: 1.6, margin: '0 auto 40px', maxWidth: 520, position: 'relative' }}>
           {t.cta.sub}
         </p>
         <div style={{ position: 'relative' }}>
           <button style={{
             display: 'inline-flex', alignItems: 'center', gap: 12,
-            padding: '16px 28px', background: 'var(--b-bg)', color: 'var(--b-text)',
+            padding: '16px 28px', background: '#fff', color: '#0B0F14',
             border: 'none', borderRadius: 100, fontSize: 15, fontWeight: 600,
             fontFamily: 'inherit', cursor: 'pointer', letterSpacing: '-0.01em',
             boxShadow: '0 12px 28px rgba(0,0,0,0.25)',
@@ -1136,7 +1192,7 @@ window.Footer = function Footer({ t, lang, setLang, theme, setTheme }) {
         marginBottom: 56,
       }}>
         <div>
-          <window.ThemeLogo />
+          <BricksFooterMark/>
           <p style={{ fontSize: 14, color: 'var(--b-text-2)', lineHeight: 1.6, margin: '16px 0 24px', maxWidth: 300 }}>
             {t.footer.tag}
           </p>
@@ -1233,14 +1289,22 @@ function ToggleGroup({ label, options, value, setValue }) {
   );
 }
 
-window.ThemeLogo = function ThemeLogo({ height = 24 }) {
+function BricksFooterMark() {
   return (
-    <>
-      <img src="assets/bricks-dark-logo.svg" alt="Bricks Logo" className="logo-light-theme" style={{ height }} />
-      <img src="assets/bricks-light-logo.svg" alt="Bricks Logo" className="logo-dark-theme" style={{ height }} />
-    </>
+    <svg width="80" height="24" viewBox="0 0 290 90" fill="none" style={{ color: 'var(--b-text)' }}>
+      <g fill="currentColor">
+        <rect x="29.9" y="16.875" width="28.125" height="9.235" rx="4.6"/>
+        <rect x="29.9" y="40.38" width="28.125" height="9.235" rx="4.6"/>
+        <rect x="29.9" y="63.89" width="28.125" height="9.235" rx="4.6"/>
+        <rect x="45.01" y="28.63" width="28.125" height="9.235" rx="4.6"/>
+        <rect x="26.05" y="16.875" width="56.25" height="9.18" rx="4.58" transform="rotate(90 26.05 16.875)"/>
+        <path d="M29.9 28.63h7.98c2.55 0 4.62 2.07 4.62 4.62s-2.07 4.62-4.62 4.62H29.9V28.63z"/>
+        <path d="M29.9 52.14h7.98c2.55 0 4.62 2.07 4.62 4.62s-2.07 4.62-4.62 4.62H29.9V52.14z"/>
+        <rect x="45.01" y="52.14" width="28.125" height="9.235" rx="4.6"/>
+      </g>
+    </svg>
   );
-};
+}
 
 function SocialIcon({ kind }) {
   const s = { stroke: 'currentColor', fill: 'none', strokeWidth: 1.6, strokeLinecap: 'round', strokeLinejoin: 'round' };
@@ -1358,9 +1422,9 @@ function App() {
       <window.Header t={t} lang={lang}/>
       <window.HeroSplit t={t} lang={lang}/>
       <window.StatsBand t={t}/>
-      <window.ProductScan t={t} lang={lang}/>
-      <window.ProductCalc t={t} lang={lang}/>
-      <window.ProductLeads t={t} lang={lang}/>
+      <window.ProductScan t={t}/>
+      <window.ProductCalc t={t}/>
+      <window.ProductLeads t={t}/>
       <window.PhilosophyBand t={t}/>
       <window.Testimonials t={t}/>
       <window.Changelog t={t}/>
