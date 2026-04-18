@@ -374,6 +374,20 @@ window.useIsMobile = function useIsMobile(breakpoint = 768) {
   return isMobile;
 };
 
+window.useTheme = function useTheme() {
+  const [theme, setTheme] = React.useState(
+    () => document.documentElement.getAttribute('data-theme') || 'light'
+  );
+  React.useEffect(() => {
+    const observer = new MutationObserver(() => {
+      setTheme(document.documentElement.getAttribute('data-theme') || 'light');
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    return () => observer.disconnect();
+  }, []);
+  return theme;
+};
+
 
 // ==== Header.jsx ====
 // Floating pill header with scroll-hide
@@ -822,6 +836,7 @@ window.MoreInfoLink = function MoreInfoLink({ href, accent, label }) {
 window.ProductScan = function ProductScan({ t, lang }) {
   const reveal = window.useReveal();
   const isMobile = window.useIsMobile();
+  const theme = window.useTheme();
   const accent = window.ACCENTS.scan.light;
 
   return (
@@ -849,7 +864,7 @@ window.ProductScan = function ProductScan({ t, lang }) {
 
         <div className="reveal reveal-d1">
           <window.ScreenshotPhone
-            src={`assets/bricks-scan-${lang}.png`}
+            src={`assets/bricks-scan-${lang}-${theme}.png`}
             alt="Bricks Scan home screen"
             accent={accent}
             tilt={-1.5}
@@ -886,6 +901,7 @@ window.leadP = {
 window.ProductCalc = function ProductCalc({ t, lang }) {
   const reveal = window.useReveal();
   const isMobile = window.useIsMobile();
+  const theme = window.useTheme();
   const accent = window.ACCENTS.calc.light;
 
   return (
@@ -900,7 +916,7 @@ window.ProductCalc = function ProductCalc({ t, lang }) {
       }}>
         <div className="reveal">
           <window.ScreenshotPhone
-            src={`assets/bricks-calc-${lang}.png`}
+            src={`assets/bricks-calc-${lang}-${theme}.png`}
             alt="Bricks Calc amortization breakdown"
             accent={accent}
             tilt={1.5}
@@ -930,6 +946,7 @@ window.ProductCalc = function ProductCalc({ t, lang }) {
 window.ProductLeads = function ProductLeads({ t, lang }) {
   const reveal = window.useReveal();
   const isMobile = window.useIsMobile();
+  const theme = window.useTheme();
   const accent = window.ACCENTS.leads.light;
 
   return (
@@ -957,7 +974,7 @@ window.ProductLeads = function ProductLeads({ t, lang }) {
 
         <div className="reveal reveal-d1">
           <window.ScreenshotPhone
-            src={`assets/bricks-leads-${lang}.png`}
+            src={`assets/bricks-leads-${lang}-${theme}.png`}
             alt="Bricks Leads daily schedule"
             accent={accent}
             tilt={-1.5}
