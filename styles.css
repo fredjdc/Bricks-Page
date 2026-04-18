@@ -2960,6 +2960,11 @@ body { background: var(--b-bg); color: var(--b-text); transition: background 0.4
 [data-theme="dark"] .logo-light-theme { display: none !important; }
 [data-theme="dark"] .logo-dark-theme { display: block !important; }
 
+/* ── Homepage: use theme-aware text color for all headings ── */
+#root h1, #root h2, #root h3, #root h4, #root h5, #root h6 {
+  color: var(--b-text);
+}
+
 /* ── Homepage mobile: left-align all text ────────────── */
 @media (max-width: 768px) {
   #root h1, #root h2, #root h3, #root h4, #root h5, #root h6 {
