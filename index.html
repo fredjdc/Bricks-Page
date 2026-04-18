@@ -1042,7 +1042,7 @@ window.Testimonials = function Testimonials({ t }) {
     <section ref={reveal} style={{
       padding: isMobile ? '64px 20px' : '120px 48px', maxWidth: 1200, margin: '0 auto',
     }}>
-      <div className="reveal" style={{ fontSize: 12, fontWeight: 700, color: 'var(--b-text-3)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 32, textAlign: 'center' }}>
+      <div className="reveal" style={{ fontSize: 12, fontWeight: 700, color: 'var(--b-text-3)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 32, textAlign: isMobile ? 'left' : 'center' }}>
         {t.testimonials.eyebrow}
       </div>
       <div className="reveal reveal-d1" style={{
@@ -1222,8 +1222,8 @@ window.Footer = function Footer({ t, lang, setLang, theme, setTheme }) {
       <div style={{
         maxWidth: 1200, margin: '0 auto',
         display: 'grid',
-        gridTemplateColumns: isMobile ? 'repeat(3, 1fr)' : '1.4fr 1fr 1fr 1fr',
-        gap: isMobile ? 24 : 48,
+        gridTemplateColumns: isMobile ? '1fr' : '1.4fr 1fr 1fr 1fr',
+        gap: isMobile ? 32 : 48,
         marginBottom: isMobile ? 40 : 56,
       }}>
         <div style={{ gridColumn: isMobile ? '1 / -1' : undefined }}>

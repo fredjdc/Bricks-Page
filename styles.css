@@ -2959,3 +2959,19 @@ body { background: var(--b-bg); color: var(--b-text); transition: background 0.4
 .logo-dark-theme { display: none; }
 [data-theme="dark"] .logo-light-theme { display: none !important; }
 [data-theme="dark"] .logo-dark-theme { display: block !important; }
+
+/* ── Homepage mobile: left-align all text ────────────── */
+@media (max-width: 768px) {
+  #root h1, #root h2, #root h3, #root h4, #root h5, #root h6 {
+    text-align: left !important;
+  }
+  #root p {
+    text-align: left !important;
+  }
+  #root ul, #root ol, #root li {
+    text-align: left !important;
+  }
+  #root footer, #root footer * {
+    text-align: left !important;
+  }
+}
