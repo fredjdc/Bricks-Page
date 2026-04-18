@@ -2078,6 +2078,12 @@ a:hover {
     margin-top: 64px;
 }
 
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
 .perfect-for-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -2200,7 +2206,8 @@ a:hover {
     .workflow-grid,
     .auto-sort-grid,
     .privacy-grid,
-    .privacy-grid-2 {
+    .privacy-grid-2,
+    .grid-3 {
         grid-template-columns: 1fr;
     }
 
