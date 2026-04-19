@@ -1265,8 +1265,9 @@ function tweakBtn(active) {
     }
 
     function App() {
-      // Default to "es" since Leads originally targets Spanish users in Peru/LatAm heavily
-      const [lang, setLang] = React.useState('es');
+      // Default to system language, falling back to 'es'
+      const systemLang = (typeof navigator !== 'undefined' && navigator.language.startsWith('en')) ? 'en' : 'es';
+      const [lang, setLang] = React.useState(systemLang);
       const [theme, setTheme] = React.useState('auto');
 
       // Add a fallback in case window.COPY isn't populated immediately
