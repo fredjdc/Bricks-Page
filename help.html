@@ -6,17 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- SEO Meta Tags -->
-    <title>Guía de Usuario - Bricks Calc</title>
+    <title>Centro de Ayuda - Bricks Apps</title>
     <meta name="description"
-        content="Guía de usuario detallada para la calculadora hipotecaria Bricks, diseñada para compradores primerizos y expertos." />
+        content="Guías de usuario para Bricks Calc y Bricks Scan. Calculadora hipotecaria y escáner de documentos para iPhone, iPad y Mac." />
     <meta name="description-en"
-        content="Comprehensive user guide for Bricks Calc mortgage calculator, designed for first-time homebuyers and experts." />
+        content="User guides for Bricks Calc and Bricks Scan. Mortgage calculator and document scanner for iPhone, iPad, and Mac." />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://bricks.pe/help.html" />
-    <meta property="og:title" content="Guía de Usuario - Bricks Calc" />
-    <meta property="og:description" content="Todo lo que necesitas saber para usar Bricks Calc de manera efectiva." />
+    <meta property="og:title" content="Centro de Ayuda - Bricks Apps" />
+    <meta property="og:description" content="Guías de usuario para Bricks Calc y Bricks Scan." />
     <meta property="og:image" content="https://bricks.pe/images/bricks-calc-img-es.png" />
 
     <!-- Favicon & Styles -->
@@ -144,8 +144,8 @@
             </h1>
             <p class="body-text reveal-on-scroll delay-200"
                 style="margin-left: auto; margin-right: auto; max-width: 50ch;">
-                <span lang="es">Todo lo que necesitas saber para usar Bricks Calc de manera efectiva.</span>
-                <span lang="en" class="hidden">Everything you need to know to use Bricks Calc effectively.</span>
+                <span lang="es">Guías de usuario para Bricks Calc y Bricks Scan.</span>
+                <span lang="en" class="hidden">User guides for Bricks Calc and Bricks Scan.</span>
             </p>
         </div>
     </section>
@@ -153,6 +153,13 @@
     <!-- Main Docs Content -->
     <main class="section pb-24">
         <div class="container reading-column">
+
+            <!-- Bricks Calc Divider -->
+            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 32px;">
+                <div style="flex: 1; height: 1px; background: var(--surface-shadow);"></div>
+                <span class="metadata" style="padding: 6px 16px; background: var(--surface-raised); border-radius: 99px; border: 1px solid var(--depth-plane); color: var(--text-secondary); white-space: nowrap; font-weight: 600; letter-spacing: 0.02em;">Bricks Calc</span>
+                <div style="flex: 1; height: 1px; background: var(--surface-shadow);"></div>
+            </div>
 
             <!-- Simulator -->
             <div class="embossed-card reveal-on-scroll delay-100"
@@ -829,6 +836,508 @@
                 </div>
             </div>
 
+            <!-- Bricks Scan Divider -->
+            <div style="display: flex; align-items: center; gap: 16px; margin-top: 48px; margin-bottom: 32px;">
+                <div style="flex: 1; height: 1px; background: var(--surface-shadow);"></div>
+                <span class="metadata" style="padding: 6px 16px; background: var(--surface-raised); border-radius: 99px; border: 1px solid var(--depth-plane); color: var(--text-secondary); white-space: nowrap; font-weight: 600; letter-spacing: 0.02em;">Bricks Scan</span>
+                <div style="flex: 1; height: 1px; background: var(--surface-shadow);"></div>
+            </div>
+
+            <!-- Scan -->
+            <div class="embossed-card reveal-on-scroll delay-100"
+                style="padding: 0; margin-bottom: 24px; overflow: hidden;">
+                <div x-data="{ open: false }">
+                    <button
+                        style="width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 24px 32px; text-align: left; background: none; border: none; cursor: pointer; border-bottom: 1px solid var(--surface-shadow);"
+                        aria-controls="help-scan" :aria-expanded="open.toString()" @click="open = !open">
+                        <h2 class="section-title" style="margin: 0; font-size: 22px;">
+                            <span lang="es">Escanear</span>
+                            <span lang="en" class="hidden">Scan</span>
+                        </h2>
+                        <span style="flex-shrink: 0; color: var(--text-tertiary);">
+                            <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" style="width: 24px; height: 24px;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                            </svg>
+                            <svg x-show="open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" style="width: 24px; height: 24px;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+                            </svg>
+                        </span>
+                    </button>
+
+                    <div id="help-scan" x-show="open" x-transition class="body-text"
+                        style="padding: 32px; text-align: left;">
+
+                        <p style="margin-bottom: 32px; color: var(--text-secondary);">
+                            <span lang="es">Bricks Scan captura documentos físicos con la cámara de tu dispositivo y los convierte en archivos digitales con texto buscable. Todo el procesamiento ocurre en el dispositivo — ningún documento se envía a servidores externos.</span>
+                            <span lang="en" class="hidden">Bricks Scan captures physical documents with your device camera and converts them into searchable digital files. All processing happens on-device — no document content is sent to external servers.</span>
+                        </p>
+
+                        <h3 class="subheading" style="margin-top: 0; margin-bottom: 16px;">
+                            <span lang="es">Métodos de captura</span>
+                            <span lang="en" class="hidden">Capture methods</span>
+                        </h3>
+                        <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px;">
+                            <div class="recessed-well" style="padding: 24px;">
+                                <h4
+                                    style="font-size: 18px; font-weight: 600; margin-bottom: 8px; color: var(--text-primary);">
+                                    <span lang="es">Cámara</span>
+                                    <span lang="en" class="hidden">Camera</span>
+                                </h4>
+                                <ul
+                                    style="padding-left: 20px; list-style-type: disc; margin: 0; color: var(--text-secondary);">
+                                    <li style="margin-bottom: 4px;">
+                                        <span lang="es">Toca el botón "Escanear" para abrir la cámara. La app detecta bordes y corrige la perspectiva automáticamente.</span>
+                                        <span lang="en" class="hidden">Tap the "Scan" button to open the camera. The app detects edges and corrects perspective automatically.</span>
+                                    </li>
+                                    <li>
+                                        <span lang="es">Captura varias páginas en una sola sesión: cada captura se añade al mismo documento.</span>
+                                        <span lang="en" class="hidden">Capture multiple pages in one session: each capture is added to the same document.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="recessed-well" style="padding: 24px;">
+                                <h4
+                                    style="font-size: 18px; font-weight: 600; margin-bottom: 8px; color: var(--text-primary);">
+                                    <span lang="es">Importar desde Fotos</span>
+                                    <span lang="en" class="hidden">Import from Photos</span>
+                                </h4>
+                                <p style="margin: 0; color: var(--text-secondary);">
+                                    <span lang="es">Selecciona una o varias imágenes de tu biblioteca de fotos. Se procesan con el mismo flujo que los escaneos de cámara.</span>
+                                    <span lang="en" class="hidden">Select one or more images from your photo library. They go through the same processing pipeline as camera scans.</span>
+                                </p>
+                            </div>
+                            <div class="recessed-well" style="padding: 24px;">
+                                <h4
+                                    style="font-size: 18px; font-weight: 600; margin-bottom: 8px; color: var(--text-primary);">
+                                    <span lang="es">Importar PDF</span>
+                                    <span lang="en" class="hidden">Import PDF</span>
+                                </h4>
+                                <p style="margin: 0; color: var(--text-secondary);">
+                                    <span lang="es">Importa PDFs existentes desde la app Archivos o iCloud Drive. Los PDFs de varias páginas se convierten en un solo documento.</span>
+                                    <span lang="en" class="hidden">Import existing PDFs from the Files app or iCloud Drive. Multi-page PDFs become a single document with all their pages.</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <h3 class="subheading" style="margin-bottom: 16px;">
+                            <span lang="es">Procesamiento automático</span>
+                            <span lang="en" class="hidden">Automatic processing</span>
+                        </h3>
+                        <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px;">
+                            <div class="recessed-well" style="padding: 16px;">
+                                <span lang="es"><strong>Mejora de imagen:</strong> ajuste de brillo y contraste, y recorte automático (configurable en Ajustes → Calidad).</span>
+                                <span lang="en" class="hidden"><strong>Image enhancement:</strong> brightness and contrast adjustment, and auto-crop (configurable in Settings → Quality).</span>
+                            </div>
+                            <div class="recessed-well" style="padding: 16px;">
+                                <span lang="es"><strong>OCR:</strong> extracción de texto en el dispositivo mediante el framework Vision de Apple.</span>
+                                <span lang="en" class="hidden"><strong>OCR:</strong> on-device text extraction using Apple's Vision framework.</span>
+                            </div>
+                            <div class="recessed-well" style="padding: 16px;">
+                                <span lang="es"><strong>Organización automática:</strong> sugerencia o asignación de carpetas y etiquetas según el contenido (configurable en Ajustes → Preferencias).</span>
+                                <span lang="en" class="hidden"><strong>Auto-organization:</strong> suggestion or assignment of folders and tags based on content (configurable in Settings → Preferences).</span>
+                            </div>
+                        </div>
+
+                        <h3 class="subheading" style="margin-bottom: 16px;">
+                            <span lang="es">Consejos</span>
+                            <span lang="en" class="hidden">Tips</span>
+                        </h3>
+                        <ul style="padding-left: 20px; list-style-type: disc; color: var(--text-secondary);">
+                            <li style="margin-bottom: 8px;">
+                                <span lang="es">Escanea en un entorno bien iluminado para obtener mejores resultados de OCR.</span>
+                                <span lang="en" class="hidden">Scan in a well-lit environment for best OCR results.</span>
+                            </li>
+                            <li>
+                                <span lang="es">Puedes agregar más páginas a un documento existente desde su vista de detalle.</span>
+                                <span lang="en" class="hidden">You can add more pages to an existing document from its detail view.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Documents -->
+            <div class="embossed-card reveal-on-scroll delay-200"
+                style="padding: 0; margin-bottom: 24px; overflow: hidden;">
+                <div x-data="{ open: false }">
+                    <button
+                        style="width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 24px 32px; text-align: left; background: none; border: none; cursor: pointer; border-bottom: 1px solid var(--surface-shadow);"
+                        aria-controls="help-scan-docs" :aria-expanded="open.toString()" @click="open = !open">
+                        <h2 class="section-title" style="margin: 0; font-size: 22px;">
+                            <span lang="es">Documentos</span>
+                            <span lang="en" class="hidden">Documents</span>
+                        </h2>
+                        <span style="flex-shrink: 0; color: var(--text-tertiary);">
+                            <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" style="width: 24px; height: 24px;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                            </svg>
+                            <svg x-show="open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" style="width: 24px; height: 24px;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+                            </svg>
+                        </span>
+                    </button>
+
+                    <div id="help-scan-docs" x-show="open" x-transition class="body-text"
+                        style="padding: 32px; text-align: left;">
+
+                        <p style="margin-bottom: 32px; color: var(--text-secondary);">
+                            <span lang="es">Cada documento guardado contiene las imágenes escaneadas, el texto extraído por OCR, metadatos y notas. Desde la vista de detalle puedes leer, editar y gestionar todas las páginas.</span>
+                            <span lang="en" class="hidden">Each saved document contains the scanned images, OCR-extracted text, metadata, and notes. From the detail view you can read, edit, and manage all pages.</span>
+                        </p>
+
+                        <h3 class="subheading" style="margin-top: 0; margin-bottom: 16px;">
+                            <span lang="es">Texto OCR e Inteligencia</span>
+                            <span lang="en" class="hidden">OCR Text & Intelligence</span>
+                        </h3>
+                        <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px;">
+                            <div class="recessed-well" style="padding: 24px;">
+                                <h4
+                                    style="font-size: 18px; font-weight: 600; margin-bottom: 8px; color: var(--text-primary);">
+                                    <span lang="es">Texto extraído</span>
+                                    <span lang="en" class="hidden">Extracted text</span>
+                                </h4>
+                                <p style="margin: 0; color: var(--text-secondary);">
+                                    <span lang="es">El texto reconocido por OCR se muestra en la vista de cada página. Puedes buscar dentro del documento y el texto encontrado se resalta visualmente.</span>
+                                    <span lang="en" class="hidden">OCR-recognized text is shown in each page's view. You can search within the document and found text is visually highlighted.</span>
+                                </p>
+                            </div>
+                            <div class="recessed-well" style="padding: 24px;">
+                                <h4
+                                    style="font-size: 18px; font-weight: 600; margin-bottom: 8px; color: var(--text-primary);">
+                                    <span lang="es">Título y resumen automáticos</span>
+                                    <span lang="en" class="hidden">Automatic title and summary</span>
+                                </h4>
+                                <p style="margin: 0; color: var(--text-secondary);">
+                                    <span lang="es">Con Apple Intelligence disponible, la app genera automáticamente un título descriptivo y un resumen del contenido. Ambos son editables.</span>
+                                    <span lang="en" class="hidden">With Apple Intelligence available, the app automatically generates a descriptive title and a content summary. Both are editable.</span>
+                                </p>
+                            </div>
+                            <div class="recessed-well" style="padding: 24px;">
+                                <h4
+                                    style="font-size: 18px; font-weight: 600; margin-bottom: 8px; color: var(--text-primary);">
+                                    <span lang="es">Metadatos extraídos</span>
+                                    <span lang="en" class="hidden">Extracted metadata</span>
+                                </h4>
+                                <p style="margin: 0; color: var(--text-secondary);">
+                                    <span lang="es">La app extrae campos clave del contenido: monto total, proveedor, fecha, dirección y más. Todos editables en el panel de metadatos.</span>
+                                    <span lang="en" class="hidden">The app extracts key fields from the content: total amount, vendor, date, address, and more. All editable in the metadata panel.</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <h3 class="subheading" style="margin-bottom: 16px;">
+                            <span lang="es">Gestión de Páginas</span>
+                            <span lang="en" class="hidden">Page Management</span>
+                        </h3>
+                        <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px;">
+                            <div class="recessed-well" style="padding: 16px;">
+                                <span lang="es"><strong>Reordenar y eliminar:</strong> abre el Organizador de Páginas para arrastrar páginas o eliminar las que no necesites.</span>
+                                <span lang="en" class="hidden"><strong>Reorder and delete:</strong> open the Page Organizer to drag pages or delete ones you don't need.</span>
+                            </div>
+                            <div class="recessed-well" style="padding: 16px;">
+                                <span lang="es"><strong>Rotar y recortar:</strong> operaciones no destructivas — la imagen original se conserva y los cambios pueden revertirse.</span>
+                                <span lang="en" class="hidden"><strong>Rotate and crop:</strong> non-destructive operations — the original image is preserved and changes can be reverted.</span>
+                            </div>
+                            <div class="recessed-well" style="padding: 16px;">
+                                <span lang="es"><strong>Notas:</strong> agrega notas a nivel de documento o por página. Las notas se incluyen en la búsqueda de texto completo.</span>
+                                <span lang="en" class="hidden"><strong>Notes:</strong> add notes at the document level or per page. Notes are included in full-text search.</span>
+                            </div>
+                        </div>
+
+                        <h3 class="subheading" style="margin-bottom: 16px;">
+                            <span lang="es">Listas Inteligentes y Búsqueda</span>
+                            <span lang="en" class="hidden">Smart Lists & Search</span>
+                        </h3>
+                        <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px;">
+                            <div class="recessed-well" style="padding: 16px;">
+                                <span lang="es"><strong>Todos los documentos:</strong> muestra todos los documentos guardados sin importar la carpeta.</span>
+                                <span lang="en" class="hidden"><strong>All Documents:</strong> shows all saved documents regardless of folder.</span>
+                            </div>
+                            <div class="recessed-well" style="padding: 16px;">
+                                <span lang="es"><strong>Última semana:</strong> documentos creados o modificados en los últimos 7 días.</span>
+                                <span lang="en" class="hidden"><strong>Past Week:</strong> documents created or modified in the last 7 days.</span>
+                            </div>
+                            <div class="recessed-well" style="padding: 16px;">
+                                <span lang="es"><strong>Papelera:</strong> documentos eliminados. Se borran permanentemente después de 30 días.</span>
+                                <span lang="en" class="hidden"><strong>Trash:</strong> deleted documents. Permanently removed after 30 days.</span>
+                            </div>
+                        </div>
+
+                        <h3 class="subheading" style="margin-bottom: 16px;">
+                            <span lang="es">Consejos</span>
+                            <span lang="en" class="hidden">Tips</span>
+                        </h3>
+                        <ul style="padding-left: 20px; list-style-type: disc; color: var(--text-secondary);">
+                            <li style="margin-bottom: 8px;">
+                                <span lang="es">La búsqueda encuentra coincidencias en el título, el texto OCR, las notas, las etiquetas y los metadatos. También funciona desde Spotlight del sistema.</span>
+                                <span lang="en" class="hidden">Search finds matches across the title, OCR text, notes, tags, and metadata. It also works from system Spotlight.</span>
+                            </li>
+                            <li style="margin-bottom: 8px;">
+                                <span lang="es">Fija los documentos más importantes tocando "Fijar" para mantenerlos en la parte superior de la lista.</span>
+                                <span lang="en" class="hidden">Pin your most important documents by tapping "Pin" to keep them at the top of the list.</span>
+                            </li>
+                            <li>
+                                <span lang="es">La versión gratuita admite hasta 12 documentos. Premium desbloquea almacenamiento ilimitado.</span>
+                                <span lang="en" class="hidden">The free tier supports up to 12 documents. Premium unlocks unlimited storage.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Organize -->
+            <div class="embossed-card reveal-on-scroll delay-300"
+                style="padding: 0; margin-bottom: 24px; overflow: hidden;">
+                <div x-data="{ open: false }">
+                    <button
+                        style="width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 24px 32px; text-align: left; background: none; border: none; cursor: pointer; border-bottom: 1px solid var(--surface-shadow);"
+                        aria-controls="help-organize" :aria-expanded="open.toString()" @click="open = !open">
+                        <h2 class="section-title" style="margin: 0; font-size: 22px;">
+                            <span lang="es">Organizar</span>
+                            <span lang="en" class="hidden">Organize</span>
+                        </h2>
+                        <span style="flex-shrink: 0; color: var(--text-tertiary);">
+                            <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" style="width: 24px; height: 24px;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                            </svg>
+                            <svg x-show="open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" style="width: 24px; height: 24px;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+                            </svg>
+                        </span>
+                    </button>
+
+                    <div id="help-organize" x-show="open" x-transition class="body-text"
+                        style="padding: 32px; text-align: left;">
+
+                        <p style="margin-bottom: 32px; color: var(--text-secondary);">
+                            <span lang="es">Bricks Scan organiza tus documentos usando Carpetas y Etiquetas. Puedes asignarlas manualmente o dejar que la app lo haga automáticamente según el contenido.</span>
+                            <span lang="en" class="hidden">Bricks Scan organizes your documents using Folders and Tags. You can assign them manually or let the app do it automatically based on content.</span>
+                        </p>
+
+                        <h3 class="subheading" style="margin-top: 0; margin-bottom: 16px;">
+                            <span lang="es">Carpetas</span>
+                            <span lang="en" class="hidden">Folders</span>
+                        </h3>
+                        <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px;">
+                            <div class="recessed-well" style="padding: 16px;">
+                                <span lang="es">Crea carpetas personalizadas desde la vista de Organización. Un documento puede pertenecer a varias carpetas simultáneamente.</span>
+                                <span lang="en" class="hidden">Create custom folders from the Organization view. A document can belong to multiple folders simultaneously.</span>
+                            </div>
+                            <div class="recessed-well" style="padding: 16px;">
+                                <span lang="es">La versión gratuita admite hasta 20 carpetas. Premium desbloquea carpetas ilimitadas.</span>
+                                <span lang="en" class="hidden">The free tier supports up to 20 folders. Premium unlocks unlimited folders.</span>
+                            </div>
+                        </div>
+
+                        <h3 class="subheading" style="margin-bottom: 16px;">
+                            <span lang="es">Etiquetas</span>
+                            <span lang="en" class="hidden">Tags</span>
+                        </h3>
+                        <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px;">
+                            <div class="recessed-well" style="padding: 16px;">
+                                <span lang="es">Etiquetas predeterminadas: Factura, Recibo, Contrato, ID y Pasaporte, Médico, Otros. Crea etiquetas personalizadas con nombre, color e ícono propios.</span>
+                                <span lang="en" class="hidden">Default tags: Invoice, Receipt, Contract, ID &amp; Passport, Medical, Others. Create custom tags with your own name, color, and icon.</span>
+                            </div>
+                            <div class="recessed-well" style="padding: 16px;">
+                                <span lang="es">La versión gratuita admite hasta 12 etiquetas. Premium desbloquea etiquetas ilimitadas.</span>
+                                <span lang="en" class="hidden">The free tier supports up to 12 tags. Premium unlocks unlimited tags.</span>
+                            </div>
+                        </div>
+
+                        <h3 class="subheading" style="margin-bottom: 16px;">
+                            <span lang="es">Organización Automática</span>
+                            <span lang="en" class="hidden">Auto-Organization</span>
+                        </h3>
+                        <p style="margin-bottom: 16px; color: var(--text-secondary);">
+                            <span lang="es">Configura el comportamiento en Ajustes → Preferencias:</span>
+                            <span lang="en" class="hidden">Configure the behavior in Settings → Preferences:</span>
+                        </p>
+                        <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px;">
+                            <div class="recessed-well" style="padding: 16px;">
+                                <span lang="es"><strong>Desactivado:</strong> no sugiere ni asigna carpetas ni etiquetas automáticamente.</span>
+                                <span lang="en" class="hidden"><strong>Off:</strong> does not suggest or auto-assign folders or tags.</span>
+                            </div>
+                            <div class="recessed-well" style="padding: 16px;">
+                                <span lang="es"><strong>Solo sugerir:</strong> muestra sugerencias que puedes aceptar o ignorar.</span>
+                                <span lang="en" class="hidden"><strong>Suggest only:</strong> shows suggestions you can accept or dismiss.</span>
+                            </div>
+                            <div class="recessed-well" style="padding: 16px;">
+                                <span lang="es"><strong>Automático:</strong> asigna carpetas y etiquetas directamente sin confirmación. La precisión se ajusta con la opción "Rigurosidad".</span>
+                                <span lang="en" class="hidden"><strong>Auto:</strong> assigns folders and tags directly without confirmation. Accuracy is tuned with the "Strictness" option.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Annotate & Sign -->
+            <div class="embossed-card reveal-on-scroll delay-100"
+                style="padding: 0; margin-bottom: 24px; overflow: hidden;">
+                <div x-data="{ open: false }">
+                    <button
+                        style="width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 24px 32px; text-align: left; background: none; border: none; cursor: pointer; border-bottom: 1px solid var(--surface-shadow);"
+                        aria-controls="help-annotate" :aria-expanded="open.toString()" @click="open = !open">
+                        <h2 class="section-title" style="margin: 0; font-size: 22px;">
+                            <span lang="es">Anotar y Firmar</span>
+                            <span lang="en" class="hidden">Annotate & Sign</span>
+                        </h2>
+                        <span style="flex-shrink: 0; color: var(--text-tertiary);">
+                            <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" style="width: 24px; height: 24px;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                            </svg>
+                            <svg x-show="open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" style="width: 24px; height: 24px;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+                            </svg>
+                        </span>
+                    </button>
+
+                    <div id="help-annotate" x-show="open" x-transition class="body-text"
+                        style="padding: 32px; text-align: left;">
+
+                        <h3 class="subheading" style="margin-top: 0; margin-bottom: 16px;">
+                            <span lang="es">Anotaciones</span>
+                            <span lang="en" class="hidden">Markup</span>
+                        </h3>
+                        <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px;">
+                            <div class="recessed-well" style="padding: 16px;">
+                                <span lang="es">Toca "Anotar" en la vista de una página para abrir el editor de marcado, impulsado por PencilKit de Apple. Compatible con Apple Pencil en iPad y con el dedo en iPhone e iPad.</span>
+                                <span lang="en" class="hidden">Tap "Markup" on a page view to open the markup editor, powered by Apple's PencilKit. Supports Apple Pencil on iPad and finger input on iPhone and iPad.</span>
+                            </div>
+                            <div class="recessed-well" style="padding: 16px;">
+                                <span lang="es">Las anotaciones se guardan de forma no destructiva y pueden incluirse o excluirse al exportar.</span>
+                                <span lang="en" class="hidden">Annotations are stored non-destructively and can be included or excluded when exporting.</span>
+                            </div>
+                        </div>
+
+                        <h3 class="subheading" style="margin-bottom: 16px;">
+                            <span lang="es">Firmas</span>
+                            <span lang="en" class="hidden">Signatures</span>
+                        </h3>
+                        <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px;">
+                            <div class="recessed-well" style="padding: 16px;">
+                                <span lang="es">Dibuja tu firma una vez y guárdala. Podrás aplicarla a cualquier página con un solo toque. Las firmas se almacenan de forma no destructiva.</span>
+                                <span lang="en" class="hidden">Draw your signature once and save it. You can apply it to any page with a single tap. Signatures are stored non-destructively.</span>
+                            </div>
+                            <div class="recessed-well" style="padding: 16px;">
+                                <span lang="es">La versión gratuita permite guardar hasta 2 firmas. Premium desbloquea firmas ilimitadas.</span>
+                                <span lang="en" class="hidden">The free tier allows saving up to 2 signatures. Premium unlocks unlimited signatures.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Export & Share -->
+            <div class="embossed-card reveal-on-scroll delay-200" style="padding: 0; overflow: hidden;">
+                <div x-data="{ open: false }">
+                    <button
+                        style="width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 24px 32px; text-align: left; background: none; border: none; cursor: pointer; border-bottom: 1px solid var(--surface-shadow);"
+                        aria-controls="help-export" :aria-expanded="open.toString()" @click="open = !open">
+                        <h2 class="section-title" style="margin: 0; font-size: 22px;">
+                            <span lang="es">Exportar y Compartir</span>
+                            <span lang="en" class="hidden">Export & Share</span>
+                        </h2>
+                        <span style="flex-shrink: 0; color: var(--text-tertiary);">
+                            <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" style="width: 24px; height: 24px;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                            </svg>
+                            <svg x-show="open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" style="width: 24px; height: 24px;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+                            </svg>
+                        </span>
+                    </button>
+
+                    <div id="help-export" x-show="open" x-transition class="body-text"
+                        style="padding: 32px; text-align: left;">
+
+                        <p style="margin-bottom: 32px; color: var(--text-secondary);">
+                            <span lang="es">Toca "Exportar" en la vista de detalle para abrir el panel de exportación. Elige el formato, las opciones y comparte directamente desde la app.</span>
+                            <span lang="en" class="hidden">Tap "Export" in the document detail view to open the export panel. Choose the format, options, and share directly from the app.</span>
+                        </p>
+
+                        <h3 class="subheading" style="margin-top: 0; margin-bottom: 16px;">
+                            <span lang="es">Formatos</span>
+                            <span lang="en" class="hidden">Formats</span>
+                        </h3>
+                        <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px;">
+                            <div class="recessed-well" style="padding: 24px;">
+                                <h4
+                                    style="font-size: 18px; font-weight: 600; margin-bottom: 8px; color: var(--text-primary);">
+                                    <span lang="es">PDF</span>
+                                    <span lang="en" class="hidden">PDF</span>
+                                </h4>
+                                <ul
+                                    style="padding-left: 20px; list-style-type: disc; margin: 0; color: var(--text-secondary);">
+                                    <li style="margin-bottom: 4px;">
+                                        <span lang="es">"Incluir OCR en PDF": incrusta el texto reconocido para que el PDF sea buscable con Cmd+F o Ctrl+F.</span>
+                                        <span lang="en" class="hidden">"Embed OCR in PDF": embeds recognized text so the PDF is searchable with Cmd+F or Ctrl+F.</span>
+                                    </li>
+                                    <li>
+                                        <span lang="es">"Proteger con contraseña": cifra el PDF antes de compartirlo.</span>
+                                        <span lang="en" class="hidden">"Protect with password": encrypts the PDF before sharing.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="recessed-well" style="padding: 24px;">
+                                <h4
+                                    style="font-size: 18px; font-weight: 600; margin-bottom: 8px; color: var(--text-primary);">
+                                    <span lang="es">JPEG, Texto y HTML</span>
+                                    <span lang="en" class="hidden">JPEG, Text & HTML</span>
+                                </h4>
+                                <p style="margin: 0; color: var(--text-secondary);">
+                                    <span lang="es">Exporta páginas como imágenes JPEG, el texto OCR como archivo .txt, o el documento completo con imágenes como HTML. La calidad se configura en Ajustes → Calidad.</span>
+                                    <span lang="en" class="hidden">Export pages as JPEG images, OCR text as a .txt file, or the full document with images as HTML. Quality is configured in Settings → Quality.</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <h3 class="subheading" style="margin-bottom: 16px;">
+                            <span lang="es">Opciones de exportación</span>
+                            <span lang="en" class="hidden">Export options</span>
+                        </h3>
+                        <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px;">
+                            <div class="recessed-well" style="padding: 16px;">
+                                <span lang="es"><strong>Incluir anotaciones:</strong> activa o desactiva para incluir el marcado PencilKit en el archivo exportado.</span>
+                                <span lang="en" class="hidden"><strong>Include markup:</strong> toggle to include or exclude PencilKit annotations in the exported file.</span>
+                            </div>
+                            <div class="recessed-well" style="padding: 16px;">
+                                <span lang="es"><strong>Incluir firmas:</strong> activa o desactiva para incluir las firmas colocadas en las páginas.</span>
+                                <span lang="en" class="hidden"><strong>Include signatures:</strong> toggle to include or exclude signatures placed on pages.</span>
+                            </div>
+                            <div class="recessed-well" style="padding: 16px;">
+                                <span lang="es"><strong>Alcance:</strong> elige exportar la página actual o el documento completo.</span>
+                                <span lang="en" class="hidden"><strong>Scope:</strong> choose to export the current page or the full document.</span>
+                            </div>
+                        </div>
+
+                        <h3 class="subheading" style="margin-bottom: 16px;">
+                            <span lang="es">Consejos</span>
+                            <span lang="en" class="hidden">Tips</span>
+                        </h3>
+                        <ul style="padding-left: 20px; list-style-type: disc; color: var(--text-secondary);">
+                            <li style="margin-bottom: 8px;">
+                                <span lang="es">Tras generar el archivo, la hoja de compartir nativa permite enviarlo por AirDrop, Mail, Mensajes, guardarlo en iCloud Drive o abrirlo en cualquier app compatible.</span>
+                                <span lang="en" class="hidden">After generating the file, the native share sheet lets you send it via AirDrop, Mail, Messages, save to iCloud Drive, or open in any compatible app.</span>
+                            </li>
+                            <li>
+                                <span lang="es">La exportación de texto es útil para copiar contenido de documentos físicos directamente a otras aplicaciones.</span>
+                                <span lang="en" class="hidden">Text export is useful for copying content from physical documents directly to other applications.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </main>
 
@@ -978,7 +1487,7 @@
                             <li>
                                 <a href="help.html" class="body-text" style="font-size: 15px;">
                                     <span lang="en">Apps Guides</span>
-                                    <span lang="es" class="hidden">Guías</span>
+                                    <span lang="es" class="hidden">Guías de apps</span>
                                 </a>
                             </li>
 

@@ -20,14 +20,15 @@
         <priority>0.8</priority>
     </url>
     
-    <!-- Help Page -->
+    <!-- Help Pages -->
     <url>
         <loc>https://bricks.pe/help.html</loc>
-        <lastmod>2025-01-27</lastmod>
+        <lastmod>2026-04-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
-    
+
+
     <!-- Support Page -->
     <url>
         <loc>https://bricks.pe/support.html</loc>
