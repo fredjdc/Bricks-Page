@@ -580,6 +580,7 @@
                     eyebrow: 'You\u2019re on the list',
                     title: 'Thank you!',
                     body: 'We will notify you when Bricks Leads is available. Follow us and share to reach more real estate agents.',
+                    cta: 'Back to Home',
                     instagram: 'Follow on Instagram',
                     x: 'Follow on X',
                     linkedin: 'Follow on LinkedIn',
@@ -590,6 +591,7 @@
                     eyebrow: 'Est\u00e1s en la lista',
                     title: '\u00a1Gracias!',
                     body: 'Te avisaremos cuando Bricks Leads est\u00e9 disponible. S\u00edguenos y comparte para llegar a m\u00e1s agentes inmobiliarios.',
+                    cta: 'Volver al inicio',
                     instagram: 'Seguir en Instagram',
                     x: 'Seguir en X',
                     linkedin: 'Seguir en LinkedIn',
@@ -604,6 +606,7 @@
         function FeedbackHero({ t }) {
             const reveal = window.useReveal();
             const isMobile = window.useIsMobile();
+            const [btnHover, setBtnHover] = React.useState(false);
             const [hoverIdx, setHoverIdx] = React.useState(-1);
 
             const socials = [
@@ -670,10 +673,37 @@
                             {t.body}
                         </p>
 
+                        {/* CTA Button */}
+                        <a href="index.html"
+                            onClick={() => {
+                                if (typeof gtag === 'function') {
+                                    gtag('event', 'click', { event_category: 'engagement', event_label: 'back_to_home_button' });
+                                }
+                            }}
+                            onMouseEnter={() => setBtnHover(true)}
+                            onMouseLeave={() => setBtnHover(false)}
+                            style={{
+                                display: 'inline-flex', alignItems: 'center', gap: 8,
+                                padding: isMobile ? '14px 28px' : '16px 32px',
+                                borderRadius: 100, fontSize: 15, fontWeight: 600,
+                                fontFamily: 'inherit', letterSpacing: '-0.01em',
+                                background: 'var(--b-text)', color: 'var(--b-bg)',
+                                textDecoration: 'none', border: 'none',
+                                boxShadow: '0 8px 24px rgba(11,15,20,0.18)',
+                                transform: btnHover ? 'translateY(-2px)' : 'translateY(0)',
+                                transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                            }}
+                        >
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M13 8H3M6 5L3 8l3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                            {t.cta}
+                        </a>
+
                         {/* Social media CTA buttons */}
                         <div style={{
                             display: 'flex', gap: 12, justifyContent: 'center',
-                            flexWrap: 'wrap',
+                            flexWrap: 'wrap', marginTop: 20,
                         }}>
                             {socials.map((s, i) => (
                                 <a key={s.kind} href={s.href}
@@ -687,12 +717,12 @@
                                     onMouseLeave={() => setHoverIdx(-1)}
                                     style={{
                                         display: 'inline-flex', alignItems: 'center', gap: 10,
-                                        padding: isMobile ? '14px 24px' : '16px 28px',
-                                        borderRadius: 100, fontSize: 15, fontWeight: 600,
+                                        padding: isMobile ? '12px 20px' : '14px 24px',
+                                        borderRadius: 100, fontSize: 14, fontWeight: 600,
                                         fontFamily: 'inherit', letterSpacing: '-0.01em',
-                                        background: 'var(--b-text)', color: 'var(--b-bg)',
-                                        textDecoration: 'none', border: 'none',
-                                        boxShadow: '0 8px 24px rgba(11,15,20,0.18)',
+                                        background: 'var(--b-bg-elevated)', color: 'var(--b-text)',
+                                        textDecoration: 'none', border: '1px solid var(--b-border)',
+                                        boxShadow: 'var(--emboss-soft)',
                                         transform: hoverIdx === i ? 'translateY(-2px)' : 'translateY(0)',
                                         transition: 'transform 0.2s ease, box-shadow 0.2s ease',
                                     }}
