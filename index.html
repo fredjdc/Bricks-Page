@@ -153,11 +153,11 @@
         footer: {
           tag: 'Focused apps for real estate agents on Apple.',
           sections: [
-            { h: 'Apps', l: ['Bricks Scan', 'Bricks Calc', 'Bricks Leads'] },
-            { h: 'Business', l: ['About', 'Purchase guide', 'hello@bricks.pe'] },
-            { h: 'Support', l: ['Contact', 'Vote on features', 'Guides', 'Survey'] },
+            { h: 'Apps', l: [{ label: 'Bricks Scan', href: 'scan.html' }, { label: 'Bricks Calc', href: 'calc.html' }, { label: 'Bricks Leads', href: 'leads.html' }] },
+            { h: 'Business', l: [{ label: 'About', href: 'about.html' }, { label: 'Purchase guide', href: 'purchase-guide-01.html' }, { label: 'hello@bricks.pe', href: 'mailto:hello@bricks.pe' }] },
+            { h: 'Support', l: [{ label: 'Contact', href: 'support.html' }, { label: 'Vote on features', href: 'https://bricksapps.userjot.com' }, { label: 'Guides', href: 'help.html' }, { label: 'Survey', href: 'survey.html' }] },
           ],
-          legal: ['Privacy Policy', 'Terms of Service'],
+          legal: [{ label: 'Privacy Policy', href: 'privacy.html' }, { label: 'Terms of Service', href: 'terms.html' }],
           copyright: '\u00a9 2026 Bricks Apps. Made with care.',
           language: 'Language',
           appearance: 'Appearance',
@@ -281,11 +281,11 @@
         footer: {
           tag: 'Apps enfocadas para agentes inmobiliarios en Apple.',
           sections: [
-            { h: 'Apps', l: ['Bricks Scan', 'Bricks Calc', 'Bricks Leads'] },
-            { h: 'Empresa', l: ['Sobre nosotros', 'Gu\u00eda de compra', 'hello@bricks.pe'] },
-            { h: 'Soporte', l: ['Contacto', 'Votar funciones', 'Gu\u00edas', 'Encuesta'] },
+            { h: 'Apps', l: [{ label: 'Bricks Scan', href: 'scan.html' }, { label: 'Bricks Calc', href: 'calc.html' }, { label: 'Bricks Leads', href: 'leads.html' }] },
+            { h: 'Empresa', l: [{ label: 'Sobre nosotros', href: 'about.html' }, { label: 'Gu\u00eda de compra', href: 'purchase-guide-01.html' }, { label: 'hello@bricks.pe', href: 'mailto:hello@bricks.pe' }] },
+            { h: 'Soporte', l: [{ label: 'Contacto', href: 'support.html' }, { label: 'Votar funciones', href: 'https://bricksapps.userjot.com' }, { label: 'Gu\u00edas', href: 'help.html' }, { label: 'Encuesta', href: 'survey.html' }] },
           ],
-          legal: ['Pol\u00edtica de privacidad', 'T\u00e9rminos del servicio'],
+          legal: [{ label: 'Pol\u00edtica de privacidad', href: 'privacy.html' }, { label: 'T\u00e9rminos del servicio', href: 'terms.html' }],
           copyright: '\u00a9 2026 Bricks Apps. Hecho con cuidado.',
           language: 'Idioma',
           appearance: 'Apariencia',
@@ -398,11 +398,35 @@
 
 
     // ==== Header.jsx ====
-    // Floating pill header with scroll-hide
+    // Floating pill header with scroll-hide + download dropdown
     window.Header = function Header({ t, lang }) {
       const { dir, atTop } = window.useScrollDirection();
       const isMobile = window.useIsMobile();
       const hidden = dir === 'down' && !atTop;
+      const [dlOpen, setDlOpen] = React.useState(false);
+      const dlRef = React.useRef(null);
+
+      React.useEffect(() => {
+        if (!dlOpen) return;
+        const handler = (e) => {
+          if (dlRef.current && !dlRef.current.contains(e.target)) setDlOpen(false);
+        };
+        document.addEventListener('mousedown', handler);
+        return () => document.removeEventListener('mousedown', handler);
+      }, [dlOpen]);
+
+      const downloadItems = [
+        { label: 'Bricks Calc', href: 'https://apps.apple.com/us/app/bricks-calc-loan-calculator/id6754506837', accent: window.ACCENTS.calc.light, external: true },
+        { label: 'Bricks Scan', href: 'https://apps.apple.com/us/app/bricks-scan-scan-to-pdf/id6758148083', accent: window.ACCENTS.scan.light, external: true },
+        { label: 'Bricks Leads', href: 'leads.html', accent: window.ACCENTS.leads.light, external: false },
+      ];
+
+      const links = [
+        { id: 'product-scan', label: t.nav.products },
+        { id: 'philosophy', label: t.nav.philosophy },
+        { id: 'changelog', label: t.nav.changelog },
+      ];
+
       return (
         <header style={{
           position: 'fixed', top: isMobile ? 12 : 24,
@@ -424,11 +448,7 @@
             <window.ThemeLogo height={24} />
           </a>
           <nav style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
-            {!isMobile && [
-              { id: 'product-scan', label: t.nav.products },
-              { id: 'philosophy', label: t.nav.philosophy },
-              { id: 'changelog', label: t.nav.changelog },
-            ].map(link => (
+            {!isMobile && links.map(link => (
               <a key={link.id} href={'#' + link.id}
                 onClick={(e) => { e.preventDefault(); window.smoothScrollTo(link.id); }}
                 style={{
@@ -441,20 +461,71 @@
                 onMouseLeave={(e) => e.currentTarget.style.opacity = 0.8}
               >{link.label}</a>
             ))}
-            <button
-              onClick={() => window.smoothScrollTo('download')}
-              style={{
-                marginLeft: isMobile ? 0 : 6,
-                padding: isMobile ? '9px 16px' : '10px 18px', borderRadius: 100,
-                background: 'var(--b-text)', color: 'var(--b-bg)',
-                border: 'none', fontSize: 14, fontWeight: 600, cursor: 'pointer',
-                fontFamily: 'inherit', letterSpacing: '-0.01em',
-                boxShadow: '0 8px 20px rgba(11,15,20,0.18)',
-                transition: 'transform 0.15s ease, box-shadow 0.2s',
-              }}
-              onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-1px)'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; }}
-            >{t.nav.download}</button>
+
+            <div ref={dlRef} style={{ position: 'relative' }}>
+              <button
+                onClick={() => setDlOpen(v => !v)}
+                style={{
+                  marginLeft: isMobile ? 0 : 6,
+                  padding: isMobile ? '9px 16px' : '10px 18px', borderRadius: 100,
+                  background: 'var(--b-text)', color: 'var(--b-bg)',
+                  border: 'none', fontSize: 14, fontWeight: 600, cursor: 'pointer',
+                  fontFamily: 'inherit', letterSpacing: '-0.01em',
+                  display: 'inline-flex', alignItems: 'center', gap: 6,
+                  boxShadow: '0 8px 20px rgba(11,15,20,0.18)',
+                  transition: 'transform 0.15s ease, box-shadow 0.2s',
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-1px)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; }}
+              >
+                {t.nav.download}
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" style={{
+                  transform: dlOpen ? 'rotate(180deg)' : 'rotate(0)',
+                  transition: 'transform 0.25s ease',
+                }}>
+                  <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+
+              <div style={{
+                position: 'absolute', top: 'calc(100% + 10px)', right: 0,
+                minWidth: 220,
+                background: 'color-mix(in srgb, var(--b-bg-elevated) 85%, transparent)',
+                backdropFilter: 'blur(24px) saturate(180%)',
+                WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+                borderRadius: 20, border: '1px solid var(--b-border)',
+                boxShadow: '0 16px 48px rgba(11,15,20,0.16)',
+                padding: 8,
+                opacity: dlOpen ? 1 : 0,
+                transform: dlOpen ? 'translateY(0) scale(1)' : 'translateY(-8px) scale(0.96)',
+                pointerEvents: dlOpen ? 'auto' : 'none',
+                transition: 'opacity 0.25s ease, transform 0.3s cubic-bezier(0.16,1,0.3,1)',
+              }}>
+                {downloadItems.map((item, i) => (
+                  <a key={i} href={item.href}
+                    target={item.external ? '_blank' : undefined}
+                    rel={item.external ? 'noopener noreferrer' : undefined}
+                    onClick={() => setDlOpen(false)}
+                    style={{
+                      display: 'flex', alignItems: 'center', gap: 12,
+                      padding: '12px 16px', borderRadius: 14,
+                      fontSize: 14, fontWeight: 500, color: 'var(--b-text)',
+                      transition: 'background 0.15s ease',
+                      textDecoration: 'none',
+                    }}
+                    onMouseEnter={(e) => e.currentTarget.style.background = 'var(--b-bg)'}
+                    onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+                  >
+                    <div style={{ width: 8, height: 8, borderRadius: 4, background: item.accent, flexShrink: 0 }} />
+                    <span style={{ flex: 1 }}>{item.label}</span>
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style={{ opacity: 0.4 }}>
+                      <path d={item.external ? 'M4 2h6v6M10 2L3 9' : 'M4 2l5 4-5 4'}
+                        stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </a>
+                ))}
+              </div>
+            </div>
           </nav>
         </header>
       );
@@ -1192,10 +1263,18 @@
 
 
     // ==== DownloadCTA.jsx ====
-    // Download CTA
+    // Download CTA — per-app buttons matching leads.html pattern
     window.DownloadCTA = function DownloadCTA({ t }) {
       const reveal = window.useReveal();
       const isMobile = window.useIsMobile();
+      const [hovered, setHovered] = React.useState(null);
+
+      const apps = [
+        { label: 'Bricks Calc', href: 'https://apps.apple.com/us/app/bricks-calc-loan-calculator/id6754506837', accent: window.ACCENTS.calc.light, external: true },
+        { label: 'Bricks Scan', href: 'https://apps.apple.com/us/app/bricks-scan-scan-to-pdf/id6758148083', accent: window.ACCENTS.scan.light, external: true },
+        { label: 'Bricks Leads', href: 'leads.html', accent: window.ACCENTS.leads.light, external: false },
+      ];
+
       return (
         <section id="download" ref={reveal} style={{
           padding: isMobile ? '32px 20px 64px' : '60px 48px 120px', maxWidth: 1200, margin: '0 auto',
@@ -1210,24 +1289,43 @@
               position: 'absolute', inset: 0, pointerEvents: 'none',
               background: 'radial-gradient(circle at 20% 10%, rgba(0,166,161,0.1), transparent 55%), radial-gradient(circle at 80% 90%, rgba(255,149,0,0.08), transparent 55%)',
             }} />
-            <h2 style={{ fontSize: isMobile ? 40 : 64, fontWeight: 900, letterSpacing: '-0.035em', lineHeight: 1.02, margin: '0 0 20px', color: 'var(--b-bg)', position: 'relative' }}>
+            <h2 style={{
+              fontSize: isMobile ? 40 : 64, fontWeight: 900, letterSpacing: '-0.035em',
+              lineHeight: 1.02, margin: '0 0 20px', color: 'var(--b-bg)', position: 'relative',
+            }}>
               {t.cta.title[0]}<br />
               <span style={{ opacity: 0.55 }}>{t.cta.title[1]}</span>
             </h2>
-            <p style={{ fontSize: isMobile ? 16 : 18, color: 'var(--b-bg)', opacity: 0.7, lineHeight: 1.6, margin: '0 auto 40px', maxWidth: 520, position: 'relative' }}>
+            <p style={{
+              fontSize: isMobile ? 16 : 18, color: 'var(--b-bg)', opacity: 0.7,
+              lineHeight: 1.6, margin: '0 auto 40px', maxWidth: 520, position: 'relative',
+            }}>
               {t.cta.sub}
             </p>
-            <div style={{ position: 'relative' }}>
-              <button style={{
-                display: 'inline-flex', alignItems: 'center', gap: 12,
-                padding: '16px 28px', background: 'var(--b-bg)', color: 'var(--b-text)',
-                border: 'none', borderRadius: 100, fontSize: 15, fontWeight: 600,
-                fontFamily: 'inherit', cursor: 'pointer', letterSpacing: '-0.01em',
-                boxShadow: '0 12px 28px rgba(0,0,0,0.25)',
-              }}>
-                <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor"><path d="M13.5 5.3c-1.4-.1-2.6.8-3.3.8-.7 0-1.8-.8-3-.8-1.5 0-2.9.9-3.7 2.2-1.6 2.8-.4 6.9 1.1 9.1.7 1.1 1.6 2.3 2.8 2.3 1.1-.1 1.5-.7 2.8-.7 1.4 0 1.8.7 3 .7 1.2 0 2-1.1 2.8-2.2.9-1.3 1.2-2.5 1.3-2.6-.1-.1-2.4-.9-2.4-3.7 0-2.3 1.9-3.4 2-3.5-1.1-1.5-2.7-1.7-3.3-1.7zm-.9-1.5c.6-.8 1-1.8 0.9-2.8-.9.1-2 .6-2.6 1.3-.6.7-1.1 1.8-.9 2.7 1 .1 2-.5 2.6-1.2z" /></svg>
-                {t.cta.primary}
-              </button>
+            <div style={{ position: 'relative', display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
+              {apps.map((app, i) => (
+                <a key={i} href={app.href}
+                  target={app.external ? '_blank' : undefined}
+                  rel={app.external ? 'noopener noreferrer' : undefined}
+                  onMouseEnter={() => setHovered(i)}
+                  onMouseLeave={() => setHovered(null)}
+                  style={{
+                    display: 'inline-flex', alignItems: 'center', gap: 10,
+                    padding: isMobile ? '14px 22px' : '16px 28px',
+                    background: hovered === i ? app.accent : 'var(--b-bg)',
+                    color: hovered === i ? '#fff' : 'var(--b-text)',
+                    textDecoration: 'none',
+                    border: 'none', borderRadius: 100, fontSize: 15, fontWeight: 600,
+                    fontFamily: 'inherit', letterSpacing: '-0.01em',
+                    boxShadow: '0 12px 28px rgba(0,0,0,0.25)',
+                    transition: 'background 0.25s ease, color 0.25s ease, transform 0.15s ease',
+                    transform: hovered === i ? 'translateY(-2px)' : 'translateY(0)',
+                  }}
+                >
+                  <div style={{ width: 8, height: 8, borderRadius: 4, background: hovered === i ? 'rgba(255,255,255,0.6)' : app.accent, flexShrink: 0, transition: 'background 0.25s ease' }} />
+                  {app.label}
+                </a>
+              ))}
             </div>
           </div>
         </section>
@@ -1257,8 +1355,12 @@
                 {t.footer.tag}
               </p>
               <div style={{ display: 'flex', gap: 10 }}>
-                {['instagram', 'x', 'linkedin'].map(s => (
-                  <a key={s} href="#" style={{
+                {[
+                  { kind: 'instagram', href: 'https://www.instagram.com/hellobricksapps/' },
+                  { kind: 'x', href: 'https://x.com/hellobricksapps' },
+                  { kind: 'linkedin', href: 'https://www.linkedin.com/company/bricksapps/' },
+                ].map(s => (
+                  <a key={s.kind} href={s.href} target="_blank" rel="noopener noreferrer" style={{
                     width: 36, height: 36, borderRadius: '50%', background: 'var(--b-bg-elevated)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                     boxShadow: 'var(--emboss-soft)', color: 'var(--b-text-2)',
@@ -1267,7 +1369,7 @@
                     onMouseEnter={(e) => e.currentTarget.style.color = 'var(--b-text)'}
                     onMouseLeave={(e) => e.currentTarget.style.color = 'var(--b-text-2)'}
                   >
-                    <SocialIcon kind={s} />
+                    <SocialIcon kind={s.kind} />
                   </a>
                 ))}
               </div>
@@ -1277,7 +1379,7 @@
                 <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--b-text-3)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 18 }}>{s.h}</div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                   {s.l.map((l, j) => (
-                    <a key={j} href="#" style={{ fontSize: 14, color: 'var(--b-text)', opacity: 0.85 }}>{l}</a>
+                    <a key={j} href={l.href} style={{ fontSize: 14, color: 'var(--b-text)', opacity: 0.85 }}>{l.label}</a>
                   ))}
                 </div>
               </div>
@@ -1314,7 +1416,7 @@
             <div style={{ fontSize: 13, color: 'var(--b-text-2)' }}>{t.footer.copyright}</div>
             <div style={{ display: 'flex', gap: 20 }}>
               {t.footer.legal.map((l, i) => (
-                <a key={i} href="#" style={{ fontSize: 13, color: 'var(--b-text-2)' }}>{l}</a>
+                <a key={i} href={l.href} style={{ fontSize: 13, color: 'var(--b-text-2)' }}>{l.label}</a>
               ))}
             </div>
           </div>
