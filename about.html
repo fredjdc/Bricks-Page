@@ -2,27 +2,38 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About | Bricks</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO -->
+    <title>About | Bricks — Quiet software for real estate</title>
     <meta name="description"
-        content="At Bricks, we build innovative technology for the real estate sector to make the work of agents, buyers, and financial professionals easier and more efficient.">
+        content="Bricks builds native Apple apps for real estate professionals. Scan documents, model mortgages, and manage leads — all on your device." />
+    <meta name="keywords"
+        content="bricks apps, real estate tools, ios apps, apple, about bricks, document scanning, mortgage calculator, crm" />
     <link rel="canonical" href="https://bricks.pe/about.html" />
 
-    <!-- Design System CSS -->
-    <link rel="stylesheet" href="styles.css">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://bricks.pe/about.html" />
+    <meta property="og:title" content="About | Bricks — Quiet software for real estate" />
+    <meta property="og:description"
+        content="A suite of native Apple apps for real estate professionals. Built with care in Peru." />
+    <meta property="og:image" content="https://bricks.pe/images/bricks-dark-logo.svg" />
 
-    <!-- Favicon -->
+    <!-- Favicon & Styles -->
     <link rel="icon" href="favicon.ico" sizes="32x32" />
     <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
     <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16" />
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
     <link rel="manifest" href="site.webmanifest" />
-    <meta name="theme-color" content="#1E40AF" />
+    <meta name="theme-color" content="#0B0F14" />
+    <link rel="stylesheet" href="styles.css" />
 
-    <!-- Alpine and scripts -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script src="scripts.js" defer></script>
+    <!-- React & Babel -->
+    <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
 
     <!-- Google Tag Manager -->
     <script>
@@ -42,11 +53,8 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-0NE96SRV4V"></script>
     <script>
-        // GA4 tracker ensures product marketing funnels capture download conversions.
         window.dataLayer = window.dataLayer || [];
-        function gtag() {
-            dataLayer.push(arguments);
-        }
+        function gtag() { dataLayer.push(arguments); }
         gtag("js", new Date());
         gtag("config", "G-0NE96SRV4V");
     </script>
@@ -79,479 +87,1045 @@
     <!-- End Meta Pixel Code -->
 </head>
 
-<body class="min-h-screen">
+<body>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P5P8LRC2" height="0" width="0"
             style="display: none; visibility: hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    <!-- Cookie Consent Banner -->
-    <div id="cookie-consent-banner"
-        style="display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg-primary); padding: 24px; z-index: 50; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; box-shadow: 0 -4px 16px var(--surface-shadow); border-top: 1px solid var(--depth-plane);">
-        <div>
-            <p class="body-text" style="font-size: 14px; margin: 0;">
-                <span lang="en">We use cookies to analyze site usage and improve your experience. May we collect
-                    anonymous usage data?</span>
-                <span lang="es" class="hidden">Usamos cookies para analizar el uso del sitio y mejorar su experiencia.
-                    ¿Nos permite recopilar datos anónimos de uso?</span>
-            </p>
-        </div>
-        <div style="display: flex; gap: 8px;">
-            <button onclick="updateConsent('denied')" class="btn btn-secondary">
-                <span lang="en">Decline</span>
-                <span lang="es" class="hidden">Rechazar</span>
-            </button>
-            <button onclick="updateConsent('granted')" class="btn btn-primary">
-                <span lang="en">Accept</span>
-                <span lang="es" class="hidden">Aceptar</span>
-            </button>
-        </div>
-    </div>
+    <div id="root"></div>
 
-    <!-- Header / Nav -->
-    <header class="container site-header">
-        <div class="logo">
-            <a href="index.html" class="flex items-center" style="display: flex; align-items: center;">
-                <img src="images/bricks-dark-logo.svg" onerror="this.src='images/bricks-light-logo.svg'"
-                    alt="Bricks Apps" style="height: 24px;" />
-            </a>
-        </div>
-        </div>
-    </header>
+    <script type="text/babel">
+        // ==========================================================================
+        // SHARED COPY (nav + footer — identical across all pages)
+        // ==========================================================================
 
-    <!-- SECTION — HERO -->
-    <section class="section section-hero hero">
-        <div class="hero-bg" aria-hidden="true" style="top: -100px;"></div>
-        <div class="container reading-column center-text pt-24">
+        window.COPY = {
+            en: {
+                nav: { products: 'Products', philosophy: 'Philosophy', changelog: "What's new", download: 'Download' },
+                hero: {
+                    eyebrow: 'A suite for real estate',
+                    title: ['Three focused tools.', 'One quiet suite.'],
+                    body: 'Scan, calculate, follow up. Without bloat, without accounts, without distractions.',
+                    cta: 'Explore the suite',
+                    secondary: 'See what changed',
+                    pickLabel: 'Pick a tool',
+                },
+                products: {
+                    scan: { name: 'Scan', tagline: 'Documents, organized.', pitch: 'Scan, read, file.' },
+                    calc: { name: 'Calc', tagline: 'Mortgages, instantly.', pitch: 'Model a deal.' },
+                    leads: { name: 'Leads', tagline: 'A calm CRM.', pitch: 'Stay on follow-up.' },
+                },
+                cta: {
+                    title: ['Three tools.', 'One quiet suite.'],
+                    sub: 'Free to try. No account. Native on Apple.',
+                    primary: 'Download on the App Store',
+                },
+                footer: {
+                    tag: 'Focused apps for real estate agents on Apple.',
+                    sections: [
+                        { h: 'Apps', l: [{ label: 'Bricks Scan', href: 'scan.html' }, { label: 'Bricks Calc', href: 'calc.html' }, { label: 'Bricks Leads', href: 'leads.html' }] },
+                        { h: 'Business', l: [{ label: 'About', href: 'about.html' }, { label: 'Purchase guide', href: 'purchase-guide-01.html' }, { label: 'hello@bricks.pe', href: 'mailto:hello@bricks.pe' }] },
+                        { h: 'Support', l: [{ label: 'Contact', href: 'support.html' }, { label: 'Vote on features', href: 'https://bricksapps.userjot.com' }, { label: 'Guides', href: 'help.html' }, { label: 'Survey', href: 'survey.html' }] },
+                    ],
+                    legal: [{ label: 'Privacy Policy', href: 'privacy.html' }, { label: 'Terms of Service', href: 'terms.html' }],
+                    copyright: '\u00a9 2026 Bricks Apps. Made with care.',
+                    language: 'Language', appearance: 'Appearance',
+                    light: 'Light', dark: 'Dark', auto: 'System',
+                },
+            },
+            es: {
+                nav: { products: 'Productos', philosophy: 'Filosof\u00eda', changelog: 'Novedades', download: 'Descargar' },
+                hero: {
+                    eyebrow: 'Una suite para bienes ra\u00edces',
+                    title: ['Tres herramientas.', 'Una suite tranquila.'],
+                    body: 'Escanea, calcula, da seguimiento. Sin relleno, sin cuentas, sin distracciones.',
+                    cta: 'Explorar la suite',
+                    secondary: 'Ver novedades',
+                    pickLabel: 'Elige una herramienta',
+                },
+                products: {
+                    scan: { name: 'Scan', tagline: 'Documentos ordenados.', pitch: 'Escanea, lee, archiva.' },
+                    calc: { name: 'Calc', tagline: 'Hipotecas al instante.', pitch: 'Modela una oferta.' },
+                    leads: { name: 'Leads', tagline: 'Un CRM tranquilo.', pitch: 'Mant\u00e9n el seguimiento.' },
+                },
+                cta: {
+                    title: ['Tres herramientas.', 'Una suite tranquila.'],
+                    sub: 'Gratis para empezar. Sin cuenta. Nativa en Apple.',
+                    primary: 'Descargar en el App Store',
+                },
+                footer: {
+                    tag: 'Apps enfocadas para agentes inmobiliarios en Apple.',
+                    sections: [
+                        { h: 'Apps', l: [{ label: 'Bricks Scan', href: 'scan.html' }, { label: 'Bricks Calc', href: 'calc.html' }, { label: 'Bricks Leads', href: 'leads.html' }] },
+                        { h: 'Empresa', l: [{ label: 'Sobre nosotros', href: 'about.html' }, { label: 'Gu\u00eda de compra', href: 'purchase-guide-01.html' }, { label: 'hello@bricks.pe', href: 'mailto:hello@bricks.pe' }] },
+                        { h: 'Soporte', l: [{ label: 'Contacto', href: 'support.html' }, { label: 'Votar funciones', href: 'https://bricksapps.userjot.com' }, { label: 'Gu\u00edas', href: 'help.html' }, { label: 'Encuesta', href: 'survey.html' }] },
+                    ],
+                    legal: [{ label: 'Pol\u00edtica de privacidad', href: 'privacy.html' }, { label: 'T\u00e9rminos del servicio', href: 'terms.html' }],
+                    copyright: '\u00a9 2026 Bricks Apps. Hecho con cuidado.',
+                    language: 'Idioma', appearance: 'Apariencia',
+                    light: 'Claro', dark: 'Oscuro', auto: 'Sistema',
+                },
+            },
+        };
 
-            <div style="display: flex; justify-content: center; margin-bottom: 24px;">
-                <div class="teal-accent-inlay" style="width: 48px; height: 6px;"></div>
-            </div>
+        window.ACCENTS = {
+            scan: { light: '#00A6A1', vivid: '#00C7B2' },
+            calc: { light: '#007AFF', vivid: '#2E90FF' },
+            leads: { light: '#FF9500', vivid: '#FFAD33' },
+        };
 
-            <h1 class="hero-title reveal-on-scroll delay-100" style="margin-bottom: 16px;">
-                <span lang="en">About Bricks</span>
-                <span lang="es" class="hidden">Acerca de Bricks</span>
-            </h1>
-        </div>
-    </section>
+        window.eyebrowStyle = {
+            fontSize: 12, fontWeight: 700, color: 'var(--b-text-3)',
+            letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 14,
+        };
 
-    <!-- SECTION — OUR STORY -->
-    <section class="section section-alt" style="border-top: 1px solid var(--divider);">
-        <div class="container reading-column center-text">
-            <h2 class="section-title reveal-on-scroll">
-                <span lang="en">Our Story</span>
-                <span lang="es" class="hidden">Nuestra Historia</span>
-            </h2>
-            <div class="problem-content mt-sm reveal-on-scroll delay-100">
-                <p class="body-text mb-sm" style="margin-left: auto; margin-right: auto;">
-                    <span lang="en">At Bricks, we build innovative technology for the real estate sector to make the
-                        work of agents, buyers, and financial professionals easier and more efficient. We create native
-                        iOS apps with a modern, easy-to-use design tailored to the Peruvian market.</span>
-                    <span lang="es" class="hidden">En Bricks desarrollamos soluciones tecnológicas innovadoras para el
-                        sector inmobiliario, con el objetivo de facilitar y optimizar el trabajo de agentes, compradores
-                        y profesionales financieros. Creamos aplicaciones móviles nativas para iOS, con un diseño
-                        moderno, fácil de usar y adaptado a las necesidades del mercado peruano.</span>
-                </p>
-            </div>
-        </div>
-    </section>
+        // ==========================================================================
+        // Hooks + utilities
+        // ==========================================================================
 
-    <!-- SECTION — OUR MISSION -->
-    <section class="section">
-        <div class="container reading-column center-text">
-            <h2 class="section-title reveal-on-scroll">
-                <span lang="en">Our Mission</span>
-                <span lang="es" class="hidden">Nuestra Misión</span>
-            </h2>
-            <div class="problem-content mt-sm reveal-on-scroll delay-100">
-                <p class="body-text mb-sm" style="margin-left: auto; margin-right: auto;">
-                    <span lang="en">We are committed to continuous innovation and to developing new tools and
-                        applications that drive the digital transformation of the real estate industry.</span>
-                    <span lang="es" class="hidden">Nuestro compromiso es seguir innovando y desarrollar nuevas
-                        herramientas y aplicaciones para impulsar la transformación digital del sector
-                        inmobiliario.</span>
-                </p>
-            </div>
-        </div>
-    </section>
+        window.useReveal = function useReveal() {
+            const ref = React.useRef(null);
+            React.useEffect(() => {
+                const el = ref.current;
+                if (!el) return;
+                const io = new IntersectionObserver((entries) => {
+                    entries.forEach(e => {
+                        if (e.isIntersecting) {
+                            e.target.classList.add('in');
+                            io.unobserve(e.target);
+                        }
+                    });
+                }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+                el.querySelectorAll('.reveal').forEach(n => io.observe(n));
+                return () => io.disconnect();
+            }, []);
+            return ref;
+        };
 
-    <!-- SECTION — THE ECOSYSTEM (What We Offer) -->
-    <section class="section section-alt"
-        style="border-top: 1px solid var(--divider); border-bottom: 1px solid var(--divider);">
-        <div class="container">
-            <div class="reading-column center-text mb-md">
-                <h2 class="section-title reveal-on-scroll">
-                    <span lang="en">What We Offer</span>
-                    <span lang="es" class="hidden">Lo Que Ofrecemos</span>
-                </h2>
-            </div>
-            <div class="grid-3">
-                <!-- Bricks Scan -->
-                <div class="ecosystem-card embossed-card reveal-on-scroll delay-100">
-                    <img src="images-bricks-scan/bricks-scan-web-icon.png" alt="Bricks Scan Icon" class="app-icon">
-                    <h3 class="subheading">Bricks Scan</h3>
-                    <p class="body-text" style="font-size: 16px; margin-bottom: 20px;">
-                        <span lang="en">Capture, name, and organize every transaction document automatically. Search
-                            inside any page in seconds.</span>
-                        <span lang="es" class="hidden">Captura, nombra y organiza cada documento de transacción
-                            automáticamente. Busca dentro de cualquier página en segundos.</span>
-                    </p>
-                    <a href="scan.html" class="btn btn-secondary">
-                        <span lang="en">Learn more →</span>
-                        <span lang="es" class="hidden">Más información →</span>
+        window.smoothScrollTo = function smoothScrollTo(id) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            const y = el.getBoundingClientRect().top + window.scrollY - 24;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+        };
+
+        window.useScrollDirection = function useScrollDirection() {
+            const [state, setState] = React.useState({ dir: 'up', atTop: true });
+            React.useEffect(() => {
+                let last = window.scrollY;
+                const onScroll = () => {
+                    const y = window.scrollY;
+                    const dir = y > last + 4 ? 'down' : y < last - 4 ? 'up' : state.dir;
+                    setState({ dir, atTop: y < 40 });
+                    last = y;
+                };
+                window.addEventListener('scroll', onScroll, { passive: true });
+                return () => window.removeEventListener('scroll', onScroll);
+            }, []);
+            return state;
+        };
+
+        window.useIsMobile = function useIsMobile(breakpoint = 768) {
+            const [isMobile, setIsMobile] = React.useState(() => window.innerWidth <= breakpoint);
+            React.useEffect(() => {
+                const mq = window.matchMedia(`(max-width: ${breakpoint}px)`);
+                setIsMobile(mq.matches);
+                const handler = (e) => setIsMobile(e.matches);
+                mq.addEventListener('change', handler);
+                return () => mq.removeEventListener('change', handler);
+            }, [breakpoint]);
+            return isMobile;
+        };
+
+        window.useTheme = function useTheme() {
+            const [theme, setTheme] = React.useState(
+                () => document.documentElement.getAttribute('data-theme') || 'light'
+            );
+            React.useEffect(() => {
+                const observer = new MutationObserver(() => {
+                    setTheme(document.documentElement.getAttribute('data-theme') || 'light');
+                });
+                observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+                return () => observer.disconnect();
+            }, []);
+            return theme;
+        };
+
+        // ==========================================================================
+        // ThemeLogo
+        // ==========================================================================
+
+        window.ThemeLogo = function ThemeLogo({ height = 24 }) {
+            return (
+                <React.Fragment>
+                    <img src="images/bricks-dark-logo.svg" alt="Bricks" className="logo-light-theme" style={{ height }} />
+                    <img src="images/bricks-light-logo.svg" alt="Bricks" className="logo-dark-theme" style={{ height }} />
+                </React.Fragment>
+            );
+        };
+
+        // ==========================================================================
+        // Header
+        // ==========================================================================
+
+        window.Header = function Header({ t, lang, currentProduct, cta }) {
+            const { dir, atTop } = window.useScrollDirection();
+            const isMobile = window.useIsMobile();
+            const hidden = dir === 'down' && !atTop;
+            const [dlOpen, setDlOpen] = React.useState(false);
+            const dlRef = React.useRef(null);
+
+            React.useEffect(() => {
+                if (!dlOpen) return;
+                const handler = (e) => {
+                    if (dlRef.current && !dlRef.current.contains(e.target)) setDlOpen(false);
+                };
+                document.addEventListener('mousedown', handler);
+                return () => document.removeEventListener('mousedown', handler);
+            }, [dlOpen]);
+
+            const downloadItems = [
+                { label: 'Bricks Calc', href: 'https://apps.apple.com/us/app/bricks-calc-loan-calculator/id6754506837', accent: window.ACCENTS.calc.light, external: true },
+                { label: 'Bricks Scan', href: 'https://apps.apple.com/us/app/bricks-scan-scan-to-pdf/id6758148083', accent: window.ACCENTS.scan.light, external: true },
+                { label: 'Bricks Leads', href: 'leads.html', accent: window.ACCENTS.leads.light, external: false },
+            ];
+
+            return (
+                <header style={{
+                    position: 'fixed', top: isMobile ? 12 : 24,
+                    left: isMobile ? 16 : 48, right: isMobile ? 16 : 48, zIndex: 100,
+                    display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                    padding: isMobile ? '10px 10px 10px 18px' : '12px 14px 12px 24px',
+                    background: 'color-mix(in srgb, var(--b-bg-elevated) 65%, transparent)',
+                    backdropFilter: 'blur(20px) saturate(180%)',
+                    WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+                    borderRadius: 100,
+                    border: '1px solid var(--b-border)',
+                    boxShadow: '0 8px 32px rgba(11,15,20,0.06)',
+                    transform: hidden ? 'translateY(-130%)' : 'translateY(0)',
+                    opacity: hidden ? 0 : 1,
+                    transition: 'transform 0.45s cubic-bezier(0.16,1,0.3,1), opacity 0.35s ease',
+                }}>
+                    <a href="index.html"
+                        style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                        <window.ThemeLogo height={24} />
                     </a>
+
+                    <nav style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
+                        <div ref={dlRef} style={{ position: 'relative' }}>
+                            <button
+                                onClick={() => setDlOpen(v => !v)}
+                                style={{
+                                    marginLeft: isMobile ? 0 : 6,
+                                    padding: isMobile ? '9px 16px' : '10px 18px', borderRadius: 100,
+                                    background: 'var(--b-text)', color: 'var(--b-bg)',
+                                    border: 'none', fontSize: 14, fontWeight: 600, cursor: 'pointer',
+                                    fontFamily: 'inherit', letterSpacing: '-0.01em',
+                                    display: 'inline-flex', alignItems: 'center', gap: 6,
+                                    boxShadow: '0 8px 20px rgba(11,15,20,0.18)',
+                                    transition: 'transform 0.15s ease, box-shadow 0.2s',
+                                }}
+                                onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-1px)'; }}
+                                onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; }}
+                            >
+                                {t.nav.download}
+                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" style={{
+                                    transform: dlOpen ? 'rotate(180deg)' : 'rotate(0)',
+                                    transition: 'transform 0.25s ease',
+                                }}>
+                                    <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                </svg>
+                            </button>
+
+                            <div style={{
+                                position: 'absolute', top: 'calc(100% + 10px)', right: 0,
+                                minWidth: 220,
+                                background: 'color-mix(in srgb, var(--b-bg-elevated) 85%, transparent)',
+                                backdropFilter: 'blur(24px) saturate(180%)',
+                                WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+                                borderRadius: 20, border: '1px solid var(--b-border)',
+                                boxShadow: '0 16px 48px rgba(11,15,20,0.16)',
+                                padding: 8,
+                                opacity: dlOpen ? 1 : 0,
+                                transform: dlOpen ? 'translateY(0) scale(1)' : 'translateY(-8px) scale(0.96)',
+                                pointerEvents: dlOpen ? 'auto' : 'none',
+                                transition: 'opacity 0.25s ease, transform 0.3s cubic-bezier(0.16,1,0.3,1)',
+                            }}>
+                                {downloadItems.map((item, i) => (
+                                    <a key={i} href={item.href}
+                                        target={item.external ? '_blank' : undefined}
+                                        rel={item.external ? 'noopener noreferrer' : undefined}
+                                        onClick={() => setDlOpen(false)}
+                                        style={{
+                                            display: 'flex', alignItems: 'center', gap: 12,
+                                            padding: '12px 16px', borderRadius: 14,
+                                            fontSize: 14, fontWeight: 500, color: 'var(--b-text)',
+                                            transition: 'background 0.15s ease',
+                                            textDecoration: 'none',
+                                        }}
+                                        onMouseEnter={(e) => e.currentTarget.style.background = 'var(--b-bg)'}
+                                        onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+                                    >
+                                        <div style={{ width: 8, height: 8, borderRadius: 4, background: item.accent, flexShrink: 0 }} />
+                                        <span style={{ flex: 1 }}>{item.label}</span>
+                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style={{ opacity: 0.4 }}>
+                                            <path d={item.external ? 'M4 2h6v6M10 2L3 9' : 'M4 2l5 4-5 4'}
+                                                stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+                                        </svg>
+                                    </a>
+                                ))}
+                            </div>
+                        </div>
+                    </nav>
+                </header>
+            );
+        };
+
+        // ==========================================================================
+        // DownloadCTA
+        // ==========================================================================
+
+        window.DownloadCTA = function DownloadCTA({ t }) {
+            const reveal = window.useReveal();
+            const isMobile = window.useIsMobile();
+            const [hovered, setHovered] = React.useState(null);
+
+            const apps = [
+                { label: 'Bricks Calc', href: 'https://apps.apple.com/us/app/bricks-calc-loan-calculator/id6754506837', accent: window.ACCENTS.calc.light, external: true },
+                { label: 'Bricks Scan', href: 'https://apps.apple.com/us/app/bricks-scan-scan-to-pdf/id6758148083', accent: window.ACCENTS.scan.light, external: true },
+                { label: 'Bricks Leads', href: 'leads.html', accent: window.ACCENTS.leads.light, external: false },
+            ];
+
+            return (
+                <section id="download" ref={reveal} style={{
+                    padding: isMobile ? '32px 20px 64px' : '60px 48px 120px', maxWidth: 1200, margin: '0 auto',
+                }}>
+                    <div className="reveal" style={{
+                        background: 'var(--b-text)', borderRadius: isMobile ? 32 : 48,
+                        padding: isMobile ? '56px 24px' : '96px 64px',
+                        textAlign: 'center', position: 'relative', overflow: 'hidden',
+                        boxShadow: '0 20px 60px rgba(11,15,20,0.25)',
+                    }}>
+                        <div style={{
+                            position: 'absolute', inset: 0, pointerEvents: 'none',
+                            background: 'radial-gradient(circle at 20% 10%, rgba(0,166,161,0.1), transparent 55%), radial-gradient(circle at 80% 90%, rgba(255,149,0,0.08), transparent 55%)',
+                        }} />
+                        <h2 style={{
+                            fontSize: isMobile ? 40 : 64, fontWeight: 900, letterSpacing: '-0.035em',
+                            lineHeight: 1.02, margin: '0 0 20px', color: 'var(--b-bg)', position: 'relative',
+                        }}>
+                            {t.cta.title[0]}<br />
+                            <span style={{ opacity: 0.55 }}>{t.cta.title[1]}</span>
+                        </h2>
+                        <p style={{
+                            fontSize: isMobile ? 16 : 18, color: 'var(--b-bg)', opacity: 0.7,
+                            lineHeight: 1.6, margin: '0 auto 40px', maxWidth: 520, position: 'relative',
+                        }}>
+                            {t.cta.sub}
+                        </p>
+                        <div style={{ position: 'relative', display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
+                            {apps.map((app, i) => (
+                                <a key={i} href={app.href}
+                                    target={app.external ? '_blank' : undefined}
+                                    rel={app.external ? 'noopener noreferrer' : undefined}
+                                    onMouseEnter={() => setHovered(i)}
+                                    onMouseLeave={() => setHovered(null)}
+                                    style={{
+                                        display: 'inline-flex', alignItems: 'center', gap: 10,
+                                        padding: isMobile ? '14px 22px' : '16px 28px',
+                                        background: hovered === i ? app.accent : 'var(--b-bg)',
+                                        color: hovered === i ? '#fff' : 'var(--b-text)',
+                                        textDecoration: 'none',
+                                        border: 'none', borderRadius: 100, fontSize: 15, fontWeight: 600,
+                                        fontFamily: 'inherit', letterSpacing: '-0.01em',
+                                        boxShadow: '0 12px 28px rgba(0,0,0,0.25)',
+                                        transition: 'background 0.25s ease, color 0.25s ease, transform 0.15s ease',
+                                        transform: hovered === i ? 'translateY(-2px)' : 'translateY(0)',
+                                    }}
+                                >
+                                    <div style={{ width: 8, height: 8, borderRadius: 4, background: hovered === i ? 'rgba(255,255,255,0.6)' : app.accent, flexShrink: 0, transition: 'background 0.25s ease' }} />
+                                    {app.label}
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        // ==========================================================================
+        // Footer
+        // ==========================================================================
+
+        window.Footer = function Footer({ t, lang, setLang, theme, setTheme }) {
+            const isMobile = window.useIsMobile();
+            return (
+                <footer style={{
+                    padding: isMobile ? '48px 20px 32px' : '80px 48px 48px', borderTop: '1px solid var(--b-border)',
+                    background: 'var(--b-bg)',
+                }}>
+                    <div style={{
+                        maxWidth: 1200, margin: '0 auto',
+                        display: 'grid',
+                        gridTemplateColumns: isMobile ? '1fr' : '1.4fr 1fr 1fr 1fr',
+                        gap: isMobile ? 32 : 48,
+                        marginBottom: isMobile ? 40 : 56,
+                    }}>
+                        <div style={{ gridColumn: isMobile ? '1 / -1' : undefined }}>
+                            <window.ThemeLogo />
+                            <p style={{ fontSize: 14, color: 'var(--b-text-2)', lineHeight: 1.6, margin: '16px 0 24px', maxWidth: 300 }}>
+                                {t.footer.tag}
+                            </p>
+                            <div style={{ display: 'flex', gap: 10 }}>
+                                {[
+                                    { kind: 'instagram', href: 'https://www.instagram.com/hellobricksapps/' },
+                                    { kind: 'x', href: 'https://x.com/hellobricksapps' },
+                                    { kind: 'linkedin', href: 'https://www.linkedin.com/company/bricksapps/' },
+                                ].map(s => (
+                                    <a key={s.kind} href={s.href} target="_blank" rel="noopener noreferrer" style={{
+                                        width: 36, height: 36, borderRadius: '50%', background: 'var(--b-bg-elevated)',
+                                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                        boxShadow: 'var(--emboss-soft)', color: 'var(--b-text-2)',
+                                        transition: 'color 0.2s',
+                                    }}
+                                        onMouseEnter={(e) => e.currentTarget.style.color = 'var(--b-text)'}
+                                        onMouseLeave={(e) => e.currentTarget.style.color = 'var(--b-text-2)'}>
+                                        <SocialIcon kind={s.kind} />
+                                    </a>
+                                ))}
+                            </div>
+                        </div>
+                        {t.footer.sections.map((s, i) => (
+                            <div key={i}>
+                                <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--b-text-3)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 18 }}>{s.h}</div>
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                                    {s.l.map((l, j) => (
+                                        <a key={j} href={l.href} style={{ fontSize: 14, color: 'var(--b-text)', opacity: 0.85 }}>{l.label}</a>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div style={{
+                        maxWidth: 1200, margin: '0 auto',
+                        padding: isMobile ? '24px 0' : '32px 0', borderTop: '1px solid var(--b-border)',
+                        display: 'flex', gap: isMobile ? 20 : 32, flexWrap: 'wrap', alignItems: 'center',
+                    }}>
+                        <ToggleGroup label={t.footer.language} options={[{ v: 'en', l: 'EN' }, { v: 'es', l: 'ES' }]} value={lang} setValue={setLang} />
+                        <ToggleGroup label={t.footer.appearance} options={[{ v: 'auto', l: t.footer.auto }, { v: 'light', l: t.footer.light }, { v: 'dark', l: t.footer.dark }]} value={theme} setValue={setTheme} />
+                    </div>
+
+                    <div style={{
+                        maxWidth: 1200, margin: '24px auto 0',
+                        display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                        flexWrap: 'wrap', gap: 16,
+                    }}>
+                        <div style={{ fontSize: 13, color: 'var(--b-text-2)' }}>{t.footer.copyright}</div>
+                        <div style={{ display: 'flex', gap: 20 }}>
+                            {t.footer.legal.map((l, i) => (
+                                <a key={i} href={l.href} style={{ fontSize: 13, color: 'var(--b-text-2)' }}>{l.label}</a>
+                            ))}
+                        </div>
+                    </div>
+                </footer>
+            );
+        };
+
+        function ToggleGroup({ label, options, value, setValue }) {
+            return (
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 10 }}>
+                    <div style={{ fontSize: 11, fontWeight: 500, color: 'var(--b-text-3)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{label}</div>
+                    <div style={{ display: 'inline-flex', gap: 2 }}>
+                        {options.map((o, i) => (
+                            <React.Fragment key={o.v}>
+                                {i > 0 && <span style={{ color: 'var(--b-text-3)', fontSize: 12, alignSelf: 'center', opacity: 0.5 }}>·</span>}
+                                <button onClick={() => setValue(o.v)}
+                                    style={{
+                                        border: 'none', background: 'transparent', cursor: 'pointer', fontFamily: 'inherit',
+                                        padding: '2px 6px', fontSize: 12,
+                                        fontWeight: value === o.v ? 600 : 400,
+                                        color: value === o.v ? 'var(--b-text)' : 'var(--b-text-2)',
+                                        opacity: value === o.v ? 1 : 0.7,
+                                        transition: 'opacity 0.2s ease, color 0.2s ease',
+                                    }}
+                                    onMouseEnter={(e) => { if (value !== o.v) e.currentTarget.style.opacity = 1; }}
+                                    onMouseLeave={(e) => { if (value !== o.v) e.currentTarget.style.opacity = 0.7; }}
+                                >{o.l}</button>
+                            </React.Fragment>
+                        ))}
+                    </div>
                 </div>
+            );
+        }
 
-                <!-- Bricks Calc -->
-                <div class="ecosystem-card embossed-card reveal-on-scroll delay-200">
-                    <img src="images/bricks-calc-web-icon.png" alt="Bricks Calc Icon" class="app-icon">
-                    <h3 class="subheading">Bricks Calc</h3>
-                    <p class="body-text" style="font-size: 16px; margin-bottom: 20px;">
-                        <span lang="en">Model deals quickly. Estimate payments, rates, and financing scenarios on the
-                            spot during client meetings.</span>
-                        <span lang="es" class="hidden">Modela ofertas rápidamente. Estima pagos, tasas y escenarios de
-                            financiamiento al instante durante reuniones con clientes.</span>
-                    </p>
-                    <a href="calc.html" class="btn btn-secondary">
-                        <span lang="en">Learn more →</span>
-                        <span lang="es" class="hidden">Más información →</span>
-                    </a>
+        function SocialIcon({ kind }) {
+            const s = { stroke: 'currentColor', fill: 'none', strokeWidth: 1.6, strokeLinecap: 'round', strokeLinejoin: 'round' };
+            if (kind === 'instagram') return (
+                <svg width="15" height="15" viewBox="0 0 20 20"><rect x="3" y="3" width="14" height="14" rx="4" {...s} /><circle cx="10" cy="10" r="3.2" {...s} /><circle cx="14.3" cy="5.7" r="0.5" fill="currentColor" /></svg>
+            );
+            if (kind === 'x') return (
+                <svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path d="M15.2 2h2.8l-6.1 7 7.2 9h-5.6l-4.4-5.8L4 18H1.2l6.5-7.5L1 2h5.7l4 5.3zm-1 14.6h1.5L5.9 3.3H4.3z" /></svg>
+            );
+            return (
+                <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path d="M5.4 7.5h2.4v8.6H5.4zM6.6 3.5c-.8 0-1.4.6-1.4 1.4s.6 1.4 1.4 1.4 1.4-.6 1.4-1.4-.6-1.4-1.4-1.4zM9.4 7.5h2.3v1.2c.3-.6 1.1-1.3 2.3-1.3 2.4 0 2.9 1.6 2.9 3.7v5h-2.4v-4.4c0-1-.02-2.4-1.5-2.4-1.5 0-1.7 1.2-1.7 2.3v4.5H9.4z" /></svg>
+            );
+        }
+
+        // ==========================================================================
+        // Tweaks (edit mode toolbar)
+        // ==========================================================================
+
+        window.useTweaks = function useTweaks({ lang, setLang, theme, setTheme }) {
+            const [visible, setVisible] = React.useState(false);
+
+            React.useEffect(() => {
+                const handler = (e) => {
+                    const d = e.data || {};
+                    if (d.type === '__activate_edit_mode') setVisible(true);
+                    if (d.type === '__deactivate_edit_mode') setVisible(false);
+                };
+                window.addEventListener('message', handler);
+                window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+                return () => window.removeEventListener('message', handler);
+            }, []);
+
+            if (!visible) return null;
+
+            return (
+                <div style={{
+                    position: 'fixed', right: 24, bottom: 24, zIndex: 200,
+                    background: 'var(--b-bg-elevated)', borderRadius: 24,
+                    boxShadow: '0 12px 40px rgba(0,0,0,0.18), var(--emboss-soft)',
+                    padding: 20, minWidth: 260,
+                    border: '1px solid var(--b-border)',
+                }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--b-text-3)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 14 }}>Tweaks</div>
+                    <TweakRow label="Language">
+                        {['en', 'es'].map(v => (
+                            <button key={v} onClick={() => { setLang(v); tweakPersist({ lang: v }); }} style={tweakBtn(lang === v)}>{v.toUpperCase()}</button>
+                        ))}
+                    </TweakRow>
+                    <TweakRow label="Appearance">
+                        {[['auto', 'System'], ['light', 'Light'], ['dark', 'Dark']].map(([v, l]) => (
+                            <button key={v} onClick={() => { setTheme(v); tweakPersist({ theme: v }); }} style={tweakBtn(theme === v)}>{l}</button>
+                        ))}
+                    </TweakRow>
                 </div>
+            );
+        };
 
-                <!-- Bricks Leads -->
-                <div class="ecosystem-card embossed-card reveal-on-scroll delay-300">
-                    <img src="images/bricks-leads-web-icon.png" alt="Bricks Leads Icon" class="app-icon">
-                    <h3 class="subheading">Bricks Leads</h3>
-                    <p class="body-text" style="font-size: 16px; margin-bottom: 20px;">
-                        <span lang="en">Track clients and follow-ups without bloated dashboards. A clean CRM built for
-                            real estate agents on Apple.</span>
-                        <span lang="es" class="hidden">Rastrea clientes y seguimientos sin paneles complicados. Un CRM
-                            limpio creado para agentes inmobiliarios en Apple.</span>
-                    </p>
-                    <a href="https://leads.bricks.pe" class="btn btn-secondary"
-                        style="font-size: 14px; padding: 10px 20px;">
-                        <span lang="en">Learn more →</span>
-                        <span lang="es" class="hidden">Más información →</span>
-                    </a>
+        function tweakPersist(edits) {
+            window.parent.postMessage({ type: '__edit_mode_set_keys', edits }, '*');
+        }
+        function TweakRow({ label, children }) {
+            return (
+                <div style={{ marginBottom: 12 }}>
+                    <div style={{ fontSize: 11, color: 'var(--b-text-2)', marginBottom: 6 }}>{label}</div>
+                    <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>{children}</div>
                 </div>
-            </div>
+            );
+        }
+        function tweakBtn(active) {
+            return {
+                padding: '6px 12px', borderRadius: 100, border: 'none', cursor: 'pointer',
+                fontSize: 12, fontWeight: 600, fontFamily: 'inherit',
+                background: active ? 'var(--b-text)' : 'var(--b-bg)',
+                color: active ? 'var(--b-bg)' : 'var(--b-text)',
+                boxShadow: active ? 'none' : 'var(--emboss-soft)',
+            };
+        }
+    </script>
 
-            <div class="reading-column center-text mt-md reveal-on-scroll delay-400">
-                <p class="body-text">
-                    <span lang="en">These applications work together to provide an end-to-end solution for real estate
-                        professionals.</span>
-                    <span lang="es" class="hidden">Estas aplicaciones trabajan de forma complementaria para ofrecer una
-                        solución integral para profesionales inmobiliarios.</span>
-                </p>
-            </div>
-        </div>
-    </section>
+    <script type="text/babel">
+        // ==========================================================================
+        // ABOUT_COPY — page-specific copy (EN / ES)
+        // ==========================================================================
 
-    <!-- SECTION — OUR VALUES -->
-    <section class="section">
-        <div class="container reading-column">
-            <h2 class="section-title center-text reveal-on-scroll mb-md">
-                <span lang="en">Our Values</span>
-                <span lang="es" class="hidden">Nuestros Valores</span>
-            </h2>
+        const ABOUT_COPY = {
+            en: {
+                hero: {
+                    eyebrow: 'About Bricks',
+                    title: ['Built for real estate.', 'Built on Apple.'],
+                },
+                story: {
+                    eyebrow: 'Our story',
+                    title: 'How it started',
+                    body: 'Bricks builds native Apple apps for real estate professionals. We create focused tools for scanning, calculating, and managing leads \u2014 designed specifically for agents, buyers, and financial professionals in the Peruvian market.',
+                },
+                mission: {
+                    eyebrow: 'Our mission',
+                    title: 'What we work toward',
+                    body: 'We develop tools that remove friction from real estate work. Each app does one job well \u2014 no dashboards you don\u2019t need, no accounts to create, no data to upload. Everything stays on your device.',
+                },
+                ecosystem: {
+                    eyebrow: 'The suite',
+                    title: 'What we offer',
+                    body: 'Three apps, one quiet suite. Each one built to do its job and get out of the way.',
+                    apps: [
+                        {
+                            name: 'Bricks Scan',
+                            desc: 'Capture, name, and organize every transaction document automatically. Search inside any page in seconds.',
+                            icon: 'images-bricks-scan/bricks-scan-web-icon.png',
+                            href: 'scan.html',
+                            accent: '#00A6A1',
+                        },
+                        {
+                            name: 'Bricks Calc',
+                            desc: 'Model deals on the spot. Estimate payments, rates, and financing scenarios during client meetings.',
+                            icon: 'images/bricks-calc-web-icon.png',
+                            href: 'calc.html',
+                            accent: '#007AFF',
+                        },
+                        {
+                            name: 'Bricks Leads',
+                            desc: 'Track clients and follow-ups without complicated dashboards. A clean CRM built for real estate agents on Apple.',
+                            icon: 'images/bricks-leads-web-icon.png',
+                            href: 'leads.html',
+                            accent: '#FF9500',
+                        },
+                    ],
+                    learnMore: 'Learn more',
+                    closing: 'These apps work together to cover the day-to-day of a working real estate professional.',
+                },
+                values: {
+                    eyebrow: 'Principles',
+                    title: 'Our values',
+                    items: [
+                        { t: 'Transparency', d: 'Clear, honest information. No hidden fees, no confusing terms.' },
+                        { t: 'Accessibility', d: 'Financial tools should be available to everyone, regardless of background or expertise.' },
+                        { t: 'Focus', d: 'Each app does one thing. We improve based on user feedback, not feature trends.' },
+                        { t: 'Privacy', d: 'Data stays on your device. No accounts required. No uploads unless you choose to share.' },
+                    ],
+                },
+                team: {
+                    eyebrow: 'The team',
+                    title: 'Who we are',
+                    body: 'Bricks is built by a small team of developers, designers, and real estate professionals. We combine industry knowledge with native Apple development to build tools that make a real difference in how agents work.',
+                    cta: 'Back to home',
+                },
+            },
+            es: {
+                hero: {
+                    eyebrow: 'Acerca de Bricks',
+                    title: ['Hecho para bienes ra\u00edces.', 'Hecho en Apple.'],
+                },
+                story: {
+                    eyebrow: 'Nuestra historia',
+                    title: 'C\u00f3mo empez\u00f3',
+                    body: 'Bricks desarrolla aplicaciones nativas de Apple para profesionales inmobiliarios. Creamos herramientas enfocadas para escanear, calcular y gestionar clientes \u2014 dise\u00f1adas espec\u00edficamente para agentes, compradores y profesionales financieros en el mercado peruano.',
+                },
+                mission: {
+                    eyebrow: 'Nuestra misi\u00f3n',
+                    title: 'Hacia d\u00f3nde trabajamos',
+                    body: 'Desarrollamos herramientas que eliminan fricciones del trabajo inmobiliario. Cada app cumple una funci\u00f3n bien \u2014 sin paneles innecesarios, sin cuentas que crear, sin datos que subir. Todo se queda en tu dispositivo.',
+                },
+                ecosystem: {
+                    eyebrow: 'La suite',
+                    title: 'Lo que ofrecemos',
+                    body: 'Tres apps, una suite tranquila. Cada una hecha para cumplir su funci\u00f3n y salir del camino.',
+                    apps: [
+                        {
+                            name: 'Bricks Scan',
+                            desc: 'Captura, nombra y organiza cada documento de transacci\u00f3n autom\u00e1ticamente. Busca dentro de cualquier p\u00e1gina en segundos.',
+                            icon: 'images-bricks-scan/bricks-scan-web-icon.png',
+                            href: 'scan.html',
+                            accent: '#00A6A1',
+                        },
+                        {
+                            name: 'Bricks Calc',
+                            desc: 'Modela ofertas al instante. Estima pagos, tasas y escenarios de financiamiento durante reuniones con clientes.',
+                            icon: 'images/bricks-calc-web-icon.png',
+                            href: 'calc.html',
+                            accent: '#007AFF',
+                        },
+                        {
+                            name: 'Bricks Leads',
+                            desc: 'Rastrea clientes y seguimientos sin paneles complicados. Un CRM limpio creado para agentes inmobiliarios en Apple.',
+                            icon: 'images/bricks-leads-web-icon.png',
+                            href: 'leads.html',
+                            accent: '#FF9500',
+                        },
+                    ],
+                    learnMore: 'M\u00e1s informaci\u00f3n',
+                    closing: 'Estas apps trabajan juntas para cubrir el d\u00eda a d\u00eda de un profesional inmobiliario.',
+                },
+                values: {
+                    eyebrow: 'Principios',
+                    title: 'Nuestros valores',
+                    items: [
+                        { t: 'Transparencia', d: 'Informaci\u00f3n clara y honesta. Sin tarifas ocultas ni t\u00e9rminos confusos.' },
+                        { t: 'Accesibilidad', d: 'Las herramientas financieras deben estar disponibles para todos, sin importar su experiencia.' },
+                        { t: 'Enfoque', d: 'Cada app hace una cosa. Mejoramos con base en feedback real, no en tendencias.' },
+                        { t: 'Privacidad', d: 'Los datos se quedan en tu dispositivo. Sin cuentas. Sin subir nada a menos que elijas compartir.' },
+                    ],
+                },
+                team: {
+                    eyebrow: 'El equipo',
+                    title: 'Qui\u00e9nes somos',
+                    body: 'Bricks es creado por un equipo peque\u00f1o de desarrolladores, dise\u00f1adores y profesionales inmobiliarios. Combinamos conocimiento de la industria con desarrollo nativo en Apple para crear herramientas que hacen una diferencia real en c\u00f3mo trabajan los agentes.',
+                    cta: 'Volver al inicio',
+                },
+            },
+        };
 
-            <ul class="feature-list reveal-on-scroll delay-100" style="margin-left: 0; padding-left: 0;">
-                <li class="feature-item" style="align-items: flex-start; margin-bottom: 24px;">
-                    <img src="images/checkmark.svg" alt="Check" class="checkmark-icon" style="margin-top: 4px;">
-                    <div>
-                        <span class="subheading" style="display: block; margin-bottom: 4px; font-size: 18px;">
-                            <span lang="en">Transparency</span>
-                            <span lang="es" class="hidden">Transparencia</span>
-                        </span>
-                        <span class="body-text" style="font-size: 16px;">
-                            <span lang="en">We believe in clear, honest information without hidden fees or confusing
-                                terms.</span>
-                            <span lang="es" class="hidden">Creemos en información clara y honesta sin tarifas ocultas ni
-                                términos confusos.</span>
-                        </span>
+        // ==========================================================================
+        // AboutHero
+        // ==========================================================================
+
+        function AboutHero({ t }) {
+            const reveal = window.useReveal();
+            const isMobile = window.useIsMobile();
+
+            return (
+                <section id="top" ref={reveal} style={{
+                    position: 'relative', minHeight: isMobile ? 'auto' : '56vh',
+                    paddingTop: isMobile ? 120 : 180,
+                    paddingBottom: isMobile ? 48 : 80,
+                    display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+                    overflow: 'hidden', background: 'var(--b-bg)',
+                }}>
+                    {/* Ambient wash — subtle */}
+                    <div style={{
+                        position: 'absolute', inset: 0, pointerEvents: 'none', opacity: 0.5,
+                        background: 'radial-gradient(ellipse 700px 400px at 50% 20%, color-mix(in srgb, var(--b-text) 4%, transparent), transparent 60%)',
+                    }} />
+
+                    <div className="reveal" style={{
+                        position: 'relative', zIndex: 2, maxWidth: 800, margin: '0 auto',
+                        padding: isMobile ? '0 20px' : '0 48px', textAlign: 'center',
+                    }}>
+                        <div style={{
+                            display: 'inline-block', padding: '6px 14px', borderRadius: 100,
+                            background: 'var(--b-bg-elevated)', boxShadow: 'var(--emboss-soft)',
+                            fontSize: 12, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase',
+                            color: 'var(--b-text-2)', marginBottom: isMobile ? 20 : 32,
+                        }}>{t.hero.eyebrow}</div>
+
+                        <h1 style={{
+                            fontSize: isMobile ? 44 : 80, fontWeight: 900, letterSpacing: '-0.04em',
+                            lineHeight: 1.02, margin: 0,
+                        }}>
+                            {t.hero.title[0]}<br />
+                            <span style={{ color: 'var(--b-text-2)' }}>{t.hero.title[1]}</span>
+                        </h1>
                     </div>
-                </li>
-                <li class="feature-item" style="align-items: flex-start; margin-bottom: 24px;">
-                    <img src="images/checkmark.svg" alt="Check" class="checkmark-icon" style="margin-top: 4px;">
-                    <div>
-                        <span class="subheading" style="display: block; margin-bottom: 4px; font-size: 18px;">
-                            <span lang="en">Accessibility</span>
-                            <span lang="es" class="hidden">Accesibilidad</span>
-                        </span>
-                        <span class="body-text" style="font-size: 16px;">
-                            <span lang="en">Financial tools should be accessible to everyone, regardless of their
-                                background or expertise.</span>
-                            <span lang="es" class="hidden">Las herramientas financieras deben ser accesibles para todos,
-                                independientemente de su origen o experiencia.</span>
-                        </span>
-                    </div>
-                </li>
-                <li class="feature-item" style="align-items: flex-start; margin-bottom: 24px;">
-                    <img src="images/checkmark.svg" alt="Check" class="checkmark-icon" style="margin-top: 4px;">
-                    <div>
-                        <span class="subheading" style="display: block; margin-bottom: 4px; font-size: 18px;">
-                            <span lang="en">Innovation</span>
-                            <span lang="es" class="hidden">Innovación</span>
-                        </span>
-                        <span class="body-text" style="font-size: 16px;">
-                            <span lang="en">We continuously improve our app with new features and insights based on user
-                                feedback.</span>
-                            <span lang="es" class="hidden">Mejoramos continuamente nuestra aplicación con nuevas
-                                funciones y conocimientos basados en los comentarios de los usuarios.</span>
-                        </span>
-                    </div>
-                </li>
-                <li class="feature-item" style="align-items: flex-start;">
-                    <img src="images/checkmark.svg" alt="Check" class="checkmark-icon" style="margin-top: 4px;">
-                    <div>
-                        <span class="subheading" style="display: block; margin-bottom: 4px; font-size: 18px;">
-                            <span lang="en">Empowerment</span>
-                            <span lang="es" class="hidden">Empoderamiento</span>
-                        </span>
-                        <span class="body-text" style="font-size: 16px;">
-                            <span lang="en">We aim to give users the knowledge and tools they need to take control of
-                                their financial future.</span>
-                            <span lang="es" class="hidden">Nuestro objetivo es brindar a los usuarios el conocimiento y
-                                las herramientas que necesitan para tomar el control de su futuro financiero.</span>
-                        </span>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </section>
+                </section>
+            );
+        }
 
-    <!-- SECTION — OUR TEAM -->
-    <section class="section section-alt" style="border-top: 1px solid var(--divider);">
-        <div class="container reading-column center-text">
-            <h2 class="section-title reveal-on-scroll">
-                <span lang="en">Our Team</span>
-                <span lang="es" class="hidden">Nuestro Equipo</span>
-            </h2>
-            <div class="problem-content mt-sm reveal-on-scroll delay-100">
-                <p class="body-text mb-sm" style="margin-left: auto; margin-right: auto;">
-                    <span lang="en">Bricks is developed by a passionate team of financial experts, developers, and
-                        designers committed to creating the best mortgage calculation experience possible. We combine
-                        deep industry knowledge with cutting-edge technology to build tools that make a difference in
-                        people's lives.</span>
-                    <span lang="es" class="hidden">Bricks es desarrollado por un equipo apasionado de expertos
-                        financieros, desarrolladores y diseñadores comprometidos a crear la mejor experiencia de cálculo
-                        hipotecario posible. Combinamos un profundo conocimiento de la industria con tecnología de
-                        vanguardia para crear herramientas que marcan la diferencia en la vida de las personas.</span>
-                </p>
-            </div>
+        // ==========================================================================
+        // TextSection — reusable for Story, Mission, Team
+        // ==========================================================================
 
-            <div class="mt-md reveal-on-scroll delay-200">
-                <a href="index.html" class="btn btn-secondary">
-                    <svg class="w-5 h-5 mr-2" style="width: 20px; height: 20px; margin-right: 8px;"
-                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-                    </svg>
-                    <span lang="en">Back to Home</span>
-                    <span lang="es" class="hidden">Volver al Inicio</span>
-                </a>
-            </div>
-        </div>
-    </section>
+        function TextSection({ eyebrow, title, body, children, id }) {
+            const reveal = window.useReveal();
+            const isMobile = window.useIsMobile();
 
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="container reveal-on-scroll">
-            <div style="
-                        display: flex;
-                        flex-wrap: wrap;
-                        gap: 48px;
-                        justify-content: space-between;
-                        margin-bottom: 48px;
-                    ">
-                <!-- Brand Section -->
-                <div class="footer-brand" style="flex: 1; min-width: 280px">
-                    <a href="index.html" style="display: inline-block; margin-bottom: 16px">
-                        <img src="images/bricks-dark-logo.svg" onerror="this.src='images/bricks-light-logo.svg'"
-                            alt="Bricks Logo" style="height: 32px; opacity: 0.8" />
-                    </a>
-                    <p class="body-text" style="font-size: 15px">
-                        <span lang="en">We build Apple apps for work and everyday life.</span>
-                        <span lang="es" class="hidden">Desarrollamos Apple apps para el trabajo y la vida
-                            diaria.</span>
-                    </p>
-                    <div class="footer-social" style="display: flex; gap: 16px; margin-top: 24px">
-                        <a href="https://www.instagram.com/hellobricksapps/" target="_blank" rel="noopener"
-                            style="color: var(--text-secondary); opacity: 0.6; transition: opacity 0.2s"
-                            onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'">
-                            <img src="images/icon-instagram.svg" alt="Instagram" style="width: 20px; height: 20px" />
+            return (
+                <section id={id} ref={reveal} style={{
+                    padding: isMobile ? '64px 20px' : '120px 48px',
+                    maxWidth: 1200, margin: '0 auto',
+                }}>
+                    <div className="reveal" style={{
+                        maxWidth: 720, margin: '0 auto',
+                    }}>
+                        <div style={window.eyebrowStyle}>{eyebrow}</div>
+                        <h2 style={{
+                            fontSize: isMobile ? 36 : 52, fontWeight: 900, letterSpacing: '-0.03em',
+                            lineHeight: 1.05, margin: '0 0 24px', color: 'var(--b-text)',
+                        }}>{title}</h2>
+                        <p style={{
+                            fontSize: isMobile ? 17 : 18, lineHeight: 1.6, color: 'var(--b-text-2)',
+                            margin: 0, maxWidth: 640,
+                        }}>{body}</p>
+                        {children}
+                    </div>
+                </section>
+            );
+        }
+
+        // ==========================================================================
+        // EcosystemGrid — "What we offer"
+        // ==========================================================================
+
+        function EcosystemGrid({ t }) {
+            const reveal = window.useReveal();
+            const isMobile = window.useIsMobile();
+            const [hovered, setHovered] = React.useState(null);
+
+            return (
+                <section id="ecosystem" ref={reveal} style={{
+                    padding: isMobile ? '64px 20px' : '120px 48px',
+                    maxWidth: 1200, margin: '0 auto',
+                }}>
+                    <div className="reveal" style={{ maxWidth: 720, margin: '0 auto 48px' }}>
+                        <div style={window.eyebrowStyle}>{t.ecosystem.eyebrow}</div>
+                        <h2 style={{
+                            fontSize: isMobile ? 36 : 52, fontWeight: 900, letterSpacing: '-0.03em',
+                            lineHeight: 1.05, margin: '0 0 16px', color: 'var(--b-text)',
+                        }}>{t.ecosystem.title}</h2>
+                        <p style={{ fontSize: isMobile ? 17 : 18, lineHeight: 1.6, color: 'var(--b-text-2)', margin: 0 }}>
+                            {t.ecosystem.body}
+                        </p>
+                    </div>
+
+                    <div className="reveal reveal-d1" style={{
+                        display: 'grid',
+                        gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
+                        gap: isMobile ? 16 : 24,
+                        maxWidth: 1100, margin: '0 auto',
+                    }}>
+                        {t.ecosystem.apps.map((app, i) => (
+                            <a key={i} href={app.href}
+                                onMouseEnter={() => setHovered(i)}
+                                onMouseLeave={() => setHovered(null)}
+                                style={{
+                                    display: 'flex', flexDirection: 'column',
+                                    padding: isMobile ? '28px 24px' : '36px 32px',
+                                    background: 'var(--b-bg-elevated)',
+                                    borderRadius: isMobile ? 32 : 48,
+                                    boxShadow: hovered === i ? 'var(--emboss-raised)' : 'var(--emboss-soft)',
+                                    border: '1px solid var(--b-border)',
+                                    textDecoration: 'none',
+                                    transition: 'box-shadow 0.4s ease, transform 0.4s ease',
+                                    transform: hovered === i ? 'translateY(-6px)' : 'translateY(0)',
+                                    position: 'relative', overflow: 'hidden',
+                                }}
+                            >
+                                {/* Accent bar */}
+                                <div style={{
+                                    position: 'absolute', top: 0, left: 0, right: 0, height: 3,
+                                    background: app.accent,
+                                    opacity: hovered === i ? 1 : 0.3,
+                                    transition: 'opacity 0.3s ease',
+                                }} />
+
+                                <img src={app.icon} alt={app.name + ' icon'}
+                                    style={{
+                                        width: 56, height: 56, borderRadius: 14,
+                                        marginBottom: 20,
+                                        boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
+                                    }}
+                                />
+                                <div style={{
+                                    fontSize: 20, fontWeight: 700, color: 'var(--b-text)',
+                                    letterSpacing: '-0.01em', marginBottom: 8,
+                                }}>{app.name}</div>
+                                <p style={{
+                                    fontSize: 15, lineHeight: 1.55, color: 'var(--b-text-2)',
+                                    margin: '0 0 20px', flex: 1,
+                                }}>{app.desc}</p>
+                                <div style={{
+                                    display: 'inline-flex', alignItems: 'center', gap: 6,
+                                    fontSize: 14, fontWeight: 600, color: app.accent,
+                                }}>
+                                    <span>{t.ecosystem.learnMore}</span>
+                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                        <path d="M5 3l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                                    </svg>
+                                </div>
+                            </a>
+                        ))}
+                    </div>
+
+                    <div className="reveal reveal-d2" style={{
+                        maxWidth: 720, margin: '48px auto 0',
+                    }}>
+                        <p style={{ fontSize: 16, lineHeight: 1.6, color: 'var(--b-text-2)' }}>
+                            {t.ecosystem.closing}
+                        </p>
+                    </div>
+                </section>
+            );
+        }
+
+        // ==========================================================================
+        // ValuesGrid
+        // ==========================================================================
+
+        function ValuesGrid({ t }) {
+            const reveal = window.useReveal();
+            const isMobile = window.useIsMobile();
+
+            const icons = [
+                // Transparency - eye
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/><circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="1.6"/></svg>,
+                // Accessibility - hand
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="4" r="2" stroke="currentColor" strokeWidth="1.6"/><path d="M6 8h12M12 8v8M8 20l4-4 4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/></svg>,
+                // Focus - target
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.6"/><circle cx="12" cy="12" r="6" stroke="currentColor" strokeWidth="1.6"/><circle cx="12" cy="12" r="2" stroke="currentColor" strokeWidth="1.6"/></svg>,
+                // Privacy - shield
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/></svg>,
+            ];
+
+            return (
+                <section id="values" ref={reveal} style={{
+                    padding: isMobile ? '64px 20px' : '120px 48px',
+                    maxWidth: 1200, margin: '0 auto',
+                }}>
+                    <div className="reveal" style={{ maxWidth: 720, margin: '0 auto 48px' }}>
+                        <div style={window.eyebrowStyle}>{t.values.eyebrow}</div>
+                        <h2 style={{
+                            fontSize: isMobile ? 36 : 52, fontWeight: 900, letterSpacing: '-0.03em',
+                            lineHeight: 1.05, margin: 0, color: 'var(--b-text)',
+                        }}>{t.values.title}</h2>
+                    </div>
+
+                    <div className="reveal reveal-d1" style={{
+                        display: 'grid',
+                        gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
+                        gap: isMobile ? 16 : 24,
+                        maxWidth: 900, margin: '0 auto',
+                    }}>
+                        {t.values.items.map((val, i) => (
+                            <div key={i} style={{
+                                padding: isMobile ? '28px 24px' : '36px 32px',
+                                background: 'var(--b-bg-elevated)',
+                                borderRadius: isMobile ? 28 : 32,
+                                boxShadow: 'var(--emboss-soft)',
+                                border: '1px solid var(--b-border)',
+                            }}>
+                                <div style={{
+                                    width: 48, height: 48, borderRadius: 14,
+                                    background: 'var(--b-bg)',
+                                    boxShadow: 'var(--emboss-recessed)',
+                                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                    marginBottom: 20, color: 'var(--b-text-2)',
+                                }}>
+                                    {icons[i]}
+                                </div>
+                                <div style={{
+                                    fontSize: 18, fontWeight: 700, color: 'var(--b-text)',
+                                    letterSpacing: '-0.01em', marginBottom: 6,
+                                }}>{val.t}</div>
+                                <p style={{
+                                    fontSize: 15, lineHeight: 1.55, color: 'var(--b-text-2)', margin: 0,
+                                }}>{val.d}</p>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            );
+        }
+
+        // ==========================================================================
+        // TeamSection
+        // ==========================================================================
+
+        function TeamSection({ t }) {
+            const reveal = window.useReveal();
+            const isMobile = window.useIsMobile();
+
+            return (
+                <section id="team" ref={reveal} style={{
+                    padding: isMobile ? '64px 20px' : '120px 48px',
+                    maxWidth: 1200, margin: '0 auto',
+                }}>
+                    <div className="reveal" style={{ maxWidth: 720, margin: '0 auto', textAlign: 'center' }}>
+                        <div style={{ ...window.eyebrowStyle, textAlign: 'center' }}>{t.team.eyebrow}</div>
+                        <h2 style={{
+                            fontSize: isMobile ? 36 : 52, fontWeight: 900, letterSpacing: '-0.03em',
+                            lineHeight: 1.05, margin: '0 0 24px', color: 'var(--b-text)',
+                        }}>{t.team.title}</h2>
+                        <p style={{
+                            fontSize: isMobile ? 17 : 18, lineHeight: 1.6, color: 'var(--b-text-2)',
+                            margin: '0 auto 40px', maxWidth: 580,
+                        }}>{t.team.body}</p>
+
+                        <a href="index.html"
+                            style={{
+                                display: 'inline-flex', alignItems: 'center', gap: 10,
+                                padding: isMobile ? '14px 28px' : '16px 32px',
+                                background: 'var(--b-bg-elevated)',
+                                color: 'var(--b-text)',
+                                borderRadius: 100, fontSize: 15, fontWeight: 600,
+                                boxShadow: 'var(--emboss-raised)',
+                                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                                textDecoration: 'none', letterSpacing: '-0.01em',
+                            }}
+                            onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = 'var(--emboss-raised-hover)'; }}
+                            onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'var(--emboss-raised)'; }}
+                        >
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M13 8H3M6 5L3 8l3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                            {t.team.cta}
                         </a>
-                        <a href="https://x.com/hellobricksapps" target="_blank" rel="noopener"
-                            style="color: var(--text-secondary); opacity: 0.6; transition: opacity 0.2s"
-                            onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'">
-                            <img src="images/icon-x.svg" alt="X" style="width: 20px; height: 20px" />
-                        </a>
-                        <a href="https://www.linkedin.com/company/bricksapps/" target="_blank" rel="noopener"
-                            style="color: var(--text-secondary); opacity: 0.6; transition: opacity 0.2s"
-                            onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'">
-                            <img src="images/icon-linkedin.svg" alt="LinkedIn" style="width: 20px; height: 20px" />
-                        </a>
                     </div>
+                </section>
+            );
+        }
+
+        // ==========================================================================
+        // App
+        // ==========================================================================
+
+        const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+            "lang": "en",
+            "theme": "auto"
+        }/*EDITMODE-END*/;
+
+        function App() {
+            const [lang, setLang] = React.useState(TWEAK_DEFAULTS.lang);
+            const [theme, setTheme] = React.useState(TWEAK_DEFAULTS.theme);
+
+            React.useEffect(() => {
+                const mq = window.matchMedia('(prefers-color-scheme: dark)');
+                const apply = () => {
+                    const effective = theme === 'auto' ? (mq.matches ? 'dark' : 'light') : theme;
+                    document.documentElement.setAttribute('data-theme', effective);
+                };
+                apply();
+                if (theme === 'auto') {
+                    mq.addEventListener('change', apply);
+                    return () => mq.removeEventListener('change', apply);
+                }
+            }, [theme]);
+
+            React.useEffect(() => {
+                document.documentElement.setAttribute('lang', lang);
+            }, [lang]);
+
+            const t = window.COPY[lang] || window.COPY.en;
+            const aboutT = ABOUT_COPY[lang] || ABOUT_COPY.en;
+
+            return (
+                <div style={{ background: 'var(--b-bg)', minHeight: '100vh', overflow: 'hidden' }}>
+                    <window.Header t={t} lang={lang} currentProduct="about" />
+
+                    <main>
+                        <AboutHero t={aboutT} />
+                        <TextSection
+                            id="story"
+                            eyebrow={aboutT.story.eyebrow}
+                            title={aboutT.story.title}
+                            body={aboutT.story.body}
+                        />
+                        <TextSection
+                            id="mission"
+                            eyebrow={aboutT.mission.eyebrow}
+                            title={aboutT.mission.title}
+                            body={aboutT.mission.body}
+                        />
+                        <EcosystemGrid t={aboutT} />
+                        <ValuesGrid t={aboutT} />
+                        <TeamSection t={aboutT} />
+                        <window.DownloadCTA t={t} />
+                    </main>
+
+                    <window.Footer t={t} lang={lang} setLang={setLang} theme={theme} setTheme={setTheme} />
+
+                    {/* Tweaks Menu (hidden until activated) */}
+                    <window.useTweaks lang={lang} setLang={setLang} theme={theme} setTheme={setTheme} />
                 </div>
+            );
+        }
 
-                <!-- Footer Links Grid -->
-                <div style="
-                            flex: 2;
-                            min-width: 280px;
-                            display: grid;
-                            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-                            gap: 32px;
-                        ">
-                    <!-- Apps Section -->
-                    <div>
-                        <h3 class="subheading" style="font-size: 16px; margin-bottom: 16px">
-                            <span lang="en">Apps</span>
-                            <span lang="es" class="hidden">Apps</span>
-                        </h3>
-                        <ul style="
-                                    list-style: none;
-                                    padding: 0;
-                                    margin: 0;
-                                    display: flex;
-                                    flex-direction: column;
-                                    gap: 12px;
-                                ">
-                            <li>
-                                <a href="scan.html" class="body-text" style="font-size: 15px">
-                                    <span lang="en">Bricks Scan</span>
-                                    <span lang="es" class="hidden">Bricks Scan</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="calc.html" class="body-text" style="font-size: 15px">
-                                    <span lang="en">Bricks Calc</span>
-                                    <span lang="es" class="hidden">Bricks Calc</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://leads.bricks.pe" class="body-text" style="font-size: 15px">
-                                    <span lang="en">Bricks Leads</span>
-                                    <span lang="es" class="hidden">Bricks Leads</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Company Section -->
-                    <div>
-                        <h3 class="subheading" style="font-size: 16px; margin-bottom: 16px">
-                            <span lang="en">Business</span>
-                            <span lang="es" class="hidden">Empresa</span>
-                        </h3>
-                        <ul style="
-                                    list-style: none;
-                                    padding: 0;
-                                    margin: 0;
-                                    display: flex;
-                                    flex-direction: column;
-                                    gap: 12px;
-                                ">
-                            <li>
-                                <a href="about.html" class="body-text" style="font-size: 15px">
-                                    <span lang="en">About us</span>
-                                    <span lang="es" class="hidden">Sobre nosotros</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="purchase-guide-01.html" class="body-text" style="font-size: 15px">
-                                    <span lang="en">Purchase Guide</span>
-                                    <span lang="es" class="hidden">Guía de compra</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="mailto:hello@bricks.pe" class="body-text" style="font-size: 15px">
-                                    <span lang="en">Email: hello@bricks.pe</span>
-                                    <span lang="es" class="hidden">Email: hello@bricks.pe</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Support Section -->
-                    <div>
-                        <h3 class="subheading" style="font-size: 16px; margin-bottom: 16px">
-                            <span lang="en">Support</span>
-                            <span lang="es" class="hidden">Soporte</span>
-                        </h3>
-                        <ul style="
-                                    list-style: none;
-                                    padding: 0;
-                                    margin: 0;
-                                    display: flex;
-                                    flex-direction: column;
-                                    gap: 12px;
-                                ">
-                            <li>
-                                <a href="support.html" class="body-text" style="font-size: 15px;">
-                                    <span lang="en">Contact</span>
-                                    <span lang="es" class="hidden">Contacto</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://bricksapps.userjot.com" class="body-text" style="font-size: 15px;">
-                                    <span lang="en">Vote on Features</span>
-                                    <span lang="es" class="hidden">Votar funciones</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="help.html" class="body-text" style="font-size: 15px;">
-                                    <span lang="en">Apps Guides</span>
-                                    <span lang="es" class="hidden">Guías</span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="survey.html" class="body-text" style="font-size: 15px">
-                                    <span lang="en">Survey</span>
-                                    <span lang="es" class="hidden">Encuesta</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div style="
-                        border-top: 1px solid var(--surface-shadow);
-                        padding-top: 32px;
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        gap: 16px;
-                    ">
-                <p class="metadata" style="text-align: center">
-                    <span lang="en">© 2026 Bricks Apps. All rights reserved.</span>
-                    <span lang="es" class="hidden">© 2026 Bricks Apps. Todos los derechos reservados</span>
-                </p>
-                <div class="footer-bottom-row"
-                    style="display: flex; justify-content: center; flex-wrap: wrap; gap: 24px; align-items: center">
-                    <div class="footer-links" style="display: flex; flex-wrap: wrap; gap: 24px">
-                        <a href="privacy.html" style="margin: 0">
-                            <span lang="en">Privacy Policy</span>
-                            <span lang="es" class="hidden">Política de privacidad</span>
-                        </a>
-                        <a href="terms.html" style="margin: 0">
-                            <span lang="en">Terms of Service</span>
-                            <span lang="es" class="hidden">Términos de servicio</span>
-                        </a>
-                    </div>
-                    <div class="footer-language-dropdown">
-                        <img src="images/globe-icon.svg" alt="" class="footer-globe-icon" />
-                        <select id="language-select" title="Change language / Cambiar idioma">
-                            <option value="en">English</option>
-                            <option value="es">Español</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-</body>
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
 </body>
 
 </html>

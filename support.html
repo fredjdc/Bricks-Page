@@ -2,24 +2,38 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Support - Bricks Apps</title>
-    <meta name="description" content="Report issues or inquiries related to Bricks Apps products.">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Design System CSS -->
-    <link rel="stylesheet" href="styles.css">
+    <!-- SEO -->
+    <title>Contact | Bricks — Report issues or share feedback</title>
+    <meta name="description"
+        content="Contact Bricks Apps support. Report issues, ask questions, or share feedback for Bricks Scan, Bricks Calc, and Bricks Leads." />
+    <meta name="keywords"
+        content="bricks apps, support, contact, report issue, bricks scan, bricks calc, bricks leads" />
+    <link rel="canonical" href="https://bricks.pe/support.html" />
 
-    <!-- Favicon -->
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://bricks.pe/support.html" />
+    <meta property="og:title" content="Contact | Bricks Apps Support" />
+    <meta property="og:description"
+        content="Report issues or share feedback for Bricks Apps products." />
+    <meta property="og:image" content="https://bricks.pe/images/bricks-dark-logo.svg" />
+
+    <!-- Favicon & Styles -->
     <link rel="icon" href="favicon.ico" sizes="32x32" />
     <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
     <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16" />
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
     <link rel="manifest" href="site.webmanifest" />
+    <meta name="theme-color" content="#0B0F14" />
+    <link rel="stylesheet" href="styles.css" />
 
-    <!-- Alpine and scripts -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script src="scripts.js" defer></script>
+    <!-- React & Babel -->
+    <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
 
     <!-- Google Tag Manager -->
     <script>
@@ -39,11 +53,8 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-0NE96SRV4V"></script>
     <script>
-        // GA4 tracker to monitor support funnel effectiveness.
         window.dataLayer = window.dataLayer || [];
-        function gtag() {
-            dataLayer.push(arguments);
-        }
+        function gtag() { dataLayer.push(arguments); }
         gtag("js", new Date());
         gtag("config", "G-0NE96SRV4V");
     </script>
@@ -82,537 +93,954 @@
             style="display: none; visibility: hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    <!-- Cookie Consent Banner -->
-    <div id="cookie-consent-banner"
-        style="display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg-primary); padding: 24px; z-index: 50; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; box-shadow: 0 -4px 16px var(--surface-shadow); border-top: 1px solid var(--depth-plane);">
-        <div>
-            <p class="body-text" style="font-size: 14px; margin: 0;">
-                <span lang="en">We use cookies to analyze site usage and improve your experience. May we collect
-                    anonymous usage data?</span>
-                <span lang="es" class="hidden">Usamos cookies para analizar el uso del sitio y mejorar su experiencia.
-                    ¿Nos permite recopilar datos anónimos de uso?</span>
-            </p>
-        </div>
-        <div style="display: flex; gap: 8px;">
-            <button onclick="updateConsent('denied')" class="btn btn-secondary">
-                <span lang="en">Decline</span>
-                <span lang="es" class="hidden">Rechazar</span>
-            </button>
-            <button onclick="updateConsent('granted')" class="btn btn-primary">
-                <span lang="en">Accept</span>
-                <span lang="es" class="hidden">Aceptar</span>
-            </button>
-        </div>
-    </div>
+    <div id="root"></div>
 
-    <!-- Success Alert Modal -->
-    <div id="success-alert" class="success-overlay">
-        <div class="success-card">
-            <div class="success-icon-ring">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-            </div>
-            <h3 class="subheading" style="margin-bottom: 8px;">
-                <span lang="en">Report Submitted Successfully</span>
-                <span lang="es" class="hidden">Reporte Enviado Exitosamente</span>
-            </h3>
-            <p class="body-text" style="font-size: 16px; margin: 0 auto 8px;">
-                <span lang="en">Your report has been submitted. Reference number:</span>
-                <span lang="es" class="hidden">Tu reporte ha sido enviado. Número de referencia:</span>
-            </p>
-            <div class="reference-badge">
-                <span id="reference-number">BRKS-000000</span>
-            </div>
-            <p class="metadata" style="margin-bottom: 24px;">
-                <span lang="en">Please save this number for future reference.</span>
-                <span lang="es" class="hidden">Guarda este número para futuras referencias.</span>
-            </p>
-            <button id="close-success" class="btn btn-primary">
-                <span lang="en">Close</span>
-                <span lang="es" class="hidden">Cerrar</span>
-            </button>
-        </div>
-    </div>
+    <script type="text/babel">
+        // ==========================================================================
+        // SHARED COPY (nav + footer — identical across all pages)
+        // ==========================================================================
 
-    <!-- Header / Nav -->
-    <header class="container site-header">
-        <div class="logo">
-            <a href="index.html" style="display: flex; align-items: center;">
-                <img src="images/bricks-dark-logo.svg" onerror="this.src='images/bricks-light-logo.svg'"
-                    alt="Bricks Logo" style="height: 24px;">
-            </a>
-        </div>
-        </div>
-    </header>
+        window.COPY = {
+            en: {
+                nav: { products: 'Products', philosophy: 'Philosophy', changelog: "What's new", download: 'Download' },
+                hero: {
+                    eyebrow: 'A suite for real estate',
+                    title: ['Three focused tools.', 'One quiet suite.'],
+                    body: 'Scan, calculate, follow up. Without bloat, without accounts, without distractions.',
+                    cta: 'Explore the suite',
+                    secondary: 'See what changed',
+                    pickLabel: 'Pick a tool',
+                },
+                products: {
+                    scan: { name: 'Scan', tagline: 'Documents, organized.', pitch: 'Scan, read, file.' },
+                    calc: { name: 'Calc', tagline: 'Mortgages, instantly.', pitch: 'Model a deal.' },
+                    leads: { name: 'Leads', tagline: 'A calm CRM.', pitch: 'Stay on follow-up.' },
+                },
+                cta: {
+                    title: ['Three tools.', 'One quiet suite.'],
+                    sub: 'Free to try. No account. Native on Apple.',
+                    primary: 'Download on the App Store',
+                },
+                footer: {
+                    tag: 'Focused apps for real estate agents on Apple.',
+                    sections: [
+                        { h: 'Apps', l: [{ label: 'Bricks Scan', href: 'scan.html' }, { label: 'Bricks Calc', href: 'calc.html' }, { label: 'Bricks Leads', href: 'leads.html' }] },
+                        { h: 'Business', l: [{ label: 'About', href: 'about.html' }, { label: 'Purchase guide', href: 'purchase-guide-01.html' }, { label: 'hello@bricks.pe', href: 'mailto:hello@bricks.pe' }] },
+                        { h: 'Support', l: [{ label: 'Contact', href: 'support.html' }, { label: 'Vote on features', href: 'https://bricksapps.userjot.com' }, { label: 'Guides', href: 'help.html' }, { label: 'Survey', href: 'survey.html' }] },
+                    ],
+                    legal: [{ label: 'Privacy Policy', href: 'privacy.html' }, { label: 'Terms of Service', href: 'terms.html' }],
+                    copyright: '\u00a9 2026 Bricks Apps. Made with care.',
+                    language: 'Language', appearance: 'Appearance',
+                    light: 'Light', dark: 'Dark', auto: 'System',
+                },
+            },
+            es: {
+                nav: { products: 'Productos', philosophy: 'Filosof\u00eda', changelog: 'Novedades', download: 'Descargar' },
+                hero: {
+                    eyebrow: 'Una suite para bienes ra\u00edces',
+                    title: ['Tres herramientas.', 'Una suite tranquila.'],
+                    body: 'Escanea, calcula, da seguimiento. Sin relleno, sin cuentas, sin distracciones.',
+                    cta: 'Explorar la suite',
+                    secondary: 'Ver novedades',
+                    pickLabel: 'Elige una herramienta',
+                },
+                products: {
+                    scan: { name: 'Scan', tagline: 'Documentos ordenados.', pitch: 'Escanea, lee, archiva.' },
+                    calc: { name: 'Calc', tagline: 'Hipotecas al instante.', pitch: 'Modela una oferta.' },
+                    leads: { name: 'Leads', tagline: 'Un CRM tranquilo.', pitch: 'Mant\u00e9n el seguimiento.' },
+                },
+                cta: {
+                    title: ['Tres herramientas.', 'Una suite tranquila.'],
+                    sub: 'Gratis para empezar. Sin cuenta. Nativa en Apple.',
+                    primary: 'Descargar en el App Store',
+                },
+                footer: {
+                    tag: 'Apps enfocadas para agentes inmobiliarios en Apple.',
+                    sections: [
+                        { h: 'Apps', l: [{ label: 'Bricks Scan', href: 'scan.html' }, { label: 'Bricks Calc', href: 'calc.html' }, { label: 'Bricks Leads', href: 'leads.html' }] },
+                        { h: 'Empresa', l: [{ label: 'Sobre nosotros', href: 'about.html' }, { label: 'Gu\u00eda de compra', href: 'purchase-guide-01.html' }, { label: 'hello@bricks.pe', href: 'mailto:hello@bricks.pe' }] },
+                        { h: 'Soporte', l: [{ label: 'Contacto', href: 'support.html' }, { label: 'Votar funciones', href: 'https://bricksapps.userjot.com' }, { label: 'Gu\u00edas', href: 'help.html' }, { label: 'Encuesta', href: 'survey.html' }] },
+                    ],
+                    legal: [{ label: 'Pol\u00edtica de privacidad', href: 'privacy.html' }, { label: 'T\u00e9rminos del servicio', href: 'terms.html' }],
+                    copyright: '\u00a9 2026 Bricks Apps. Hecho con cuidado.',
+                    language: 'Idioma', appearance: 'Apariencia',
+                    light: 'Claro', dark: 'Oscuro', auto: 'Sistema',
+                },
+            },
+        };
 
-    <!-- Main Content -->
-    <main>
-        <section class="section" style="padding-top: calc(var(--space-lg) + 40px);">
-            <div class="container" style="max-width: 640px;">
-                <!-- Page Heading -->
-                <div class="center-text" style="margin-bottom: 40px;">
-                    <h2 class="section-title">
-                        <span lang="en">Contact</span>
-                        <span lang="es" class="hidden">Ayuda &nbsp;Feedback</span>
-                    </h2>
-                    <p class="body-text" style="margin: 0 auto;">
-                        <span lang="en">We're here to help. Please fill out the form below to report issues or share
-                            your comments for new features.</span>
-                        <span lang="es" class="hidden">Estamos aquí para ayudar. Por favor completa el formulario a
-                            continuación para reportar cualquier problema que hayas encontrado.</span>
-                    </p>
+        window.ACCENTS = {
+            scan: { light: '#00A6A1', vivid: '#00C7B2' },
+            calc: { light: '#007AFF', vivid: '#2E90FF' },
+            leads: { light: '#FF9500', vivid: '#FFAD33' },
+        };
+
+        window.eyebrowStyle = {
+            fontSize: 12, fontWeight: 700, color: 'var(--b-text-3)',
+            letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 14,
+        };
+
+        // ==========================================================================
+        // Hooks + utilities
+        // ==========================================================================
+
+        window.useReveal = function useReveal() {
+            const ref = React.useRef(null);
+            React.useEffect(() => {
+                const el = ref.current;
+                if (!el) return;
+                const io = new IntersectionObserver((entries) => {
+                    entries.forEach(e => {
+                        if (e.isIntersecting) {
+                            e.target.classList.add('in');
+                            io.unobserve(e.target);
+                        }
+                    });
+                }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+                el.querySelectorAll('.reveal').forEach(n => io.observe(n));
+                return () => io.disconnect();
+            }, []);
+            return ref;
+        };
+
+        window.smoothScrollTo = function smoothScrollTo(id) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            const y = el.getBoundingClientRect().top + window.scrollY - 24;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+        };
+
+        window.useScrollDirection = function useScrollDirection() {
+            const [state, setState] = React.useState({ dir: 'up', atTop: true });
+            React.useEffect(() => {
+                let last = window.scrollY;
+                const onScroll = () => {
+                    const y = window.scrollY;
+                    const dir = y > last + 4 ? 'down' : y < last - 4 ? 'up' : state.dir;
+                    setState({ dir, atTop: y < 40 });
+                    last = y;
+                };
+                window.addEventListener('scroll', onScroll, { passive: true });
+                return () => window.removeEventListener('scroll', onScroll);
+            }, []);
+            return state;
+        };
+
+        window.useIsMobile = function useIsMobile(breakpoint = 768) {
+            const [isMobile, setIsMobile] = React.useState(() => window.innerWidth <= breakpoint);
+            React.useEffect(() => {
+                const mq = window.matchMedia(`(max-width: ${breakpoint}px)`);
+                setIsMobile(mq.matches);
+                const handler = (e) => setIsMobile(e.matches);
+                mq.addEventListener('change', handler);
+                return () => mq.removeEventListener('change', handler);
+            }, [breakpoint]);
+            return isMobile;
+        };
+
+        window.useTheme = function useTheme() {
+            const [theme, setTheme] = React.useState(
+                () => document.documentElement.getAttribute('data-theme') || 'light'
+            );
+            React.useEffect(() => {
+                const observer = new MutationObserver(() => {
+                    setTheme(document.documentElement.getAttribute('data-theme') || 'light');
+                });
+                observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+                return () => observer.disconnect();
+            }, []);
+            return theme;
+        };
+
+        // ==========================================================================
+        // ThemeLogo
+        // ==========================================================================
+
+        window.ThemeLogo = function ThemeLogo({ height = 24 }) {
+            return (
+                <React.Fragment>
+                    <img src="images/bricks-dark-logo.svg" alt="Bricks" className="logo-light-theme" style={{ height }} />
+                    <img src="images/bricks-light-logo.svg" alt="Bricks" className="logo-dark-theme" style={{ height }} />
+                </React.Fragment>
+            );
+        };
+
+        // ==========================================================================
+        // Header
+        // ==========================================================================
+
+        window.Header = function Header({ t, lang, currentProduct, cta }) {
+            const { dir, atTop } = window.useScrollDirection();
+            const isMobile = window.useIsMobile();
+            const hidden = dir === 'down' && !atTop;
+            const [dlOpen, setDlOpen] = React.useState(false);
+            const dlRef = React.useRef(null);
+
+            React.useEffect(() => {
+                if (!dlOpen) return;
+                const handler = (e) => {
+                    if (dlRef.current && !dlRef.current.contains(e.target)) setDlOpen(false);
+                };
+                document.addEventListener('mousedown', handler);
+                return () => document.removeEventListener('mousedown', handler);
+            }, [dlOpen]);
+
+            const downloadItems = [
+                { label: 'Bricks Calc', href: 'https://apps.apple.com/us/app/bricks-calc-loan-calculator/id6754506837', accent: window.ACCENTS.calc.light, external: true },
+                { label: 'Bricks Scan', href: 'https://apps.apple.com/us/app/bricks-scan-scan-to-pdf/id6758148083', accent: window.ACCENTS.scan.light, external: true },
+                { label: 'Bricks Leads', href: 'leads.html', accent: window.ACCENTS.leads.light, external: false },
+            ];
+
+            return (
+                <header style={{
+                    position: 'fixed', top: isMobile ? 12 : 24,
+                    left: isMobile ? 16 : 48, right: isMobile ? 16 : 48, zIndex: 100,
+                    display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                    padding: isMobile ? '10px 10px 10px 18px' : '12px 14px 12px 24px',
+                    background: 'color-mix(in srgb, var(--b-bg-elevated) 65%, transparent)',
+                    backdropFilter: 'blur(20px) saturate(180%)',
+                    WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+                    borderRadius: 100,
+                    border: '1px solid var(--b-border)',
+                    boxShadow: '0 8px 32px rgba(11,15,20,0.06)',
+                    transform: hidden ? 'translateY(-130%)' : 'translateY(0)',
+                    opacity: hidden ? 0 : 1,
+                    transition: 'transform 0.45s cubic-bezier(0.16,1,0.3,1), opacity 0.35s ease',
+                }}>
+                    <a href="index.html"
+                        style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                        <window.ThemeLogo height={24} />
+                    </a>
+
+                    <nav style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
+                        <div ref={dlRef} style={{ position: 'relative' }}>
+                            <button
+                                onClick={() => setDlOpen(v => !v)}
+                                style={{
+                                    marginLeft: isMobile ? 0 : 6,
+                                    padding: isMobile ? '9px 16px' : '10px 18px', borderRadius: 100,
+                                    background: 'var(--b-text)', color: 'var(--b-bg)',
+                                    border: 'none', fontSize: 14, fontWeight: 600, cursor: 'pointer',
+                                    fontFamily: 'inherit', letterSpacing: '-0.01em',
+                                    display: 'inline-flex', alignItems: 'center', gap: 6,
+                                    boxShadow: '0 8px 20px rgba(11,15,20,0.18)',
+                                    transition: 'transform 0.15s ease, box-shadow 0.2s',
+                                }}
+                                onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-1px)'; }}
+                                onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; }}
+                            >
+                                {t.nav.download}
+                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" style={{
+                                    transform: dlOpen ? 'rotate(180deg)' : 'rotate(0)',
+                                    transition: 'transform 0.25s ease',
+                                }}>
+                                    <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                </svg>
+                            </button>
+
+                            <div style={{
+                                position: 'absolute', top: 'calc(100% + 10px)', right: 0,
+                                minWidth: 220,
+                                background: 'color-mix(in srgb, var(--b-bg-elevated) 85%, transparent)',
+                                backdropFilter: 'blur(24px) saturate(180%)',
+                                WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+                                borderRadius: 20, border: '1px solid var(--b-border)',
+                                boxShadow: '0 16px 48px rgba(11,15,20,0.16)',
+                                padding: 8,
+                                opacity: dlOpen ? 1 : 0,
+                                transform: dlOpen ? 'translateY(0) scale(1)' : 'translateY(-8px) scale(0.96)',
+                                pointerEvents: dlOpen ? 'auto' : 'none',
+                                transition: 'opacity 0.25s ease, transform 0.3s cubic-bezier(0.16,1,0.3,1)',
+                            }}>
+                                {downloadItems.map((item, i) => (
+                                    <a key={i} href={item.href}
+                                        target={item.external ? '_blank' : undefined}
+                                        rel={item.external ? 'noopener noreferrer' : undefined}
+                                        onClick={() => setDlOpen(false)}
+                                        style={{
+                                            display: 'flex', alignItems: 'center', gap: 12,
+                                            padding: '12px 16px', borderRadius: 14,
+                                            fontSize: 14, fontWeight: 500, color: 'var(--b-text)',
+                                            transition: 'background 0.15s ease',
+                                            textDecoration: 'none',
+                                        }}
+                                        onMouseEnter={(e) => e.currentTarget.style.background = 'var(--b-bg)'}
+                                        onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+                                    >
+                                        <div style={{ width: 8, height: 8, borderRadius: 4, background: item.accent, flexShrink: 0 }} />
+                                        <span style={{ flex: 1 }}>{item.label}</span>
+                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style={{ opacity: 0.4 }}>
+                                            <path d={item.external ? 'M4 2h6v6M10 2L3 9' : 'M4 2l5 4-5 4'}
+                                                stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+                                        </svg>
+                                    </a>
+                                ))}
+                            </div>
+                        </div>
+                    </nav>
+                </header>
+            );
+        };
+
+        // ==========================================================================
+        // Footer
+        // ==========================================================================
+
+        window.Footer = function Footer({ t, lang, setLang, theme, setTheme }) {
+            const isMobile = window.useIsMobile();
+            return (
+                <footer style={{
+                    padding: isMobile ? '48px 20px 32px' : '80px 48px 48px', borderTop: '1px solid var(--b-border)',
+                    background: 'var(--b-bg)',
+                }}>
+                    <div style={{
+                        maxWidth: 1200, margin: '0 auto',
+                        display: 'grid',
+                        gridTemplateColumns: isMobile ? '1fr' : '1.4fr 1fr 1fr 1fr',
+                        gap: isMobile ? 32 : 48,
+                        marginBottom: isMobile ? 40 : 56,
+                    }}>
+                        <div style={{ gridColumn: isMobile ? '1 / -1' : undefined }}>
+                            <window.ThemeLogo />
+                            <p style={{ fontSize: 14, color: 'var(--b-text-2)', lineHeight: 1.6, margin: '16px 0 24px', maxWidth: 300 }}>
+                                {t.footer.tag}
+                            </p>
+                            <div style={{ display: 'flex', gap: 10 }}>
+                                {[
+                                    { kind: 'instagram', href: 'https://www.instagram.com/hellobricksapps/' },
+                                    { kind: 'x', href: 'https://x.com/hellobricksapps' },
+                                    { kind: 'linkedin', href: 'https://www.linkedin.com/company/bricksapps/' },
+                                ].map(s => (
+                                    <a key={s.kind} href={s.href} target="_blank" rel="noopener noreferrer" style={{
+                                        width: 36, height: 36, borderRadius: '50%', background: 'var(--b-bg-elevated)',
+                                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                        boxShadow: 'var(--emboss-soft)', color: 'var(--b-text-2)',
+                                        transition: 'color 0.2s',
+                                    }}
+                                        onMouseEnter={(e) => e.currentTarget.style.color = 'var(--b-text)'}
+                                        onMouseLeave={(e) => e.currentTarget.style.color = 'var(--b-text-2)'}>
+                                        <SocialIcon kind={s.kind} />
+                                    </a>
+                                ))}
+                            </div>
+                        </div>
+                        {t.footer.sections.map((s, i) => (
+                            <div key={i}>
+                                <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--b-text-3)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 18 }}>{s.h}</div>
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                                    {s.l.map((l, j) => (
+                                        <a key={j} href={l.href} style={{ fontSize: 14, color: 'var(--b-text)', opacity: 0.85 }}>{l.label}</a>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div style={{
+                        maxWidth: 1200, margin: '0 auto',
+                        padding: isMobile ? '24px 0' : '32px 0', borderTop: '1px solid var(--b-border)',
+                        display: 'flex', gap: isMobile ? 20 : 32, flexWrap: 'wrap', alignItems: 'center',
+                    }}>
+                        <ToggleGroup label={t.footer.language} options={[{ v: 'en', l: 'EN' }, { v: 'es', l: 'ES' }]} value={lang} setValue={setLang} />
+                        <ToggleGroup label={t.footer.appearance} options={[{ v: 'auto', l: t.footer.auto }, { v: 'light', l: t.footer.light }, { v: 'dark', l: t.footer.dark }]} value={theme} setValue={setTheme} />
+                    </div>
+
+                    <div style={{
+                        maxWidth: 1200, margin: '24px auto 0',
+                        display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                        flexWrap: 'wrap', gap: 16,
+                    }}>
+                        <div style={{ fontSize: 13, color: 'var(--b-text-2)' }}>{t.footer.copyright}</div>
+                        <div style={{ display: 'flex', gap: 20 }}>
+                            {t.footer.legal.map((l, i) => (
+                                <a key={i} href={l.href} style={{ fontSize: 13, color: 'var(--b-text-2)' }}>{l.label}</a>
+                            ))}
+                        </div>
+                    </div>
+                </footer>
+            );
+        };
+
+        function ToggleGroup({ label, options, value, setValue }) {
+            return (
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 10 }}>
+                    <div style={{ fontSize: 11, fontWeight: 500, color: 'var(--b-text-3)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{label}</div>
+                    <div style={{ display: 'inline-flex', gap: 2 }}>
+                        {options.map((o, i) => (
+                            <React.Fragment key={o.v}>
+                                {i > 0 && <span style={{ color: 'var(--b-text-3)', fontSize: 12, alignSelf: 'center', opacity: 0.5 }}>·</span>}
+                                <button onClick={() => setValue(o.v)}
+                                    style={{
+                                        border: 'none', background: 'transparent', cursor: 'pointer', fontFamily: 'inherit',
+                                        padding: '2px 6px', fontSize: 12,
+                                        fontWeight: value === o.v ? 600 : 400,
+                                        color: value === o.v ? 'var(--b-text)' : 'var(--b-text-2)',
+                                        opacity: value === o.v ? 1 : 0.7,
+                                        transition: 'opacity 0.2s ease, color 0.2s ease',
+                                    }}
+                                    onMouseEnter={(e) => { if (value !== o.v) e.currentTarget.style.opacity = 1; }}
+                                    onMouseLeave={(e) => { if (value !== o.v) e.currentTarget.style.opacity = 0.7; }}
+                                >{o.l}</button>
+                            </React.Fragment>
+                        ))}
+                    </div>
                 </div>
+            );
+        }
 
-                <!-- Form Card -->
-                <div class="embossed-card" style="padding: 40px 32px;">
-                    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-                    <form id="issue-report-form" target="hidden_iframe"
-                        action="https://formsubmit.co/707e6e012fa931048784ff0f766aa0df" method="POST"
-                        enctype="multipart/form-data">
-                        <!-- FormSubmit.co Configuration -->
+        function SocialIcon({ kind }) {
+            const s = { stroke: 'currentColor', fill: 'none', strokeWidth: 1.6, strokeLinecap: 'round', strokeLinejoin: 'round' };
+            if (kind === 'instagram') return (
+                <svg width="15" height="15" viewBox="0 0 20 20"><rect x="3" y="3" width="14" height="14" rx="4" {...s} /><circle cx="10" cy="10" r="3.2" {...s} /><circle cx="14.3" cy="5.7" r="0.5" fill="currentColor" /></svg>
+            );
+            if (kind === 'x') return (
+                <svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path d="M15.2 2h2.8l-6.1 7 7.2 9h-5.6l-4.4-5.8L4 18H1.2l6.5-7.5L1 2h5.7l4 5.3zm-1 14.6h1.5L5.9 3.3H4.3z" /></svg>
+            );
+            return (
+                <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path d="M5.4 7.5h2.4v8.6H5.4zM6.6 3.5c-.8 0-1.4.6-1.4 1.4s.6 1.4 1.4 1.4 1.4-.6 1.4-1.4-.6-1.4-1.4-1.4zM9.4 7.5h2.3v1.2c.3-.6 1.1-1.3 2.3-1.3 2.4 0 2.9 1.6 2.9 3.7v5h-2.4v-4.4c0-1-.02-2.4-1.5-2.4-1.5 0-1.7 1.2-1.7 2.3v4.5H9.4z" /></svg>
+            );
+        }
+
+        // ==========================================================================
+        // Tweaks (edit mode toolbar)
+        // ==========================================================================
+
+        window.useTweaks = function useTweaks({ lang, setLang, theme, setTheme }) {
+            const [visible, setVisible] = React.useState(false);
+
+            React.useEffect(() => {
+                const handler = (e) => {
+                    const d = e.data || {};
+                    if (d.type === '__activate_edit_mode') setVisible(true);
+                    if (d.type === '__deactivate_edit_mode') setVisible(false);
+                };
+                window.addEventListener('message', handler);
+                window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+                return () => window.removeEventListener('message', handler);
+            }, []);
+
+            if (!visible) return null;
+
+            return (
+                <div style={{
+                    position: 'fixed', right: 24, bottom: 24, zIndex: 200,
+                    background: 'var(--b-bg-elevated)', borderRadius: 24,
+                    boxShadow: '0 12px 40px rgba(0,0,0,0.18), var(--emboss-soft)',
+                    padding: 20, minWidth: 260,
+                    border: '1px solid var(--b-border)',
+                }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--b-text-3)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 14 }}>Tweaks</div>
+                    <TweakRow label="Language">
+                        {['en', 'es'].map(v => (
+                            <button key={v} onClick={() => { setLang(v); tweakPersist({ lang: v }); }} style={tweakBtn(lang === v)}>{v.toUpperCase()}</button>
+                        ))}
+                    </TweakRow>
+                    <TweakRow label="Appearance">
+                        {[['auto', 'System'], ['light', 'Light'], ['dark', 'Dark']].map(([v, l]) => (
+                            <button key={v} onClick={() => { setTheme(v); tweakPersist({ theme: v }); }} style={tweakBtn(theme === v)}>{l}</button>
+                        ))}
+                    </TweakRow>
+                </div>
+            );
+        };
+
+        function tweakPersist(edits) {
+            window.parent.postMessage({ type: '__edit_mode_set_keys', edits }, '*');
+        }
+        function TweakRow({ label, children }) {
+            return (
+                <div style={{ marginBottom: 12 }}>
+                    <div style={{ fontSize: 11, color: 'var(--b-text-2)', marginBottom: 6 }}>{label}</div>
+                    <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>{children}</div>
+                </div>
+            );
+        }
+        function tweakBtn(active) {
+            return {
+                padding: '6px 12px', borderRadius: 100, border: 'none', cursor: 'pointer',
+                fontSize: 12, fontWeight: 600, fontFamily: 'inherit',
+                background: active ? 'var(--b-text)' : 'var(--b-bg)',
+                color: active ? 'var(--b-bg)' : 'var(--b-text)',
+                boxShadow: active ? 'none' : 'var(--emboss-soft)',
+            };
+        }
+    </script>
+
+    <script type="text/babel">
+        // ==========================================================================
+        // SUPPORT_COPY — page-specific copy (EN / ES)
+        // ==========================================================================
+
+        const SUPPORT_COPY = {
+            en: {
+                hero: {
+                    eyebrow: 'Support',
+                    title: "We're here to help.",
+                    body: "Fill out the form below to report an issue or share feedback for new features.",
+                },
+                form: {
+                    name: 'Full Name',
+                    email: 'Email Address',
+                    description: 'Description',
+                    descriptionHint: 'Please provide as much detail as possible',
+                    attachments: 'Attachments (optional)',
+                    dropText: 'Click to upload or drag and drop',
+                    dropHint: 'Images PNG or JPEG (max 4 MB)',
+                    submit: 'Submit Report',
+                    submitting: 'Sending\u2026',
+                    sizeError: 'Some files exceed the 4 MB limit and were not included.',
+                },
+                success: {
+                    title: 'Report Submitted',
+                    body: 'Your report has been submitted. Reference number:',
+                    saveNote: 'Save this number for future reference.',
+                    close: 'Close',
+                },
+            },
+            es: {
+                hero: {
+                    eyebrow: 'Soporte',
+                    title: 'Estamos aqu\u00ed para ayudar.',
+                    body: 'Completa el formulario a continuaci\u00f3n para reportar un problema o compartir comentarios sobre nuevas funciones.',
+                },
+                form: {
+                    name: 'Nombre Completo',
+                    email: 'Correo Electr\u00f3nico',
+                    description: 'Descripci\u00f3n',
+                    descriptionHint: 'Por favor proporciona tantos detalles como sea posible',
+                    attachments: 'Archivos Adjuntos (opcional)',
+                    dropText: 'Haz clic para subir o arrastra y suelta',
+                    dropHint: 'Im\u00e1genes PNG o JPEG (m\u00e1x. 4 MB)',
+                    submit: 'Enviar Reporte',
+                    submitting: 'Enviando\u2026',
+                    sizeError: 'Algunos archivos superan el l\u00edmite de 4 MB y no se incluyeron.',
+                },
+                success: {
+                    title: 'Reporte Enviado',
+                    body: 'Tu reporte ha sido enviado. N\u00famero de referencia:',
+                    saveNote: 'Guarda este n\u00famero para futuras referencias.',
+                    close: 'Cerrar',
+                },
+            },
+        };
+
+        // ==========================================================================
+        // Helpers
+        // ==========================================================================
+
+        function generateReferenceNumber() {
+            var ts = new Date().getTime().toString().slice(-6);
+            var rnd = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+            return 'BRKS-' + ts + rnd;
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            var k = 1024, sizes = ['Bytes', 'KB', 'MB', 'GB'], i = 0, tmp = bytes;
+            while (tmp >= k && i < sizes.length - 1) { tmp /= k; i++; }
+            return parseFloat(tmp.toFixed(2)) + ' ' + sizes[i];
+        }
+
+        // ==========================================================================
+        // SuccessOverlay
+        // ==========================================================================
+
+        function SuccessOverlay({ visible, refNumber, t, onClose }) {
+            if (!visible) return null;
+            return (
+                <div style={{
+                    position: 'fixed', inset: 0, zIndex: 200,
+                    background: 'rgba(11,15,20,0.6)',
+                    backdropFilter: 'blur(8px)',
+                    WebkitBackdropFilter: 'blur(8px)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    padding: 24,
+                }}>
+                    <div style={{
+                        background: 'var(--b-bg-elevated)',
+                        borderRadius: 32,
+                        padding: '48px 40px',
+                        maxWidth: 420, width: '100%',
+                        textAlign: 'center',
+                        boxShadow: '0 32px 80px rgba(11,15,20,0.28)',
+                        border: '1px solid var(--b-border)',
+                    }}>
+                        <div style={{
+                            width: 56, height: 56, borderRadius: '50%',
+                            background: 'rgba(0,166,161,0.12)',
+                            display: 'flex', alignItems: 'center', justifyContent: 'center',
+                            margin: '0 auto 20px',
+                        }}>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 13l4 4L19 7" stroke="#00A6A1" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </div>
+                        <div style={{
+                            fontSize: 22, fontWeight: 700, color: 'var(--b-text)',
+                            letterSpacing: '-0.02em', marginBottom: 8,
+                        }}>{t.title}</div>
+                        <p style={{ fontSize: 15, color: 'var(--b-text-2)', lineHeight: 1.5, margin: '0 0 20px' }}>
+                            {t.body}
+                        </p>
+                        <div style={{
+                            display: 'inline-block',
+                            background: 'var(--b-bg)',
+                            borderRadius: 12,
+                            padding: '10px 20px',
+                            fontSize: 15, fontWeight: 700, letterSpacing: '0.06em',
+                            color: 'var(--b-text)',
+                            boxShadow: 'var(--emboss-recessed)',
+                            marginBottom: 12,
+                            fontVariantNumeric: 'tabular-nums',
+                        }}>{refNumber}</div>
+                        <p style={{ fontSize: 13, color: 'var(--b-text-3)', margin: '0 0 28px' }}>{t.saveNote}</p>
+                        <button
+                            onClick={onClose}
+                            style={{
+                                padding: '12px 28px', borderRadius: 100,
+                                background: 'var(--b-text)', color: 'var(--b-bg)',
+                                border: 'none', fontSize: 14, fontWeight: 600,
+                                fontFamily: 'inherit', letterSpacing: '-0.01em',
+                                cursor: 'pointer',
+                                boxShadow: '0 8px 20px rgba(11,15,20,0.18)',
+                                transition: 'transform 0.15s ease',
+                            }}
+                            onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-1px)'; }}
+                            onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; }}
+                        >{t.close}</button>
+                    </div>
+                </div>
+            );
+        }
+
+        // ==========================================================================
+        // SupportForm
+        // ==========================================================================
+
+        function SupportForm({ t }) {
+            const isMobile = window.useIsMobile();
+            const [focus, setFocus] = React.useState(null);
+            const [selectedFiles, setSelectedFiles] = React.useState([]);
+            const [isDragOver, setIsDragOver] = React.useState(false);
+            const [submitting, setSubmitting] = React.useState(false);
+            const [showSuccess, setShowSuccess] = React.useState(false);
+            const fileInputRef = React.useRef(null);
+            const iframeRef = React.useRef(null);
+            const isSubmittingRef = React.useRef(false);
+
+            const refNumber = React.useMemo(() => generateReferenceNumber(), []);
+
+            React.useEffect(() => {
+                const iframe = iframeRef.current;
+                if (!iframe) return;
+                const handler = () => {
+                    if (isSubmittingRef.current) {
+                        setShowSuccess(true);
+                        setSubmitting(false);
+                        setSelectedFiles([]);
+                        isSubmittingRef.current = false;
+                        const form = document.getElementById('support-form');
+                        if (form) form.reset();
+                    }
+                };
+                iframe.addEventListener('load', handler);
+                return () => iframe.removeEventListener('load', handler);
+            }, []);
+
+            function handleFiles(files) {
+                var valid = Array.from(files).filter(f => f.size <= 4 * 1024 * 1024);
+                if (valid.length !== files.length) alert(t.sizeError);
+                if (valid.length > 0) setSelectedFiles(prev => prev.concat(valid));
+            }
+
+            function handleSubmit() {
+                if (selectedFiles.length > 0 && typeof DataTransfer !== 'undefined') {
+                    try {
+                        var dt = new DataTransfer();
+                        dt.items.add(selectedFiles[0]);
+                        fileInputRef.current.files = dt.files;
+                    } catch (e) { }
+                }
+                setSubmitting(true);
+                isSubmittingRef.current = true;
+            }
+
+            const fieldStyle = (id) => ({
+                width: '100%', padding: '13px 16px',
+                borderRadius: 14, border: '1px solid var(--b-border)',
+                background: 'var(--b-bg)',
+                color: 'var(--b-text)',
+                fontSize: 15, fontFamily: 'inherit',
+                boxShadow: focus === id ? 'var(--emboss-recessed), 0 0 0 3px rgba(0,166,161,0.15)' : 'var(--emboss-recessed)',
+                outline: 'none',
+                transition: 'box-shadow 0.2s ease',
+                boxSizing: 'border-box',
+            });
+
+            const labelStyle = {
+                display: 'block',
+                fontSize: 13, fontWeight: 600, color: 'var(--b-text-2)',
+                letterSpacing: '-0.01em', marginBottom: 8,
+            };
+
+            return (
+                <React.Fragment>
+                    <iframe ref={iframeRef} name="support_iframe" style={{ display: 'none' }} />
+                    <form
+                        id="support-form"
+                        target="support_iframe"
+                        action="https://formsubmit.co/707e6e012fa931048784ff0f766aa0df"
+                        method="POST"
+                        encType="multipart/form-data"
+                        onSubmit={handleSubmit}
+                    >
                         <input type="hidden" name="_subject" value="Bricks Apps Support Request" />
                         <input type="hidden" name="_template" value="table" />
                         <input type="hidden" name="_captcha" value="false" />
-                        <input type="hidden" id="reference-field" name="reference_number" value="" />
-                        <input type="hidden" name="_honey" value="" />
+                        <input type="hidden" name="reference_number" value={refNumber} />
+                        <input type="text" name="_honey" style={{ display: 'none' }} tabIndex="-1" autoComplete="off" />
 
-                        <!-- Name & Email Row -->
-                        <div class="form-row" style="margin-bottom: 24px;">
+                        {/* Name + Email */}
+                        <div style={{
+                            display: 'grid',
+                            gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
+                            gap: 16, marginBottom: 20,
+                        }}>
                             <div>
-                                <label for="name" class="form-label-ds">
-                                    <span lang="en">Full Name</span>
-                                    <span lang="es" class="hidden">Nombre Completo</span>
-                                </label>
-                                <input type="text" id="name" name="name" class="form-input-ds" placeholder=""
-                                    required />
+                                <label style={labelStyle}>{t.name}</label>
+                                <input
+                                    type="text" name="name" required
+                                    onFocus={() => setFocus('name')}
+                                    onBlur={() => setFocus(null)}
+                                    style={fieldStyle('name')}
+                                />
                             </div>
                             <div>
-                                <label for="email" class="form-label-ds">
-                                    <span lang="en">Email Address</span>
-                                    <span lang="es" class="hidden">Correo Electrónico</span>
-                                </label>
-                                <input type="email" id="email" name="email" class="form-input-ds" placeholder=""
-                                    required />
+                                <label style={labelStyle}>{t.email}</label>
+                                <input
+                                    type="email" name="email" required
+                                    onFocus={() => setFocus('email')}
+                                    onBlur={() => setFocus(null)}
+                                    style={fieldStyle('email')}
+                                />
                             </div>
                         </div>
 
-                        <!-- Description -->
-                        <div class="form-group">
-                            <label for="issue-description" class="form-label-ds">
-                                <span lang="en">Description of the Issue</span>
-                                <span lang="es" class="hidden">Descripción del Problema</span>
-                            </label>
-                            <textarea id="issue-description" name="message" class="form-textarea-ds" rows="8"
-                                placeholder="" required></textarea>
-                            <p class="form-hint">
-                                <span lang="en">Please provide as much detail as possible</span>
-                                <span lang="es" class="hidden">Por favor proporciona tantos detalles como sea
-                                    posible</span>
-                            </p>
+                        {/* Description */}
+                        <div style={{ marginBottom: 20 }}>
+                            <label style={labelStyle}>{t.description}</label>
+                            <textarea
+                                name="message" required rows={7}
+                                onFocus={() => setFocus('message')}
+                                onBlur={() => setFocus(null)}
+                                style={{ ...fieldStyle('message'), resize: 'vertical', minHeight: 140 }}
+                            />
+                            <div style={{ fontSize: 12, color: 'var(--b-text-3)', marginTop: 6 }}>{t.descriptionHint}</div>
                         </div>
 
-                        <!-- Attachments -->
-                        <div class="form-group">
-                            <label class="form-label-ds">
-                                <span lang="en">Attachments (optional)</span>
-                                <span lang="es" class="hidden">Archivos Adjuntos (opcional)</span>
-                            </label>
-                            <div class="file-input-wrapper-ds">
-                                <input type="file" id="file-upload" name="attachment" class="file-input-ds"
-                                    accept="image/png, image/jpeg" />
-                                <svg class="file-upload-icon" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        {/* File upload */}
+                        <div style={{ marginBottom: selectedFiles.length > 0 ? 16 : 28 }}>
+                            <label style={labelStyle}>{t.attachments}</label>
+                            <div
+                                onClick={() => fileInputRef.current && fileInputRef.current.click()}
+                                onDragOver={(e) => { e.preventDefault(); setIsDragOver(true); }}
+                                onDragLeave={() => setIsDragOver(false)}
+                                onDrop={(e) => { e.preventDefault(); setIsDragOver(false); handleFiles(e.dataTransfer.files); }}
+                                style={{
+                                    border: `1.5px dashed ${isDragOver ? 'var(--b-text-2)' : 'var(--b-border)'}`,
+                                    borderRadius: 14,
+                                    padding: '24px 20px',
+                                    textAlign: 'center',
+                                    cursor: 'pointer',
+                                    background: isDragOver ? 'var(--b-bg-elevated)' : 'var(--b-bg)',
+                                    transition: 'border-color 0.2s, background 0.2s',
+                                }}
+                            >
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    style={{ display: 'block', margin: '0 auto 10px', color: 'var(--b-text-3)' }}>
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.6"
                                         d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                                 </svg>
-                                <span class="file-upload-text">
-                                    <span lang="en">Click to upload or drag and drop</span>
-                                    <span lang="es" class="hidden">Haz clic para subir o arrastra y suelta</span>
-                                </span>
-                                <span class="file-upload-hint">
-                                    <span lang="en">Images png or jpeg (max 4MB)</span>
-                                    <span lang="es" class="hidden">Imágenes png o jpeg (máx. 4MB)</span>
-                                </span>
+                                <div style={{ fontSize: 14, fontWeight: 500, color: 'var(--b-text-2)', marginBottom: 4 }}>{t.dropText}</div>
+                                <div style={{ fontSize: 12, color: 'var(--b-text-3)' }}>{t.dropHint}</div>
                             </div>
+                            <input
+                                ref={fileInputRef}
+                                type="file" name="attachment"
+                                accept="image/png, image/jpeg"
+                                style={{ display: 'none' }}
+                                onChange={(e) => {
+                                    handleFiles(e.target.files);
+                                    e.target.value = '';
+                                }}
+                            />
                         </div>
 
-                        <!-- File List -->
-                        <div id="file-list" class="hidden" style="margin-bottom: 24px;">
-                            <!-- File list will be populated by JavaScript -->
-                        </div>
+                        {/* File list */}
+                        {selectedFiles.length > 0 && (
+                            <div style={{ marginBottom: 28, display: 'flex', flexDirection: 'column', gap: 8 }}>
+                                {selectedFiles.map((file, i) => (
+                                    <div key={i} style={{
+                                        display: 'flex', alignItems: 'center', gap: 12,
+                                        padding: '10px 14px',
+                                        background: 'var(--b-bg-elevated)',
+                                        borderRadius: 12,
+                                        border: '1px solid var(--b-border)',
+                                    }}>
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            style={{ flexShrink: 0, color: 'var(--b-text-3)' }}>
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.6"
+                                                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                        </svg>
+                                        <div style={{ flex: 1, minWidth: 0 }}>
+                                            <div style={{ fontSize: 13, fontWeight: 500, color: 'var(--b-text)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{file.name}</div>
+                                            <div style={{ fontSize: 12, color: 'var(--b-text-3)' }}>{formatFileSize(file.size)}</div>
+                                        </div>
+                                        <button
+                                            type="button"
+                                            onClick={() => setSelectedFiles(prev => prev.filter((_, j) => j !== i))}
+                                            style={{
+                                                background: 'none', border: 'none', cursor: 'pointer',
+                                                color: 'var(--b-text-3)', padding: 4, borderRadius: 6,
+                                                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                                transition: 'color 0.15s',
+                                            }}
+                                            onMouseEnter={(e) => e.currentTarget.style.color = 'var(--b-text)'}
+                                            onMouseLeave={(e) => e.currentTarget.style.color = 'var(--b-text-3)'}
+                                        >
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
 
-                        <!-- Submit -->
-                        <div style="padding-top: 8px;">
-                            <button type="submit" class="btn btn-primary">
-                                <span lang="en">Submit Report</span>
-                                <span lang="es" class="hidden">Enviar Reporte</span>
-                            </button>
-                        </div>
+                        {/* Submit */}
+                        <button
+                            type="submit"
+                            disabled={submitting}
+                            style={{
+                                padding: '13px 28px', borderRadius: 100,
+                                background: submitting ? 'var(--b-text-3)' : 'var(--b-text)',
+                                color: 'var(--b-bg)',
+                                border: 'none', fontSize: 14, fontWeight: 600,
+                                fontFamily: 'inherit', letterSpacing: '-0.01em',
+                                cursor: submitting ? 'wait' : 'pointer',
+                                boxShadow: '0 8px 20px rgba(11,15,20,0.18)',
+                                transition: 'transform 0.15s ease, background 0.2s ease',
+                            }}
+                            onMouseEnter={(e) => { if (!submitting) e.currentTarget.style.transform = 'translateY(-1px)'; }}
+                            onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; }}
+                        >
+                            {submitting ? t.submitting : t.submit}
+                        </button>
                     </form>
-                </div>
-                <p class="file-upload-hint" style="text-align: right; padding-top: 32px;">V1.2.1</p>
-            </div>
-        </section>
-    </main>
 
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="container reveal-on-scroll">
-            <div style="
-                        display: flex;
-                        flex-wrap: wrap;
-                        gap: 48px;
-                        justify-content: space-between;
-                        margin-bottom: 48px;
-                    ">
-                <!-- Brand Section -->
-                <div class="footer-brand" style="flex: 1; min-width: 280px">
-                    <a href="index.html" style="display: inline-block; margin-bottom: 16px">
-                        <img src="images/bricks-dark-logo.svg" onerror="this.src='images/bricks-light-logo.svg'"
-                            alt="Bricks Logo" style="height: 32px; opacity: 0.8" />
-                    </a>
-                    <p class="body-text" style="font-size: 15px">
-                        <span lang="en">We build Apple apps for work and everyday life.</span>
-                        <span lang="es" class="hidden">Desarrollamos Apple apps para el trabajo y la vida diaria.</span>
-                    </p>
-                    <div class="footer-social" style="display: flex; gap: 16px; margin-top: 24px">
-                        <a href="https://www.instagram.com/hellobricksapps/" target="_blank" rel="noopener"
-                            style="color: var(--text-secondary); opacity: 0.6; transition: opacity 0.2s"
-                            onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'">
-                            <img src="images/icon-instagram.svg" alt="Instagram" style="width: 20px; height: 20px" />
-                        </a>
-                        <a href="https://x.com/hellobricksapps" target="_blank" rel="noopener"
-                            style="color: var(--text-secondary); opacity: 0.6; transition: opacity 0.2s"
-                            onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'">
-                            <img src="images/icon-x.svg" alt="X" style="width: 20px; height: 20px" />
-                        </a>
-                        <a href="https://www.linkedin.com/company/bricksapps/" target="_blank" rel="noopener"
-                            style="color: var(--text-secondary); opacity: 0.6; transition: opacity 0.2s"
-                            onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'">
-                            <img src="images/icon-linkedin.svg" alt="LinkedIn" style="width: 20px; height: 20px" />
-                        </a>
-                    </div>
-                </div>
+                    <SuccessOverlay
+                        visible={showSuccess}
+                        refNumber={refNumber}
+                        t={SUPPORT_COPY[document.documentElement.getAttribute('lang') || 'en'].success}
+                        onClose={() => setShowSuccess(false)}
+                    />
+                </React.Fragment>
+            );
+        }
 
-                <!-- Footer Links Grid -->
-                <div style="
-                            flex: 2;
-                            min-width: 280px;
-                            display: grid;
-                            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-                            gap: 32px;
-                        ">
-                    <!-- Apps Section -->
-                    <div>
-                        <h3 class="subheading" style="font-size: 16px; margin-bottom: 16px">
-                            <span lang="en">Apps</span>
-                            <span lang="es" class="hidden">Apps</span>
-                        </h3>
-                        <ul style="
-                                    list-style: none;
-                                    padding: 0;
-                                    margin: 0;
-                                    display: flex;
-                                    flex-direction: column;
-                                    gap: 12px;
-                                ">
-                            <li>
-                                <a href="scan.html" class="body-text" style="font-size: 15px">
-                                    <span lang="en">Bricks Scan</span>
-                                    <span lang="es" class="hidden">Bricks Scan</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="calc.html" class="body-text" style="font-size: 15px">
-                                    <span lang="en">Bricks Calc</span>
-                                    <span lang="es" class="hidden">Bricks Calc</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://leads.bricks.pe" class="body-text" style="font-size: 15px">
-                                    <span lang="en">Bricks Leads</span>
-                                    <span lang="es" class="hidden">Bricks Leads</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+        // ==========================================================================
+        // SupportPage
+        // ==========================================================================
 
-                    <!-- Company Section -->
-                    <div>
-                        <h3 class="subheading" style="font-size: 16px; margin-bottom: 16px">
-                            <span lang="en">Business</span>
-                            <span lang="es" class="hidden">Empresa</span>
-                        </h3>
-                        <ul style="
-                                    list-style: none;
-                                    padding: 0;
-                                    margin: 0;
-                                    display: flex;
-                                    flex-direction: column;
-                                    gap: 12px;
-                                ">
-                            <li>
-                                <a href="about.html" class="body-text" style="font-size: 15px">
-                                    <span lang="en">About us</span>
-                                    <span lang="es" class="hidden">Sobre nosotros</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="purchase-guide-01.html" class="body-text" style="font-size: 15px">
-                                    <span lang="en">Purchase Guide</span>
-                                    <span lang="es" class="hidden">Guía de compra</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="mailto:hello@bricks.pe" class="body-text" style="font-size: 15px">
-                                    <span lang="en">Email: hello@bricks.pe</span>
-                                    <span lang="es" class="hidden">Email: hello@bricks.pe</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+        function SupportPage({ t, lang }) {
+            const reveal = window.useReveal();
+            const isMobile = window.useIsMobile();
+            const f = t.form;
 
-                    <!-- Support Section -->
-                    <div>
-                        <h3 class="subheading" style="font-size: 16px; margin-bottom: 16px">
-                            <span lang="en">Support</span>
-                            <span lang="es" class="hidden">Soporte</span>
-                        </h3>
-                        <ul style="
-                                    list-style: none;
-                                    padding: 0;
-                                    margin: 0;
-                                    display: flex;
-                                    flex-direction: column;
-                                    gap: 12px;
-                                ">
-                            <li>
-                                <a href="support.html" class="body-text" style="font-size: 15px;">
-                                    <span lang="en">Contact</span>
-                                    <span lang="es" class="hidden">Contacto</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://bricksapps.userjot.com" class="body-text" style="font-size: 15px;">
-                                    <span lang="en">Vote on Features</span>
-                                    <span lang="es" class="hidden">Votar funciones</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="help.html" class="body-text" style="font-size: 15px;">
-                                    <span lang="en">Apps Guides</span>
-                                    <span lang="es" class="hidden">Guías</span>
-                                </a>
-                            </li>
+            return (
+                <main>
+                    <section ref={reveal} style={{
+                        padding: isMobile ? '120px 20px 80px' : '160px 48px 120px',
+                        maxWidth: 720, margin: '0 auto',
+                    }}>
+                        {/* Heading */}
+                        <div className="reveal" style={{ marginBottom: 40 }}>
+                            <div style={window.eyebrowStyle}>{t.hero.eyebrow}</div>
+                            <h1 style={{
+                                fontSize: isMobile ? 36 : 52, fontWeight: 900,
+                                letterSpacing: '-0.035em', lineHeight: 1.05,
+                                margin: '0 0 16px', color: 'var(--b-text)',
+                            }}>{t.hero.title}</h1>
+                            <p style={{
+                                fontSize: isMobile ? 16 : 18, lineHeight: 1.6,
+                                color: 'var(--b-text-2)', margin: 0,
+                            }}>{t.hero.body}</p>
+                        </div>
 
-                            <li>
-                                <a href="survey.html" class="body-text" style="font-size: 15px">
-                                    <span lang="en">Survey</span>
-                                    <span lang="es" class="hidden">Encuesta</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+                        {/* Form card */}
+                        <div className="reveal reveal-d1" style={{
+                            background: 'var(--b-bg-elevated)',
+                            borderRadius: isMobile ? 24 : 32,
+                            padding: isMobile ? '28px 20px' : '40px 36px',
+                            boxShadow: 'var(--emboss-soft)',
+                            border: '1px solid var(--b-border)',
+                        }}>
+                            <SupportForm t={f} />
+                        </div>
 
-            <div style="
-                        border-top: 1px solid var(--surface-shadow);
-                        padding-top: 32px;
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        gap: 16px;
-                    ">
-                <p class="metadata" style="text-align: center">
-                    <span lang="en">© 2026 Bricks Apps. All rights reserved.</span>
-                    <span lang="es" class="hidden">© 2026 Bricks Apps. Todos los derechos reservados</span>
-                </p>
-                <div class="footer-bottom-row"
-                    style="display: flex; justify-content: center; flex-wrap: wrap; gap: 24px; align-items: center">
-                    <div class="footer-links" style="display: flex; flex-wrap: wrap; gap: 24px">
-                        <a href="privacy.html" style="margin: 0">
-                            <span lang="en">Privacy Policy</span>
-                            <span lang="es" class="hidden">Política de privacidad</span>
-                        </a>
-                        <a href="terms.html" style="margin: 0">
-                            <span lang="en">Terms of Service</span>
-                            <span lang="es" class="hidden">Términos de servicio</span>
-                        </a>
-                    </div>
-                    <div class="footer-language-dropdown">
-                        <img src="images/globe-icon.svg" alt="" class="footer-globe-icon" />
-                        <select id="language-select" title="Change language / Cambiar idioma">
-                            <option value="en">English</option>
-                            <option value="es">Español</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+                        <div style={{ marginTop: 24, textAlign: 'right' }}>
+                            <span style={{ fontSize: 12, color: 'var(--b-text-3)' }}>V1.2.1</span>
+                        </div>
+                    </section>
+                </main>
+            );
+        }
 
-    <!-- Custom JavaScript for report form -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const form = document.getElementById("issue-report-form");
-            const fileInput = document.getElementById("file-upload");
-            const fileList = document.getElementById("file-list");
-            const successAlert = document.getElementById("success-alert");
-            const closeSuccess = document.getElementById("close-success");
-            const referenceElm = document.getElementById("reference-number");
-            const referenceField = document.getElementById("reference-field");
-            const submitBtn = form.querySelector('button[type="submit"]');
+        // ==========================================================================
+        // App
+        // ==========================================================================
 
-            // Generate a reference number and pre-fill the hidden field
-            const refNumber = generateReferenceNumber();
-            referenceElm.textContent = refNumber;
-            if (referenceField) referenceField.value = refNumber;
+        const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+            "lang": "en",
+            "theme": "auto"
+        }/*EDITMODE-END*/;
 
-            // Selected files storage
-            let selectedFiles = [];
+        function App() {
+            const [lang, setLang] = React.useState(TWEAK_DEFAULTS.lang);
+            const [theme, setTheme] = React.useState(TWEAK_DEFAULTS.theme);
 
-            // ── Form Submission via Hidden IFrame ───────────────────────
-            let isSubmitting = false;
-
-            // Listen for the iframe load event (fires when FormSubmit responds)
-            const hiddenIframe = document.getElementById("hidden_iframe");
-            if (hiddenIframe) {
-                hiddenIframe.addEventListener("load", function () {
-                    if (isSubmitting) {
-                        showSuccessAlert(refNumber);
-                        form.reset();
-                        selectedFiles = [];
-                        fileList.innerHTML = "";
-                        fileList.classList.add("hidden");
-                        submitBtn.disabled = false;
-                        isSubmitting = false;
-                    }
-                });
-            }
-
-            form.addEventListener("submit", function (event) {
-                // DO NOT preventDefault() - let the browser natively submit the form to the hidden iframe!
-
-                // Sync the first selected file into the native input using DataTransfer
-                // This ensures the native file upload includes the visually selected file
-                if (selectedFiles.length > 0 && typeof DataTransfer !== "undefined") {
-                    try {
-                        const dt = new DataTransfer();
-                        dt.items.add(selectedFiles[0]);
-                        fileInput.files = dt.files;
-                    } catch (e) {
-                        // DataTransfer not supported — fall back to native input as-is
-                    }
+            React.useEffect(() => {
+                const mq = window.matchMedia('(prefers-color-scheme: dark)');
+                const apply = () => {
+                    const effective = theme === 'auto' ? (mq.matches ? 'dark' : 'light') : theme;
+                    document.documentElement.setAttribute('data-theme', effective);
+                };
+                apply();
+                if (theme === 'auto') {
+                    mq.addEventListener('change', apply);
+                    return () => mq.removeEventListener('change', apply);
                 }
+            }, [theme]);
 
-                // Disable submit button while sending
-                submitBtn.disabled = true;
-                isSubmitting = true;
+            React.useEffect(() => {
+                document.documentElement.setAttribute('lang', lang);
+            }, [lang]);
 
-                // Note: The form will now natively POST to FormSubmit,
-                // and the hiddenIframe "load" event will trigger the success flow.
-            });
+            const t = window.COPY[lang] || window.COPY.en;
+            const supportT = SUPPORT_COPY[lang] || SUPPORT_COPY.en;
 
-            // ── File Selection ──────────────────────────────────────────
-            fileInput.addEventListener("change", function () {
-                var files = Array.from(this.files);
+            window.useTweaks({ lang, setLang, theme, setTheme });
 
-                // Check file size (limit to 4MB per file)
-                var validFiles = files.filter(function (f) { return f.size <= 4 * 1024 * 1024; });
+            return (
+                <div style={{ background: 'var(--b-bg)', minHeight: '100vh' }}>
+                    <window.Header t={t} lang={lang} currentProduct="support" />
+                    <SupportPage t={supportT} lang={lang} />
+                    <window.Footer t={t} lang={lang} setLang={setLang} theme={theme} setTheme={setTheme} />
+                </div>
+            );
+        }
 
-                if (validFiles.length !== files.length) {
-                    var lang = document.documentElement.getAttribute("lang") || "en";
-                    var msgs = {
-                        en: "Some files exceed the 4MB limit and were not included.",
-                        es: "Algunos archivos exceden el límite de 4MB y no se incluyeron."
-                    };
-                    alert(msgs[lang] || msgs["en"]);
-                }
-
-                if (validFiles.length > 0) {
-                    selectedFiles = selectedFiles.concat(validFiles);
-                    updateFileList();
-                    fileList.classList.remove("hidden");
-                }
-
-                // Reset so the same file can be re-selected after removal
-                this.value = "";
-            });
-
-            // ── File List UI ────────────────────────────────────────────
-            function updateFileList() {
-                fileList.innerHTML = "";
-
-                selectedFiles.forEach(function (file, index) {
-                    var fileItem = document.createElement("div");
-                    fileItem.className = "file-list-item";
-
-                    var fileInfo = document.createElement("div");
-                    fileInfo.className = "file-info";
-
-                    var fileIcon = document.createElement("div");
-                    fileIcon.className = "file-icon";
-                    fileIcon.innerHTML = '<svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>';
-
-                    var fileDetails = document.createElement("div");
-                    var fileName = document.createElement("div");
-                    var fileSizeEl = document.createElement("div");
-                    fileName.textContent = file.name;
-                    fileName.className = "file-name";
-                    fileSizeEl.textContent = formatFileSize(file.size);
-                    fileSizeEl.className = "file-size";
-                    fileDetails.appendChild(fileName);
-                    fileDetails.appendChild(fileSizeEl);
-
-                    fileInfo.appendChild(fileIcon);
-                    fileInfo.appendChild(fileDetails);
-
-                    var removeBtn = document.createElement("button");
-                    removeBtn.className = "file-remove-btn";
-                    removeBtn.type = "button";
-                    removeBtn.innerHTML = '<svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>';
-                    removeBtn.addEventListener("click", function () {
-                        selectedFiles.splice(index, 1);
-                        updateFileList();
-                        if (selectedFiles.length === 0) fileList.classList.add("hidden");
-                    });
-
-                    fileItem.appendChild(fileInfo);
-                    fileItem.appendChild(removeBtn);
-                    fileList.appendChild(fileItem);
-                });
-            }
-
-            // ── Helpers ─────────────────────────────────────────────────
-            function formatFileSize(bytes) {
-                if (bytes === 0) return "0 Bytes";
-                var k = 1024, sizes = ["Bytes", "KB", "MB", "GB"], i = 0, tmp = bytes;
-                while (tmp >= k && i < sizes.length - 1) { tmp /= k; i++; }
-                return parseFloat(tmp.toFixed(2)) + " " + sizes[i];
-            }
-
-            function generateReferenceNumber() {
-                var ts = new Date().getTime().toString().slice(-6);
-                var rnd = Math.floor(Math.random() * 1000).toString().padStart(3, "0");
-                return "BRKS-" + ts + rnd;
-            }
-
-            function showSuccessAlert(ref) {
-                referenceElm.textContent = ref;
-                successAlert.classList.add("is-visible");
-            }
-
-            function hideSuccessAlert() {
-                successAlert.classList.remove("is-visible");
-            }
-
-            closeSuccess.addEventListener("click", function (e) {
-                e.preventDefault();
-                hideSuccessAlert();
-            });
-        });
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     </script>
 </body>
 
