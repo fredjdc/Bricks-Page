@@ -1046,7 +1046,7 @@
     function LeadsHero({ t, lang, theme }) {
       const reveal = window.useReveal();
       const isMobile = window.useIsMobile();
-      const shotSrc = `assets/bricks-leads-${lang}-${theme === 'dark' ? 'dark' : 'light'}.png`;
+      const shotSrc = `images-bricks-leads/hero-video-img-${lang}.png`;
 
       return (
         <section id="join-beta" ref={reveal} style={{
@@ -1600,7 +1600,8 @@
       const effectiveTheme = window.useTheme();
       const shared = window.COPY[lang];
       const leads = LEADS_COPY[lang];
-      const shotSrc = `assets/bricks-leads-${lang}-${effectiveTheme === 'dark' ? 'dark' : 'light'}.png`;
+      const shot1 = `images-bricks-leads/screenshot-capture-section-${lang}-light.png`;
+      const shot2 = `images-bricks-leads/screenshot-followup-section-${lang}-light.png`;
 
       window.useTweaks({ lang, setLang, theme, setTheme });
 
@@ -1615,8 +1616,8 @@
           <LeadsHero t={leads} lang={lang} theme={effectiveTheme} />
           <LeadsStats t={leads} />
           <LeadsPillars t={leads} />
-          <LeadsFeatureSplit t={leads} lang={lang} theme={effectiveTheme} feature={leads.feature1} reverse={false} shotSrc={shotSrc} />
-          <LeadsFeatureSplit t={leads} lang={lang} theme={effectiveTheme} feature={leads.feature2} reverse={true} shotSrc={shotSrc} />
+          <LeadsFeatureSplit t={leads} lang={lang} theme={effectiveTheme} feature={leads.feature1} reverse={false} shotSrc={shot1} />
+          <LeadsFeatureSplit t={leads} lang={lang} theme={effectiveTheme} feature={leads.feature2} reverse={true} shotSrc={shot2} />
           <LeadsTestimonials t={leads} />
           <window.DownloadCTA
             t={shared}
