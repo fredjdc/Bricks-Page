@@ -1003,7 +1003,7 @@
     function CalcHero({ t, lang, theme }) {
       const reveal = window.useReveal();
       const isMobile = window.useIsMobile();
-      const videoSrc = `images-bricks-calc/hero-video-${lang}1.mp4`;
+      const videoSrc = `images-bricks-calc/hero-video-${lang}.mp4`;
       const posterSrc = `images-bricks-calc/hero-video-img-${lang}.png`;
 
       return (
@@ -1476,8 +1476,8 @@
       const calcT = CALC_COPY[lang] || CALC_COPY.en;
 
       // Note: feature images are language-specific. Using standard ones we know exist from images folder.
-      const shot1 = lang === 'en' ? 'images/feature-en-01.jpg' : 'images/feature-es-01.jpg';
-      const shot2 = lang === 'en' ? 'images/feature-en-03.jpg' : 'images/feature-es-03.jpg';
+      const shot1 = `images-bricks-calc/screenshot-precision-section-${lang}-light.png`;
+      const shot2 = `images-bricks-calc/screenshot-share-section-${lang}-light.png`;
 
       return (
         <div style={{ background: 'var(--b-bg)', minHeight: '100vh', overflow: 'hidden' }}>
