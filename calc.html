@@ -874,6 +874,16 @@
                         { t: 'Amortization schedules', d: 'Clear visual charts of principal vs interest over the loan life.' },
                     ],
                 },
+                feature_prepay: {
+                    eyebrow: 'Prepayments',
+                    title: ['Extra payments,', 'exact impact.'],
+                    body: 'Add one-time or recurring extra payments to any scenario and instantly see how much interest and time your clients will save over the life of the loan.',
+                    bullets: [
+                        { t: 'Lump-sum or recurring', d: 'Model a single large payment or a consistent monthly extra sum.' },
+                        { t: 'Time saved', d: 'Immediately see how many months or years are shaved off the mortgage.' },
+                        { t: 'Interest savings', d: 'Show exactly how much money stays in their pocket over time.' },
+                    ],
+                },
                 feature2: {
                     eyebrow: 'Share',
                     title: ['Give them', 'something to keep.'],
@@ -951,6 +961,16 @@
                         { t: 'Impuestos y seguros', d: 'Activa o desactiva los impuestos locales y el costo del seguro fácilmente.' },
                         { t: 'Manejo de PMI', d: 'Modela automáticamente el seguro hipotecario privado para enganches bajos.' },
                         { t: 'Tabla de amortización', d: 'Gráficos visuales claros del capital vs interés durante la vida del préstamo.' },
+                    ],
+                },
+                feature_prepay: {
+                    eyebrow: 'Pagos adelantados',
+                    title: ['Pagos extra,', 'impacto exacto.'],
+                    body: 'Añade pagos extra únicos o recurrentes a cualquier escenario y ve al instante cuánto interés y tiempo ahorrarán tus clientes.',
+                    bullets: [
+                        { t: 'Únicos o recurrentes', d: 'Modela un abono grande único o una cantidad extra fija mensual.' },
+                        { t: 'Tiempo ahorrado', d: 'Ve de inmediato cuántos meses o años se restan de la hipoteca.' },
+                        { t: 'Ahorro en intereses', d: 'Muestra exactamente cuánto dinero se queda en sus bolsillos.' },
                     ],
                 },
                 feature2: {
@@ -1479,6 +1499,7 @@
 
             // Note: feature images are language-specific. Using standard ones we know exist from images folder.
             const shot1 = `images-bricks-calc/screenshot-precision-section-${lang}-light.png`;
+            const shotPrepay = lang === 'en' ? 'images-bricks-calc/screenshot-prepay-section-en-light.png' : 'images-bricks-calc/screenshot-prepay-section-es-light.png';
             const shot2 = `images-bricks-calc/screenshot-share-section-${lang}-light.png`;
 
             return (
@@ -1498,7 +1519,8 @@
                         <CalcStats t={calcT} />
                         <CalcPillars t={calcT} />
                         <CalcFeatureSplit feature={calcT.feature1} reverse={false} shotSrc={shot1} />
-                        <CalcFeatureSplit feature={calcT.feature2} reverse={true} shotSrc={shot2} />
+                        <CalcFeatureSplit feature={calcT.feature_prepay} reverse={true} shotSrc={shotPrepay} />
+                        <CalcFeatureSplit feature={calcT.feature2} reverse={false} shotSrc={shot2} />
                         <CalcTestimonials t={calcT} />
                         <window.DownloadCTA t={t} variant="default" />
                         <CalcFAQ t={calcT} />
