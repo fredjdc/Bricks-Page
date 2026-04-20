@@ -1053,6 +1053,16 @@
           padding: isMobile ? '120px 20px 48px' : '160px 48px 80px',
           maxWidth: 1280, margin: '0 auto',
         }}>
+          {isMobile && (
+            <div className="reveal" style={{ marginBottom: 40 }}>
+              <window.ScreenshotPhone
+                src={shotSrc}
+                alt="Bricks Leads on iPhone"
+                accent={LEADS_ACCENT}
+              />
+            </div>
+          )}
+
           <div style={{
             display: 'grid',
             gridTemplateColumns: isMobile ? '1fr' : '1.1fr 1fr',
@@ -1093,16 +1103,6 @@
               </div>
             )}
           </div>
-
-          {isMobile && (
-            <div className="reveal reveal-d3" style={{ marginTop: 48 }}>
-              <window.ScreenshotPhone
-                src={shotSrc}
-                alt="Bricks Leads on iPhone"
-                accent={LEADS_ACCENT}
-              />
-            </div>
-          )}
         </section>
       );
     }

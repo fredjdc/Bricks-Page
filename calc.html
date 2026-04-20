@@ -1033,6 +1033,18 @@
                     padding: isMobile ? '120px 20px 48px' : '160px 48px 80px',
                     maxWidth: 1280, margin: '0 auto',
                 }}>
+                    {isMobile && (
+                        <div className="reveal" style={{ marginBottom: 40 }}>
+                            <window.ScreenshotVideo
+                                src={videoSrc}
+                                posterSrc={posterSrc}
+                                alt="Bricks Calc interface"
+                                accent={CALC_ACCENT}
+                                lang={lang}
+                            />
+                        </div>
+                    )}
+
                     <div style={{
                         display: 'grid',
                         gridTemplateColumns: isMobile ? '1fr' : '1.1fr 1fr',
@@ -1097,18 +1109,6 @@
                             </div>
                         )}
                     </div>
-
-                    {isMobile && (
-                        <div className="reveal reveal-d3" style={{ marginTop: 48 }}>
-                            <window.ScreenshotVideo
-                                src={videoSrc}
-                                posterSrc={posterSrc}
-                                alt="Bricks Calc interface"
-                                accent={CALC_ACCENT}
-                                lang={lang}
-                            />
-                        </div>
-                    )}
                 </section>
             );
         }
