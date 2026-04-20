@@ -2,24 +2,37 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy | Bricks Apps</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Design System CSS -->
-    <link rel="stylesheet" href="styles.css">
+    <!-- SEO -->
+    <title>Privacy Policy | Bricks — How we handle your data</title>
+    <meta name="description"
+        content="Bricks Apps privacy policy. All data stays on your device. No accounts, no tracking, no ads." />
+    <meta name="keywords"
+        content="bricks apps, privacy policy, data privacy, on-device, no tracking, apple apps" />
+    <link rel="canonical" href="https://bricks.pe/privacy.html" />
 
-    <!-- Google Material Symbols -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=language" />
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://bricks.pe/privacy.html" />
+    <meta property="og:title" content="Privacy Policy | Bricks Apps" />
+    <meta property="og:description" content="All data stays on your device. No accounts, no tracking, no ads." />
+    <meta property="og:image" content="https://bricks.pe/images/bricks-dark-logo.svg" />
 
-    <!-- Favicon -->
+    <!-- Favicon & Styles -->
     <link rel="icon" href="favicon.ico" sizes="32x32" />
-    <link rel="icon" type="image/png" href="images-bricks-scan/favicon-32x32.png" sizes="32x32" />
-    <link rel="apple-touch-icon" href="images-bricks-scan/apple-touch-icon.png" />
-    <!-- Alpine and scripts -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script src="scripts.js" defer></script>
+    <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="theme-color" content="#F6F7F8" />
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- React & Babel -->
+    <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
 
     <!-- Google Tag Manager -->
     <script>
@@ -39,11 +52,8 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-0NE96SRV4V"></script>
     <script>
-        // GA4 tracker keeps policy page visits in analytics compliance logs.
         window.dataLayer = window.dataLayer || [];
-        function gtag() {
-            dataLayer.push(arguments);
-        }
+        function gtag() { dataLayer.push(arguments); }
         gtag("js", new Date());
         gtag("config", "G-0NE96SRV4V");
     </script>
@@ -76,676 +86,857 @@
     <!-- End Meta Pixel Code -->
 </head>
 
-<body class="min-h-screen" style="background-color: var(--bg-primary);">
+<body>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P5P8LRC2" height="0" width="0"
             style="display: none; visibility: hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    <!-- Cookie Consent Banner -->
-    <div id="cookie-consent-banner"
-        style="display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg-primary); padding: 24px; z-index: 50; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; box-shadow: 0 -4px 16px var(--surface-shadow); border-top: 1px solid var(--depth-plane);">
-        <div>
-            <p class="body-text" style="font-size: 14px; margin: 0;">
-                <span lang="en">We use cookies to analyze site usage and improve your experience. May we collect
-                    anonymous usage data?</span>
-                <span lang="es" class="hidden">Usamos cookies para analizar el uso del sitio y mejorar su experiencia.
-                    ¿Nos permite recopilar datos anónimos de uso?</span>
-                <span lang="fr" class="hidden">Nous utilisons des cookies pour analyser l'utilisation du site et
-                    améliorer votre expérience. Pouvons-nous collecter des données d'utilisation anonymes ?</span>
-                <span lang="pt" class="hidden">Usamos cookies para analisar o uso do site e melhorar sua experiência.
-                    Podemos coletar dados de uso anônimos?</span>
-            </p>
-        </div>
-        <div style="display: flex; gap: 8px;">
-            <button onclick="updateConsent('denied')" class="btn btn-secondary">
-                <span lang="en">Decline</span>
-                <span lang="es" class="hidden">Rechazar</span>
-                <span lang="fr" class="hidden">Refuser</span>
-                <span lang="pt" class="hidden">Recusar</span>
-            </button>
-            <button onclick="updateConsent('granted')" class="btn btn-primary">
-                <span lang="en">Accept</span>
-                <span lang="es" class="hidden">Aceptar</span>
-                <span lang="fr" class="hidden">Accepter</span>
-                <span lang="pt" class="hidden">Aceitar</span>
-            </button>
-        </div>
-    </div>
+    <div id="root"></div>
 
-    <!-- Header / Nav -->
-    <header class="container site-header">
-        <div class="logo">
-            <a href="index.html" class="flex items-center" style="display: flex; align-items: center;">
-                <img src="images/bricks-dark-logo.svg" onerror="this.src='images/bricks-light-logo.svg'"
-                    alt="Bricks Apps" style="height: 24px;" />
-            </a>
-        </div>
-        </div>
-    </header>
+    <script type="text/babel">
+        // ==========================================================================
+        // SHARED COPY (nav + footer — identical across all pages)
+        // ==========================================================================
 
-    <!-- Privacy Policy Content -->
-    <section class="section section-hero hero">
-        <div class="hero-bg" aria-hidden="true" style="top: -100px;"></div>
-        <div class="container reading-column center-text pt-24">
+        window.COPY = {
+            en: {
+                nav: { products: 'Products', philosophy: 'Philosophy', changelog: "What's new", download: 'Download' },
+                hero: {
+                    eyebrow: 'A suite for real estate',
+                    title: ['Three focused tools.', 'One quiet suite.'],
+                    body: 'Scan, calculate, follow up. Without bloat, without accounts, without distractions.',
+                    cta: 'Explore the suite',
+                    secondary: 'See what changed',
+                    pickLabel: 'Pick a tool',
+                },
+                products: {
+                    scan: { name: 'Scan', tagline: 'Documents, organized.', pitch: 'Scan, read, file.' },
+                    calc: { name: 'Calc', tagline: 'Mortgages, instantly.', pitch: 'Model a deal.' },
+                    leads: { name: 'Leads', tagline: 'A calm CRM.', pitch: 'Stay on follow-up.' },
+                },
+                cta: {
+                    title: ['Three tools.', 'One quiet suite.'],
+                    sub: 'Free to try. No account. Native on Apple.',
+                    primary: 'Download on the App Store',
+                },
+                footer: {
+                    tag: 'Focused apps for real estate agents on Apple.',
+                    sections: [
+                        { h: 'Apps', l: [{ label: 'Bricks Scan', href: 'scan.html' }, { label: 'Bricks Calc', href: 'calc.html' }, { label: 'Bricks Leads', href: 'leads.html' }] },
+                        { h: 'Business', l: [{ label: 'About', href: 'about.html' }, { label: 'Purchase guide', href: 'purchase-guide-01.html' }, { label: 'hello@bricks.pe', href: 'mailto:hello@bricks.pe' }] },
+                        { h: 'Support', l: [{ label: 'Contact', href: 'support.html' }, { label: 'Vote on features', href: 'https://bricksapps.userjot.com' }, { label: 'Guides', href: 'help.html' }, { label: 'Survey', href: 'survey.html' }] },
+                    ],
+                    legal: [{ label: 'Privacy Policy', href: 'privacy.html' }, { label: 'Terms of Service', href: 'terms.html' }],
+                    copyright: '\u00a9 2026 Bricks Apps. Made with care.',
+                    language: 'Language', appearance: 'Appearance',
+                    light: 'Light', dark: 'Dark', auto: 'System',
+                },
+            },
+            es: {
+                nav: { products: 'Productos', philosophy: 'Filosof\u00eda', changelog: 'Novedades', download: 'Descargar' },
+                hero: {
+                    eyebrow: 'Una suite para bienes ra\u00edces',
+                    title: ['Tres herramientas.', 'Una suite tranquila.'],
+                    body: 'Escanea, calcula, da seguimiento. Sin relleno, sin cuentas, sin distracciones.',
+                    cta: 'Explorar la suite',
+                    secondary: 'Ver novedades',
+                    pickLabel: 'Elige una herramienta',
+                },
+                products: {
+                    scan: { name: 'Scan', tagline: 'Documentos ordenados.', pitch: 'Escanea, lee, archiva.' },
+                    calc: { name: 'Calc', tagline: 'Hipotecas al instante.', pitch: 'Modela una oferta.' },
+                    leads: { name: 'Leads', tagline: 'Un CRM tranquilo.', pitch: 'Mant\u00e9n el seguimiento.' },
+                },
+                cta: {
+                    title: ['Tres herramientas.', 'Una suite tranquila.'],
+                    sub: 'Gratis para empezar. Sin cuenta. Nativa en Apple.',
+                    primary: 'Descargar en el App Store',
+                },
+                footer: {
+                    tag: 'Apps enfocadas para agentes inmobiliarios en Apple.',
+                    sections: [
+                        { h: 'Apps', l: [{ label: 'Bricks Scan', href: 'scan.html' }, { label: 'Bricks Calc', href: 'calc.html' }, { label: 'Bricks Leads', href: 'leads.html' }] },
+                        { h: 'Empresa', l: [{ label: 'Sobre nosotros', href: 'about.html' }, { label: 'Gu\u00eda de compra', href: 'purchase-guide-01.html' }, { label: 'hello@bricks.pe', href: 'mailto:hello@bricks.pe' }] },
+                        { h: 'Soporte', l: [{ label: 'Contacto', href: 'support.html' }, { label: 'Votar funciones', href: 'https://bricksapps.userjot.com' }, { label: 'Gu\u00edas', href: 'help.html' }, { label: 'Encuesta', href: 'survey.html' }] },
+                    ],
+                    legal: [{ label: 'Pol\u00edtica de privacidad', href: 'privacy.html' }, { label: 'T\u00e9rminos del servicio', href: 'terms.html' }],
+                    copyright: '\u00a9 2026 Bricks Apps. Hecho con cuidado.',
+                    language: 'Idioma', appearance: 'Apariencia',
+                    light: 'Claro', dark: 'Oscuro', auto: 'Sistema',
+                },
+            },
+        };
 
-            <div style="display: flex; justify-content: center; margin-bottom: 24px;">
-                <div class="teal-accent-inlay" style="width: 48px; height: 6px;"></div>
-            </div>
+        window.ACCENTS = {
+            scan: { light: '#00A6A1', vivid: '#00C7B2' },
+            calc: { light: '#007AFF', vivid: '#2E90FF' },
+            leads: { light: '#FF9500', vivid: '#FFAD33' },
+        };
 
-            <h1 class="hero-title reveal-on-scroll delay-100" style="margin-bottom: 16px;">
-                <span lang="en">Privacy Policy</span>
-                <span lang="es" class="hidden">Política de Privacidad</span>
-                <span lang="fr" class="hidden">Politique de Confidentialité</span>
-                <span lang="pt" class="hidden">Política de Privacidade</span>
-            </h1>
+        window.eyebrowStyle = {
+            fontSize: 12, fontWeight: 700, color: 'var(--b-text-3)',
+            letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 14,
+        };
 
-            <p class="body-text reveal-on-scroll delay-200"
-                style="margin-left: auto; margin-right: auto; max-width: 50ch;">
-                <span lang="en">Last Updated: April 1, 2025</span>
-                <span lang="es" class="hidden">Última Actualización: 1 de abril de 2025</span>
-                <span lang="fr" class="hidden">Dernière mise à jour : 1er avril 2025</span>
-                <span lang="pt" class="hidden">Última atualização: 1 de abril de 2025</span>
-            </p>
-        </div>
-    </section>
+        // ==========================================================================
+        // Hooks + utilities
+        // ==========================================================================
 
-    <!-- Main Privacy Content -->
-    <main class="section pb-24">
-        <div class="container reading-column">
-            <div class="reveal-on-scroll delay-300">
-                <!-- Introduction -->
-                <h2 class="section-title mt-md" style="font-size: 28px;">
-                    <span lang="en">1. Introduction</span>
-                    <span lang="es" class="hidden">1. Introducción</span>
-                    <span lang="fr" class="hidden">1. Introduction</span>
-                    <span lang="pt" class="hidden">1. Introdução</span>
-                </h2>
-                <p class="body-text mb-md">
-                    <span lang="en">Welcome to Bricks Apps. This Privacy Policy applies to our apps and games, and
-                        explains how we handle your information when you use our
-                        applications.</span>
-                    <span lang="es" class="hidden">Bienvenido a Bricks Apps. Esta Política de Privacidad aplica a
-                        nuestras apps y juegos, y explica cómo manejamos tu información cuando usas nuestras
-                        aplicaciones.</span>
-                    <span lang="fr" class="hidden">Bienvenue chez Bricks Apps. Cette politique de confidentialité
-                        s'applique à nos applications et jeux, et explique comment nous gérons vos informations
-                        lorsque vous utilisez nos applications.</span>
-                    <span lang="pt" class="hidden">Bem-vindo ao Bricks Apps. Esta Política de Privacidade se aplica
-                        aos nossos aplicativos e jogos, e explica como lidamos com suas informações quando você usa
-                        nossos aplicativos.</span>
-                </p>
+        window.useReveal = function useReveal() {
+            const ref = React.useRef(null);
+            React.useEffect(() => {
+                const el = ref.current;
+                if (!el) return;
+                const io = new IntersectionObserver((entries) => {
+                    entries.forEach(e => {
+                        if (e.isIntersecting) {
+                            e.target.classList.add('in');
+                            io.unobserve(e.target);
+                        }
+                    });
+                }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+                el.querySelectorAll('.reveal').forEach(n => io.observe(n));
+                return () => io.disconnect();
+            }, []);
+            return ref;
+        };
 
-                <!-- Information We Collect -->
-                <h2 class="section-title mt-md" style="font-size: 28px;">
-                    <span lang="en">2. Information We Collect</span>
-                    <span lang="es" class="hidden">2. Información que Recopilamos</span>
-                    <span lang="fr" class="hidden">2. Informations que nous collectons</span>
-                    <span lang="pt" class="hidden">2. Informações que coletamos</span>
-                </h2>
-                <p class="body-text mb-sm">
-                    <span lang="en">We do not collect your personal data or inputs from our apps and games. All data
-                        and calculations are processed locally on your device. However, we may collect
-                        limited diagnostic information and aggregated usage data to improve app performance and
-                        reliability. We do not use advertising services or third-party advertising SDKs.</span>
-                    <span lang="es" class="hidden">No recopilamos tus datos personales ni entradas de nuestras apps
-                        y juegos. Todos los datos y cálculos se procesan localmente en tu dispositivo. Sin embargo,
-                        podemos
-                        recopilar información de diagnóstico limitada y datos de uso agregados para mejorar el
-                        rendimiento y la confiabilidad de las apps. No utilizamos servicios de publicidad ni SDKs
-                        de anuncios de terceros.</span>
-                    <span lang="fr" class="hidden">Nous ne collectons pas vos données personnelles ni vos saisies
-                        dans nos applications et jeux. Toutes les données et calculs sont traités localement sur
-                        votre appareil. Cependant, nous pouvons
-                        collecter des informations de diagnostic limitées et des données d'utilisation agrégées pour
-                        améliorer les performances et
-                        la fiabilité des applications. Nous n'utilisons pas de services publicitaires ni de SDK
-                        publicitaires tiers.</span>
-                    <span lang="pt" class="hidden">Não coletamos seus dados pessoais ou entradas de nossos
-                        aplicativos e jogos. Todos os dados e cálculos são processados localmente no seu
-                        dispositivo. No entanto, podemos
-                        coletar informações de diagnóstico limitadas e dados de uso agregados para melhorar o
-                        desempenho e a confiabilidade dos aplicativos. Não usamos serviços de publicidade ou SDKs
-                        de publicidade de terceiros.</span>
-                </p>
+        window.smoothScrollTo = function smoothScrollTo(id) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            const y = el.getBoundingClientRect().top + window.scrollY - 24;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+        };
 
-                <h3 class="subheading mt-sm">
-                    <span lang="en">a. Information You Provide</span>
-                    <span lang="es" class="hidden">a. Información que Proporcionas</span>
-                    <span lang="fr" class="hidden">a. Informations que vous fournissez</span>
-                    <span lang="pt" class="hidden">a. Informações que você fornece</span>
-                </h3>
-                <p class="body-text mb-sm">
-                    <span lang="en">• App Data: Information, inputs, and data you enter into our apps and games for
-                        calculations, gameplay, or other features. This data stays on your
-                        device and is not transmitted to our servers.</span>
-                    <span lang="es" class="hidden">• Datos de la app: Información, entradas y datos que ingresas en
-                        nuestras apps y juegos para cálculos, juego u otras funciones. Estos datos permanecen en tu
-                        dispositivo y no se transmiten a nuestros servidores.</span>
-                    <span lang="fr" class="hidden">• Données de l'application : Informations, saisies et données que
-                        vous entrez dans nos applications et jeux pour les calculs, le jeu ou d'autres
-                        fonctionnalités. Ces données restent sur votre appareil et ne sont pas transmises à nos
-                        serveurs.</span>
-                    <span lang="pt" class="hidden">• Dados do aplicativo: Informações, entradas e dados que você
-                        insere em nossos aplicativos e jogos para cálculos, jogabilidade ou outros recursos. Esses
-                        dados permanecem no seu dispositivo e não são transmitidos para nossos servidores.</span>
-                </p>
+        window.useScrollDirection = function useScrollDirection() {
+            const [state, setState] = React.useState({ dir: 'up', atTop: true });
+            React.useEffect(() => {
+                let last = window.scrollY;
+                const onScroll = () => {
+                    const y = window.scrollY;
+                    const dir = y > last + 4 ? 'down' : y < last - 4 ? 'up' : state.dir;
+                    setState({ dir, atTop: y < 40 });
+                    last = y;
+                };
+                window.addEventListener('scroll', onScroll, { passive: true });
+                return () => window.removeEventListener('scroll', onScroll);
+            }, []);
+            return state;
+        };
 
-                <h3 class="subheading mt-sm">
-                    <span lang="en">b. Diagnostics and Usage Data (optional)</span>
-                    <span lang="es" class="hidden">b. Datos de diagnóstico y uso (opcional)</span>
-                    <span lang="fr" class="hidden">b. Données de diagnostic et d'utilisation (facultatif)</span>
-                    <span lang="pt" class="hidden">b. Dados de diagnóstico e uso (opcional)</span>
-                </h3>
-                <p class="body-text mb-sm">
-                    <span lang="en">• Optional diagnostics and analytics: Crash reports, performance metrics, device
-                        type and
-                        OS version, and aggregated feature usage to help us improve the apps. Where available, you
-                        can control analytics collection in your device settings.</span>
-                    <span lang="es" class="hidden">• Diagnósticos y analíticas opcionales: Informes de fallos,
-                        métricas de rendimiento, tipo
-                        de dispositivo y versión del sistema, y uso agregado de funciones para ayudarnos a mejorar
-                        las apps. Cuando esté disponible, puedes controlar la recopilación de analíticas en los
-                        ajustes de tu dispositivo.</span>
-                    <span lang="fr" class="hidden">• Diagnostics et analyses facultatifs : Rapports de plantage,
-                        mesures de performance, type
-                        d'appareil et version du système, et utilisation agrégée des fonctionnalités pour nous aider
-                        à améliorer
-                        les applications. Lorsqu'il est disponible, vous pouvez contrôler la collecte d'analyses
-                        dans les
-                        paramètres de votre appareil.</span>
-                    <span lang="pt" class="hidden">• Diagnósticos e análises opcionais: Relatórios de falhas,
-                        métricas de desempenho, tipo
-                        de dispositivo e versão do sistema, e uso agregado de recursos para nos ajudar a melhorar
-                        os aplicativos. Quando disponível, você pode controlar a coleta de análises nas
-                        configurações do seu dispositivo.</span>
-                </p>
+        window.useIsMobile = function useIsMobile(breakpoint = 768) {
+            const [isMobile, setIsMobile] = React.useState(() => window.innerWidth <= breakpoint);
+            React.useEffect(() => {
+                const mq = window.matchMedia(`(max-width: ${breakpoint}px)`);
+                setIsMobile(mq.matches);
+                const handler = (e) => setIsMobile(e.matches);
+                mq.addEventListener('change', handler);
+                return () => mq.removeEventListener('change', handler);
+            }, [breakpoint]);
+            return isMobile;
+        };
 
-                <h3 class="subheading mt-sm">
-                    <span lang="en">c. Information We Do Not Collect</span>
-                    <span lang="es" class="hidden">c. Información que no recopilamos</span>
-                    <span lang="fr" class="hidden">c. Informations que nous ne collectons pas</span>
-                    <span lang="pt" class="hidden">c. Informações que não coletamos</span>
-                </h3>
-                <p class="body-text mb-sm">
-                    <span lang="en">• We do not collect personal identifiers such as your name, email address, or
-                        phone number</span>
-                    <span lang="es" class="hidden">• No recopilamos identificadores personales como tu nombre,
-                        dirección de correo electrónico o número de teléfono</span>
-                    <span lang="fr" class="hidden">• Nous ne collectons pas d'identifiants personnels tels que votre
-                        nom, adresse e-mail ou numéro de téléphone</span>
-                    <span lang="pt" class="hidden">• Não coletamos identificadores pessoais, como seu nome, endereço
-                        de e-mail ou número de telefone</span>
-                </p>
-                <p class="body-text mb-sm">
-                    <span lang="en">• We do not request or store financial account details</span>
-                    <span lang="es" class="hidden">• No solicitamos ni almacenamos detalles de cuentas
-                        financieras</span>
-                    <span lang="fr" class="hidden">• Nous ne demandons ni ne stockons de détails de compte
-                        financier</span>
-                    <span lang="pt" class="hidden">• Não solicitamos nem armazenamos detalhes de contas
-                        financeiras</span>
-                </p>
-                <p class="body-text mb-md">
-                    <span lang="en">• We do not track your location</span>
-                    <span lang="es" class="hidden">• No rastreamos tu ubicación</span>
-                    <span lang="fr" class="hidden">• Nous ne suivons pas votre localisation</span>
-                    <span lang="pt" class="hidden">• Não rastreamos sua localização</span>
-                </p>
+        window.useTheme = function useTheme() {
+            const [theme, setTheme] = React.useState(
+                () => document.documentElement.getAttribute('data-theme') || 'light'
+            );
+            React.useEffect(() => {
+                const observer = new MutationObserver(() => {
+                    setTheme(document.documentElement.getAttribute('data-theme') || 'light');
+                });
+                observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+                return () => observer.disconnect();
+            }, []);
+            return theme;
+        };
 
-                <!-- How We Use Your Information -->
-                <h2 class="section-title mt-md" style="font-size: 28px;">
-                    <span lang="en">3. How We Use Your Information</span>
-                    <span lang="es" class="hidden">3. Cómo Utilizamos Tu Información</span>
-                    <span lang="fr" class="hidden">3. Comment nous utilisons vos informations</span>
-                    <span lang="pt" class="hidden">3. Como usamos suas informações</span>
-                </h2>
-                <p class="body-text mb-sm">
-                    <span lang="en">• Local Storage: All your data is stored locally on your device</span>
-                    <span lang="es" class="hidden">• Almacenamiento Local: Todos tus datos se almacenan localmente
-                        en tu dispositivo</span>
-                    <span lang="fr" class="hidden">• Stockage local : Toutes vos données sont stockées localement
-                        sur votre appareil</span>
-                    <span lang="pt" class="hidden">• Armazenamento local: Todos os seus dados são armazenados
-                        localmente no seu dispositivo</span>
-                </p>
-                <p class="body-text mb-sm">
-                    <span lang="en">• App Functionality: We use the information you provide solely to enable app
-                        features and functionality on your device</span>
-                    <span lang="es" class="hidden">• Funcionalidad de la app: Utilizamos la información que
-                        proporcionas únicamente para habilitar las funciones y características de la app en tu
-                        dispositivo</span>
-                    <span lang="fr" class="hidden">• Fonctionnalité de l'application : Nous utilisons les
-                        informations que vous fournissez uniquement pour activer les fonctionnalités de
-                        l'application sur votre appareil</span>
-                    <span lang="pt" class="hidden">• Funcionalidade do aplicativo: Usamos as informações que você
-                        fornece apenas para habilitar recursos e funcionalidades do aplicativo no seu
-                        dispositivo</span>
-                </p>
-                <p class="body-text mb-sm">
-                    <span lang="en">• Export and Sharing: When you choose to export or share content from our apps,
-                        we temporarily process your data on your device to generate PDFs, images, or other files for
-                        sharing</span>
-                    <span lang="es" class="hidden">• Exportación y Compartir: Cuando eliges exportar o compartir
-                        contenido de nuestras apps, procesamos temporalmente
-                        tus datos en tu dispositivo para generar PDFs, imágenes u otros archivos para
-                        compartir</span>
-                    <span lang="fr" class="hidden">• Exportation et partage : Lorsque vous choisissez d'exporter ou
-                        de partager du contenu de nos applications, nous traitons temporairement
-                        vos données sur votre appareil pour générer des PDF, des images ou d'autres fichiers à
-                        partager</span>
-                    <span lang="pt" class="hidden">• Exportação e Compartilhamento: Quando você opta por exportar ou
-                        compartilhar conteúdo de nossos aplicativos, processamos temporariamente
-                        seus dados no dispositivo para gerar PDFs, imagens ou outros arquivos para
-                        compartilhamento</span>
-                </p>
-                <p class="body-text mb-md">
-                    <span lang="en">• App Improvements: We may use anonymized diagnostics and aggregated usage
-                        metrics to improve features, performance, and reliability</span>
-                    <span lang="es" class="hidden">• Mejoras de la app: Podemos utilizar diagnósticos anonimizados y
-                        métricas de uso agregadas para mejorar las funciones, el rendimiento y la confiabilidad</span>
-                    <span lang="fr" class="hidden">• Améliorations de l'application : Nous pouvons utiliser des
-                        diagnostics anonymisés et des métriques d'utilisation
-                        agrégées pour améliorer les fonctionnalités, les performances et la fiabilité</span>
-                    <span lang="pt" class="hidden">• Melhorias no aplicativo: Podemos usar diagnósticos anonimizados
-                        e métricas de uso agregadas para melhorar recursos, desempenho e confiabilidade</span>
-                </p>
+        // ==========================================================================
+        // ThemeLogo
+        // ==========================================================================
 
-                <!-- Data Sharing and Third Parties -->
-                <h2 class="section-title mt-md" style="font-size: 28px;">
-                    <span lang="en">4. Data Sharing and Third Parties</span>
-                    <span lang="es" class="hidden">4. Compartir Información</span>
-                    <span lang="fr" class="hidden">4. Partage de données et tiers</span>
-                    <span lang="pt" class="hidden">4. Compartilhamento de dados e terceiros</span>
-                </h2>
-                <p class="body-text mb-sm">
-                    <span lang="en">• No External Data Transfer: Your data never leaves your device unless you
-                        explicitly choose to share it</span>
-                    <span lang="es" class="hidden">• Sin Transferencia Externa de Datos: Tus datos nunca salen de tu
-                        dispositivo a menos que explícitamente elijas compartirlos</span>
-                    <span lang="fr" class="hidden">• Pas de transfert de données externe : Vos données ne quittent
-                        jamais votre appareil sauf si vous choisissez explicitement de les partager</span>
-                    <span lang="pt" class="hidden">• Sem transferência externa de dados: Seus dados nunca saem do
-                        seu dispositivo, a menos que você opte explicitamente por compartilhá-los</span>
-                </p>
-                <p class="body-text mb-sm">
-                    <span lang="en">• Sharing Features: When you use the app's sharing features to export or share
-                        content, you control who receives this information</span>
-                    <span lang="es" class="hidden">• Funciones de Compartir: Cuando usas las funciones de compartir
-                        de la app para exportar o compartir contenido, tú
-                        controlas quién recibe esta información</span>
-                    <span lang="fr" class="hidden">• Fonctionnalités de partage : Lorsque vous utilisez les
-                        fonctionnalités de partage de l'application pour exporter ou partager du contenu, vous
-                        contrôlez qui reçoit ces informations</span>
-                    <span lang="pt" class="hidden">• Recursos de compartilhamento: Ao usar os recursos de
-                        compartilhamento do aplicativo para exportar ou compartilhar conteúdo, você
-                        controla quem recebe essas informações</span>
-                </p>
-                <p class="body-text mb-md">
-                    <span lang="en">• Apple's App Store: We use Apple for managing in-app purchases, which is
-                        subject to Apple's privacy practices</span>
-                    <span lang="es" class="hidden">• Apple App Store: Utilizamos Apple para gestionar las compras
-                        dentro de la app, lo cual está sujeto a las prácticas de privacidad de Apple</span>
-                    <span lang="fr" class="hidden">• App Store d'Apple : Nous utilisons Apple pour gérer les achats
-                        intégrés, ce qui est soumis aux pratiques de confidentialité d'Apple</span>
-                    <span lang="pt" class="hidden">• App Store da Apple: Usamos a Apple para gerenciar compras no
-                        aplicativo, o que está sujeito às práticas de privacidade da Apple</span>
-                </p>
+        window.ThemeLogo = function ThemeLogo({ height = 24 }) {
+            return (
+                <React.Fragment>
+                    <img src="images/bricks-dark-logo.svg" alt="Bricks" className="logo-light-theme" style={{ height }} />
+                    <img src="images/bricks-light-logo.svg" alt="Bricks" className="logo-dark-theme" style={{ height }} />
+                </React.Fragment>
+            );
+        };
 
-                <!-- Data Retention and Security -->
-                <h2 class="section-title mt-md" style="font-size: 28px;">
-                    <span lang="en">5. Data Retention and Security</span>
-                    <span lang="es" class="hidden">5. Seguridad de Datos</span>
-                    <span lang="fr" class="hidden">5. Conservation et sécurité des données</span>
-                    <span lang="pt" class="hidden">5. Retenção e segurança de dados</span>
-                </h2>
-                <p class="body-text mb-md">
-                    <span lang="en">• Local Storage Only: All data is stored locally on your device<br />• Data
-                        Control: You can delete your saved data at any time through the app interface</span>
-                    <span lang="es" class="hidden">• Solo Almacenamiento Local: Todos los datos se almacenan
-                        localmente en tu dispositivo<br />• Control de Datos:
-                        Puedes eliminar tus datos guardados en cualquier momento a través de la interfaz de la
-                        app</span>
-                    <span lang="fr" class="hidden">• Stockage local uniquement : Toutes les données sont stockées
-                        localement sur votre appareil<br />• Contrôle des données :
-                        Vous pouvez supprimer vos données enregistrées à tout moment via l'interface de
-                        l'application</span>
-                    <span lang="pt" class="hidden">• Apenas armazenamento local: Todos os dados são armazenados
-                        localmente no seu dispositivo<br />• Controle de dados:
-                        Você pode excluir seus dados salvos a qualquer momento através da interface do
-                        aplicativo</span>
-                </p>
+        // ==========================================================================
+        // Header
+        // ==========================================================================
 
-                <!-- Your Rights and Choices -->
-                <h2 class="section-title mt-md" style="font-size: 28px;">
-                    <span lang="en">6. Your Rights and Choices</span>
-                    <span lang="es" class="hidden">6. Tus Derechos y Opciones</span>
-                    <span lang="fr" class="hidden">6. Vos droits et choix</span>
-                    <span lang="pt" class="hidden">6. Seus direitos e escolhas</span>
-                </h2>
-                <p class="body-text mb-md">
-                    <span lang="en">• Delete Data: You can delete any or all saved data within the app<br />• Reset
-                        Settings: You can reset all app settings to defaults<br />• Export Control: You control
-                        when and how your app data is exported or shared</span>
-                    <span lang="es" class="hidden">• Eliminar Datos: Puedes eliminar cualquier dato guardado o todos
-                        los datos guardados dentro de la app<br />• Restablecer
-                        Configuración: Puedes restablecer toda la configuración de la app a los valores
-                        predeterminados<br />• Control de Exportación: Tú controlas
-                        cuándo y cómo se exportan o comparten los datos de la app</span>
-                    <span lang="fr" class="hidden">• Supprimer les données : Vous pouvez supprimer une partie ou la
-                        totalité des données enregistrées dans l'application<br />• Réinitialiser
-                        les paramètres : Vous pouvez réinitialiser tous les paramètres de l'application aux valeurs
-                        par défaut<br />• Contrôle d'exportation : Vous contrôlez
-                        quand et comment les données de l'application sont exportées ou partagées</span>
-                    <span lang="pt" class="hidden">• Excluir dados: Você pode excluir qualquer ou todos os dados
-                        salvos no aplicativo<br />• Redefinir
-                        configurações: Você pode redefinir todas as configurações do aplicativo para os
-                        padrões<br />• Controle de exportação: Você controla
-                        quando e como os dados do aplicativo são exportados ou compartilhados</span>
-                </p>
+        window.Header = function Header({ t, lang, currentProduct, cta }) {
+            const { dir, atTop } = window.useScrollDirection();
+            const isMobile = window.useIsMobile();
+            const hidden = dir === 'down' && !atTop;
+            const [dlOpen, setDlOpen] = React.useState(false);
+            const dlRef = React.useRef(null);
 
-                <!-- Premium Features -->
-                <h2 class="section-title mt-md" style="font-size: 28px;">
-                    <span lang="en">7. Premium Features</span>
-                    <span lang="es" class="hidden">7. Características Premium</span>
-                    <span lang="fr" class="hidden">7. Fonctionnalités Premium</span>
-                    <span lang="pt" class="hidden">7. Recursos Premium</span>
-                </h2>
-                <p class="body-text mb-md">
-                    <span lang="en">Our apps and games offer premium features through in-app purchases, which are
-                        processed by Apple. These purchases only affect feature availability and do not change our data
-                        practices.</span>
-                    <span lang="es" class="hidden">Nuestras apps y juegos ofrecen características premium a través
-                        de compras dentro de la app, que son procesadas por Apple.
-                        Estas compras solo afectan la disponibilidad de funciones y no cambian nuestras prácticas de
-                        datos.</span>
-                    <span lang="fr" class="hidden">Nos applications et jeux offrent des fonctionnalités premium via
-                        des achats intégrés, gérés par Apple.
-                        Ces achats n'affectent que la disponibilité des fonctionnalités et ne modifient pas nos
-                        pratiques
-                        en matière de données.</span>
-                    <span lang="pt" class="hidden">Nossos aplicativos e jogos oferecem recursos premium por meio de
-                        compras no aplicativo, processadas pela Apple.
-                        Essas compras afetam apenas a disponibilidade de recursos e não alteram nossas práticas de
-                        dados.</span>
-                </p>
+            React.useEffect(() => {
+                if (!dlOpen) return;
+                const handler = (e) => {
+                    if (dlRef.current && !dlRef.current.contains(e.target)) setDlOpen(false);
+                };
+                document.addEventListener('mousedown', handler);
+                return () => document.removeEventListener('mousedown', handler);
+            }, [dlOpen]);
 
-                <!-- Changes to This Policy -->
-                <h2 class="section-title mt-md" style="font-size: 28px;">
-                    <span lang="en">8. Changes to This Policy</span>
-                    <span lang="es" class="hidden">8. Cambios a esta Política</span>
-                    <span lang="fr" class="hidden">8. Modifications de cette politique</span>
-                    <span lang="pt" class="hidden">8. Alterações nesta política</span>
-                </h2>
-                <p class="body-text mb-md">
-                    <span lang="en">We may update this Privacy Policy periodically. We will notify you of any
-                        material changes through our apps.</span>
-                    <span lang="es" class="hidden">Podemos actualizar esta Política de Privacidad periódicamente. Te
-                        notificaremos de cualquier cambio
-                        material a través de nuestras apps.</span>
-                    <span lang="fr" class="hidden">Nous pouvons mettre à jour cette politique de confidentialité
-                        périodiquement. Nous vous informerons de tout changement
-                        important via nos applications.</span>
-                    <span lang="pt" class="hidden">Podemos atualizar esta Política de Privacidade periodicamente.
-                        Notificaremos você sobre quaisquer alterações
-                        materiais através de nossos aplicativos.</span>
-                </p>
+            const downloadItems = [
+                { label: 'Bricks Calc', href: 'https://apps.apple.com/us/app/bricks-calc-loan-calculator/id6754506837', accent: window.ACCENTS.calc.light, external: true },
+                { label: 'Bricks Scan', href: 'https://apps.apple.com/us/app/bricks-scan-scan-to-pdf/id6758148083', accent: window.ACCENTS.scan.light, external: true },
+                { label: 'Bricks Leads', href: 'leads.html', accent: window.ACCENTS.leads.light, external: false },
+            ];
 
-                <!-- Contact Us -->
-                <h2 class="section-title mt-md" style="font-size: 28px;">
-                    <span lang="en">9. Contact Us</span>
-                    <span lang="es" class="hidden">9. Contáctanos</span>
-                    <span lang="fr" class="hidden">9. Contactez-nous</span>
-                    <span lang="pt" class="hidden">9. Fale Conosco</span>
-                </h2>
-                <p class="body-text mb-md">
-                    <span lang="en">If you have questions about this Privacy Policy, please contact us at
-                        hello@bricks.pe</span>
-                    <span lang="es" class="hidden">Si tienes alguna pregunta sobre esta Política de Privacidad,
-                        contáctanos en
-                        hello@bricks.pe</span>
-                    <span lang="fr" class="hidden">Si vous avez des questions sur cette politique de
-                        confidentialité, veuillez nous contacter à
-                        hello@bricks.pe</span>
-                    <span lang="pt" class="hidden">Se você tiver dúvidas sobre esta Política de Privacidade, entre
-                        em contato conosco em
-                        hello@bricks.pe</span>
-                </p>
-            </div>
-
-            <div class="center-text mt-lg mb-sm reveal-on-scroll delay-400">
-                <a href="index.html" class="btn btn-primary"
-                    onclick="gtag('event', 'click', {event_category: 'navigation', event_label: 'back_to_home'})">
-                    <span lang="en">Back to Home</span>
-                    <span lang="es" class="hidden">Volver al Inicio</span>
-                    <span lang="fr" class="hidden">Retour à l'accueil</span>
-                    <span lang="pt" class="hidden">Voltar ao Início</span>
-                </a>
-            </div>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="container reveal-on-scroll">
-            <div style="
-                        display: flex;
-                        flex-wrap: wrap;
-                        gap: 48px;
-                        justify-content: space-between;
-                        margin-bottom: 48px;
-                    ">
-                <!-- Brand Section -->
-                <div class="footer-brand" style="flex: 1; min-width: 280px">
-                    <a href="index.html" style="display: inline-block; margin-bottom: 16px">
-                        <img src="images/bricks-dark-logo.svg" onerror="this.src='images/bricks-light-logo.svg'"
-                            alt="Bricks Logo" style="height: 32px; opacity: 0.8" />
+            return (
+                <header style={{
+                    position: 'fixed', top: isMobile ? 12 : 24,
+                    left: isMobile ? 16 : 48, right: isMobile ? 16 : 48, zIndex: 100,
+                    display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                    padding: isMobile ? '10px 10px 10px 18px' : '12px 14px 12px 24px',
+                    background: 'color-mix(in srgb, var(--b-bg-elevated) 65%, transparent)',
+                    backdropFilter: 'blur(20px) saturate(180%)',
+                    WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+                    borderRadius: 100,
+                    border: '1px solid var(--b-border)',
+                    boxShadow: '0 8px 32px rgba(11,15,20,0.06)',
+                    transform: hidden ? 'translateY(-130%)' : 'translateY(0)',
+                    opacity: hidden ? 0 : 1,
+                    transition: 'transform 0.45s cubic-bezier(0.16,1,0.3,1), opacity 0.35s ease',
+                }}>
+                    <a href="index.html"
+                        style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                        <window.ThemeLogo height={24} />
                     </a>
-                    <p class="body-text" style="font-size: 15px">
-                        <span lang="en">We build Apple apps for work and everyday life.</span>
-                        <span lang="es" class="hidden">Desarrollamos Apple apps para el trabajo y la vida
-                            diaria.</span>
-                    </p>
-                    <div class="footer-social" style="display: flex; gap: 16px; margin-top: 24px">
-                        <a href="https://www.instagram.com/hellobricksapps/" target="_blank" rel="noopener"
-                            style="color: var(--text-secondary); opacity: 0.6; transition: opacity 0.2s"
-                            onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'">
-                            <img src="images/icon-instagram.svg" alt="Instagram" style="width: 20px; height: 20px" />
-                        </a>
-                        <a href="https://x.com/hellobricksapps" target="_blank" rel="noopener"
-                            style="color: var(--text-secondary); opacity: 0.6; transition: opacity 0.2s"
-                            onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'">
-                            <img src="images/icon-x.svg" alt="X" style="width: 20px; height: 20px" />
-                        </a>
-                        <a href="https://www.linkedin.com/company/bricksapps/" target="_blank" rel="noopener"
-                            style="color: var(--text-secondary); opacity: 0.6; transition: opacity 0.2s"
-                            onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'">
-                            <img src="images/icon-linkedin.svg" alt="LinkedIn" style="width: 20px; height: 20px" />
-                        </a>
+
+                    <nav style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
+                        <div ref={dlRef} style={{ position: 'relative' }}>
+                            <button
+                                onClick={() => setDlOpen(v => !v)}
+                                style={{
+                                    marginLeft: isMobile ? 0 : 6,
+                                    padding: isMobile ? '9px 16px' : '10px 18px', borderRadius: 100,
+                                    background: 'var(--b-text)', color: 'var(--b-bg)',
+                                    border: 'none', fontSize: 14, fontWeight: 600, cursor: 'pointer',
+                                    fontFamily: 'inherit', letterSpacing: '-0.01em',
+                                    display: 'inline-flex', alignItems: 'center', gap: 6,
+                                    boxShadow: '0 8px 20px rgba(11,15,20,0.18)',
+                                    transition: 'transform 0.15s ease, box-shadow 0.2s',
+                                }}
+                                onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-1px)'; }}
+                                onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; }}
+                            >
+                                {t.nav.download}
+                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" style={{
+                                    transform: dlOpen ? 'rotate(180deg)' : 'rotate(0)',
+                                    transition: 'transform 0.25s ease',
+                                }}>
+                                    <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                </svg>
+                            </button>
+
+                            <div style={{
+                                position: 'absolute', top: 'calc(100% + 10px)', right: 0,
+                                minWidth: 220,
+                                background: 'color-mix(in srgb, var(--b-bg-elevated) 85%, transparent)',
+                                backdropFilter: 'blur(24px) saturate(180%)',
+                                WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+                                borderRadius: 20, border: '1px solid var(--b-border)',
+                                boxShadow: '0 16px 48px rgba(11,15,20,0.16)',
+                                padding: 8,
+                                opacity: dlOpen ? 1 : 0,
+                                transform: dlOpen ? 'translateY(0) scale(1)' : 'translateY(-8px) scale(0.96)',
+                                pointerEvents: dlOpen ? 'auto' : 'none',
+                                transition: 'opacity 0.25s ease, transform 0.3s cubic-bezier(0.16,1,0.3,1)',
+                            }}>
+                                {downloadItems.map((item, i) => (
+                                    <a key={i} href={item.href}
+                                        target={item.external ? '_blank' : undefined}
+                                        rel={item.external ? 'noopener noreferrer' : undefined}
+                                        onClick={() => setDlOpen(false)}
+                                        style={{
+                                            display: 'flex', alignItems: 'center', gap: 12,
+                                            padding: '12px 16px', borderRadius: 14,
+                                            fontSize: 14, fontWeight: 500, color: 'var(--b-text)',
+                                            transition: 'background 0.15s ease',
+                                            textDecoration: 'none',
+                                        }}
+                                        onMouseEnter={(e) => e.currentTarget.style.background = 'var(--b-bg)'}
+                                        onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+                                    >
+                                        <div style={{ width: 8, height: 8, borderRadius: 4, background: item.accent, flexShrink: 0 }} />
+                                        <span style={{ flex: 1 }}>{item.label}</span>
+                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style={{ opacity: 0.4 }}>
+                                            <path d={item.external ? 'M4 2h6v6M10 2L3 9' : 'M4 2l5 4-5 4'}
+                                                stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+                                        </svg>
+                                    </a>
+                                ))}
+                            </div>
+                        </div>
+                    </nav>
+                </header>
+            );
+        };
+
+        // ==========================================================================
+        // Footer
+        // ==========================================================================
+
+        window.Footer = function Footer({ t, lang, setLang, theme, setTheme }) {
+            const isMobile = window.useIsMobile();
+            return (
+                <footer style={{
+                    padding: isMobile ? '48px 20px 32px' : '80px 48px 48px', borderTop: '1px solid var(--b-border)',
+                    background: 'var(--b-bg)',
+                }}>
+                    <div style={{
+                        maxWidth: 1200, margin: '0 auto',
+                        display: 'grid',
+                        gridTemplateColumns: isMobile ? '1fr' : '1.4fr 1fr 1fr 1fr',
+                        gap: isMobile ? 32 : 48,
+                        marginBottom: isMobile ? 40 : 56,
+                    }}>
+                        <div style={{ gridColumn: isMobile ? '1 / -1' : undefined }}>
+                            <window.ThemeLogo />
+                            <p style={{ fontSize: 14, color: 'var(--b-text-2)', lineHeight: 1.6, margin: '16px 0 24px', maxWidth: 300 }}>
+                                {t.footer.tag}
+                            </p>
+                            <div style={{ display: 'flex', gap: 10 }}>
+                                {[
+                                    { kind: 'instagram', href: 'https://www.instagram.com/hellobricksapps/' },
+                                    { kind: 'x', href: 'https://x.com/hellobricksapps' },
+                                    { kind: 'linkedin', href: 'https://www.linkedin.com/company/bricksapps/' },
+                                ].map(s => (
+                                    <a key={s.kind} href={s.href} target="_blank" rel="noopener noreferrer" style={{
+                                        width: 36, height: 36, borderRadius: '50%', background: 'var(--b-bg-elevated)',
+                                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                        boxShadow: 'var(--emboss-soft)', color: 'var(--b-text-2)',
+                                        transition: 'color 0.2s',
+                                    }}
+                                        onMouseEnter={(e) => e.currentTarget.style.color = 'var(--b-text)'}
+                                        onMouseLeave={(e) => e.currentTarget.style.color = 'var(--b-text-2)'}>
+                                        <SocialIcon kind={s.kind} />
+                                    </a>
+                                ))}
+                            </div>
+                        </div>
+                        {t.footer.sections.map((s, i) => (
+                            <div key={i}>
+                                <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--b-text-3)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 18 }}>{s.h}</div>
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                                    {s.l.map((l, j) => (
+                                        <a key={j} href={l.href} style={{ fontSize: 14, color: 'var(--b-text)', opacity: 0.85 }}>{l.label}</a>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div style={{
+                        maxWidth: 1200, margin: '0 auto',
+                        padding: isMobile ? '24px 0' : '32px 0', borderTop: '1px solid var(--b-border)',
+                        display: 'flex', gap: isMobile ? 20 : 32, flexWrap: 'wrap', alignItems: 'center',
+                    }}>
+                        <ToggleGroup label={t.footer.language} options={[{ v: 'en', l: 'EN' }, { v: 'es', l: 'ES' }]} value={lang} setValue={setLang} />
+                        <ToggleGroup label={t.footer.appearance} options={[{ v: 'auto', l: t.footer.auto }, { v: 'light', l: t.footer.light }, { v: 'dark', l: t.footer.dark }]} value={theme} setValue={setTheme} />
+                    </div>
+
+                    <div style={{
+                        maxWidth: 1200, margin: '24px auto 0',
+                        display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                        flexWrap: 'wrap', gap: 16,
+                    }}>
+                        <div style={{ fontSize: 13, color: 'var(--b-text-2)' }}>{t.footer.copyright}</div>
+                        <div style={{ display: 'flex', gap: 20 }}>
+                            {t.footer.legal.map((l, i) => (
+                                <a key={i} href={l.href} style={{ fontSize: 13, color: 'var(--b-text-2)' }}>{l.label}</a>
+                            ))}
+                        </div>
+                    </div>
+                </footer>
+            );
+        };
+
+        function ToggleGroup({ label, options, value, setValue }) {
+            return (
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 10 }}>
+                    <div style={{ fontSize: 11, fontWeight: 500, color: 'var(--b-text-3)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{label}</div>
+                    <div style={{ display: 'inline-flex', gap: 2 }}>
+                        {options.map((o, i) => (
+                            <React.Fragment key={o.v}>
+                                {i > 0 && <span style={{ color: 'var(--b-text-3)', fontSize: 12, alignSelf: 'center', opacity: 0.5 }}>·</span>}
+                                <button onClick={() => setValue(o.v)}
+                                    style={{
+                                        border: 'none', background: 'transparent', cursor: 'pointer', fontFamily: 'inherit',
+                                        padding: '2px 6px', fontSize: 12,
+                                        fontWeight: value === o.v ? 600 : 400,
+                                        color: value === o.v ? 'var(--b-text)' : 'var(--b-text-2)',
+                                        opacity: value === o.v ? 1 : 0.7,
+                                        transition: 'opacity 0.2s ease, color 0.2s ease',
+                                    }}
+                                    onMouseEnter={(e) => { if (value !== o.v) e.currentTarget.style.opacity = 1; }}
+                                    onMouseLeave={(e) => { if (value !== o.v) e.currentTarget.style.opacity = 0.7; }}
+                                >{o.l}</button>
+                            </React.Fragment>
+                        ))}
                     </div>
                 </div>
+            );
+        }
 
-                <!-- Footer Links Grid -->
-                <div style="
-                            flex: 2;
-                            min-width: 280px;
-                            display: grid;
-                            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-                            gap: 32px;
-                        ">
-                    <!-- Apps Section -->
-                    <div>
-                        <h3 class="subheading" style="font-size: 16px; margin-bottom: 16px">
-                            <span lang="en">Apps</span>
-                            <span lang="es" class="hidden">Apps</span>
-                        </h3>
-                        <ul style="
-                                    list-style: none;
-                                    padding: 0;
-                                    margin: 0;
-                                    display: flex;
-                                    flex-direction: column;
-                                    gap: 12px;
-                                ">
-                            <li>
-                                <a href="scan.html" class="body-text" style="font-size: 15px">
-                                    <span lang="en">Bricks Scan</span>
-                                    <span lang="es" class="hidden">Bricks Scan</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="calc.html" class="body-text" style="font-size: 15px">
-                                    <span lang="en">Bricks Calc</span>
-                                    <span lang="es" class="hidden">Bricks Calc</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://leads.bricks.pe" class="body-text" style="font-size: 15px">
-                                    <span lang="en">Bricks Leads</span>
-                                    <span lang="es" class="hidden">Bricks Leads</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+        function SocialIcon({ kind }) {
+            const s = { stroke: 'currentColor', fill: 'none', strokeWidth: 1.6, strokeLinecap: 'round', strokeLinejoin: 'round' };
+            if (kind === 'instagram') return (
+                <svg width="15" height="15" viewBox="0 0 20 20"><rect x="3" y="3" width="14" height="14" rx="4" {...s} /><circle cx="10" cy="10" r="3.2" {...s} /><circle cx="14.3" cy="5.7" r="0.5" fill="currentColor" /></svg>
+            );
+            if (kind === 'x') return (
+                <svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path d="M15.2 2h2.8l-6.1 7 7.2 9h-5.6l-4.4-5.8L4 18H1.2l6.5-7.5L1 2h5.7l4 5.3zm-1 14.6h1.5L5.9 3.3H4.3z" /></svg>
+            );
+            return (
+                <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path d="M5.4 7.5h2.4v8.6H5.4zM6.6 3.5c-.8 0-1.4.6-1.4 1.4s.6 1.4 1.4 1.4 1.4-.6 1.4-1.4-.6-1.4-1.4-1.4zM9.4 7.5h2.3v1.2c.3-.6 1.1-1.3 2.3-1.3 2.4 0 2.9 1.6 2.9 3.7v5h-2.4v-4.4c0-1-.02-2.4-1.5-2.4-1.5 0-1.7 1.2-1.7 2.3v4.5H9.4z" /></svg>
+            );
+        }
 
-                    <!-- Company Section -->
-                    <div>
-                        <h3 class="subheading" style="font-size: 16px; margin-bottom: 16px">
-                            <span lang="en">Business</span>
-                            <span lang="es" class="hidden">Empresa</span>
-                        </h3>
-                        <ul style="
-                                    list-style: none;
-                                    padding: 0;
-                                    margin: 0;
-                                    display: flex;
-                                    flex-direction: column;
-                                    gap: 12px;
-                                ">
-                            <li>
-                                <a href="about.html" class="body-text" style="font-size: 15px">
-                                    <span lang="en">About us</span>
-                                    <span lang="es" class="hidden">Sobre nosotros</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="purchase-guide-01.html" class="body-text" style="font-size: 15px">
-                                    <span lang="en">Purchase Guide</span>
-                                    <span lang="es" class="hidden">Guía de compra</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="mailto:hello@bricks.pe" class="body-text" style="font-size: 15px">
-                                    <span lang="en">Email: hello@bricks.pe</span>
-                                    <span lang="es" class="hidden">Email: hello@bricks.pe</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+        // ==========================================================================
+        // Tweaks (edit mode toolbar)
+        // ==========================================================================
 
-                    <!-- Support Section -->
-                    <div>
-                        <h3 class="subheading" style="font-size: 16px; margin-bottom: 16px">
-                            <span lang="en">Support</span>
-                            <span lang="es" class="hidden">Soporte</span>
-                        </h3>
-                        <ul style="
-                                    list-style: none;
-                                    padding: 0;
-                                    margin: 0;
-                                    display: flex;
-                                    flex-direction: column;
-                                    gap: 12px;
-                                ">
-                            <li>
-                                <a href="support.html" class="body-text" style="font-size: 15px;">
-                                    <span lang="en">Contact</span>
-                                    <span lang="es" class="hidden">Contacto</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://bricksapps.userjot.com" class="body-text" style="font-size: 15px;">
-                                    <span lang="en">Vote on Features</span>
-                                    <span lang="es" class="hidden">Votar funciones</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="help.html" class="body-text" style="font-size: 15px;">
-                                    <span lang="en">Apps Guides</span>
-                                    <span lang="es" class="hidden">Guías</span>
-                                </a>
-                            </li>
+        window.useTweaks = function useTweaks({ lang, setLang, theme, setTheme }) {
+            const [visible, setVisible] = React.useState(false);
 
-                            <li>
-                                <a href="survey.html" class="body-text" style="font-size: 15px">
-                                    <span lang="en">Survey</span>
-                                    <span lang="es" class="hidden">Encuesta</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+            React.useEffect(() => {
+                const handler = (e) => {
+                    const d = e.data || {};
+                    if (d.type === '__activate_edit_mode') setVisible(true);
+                    if (d.type === '__deactivate_edit_mode') setVisible(false);
+                };
+                window.addEventListener('message', handler);
+                window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+                return () => window.removeEventListener('message', handler);
+            }, []);
+
+            if (!visible) return null;
+
+            return (
+                <div style={{
+                    position: 'fixed', right: 24, bottom: 24, zIndex: 200,
+                    background: 'var(--b-bg-elevated)', borderRadius: 24,
+                    boxShadow: '0 12px 40px rgba(0,0,0,0.18), var(--emboss-soft)',
+                    padding: 20, minWidth: 260,
+                    border: '1px solid var(--b-border)',
+                }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--b-text-3)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 14 }}>Tweaks</div>
+                    <TweakRow label="Language">
+                        {['en', 'es'].map(v => (
+                            <button key={v} onClick={() => { setLang(v); tweakPersist({ lang: v }); }} style={tweakBtn(lang === v)}>{v.toUpperCase()}</button>
+                        ))}
+                    </TweakRow>
+                    <TweakRow label="Appearance">
+                        {[['auto', 'System'], ['light', 'Light'], ['dark', 'Dark']].map(([v, l]) => (
+                            <button key={v} onClick={() => { setTheme(v); tweakPersist({ theme: v }); }} style={tweakBtn(theme === v)}>{l}</button>
+                        ))}
+                    </TweakRow>
                 </div>
-            </div>
+            );
+        };
 
-            <div style="
-                        border-top: 1px solid var(--surface-shadow);
-                        padding-top: 32px;
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        gap: 16px;
-                    ">
-                <p class="metadata" style="text-align: center">
-                    <span lang="en">© 2026 Bricks Apps. All rights reserved.</span>
-                    <span lang="es" class="hidden">© 2026 Bricks Apps. Todos los derechos reservados</span>
-                </p>
-                <div class="footer-bottom-row"
-                    style="display: flex; justify-content: center; flex-wrap: wrap; gap: 24px; align-items: center">
-                    <div class="footer-links" style="display: flex; flex-wrap: wrap; gap: 24px">
-                        <a href="privacy.html" style="margin: 0">
-                            <span lang="en">Privacy Policy</span>
-                            <span lang="es" class="hidden">Política de privacidad</span>
-                        </a>
-                        <a href="terms.html" style="margin: 0">
-                            <span lang="en">Terms of Service</span>
-                            <span lang="es" class="hidden">Términos de servicio</span>
-                        </a>
-                    </div>
-                    <div class="footer-language-dropdown">
-                        <img src="images/globe-icon.svg" alt="" class="footer-globe-icon" />
-                        <select id="language-select" title="Change language / Cambiar idioma">
-                            <option value="en">English</option>
-                            <option value="es">Español</option>
-                        </select>
-                    </div>
+        function tweakPersist(edits) {
+            window.parent.postMessage({ type: '__edit_mode_set_keys', edits }, '*');
+        }
+        function TweakRow({ label, children }) {
+            return (
+                <div style={{ marginBottom: 12 }}>
+                    <div style={{ fontSize: 11, color: 'var(--b-text-2)', marginBottom: 6 }}>{label}</div>
+                    <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>{children}</div>
                 </div>
-            </div>
-        </div>
-    </footer>
+            );
+        }
+        function tweakBtn(active) {
+            return {
+                padding: '6px 12px', borderRadius: 100, border: 'none', cursor: 'pointer',
+                fontSize: 12, fontWeight: 600, fontFamily: 'inherit',
+                background: active ? 'var(--b-text)' : 'var(--b-bg)',
+                color: active ? 'var(--b-bg)' : 'var(--b-text)',
+                boxShadow: active ? 'none' : 'var(--emboss-soft)',
+            };
+        }
+    </script>
 
-    <script>
-        // Intersection Observer for Reveal on Scroll
-        document.addEventListener('DOMContentLoaded', () => {
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1
+    <script type="text/babel">
+        // ==========================================================================
+        // PRIVACY_COPY — page-specific copy (EN / ES)
+        // ==========================================================================
+
+        const PRIVACY_COPY = {
+            en: {
+                hero: {
+                    eyebrow: 'Legal',
+                    title: 'Privacy policy',
+                    updated: 'Last updated: April 1, 2025',
+                },
+                sections: [
+                    {
+                        title: '1. Introduction',
+                        body: 'Welcome to Bricks Apps. This privacy policy applies to our apps and games, and explains how we handle your information when you use our applications.',
+                    },
+                    {
+                        title: '2. Information we collect',
+                        body: 'We do not collect your personal data or inputs from our apps and games. All data and calculations are processed locally on your device. However, we may collect limited diagnostic information and aggregated usage data to improve app performance and reliability. We do not use advertising services or third-party advertising SDKs.',
+                        subsections: [
+                            {
+                                heading: 'a. Information you provide',
+                                items: [
+                                    'App data: information, inputs, and data you enter into our apps and games for calculations, gameplay, or other features. This data stays on your device and is not transmitted to our servers.',
+                                ],
+                            },
+                            {
+                                heading: 'b. Diagnostics and usage data (optional)',
+                                items: [
+                                    'Optional diagnostics and analytics: crash reports, performance metrics, device type and OS version, and aggregated feature usage to help us improve the apps. Where available, you can control analytics collection in your device settings.',
+                                ],
+                            },
+                            {
+                                heading: 'c. Information we do not collect',
+                                items: [
+                                    'We do not collect personal identifiers such as your name, email address, or phone number.',
+                                    'We do not request or store financial account details.',
+                                    'We do not track your location.',
+                                ],
+                            },
+                        ],
+                    },
+                    {
+                        title: '3. How we use your information',
+                        list: [
+                            'Local storage: all your data is stored locally on your device.',
+                            'App functionality: we use the information you provide solely to enable app features and functionality on your device.',
+                            'Export and sharing: when you choose to export or share content from our apps, we temporarily process your data on your device to generate PDFs, images, or other files for sharing.',
+                            'App improvements: we may use anonymized diagnostics and aggregated usage metrics to improve features, performance, and reliability.',
+                        ],
+                    },
+                    {
+                        title: '4. Data sharing and third parties',
+                        list: [
+                            'No external data transfer: your data never leaves your device unless you explicitly choose to share it.',
+                            'Sharing features: when you use the app\u2019s sharing features to export or share content, you control who receives this information.',
+                            'Apple\u2019s App Store: we use Apple for managing in-app purchases, which is subject to Apple\u2019s privacy practices.',
+                        ],
+                    },
+                    {
+                        title: '5. Data retention and security',
+                        list: [
+                            'Local storage only: all data is stored locally on your device.',
+                            'Data control: you can delete your saved data at any time through the app interface.',
+                        ],
+                    },
+                    {
+                        title: '6. Your rights and choices',
+                        list: [
+                            'Delete data: you can delete any or all saved data within the app.',
+                            'Reset settings: you can reset all app settings to defaults.',
+                            'Export control: you control when and how your app data is exported or shared.',
+                        ],
+                    },
+                    {
+                        title: '7. Premium features',
+                        body: 'Our apps and games offer premium features through in-app purchases, which are processed by Apple. These purchases only affect feature availability and do not change our data practices.',
+                    },
+                    {
+                        title: '8. Changes to this policy',
+                        body: 'We may update this privacy policy periodically. We will notify you of any material changes through our apps.',
+                    },
+                    {
+                        title: '9. Contact us',
+                        body: 'If you have questions about this privacy policy, please contact us at hello@bricks.pe.',
+                    },
+                ],
+                backHome: 'Back to home',
+            },
+            es: {
+                hero: {
+                    eyebrow: 'Legal',
+                    title: 'Pol\u00edtica de privacidad',
+                    updated: '\u00daltima actualizaci\u00f3n: 1 de abril de 2025',
+                },
+                sections: [
+                    {
+                        title: '1. Introducci\u00f3n',
+                        body: 'Bienvenido a Bricks Apps. Esta pol\u00edtica de privacidad aplica a nuestras apps y juegos, y explica c\u00f3mo manejamos tu informaci\u00f3n cuando usas nuestras aplicaciones.',
+                    },
+                    {
+                        title: '2. Informaci\u00f3n que recopilamos',
+                        body: 'No recopilamos tus datos personales ni entradas de nuestras apps y juegos. Todos los datos y c\u00e1lculos se procesan localmente en tu dispositivo. Sin embargo, podemos recopilar informaci\u00f3n de diagn\u00f3stico limitada y datos de uso agregados para mejorar el rendimiento y la confiabilidad de las apps. No utilizamos servicios de publicidad ni SDKs de anuncios de terceros.',
+                        subsections: [
+                            {
+                                heading: 'a. Informaci\u00f3n que proporcionas',
+                                items: [
+                                    'Datos de la app: informaci\u00f3n, entradas y datos que ingresas en nuestras apps y juegos para c\u00e1lculos, juego u otras funciones. Estos datos permanecen en tu dispositivo y no se transmiten a nuestros servidores.',
+                                ],
+                            },
+                            {
+                                heading: 'b. Datos de diagn\u00f3stico y uso (opcional)',
+                                items: [
+                                    'Diagn\u00f3sticos y anal\u00edticas opcionales: informes de fallos, m\u00e9tricas de rendimiento, tipo de dispositivo y versi\u00f3n del sistema, y uso agregado de funciones para ayudarnos a mejorar las apps. Cuando est\u00e9 disponible, puedes controlar la recopilaci\u00f3n de anal\u00edticas en los ajustes de tu dispositivo.',
+                                ],
+                            },
+                            {
+                                heading: 'c. Informaci\u00f3n que no recopilamos',
+                                items: [
+                                    'No recopilamos identificadores personales como tu nombre, direcci\u00f3n de correo electr\u00f3nico o n\u00famero de tel\u00e9fono.',
+                                    'No solicitamos ni almacenamos detalles de cuentas financieras.',
+                                    'No rastreamos tu ubicaci\u00f3n.',
+                                ],
+                            },
+                        ],
+                    },
+                    {
+                        title: '3. C\u00f3mo utilizamos tu informaci\u00f3n',
+                        list: [
+                            'Almacenamiento local: todos tus datos se almacenan localmente en tu dispositivo.',
+                            'Funcionalidad de la app: utilizamos la informaci\u00f3n que proporcionas \u00fanicamente para habilitar las funciones y caracter\u00edsticas de la app en tu dispositivo.',
+                            'Exportaci\u00f3n y compartir: cuando eliges exportar o compartir contenido de nuestras apps, procesamos temporalmente tus datos en tu dispositivo para generar PDFs, im\u00e1genes u otros archivos para compartir.',
+                            'Mejoras de la app: podemos utilizar diagn\u00f3sticos anonimizados y m\u00e9tricas de uso agregadas para mejorar las funciones, el rendimiento y la confiabilidad.',
+                        ],
+                    },
+                    {
+                        title: '4. Compartir informaci\u00f3n',
+                        list: [
+                            'Sin transferencia externa de datos: tus datos nunca salen de tu dispositivo a menos que expl\u00edcitamente elijas compartirlos.',
+                            'Funciones de compartir: cuando usas las funciones de compartir de la app para exportar o compartir contenido, t\u00fa controlas qui\u00e9n recibe esta informaci\u00f3n.',
+                            'Apple App Store: utilizamos Apple para gestionar las compras dentro de la app, lo cual est\u00e1 sujeto a las pr\u00e1cticas de privacidad de Apple.',
+                        ],
+                    },
+                    {
+                        title: '5. Seguridad de datos',
+                        list: [
+                            'Solo almacenamiento local: todos los datos se almacenan localmente en tu dispositivo.',
+                            'Control de datos: puedes eliminar tus datos guardados en cualquier momento a trav\u00e9s de la interfaz de la app.',
+                        ],
+                    },
+                    {
+                        title: '6. Tus derechos y opciones',
+                        list: [
+                            'Eliminar datos: puedes eliminar cualquier dato guardado o todos los datos guardados dentro de la app.',
+                            'Restablecer configuraci\u00f3n: puedes restablecer toda la configuraci\u00f3n de la app a los valores predeterminados.',
+                            'Control de exportaci\u00f3n: t\u00fa controlas cu\u00e1ndo y c\u00f3mo se exportan o comparten los datos de la app.',
+                        ],
+                    },
+                    {
+                        title: '7. Caracter\u00edsticas premium',
+                        body: 'Nuestras apps y juegos ofrecen caracter\u00edsticas premium a trav\u00e9s de compras dentro de la app, que son procesadas por Apple. Estas compras solo afectan la disponibilidad de funciones y no cambian nuestras pr\u00e1cticas de datos.',
+                    },
+                    {
+                        title: '8. Cambios a esta pol\u00edtica',
+                        body: 'Podemos actualizar esta pol\u00edtica de privacidad peri\u00f3dicamente. Te notificaremos de cualquier cambio material a trav\u00e9s de nuestras apps.',
+                    },
+                    {
+                        title: '9. Cont\u00e1ctanos',
+                        body: 'Si tienes alguna pregunta sobre esta pol\u00edtica de privacidad, cont\u00e1ctanos en hello@bricks.pe.',
+                    },
+                ],
+                backHome: 'Volver al inicio',
+            },
+        };
+
+        // ==========================================================================
+        // PrivacyHero
+        // ==========================================================================
+
+        function PrivacyHero({ t }) {
+            const reveal = window.useReveal();
+            const isMobile = window.useIsMobile();
+
+            return (
+                <section id="top" ref={reveal} style={{
+                    position: 'relative',
+                    paddingTop: isMobile ? 120 : 180,
+                    paddingBottom: isMobile ? 40 : 64,
+                    display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+                    overflow: 'hidden', background: 'var(--b-bg)',
+                }}>
+                    {/* Ambient wash */}
+                    <div style={{
+                        position: 'absolute', inset: 0, pointerEvents: 'none', opacity: 0.5,
+                        background: 'radial-gradient(ellipse 700px 400px at 50% 20%, color-mix(in srgb, var(--b-text) 4%, transparent), transparent 60%)',
+                    }} />
+
+                    <div className="reveal" style={{
+                        position: 'relative', zIndex: 2, maxWidth: 800, margin: '0 auto',
+                        padding: isMobile ? '0 20px' : '0 48px', textAlign: 'center',
+                    }}>
+                        <div style={{
+                            display: 'inline-block', padding: '6px 14px', borderRadius: 100,
+                            background: 'var(--b-bg-elevated)', boxShadow: 'var(--emboss-soft)',
+                            ...window.eyebrowStyle, marginBottom: 24,
+                        }}>{t.hero.eyebrow}</div>
+                        <h1 style={{
+                            fontSize: isMobile ? 40 : 56, fontWeight: 900,
+                            letterSpacing: '-0.035em', lineHeight: 1.05,
+                            margin: '0 0 16px', color: 'var(--b-text)',
+                        }}>
+                            {t.hero.title}
+                        </h1>
+                        <p style={{
+                            fontSize: isMobile ? 15 : 17, color: 'var(--b-text-2)',
+                            lineHeight: 1.6, margin: 0, maxWidth: 480, marginLeft: 'auto', marginRight: 'auto',
+                        }}>
+                            {t.hero.updated}
+                        </p>
+                    </div>
+                </section>
+            );
+        }
+
+        // ==========================================================================
+        // PrivacyBody
+        // ==========================================================================
+
+        function PrivacyBody({ t }) {
+            const reveal = window.useReveal();
+            const isMobile = window.useIsMobile();
+
+            const sectionStyle = {
+                marginBottom: isMobile ? 40 : 56,
             };
 
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
+            const h2Style = {
+                fontSize: isMobile ? 22 : 26, fontWeight: 700,
+                letterSpacing: '-0.02em', lineHeight: 1.2,
+                margin: '0 0 16px', color: 'var(--b-text)',
+            };
 
-            const animatedElements = document.querySelectorAll('.reveal-on-scroll');
-            animatedElements.forEach(el => {
-                observer.observe(el);
-            });
-        });
+            const h3Style = {
+                fontSize: isMobile ? 16 : 18, fontWeight: 600,
+                letterSpacing: '-0.01em', lineHeight: 1.3,
+                margin: '24px 0 10px', color: 'var(--b-text)',
+            };
+
+            const bodyStyle = {
+                fontSize: isMobile ? 15 : 16, color: 'var(--b-text-2)',
+                lineHeight: 1.7, margin: '0 0 12px',
+            };
+
+            const listItemStyle = {
+                fontSize: isMobile ? 15 : 16, color: 'var(--b-text-2)',
+                lineHeight: 1.7, margin: '0 0 8px',
+                paddingLeft: 16, position: 'relative',
+            };
+
+            const dotStyle = {
+                position: 'absolute', left: 0, top: '0.65em',
+                width: 5, height: 5, borderRadius: '50%',
+                background: 'var(--b-text-3)',
+            };
+
+            return (
+                <section ref={reveal} style={{
+                    maxWidth: 720, margin: '0 auto',
+                    padding: isMobile ? '0 20px 64px' : '0 48px 96px',
+                }}>
+                    {t.sections.map((sec, i) => (
+                        <div key={i} className="reveal" style={sectionStyle}>
+                            <h2 style={h2Style}>{sec.title}</h2>
+
+                            {sec.body && <p style={bodyStyle}>{sec.body}</p>}
+
+                            {sec.subsections && sec.subsections.map((sub, j) => (
+                                <div key={j}>
+                                    <h3 style={h3Style}>{sub.heading}</h3>
+                                    {sub.items.map((item, k) => (
+                                        <div key={k} style={listItemStyle}>
+                                            <div style={dotStyle} />
+                                            {item}
+                                        </div>
+                                    ))}
+                                </div>
+                            ))}
+
+                            {sec.list && sec.list.map((item, k) => (
+                                <div key={k} style={listItemStyle}>
+                                    <div style={dotStyle} />
+                                    {item}
+                                </div>
+                            ))}
+                        </div>
+                    ))}
+
+                    {/* Back to home */}
+                    <div className="reveal" style={{ textAlign: 'center', marginTop: isMobile ? 24 : 40 }}>
+                        <a href="index.html"
+                            style={{
+                                display: 'inline-flex', alignItems: 'center', gap: 10,
+                                padding: '14px 28px', borderRadius: 100,
+                                background: 'var(--b-text)', color: 'var(--b-bg)',
+                                textDecoration: 'none', fontSize: 15, fontWeight: 600,
+                                fontFamily: 'inherit', letterSpacing: '-0.01em',
+                                boxShadow: '0 12px 32px rgba(11,15,20,0.18)',
+                                transition: 'transform 0.15s ease, box-shadow 0.2s',
+                            }}
+                            onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; }}
+                            onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; }}
+                        >
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M13 8H3M6 5L3 8l3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                            {t.backHome}
+                        </a>
+                    </div>
+                </section>
+            );
+        }
+
+        // ==========================================================================
+        // App
+        // ==========================================================================
+
+        const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{"lang": "en", "theme": "auto"}/*EDITMODE-END*/;
+
+        function App() {
+            const [lang, setLang] = React.useState(TWEAK_DEFAULTS.lang);
+            const [theme, setTheme] = React.useState(TWEAK_DEFAULTS.theme);
+
+            React.useEffect(() => {
+                const mq = window.matchMedia('(prefers-color-scheme: dark)');
+                const apply = () => {
+                    const effective = theme === 'auto' ? (mq.matches ? 'dark' : 'light') : theme;
+                    document.documentElement.setAttribute('data-theme', effective);
+                };
+                apply();
+                if (theme === 'auto') {
+                    mq.addEventListener('change', apply);
+                    return () => mq.removeEventListener('change', apply);
+                }
+            }, [theme]);
+
+            React.useEffect(() => {
+                document.documentElement.setAttribute('lang', lang);
+            }, [lang]);
+
+            const t = window.COPY[lang] || window.COPY.en;
+            const privacyT = PRIVACY_COPY[lang] || PRIVACY_COPY.en;
+
+            return (
+                <div style={{ background: 'var(--b-bg)', minHeight: '100vh', overflow: 'hidden' }}>
+                    <window.Header t={t} lang={lang} currentProduct="privacy" />
+
+                    <main>
+                        <PrivacyHero t={privacyT} />
+                        <PrivacyBody t={privacyT} />
+                    </main>
+
+                    <window.Footer t={t} lang={lang} setLang={setLang} theme={theme} setTheme={setTheme} />
+
+                    {/* Tweaks Menu (hidden until activated) */}
+                    <window.useTweaks lang={lang} setLang={setLang} theme={theme} setTheme={setTheme} />
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
     </script>
 </body>
 
