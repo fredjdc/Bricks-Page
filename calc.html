@@ -859,15 +859,16 @@
                     title: ['Built for real', 'conversations.'],
                     body: 'A mortgage calculator shouldn\'t be a complex spreadsheet. Calc gives you the flexibility to model any option live, right in front of your clients.',
                     items: [
-                        { t: 'No spreadsheets', d: 'Open the app and start modeling instantly. No switching tools or breaking the flow.' },
-                        { t: 'Adjust live', d: 'Change the amount, rate, or term in seconds and show the impact right away.' },
-                        { t: 'Compare clearly', d: 'Put multiple alternatives side by side so decisions are based on exact numbers.' },
+                        { t: 'No spreadsheets', d: 'Open the app and start modeling instantly. No switching tools or breaking the flow.', icon: 'icon-spreadsheets.svg' },
+                        { t: 'Adjust live', d: 'Change the amount, rate, or term in seconds and show the impact right away.', icon: 'icon-adjust.svg' },
+                        { t: 'Compare clearly', d: 'Put multiple alternatives side by side so decisions are based on exact numbers.', icon: 'icon-compare.svg' },
                     ],
                 },
                 feature1: {
                     eyebrow: 'Precision',
                     title: ['Real numbers,', 'not estimates.'],
                     body: 'Include property taxes, home insurance, and PMI in your calculations. Clients get the complete picture of their monthly commitment, not just the principal.',
+                    icon: 'icon-spreadsheets.svg',
                     bullets: [
                         { t: 'Taxes and Insurance', d: 'Easily toggle local taxes and insurance costs on or off.' },
                         { t: 'PMI handled', d: 'Automatically models private mortgage insurance for low down payments.' },
@@ -878,6 +879,7 @@
                     eyebrow: 'Prepayments',
                     title: ['Extra payments,', 'exact impact.'],
                     body: 'Add one-time or recurring extra payments to any scenario and instantly see how much interest and time your clients will save over the life of the loan.',
+                    icon: 'icon-adjust.svg',
                     bullets: [
                         { t: 'Lump-sum or recurring', d: 'Model a single large payment or a consistent monthly extra sum.' },
                         { t: 'Time saved', d: 'Immediately see how many months or years are shaved off the mortgage.' },
@@ -888,6 +890,7 @@
                     eyebrow: 'Share',
                     title: ['Give them', 'something to keep.'],
                     body: 'Once you find the right scenario, generate a clean, professional summary document in one tap. Send it via email or message before they even leave the room.',
+                    icon: 'icon-compare.svg',
                     bullets: [
                         { t: 'Instant export', d: 'Generates a beautifully formatted summary of the entire scenario.' },
                         { t: 'Share anywhere', d: 'Uses the native iOS share sheet for messages, email, or AirDrop.' },
@@ -948,15 +951,16 @@
                     title: ['Hecho para las', 'conversaciones.'],
                     body: 'Una calculadora hipotecaria no debería ser una hoja de cálculo complicada. Calc te da la flexibilidad para modelar cualquier opción en vivo frente a tus clientes.',
                     items: [
-                        { t: 'Sin hojas de cálculo', d: 'Abre la app y empieza a modelar inmediatamente. Sin cambiar de herramientas o romper el ritmo.' },
-                        { t: 'Ajusta en vivo', d: 'Cambia el monto, la tasa o el plazo en segundos y muestra el impacto al instante.' },
-                        { t: 'Compara claramente', d: 'Pon varias opciones lado a lado para que las decisiones se basen en números exactos.' },
+                        { t: 'Sin hojas de cálculo', d: 'Abre la app y empieza a modelar inmediatamente. Sin cambiar de herramientas o romper el ritmo.', icon: 'icon-spreadsheets.svg' },
+                        { t: 'Ajusta en vivo', d: 'Cambia el monto, la tasa o el plazo en segundos y muestra el impacto al instante.', icon: 'icon-adjust.svg' },
+                        { t: 'Compara claramente', d: 'Pon varias opciones lado a lado para que las decisiones se basen en números exactos.', icon: 'icon-compare.svg' },
                     ],
                 },
                 feature1: {
                     eyebrow: 'Precisión',
                     title: ['Números reales,', 'no estimaciones.'],
                     body: 'Incluye impuestos a la propiedad, seguros y PMI en tus cálculos. Los clientes obtienen la imagen completa de su compromiso mensual, no solo el capital.',
+                    icon: 'icon-spreadsheets.svg',
                     bullets: [
                         { t: 'Impuestos y seguros', d: 'Activa o desactiva los impuestos locales y el costo del seguro fácilmente.' },
                         { t: 'Manejo de PMI', d: 'Modela automáticamente el seguro hipotecario privado para enganches bajos.' },
@@ -967,6 +971,7 @@
                     eyebrow: 'Pagos adelantados',
                     title: ['Pagos extra,', 'impacto exacto.'],
                     body: 'Añade pagos extra únicos o recurrentes a cualquier escenario y ve al instante cuánto interés y tiempo ahorrarán tus clientes.',
+                    icon: 'icon-adjust.svg',
                     bullets: [
                         { t: 'Únicos o recurrentes', d: 'Modela un abono grande único o una cantidad extra fija mensual.' },
                         { t: 'Tiempo ahorrado', d: 'Ve de inmediato cuántos meses o años se restan de la hipoteca.' },
@@ -977,6 +982,7 @@
                     eyebrow: 'Comparte',
                     title: ['Dales algo', 'para llevar.'],
                     body: 'Una vez que encuentres el escenario ideal, genera un documento de resumen profesional en un toque. Envíalo por correo o mensaje antes de que salgan de la sala.',
+                    icon: 'icon-compare.svg',
                     bullets: [
                         { t: 'Exporta al instante', d: 'Genera un resumen maravillosamente formateado de todo el escenario.' },
                         { t: 'Comparte donde sea', d: 'Usa el menú nativo de iOS para mensajes, correo o AirDrop.' },
@@ -1183,7 +1189,7 @@
         // CalcPillars
         // ==========================================================================
 
-        function CalcPillars({ t }) {
+        function CalcPillars({ t, theme }) {
             const reveal = window.useReveal();
             const isMobile = window.useIsMobile();
             return (
@@ -1225,12 +1231,23 @@
                                 border: '1px solid var(--b-border)',
                             }}>
                                 <div style={{
-                                    width: 36, height: 36, borderRadius: 12,
+                                    width: 44, height: 44, borderRadius: 14,
                                     background: `${CALC_ACCENT}1a`,
                                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                                     marginBottom: 20,
+                                    boxShadow: 'var(--emboss-soft)',
+                                    border: '1px solid var(--b-border)',
                                 }}>
-                                    <div style={{ width: 10, height: 10, borderRadius: 5, background: CALC_ACCENT }} />
+                                    <div style={{
+                                        width: 22, height: 22,
+                                        backgroundColor: CALC_ACCENT,
+                                        maskImage: `url(images-bricks-calc/${p.icon})`,
+                                        WebkitMaskImage: `url(images-bricks-calc/${p.icon})`,
+                                        maskSize: 'contain',
+                                        WebkitMaskSize: 'contain',
+                                        maskRepeat: 'no-repeat',
+                                        WebkitMaskRepeat: 'no-repeat'
+                                    }} />
                                 </div>
                                 <div style={{ fontSize: 20, fontWeight: 700, color: 'var(--b-text)', marginBottom: 8, letterSpacing: '-0.01em' }}>{p.t}</div>
                                 <div style={{ fontSize: 15, color: 'var(--b-text-2)', lineHeight: 1.55 }}>{p.d}</div>
@@ -1245,7 +1262,7 @@
         // CalcFeatureSplit
         // ==========================================================================
 
-        function CalcFeatureSplit({ feature, reverse, shotSrc }) {
+        function CalcFeatureSplit({ feature, reverse, shotSrc, theme }) {
             const reveal = window.useReveal();
             const isMobile = window.useIsMobile();
             return (
@@ -1261,7 +1278,19 @@
                         direction: reverse && !isMobile ? 'rtl' : 'ltr',
                     }}>
                         <div className="reveal" style={{ direction: 'ltr' }}>
-                            <div style={{ ...window.eyebrowStyle, color: CALC_ACCENT }}>{feature.eyebrow}</div>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
+                                <div style={{
+                                    width: 20, height: 20,
+                                    backgroundColor: CALC_ACCENT,
+                                    maskImage: `url(images-bricks-calc/${feature.icon})`,
+                                    WebkitMaskImage: `url(images-bricks-calc/${feature.icon})`,
+                                    maskSize: 'contain',
+                                    WebkitMaskSize: 'contain',
+                                    maskRepeat: 'no-repeat',
+                                    WebkitMaskRepeat: 'no-repeat'
+                                }} />
+                                <div style={{ ...window.eyebrowStyle, color: CALC_ACCENT, marginBottom: 0 }}>{feature.eyebrow}</div>
+                            </div>
                             <h2 style={{
                                 fontSize: isMobile ? 36 : 52, fontWeight: 900, letterSpacing: '-0.035em',
                                 lineHeight: 1.02, margin: '0 0 20px', color: 'var(--b-text)',
@@ -1517,10 +1546,10 @@
                     <main>
                         <CalcHero t={calcT} lang={lang} theme={effectiveTheme} />
                         <CalcStats t={calcT} />
-                        <CalcPillars t={calcT} />
-                        <CalcFeatureSplit feature={calcT.feature1} reverse={false} shotSrc={shot1} />
-                        <CalcFeatureSplit feature={calcT.feature_prepay} reverse={true} shotSrc={shotPrepay} />
-                        <CalcFeatureSplit feature={calcT.feature2} reverse={false} shotSrc={shot2} />
+                        <CalcPillars t={calcT} theme={effectiveTheme} />
+                        <CalcFeatureSplit feature={calcT.feature1} reverse={false} shotSrc={shot1} theme={effectiveTheme} />
+                        <CalcFeatureSplit feature={calcT.feature_prepay} reverse={true} shotSrc={shotPrepay} theme={effectiveTheme} />
+                        <CalcFeatureSplit feature={calcT.feature2} reverse={false} shotSrc={shot2} theme={effectiveTheme} />
                         <CalcTestimonials t={calcT} />
                         <window.DownloadCTA t={t} variant="default" />
                         <CalcFAQ t={calcT} />

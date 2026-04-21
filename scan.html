@@ -902,9 +902,9 @@
                     title: ['Private', 'by design.'],
                     body: 'Processing stays on your device. Your documents are never uploaded for analysis or organization.',
                     items: [
-                        { t: '100% Offline', d: 'Works offline wherever you need to scan.' },
-                        { t: 'On-Device Processing', d: 'Your data stays on your device from the first scan.' },
-                        { t: 'Optional iCloud Sync', d: 'Sync across devices only when you choose to.' },
+                        { t: '100% Offline', d: 'Works offline wherever you need to scan.', icon: 'icon-offline.svg' },
+                        { t: 'On-Device Processing', d: 'Your data stays on your device from the first scan.', icon: 'icon-iphone.svg' },
+                        { t: 'Optional iCloud Sync', d: 'Sync across devices only when you choose to.', icon: 'icon-icloud.svg' },
                     ],
                 },
                 feature_org: {
@@ -1004,9 +1004,9 @@
                     title: ['Privado', 'por diseño.'],
                     body: 'El procesamiento ocurre en tu dispositivo. Tus documentos nunca se suben para analizarlos ni organizarlos.',
                     items: [
-                        { t: '100% sin conexión', d: 'Funciona sin internet donde necesites escanear.' },
-                        { t: 'Procesamiento Local', d: 'Tus datos se quedan en tu dispositivo desde el primer escaneo.' },
-                        { t: 'iCloud Sync Opcional', d: 'Sincroniza entre dispositivos solo cuando lo elijas.' },
+                        { t: '100% sin conexión', d: 'Funciona sin internet donde necesites escanear.', icon: 'icon-offline.svg' },
+                        { t: 'Procesamiento Local', d: 'Tus datos se quedan en tu dispositivo desde el primer escaneo.', icon: 'icon-iphone.svg' },
+                        { t: 'iCloud Sync Opcional', d: 'Sincroniza entre dispositivos solo cuando lo elijas.', icon: 'icon-icloud.svg' },
                     ],
                 },
                 feature_org: {
@@ -1196,7 +1196,7 @@
         // ScanFeatureSplit
         // ==========================================================================
 
-        function ScanFeatureSplit({ feature, reverse, shotSrc }) {
+        function ScanFeatureSplit({ feature, reverse, shotSrc, theme }) {
             const reveal = window.useReveal();
             const isMobile = window.useIsMobile();
             return (
@@ -1212,7 +1212,22 @@
                         direction: reverse && !isMobile ? 'rtl' : 'ltr',
                     }}>
                         <div className="reveal" style={{ direction: 'ltr' }}>
-                            <div style={{ ...window.eyebrowStyle, color: SCAN_ACCENT }}>{feature.eyebrow}</div>
+                            {feature.icon && (
+                                <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
+                                    <div style={{
+                                        width: 20, height: 20,
+                                        backgroundColor: SCAN_ACCENT,
+                                        maskImage: `url(images-bricks-scan/${feature.icon})`,
+                                        WebkitMaskImage: `url(images-bricks-scan/${feature.icon})`,
+                                        maskSize: 'contain',
+                                        WebkitMaskSize: 'contain',
+                                        maskRepeat: 'no-repeat',
+                                        WebkitMaskRepeat: 'no-repeat'
+                                    }} />
+                                    <div style={{ ...window.eyebrowStyle, color: SCAN_ACCENT, marginBottom: 0 }}>{feature.eyebrow}</div>
+                                </div>
+                            )}
+                            {!feature.icon && <div style={{ ...window.eyebrowStyle, color: SCAN_ACCENT }}>{feature.eyebrow}</div>}
                             <h2 style={{
                                 fontSize: isMobile ? 36 : 52, fontWeight: 900, letterSpacing: '-0.035em',
                                 lineHeight: 1.02, margin: '0 0 20px', color: 'var(--b-text)',
@@ -1239,7 +1254,7 @@
         // ScanPillars (Privacy)
         // ==========================================================================
 
-        function ScanPillars({ t }) {
+        function ScanPillars({ t, theme }) {
             const reveal = window.useReveal();
             const isMobile = window.useIsMobile();
             return (
@@ -1281,12 +1296,23 @@
                                 border: '1px solid var(--b-border)',
                             }}>
                                 <div style={{
-                                    width: 36, height: 36, borderRadius: 12,
+                                    width: 44, height: 44, borderRadius: 14,
                                     background: `${SCAN_ACCENT}1a`,
                                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                                     marginBottom: 20,
+                                    boxShadow: 'var(--emboss-soft)',
+                                    border: '1px solid var(--b-border)',
                                 }}>
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke={SCAN_ACCENT} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                                    <div style={{
+                                        width: 22, height: 22,
+                                        backgroundColor: SCAN_ACCENT,
+                                        maskImage: `url(images-bricks-scan/${p.icon})`,
+                                        WebkitMaskImage: `url(images-bricks-scan/${p.icon})`,
+                                        maskSize: 'contain',
+                                        WebkitMaskSize: 'contain',
+                                        maskRepeat: 'no-repeat',
+                                        WebkitMaskRepeat: 'no-repeat'
+                                    }} />
                                 </div>
                                 <div style={{ fontSize: 20, fontWeight: 700, color: 'var(--b-text)', marginBottom: 8, letterSpacing: '-0.01em' }}>{p.t}</div>
                                 <div style={{ fontSize: 15, color: 'var(--b-text-2)', lineHeight: 1.55 }}>{p.d}</div>
@@ -1689,10 +1715,10 @@
                     <main>
                         <ScanHero t={scanT} lang={lang} theme={effectiveTheme} />
                         <ScanStats t={scanT} />
-                        <ScanFeatureSplit feature={scanT.feature_org} reverse={false} shotSrc={shotOrg} />
-                        <ScanFeatureSplit feature={scanT.feature_search} reverse={true} shotSrc={shotSearch} />
-                        <ScanFeatureSplit feature={scanT.feature_tools} reverse={false} shotSrc={shotTools} />
-                        <ScanPillars t={scanT} />
+                        <ScanFeatureSplit feature={scanT.feature_org} reverse={false} shotSrc={shotOrg} theme={effectiveTheme} />
+                        <ScanFeatureSplit feature={scanT.feature_search} reverse={true} shotSrc={shotSearch} theme={effectiveTheme} />
+                        <ScanFeatureSplit feature={scanT.feature_tools} reverse={false} shotSrc={shotTools} theme={effectiveTheme} />
+                        <ScanPillars t={scanT} theme={effectiveTheme} />
                         <ScanComparison t={scanT} />
                         <ScanTestimony t={scanT} />
                         <window.DownloadCTA t={t} variant="default" />

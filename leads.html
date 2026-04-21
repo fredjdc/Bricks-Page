@@ -855,7 +855,7 @@
           title: ['Never forget', 'to follow up.'],
           body: 'Bricks Leads keeps every lead, property, and follow-up in one quiet list. Native on iPhone, iPad, and Mac. Join the private beta and help shape it.',
           form: {
-            name: 'Full name',
+            name: 'Name',
             email: 'Email',
             submit: 'Request beta access',
             submitting: 'Sending\u2026',
@@ -879,15 +879,16 @@
           title: ['Quiet software', 'for a loud job.'],
           body: 'A CRM shouldn\u2019t feel like homework. Leads shows you the follow-ups due today, the context behind each one, and nothing else.',
           items: [
-            { t: 'Capture on the spot', d: 'Add a lead in seconds — name, property, next step. No forms, no required fields.' },
-            { t: 'Follow up on time', d: 'Today\u2019s follow-ups surface at the top. One tap to close the loop.' },
-            { t: 'Context always attached', d: 'Properties, notes, and history live with the contact. Nothing to search for.' },
+            { t: 'Capture on the spot', d: 'Add a lead in seconds — name, property, next step. No forms, no required fields.', icon: 'icon-capture.svg' },
+            { t: 'Follow up on time', d: 'Today\u2019s follow-ups surface at the top. One tap to close the loop.', icon: 'icon-follow-up.svg' },
+            { t: 'Context always attached', d: 'Properties, notes, and history live with the contact. Nothing to search for.', icon: 'icon-context.svg' },
           ],
         },
         feature1: {
           eyebrow: 'Capture',
           title: ['Add a lead', 'the moment it happens.'],
           body: 'A quick form that doesn\u2019t ask for everything. Name, a property if it fits, and the next step. Leads picks up the rest over time.',
+          icon: 'icon-capture.svg',
           bullets: [
             { t: 'No required fields', d: 'Save with whatever you have. Fill the rest later.' },
             { t: 'Attach a property', d: 'Link a listing to a contact. Search either way.' },
@@ -898,10 +899,22 @@
           eyebrow: 'Follow up',
           title: ['Today\u2019s list,', 'and nothing more.'],
           body: 'Leads queues each follow-up by date. The morning view is the work for today — calls to make, showings to confirm, notes to send. No dashboards, no red badges.',
+          icon: 'icon-follow-up.svg',
           bullets: [
             { t: 'Queued by date', d: 'Follow-ups appear the day they\u2019re due.' },
             { t: 'One tap to complete', d: 'Close it, snooze it, or reschedule. That\u2019s the full menu.' },
             { t: 'Notes travel with it', d: 'Open a contact and see every note, call, and showing in order.' },
+          ],
+        },
+        feature3: {
+          eyebrow: 'Context',
+          title: ['Everything attached,', 'nothing lost.'],
+          body: 'Every property, note, and conversation lives with the contact. When you open a lead, you see the full history in one quiet scroll.',
+          icon: 'icon-context.svg',
+          bullets: [
+            { t: 'History at a glance', d: 'Every call and note in chronological order.' },
+            { t: 'Property links', d: 'See which listings they\u2019re interested in.' },
+            { t: 'Search anything', d: 'Find a lead by name, phone, or address.' },
           ],
         },
         testimonials: {
@@ -971,15 +984,16 @@
           title: ['Software tranquilo', 'para un trabajo ruidoso.'],
           body: 'Un CRM no deber\u00eda sentirse como tarea. Leads muestra los seguimientos de hoy, el contexto detr\u00e1s de cada uno, y nada m\u00e1s.',
           items: [
-            { t: 'Captura al instante', d: 'A\u00f1ade un lead en segundos — nombre, propiedad, siguiente paso. Sin formularios largos.' },
-            { t: 'Seguimiento puntual', d: 'Los seguimientos de hoy aparecen arriba. Un toque para cerrarlos.' },
-            { t: 'Contexto siempre unido', d: 'Propiedades, notas e historial viven junto al contacto. Nada que buscar.' },
+            { t: 'Captura al instante', d: 'A\u00f1ade un lead en segundos — nombre, propiedad, siguiente paso. Sin formularios largos.', icon: 'icon-capture.svg' },
+            { t: 'Seguimiento puntual', d: 'Los seguimientos de hoy aparecen arriba. Un toque para cerrarlos.', icon: 'icon-follow-up.svg' },
+            { t: 'Contexto siempre unido', d: 'Propiedades, notas e historial viven junto al contacto. Nada que buscar.', icon: 'icon-context.svg' },
           ],
         },
         feature1: {
           eyebrow: 'Captura',
           title: ['A\u00f1ade un lead', 'en el momento.'],
           body: 'Un formulario breve que no pide todo. Nombre, una propiedad si encaja, y el siguiente paso. Leads recoge el resto con el tiempo.',
+          icon: 'icon-capture.svg',
           bullets: [
             { t: 'Sin campos obligatorios', d: 'Guarda con lo que tengas. Completa el resto despu\u00e9s.' },
             { t: 'Adjunta una propiedad', d: 'Vincula un listado a un contacto. Busca por cualquiera de los dos.' },
@@ -990,10 +1004,22 @@
           eyebrow: 'Seguimiento',
           title: ['La lista de hoy,', 'y nada m\u00e1s.'],
           body: 'Leads ordena cada seguimiento por fecha. La vista de la ma\u00f1ana es el trabajo del d\u00eda — llamadas, visitas, mensajes. Sin dashboards, sin insignias rojas.',
+          icon: 'icon-follow-up.svg',
           bullets: [
             { t: 'Ordenados por fecha', d: 'Los seguimientos aparecen el d\u00eda que corresponden.' },
             { t: 'Un toque para completar', d: 'Cerrar, posponer o reprogramar. Ese es todo el men\u00fa.' },
             { t: 'Notas que viajan', d: 'Abre un contacto y ve cada nota, llamada y visita en orden.' },
+          ],
+        },
+        feature3: {
+          eyebrow: 'Contexto',
+          title: ['Todo unido,', 'nada perdido.'],
+          body: 'Cada propiedad, nota y conversaci\u00f3n vive con el contacto. Al abrir un lead, ves todo el historial en un solo scroll tranquilo.',
+          icon: 'icon-context.svg',
+          bullets: [
+            { t: 'Historial de un vistazo', d: 'Cada llamada y nota en orden cronol\u00f3gico.' },
+            { t: 'V\u00ednculos con propiedades', d: 'Mira en qu\u00e9 listados est\u00e1n interesados.' },
+            { t: 'Busca lo que sea', d: 'Encuentra un lead por nombre, tel\u00e9fono o direcci\u00f3n.' },
           ],
         },
         testimonials: {
@@ -1282,7 +1308,7 @@
     // LeadsPillars — 3 soft-emboss cards
     // ==========================================================================
 
-    function LeadsPillars({ t }) {
+    function LeadsPillars({ t, theme }) {
       const reveal = window.useReveal();
       const isMobile = window.useIsMobile();
       return (
@@ -1324,12 +1350,23 @@
                 border: '1px solid var(--b-border)',
               }}>
                 <div style={{
-                  width: 36, height: 36, borderRadius: 12,
+                  width: 44, height: 44, borderRadius: 14,
                   background: `${LEADS_ACCENT}1a`,
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   marginBottom: 20,
+                  boxShadow: 'var(--emboss-soft)',
+                  border: '1px solid var(--b-border)',
                 }}>
-                  <div style={{ width: 10, height: 10, borderRadius: 5, background: LEADS_ACCENT }} />
+                  <div style={{
+                    width: 22, height: 22,
+                    backgroundColor: LEADS_ACCENT,
+                    maskImage: `url(images-bricks-leads/${p.icon})`,
+                    WebkitMaskImage: `url(images-bricks-leads/${p.icon})`,
+                    maskSize: 'contain',
+                    WebkitMaskSize: 'contain',
+                    maskRepeat: 'no-repeat',
+                    WebkitMaskRepeat: 'no-repeat'
+                  }} />
                 </div>
                 <div style={{ fontSize: 20, fontWeight: 700, color: 'var(--b-text)', marginBottom: 8, letterSpacing: '-0.01em' }}>{p.t}</div>
                 <div style={{ fontSize: 15, color: 'var(--b-text-2)', lineHeight: 1.55 }}>{p.d}</div>
@@ -1361,7 +1398,19 @@
             direction: reverse && !isMobile ? 'rtl' : 'ltr',
           }}>
             <div className="reveal" style={{ direction: 'ltr' }}>
-              <div style={{ ...window.eyebrowStyle, color: LEADS_ACCENT }}>{feature.eyebrow}</div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
+                <div style={{
+                  width: 20, height: 20,
+                  backgroundColor: LEADS_ACCENT,
+                  maskImage: `url(images-bricks-leads/${feature.icon})`,
+                  WebkitMaskImage: `url(images-bricks-leads/${feature.icon})`,
+                  maskSize: 'contain',
+                  WebkitMaskSize: 'contain',
+                  maskRepeat: 'no-repeat',
+                  WebkitMaskRepeat: 'no-repeat'
+                }} />
+                <div style={{ ...window.eyebrowStyle, color: LEADS_ACCENT, marginBottom: 0 }}>{feature.eyebrow}</div>
+              </div>
               <h2 style={{
                 fontSize: isMobile ? 36 : 52, fontWeight: 900, letterSpacing: '-0.035em',
                 lineHeight: 1.02, margin: '0 0 20px', color: 'var(--b-text)',
@@ -1615,9 +1664,10 @@
           />
           <LeadsHero t={leads} lang={lang} theme={effectiveTheme} />
           <LeadsStats t={leads} />
-          <LeadsPillars t={leads} />
+          <LeadsPillars t={leads} theme={effectiveTheme} />
           <LeadsFeatureSplit t={leads} lang={lang} theme={effectiveTheme} feature={leads.feature1} reverse={false} shotSrc={shot1} />
           <LeadsFeatureSplit t={leads} lang={lang} theme={effectiveTheme} feature={leads.feature2} reverse={true} shotSrc={shot2} />
+          <LeadsFeatureSplit t={leads} lang={lang} theme={effectiveTheme} feature={leads.feature3} reverse={false} shotSrc={`images-bricks-leads/hero-video-img-${lang}.png`} />
           <LeadsTestimonials t={leads} />
           <window.DownloadCTA
             t={shared}
