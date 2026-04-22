@@ -153,11 +153,34 @@ window.useScrollDirection = function useScrollDirection() {
   const [state, setState] = React.useState({ dir: 'up', atTop: true });
   React.useEffect(() => {
     let last = window.scrollY;
+    let lastDir = 'up';
+    let ticking = false;
+    const THRESHOLD = 10;
+    const TOP_ZONE = 80;
+    const update = () => {
+      ticking = false;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const y = Math.max(0, Math.min(window.scrollY, max));
+      const atTop = y < TOP_ZONE;
+      let dir = lastDir;
+      if (atTop) {
+        dir = 'up';
+      } else if (y > last + THRESHOLD) {
+        dir = 'down';
+        last = y;
+      } else if (y < last - THRESHOLD) {
+        dir = 'up';
+        last = y;
+      }
+      setState((prev) =>
+        prev.dir === dir && prev.atTop === atTop ? prev : { dir, atTop }
+      );
+      lastDir = dir;
+    };
     const onScroll = () => {
-      const y = window.scrollY;
-      const dir = y > last + 4 ? 'down' : y < last - 4 ? 'up' : state.dir;
-      setState({ dir, atTop: y < 40 });
-      last = y;
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(update);
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
