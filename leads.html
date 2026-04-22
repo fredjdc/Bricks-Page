@@ -625,8 +625,9 @@
 
             {isBeta ? (
               <div style={{ position: 'relative' }}>
-                <a href="#join-beta"
-                  onClick={(e) => { e.preventDefault(); window.smoothScrollTo('join-beta'); }}
+                <a href="https://form.typeform.com/to/JqKYBT9w"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   style={{
                     display: 'inline-flex', alignItems: 'center', gap: 10,
                     padding: isMobile ? '14px 26px' : '16px 32px',
@@ -1168,13 +1169,9 @@
     // ==========================================================================
 
     function BetaForm({ t }) {
-      const [submitting, setSubmitting] = React.useState(false);
-      const [focus, setFocus] = React.useState(null);
-      const isMobile = window.useIsMobile();
       const f = t.hero.form;
 
-      const onSubmit = () => {
-        setSubmitting(true);
+      const onClick = () => {
         try {
           if (typeof gtag === 'function') {
             gtag('event', 'beta_signup', {
@@ -1185,72 +1182,39 @@
         } catch (e) { }
       };
 
-      const fieldStyle = (id) => ({
-        width: '100%', padding: '14px 18px',
-        borderRadius: 16, border: '1px solid var(--b-border)',
-        background: 'var(--b-bg-elevated)',
-        color: 'var(--b-text)',
-        fontSize: 15, fontFamily: 'inherit',
-        boxShadow: focus === id
-          ? `var(--emboss-recessed), 0 0 0 3px ${LEADS_ACCENT}22`
-          : 'var(--emboss-soft)',
-        outline: 'none',
-        transition: 'box-shadow 0.2s ease',
-      });
-
       return (
-        <form
-
-          action="https://formsubmit.co/707e6e012fa931048784ff0f766aa0df"
-          method="POST"
-          onSubmit={onSubmit}
+        <div
           className="reveal reveal-d3"
           style={{
             display: 'flex', flexDirection: 'column', gap: 12,
             maxWidth: 460, scrollMarginTop: 120,
           }}
         >
-          <input type="hidden" name="_subject" value="Bricks Leads Beta Tester" />
-          <input type="hidden" name="_template" value="table" />
-          <input type="hidden" name="_captcha" value="false" />
-          <input type="hidden" name="_next" value="https://bricks.pe/thank-you.html" />
-          <input type="text" name="_honey" style={{ display: 'none' }} tabIndex="-1" autoComplete="off" />
-
-          <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 12 }}>
-            <input
-              type="text" name="name" required
-              placeholder={f.name}
-              onFocus={() => setFocus('name')}
-              onBlur={() => setFocus(null)}
-              style={fieldStyle('name')}
-            />
-            <input
-              type="email" name="email" required
-              placeholder={f.email}
-              onFocus={() => setFocus('email')}
-              onBlur={() => setFocus(null)}
-              style={fieldStyle('email')}
-            />
-          </div>
-
-          <button
-            type="submit"
-            disabled={submitting}
+          <a
+            href="https://form.typeform.com/to/JqKYBT9w"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={onClick}
             style={{
-              marginTop: 4, padding: '14px 22px',
+              alignSelf: 'flex-start',
+              display: 'inline-flex', alignItems: 'center', gap: 10,
+              padding: '14px 26px',
               background: LEADS_ACCENT, color: '#fff',
+              textDecoration: 'none',
               border: 'none', borderRadius: 100,
               fontSize: 15, fontWeight: 600, letterSpacing: '-0.01em',
-              fontFamily: 'inherit', cursor: submitting ? 'wait' : 'pointer',
+              fontFamily: 'inherit', cursor: 'pointer',
               boxShadow: `0 12px 28px ${LEADS_ACCENT}40`,
               transition: 'transform 0.15s ease, box-shadow 0.2s ease',
-              opacity: submitting ? 0.8 : 1,
             }}
-            onMouseEnter={(e) => { if (!submitting) e.currentTarget.style.transform = 'translateY(-1px)'; }}
+            onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-1px)'; }}
             onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; }}
           >
-            {submitting ? f.submitting : f.submit}
-          </button>
+            {f.submit}
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </a>
 
           <div style={{ fontSize: 13, color: 'var(--b-text-3)', lineHeight: 1.55, marginTop: 6 }}>
             {f.iosNote}
@@ -1261,7 +1225,7 @@
               {f.privacyLink}
             </a>
           </div>
-        </form>
+        </div>
       );
     }
 
@@ -1689,7 +1653,7 @@
             t={shared}
             lang={lang}
             currentProduct="leads"
-            cta={{ label: lang === 'es' ? '\u00danete al beta' : 'Join the beta', href: '#join-beta' }}
+            cta={{ label: lang === 'es' ? '\u00danete al beta' : 'Join the beta', href: 'https://form.typeform.com/to/JqKYBT9w' }}
           />
           <LeadsHero t={leads} lang={lang} theme={effectiveTheme} />
           <LeadsStats t={leads} />
