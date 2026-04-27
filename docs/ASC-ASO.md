@@ -1,260 +1,303 @@
-# Bricks Calc — App Store Submission Metadata
+# Bricks Calc — App Store ASO Strategy
 
-## iOS
+Last updated: April 27, 2026
+
+## Goal
+
+Increase qualified installs and paid unlocks for Bricks Calc by improving:
+
+- App Store search ranking for mortgage and loan calculator terms.
+- Product page conversion from impression to install.
+- Trial-to-purchase conversion after users save or compare real calculations.
+- Review volume and rating quality.
+
+The current strategic gap is positioning. Bricks Calc should not sound like a generic finance planner. It should own a narrower promise:
+
+Calculate mortgage and loan payments, compare scenarios, and understand prepayments, refinance options, taxes, PMI, and rental income on Apple devices.
+
+## Current Keyword Read
+
+Current keyword field:
+
+```text
+mortgage,amortization,prepayment,refinance,payment,monthly,interest,pmi,rental,property,tax,home
+```
+
+This is relevant, but it misses high-intent terms that a user is more likely to search directly:
+
+- `loan`
+- `calculator`
+- `emi`
+- `prepay`
+
+It also spends characters on weaker standalone words like `monthly`, `property`, and `home`. Those terms are useful in description copy, but weaker in the keyword field because they are broad and less purchase-intent driven.
+
+## Recommended Keyword Field
+
+Use this as the default English keyword field:
+
+```text
+mortgage,loan,calculator,amortization,emi,refinance,payment,interest,prepay,rental,pmi,tax
+```
+
+Character count: 90.
+
+Why this is better:
+
+- Keeps the strongest existing mortgage terms.
+- Adds `loan` and `calculator`, which help form combinations like `loan calculator`, `mortgage calculator`, and `amortization calculator`.
+- Adds `emi` for markets where users search for monthly installment calculators.
+- Uses `prepay` instead of `prepayment` to save characters while preserving intent.
+- Keeps `rental`, `pmi`, and `tax` because these are differentiators in the app.
+
+Do not include the app name in keywords. The title already carries `Bricks Calc`.
+
+## Ranking Strategy
+
+### Primary terms to defend
+
+- mortgage calculator
+- loan calculator
+- amortization calculator
+- mortgage payment calculator
+- refinance calculator
+
+### Secondary terms to test
+
+- EMI calculator
+- prepayment calculator
+- PMI calculator
+- rental income calculator
+- home loan calculator
+
+### Positioning
+
+Lead with the practical job:
+
+Calculate monthly payments and compare mortgage or loan scenarios.
+
+Then explain the difference:
+
+Bricks Calc includes amortization, prepayments, refinance comparisons, taxes, PMI, rental income, and local-first Apple sync.
+
+Avoid leading with broad claims like “master your financial future.” They may sound bigger, but they lower trust and make the app harder to place in search.
+
+## Conversion Strategy
+
+### Product page
+
+The first screen should answer four questions quickly:
+
+- What does it do? Mortgage and loan calculations.
+- Why is it better? Compare scenarios, see amortization, model prepayments and refinance options.
+- Can I trust it? Local-first, no account required, no ads.
+- What will I pay? Free to try, one-time unlock available.
+
+### Screenshots
+
+Recommended screenshot order:
+
+1. Monthly payment result with principal, interest, taxes, PMI, and insurance visible.
+2. Side-by-side loan comparison.
+3. Amortization chart with principal versus interest.
+4. Prepayment scenario showing interest saved and time saved.
+5. Refinance comparison or rental income cash flow.
+6. Apple-native/local-first proof: iPhone, iPad, Mac, iCloud sync.
+
+Each screenshot caption should be short and specific:
+
+- Calculate the real monthly payment.
+- Compare loan options side by side.
+- See principal and interest over time.
+- Test extra payments before you commit.
+- Check refinance and rental income scenarios.
+- Built for iPhone, iPad, and Mac.
+
+### Pricing
+
+Do not say “no subscription” while a yearly access option is publicly listed.
+
+Recommended wording:
+
+Free to try. No account required. Unlock unlimited saved calculations with an in-app purchase, including a one-time option.
+
+This keeps the one-time purchase advantage without creating a trust problem.
+
+### Reviews
+
+Ask for a rating after a completed value moment, not on first launch:
+
+- After the user saves a calculation.
+- After the user compares two scenarios.
+- After the user exports or shares a result.
+- After the user completes a prepayment or refinance analysis.
+
+Do not ask after an error, validation failure, paywall dismissal, or first calculation.
+
+## Metrics To Watch
+
+### App Store Connect
+
+- Impressions
+- Product page views
+- Conversion rate
+- App units
+- Proceeds
+- Product page conversion by source
+- Search terms, where available
+- Ratings count and average rating
+
+### Product Analytics
+
+Track these without collecting sensitive financial values:
+
+- First calculation completed.
+- Second scenario created.
+- Comparison opened.
+- Prepayment analysis completed.
+- Refinance analysis completed.
+- Rental income added.
+- Save attempted.
+- Paywall shown.
+- Purchase started.
+- Purchase completed.
+- Export or share completed.
+
+The key business metric is not raw installs. It is completed calculations that reach a save, compare, export, or unlock moment.
+
+## Recommended App Store Metadata
+
+### Name
+
+```text
+Bricks Calc: Loan Calculator
+```
+
+This is a reasonable current name because it keeps the brand and uses a high-intent generic term. If App Store Connect allows a title test later, consider:
+
+```text
+Bricks Calc: Mortgage Calculator
+```
+
+Use this if mortgage searches prove stronger than general loan searches.
+
+### Subtitle
+
+Current direction:
+
+```text
+Home Loan & EMI Tracker
+```
+
+Recommended next test:
+
+```text
+Mortgage, EMI & Amortization
+```
+
+Rationale: this keeps `mortgage`, `EMI`, and `amortization` visible near the title. It is more search-aligned than `tracker`, which implies ongoing debt tracking more than calculation.
 
 ### Promotional Text
 
-Calculate monthly payments, compare loan scenarios, and plan extra payments. Everything runs locally on your device. No account required.
+```text
+Calculate mortgage and loan payments, compare scenarios, and test prepayments or refinance options. No account required.
+```
 
 ### Description
 
-Calculate monthly payments, compare scenarios, and see real numbers, on the spot.
+```text
+Plan your mortgage or loan with clear numbers.
 
-Bricks Calc is a fast, local-first mortgage calculator. It shows exactly what you’ll pay—monthly, over time, and across different scenarios.
+Bricks Calc is a mortgage calculator and loan calculator for iPhone, iPad, Mac, and Apple Vision. Calculate monthly payments, compare scenarios, and understand the full cost of a loan before you commit.
 
-Adjust rates, terms, or prepayments and see the impact instantly.
-No spreadsheets. No guesswork.
+Adjust the loan amount, down payment, interest rate, and term. Add taxes, insurance, PMI, rental income, or extra payments. See the impact instantly.
 
-Everything runs on your device.
-No account. No subscription. No ads.
-
-====================================
-What you can do
-===============
-
-Calculate monthly payments
-Estimate mortgage and property loan payments based on rate, term, and down payment.
-
-View the amortization schedule
-See principal versus interest over time. Know the true cost of your loan.
-
-Model prepayments
-Add extra payments to see how much interest you save and how much faster you pay off the loan.
-
-Include rental income
-Factor in rent for accurate cash flow planning.
-
-Compare scenarios
-Test different rates or terms side by side.
-
-====================================
-Built for real decisions
-========================
-
-Clear and direct
-Complex calculations, presented simply.
-
-Fast
-Update inputs and see results instantly.
-
-Local-first
-All calculations stay on your device. Your data is yours.
-
-Sync across devices
-Access saved calculations through iCloud.
-
-====================================
-Pricing
-=======
-
-Unlock unlimited calculations with a one-time purchase.
-
-====================================
-Feedback & Support
-==================
-
-We are committed to helping you make better financial decisions. If you have questions or feedback, please contact us at [hello@bricks.pe](mailto:hello@bricks.pe)
-
-If Bricks Calc helps you, please leave a review. It helps us grow. Thank you!
-
-Terms of Use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
-Privacy Policy: https://www.bricks.pe/privacy.html
-
-### What's New
-
-Refinance
-Compare your current loan with a new option and see when refinancing starts to make sense.
-
-Rental Income
-Include rent to understand your real monthly cash flow after the mortgage payment.
-
-Prepayments
-Test extra payments, lower your monthly payment with a target plan, and see the impact on interest, time, and total cost.
-
-### Keywords
-
-mortgage,amortization,prepayment,refinance,payment,monthly,interest,pmi,rental,property,tax,home
-
----
-
-## macOS
-
-### Promotional Text
-
-Calculate monthly payments, compare loan scenarios, and plan extra payments. Everything runs locally on your device. No account required.
-
-### Description
-
-Calculate monthly payments, compare scenarios, and see real numbers, on the spot.
-
-Bricks Calc is a fast, local-first mortgage calculator. It shows exactly what you’ll pay—monthly, over time, and across different scenarios.
-
-Adjust rates, terms, or prepayments and see the impact instantly.
-No spreadsheets. No guesswork.
-
-Everything runs on your device.
-No account. No subscription. No ads.
+No spreadsheets. No account required. No ads.
 
 ====================================
 What you can do
-===============
+====================================
 
 Calculate monthly payments
-Estimate mortgage and property loan payments based on rate, term, and down payment.
+Estimate mortgage and loan payments based on rate, term, down payment, taxes, insurance, and PMI.
 
 View the amortization schedule
-See principal versus interest over time. Know the true cost of your loan.
+See principal and interest over time. Understand how the loan changes month by month.
 
 Model prepayments
-Add extra payments to see how much interest you save and how much faster you pay off the loan.
+Add one-time or recurring extra payments. See interest saved and time saved.
+
+Compare refinance options
+Compare your current loan with a new option and see when refinancing starts to make sense.
 
 Include rental income
-Factor in rent for accurate cash flow planning.
+Factor in rent to understand monthly cash flow after the mortgage payment.
 
 Compare scenarios
-Test different rates or terms side by side.
+Save different rates, terms, and payment plans side by side.
 
 ====================================
-Built for real decisions
-========================
-
-Clear and direct
-Complex calculations, presented simply.
+Built for Apple devices
+====================================
 
 Fast
-Update inputs and see results instantly.
+Change inputs and see results immediately.
 
-Local-first
-All calculations stay on your device. Your data is yours.
+Private by design
+Your calculations stay on your device.
 
-Sync across devices
-Access saved calculations through iCloud.
+No account required
+Start calculating without creating a profile.
+
+iCloud sync
+Access saved calculations across your Apple devices.
 
 ====================================
 Pricing
-=======
+====================================
 
-Unlock unlimited calculations with a one-time purchase.
+Bricks Calc is free to try.
+
+Unlock unlimited saved calculations with an in-app purchase, including a one-time option.
 
 ====================================
 Feedback & Support
-==================
+====================================
 
-We are committed to helping you make better financial decisions. If you have questions or feedback, please contact us at [hello@bricks.pe](mailto:hello@bricks.pe)
-
-If Bricks Calc helps you, please leave a review. It helps us grow. Thank you!
+Questions or feedback?
+Contact us at hello@bricks.pe
 
 Terms of Use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
 Privacy Policy: https://www.bricks.pe/privacy.html
+```
 
 ### What's New
 
-Refinance
-Compare your current loan with a new option and see when refinancing starts to make sense.
+```text
+Plan with more context.
 
-Rental Income
-Include rent to understand your real monthly cash flow after the mortgage payment.
+This update improves the tools that help you compare real loan scenarios:
 
-Prepayments
-Test extra payments, lower your monthly payment with a target plan, and see the impact on interest, time, and total cost.
-
-### Keywords
-
-mortgage,amortization,prepayment,refinance,payment,monthly,interest,pmi,rental,property,tax,home
-
----
-
-## visionOS
-
-### Promotional Text
-
-Calculate monthly payments, compare loan scenarios, and plan extra payments. Everything runs locally on your device. No account required.
-
-### Description
-
-Calculate monthly payments, compare scenarios, and see real numbers, on the spot.
-
-Bricks Calc is a fast, local-first mortgage calculator. It shows exactly what you’ll pay—monthly, over time, and across different scenarios.
-
-Adjust rates, terms, or prepayments and see the impact instantly.
-No spreadsheets. No guesswork.
-
-Everything runs on your device.
-No account. No subscription. No ads.
-
-====================================
-What you can do
-===============
-
-Calculate monthly payments
-Estimate mortgage and property loan payments based on rate, term, and down payment.
-
-View the amortization schedule
-See principal versus interest over time. Know the true cost of your loan.
-
-Model prepayments
-Add extra payments to see how much interest you save and how much faster you pay off the loan.
-
-Include rental income
-Factor in rent for accurate cash flow planning.
-
-Compare scenarios
-Test different rates or terms side by side.
-
-====================================
-Built for real decisions
-========================
-
-Clear and direct
-Complex calculations, presented simply.
-
-Fast
-Update inputs and see results instantly.
-
-Local-first
-All calculations stay on your device. Your data is yours.
-
-Sync across devices
-Access saved calculations through iCloud.
-
-====================================
-Pricing
-=======
-
-Unlock unlimited calculations with a one-time purchase.
-
-====================================
-Feedback & Support
-==================
-
-We are committed to helping you make better financial decisions. If you have questions or feedback, please contact us at [hello@bricks.pe](mailto:hello@bricks.pe)
-
-If Bricks Calc helps you, please leave a review. It helps us grow. Thank you!
-
-Terms of Use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
-Privacy Policy: https://www.bricks.pe/privacy.html
-
-### What's New
-
-Refinance
-Compare your current loan with a new option and see when refinancing starts to make sense.
-
-Rental Income
-Include rent to understand your real monthly cash flow after the mortgage payment.
-
-Prepayments
-Test extra payments, lower your monthly payment with a target plan, and see the impact on interest, time, and total cost.
+- Add rental income to understand monthly cash flow after the mortgage payment.
+- Model one-time and recurring prepayments with clearer results.
+- Compare refinance options with more confidence.
+- Read saved calculations and charts more easily.
+- Improved consistency across iOS, macOS, and visionOS.
+```
 
 ### Keywords
 
-mortgage,amortization,prepayment,refinance,payment,monthly,interest,pmi,rental,property,tax,home
+```text
+mortgage,loan,calculator,amortization,emi,refinance,payment,interest,prepay,rental,pmi,tax
+```
+
+## Web Page Alignment
+
+`calc.html` should support the same positioning:
+
+- Title and metadata should lead with mortgage calculator.
+- Hero copy should mention monthly payments, loan scenarios, amortization-adjacent value, prepayments, taxes, PMI, and rental income.
+- Pricing language should say free to try and one-time unlock available.
+- FAQ should avoid saying everything is free when unlimited saved calculations are monetized.
+
+This keeps search traffic, App Store traffic, and in-app purchase expectations aligned.
