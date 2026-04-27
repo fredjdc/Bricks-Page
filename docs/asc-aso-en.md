@@ -165,7 +165,7 @@ Track these without collecting sensitive financial values:
 
 The key business metric is not raw installs. It is completed calculations that reach a save, compare, export, or unlock moment.
 
-## Recommended App Store Metadata
+## Final App Store Metadata
 
 ### Name
 
@@ -197,6 +197,8 @@ Mortgage, EMI & Amortization
 
 Rationale: this keeps `mortgage`, `EMI`, and `amortization` visible near the title. It is more search-aligned than `tracker`, which implies ongoing debt tracking more than calculation.
 
+## iOS
+
 ### Promotional Text
 
 ```text
@@ -208,7 +210,7 @@ Calculate mortgage and loan payments, compare scenarios, and test prepayments or
 ```text
 Plan your mortgage or loan with clear numbers.
 
-Bricks Calc is a mortgage calculator and loan calculator for iPhone, iPad, Mac, and Apple Vision. Calculate monthly payments, compare scenarios, and understand the full cost of a loan before you commit.
+Bricks Calc is a mortgage calculator and loan calculator for iPhone and iPad. Calculate monthly payments, compare scenarios, and understand the full cost of a loan before you commit.
 
 Adjust the loan amount, down payment, interest rate, and term. Add taxes, insurance, PMI, rental income, or extra payments. See the impact instantly.
 
@@ -252,6 +254,9 @@ Start calculating without creating a profile.
 iCloud sync
 Access saved calculations across your Apple devices.
 
+Native on iPhone and iPad
+Use a calculator that feels at home on iOS and iPadOS.
+
 ====================================
 Pricing
 ====================================
@@ -271,18 +276,216 @@ Terms of Use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
 Privacy Policy: https://www.bricks.pe/privacy.html
 ```
 
-### What's New
+### What's New in This Version
 
 ```text
 Plan with more context.
 
-This update improves the tools that help you compare real loan scenarios:
+This update improves the tools that help you compare real mortgage and loan scenarios:
 
 - Add rental income to understand monthly cash flow after the mortgage payment.
 - Model one-time and recurring prepayments with clearer results.
 - Compare refinance options with more confidence.
 - Read saved calculations and charts more easily.
-- Improved consistency across iOS, macOS, and visionOS.
+- Improved consistency across iPhone and iPad.
+```
+
+### Keywords
+
+```text
+mortgage,loan,calculator,amortization,emi,refinance,payment,interest,prepay,rental,pmi,tax
+```
+
+## macOS
+
+### Promotional Text
+
+```text
+Calculate mortgage and loan payments, compare scenarios, and test prepayments or refinance options on Mac. No account required.
+```
+
+### Description
+
+```text
+Plan your mortgage or loan with clear numbers on Mac.
+
+Bricks Calc is a mortgage calculator and loan calculator for macOS. Calculate monthly payments, compare scenarios, and understand the full cost of a loan before you commit.
+
+Adjust the loan amount, down payment, interest rate, and term. Add taxes, insurance, PMI, rental income, or extra payments. See the impact instantly.
+
+No spreadsheets. No account required. No ads.
+
+====================================
+What you can do
+====================================
+
+Calculate monthly payments
+Estimate mortgage and loan payments based on rate, term, down payment, taxes, insurance, and PMI.
+
+View the amortization schedule
+See principal and interest over time. Understand how the loan changes month by month.
+
+Model prepayments
+Add one-time or recurring extra payments. See interest saved and time saved.
+
+Compare refinance options
+Compare your current loan with a new option and see when refinancing starts to make sense.
+
+Include rental income
+Factor in rent to understand monthly cash flow after the mortgage payment.
+
+Compare scenarios
+Save different rates, terms, and payment plans side by side.
+
+====================================
+Built for Mac
+====================================
+
+Fast
+Change inputs and see results immediately.
+
+Private by design
+Your calculations stay on your device.
+
+No account required
+Start calculating without creating a profile.
+
+iCloud sync
+Access saved calculations across your Apple devices.
+
+Mac-ready workflow
+Review larger tables, charts, and saved scenarios comfortably on a desktop screen.
+
+====================================
+Pricing
+====================================
+
+Bricks Calc is free to try.
+
+Unlock unlimited saved calculations with an in-app purchase, including a one-time option.
+
+====================================
+Feedback & Support
+====================================
+
+Questions or feedback?
+Contact us at hello@bricks.pe
+
+Terms of Use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
+Privacy Policy: https://www.bricks.pe/privacy.html
+```
+
+### What's New in This Version
+
+```text
+Plan with more context on Mac.
+
+This update improves the tools that help you compare real mortgage and loan scenarios:
+
+- Add rental income to understand monthly cash flow after the mortgage payment.
+- Model one-time and recurring prepayments with clearer results.
+- Compare refinance options with more confidence.
+- Read saved calculations and charts more easily on larger screens.
+- Improved consistency across macOS and the rest of the Apple platform lineup.
+```
+
+### Keywords
+
+```text
+mortgage,loan,calculator,amortization,emi,refinance,payment,interest,prepay,rental,pmi,tax
+```
+
+## visionOS
+
+### Promotional Text
+
+```text
+Calculate mortgage and loan payments, compare scenarios, and review loan options on Apple Vision. No account required.
+```
+
+### Description
+
+```text
+Plan your mortgage or loan with clear numbers on Apple Vision.
+
+Bricks Calc is a mortgage calculator and loan calculator for Apple Vision. Calculate monthly payments, compare scenarios, and understand the full cost of a loan before you commit.
+
+Adjust the loan amount, down payment, interest rate, and term. Add taxes, insurance, PMI, rental income, or extra payments. See the impact instantly.
+
+No spreadsheets. No account required. No ads.
+
+====================================
+What you can do
+====================================
+
+Calculate monthly payments
+Estimate mortgage and loan payments based on rate, term, down payment, taxes, insurance, and PMI.
+
+View the amortization schedule
+See principal and interest over time. Understand how the loan changes month by month.
+
+Model prepayments
+Add one-time or recurring extra payments. See interest saved and time saved.
+
+Compare refinance options
+Compare your current loan with a new option and see when refinancing starts to make sense.
+
+Include rental income
+Factor in rent to understand monthly cash flow after the mortgage payment.
+
+Compare scenarios
+Save different rates, terms, and payment plans side by side.
+
+====================================
+Built for Apple Vision
+====================================
+
+Fast
+Change inputs and see results immediately.
+
+Private by design
+Your calculations stay on your device.
+
+No account required
+Start calculating without creating a profile.
+
+iCloud sync
+Access saved calculations across your Apple devices.
+
+Room to review
+Compare payments, charts, and amortization details in a focused spatial workspace.
+
+====================================
+Pricing
+====================================
+
+Bricks Calc is free to try.
+
+Unlock unlimited saved calculations with an in-app purchase, including a one-time option.
+
+====================================
+Feedback & Support
+====================================
+
+Questions or feedback?
+Contact us at hello@bricks.pe
+
+Terms of Use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
+Privacy Policy: https://www.bricks.pe/privacy.html
+```
+
+### What's New in This Version
+
+```text
+Plan with more context on Apple Vision.
+
+This update improves the tools that help you compare real mortgage and loan scenarios:
+
+- Add rental income to understand monthly cash flow after the mortgage payment.
+- Model one-time and recurring prepayments with clearer results.
+- Compare refinance options with more confidence.
+- Read saved calculations and charts more easily.
+- Improved consistency across visionOS and the rest of the Apple platform lineup.
 ```
 
 ### Keywords
