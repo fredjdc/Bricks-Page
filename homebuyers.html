@@ -154,10 +154,10 @@
         <p>Bricks Calc helps homebuyers estimate the real monthly cost of a home before making a decision.</p>
         <h2>Understand the full monthly payment</h2>
         <p>Include taxes, insurance, PMI, and other costs so the number reflects the real monthly commitment, not only principal and interest.</p>
-        <h2>Test the assumptions before you commit</h2>
+        <h2>Compare the assumptions before you commit</h2>
         <p>Model loan terms, down payment changes, interest rates, and side-by-side scenarios before choosing a home loan.</p>
-        <h2>Test prepayments and refinance decisions</h2>
-        <p>Add one-time or recurring extra payments, compare refinance alternatives, and see how much time and interest each option can save.</p>
+        <h2>Understand the long-term cost</h2>
+        <p>Review amortization, test extra payments, and check refinance scenarios after the monthly payment is clear.</p>
         <h2>Common questions</h2>
         <p>Bricks Calc is built for iPhone, iPad, and Mac. The core calculator works offline, multiple scenarios can be compared, and the app is free to try with an in-app purchase for unlimited saved calculations.</p>
         <p><a href="https://apps.apple.com/us/app/bricks-calc-loan-calculator/id6754506837?ppid=ee60d087-07ef-434b-87d3-a278419b30db">Download Bricks Calc on the App Store</a></p>
@@ -981,7 +981,7 @@
                 hero: {
                     eyebrow: 'Bricks Calc for Homebuyers',
                     title: ['See the real monthly cost.', 'Before you commit.'],
-                    body: 'Estimate the full cost of a home loan, including payment, taxes, insurance, PMI, amortization, prepayments, and refinance scenarios.',
+                    body: 'Estimate payment, total loan cost, and side-by-side scenarios, then review amortization, extra payments, and refinance options.',
                     cta: 'Download on the App Store',
                     sub: 'Free to try. No account required. One-time unlock available.',
                 },
@@ -991,14 +991,14 @@
                     sub: 'The numbers that shape what a home actually costs each month.',
                     items: [
                         { v: 3, l: 'Price, rate, term', suffix: '' },
-                        { v: 'Full', l: 'Taxes, insurance, PMI', suffix: '' },
+                        { v: 'Total', l: 'Cost beyond principal', suffix: '' },
                         { v: 'Compare', l: 'Scenarios side by side', suffix: '' },
                     ],
                 },
                 pillars: {
                     eyebrow: 'Why Calc',
                     title: ['Built around the', 'monthly payment.'],
-                    body: 'A mortgage calculator should make affordability easier to understand. Calc keeps payment, amortization, refinance, and prepayment scenarios in one focused app.',
+                    body: 'A mortgage calculator should make affordability easier to understand. Calc keeps payment, total cost, comparison, and long-term loan scenarios in one focused app.',
                     items: [
                         { t: 'No spreadsheet setup', d: 'Open the app and start testing a loan amount, rate, term, and down payment in seconds.', icon: 'icon-spreadsheets.svg' },
                         { t: 'Adjust the assumptions', d: 'Change the rate, term, down payment, or extra payment and see the monthly impact right away.', icon: 'icon-adjust.svg' },
@@ -1008,34 +1008,34 @@
                 feature1: {
                     eyebrow: 'Precision',
                     title: ['See the real', 'monthly payment.'],
-                    body: 'Include taxes, insurance, PMI, and other costs in your calculation. Understand the monthly commitment, not just principal and interest.',
+                    body: 'Include taxes, insurance, PMI, and other costs in your calculation. Understand both the monthly commitment and the total cost of the loan.',
                     icon: 'icon-spreadsheets.svg',
                     bullets: [
                         { t: 'Taxes and insurance', d: 'Add the costs that can change what a home actually feels like each month.' },
                         { t: 'PMI handled', d: 'Model private mortgage insurance when the down payment is low.' },
-                        { t: 'Amortization schedules', d: 'See how each payment moves between principal, interest, and remaining balance.' },
-                    ],
-                },
-                feature_prepay: {
-                    eyebrow: 'Prepayments',
-                    title: ['Extra payments,', 'clear impact.'],
-                    body: 'Add one-time or recurring extra payments to any scenario and see how much interest and time they can save over the life of the loan.',
-                    icon: 'icon-adjust.svg',
-                    bullets: [
-                        { t: 'Lump-sum or recurring', d: 'Model a single large payment or a consistent monthly extra sum.' },
-                        { t: 'Time saved', d: 'See how many months or years come off the mortgage.' },
-                        { t: 'Interest savings', d: 'Understand how extra payments change the total cost over time.' },
+                        { t: 'Total loan cost', d: 'Review how the full cost of the loan is distributed beyond the borrowed amount.' },
                     ],
                 },
                 feature2: {
                     eyebrow: 'Compare',
-                    title: ['Test the changes', 'that affect affordability.'],
-                    body: 'Compare loan terms, saved scenarios, and refinance options before you make a decision. Keep the monthly cost clear enough to revisit later.',
+                    title: ['Compare scenarios', 'before you choose.'],
+                    body: 'Test price, down payment, rate, and term changes side by side. See which option fits your monthly payment before you make an offer.',
                     icon: 'icon-compare.svg',
                     bullets: [
+                        { t: 'Price and down payment', d: 'Compare how a different home price or upfront payment changes the monthly number.' },
+                        { t: 'Rate and term', d: 'See the tradeoff between a lower monthly payment and a higher long-term cost.' },
+                        { t: 'Saved scenarios', d: 'Keep different options side by side so you can revisit them later.' },
+                    ],
+                },
+                feature_prepay: {
+                    eyebrow: 'Long-term decisions',
+                    title: ['Test extra payments.', 'Check refinance later.'],
+                    body: 'Once the monthly payment is clear, model one-time or recurring extra payments and review refinance scenarios with the same numbers in view.',
+                    icon: 'icon-adjust.svg',
+                    bullets: [
+                        { t: 'Extra payments', d: 'Model a single large payment or a steady monthly extra amount.' },
+                        { t: 'Time and interest saved', d: 'See how much earlier the loan could end and what that changes in total cost.' },
                         { t: 'Refinance scenarios', d: 'Compare a current loan with a new option and see when refinancing starts to make sense.' },
-                        { t: 'Share anywhere', d: 'Use the native iOS share sheet for messages, email, or AirDrop.' },
-                        { t: 'Always private', d: 'Calculations stay on your device. Nothing is uploaded.' },
                     ],
                 },
                 testimonials: {
@@ -1044,7 +1044,7 @@
                     quotes: [
                         { q: 'I wanted to see the full payment, not just the loan amount. Adding taxes, insurance, and PMI made the choice much clearer.', n: 'Maya R.', r: 'First-time buyer', c: 'Austin' },
                         { q: 'Changing the rate and down payment side by side helped me understand what I could actually afford before making an offer.', n: 'Daniel P.', r: 'Homebuyer', c: 'Miami' },
-                        { q: 'The prepayment view made the long-term cost easier to understand. It showed what an extra payment would actually do.', n: 'Elena C.', r: 'Homeowner', c: 'Lima' },
+                        { q: 'Seeing the total cost and comparing scenarios side by side made the decision feel less abstract and more manageable.', n: 'Elena C.', r: 'Homebuyer', c: 'Lima' },
                     ],
                 },
                 faq: {
@@ -1074,7 +1074,7 @@
                 hero: {
                     eyebrow: 'Bricks Calc',
                     title: ['Calculadora Hipotecaria.', 'Compara cuotas reales.'],
-                    body: 'Calcula cuotas de crédito hipotecario, compara escenarios y muestra el impacto de tasas, plazos, cuota inicial, pagos adelantados, impuestos e ingresos por alquiler.',
+                    body: 'Calcula la cuota, revisa el costo total del crédito, compara escenarios y luego evalúa amortización, pagos extra y refinanciamiento.',
                     cta: 'Descargar en App Store',
                     sub: 'Gratis para probar. Sin cuenta obligatoria. Pago único disponible.',
                 },
@@ -1091,7 +1091,7 @@
                 pillars: {
                     eyebrow: 'Por qué Calc',
                     title: ['Hecho para las', 'conversaciones.'],
-                    body: 'Una calculadora hipotecaria debe aclarar la siguiente decisión. Calc reúne cuotas, amortización, refinanciamiento y pagos adelantados en una app enfocada.',
+                    body: 'Una calculadora hipotecaria debe aclarar la siguiente decisión. Calc reúne cuota, costo total, comparación y escenarios de largo plazo en una app enfocada.',
                     items: [
                         { t: 'Sin hojas de cálculo', d: 'Abre la app y empieza a modelar inmediatamente. Sin cambiar de herramientas o romper el ritmo.', icon: 'icon-spreadsheets.svg' },
                         { t: 'Ajusta en vivo', d: 'Cambia el monto, la tasa, la cuota inicial o el plazo en segundos y muestra el impacto al instante.', icon: 'icon-adjust.svg' },
@@ -1101,34 +1101,34 @@
                 feature1: {
                     eyebrow: 'Precisión',
                     title: ['Números reales,', 'no estimaciones.'],
-                    body: 'Incluye impuestos, seguro, PMI e ingresos por alquiler en tus cálculos. Ve la cuota mensual completa, no solo capital e interés.',
+                    body: 'Incluye impuestos, seguro, PMI e ingresos por alquiler en tus cálculos. Ve la cuota mensual completa y entiende mejor el costo total del crédito.',
                     icon: 'icon-spreadsheets.svg',
                     bullets: [
                         { t: 'Impuestos y seguros', d: 'Activa o desactiva los impuestos locales y el costo del seguro fácilmente.' },
                         { t: 'Manejo de PMI', d: 'Modela automáticamente el seguro hipotecario privado cuando la cuota inicial es baja.' },
-                        { t: 'Tabla de amortización', d: 'Gráficos claros de capital, interés y saldo durante la vida del préstamo.' },
-                    ],
-                },
-                feature_prepay: {
-                    eyebrow: 'Pagos adelantados',
-                    title: ['Pagos extra,', 'impacto exacto.'],
-                    body: 'Agrega pagos extra únicos o recurrentes a cualquier escenario y ve al instante cuánto interés y tiempo se reduce en el crédito.',
-                    icon: 'icon-adjust.svg',
-                    bullets: [
-                        { t: 'Únicos o recurrentes', d: 'Modela un abono único o una cantidad extra fija cada mes.' },
-                        { t: 'Tiempo ahorrado', d: 'Ve de inmediato cuántos meses o años se reducen del crédito hipotecario.' },
-                        { t: 'Ahorro en intereses', d: 'Muestra cuánto interés se deja de pagar con cada escenario.' },
+                        { t: 'Costo total del crédito', d: 'Revisa cómo se reparte el costo total más allá del monto prestado.' },
                     ],
                 },
                 feature2: {
                     eyebrow: 'Compara',
-                    title: ['Elige la opción', 'que se sostiene.'],
-                    body: 'Compara refinanciamiento, plazos y escenarios guardados antes de tomar una decisión. Los números quedan claros para revisar después.',
+                    title: ['Compara escenarios', 'antes de elegir.'],
+                    body: 'Prueba cambios en precio, cuota inicial, tasa y plazo lado a lado. Ve qué opción sostiene mejor la cuota mensual antes de avanzar.',
                     icon: 'icon-compare.svg',
                     bullets: [
+                        { t: 'Precio y cuota inicial', d: 'Compara cómo cambia la cuota al subir o bajar el valor del inmueble o el pago inicial.' },
+                        { t: 'Tasa y plazo', d: 'Ve el equilibrio entre una cuota menor y un mayor costo a largo plazo.' },
+                        { t: 'Escenarios guardados', d: 'Mantén varias opciones lado a lado para revisarlas después.' },
+                    ],
+                },
+                feature_prepay: {
+                    eyebrow: 'Decisiones de largo plazo',
+                    title: ['Prueba pagos extra.', 'Evalúa refinanciar después.'],
+                    body: 'Cuando la cuota ya está clara, agrega pagos extra únicos o recurrentes y revisa escenarios de refinanciamiento con los mismos números a la vista.',
+                    icon: 'icon-adjust.svg',
+                    bullets: [
+                        { t: 'Pagos extra', d: 'Modela un abono único o una cantidad adicional fija cada mes.' },
+                        { t: 'Tiempo e interés ahorrado', d: 'Ve cuánto antes puede terminar el crédito y cómo cambia el costo total.' },
                         { t: 'Escenarios de refinanciamiento', d: 'Compara el crédito actual con una nueva opción y ve cuándo empieza a convenir.' },
-                        { t: 'Comparte donde sea', d: 'Usa el menú nativo de iOS para mensajes, correo o AirDrop.' },
-                        { t: 'Siempre privado', d: 'Los cálculos se quedan en tu dispositivo. Nada se sube a nuestros servidores.' },
                     ],
                 },
                 testimonials: {
@@ -1137,7 +1137,7 @@
                     quotes: [
                         { q: 'Quería ver la cuota completa, no solo el monto del préstamo. Comparar impuestos, seguro y PMI hizo la decisión más clara.', n: 'Maya R.', r: 'Compradora primeriza', c: 'Austin' },
                         { q: 'Cambiar la tasa y la cuota inicial lado a lado me ayudó a entender qué podía pagar antes de hacer una oferta.', n: 'Daniel P.', r: 'Comprador', c: 'Miami' },
-                        { q: 'La vista de pagos adelantados hizo más fácil entender el costo a largo plazo y el impacto de un pago extra.', n: 'Elena C.', r: 'Propietaria', c: 'Lima' },
+                        { q: 'Ver el costo total y comparar escenarios lado a lado hizo la decisión mucho más clara antes de avanzar.', n: 'Elena C.', r: 'Compradora', c: 'Lima' },
                     ],
                 },
                 faq: {
@@ -1717,8 +1717,8 @@
                         <CalcStats t={calcT} />
                         <CalcPillars t={calcT} theme={effectiveTheme} />
                         <CalcFeatureSplit feature={calcT.feature1} reverse={false} shotSrc={shot1} theme={effectiveTheme} />
-                        <CalcFeatureSplit feature={calcT.feature_prepay} reverse={true} shotSrc={shotPrepay} theme={effectiveTheme} />
-                        <CalcFeatureSplit feature={calcT.feature2} reverse={false} shotSrc={shot2} theme={effectiveTheme} />
+                        <CalcFeatureSplit feature={calcT.feature2} reverse={true} shotSrc={shot2} theme={effectiveTheme} />
+                        <CalcFeatureSplit feature={calcT.feature_prepay} reverse={false} shotSrc={shotPrepay} theme={effectiveTheme} />
                         <CalcTestimonials t={calcT} />
                         <CalcFAQ t={calcT} />
                     </main>
