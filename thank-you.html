@@ -13,13 +13,25 @@
     <meta name="robots" content="noindex,nofollow" />
 
     <!-- Open Graph Tags -->
-    <meta property="og:site_name" content="Bricks Apps" />
     <meta property="og:title" content="Thank you for signing up! | Bricks Apps" />
     <meta property="og:description"
         content="Thank you for signing up for Bricks Leads. We will notify you when the app is available." />
-    <meta property="og:image" content="https://bricks.pe/images/bricks-dark-logo.svg" />
+    <meta property="og:image" content="https://bricks.pe/images/apple-touch-icon.png" />
+    <meta property="og:image:width" content="192" />
+    <meta property="og:image:height" content="192" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://bricks.pe/thank-you.html" />
+    <meta property="og:site_name" content="Bricks Apps" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "url": "https://bricks.pe/thank-you.html",
+      "name": "Bricks Leads Signup Thank You",
+      "description": "Confirmation page after signing up for Bricks Leads updates."
+    }
+    </script>
 
     <!-- Favicon & Styles -->
     <link rel="icon" href="favicon.ico" sizes="32x32" />
@@ -31,8 +43,8 @@
     <link rel="stylesheet" href="styles.css" />
 
     <!-- React & Babel -->
-    <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
 
     <!-- Google Tag Manager -->
@@ -95,6 +107,11 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P5P8LRC2" height="0" width="0"
             style="display: none; visibility: hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
+
+    <div aria-hidden="true" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap">
+        <h1>Thank you for signing up</h1>
+        <p>This page confirms a Bricks Leads signup request and lets visitors return to the Bricks website.</p>
+    </div>
 
     <div id="root"></div>
 
