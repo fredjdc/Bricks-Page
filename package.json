@@ -1,0 +1,14 @@
+{
+  "name": "bricks-web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:jsx": "node scripts/precompile-jsx.mjs",
+    "watch:jsx": "node scripts/precompile-jsx.mjs --watch",
+    "check:jsx": "node scripts/precompile-jsx.mjs --check",
+    "apply:jsx": "node scripts/precompile-jsx.mjs --apply-html"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.3"
+  }
+}

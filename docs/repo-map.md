@@ -27,6 +27,7 @@ Fast map of the website repository.
 | `styles.css` | Global stylesheet (design tokens, layout, components) |
 | `scripts.js` | Global JavaScript (interactions, nav, shared logic) |
 | `hero-background.js` | Hero section particle / gradient animation |
+| `compiled/` | Generated production JS bundles for pages that precompile inline JSX |
 | `shared.jsx` | Shared JSX component definitions |
 | `shared_components.jsx` | Additional shared JSX components |
 | `favicon.ico` / `favicon.svg` | Site favicons |
@@ -60,6 +61,8 @@ Fast map of the website repository.
 
 | File | Purpose |
 |---|---|
+| `package.json` | Local build commands for JSX precompilation |
+| `scripts/precompile-jsx.mjs` | Extracts inline `text/babel` scripts from supported pages and compiles them with esbuild |
 | `generate_scan.py` | Python script — generates Bricks Scan page content |
 | `replace_styles.py` | Python script — bulk style replacement utility |
 | `formatFileSize.test.js` | Unit tests for `formatFileSize` helper |

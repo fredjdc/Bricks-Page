@@ -1,6 +1,6 @@
 # Bricks Page — Codex Context
 
-Bricks Page is the static public web surface for Bricks Apps. Its primary domain is `bricks.pe`, with related `leads.bricks.pe` routes used by some Bricks Leads landing and thank-you flows. It contains product pages for Bricks Scan, Bricks Calc, and Bricks Leads, plus legal, support, help, and supporting marketing pages. No build system — pure HTML, CSS, and JavaScript.
+Bricks Page is the static public web surface for Bricks Apps. Its primary domain is `bricks.pe`, with related `leads.bricks.pe` routes used by some Bricks Leads landing and thank-you flows. It contains product pages for Bricks Scan, Bricks Calc, and Bricks Leads, plus legal, support, help, and supporting marketing pages. The site remains static HTML, CSS, and JavaScript, with an optional esbuild-based JSX precompile step for pages that still contain inline React + `text/babel`.
 
 ---
 
@@ -20,7 +20,7 @@ Before editing any web content, read these:
 
 - **Follow the Bricks brand voice exactly** — clear, calm, practical, trustworthy. No hype, no hollow enthusiasm, no ornamental phrasing. State what it does -> why it matters -> stop.
 - **Follow the brand visual system** — monochromatic base, product accent colors, Soft-Emboss surface language. Do not introduce new color values without checking `brand-system.md`.
-- **No new frameworks or build tools** — the site is intentionally simple. No npm, no bundlers, no CSS preprocessors.
+- **Keep the toolchain minimal** — the site is intentionally simple. Do not introduce new frameworks or replace the current static architecture. The only approved build step is the repo's minimal JSX precompile workflow for removing browser Babel from production pages.
 - **Update `sitemap.xml` when adding pages** — keep the sitemap accurate for SEO.
 - **Never modify `apple-app-site-association` without coordination** — this file controls universal links for all Bricks apps on iOS and macOS.
 - **Treat `purrfect-yarn.html` as a non-core exception** — it is not part of the canonical Bricks website surface and should not be used as a pattern source for core pages.
