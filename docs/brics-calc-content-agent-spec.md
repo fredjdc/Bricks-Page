@@ -215,6 +215,36 @@ Built Bricks Calc for the moments when a client asks:
 "What would the payment be if we changed the rate?"
 ```
 
+### One-Line X Style
+
+Use this when the prompt asks for short, human X posts or references the Easlo-style direction.
+
+Rules:
+
+- One line only.
+- One short sentence.
+- One financial truth, observation, or tension.
+- No hashtags.
+- Usually no CTA.
+- Do not name Bricks Calc unless the user asks for product-forward copy.
+- Keep it under 70 characters when possible.
+- Make it feel like a useful thought, not an ad headline.
+
+Strong patterns:
+
+- The real payment includes more than the loan.
+- A lower rate is not always a better loan.
+- Extra payments change the whole timeline.
+- Refinancing should start with the math.
+- The monthly payment is only the first number.
+- A loan term changes more than the payment.
+- PMI can change the answer fast.
+- The cheapest payment can hide the costliest loan.
+- Compare the loan before you choose the loan.
+- A mortgage decision should fit on one screen.
+
+Use these as seeds, not a fixed list. Generate more by focusing on one feature or benefit at a time: payment, total cost, comparison, PMI, amortization, prepayments, refinance, privacy, no account, or offline use.
+
 ### CTA Library
 
 Preferred:
