@@ -67,7 +67,7 @@ Do not overextend beyond the page. Avoid saying the app guarantees bank approval
 1. **The Moment:** What real client or deal question does this answer?
 2. **The Action:** What does the feature do? (one specific, concrete sentence)
 3. **The Constraint:** Why is our way better? (no account / offline / local / native)
-4. **The CTA:** Use a calm next step, usually "Try Bricks Calc on the App Store." Use the landing page link on X and LinkedIn.
+4. **The CTA:** Use a calm next step only when it feels natural. Use the landing page link on X and LinkedIn when the post is explicitly conversion-focused.
 
 **Feature Pool** (rotate; do not repeat the same feature in consecutive weeks):
 
@@ -108,6 +108,51 @@ Use these when the goal is installs or paid unlocks without sounding salesy:
 - **Field constraint:** "Can I answer this without Wi-Fi or a spreadsheet?"
 
 Write the post around the work moment first. Then name the feature. Then add the Bricks constraint.
+
+### Human / Spontaneous Style
+
+Use this style especially for X. The goal is to sound more like a founder sharing a practical thought than a brand running an ad.
+
+What to borrow from the reference style:
+
+- Short, plain hooks.
+- One idea per post.
+- Natural line breaks.
+- Occasional questions.
+- Casual product mentions.
+- Specific utility over polished campaign language.
+
+Do not copy another creator's wording or cadence exactly. Keep the Bricks voice calmer and more professional.
+
+Good X shapes:
+
+```
+The monthly payment is rarely the whole story.
+
+Taxes, insurance, PMI, and rental income can change the answer fast.
+```
+
+```
+What happens if the buyer adds one extra payment a year?
+
+That question should not require a spreadsheet.
+```
+
+```
+A refinance comparison has one job:
+
+show when the new loan starts to make sense.
+```
+
+```
+If the calculator asks for an account before it shows the payment, the order is wrong.
+```
+
+```
+Built Bricks Calc for the moments when a client asks:
+
+"What would the payment be if we changed the rate?"
+```
 
 ### CTA Library
 
@@ -186,18 +231,15 @@ Write with full accents in post copy.
 ### Week 1, Feature, EN — X
 
 ```
-A client asks where the payment goes over time.
+The payment is only part of the story.
 
-Show principal, interest, and balance month by month.
-No account required.
-
-Try Bricks Calc → https://bricks.pe/calc.html
+Bricks Calc shows principal, interest, and balance month by month.
 ```
 
 ### Week 1, Feature, ES — LinkedIn
 
 ```
-El cliente pregunta cómo cambia la deuda con el tiempo.
+La cuota es solo parte de la historia.
 
 Bricks Calc muestra capital, intereses y saldo pendiente mes a mes. Sin crear cuenta. Tus cálculos se quedan en tu dispositivo.
 
@@ -219,7 +261,7 @@ Link in bio.
 ### Week 2, Feature, EN — LinkedIn
 
 ```
-Two loan options can look close until the payment changes.
+Two loan options can look close until the monthly payment changes.
 
 Compare scenarios side by side in Bricks Calc. Adjust the amount, rate, term, and down payment before you share numbers with a client.
 
@@ -235,6 +277,37 @@ Bricks Calc muestra cuánto interés y tiempo se reduce en el crédito.
 Sin hojas de cálculo.
 
 Prueba Bricks Calc → https://bricks.pe/calc.html?lang=es
+```
+
+### Week 4, Anti, EN — X
+
+```
+Mortgage math should not start with a spreadsheet.
+
+Open the app.
+Change the rate.
+Compare the scenarios.
+```
+
+### Week 5, Feature, EN — X
+
+```
+The cleanest loan estimate is usually the fuller one.
+
+Principal, interest, taxes, insurance, PMI.
+One monthly number.
+```
+
+### Week 6, Feature, ES — Instagram
+
+```
+El alquiler cambia la lectura de una cuota.
+
+Bricks Calc suma ingresos por alquiler para revisar el flujo mensual con más contexto.
+
+Link in bio.
+
+#CalculadoraHipotecaria #BienesRaices #CreditoHipotecario #BricksCalc
 ```
 
 ---

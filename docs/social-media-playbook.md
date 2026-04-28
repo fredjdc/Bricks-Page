@@ -11,7 +11,7 @@ app_scope: shared
 
 Remember: We do not sell. We state facts. We earn trust through restraint.
 
-The goal is still conversion. The difference is how we get there: show a specific work problem, show the app behavior that removes it, then give a plain next step.
+The goal is still conversion. The difference is how we get there: sound useful, specific, and human. Some posts can be direct product notes. Some can be small observations. Not every post needs to feel like a campaign.
 
 ---
 
@@ -33,16 +33,54 @@ Highlight *how* the app works, contrasting it with industry norms (without being
 
 ---
 
-## 2. The Copywriting Formula
+## 2. Post Shapes
 
-When drafting your 2 posts per week, use this strict structural formula. If a sentence doesn't fit one of these four steps, delete it.
+Use these shapes instead of forcing every post into the same structure.
+
+### Shape A: Work Moment
 
 1.  **The Moment:** What real work situation is this for? (e.g., *The client asks what the payment looks like at a higher rate.*)
 2.  **The Action:** What does the app do? (e.g., *Compare both scenarios side by side.*)
 3.  **The Constraint:** Why is the Bricks way better? (e.g., *No account. Works offline. Calculations stay on device.*)
 4.  **The CTA:** A plain next step. (e.g., *Try Bricks Calc on the App Store.*)
 
-For X, combine the Moment and Action if needed. For Instagram, keep the Moment short and let the visual carry the product proof.
+Use this for LinkedIn and conversion-focused posts.
+
+### Shape B: Human Observation
+
+1.  Make a short observation about the work.
+2.  Add one product-specific sentence if useful.
+3.  Stop.
+
+Example:
+
+*   "The monthly payment is rarely the whole story. Taxes, insurance, PMI, and rental income change the conversation."
+
+Use this for X and Instagram.
+
+### Shape C: Tiny Lesson
+
+1.  Name a practical idea.
+2.  Give one useful detail.
+3.  Mention the app only if it fits naturally.
+
+Example:
+
+*   "A refinance only helps after the break-even point. Bricks Calc compares the current loan with the new option so that point is easier to see."
+
+Use this when the post should build trust before asking for a click.
+
+### Shape D: Product Note
+
+1.  Say what changed, what shipped, or what the app does.
+2.  Keep it casual and concrete.
+3.  Add a link only when useful.
+
+Example:
+
+*   "Bricks Calc keeps payment, prepayment, refinance, and rental-income scenarios in one place."
+
+For X, default to Shape B or C. For LinkedIn, default to Shape A or C. For Instagram, default to Shape B with a strong screenshot.
 
 ### CTA Rules
 
@@ -67,6 +105,7 @@ Avoid:
 *   [ ] Is the post about more than one app? (If yes, split it into two posts).
 *   [ ] Does the post name a real work moment or concrete task?
 *   [ ] Does the CTA sound calm, not pressured?
+*   [ ] Does the post sound like a reusable template? (If yes, make it shorter, more specific, or more observational).
 *   [ ] Does the image match the text exactly?
 
 ---
@@ -77,11 +116,11 @@ If you don't know what to post, follow this 4-week loop to ensure each app gets 
 
 ### Week 1: Bricks Calc
 *   **Post 1 (Feature):** Amortization schedules. (Show a screenshot of the schedule).
-    *   *EN:* "A client asks where the payment goes over time. Show principal, interest, and balance month by month. Try Bricks Calc on the App Store."
-    *   *ES:* "El cliente pregunta cómo cambia la deuda con el tiempo. Muestra capital, intereses y saldo mes a mes. Prueba Bricks Calc en el App Store."
+    *   *EN:* "The payment is only part of the story. Bricks Calc shows principal, interest, and balance month by month."
+    *   *ES:* "La cuota es solo parte de la historia. Bricks Calc muestra capital, intereses y saldo mes a mes."
 *   **Post 2 (Anti-Status Quo):** Speed / No login.
-    *   *EN:* "The number should come before the signup form. Bricks Calc opens straight to the calculator. No account required."
-    *   *ES:* "El cálculo debe venir antes del formulario. Bricks Calc abre directo en la calculadora. Sin crear cuenta."
+    *   *EN:* "The number should come before the signup form. Bricks Calc opens straight to the calculator."
+    *   *ES:* "El cálculo debe venir antes del formulario. Bricks Calc abre directo en la calculadora."
 
 ### Week 2: Bricks Scan
 *   **Post 1 (Feature):** Multi-page exports. (Show a video of exporting a PDF).
@@ -101,8 +140,8 @@ If you don't know what to post, follow this 4-week loop to ensure each app gets 
 
 ### Week 4: Use Cases / Scenarios
 *   **Post 1 (Calc):** 
-    *   *EN:* "Client asks for real numbers at a showing. Calculate payments and compare loan scenarios on the spot. Works offline."
-    *   *ES:* "El cliente pide números reales durante la visita. Calcula cuotas y compara escenarios de crédito al instante. Funciona sin conexión."
+    *   *EN:* "A showing can turn into a financing conversation fast. It helps to compare the loan options while the question is still fresh."
+    *   *ES:* "Una visita puede convertirse rápido en una conversación de financiamiento. Ayuda comparar escenarios mientras la pregunta sigue fresca."
 *   **Post 2 (Scan):** 
     *   *EN:* "Need to send a signed disclosure from the car? Scan, crop, and email in one tap."
     *   *ES:* "¿Necesitas enviar una divulgación firmada desde el auto? Escanea, recorta y envía por correo con un toque."
