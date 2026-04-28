@@ -30,6 +30,7 @@ Calc-specific facts, features, and rules. Read `content-agent-base.md` first, th
 - Compares refinance options (shows when it makes sense to refinance).
 - Includes rental income in monthly cash flow calculations.
 - Adds taxes, insurance, and PMI to payment estimates.
+- Shares summaries using native Apple sharing.
 
 ### How it works
 
@@ -40,6 +41,21 @@ Calc-specific facts, features, and rules. Read `content-agent-base.md` first, th
 - Free to try. One-time unlock available for unlimited saved calculations.
 - Native on iOS, iPadOS, macOS, and Apple Vision.
 
+### Landing page positioning
+
+Source: `calc.html`.
+
+Use these claims as the highest-confidence public positioning:
+
+- "Mortgage Calculator. Compare real loan options."
+- "Calculate monthly payments, compare mortgage and loan scenarios, and show the impact of rates, terms, prepayments, taxes, PMI, and rental income."
+- "Free to try. No account required. One-time unlock available."
+- "A mortgage calculator should make the next decision clearer."
+- "See the monthly commitment, not just principal and interest."
+- "Calculations stay on your device. Nothing is ever uploaded."
+
+Do not overextend beyond the page. Avoid saying the app guarantees bank approval, replaces a lender, or gives final loan terms. If accuracy comes up, say it uses standard amortization formulas and users should confirm final terms with their lender.
+
 ---
 
 ## POST TYPE DEFINITIONS
@@ -48,9 +64,10 @@ Calc-specific facts, features, and rules. Read `content-agent-base.md` first, th
 
 **Purpose:** Highlight exactly one feature of Bricks Calc.
 **Structure:**
-1. **The Action:** What does the feature do? (one specific, concrete sentence)
-2. **The Constraint:** Why is our way better? (no account / offline / local)
-3. **The CTA:** Download Bricks Calc on the App Store. [link]
+1. **The Moment:** What real client or deal question does this answer?
+2. **The Action:** What does the feature do? (one specific, concrete sentence)
+3. **The Constraint:** Why is our way better? (no account / offline / local / native)
+4. **The CTA:** Use a calm next step, usually "Try Bricks Calc on the App Store." Use the landing page link on X and LinkedIn.
 
 **Feature Pool** (rotate; do not repeat the same feature in consecutive weeks):
 
@@ -60,6 +77,7 @@ Calc-specific facts, features, and rules. Read `content-agent-base.md` first, th
 - Refinance comparison — compare current loan vs. new option.
 - Rental income — factor in rent to understand monthly cash flow.
 - Taxes, insurance, PMI — full payment estimate, not just principal + interest.
+- Native sharing — share a clear summary through Messages, Mail, or AirDrop.
 
 ### Anti-Status Quo
 
@@ -67,15 +85,52 @@ Calc-specific facts, features, and rules. Read `content-agent-base.md` first, th
 **Structure:**
 1. **The Action:** State the contrast plainly. One sentence.
 2. **The Constraint:** The feature that makes us different.
-3. **The CTA:** Download Bricks Calc on the App Store. [link]
+3. **The CTA:** Use a calm next step. Do not make it urgent.
 
 **Anti Pool** (rotate):
 
 - No account required. Calculate numbers instantly.
 - Works offline. No internet needed to run a scenario.
 - Your calculations stay on your device.
-- Free to try. One-time unlock, not a subscription.
+- Free to try. One-time unlock available.
 - Native on iPhone, iPad, and Mac — not a web wrapper.
+- No spreadsheets. Model the scenario in one focused app.
+
+### Conversion Angles
+
+Use these when the goal is installs or paid unlocks without sounding salesy:
+
+- **Client question:** "What is the payment if the rate changes?"
+- **Side-by-side decision:** "Which option holds up: lower rate, shorter term, or larger down payment?"
+- **Full monthly commitment:** "What is the number after taxes, insurance, PMI, and rent?"
+- **Prepayment value:** "How much interest and time does one extra payment save?"
+- **Refinance timing:** "When does the new loan start to make sense?"
+- **Field constraint:** "Can I answer this without Wi-Fi or a spreadsheet?"
+
+Write the post around the work moment first. Then name the feature. Then add the Bricks constraint.
+
+### CTA Library
+
+Preferred:
+
+- Try Bricks Calc on the App Store.
+- Download Bricks Calc on the App Store.
+- See Bricks Calc.
+- Run the numbers in Bricks Calc.
+- Link in bio.
+
+Use sparingly:
+
+- Get Bricks Calc.
+
+Avoid:
+
+- Download now.
+- Start today.
+- Save time today.
+- Upgrade your workflow.
+- Close more deals.
+- Never miss a deal.
 
 ---
 
@@ -87,7 +142,9 @@ Calibrated from `brics-calc-asc-en.md`.
 
 **Preferred terms:** mortgage, loan, amortization, prepayment, refinance, PMI, rental income, monthly payment.
 
-**Avoid:** "tracker", "planner", "home loan" as a primary term.
+**Avoid:** "tracker", "planner", "home loan" as a primary term, "powerful", "easy", "effortless", "seamless", "smart".
+
+**Use carefully:** "client" is acceptable when the post is clearly for real estate professionals. Do not imply Bricks Calc is financial advice.
 
 ### Spanish (es)
 
@@ -95,7 +152,9 @@ Calibrated from `brics-calc-asc-es.md`. Market: Peru-first, Latin America-compat
 
 **Preferred terms:** crédito hipotecario, cuota, amortización, pago adelantado, refinanciamiento, ingreso por alquiler, cuota inicial.
 
-**Avoid:** "mensualidad" (use "cuota"), "hipoteca" alone as the primary term.
+**Avoid:** "mensualidad" (use "cuota"), "hipoteca" alone as the primary term, "fácil", "sin esfuerzo", "potente", "revoluciona", "automatiza" unless the feature literally automates something.
+
+**Use carefully:** "cliente" is acceptable for realtor-facing posts. "Comprador" is acceptable for buyer-facing posts. Do not use "asesoría financiera".
 
 Write with full accents in post copy.
 
@@ -116,7 +175,9 @@ Write with full accents in post copy.
 | 1    | Amortization schedules    | No account / instant calc |
 | 2    | Side-by-side comparison   | Works offline             |
 | 3    | Prepayment modeling       | Local-first / on device   |
-| 4    | Refinance + rental income | Free to try / one-time    |
+| 4    | Refinance comparison      | Free to try / one-time    |
+| 5    | Taxes, insurance, PMI     | No spreadsheets           |
+| 6    | Rental income             | Native Apple app          |
 
 ---
 
@@ -125,30 +186,66 @@ Write with full accents in post copy.
 ### Week 1, Feature, EN — X
 
 ```
-View a full amortization schedule for any mortgage or loan.
-See principal and interest broken down month by month.
-No account needed.
-Download Bricks Calc → https://bricks.pe/calc.html
+A client asks where the payment goes over time.
+
+Show principal, interest, and balance month by month.
+No account required.
+
+Try Bricks Calc → https://bricks.pe/calc.html
 ```
 
 ### Week 1, Feature, ES — LinkedIn
 
 ```
-Revisa el cronograma de amortización completo de cualquier crédito hipotecario.
+El cliente pregunta cómo cambia la deuda con el tiempo.
 
-Capital, intereses y saldo pendiente, mes a mes. Sin crear cuenta. Tus cálculos se quedan en tu dispositivo.
+Bricks Calc muestra capital, intereses y saldo pendiente mes a mes. Sin crear cuenta. Tus cálculos se quedan en tu dispositivo.
 
-Descarga Bricks Calc en el App Store → https://bricks.pe/calc.html
+Prueba Bricks Calc en el App Store → https://bricks.pe/calc.html?lang=es
 ```
 
 ### Week 1, Anti, EN — Instagram
 
 ```
-Most mortgage calculators need an account before you see a number.
+The payment should come before the signup form.
 
-Bricks Calc doesn't. Open the app. Calculate. Done.
+Bricks Calc opens straight to the calculator. No account required.
 
 Link in bio.
 
 #BricksCalc #MortgageCalculator #LoanCalculator #RealEstate #RealtorTools
 ```
+
+### Week 2, Feature, EN — LinkedIn
+
+```
+Two loan options can look close until the payment changes.
+
+Compare scenarios side by side in Bricks Calc. Adjust the amount, rate, term, and down payment before you share numbers with a client.
+
+Try Bricks Calc on the App Store → https://bricks.pe/calc.html
+```
+
+### Week 3, Feature, ES — X
+
+```
+Un pago adelantado cambia más que la próxima cuota.
+
+Bricks Calc muestra cuánto interés y tiempo se reduce en el crédito.
+Sin hojas de cálculo.
+
+Prueba Bricks Calc → https://bricks.pe/calc.html?lang=es
+```
+
+---
+
+## WHAT IS MISSING / DECISIONS TO MAKE
+
+These are the gaps that affect conversion quality:
+
+- **Audience priority per campaign:** Decide when a post is for realtors, mortgage brokers, buyers, or investors. The feature stays the same, but the work moment changes.
+- **Proof asset map:** Each post type needs a matching screenshot or short video. Example: amortization post uses the amortization screen, not the hero image.
+- **Pricing wording source of truth:** The ASO docs warn not to say "no subscription" while a yearly option is visible. Keep using "Free to try" and "one-time unlock available" unless pricing changes.
+- **Geography split:** English posts can be US/general. Spanish posts should stay Peru-first unless the campaign says Latin America-wide.
+- **Conversion event:** Define the intended next step for each platform: App Store install, landing-page click, beta interest, or saved Buffer draft review.
+- **Compliance boundary:** Add a standard rule that Bricks Calc helps compare scenarios but does not provide lending, tax, or financial advice.

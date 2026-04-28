@@ -7,9 +7,11 @@ app_scope: shared
 
 # Bricks Apps: Social Media Playbook
 
-**Objective:** Consistently publish 2 posts per week across LinkedIn, X, and Instagram without violating the [Brand Voice Guide](brand-voice-guide.md). 
+**Objective:** Consistently publish 2 posts per week across LinkedIn, X, and Instagram without violating the [Brand Voice Guide](brand-voice-guide.md).
 
 Remember: We do not sell. We state facts. We earn trust through restraint.
+
+The goal is still conversion. The difference is how we get there: show a specific work problem, show the app behavior that removes it, then give a plain next step.
 
 ---
 
@@ -33,15 +35,38 @@ Highlight *how* the app works, contrasting it with industry norms (without being
 
 ## 2. The Copywriting Formula
 
-When drafting your 2 posts per week, use this strict structural formula. If a sentence doesn't fit one of these three steps, delete it.
+When drafting your 2 posts per week, use this strict structural formula. If a sentence doesn't fit one of these four steps, delete it.
 
-1.  **The Action:** What does the app do? (e.g., *Scan, organize, and export real estate documents.*)
-2.  **The Constraint (The 'Why'):** Why is our way better? (e.g., *Your files stay on your device. No cloud dependency.*)
-3.  **The CTA:** (e.g., *Download Bricks Scan on the App Store.*)
+1.  **The Moment:** What real work situation is this for? (e.g., *The client asks what the payment looks like at a higher rate.*)
+2.  **The Action:** What does the app do? (e.g., *Compare both scenarios side by side.*)
+3.  **The Constraint:** Why is the Bricks way better? (e.g., *No account. Works offline. Calculations stay on device.*)
+4.  **The CTA:** A plain next step. (e.g., *Try Bricks Calc on the App Store.*)
+
+For X, combine the Moment and Action if needed. For Instagram, keep the Moment short and let the visual carry the product proof.
+
+### CTA Rules
+
+Use:
+
+*   Try Bricks Calc on the App Store.
+*   Download Bricks Scan on the App Store.
+*   Try the Bricks Leads beta.
+*   See Bricks Calc.
+*   Link in bio.
+
+Avoid:
+
+*   Download now.
+*   Don't miss out.
+*   Start saving time today.
+*   Transform your workflow.
+*   The only app you need.
 
 **Self-Correction Checklist:**
 *   [ ] Did I use the word "seamless," "ultimate," or "powerful"? (If yes, delete).
 *   [ ] Is the post about more than one app? (If yes, split it into two posts).
+*   [ ] Does the post name a real work moment or concrete task?
+*   [ ] Does the CTA sound calm, not pressured?
 *   [ ] Does the image match the text exactly?
 
 ---
@@ -52,11 +77,11 @@ If you don't know what to post, follow this 4-week loop to ensure each app gets 
 
 ### Week 1: Bricks Calc
 *   **Post 1 (Feature):** Amortization schedules. (Show a screenshot of the schedule).
-    *   *EN:* "View complete amortization schedules. Show clients exact principal and interest breakdowns. Download Bricks Calc on the App Store."
-    *   *ES:* "Revisa cronogramas de amortización completos. Muestra a tus clientes el desglose exacto de capital e intereses. Descarga Bricks Calc."
+    *   *EN:* "A client asks where the payment goes over time. Show principal, interest, and balance month by month. Try Bricks Calc on the App Store."
+    *   *ES:* "El cliente pregunta cómo cambia la deuda con el tiempo. Muestra capital, intereses y saldo mes a mes. Prueba Bricks Calc en el App Store."
 *   **Post 2 (Anti-Status Quo):** Speed / No login.
-    *   *EN:* "Calculate monthly payments instantly. No accounts, no waiting. Download Bricks Calc on the App Store."
-    *   *ES:* "Calcula cuotas mensuales al instante. Sin cuentas, sin esperas. Descarga Bricks Calc."
+    *   *EN:* "The number should come before the signup form. Bricks Calc opens straight to the calculator. No account required."
+    *   *ES:* "El cálculo debe venir antes del formulario. Bricks Calc abre directo en la calculadora. Sin crear cuenta."
 
 ### Week 2: Bricks Scan
 *   **Post 1 (Feature):** Multi-page exports. (Show a video of exporting a PDF).
@@ -76,8 +101,8 @@ If you don't know what to post, follow this 4-week loop to ensure each app gets 
 
 ### Week 4: Use Cases / Scenarios
 *   **Post 1 (Calc):** 
-    *   *EN:* "Client asks for real numbers at a showing. Calculate payments and compare loans on the spot. Works offline."
-    *   *ES:* "El cliente pide números reales durante la visita. Calcula pagos y compara préstamos al instante. Funciona sin conexión."
+    *   *EN:* "Client asks for real numbers at a showing. Calculate payments and compare loan scenarios on the spot. Works offline."
+    *   *ES:* "El cliente pide números reales durante la visita. Calcula cuotas y compara escenarios de crédito al instante. Funciona sin conexión."
 *   **Post 2 (Scan):** 
     *   *EN:* "Need to send a signed disclosure from the car? Scan, crop, and email in one tap."
     *   *ES:* "¿Necesitas enviar una divulgación firmada desde el auto? Escanea, recorta y envía por correo con un toque."
