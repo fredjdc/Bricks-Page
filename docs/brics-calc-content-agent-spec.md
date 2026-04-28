@@ -5,7 +5,7 @@ doc_type: agent
 app_scope: calc
 owner: Freddy
 status: active
-last_reviewed: 2026-04-27
+last_reviewed: 2026-04-28
 base_spec: content-agent-base.md
 ---
 
@@ -19,7 +19,8 @@ Calc-specific facts, features, and rules. Read `content-agent-base.md` first, th
 
 **App Store ID:** `6754506837`
 **App Store URL:** `https://apps.apple.com/us/app/bricks-calc-loan-calculator/id6754506837`
-**Landing page:** `https://bricks.pe/calc.html`
+**General landing page:** `https://bricks.pe/calc.html`
+**Homebuyer landing page:** `https://bricks.pe/homebuyers.html`
 
 ### What it does
 
@@ -41,7 +42,30 @@ Calc-specific facts, features, and rules. Read `content-agent-base.md` first, th
 - Free to try. One-time unlock available for unlimited saved calculations.
 - Native on iOS, iPadOS, macOS, and Apple Vision.
 
-### Landing page positioning
+### Public positioning hierarchy
+
+Use the most specific public page that matches the audience and intent. Do not flatten every post into one generic mortgage-calculator message.
+
+#### 1. Homebuyer positioning
+
+Source: `homebuyers.html`.
+
+Use this when the post is for buyers, affordability, monthly payment, or side-by-side purchase decisions.
+
+Highest-confidence claims:
+
+- "See the real monthly cost. Before you commit."
+- "Estimate payment, total loan cost, and side-by-side scenarios."
+- "Know the payment before the paperwork."
+- "Compare scenarios before you choose."
+- "Test extra payments. Check refinance later."
+- "Free to try. No account required. One-time unlock available."
+
+Primary landing page for buyer-focused conversion posts:
+
+- `https://bricks.pe/homebuyers.html`
+
+#### 2. General Calc positioning
 
 Source: `calc.html`.
 
@@ -54,7 +78,33 @@ Use these claims as the highest-confidence public positioning:
 - "See the monthly commitment, not just principal and interest."
 - "Calculations stay on your device. Nothing is ever uploaded."
 
+Primary landing page for broader Calc posts:
+
+- `https://bricks.pe/calc.html`
+
+#### 3. Refinance CPP positioning
+
+Source: `brics-calc-cpp-refinance-en.md` and `brics-calc-cpp-refinance-es.md`.
+
+Use this language only when the post clearly targets refinance intent:
+
+- "See the new payment, break-even timing, and long-term savings before you refinance."
+- "Compare your current loan with a new rate, payment, and term."
+- "Will refinancing actually save me money?"
+
+Do not use refinance as the lead angle in a buyer post unless the post is specifically about refinance.
+
 Do not overextend beyond the page. Avoid saying the app guarantees bank approval, replaces a lender, or gives final loan terms. If accuracy comes up, say it uses standard amortization formulas and users should confirm final terms with their lender.
+
+### Audience lanes
+
+Every post should fit one primary lane:
+
+- **Buyer:** affordability, monthly payment, taxes, insurance, PMI, total loan cost, compare purchase scenarios.
+- **Refinance:** new payment, break-even, current vs new loan, interest savings, refinance timing.
+- **Professional / advisor:** quick scenario answers, compare options during a conversation, no spreadsheet, no account, on-device.
+
+Do not mix buyer and refinance hooks in the same short post unless the refinance angle is clearly secondary.
 
 ---
 
@@ -103,11 +153,22 @@ Use these when the goal is installs or paid unlocks without sounding salesy:
 - **Client question:** "What is the payment if the rate changes?"
 - **Side-by-side decision:** "Which option holds up: lower rate, shorter term, or larger down payment?"
 - **Full monthly commitment:** "What is the number after taxes, insurance, PMI, and rent?"
+- **Total loan cost:** "How much does this loan actually cost beyond the amount borrowed?"
 - **Prepayment value:** "How much interest and time does one extra payment save?"
 - **Refinance timing:** "When does the new loan start to make sense?"
 - **Field constraint:** "Can I answer this without Wi-Fi or a spreadsheet?"
 
 Write the post around the work moment first. Then name the feature. Then add the Bricks constraint.
+
+### Landing page selection
+
+When a post includes a link, match the link to the lane:
+
+- Buyer posts: `https://bricks.pe/homebuyers.html`
+- Broad Calc posts: `https://bricks.pe/calc.html`
+- Refinance posts: use `https://bricks.pe/calc.html` until a dedicated refinance page exists
+
+Do not send buyer-intent posts to the generic page by default when `homebuyers.html` is a closer match.
 
 ### Human / Spontaneous Style
 
@@ -183,23 +244,52 @@ Avoid:
 
 ### English (en)
 
-Calibrated from `brics-calc-asc-en.md`.
+Calibrated from `brics-calc-asc-en.md`, `homebuyers.html`, and the refinance CPP brief.
 
-**Preferred terms:** mortgage, loan, amortization, prepayment, refinance, PMI, rental income, monthly payment.
+**Preferred terms:** mortgage, loan, amortization, prepayment, refinance, PMI, total loan cost, monthly payment.
 
 **Avoid:** "tracker", "planner", "home loan" as a primary term, "powerful", "easy", "effortless", "seamless", "smart".
 
 **Use carefully:** "client" is acceptable when the post is clearly for real estate professionals. Do not imply Bricks Calc is financial advice.
 
+For buyer-focused copy, prefer:
+
+- `monthly payment`
+- `real monthly cost`
+- `total loan cost`
+- `compare scenarios`
+
+For refinance-focused copy, prefer:
+
+- `new payment`
+- `break-even`
+- `interest savings`
+- `current loan vs new loan`
+
 ### Spanish (es)
 
-Calibrated from `brics-calc-asc-es.md`. Market: Peru-first, Latin America-compatible.
+Calibrated from `brics-calc-asc-es.md` and Astro search signals. Market: Peru-first, Latin America-compatible.
 
-**Preferred terms:** crédito hipotecario, cuota, amortización, pago adelantado, refinanciamiento, ingreso por alquiler, cuota inicial.
+**Preferred terms:** crédito hipotecario, préstamo, cuota, amortización, pago adelantado, refinanciamiento, ingreso por alquiler, cuota inicial, calculadora hipotecaria.
 
 **Avoid:** "mensualidad" (use "cuota"), "hipoteca" alone as the primary term, "fácil", "sin esfuerzo", "potente", "revoluciona", "automatiza" unless the feature literally automates something.
 
 **Use carefully:** "cliente" is acceptable for realtor-facing posts. "Comprador" is acceptable for buyer-facing posts. Do not use "asesoría financiera".
+
+Astro-aligned search language to prefer when relevant:
+
+- `prestamo`
+- `calculadora`
+- `calculadora hipotecaria`
+- `simulador de prestamo` only in longer SEO-style contexts, not as social headline copy
+
+For refinance-focused Spanish copy, prefer:
+
+- `refinanciar`
+- `refinanciamiento`
+- `cuándo conviene`
+- `nueva cuota`
+- `costo total del crédito`
 
 Write with full accents in post copy.
 
@@ -223,6 +313,15 @@ Write with full accents in post copy.
 | 4    | Refinance comparison      | Free to try / one-time    |
 | 5    | Taxes, insurance, PMI     | No spreadsheets           |
 | 6    | Rental income             | Native Apple app          |
+
+---
+
+## CPP AND PAGE RULES
+
+- Do not mention "custom product page," "CPP," or App Store marketing structure in customer-facing posts.
+- When generating campaign copy, keep one dominant intent per post: buyer, refinance, or professional workflow.
+- If the prompt asks for screenshot copy, promotional text, or App Store content, use the narrower intent language first and keep the first two frames or lines strongest.
+- If the prompt asks for Spanish copy tied to Peru or LATAM, prefer `crédito hipotecario`, `préstamo`, `cuota`, `refinanciamiento`, and `calculadora hipotecaria` over neutral direct translations.
 
 ---
 
