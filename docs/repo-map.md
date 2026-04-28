@@ -78,6 +78,7 @@ Fast map of the website repository.
 | `CONTRIBUTING.md` | Contribution guidelines |
 | `brand-voice-guide.md` | Bricks brand voice, tone, and writing style guide |
 | `social-media-playbook.md` | Platform-specific social media posting rules and templates |
+| `seo-validation-checklist.md` | Post-change checklist for Search Console, Rich Results Test, and Lighthouse |
 | `local-setup.md` | Local development environment setup instructions |
 | `content-agent-base.md` | Base specification shared by all per-app content agents |
 | `brics-calc-content-agent-spec.md` | Content agent spec — Bricks Calc |
