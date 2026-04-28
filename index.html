@@ -9,11 +9,11 @@
   <title>Bricks — iOS Apps for Real Estate Agents | Scan, Calc, Leads</title>
   <meta name="description" content="Three focused iOS apps for real estate agents. Scan documents, model mortgages, and manage leads — all offline, no account needed. Native on iPhone, iPad, and Mac.">
   <meta name="keywords" content="real estate apps, ios real estate tools, document scanner for real estate, mortgage calculator app, real estate crm iphone, bricks apps, bricks scan, bricks calc, bricks leads">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <link rel="canonical" href="https://bricks.pe/">
 
   <!-- ── International SEO / hreflang ────────────────────────────────────── -->
   <link rel="alternate" hreflang="en" href="https://bricks.pe/">
-  <link rel="alternate" hreflang="es" href="https://bricks.pe/?lang=es">
   <link rel="alternate" hreflang="x-default" href="https://bricks.pe/">
 
   <!-- ── Open Graph ───────────────────────────────────────────────────────── -->
@@ -22,8 +22,9 @@
   <meta property="og:title" content="Bricks — iOS Apps for Real Estate Agents">
   <meta property="og:description" content="Scan documents, model mortgages, and manage leads — offline, no account needed. Native on iPhone, iPad, and Mac.">
   <meta property="og:image" content="https://bricks.pe/images/og-bricks-home.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:locale" content="en_US">
-  <meta property="og:locale:alternate" content="es_LA">
   <meta property="og:site_name" content="Bricks Apps">
 
   <!-- ── Twitter / X Card ─────────────────────────────────────────────────── -->
@@ -50,7 +51,7 @@
         "@id": "https://bricks.pe/#org",
         "name": "Bricks Apps",
         "url": "https://bricks.pe",
-        "logo": "https://bricks.pe/images/bricks-logo.png",
+        "logo": "https://bricks.pe/images/apple-touch-icon.png",
         "contactPoint": {
           "@type": "ContactPoint",
           "email": "hello@bricks.pe",
@@ -95,11 +96,9 @@
 
   <link rel="stylesheet" href="styles.css">
 
-  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js"
-    integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L"
+  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"
     crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js"
-    integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm"
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"
     crossorigin="anonymous"></script>
   <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"
     integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y"
@@ -543,8 +542,8 @@
       }, [dlOpen]);
 
       const downloadItems = [
-        { label: 'Bricks Calc', href: 'https://apps.apple.com/us/app/bricks-calc-loan-calculator/id6754506837', accent: window.ACCENTS.calc.light, external: true },
-        { label: 'Bricks Scan', href: 'https://apps.apple.com/us/app/bricks-scan-scan-to-pdf/id6758148083', accent: window.ACCENTS.scan.light, external: true },
+        { label: 'Bricks Calc', href: 'https://apps.apple.com/us/app/bricks-calc-loan-calculator/id6754506837?ct=bricks_web_index_header_calc&mt=8', accent: window.ACCENTS.calc.light, external: true },
+        { label: 'Bricks Scan', href: 'https://apps.apple.com/us/app/bricks-scan-scan-to-pdf/id6758148083?ct=bricks_web_index_header_scan&mt=8', accent: window.ACCENTS.scan.light, external: true },
         { label: 'Bricks Leads', href: 'leads.html', accent: window.ACCENTS.leads.light, external: false },
       ];
 
@@ -1397,8 +1396,8 @@
       const [hovered, setHovered] = React.useState(null);
 
       const apps = [
-        { label: 'Bricks Calc', href: 'https://apps.apple.com/us/app/bricks-calc-loan-calculator/id6754506837', accent: window.ACCENTS.calc.light, external: true },
-        { label: 'Bricks Scan', href: 'https://apps.apple.com/us/app/bricks-scan-scan-to-pdf/id6758148083', accent: window.ACCENTS.scan.light, external: true },
+        { label: 'Bricks Calc', href: 'https://apps.apple.com/us/app/bricks-calc-loan-calculator/id6754506837?ct=bricks_web_index_download_calc&mt=8', accent: window.ACCENTS.calc.light, external: true },
+        { label: 'Bricks Scan', href: 'https://apps.apple.com/us/app/bricks-scan-scan-to-pdf/id6758148083?ct=bricks_web_index_download_scan&mt=8', accent: window.ACCENTS.scan.light, external: true },
         { label: 'Bricks Leads', href: 'leads.html', accent: window.ACCENTS.leads.light, external: false },
       ];
 

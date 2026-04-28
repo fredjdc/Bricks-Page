@@ -11,11 +11,11 @@
         content="Mortgage and loan calculator for Apple devices. Compare payments, amortization, refinance options, prepayments, taxes, PMI, and rental income. No account required." />
     <meta name="keywords"
         content="mortgage calculator, loan calculator, amortization calculator, emi calculator, refinance calculator, prepayment calculator, pmi calculator, rental income, calculadora hipotecaria, credito hipotecario, cuota inicial" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <link rel="canonical" href="https://bricks.pe/calc.html" />
 
     <!-- ── International SEO / hreflang ─────────────────────────────────── -->
     <link rel="alternate" hreflang="en" href="https://bricks.pe/calc.html" />
-    <link rel="alternate" hreflang="es" href="https://bricks.pe/calc.html?lang=es" />
     <link rel="alternate" hreflang="x-default" href="https://bricks.pe/calc.html" />
 
     <!-- ── Open Graph ────────────────────────────────────────────────────── -->
@@ -25,6 +25,8 @@
     <meta property="og:description"
         content="Compare mortgage and loan payments, amortization, refinance options, prepayments, taxes, PMI, and rental income. No account required." />
     <meta property="og:image" content="https://bricks.pe/images/bricks-calc-web-icon.png" />
+    <meta property="og:image:width" content="1024" />
+    <meta property="og:image:height" content="1024" />
     <meta property="og:site_name" content="Bricks Apps" />
 
     <!-- ── Twitter / X Card ──────────────────────────────────────────────── -->
@@ -40,20 +42,84 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Bricks Calc",
-      "applicationCategory": "FinanceApplication",
-      "operatingSystem": "iOS, iPadOS, macOS",
-      "url": "https://bricks.pe/calc.html",
-      "downloadUrl": "https://apps.apple.com/us/app/bricks-calc-loan-calculator/id6754506837",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-      "description": "Mortgage and loan calculator for iPhone, iPad, and Mac. Compare payments, amortization, refinance options, prepayments, taxes, PMI, and rental income.",
-      "screenshot": "https://bricks.pe/images/bricks-calc-web-icon.png",
-      "publisher": {
-        "@type": "Organization",
-        "name": "Bricks Apps",
-        "url": "https://bricks.pe"
-      }
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://bricks.pe/#org",
+          "name": "Bricks Apps",
+          "url": "https://bricks.pe",
+          "logo": "https://bricks.pe/images/apple-touch-icon.png"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://bricks.pe/calc.html#app",
+          "name": "Bricks Calc",
+          "applicationCategory": "FinanceApplication",
+          "operatingSystem": "iOS, iPadOS, macOS",
+          "url": "https://bricks.pe/calc.html",
+          "downloadUrl": "https://apps.apple.com/us/app/bricks-calc-loan-calculator/id6754506837",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+          "description": "Mortgage and loan calculator for iPhone, iPad, and Mac. Compare payments, amortization, refinance options, prepayments, taxes, PMI, and rental income.",
+          "image": "https://bricks.pe/images/bricks-calc-web-icon.png",
+          "publisher": { "@id": "https://bricks.pe/#org" }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://bricks.pe/calc.html#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Bricks Apps",
+              "item": "https://bricks.pe/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Bricks Calc",
+              "item": "https://bricks.pe/calc.html"
+            }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://bricks.pe/calc.html#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Is Bricks Calc only for Apple devices?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Bricks Calc is built natively for iPhone, iPad, and Mac."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do I need an internet connection?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. The core calculator works offline, so you can model loan scenarios without a connection."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I compare multiple scenarios?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Bricks Calc lets you compare loan scenarios side by side."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is Bricks Calc free?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Bricks Calc is free to try. Unlimited saved calculations can be unlocked with an in-app purchase, including a one-time option."
+              }
+            }
+          ]
+        }
+      ]
     }
     </script>
 
@@ -67,8 +133,8 @@
     <link rel="stylesheet" href="styles.css" />
 
     <!-- React & Babel -->
-    <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
 
     <!-- Google tag (gtag.js) -->
@@ -82,6 +148,22 @@
 </head>
 
 <body>
+    <!-- ── SEO body scaffold (visually hidden, crawlable) ─────────────────── -->
+    <div aria-hidden="true" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap">
+        <h1>Bricks Calc Mortgage Calculator for iPhone, iPad, and Mac</h1>
+        <p>Bricks Calc is a mortgage and loan calculator for Apple devices. Compare payments, amortization, refinance options, prepayments, taxes, PMI, and rental income without creating an account.</p>
+        <h2>Compare mortgage and loan scenarios</h2>
+        <p>Model monthly payments, loan terms, down payment changes, and side-by-side scenarios during client meetings. The calculator works offline and keeps results on your device.</p>
+        <h2>See the real monthly payment</h2>
+        <p>Include taxes, insurance, PMI, and rental income so each scenario reflects the full monthly commitment instead of principal and interest alone.</p>
+        <h2>Test prepayments and refinance options</h2>
+        <p>Add one-time or recurring extra payments, compare refinance alternatives, and see how much time and interest each option saves.</p>
+        <h2>Common questions</h2>
+        <p>Bricks Calc is built for iPhone, iPad, and Mac. The core calculator works offline, multiple scenarios can be compared, and the app is free to try with an in-app purchase for unlimited saved calculations.</p>
+        <p><a href="https://apps.apple.com/us/app/bricks-calc-loan-calculator/id6754506837?ct=bricks_web_calc_seo_body&mt=8">Download Bricks Calc on the App Store</a></p>
+        <p>Part of the Bricks suite: <a href="scan.html">Bricks Scan</a> and <a href="leads.html">Bricks Leads</a>.</p>
+    </div>
+
     <div id="root"></div>
 
     <script type="text/babel">
@@ -329,8 +411,8 @@
             }, [dlOpen]);
 
             const downloadItems = [
-                { label: 'Bricks Calc', href: 'https://apps.apple.com/us/app/bricks-calc-loan-calculator/id6754506837', accent: window.ACCENTS.calc.light, external: true },
-                { label: 'Bricks Scan', href: 'https://apps.apple.com/us/app/bricks-scan-scan-to-pdf/id6758148083', accent: window.ACCENTS.scan.light, external: true },
+                { label: 'Bricks Calc', href: 'https://apps.apple.com/us/app/bricks-calc-loan-calculator/id6754506837?ct=bricks_web_calc_header_menu_calc&mt=8', accent: window.ACCENTS.calc.light, external: true },
+                { label: 'Bricks Scan', href: 'https://apps.apple.com/us/app/bricks-scan-scan-to-pdf/id6758148083?ct=bricks_web_calc_header_menu_scan&mt=8', accent: window.ACCENTS.scan.light, external: true },
                 { label: 'Bricks Leads', href: 'leads.html', accent: window.ACCENTS.leads.light, external: false },
             ];
 
@@ -642,8 +724,8 @@
             const sub = isBeta ? betaCopy.sub : t.cta.sub;
 
             const apps = [
-                { label: 'Bricks Calc', href: 'https://apps.apple.com/us/app/bricks-calc-loan-calculator/id6754506837', accent: window.ACCENTS.calc.light, external: true },
-                { label: 'Bricks Scan', href: 'https://apps.apple.com/us/app/bricks-scan-scan-to-pdf/id6758148083', accent: window.ACCENTS.scan.light, external: true },
+                { label: 'Bricks Calc', href: 'https://apps.apple.com/us/app/bricks-calc-loan-calculator/id6754506837?ct=bricks_web_calc_download_calc&mt=8', accent: window.ACCENTS.calc.light, external: true },
+                { label: 'Bricks Scan', href: 'https://apps.apple.com/us/app/bricks-scan-scan-to-pdf/id6758148083?ct=bricks_web_calc_download_scan&mt=8', accent: window.ACCENTS.scan.light, external: true },
                 { label: 'Bricks Leads', href: 'leads.html', accent: window.ACCENTS.leads.light, external: false },
             ];
 
@@ -1137,7 +1219,7 @@
                             }}>{t.hero.body}</p>
 
                             <div className="reveal reveal-d3">
-                                <a href="https://apps.apple.com/us/app/bricks-calc-loan-calculator/id6754506837"
+                                <a href="https://apps.apple.com/us/app/bricks-calc-loan-calculator/id6754506837?ct=bricks_web_calc_hero&mt=8"
                                     style={{
                                         display: 'inline-flex', alignItems: 'center', gap: 10,
                                         padding: isMobile ? '14px 26px' : '16px 32px',
@@ -1624,7 +1706,7 @@
                         currentProduct="calc"
                         cta={{
                             label: t.nav.download,
-                            href: 'https://apps.apple.com/us/app/bricks-calc-loan-calculator/id6754506837'
+                            href: 'https://apps.apple.com/us/app/bricks-calc-loan-calculator/id6754506837?ct=bricks_web_calc_header_cta&mt=8'
                         }}
                     />
 

@@ -82,6 +82,7 @@ Fast map of the website repository.
 | `brics-leads-content-agent-spec.md` | Content agent spec — Bricks Leads (stub) |
 | `brics-calc-asc-en.md` | App Store Connect metadata — Bricks Calc (English) |
 | `brics-calc-asc-es.md` | App Store Connect metadata — Bricks Calc (Spanish) |
+| `brics-scan-asc-en.md` | App Store Connect metadata — Bricks Scan (English) |
 
 ## CI / GitHub
 
