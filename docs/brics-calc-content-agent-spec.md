@@ -42,12 +42,12 @@ Before generating any post, internalize the following in this order:
 
 The agent accepts the following parameters per run:
 
-| Parameter   | Type                   | Required | Description                                    |
-|-------------|------------------------|----------|------------------------------------------------|
-| `app`       | `calc` / `scan` / `leads` | Yes   | Which app this post is for                     |
-| `week`      | 1 / 2 / 3 / 4         | Yes      | Which week in the 4-week rotation              |
-| `post_type` | `feature` / `anti`    | Yes      | Feature Focus or Anti-Status Quo               |
-| `lang`      | `en` / `es`           | Yes      | Language of the output                         |
+| Parameter   | Type                      | Required | Description                                    |
+|-------------|---------------------------|----------|------------------------------------------------|
+| `app`       | `calc` / `scan` / `leads` | Yes      | Which app this post is for                     |
+| `week`      | 1 / 2 / 3 / 4             | Yes      | Which week in the 4-week rotation              |
+| `post_type` | `feature` / `anti`        | Yes      | Feature Focus or Anti-Status Quo               |
+| `lang`      | `en` / `es`               | Yes      | Language of the output                         |
 
 If `week` is not provided, default to the next logical week based on the last drafted post for that app. If no history exists, default to `week: 1, post_type: feature, lang: en`.
 
