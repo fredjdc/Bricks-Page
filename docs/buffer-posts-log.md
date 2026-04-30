@@ -4,12 +4,12 @@ This document contains the exact copy, images, and scheduling details for all 72
 
 ---
 
-## ✅ Scheduled in Buffer (Week 1)
+## ⏸️ Unpublished (Weeks 1–12)
 
-These 12 posts have been successfully scheduled in Buffer and will go out on their respective dates.
+These 72 posts are pending and waiting to be scheduled.
 
 ### Week 1 Tuesday — Bricks Calc (English)
-**Date:** Tuesday, May 5, 2026 @ 1:00 PM (Lima Time)
+**Date:** Tuesday, May 19, 2026 @ 1:00 PM (Lima Time)
 **Image:** `https://www.bricks.pe/social-media-img/iPhoneEN-social-media-bricks-calc-01.jpg`
 
 * **Instagram:**
@@ -30,7 +30,7 @@ These 12 posts have been successfully scheduled in Buffer and will go out on the
   https://apps.apple.com/us/app/bricks-calc-loan-calculator/id6754506837
 
 ### Week 1 Wednesday — Bricks Scan (Spanish)
-**Date:** Wednesday, May 6, 2026 @ 6:00 PM (Lima Time)
+**Date:** Wednesday, May 20, 2026 @ 6:00 PM (Lima Time)
 **Image:** `https://www.bricks.pe/social-media-img/iPhoneES-social-media-bricks-scan-01.jpg`
 
 * **Instagram:**
@@ -51,7 +51,7 @@ These 12 posts have been successfully scheduled in Buffer and will go out on the
   https://apps.apple.com/us/app/bricks-scan-scan-to-pdf/id6758148083
 
 ### Week 2 Tuesday — Bricks Calc (Spanish)
-**Date:** Tuesday, May 12, 2026 @ 1:00 PM (Lima Time)
+**Date:** Tuesday, May 26, 2026 @ 1:00 PM (Lima Time)
 **Image:** `https://www.bricks.pe/social-media-img/iPhoneES-social-media-bricks-calc-02.jpg`
 
 * **Instagram:**
@@ -65,7 +65,7 @@ These 12 posts have been successfully scheduled in Buffer and will go out on the
   Una cuota hipotecaria no es un solo número. Entender el desglose de intereses e impuestos es clave antes de avanzar. https://apps.apple.com/us/app/bricks-calc-loan-calculator/id6754506837
 
 ### Week 2 Wednesday — Bricks Scan (English)
-**Date:** Wednesday, May 13, 2026 @ 6:00 PM (Lima Time)
+**Date:** Wednesday, May 27, 2026 @ 6:00 PM (Lima Time)
 **Image:** `https://www.bricks.pe/social-media-img/iPhoneEN-social-media-bricks-scan-02.jpg`
 
 * **Instagram:**
@@ -78,14 +78,8 @@ These 12 posts have been successfully scheduled in Buffer and will go out on the
 * **X (Twitter):**
   A scan should not become another file to rename later. Let Bricks Scan handle naming and tagging automatically. https://apps.apple.com/us/app/bricks-scan-scan-to-pdf/id6758148083
 
----
-
-## ⏸️ Unpublished (Weeks 3–12)
-
-These 60 posts are pending and waiting to be scheduled.
-
 ### Week 3 Tuesday — Bricks Calc (English)
-**Date:** Tuesday, May 19, 2026 @ 1:00 PM (Lima Time)
+**Date:** Tuesday, June 2, 2026 @ 1:00 PM (Lima Time)
 **Image:** `https://www.bricks.pe/social-media-img/iPhoneEN-social-media-bricks-calc-03.jpg`
 
 * **Instagram:**
@@ -100,7 +94,7 @@ These 60 posts are pending and waiting to be scheduled.
   Extra payments can change the full loan timeline. Test the prepayment before adding money to the loan. https://apps.apple.com/us/app/bricks-calc-loan-calculator/id6754506837
 
 ### Week 3 Wednesday — Bricks Scan (Spanish)
-**Date:** Wednesday, May 20, 2026 @ 6:00 PM (Lima Time)
+**Date:** Wednesday, June 3, 2026 @ 6:00 PM (Lima Time)
 **Image:** `https://www.bricks.pe/social-media-img/iPhoneES-social-media-bricks-scan-03.jpg`
 
 * **Instagram:**
@@ -115,7 +109,7 @@ These 60 posts are pending and waiting to be scheduled.
   Algunos documentos necesitan algo más que escanearse. Revisa, firma y comparte desde un solo lugar. https://apps.apple.com/us/app/bricks-scan-scan-to-pdf/id6758148083
 
 ### Week 4 Tuesday — Bricks Calc (Spanish)
-**Date:** Tuesday, May 26, 2026 @ 1:00 PM (Lima Time)
+**Date:** Tuesday, June 9, 2026 @ 1:00 PM (Lima Time)
 **Image:** `https://www.bricks.pe/social-media-img/iPhoneES-social-media-bricks-calc-04.jpg`
 
 * **Instagram:**
@@ -130,7 +124,7 @@ These 60 posts are pending and waiting to be scheduled.
   Una tasa más baja no siempre significa un préstamo más barato. Calcula el punto de equilibrio antes de refinanciar. https://apps.apple.com/us/app/bricks-calc-loan-calculator/id6754506837
 
 ### Week 4 Wednesday — Bricks Scan (English)
-**Date:** Wednesday, May 27, 2026 @ 6:00 PM (Lima Time)
+**Date:** Wednesday, June 10, 2026 @ 6:00 PM (Lima Time)
 **Image:** `https://www.bricks.pe/social-media-img/iPhoneEN-social-media-bricks-scan-04.jpg`
 
 * **Instagram:**
@@ -145,7 +139,7 @@ These 60 posts are pending and waiting to be scheduled.
   Private documents should stay under your control. No account. Works offline. Built for privacy. https://apps.apple.com/us/app/bricks-scan-scan-to-pdf/id6758148083
 
 ### Week 5 Tuesday — Bricks Calc (English)
-**Date:** Tuesday, June 2, 2026 @ 1:00 PM (Lima Time)
+**Date:** Tuesday, June 16, 2026 @ 1:00 PM (Lima Time)
 **Image:** `https://www.bricks.pe/social-media-img/iPhoneEN-social-media-bricks-calc-05.jpg`
 
 * **Instagram:**
@@ -160,7 +154,7 @@ These 60 posts are pending and waiting to be scheduled.
   Two loans can look similar and cost very different amounts. Compare the total loan cost, not just the monthly payment. https://apps.apple.com/us/app/bricks-calc-loan-calculator/id6754506837
 
 ### Week 5 Wednesday — Bricks Scan (Spanish)
-**Date:** Wednesday, June 3, 2026 @ 6:00 PM (Lima Time)
+**Date:** Wednesday, June 17, 2026 @ 6:00 PM (Lima Time)
 **Image:** `https://www.bricks.pe/social-media-img/iPhoneES-social-media-bricks-scan-05.jpg`
 
 * **Instagram:**
@@ -175,7 +169,7 @@ These 60 posts are pending and waiting to be scheduled.
   Un documento escaneado debería seguir siendo útil. Mantén tus escaneos cerca de las herramientas de Apple que ya usas. https://apps.apple.com/us/app/bricks-scan-scan-to-pdf/id6758148083
 
 ### Week 6 Tuesday — Bricks Calc (Spanish)
-**Date:** Tuesday, June 9, 2026 @ 1:00 PM (Lima Time)
+**Date:** Tuesday, June 23, 2026 @ 1:00 PM (Lima Time)
 **Image:** `https://www.bricks.pe/social-media-img/iPhoneES-social-media-bricks-calc-06.jpg`
 
 * **Instagram:**
@@ -190,7 +184,7 @@ These 60 posts are pending and waiting to be scheduled.
   Un crédito cambia con cada pago. Entiende cómo avanzan el capital y los intereses mes a mes. https://apps.apple.com/us/app/bricks-calc-loan-calculator/id6754506837
 
 ### Week 6 Wednesday — Bricks Scan (English)
-**Date:** Wednesday, June 10, 2026 @ 6:00 PM (Lima Time)
+**Date:** Wednesday, June 24, 2026 @ 6:00 PM (Lima Time)
 *(Note: Recycles core images for recap)*
 **Image:** `https://www.bricks.pe/social-media-img/iPhoneEN-social-media-bricks-scan-01.jpg`
 
@@ -207,7 +201,7 @@ These 60 posts are pending and waiting to be scheduled.
   Scan once. Find it instantly. No accounts, fully offline, and completely searchable. https://apps.apple.com/us/app/bricks-scan-scan-to-pdf/id6758148083
 
 ### Week 7 Tuesday — Bricks Calc (English)
-**Date:** Tuesday, June 16, 2026 @ 1:00 PM (Lima Time)
+**Date:** Tuesday, June 30, 2026 @ 1:00 PM (Lima Time)
 **Image:** `https://www.bricks.pe/social-media-img/iPhoneEN-social-media-bricks-calc-04.jpg`
 
 * **Instagram:**
@@ -222,7 +216,7 @@ These 60 posts are pending and waiting to be scheduled.
   A lower monthly payment does not always mean a better loan. Always check the break-even point. https://apps.apple.com/us/app/bricks-calc-loan-calculator/id6754506837
 
 ### Week 7 Wednesday — Bricks Scan (Spanish)
-**Date:** Wednesday, June 17, 2026 @ 6:00 PM (Lima Time)
+**Date:** Wednesday, July 1, 2026 @ 6:00 PM (Lima Time)
 **Image:** `https://www.bricks.pe/social-media-img/iPhoneES-social-media-bricks-scan-01.jpg`
 
 * **Instagram:**
@@ -237,7 +231,7 @@ These 60 posts are pending and waiting to be scheduled.
   Cuando necesitas un contrato, no deberías recordar el nombre exacto del archivo. Busca texto dentro del escaneo. https://apps.apple.com/us/app/bricks-scan-scan-to-pdf/id6758148083
 
 ### Week 8 Tuesday — Bricks Calc (Spanish)
-**Date:** Tuesday, June 23, 2026 @ 1:00 PM (Lima Time)
+**Date:** Tuesday, July 7, 2026 @ 1:00 PM (Lima Time)
 **Image:** `https://www.bricks.pe/social-media-img/iPhoneES-social-media-bricks-calc-03.jpg`
 
 * **Instagram:**
@@ -252,7 +246,7 @@ These 60 posts are pending and waiting to be scheduled.
   Un pago extra puede reducir intereses, plazo o ambos. Prueba el escenario antes de pagar. https://apps.apple.com/us/app/bricks-calc-loan-calculator/id6754506837
 
 ### Week 8 Wednesday — Bricks Scan (English)
-**Date:** Wednesday, June 24, 2026 @ 6:00 PM (Lima Time)
+**Date:** Wednesday, July 8, 2026 @ 6:00 PM (Lima Time)
 **Image:** `https://www.bricks.pe/social-media-img/iPhoneEN-social-media-bricks-scan-04.jpg`
 
 * **Instagram:**
@@ -267,7 +261,7 @@ These 60 posts are pending and waiting to be scheduled.
   Some documents should not require an account before you can scan them. Local-first privacy matters. https://apps.apple.com/us/app/bricks-scan-scan-to-pdf/id6758148083
 
 ### Week 9 Tuesday — Bricks Calc (English)
-**Date:** Tuesday, June 30, 2026 @ 1:00 PM (Lima Time)
+**Date:** Tuesday, July 14, 2026 @ 1:00 PM (Lima Time)
 **Image:** `https://www.bricks.pe/social-media-img/iPhoneEN-social-media-bricks-calc-05.jpg`
 
 * **Instagram:**
@@ -282,7 +276,7 @@ These 60 posts are pending and waiting to be scheduled.
   Two loan offers can have similar monthly payments and different total costs. Compare before you sign. https://apps.apple.com/us/app/bricks-calc-loan-calculator/id6754506837
 
 ### Week 9 Wednesday — Bricks Scan (Spanish)
-**Date:** Wednesday, July 1, 2026 @ 6:00 PM (Lima Time)
+**Date:** Wednesday, July 15, 2026 @ 6:00 PM (Lima Time)
 **Image:** `https://www.bricks.pe/social-media-img/iPhoneES-social-media-bricks-scan-02.jpg`
 
 * **Instagram:**
@@ -297,7 +291,7 @@ These 60 posts are pending and waiting to be scheduled.
   El trabajo no termina cuando escaneas. Deja que Bricks Scan ordene los archivos por ti. https://apps.apple.com/us/app/bricks-scan-scan-to-pdf/id6758148083
 
 ### Week 10 Tuesday — Bricks Calc (Spanish)
-**Date:** Tuesday, July 7, 2026 @ 1:00 PM (Lima Time)
+**Date:** Tuesday, July 21, 2026 @ 1:00 PM (Lima Time)
 **Image:** `https://www.bricks.pe/social-media-img/iPhoneES-social-media-bricks-calc-01.jpg`
 
 * **Instagram:**
@@ -312,7 +306,7 @@ These 60 posts are pending and waiting to be scheduled.
   Antes de avanzar con una propiedad, la cuota debe estar clara. Calcula siempre antes de decidir. https://apps.apple.com/us/app/bricks-calc-loan-calculator/id6754506837
 
 ### Week 10 Wednesday — Bricks Scan (English)
-**Date:** Wednesday, July 8, 2026 @ 6:00 PM (Lima Time)
+**Date:** Wednesday, July 22, 2026 @ 6:00 PM (Lima Time)
 **Image:** `https://www.bricks.pe/social-media-img/iPhoneEN-social-media-bricks-scan-03.jpg`
 
 * **Instagram:**
@@ -327,7 +321,7 @@ These 60 posts are pending and waiting to be scheduled.
   Some documents need to be reviewed, signed, and sent quickly. Do it all in one app. https://apps.apple.com/us/app/bricks-scan-scan-to-pdf/id6758148083
 
 ### Week 11 Tuesday — Bricks Calc (English)
-**Date:** Tuesday, July 14, 2026 @ 1:00 PM (Lima Time)
+**Date:** Tuesday, July 28, 2026 @ 1:00 PM (Lima Time)
 *(Product Overview)*
 **Image:** `https://www.bricks.pe/social-media-img/iPhoneEN-social-media-bricks-calc-01.jpg`
 
@@ -343,7 +337,7 @@ These 60 posts are pending and waiting to be scheduled.
   Bricks Calc is a mortgage calculator for clearer decisions. No spreadsheets. No accounts required. https://apps.apple.com/us/app/bricks-calc-loan-calculator/id6754506837
 
 ### Week 11 Wednesday — Bricks Scan (Spanish)
-**Date:** Wednesday, July 15, 2026 @ 6:00 PM (Lima Time)
+**Date:** Wednesday, July 29, 2026 @ 6:00 PM (Lima Time)
 *(Product Overview)*
 **Image:** `https://www.bricks.pe/social-media-img/iPhoneES-social-media-bricks-scan-01.jpg`
 
@@ -359,7 +353,7 @@ These 60 posts are pending and waiting to be scheduled.
   Bricks Scan: Escanea, busca texto dentro del documento, organiza y firma desde un solo lugar. Sin cuenta. Funciona offline. https://apps.apple.com/us/app/bricks-scan-scan-to-pdf/id6758148083
 
 ### Week 12 Tuesday — Bricks Apps (English)
-**Date:** Tuesday, July 21, 2026 @ 1:00 PM (Lima Time)
+**Date:** Tuesday, August 4, 2026 @ 1:00 PM (Lima Time)
 *(Brand overview)*
 **Image:** `https://www.bricks.pe/social-media-img/iPhoneEN-social-media-bricks-calc-01.jpg`
 
@@ -375,7 +369,7 @@ These 60 posts are pending and waiting to be scheduled.
   Bricks Apps: Focused Apple apps for documents, loans, and real estate. No extra accounts. Built in Peru. https://www.bricks.pe/
 
 ### Week 12 Wednesday — Winner Recap (English - Placeholder)
-**Date:** Wednesday, July 22, 2026 @ 6:00 PM (Lima Time)
+**Date:** Wednesday, August 5, 2026 @ 6:00 PM (Lima Time)
 **Image:** `https://www.bricks.pe/social-media-img/iPhoneEN-social-media-bricks-calc-01.jpg`
 
 * **Instagram:**
