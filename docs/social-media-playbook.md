@@ -47,7 +47,7 @@ Do not post randomly. Each post should have one job:
 
 ---
 
-## 2. Four-Week Posting Sequence
+## 2. Six-Week Posting Sequence
 
 This is the starting sequence for Instagram. Reuse the same core idea on LinkedIn or X only when the format fits.
 
@@ -57,11 +57,13 @@ This is the starting sequence for Instagram. Reuse the same core idea on LinkedI
 | **Week 2** | Bricks Calc: See where your money goes | Bricks Scan: Automate after scanning |
 | **Week 3** | Bricks Calc: Cut years off your loan | Bricks Scan: Review, sign, share |
 | **Week 4** | Bricks Calc: Refinance pays off | Bricks Scan: Private by design |
+| **Week 5** | Bricks Calc: Compare loans | Bricks Scan: Works with Apple tools |
+| **Week 6** | Bricks Calc: Amortization | Bricks Scan: Full carousel recap |
 
 Learning path:
 
-- **Bricks Calc:** Calculate → understand → optimize → decide.
-- **Bricks Scan:** Scan → find → organize → act → trust.
+- **Bricks Calc:** calculate → understand → optimize → compare → plan
+- **Bricks Scan:** scan → find → organize → act → trust → use across Apple tools
 
 ---
 
@@ -177,160 +179,173 @@ For X, default to Shape B or C. For LinkedIn, default to Shape A or C. For Insta
 ## 5. Bricks Calc Instagram Caption Library
 
 ### 1. Know what you’ll pay each month
+Goal: Core value / first-touch awareness
+App Store alignment: Monthly payment, loan calculator, no spreadsheets
 
 **Caption:**
-
 Know the monthly payment before you move forward.
 
-Bricks Calc helps you estimate principal, interest, taxes, and insurance in one place, so you can understand the real cost of a loan before making a decision.
+Bricks Calc helps you estimate the loan amount, interest, taxes, and insurance in one place, so the real cost is easier to understand before making a decision.
 
-**Short version:**
+Calculate before you commit.
+Link in bio.
 
-Know your monthly payment before you commit.
+**Hashtags:**
+#MortgageCalculator #LoanCalculator #HomeBuying
 
 ### 2. See where your money goes
+Goal: Educate users that payment ≠ full cost
+App Store alignment: Payment breakdown, total cost, charts
 
 **Caption:**
-
 A mortgage payment is more than one number.
 
-See how much goes toward the loan amount, interest, taxes, and insurance so the full cost is easier to understand.
+Bricks Calc shows how much goes toward the loan amount, interest, taxes, and insurance, so you can understand the full cost instead of only the monthly payment.
 
-**Short version:**
+See the breakdown before you decide.
+Link in bio.
 
-See the full breakdown, not just the payment.
+**Hashtags:**
+#MortgageTips #RealEstateTools #LoanCalculator
 
 ### 3. Cut years off your loan
+Goal: Show optimization value
+App Store alignment: Prepayments, interest savings, payoff time
 
 **Caption:**
+Extra payments can change the full loan timeline.
 
-Small extra payments can change the full loan timeline.
-
-Test prepayments and see how they affect interest, payoff time, and total savings before you decide.
-
-**Short version:**
+With Bricks Calc, you can test prepayments and see how they affect interest, payoff time, and total cost before adding money to the loan.
 
 Test extra payments before you make them.
+Link in bio.
+
+**Hashtags:**
+#MortgageTips #PersonalFinance #LoanCalculator
 
 ### 4. Know when refinancing pays off
+Goal: Decision support / higher-intent feature
+App Store alignment: Refinance calculator, break-even, savings
 
 **Caption:**
+Refinancing only helps when the numbers work.
 
-Refinancing only makes sense when the numbers work.
-
-Compare your current loan with a new one and see the monthly payment, total savings, and break-even point before switching.
-
-**Short version:**
+Bricks Calc compares your current loan with a new one, including monthly payment, total savings, and break-even point.
 
 See when refinancing starts to make sense.
+Link in bio.
+
+**Hashtags:**
+#Refinance #MortgageCalculator #PersonalFinance
 
 ### 5. Pick the loan that actually works
+Goal: Comparison / buyer decision clarity
+App Store alignment: Compare loans, total cost, side-by-side scenarios
 
 **Caption:**
-
 Two loans can look similar and cost very different amounts.
 
-Compare loan options side by side and see the total cost before choosing the one that works best.
+Bricks Calc lets you compare loan options side by side, so you can look beyond the monthly payment and understand the total cost.
 
-**Short version:**
+Compare the loan, not just the payment.
+Link in bio.
 
-Compare loans by total cost, not just payment.
+**Hashtags:**
+#RealEstateTools #MortgageTips #LoanCalculator
 
 ### 6. Understand what happens over time
+Goal: Long-term clarity / amortization education
+App Store alignment: Amortization chart, balance, principal, interest
 
 **Caption:**
+A loan changes with every payment.
 
-Your loan changes with every payment.
+Bricks Calc shows how principal, interest, and balance move over time, so the long-term cost is easier to understand.
 
-Use the amortization chart to see how principal, interest, and balance move over time.
+See what happens month by month.
+Link in bio.
 
-**Short version:**
-
-See how your loan changes month by month.
-
-### Recommended Bricks Calc carousel caption
-
-Mortgage decisions are easier when the numbers are clear.
-
-Bricks Calc helps you calculate monthly payments, compare loans, test prepayments, review refinancing, and understand what happens over time.
-
-No spreadsheets. No guesswork. Just clear loan calculations on your device.
-
-**CTA:** Calculate before you commit.
+**Hashtags:**
+#MortgageCalculator #PersonalFinance #HomeBuying
 
 ---
 
 ## 6. Bricks Scan Instagram Caption Library
 
 ### 1. Find the right document when needed
+Goal: Core value / first-touch awareness
+App Store alignment: Searchable PDFs, OCR, document search
 
 **Caption:**
+Scanning is not the hard part. Finding the file later is.
 
-Find the document without digging through files.
+Bricks Scan makes documents searchable, so you can look up text inside a scan and get back to the right page faster.
 
-Bricks Scan makes scans searchable, so you can look up text inside a document and get back to the right page faster.
+Scan once. Find it instantly.
+Link in bio.
 
-**Short version:**
-
-Search inside your scanned documents.
+**Hashtags:**
+#DocumentScanner #Paperless #ProductivityTools
 
 ### 2. Automate what happens after scanning
+Goal: Show Auto-Sort value
+App Store alignment: Auto-name, organize, tags, folders
 
 **Caption:**
+A scan should not become another file to rename later.
 
-Scanning is only the first step.
-
-Bricks Scan can help name, tag, and organize documents after scanning, so your files are easier to find later.
-
-**Short version:**
+Bricks Scan helps name, tag, and organize documents after scanning, so your files are easier to find when you need them.
 
 Scan once. Let Bricks help organize it.
+Link in bio.
+
+**Hashtags:**
+#DocumentScanner #PaperlessWorkflow #iPhoneApps
 
 ### 3. Ready to review, sign, and share
+Goal: Show completion workflow
+App Store alignment: Markup, signing, sharing, PDF workflow
 
 **Caption:**
+Some documents need more than scanning.
 
-Handle the document after you scan it.
-
-Review pages, mark up important details, add notes, sign, and share the file without moving between separate tools.
-
-**Short version:**
+With Bricks Scan, you can review pages, mark up details, sign, and share the file without moving between separate tools.
 
 Review, sign, and share from one place.
+Link in bio.
+
+**Hashtags:**
+#PDFScanner #Paperless #ProductivityTools
 
 ### 4. Private by design, on your iPhone
+Goal: Trust / differentiation
+App Store alignment: No account, offline, privacy-first, local-first
 
 **Caption:**
+Private documents should stay under your control.
 
-Your documents should stay under your control.
-
-Bricks Scan is built for private, local-first document scanning, with no account required and offline use when you need it.
-
-**Short version:**
+Bricks Scan is built for local-first scanning, with no account required and offline use when you need it.
 
 No account. Works offline. Built for privacy.
+Link in bio.
+
+**Hashtags:**
+#PrivacyFirst #DocumentScanner #iPhoneApps
 
 ### 5. Works with Apple tools you use
+Goal: Ecosystem value
+App Store alignment: Spotlight, Calendar, Reminders, Apple-native workflow
 
 **Caption:**
+Scanned documents should stay useful after they’re saved.
 
-Keep scanned documents close to the tools you already use.
+Bricks Scan works with Apple tools like Spotlight, Calendar, and Reminders, so important files are easier to find and act on later.
 
-Bricks Scan works with Apple features like Spotlight, Calendar, and Reminders so documents can stay useful after they’re saved.
+Keep scans close to the tools you already use.
+Link in bio.
 
-**Short version:**
-
-Find and use scans across Apple tools.
-
-### Recommended Bricks Scan carousel caption
-
-Paper is easier to manage when every scan becomes useful.
-
-Bricks Scan helps you scan documents, search the text inside them, organize files, review pages, sign, and share — all from your iPhone.
-
-No account required. Works offline. Built for privacy.
-
-**CTA:** Scan once. Find it instantly.
+**Hashtags:**
+#iPhoneApps #ProductivityTools #PaperlessWorkflow
 
 ---
 
