@@ -26,6 +26,8 @@ En Perú, la búsqueda natural no siempre usa “mortgage”. El lenguaje local 
 
 La estrategia en español debe priorizar “crédito hipotecario” y “cuota” sobre traducciones demasiado neutras como “pago mensual”. “Hipoteca” sigue siendo útil, pero “crédito hipotecario” comunica mejor el uso real en Perú.
 
+Astro muestra que `prestamo` y `prestamos` pueden tener más popularidad que términos hipotecarios específicos, pero esa intención es amplia. En Perú, muchas búsquedas de `prestamo` compiten con apps de dinero rápido, créditos personales y bancos. Bricks Calc puede usar `prestamo` en metadata para formar combinaciones útiles, pero la ficha visible no debe sonar como una app para pedir dinero.
+
 ## Campo de Keywords Recomendado
 
 Usar sin tildes para evitar desperdiciar variaciones y mantener compatibilidad:
@@ -55,17 +57,25 @@ Combinaciones que ayuda a formar:
 
 - calculadora hipotecaria
 - calculadora crédito hipotecario
-- calculadora préstamo
 - cuota hipotecaria
 - amortización préstamo
+- refinanciamiento
 
 ### Términos secundarios
 
+- calculadora préstamo
 - cuota inicial
 - refinanciar crédito
 - pagos adelantados
 - ingresos por alquiler
 - cálculo de intereses
+
+### Guía por intención
+
+- **Compra y cuota:** usar `calculadora hipotecaria`, `crédito hipotecario`, `cuota`, `cuota inicial` y `amortización`.
+- **Refinanciamiento:** usar `refinanciamiento`, `refinanciar`, `nueva cuota`, `tasa` y `plazo`.
+- **Préstamo general:** usar `préstamo` solo cuando el texto hable de cálculo. No usarlo como promesa de financiamiento.
+- **Alquiler:** usar `ingresos por alquiler` como diferenciador dentro de escenarios inmobiliarios, no como mensaje principal.
 
 ### Mensaje base
 
@@ -87,6 +97,19 @@ La ficha en español debe responder rápido:
 - Cómo se paga: gratis para probar, con compra dentro de la app y opción de pago único.
 
 Evitar prometer “sin suscripción” mientras exista una opción anual visible en App Store.
+
+Evitar cualquier frase que pueda sugerir que Bricks Calc presta dinero, aprueba créditos, negocia tasas o reemplaza la información final del banco. La app calcula y compara escenarios; el usuario debe confirmar condiciones finales con su entidad financiera.
+
+## Oportunidades Web
+
+Mantener `calc.html` como página general de Bricks Calc y `homebuyers.html` como página para compradores. En ambas, la versión en español debe usar antes `calculadora hipotecaria`, `crédito hipotecario` y `cuota`.
+
+Páginas planificadas, no publicadas todavía:
+
+- `calculadora-hipotecaria.html`: página SEO para intención principal de calculadora hipotecaria en español.
+- `refinanciamiento.html`: página de apoyo para la CPP de refinanciamiento y búsquedas sobre comparar una cuota nueva.
+
+No crear todavía páginas separadas para `prestamos`, `ingreso por alquiler` o `pago adelantado`. La señal es útil para contenido de apoyo, pero no suficiente para una página de adquisición independiente.
 
 ## Metadata Final de App Store
 

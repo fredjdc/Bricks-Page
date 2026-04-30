@@ -106,6 +106,22 @@ Every post should fit one primary lane:
 
 Do not mix buyer and refinance hooks in the same short post unless the refinance angle is clearly secondary.
 
+### Spanish intent routing
+
+Use this map when a Spanish search term, content prompt, or campaign angle is mentioned. The goal is to match intent to the right Bricks surface, not to force every keyword into every post.
+
+| Search language | Route to | Use as | Avoid |
+|---|---|---|---|
+| `calculadora hipotecaria` | Buyer / payment | Primary Spanish product category | Generic finance app positioning |
+| `crédito hipotecario` | Buyer / payment | Peru-first visible copy | Overusing neutral `hipoteca` when local context matters |
+| `cuota` | Buyer / payment | Monthly payment clarity | Using it without credit or mortgage context |
+| `refinanciamiento`, `refinanciar` | Refinance | Current loan vs. new rate, cuota, and plazo | Mixing buyer language like cuota inicial unless directly relevant |
+| `amortización` | Education / help | Principal, interest, balance, loan timeline | Turning it into a broad finance lesson |
+| `prestamo`, `prestamos` | Metadata / supporting copy | Secondary App Store and search language | Leading posts as if Bricks offers loans |
+| `ingreso por alquiler`, `ingresos por alquiler` | Professional / investor | Occasional differentiator for cash flow scenarios | Treating it as a primary acquisition theme |
+
+For Peru-first Spanish copy, prefer `crédito hipotecario`, `cuota`, `calculadora hipotecaria`, `amortización`, and `refinanciamiento` in visible messaging. Use `prestamo` mainly for metadata support and `préstamo` only when the copy is clearly about calculation, not loan origination.
+
 ---
 
 ## POST TYPE DEFINITIONS
@@ -128,6 +144,18 @@ Do not mix buyer and refinance hooks in the same short post unless the refinance
 - Rental income — factor in rent to understand monthly cash flow.
 - Taxes, insurance, PMI — full payment estimate, not just principal + interest.
 - Native sharing — share a clear summary through Messages, Mail, or AirDrop.
+
+### Spanish content rotation
+
+Rotate Spanish posts across these lanes before repeating a topic:
+
+- **Cuota clarity:** explain what changes the monthly cuota and why the full payment matters.
+- **Amortization education:** show capital, interest, and remaining balance over time.
+- **Refinance comparison:** compare the current credit with a new rate, cuota, and plazo.
+- **Extra payment scenarios:** model one-time or recurring pagos adelantados without promising a financial outcome.
+- **Rental income:** use occasionally for professional or investor scenarios, not as the main weekly theme.
+
+Do not claim Bricks Calc provides loans, approves financing, guarantees savings, replaces lender terms, or predicts final financial outcomes.
 
 ### Anti-Status Quo
 
@@ -167,6 +195,13 @@ When a post includes a link, match the link to the lane:
 - Buyer posts: `https://bricks.pe/homebuyers.html`
 - Broad Calc posts: `https://bricks.pe/calc.html`
 - Refinance posts: use `https://bricks.pe/calc.html` until a dedicated refinance page exists
+
+Planned Spanish SEO pages:
+
+- `https://bricks.pe/calculadora-hipotecaria.html` for Peru-first calculator intent.
+- `https://bricks.pe/refinanciamiento.html` for refinance intent and CPP support.
+
+Do not route traffic to planned pages until they exist. Do not create standalone campaign lanes yet for generic `prestamos`, `ingreso por alquiler`, or `pago adelantado`.
 
 Do not send buyer-intent posts to the generic page by default when `homebuyers.html` is a closer match.
 

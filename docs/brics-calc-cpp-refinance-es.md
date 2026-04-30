@@ -22,11 +22,11 @@ No es una página para compradores primerizos. Evitar lenguaje de búsqueda de i
 
 Primero decir el beneficio concreto:
 
-Revisa la nueva cuota, el punto en que se compensa el cambio y el ahorro total antes de refinanciar.
+Compara el crédito actual con una nueva tasa, cuota y plazo antes de refinanciar.
 
 Luego respaldarlo con el producto:
 
-Compara tu crédito actual con una nueva opción, revisa la amortización y prueba pagos extra con los mismos números a la vista.
+Revisa la nueva cuota, el punto en que se compensa el cambio, la amortización y los pagos extra con los mismos números a la vista.
 
 ## Configuración en App Store Connect
 
@@ -48,16 +48,16 @@ Compara tu crédito actual con una nueva tasa, cuota y plazo. Bricks Calc te ayu
 
 ### Keywords
 
-Usar una combinación separada de la CPP para compradores. Astro muestra que, para Perú y español, el lenguaje más natural gira alrededor de `prestamo`, `simulador prestamo`, `calculadora hipotecaria`, `calculadora` y `prestamo/prestamos`. Para esta CPP conviene llevar esa base hacia intención de refinanciamiento.
+Usar una combinación separada de la CPP para compradores. Astro muestra que, para Perú y español, `prestamo` y `prestamos` pueden tener más popularidad, pero también atraen búsquedas de dinero rápido, bancos y créditos personales. Para esta CPP, esos términos son apoyo secundario. La historia principal debe ser `refinanciamiento`, `refinanciar`, `cuota`, `tasa`, `plazo` y `crédito hipotecario`.
 
 Recomendadas:
 
-- `prestamo`
 - `calculadora`
 - `hipotecaria`
 - `cuota`
 - `interes`
 - `refinanciar`
+- `prestamo`
 
 Si App Store Connect permite solo marcar keywords existentes de tu versión actual, priorizar:
 
@@ -74,8 +74,11 @@ No priorizar:
 - `emi`
 - `pmi`
 - `tax`
+- `simulador prestamo`
 
 Esos términos desvían la historia principal para esta audiencia.
+
+No mezclar lenguaje de compradores como `cuota inicial`, búsqueda de inmueble o primera vivienda salvo que apoye directamente la comparación entre el crédito actual y la nueva opción.
 
 ## Estrategia de Capturas
 
