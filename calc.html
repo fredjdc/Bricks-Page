@@ -814,7 +814,6 @@
                             <div style={{ display: 'flex', gap: 10 }}>
                                 {[
                                     { kind: 'instagram', href: 'https://www.instagram.com/hellobricksapps/' },
-                                    { kind: 'x', href: 'https://x.com/hellobricksapps' },
                                     { kind: 'linkedin', href: 'https://www.linkedin.com/company/bricksapps/' },
                                 ].map(s => (
                                     <a key={s.kind} href={s.href} target="_blank" rel="noopener noreferrer" style={{
@@ -1051,11 +1050,11 @@
                 social: {
                     eyebrow: 'Updates',
                     title: 'Latest from Bricks.',
-                    sub: 'Short product notes, launch updates, and real workflow details from X.',
+                    sub: 'Short product notes, launch updates, and real workflow details from Instagram.',
                     fallback: 'Posts by @hellobricksapps',
-                    loading: 'Loading X posts...',
-                    unavailable: 'X posts could not load in this browser. Private browsing, tracking protection, or a content blocker may prevent the native embed from appearing.',
-                    action: 'Open on X',
+                    loading: 'Loading Instagram posts...',
+                    unavailable: 'Instagram posts could not load in this browser. Private browsing, tracking protection, or a content blocker may prevent the native embed from appearing.',
+                    action: 'Open on Instagram',
                 },
                 faq: {
                     eyebrow: 'FAQ',
@@ -1159,11 +1158,11 @@
                 social: {
                     eyebrow: 'Actualizaciones',
                     title: 'Lo último de Bricks.',
-                    sub: 'Notas breves de producto, lanzamientos y detalles reales del flujo de trabajo en X.',
+                    sub: 'Notas breves de producto, lanzamientos y detalles reales del flujo de trabajo en Instagram.',
                     fallback: 'Publicaciones de @hellobricksapps',
-                    loading: 'Cargando publicaciones de X...',
-                    unavailable: 'Las publicaciones de X no pudieron cargarse en este navegador. La navegación privada, la protección de rastreo o un bloqueador de contenido pueden impedir que aparezca el embed nativo.',
-                    action: 'Abrir en X',
+                    loading: 'Cargando publicaciones de Instagram...',
+                    unavailable: 'Las publicaciones de Instagram no pudieron cargarse en este navegador. La navegación privada, la protección de rastreo o un bloqueador de contenido pueden impedir que aparezca el embed nativo.',
+                    action: 'Abrir en Instagram',
                 },
                 faq: {
                     eyebrow: 'FAQ',
@@ -1542,62 +1541,19 @@
         function CalcSocialFeed({ t, theme }) {
             const reveal = window.useReveal();
             const isMobile = window.useIsMobile();
-            const feedRef = React.useRef(null);
             const [embedStatus, setEmbedStatus] = React.useState('loading');
+            const instagramUrl = 'https://www.instagram.com/hellobricksapps/';
+            const instagramEmbedUrl = 'https://www.instagram.com/hellobricksapps/embed';
 
             React.useEffect(() => {
-                let fallbackTimer;
-                let observer;
-
                 setEmbedStatus('loading');
 
-                const markRendered = () => {
-                    const hasFrame = Boolean(feedRef.current && feedRef.current.querySelector('iframe'));
-                    if (hasFrame) setEmbedStatus('ready');
-                    return hasFrame;
-                };
-
-                const startFallbackTimer = () => {
-                    window.clearTimeout(fallbackTimer);
-                    fallbackTimer = window.setTimeout(() => {
-                        if (!markRendered()) setEmbedStatus('blocked');
-                    }, 4000);
-                };
-
-                const loadTimeline = () => {
-                    if (window.twttr && window.twttr.widgets && feedRef.current) {
-                        window.twttr.widgets.load(feedRef.current);
-                        startFallbackTimer();
-                    }
-                };
-
-                if (feedRef.current) {
-                    observer = new MutationObserver(markRendered);
-                    observer.observe(feedRef.current, { childList: true, subtree: true });
-                }
-
-                const existing = document.querySelector('script[src="https://platform.twitter.com/widgets.js"]');
-                if (existing) {
-                    loadTimeline();
-                    existing.addEventListener('load', loadTimeline, { once: true });
-                    return () => {
-                        existing.removeEventListener('load', loadTimeline);
-                        window.clearTimeout(fallbackTimer);
-                        if (observer) observer.disconnect();
-                    };
-                }
-
-                const script = document.createElement('script');
-                script.src = 'https://platform.twitter.com/widgets.js';
-                script.async = true;
-                script.charset = 'utf-8';
-                script.addEventListener('load', loadTimeline, { once: true });
-                document.body.appendChild(script);
+                const fallbackTimer = window.setTimeout(() => {
+                    setEmbedStatus((status) => status === 'loading' ? 'blocked' : status);
+                }, 5000);
 
                 return () => {
-                    script.removeEventListener('load', loadTimeline);
                     window.clearTimeout(fallbackTimer);
-                    if (observer) observer.disconnect();
                 };
             }, [theme]);
 
@@ -1625,22 +1581,30 @@
                         padding: isMobile ? 12 : 16,
                         overflow: 'hidden',
                     }}>
-                        <div ref={feedRef} key={theme} style={{
-                            minHeight: embedStatus === 'ready' ? (isMobile ? 560 : 620) : 0,
+                        <div key={theme} style={{
+                            minHeight: embedStatus === 'blocked' ? 0 : (isMobile ? 560 : 620),
                             display: 'flex', justifyContent: 'center',
                             position: 'relative',
                         }}>
-                            <a
-                                className="twitter-timeline"
-                                href="https://x.com/hellobricksapps"
-                                data-tweet-limit="5"
-                                data-theme={theme === 'dark' ? 'dark' : 'light'}
-                                data-chrome="noheader nofooter noborders transparent"
-                                data-dnt="true"
-                                style={{ position: 'absolute', opacity: 0, pointerEvents: 'none' }}
-                            >
-                                {t.social.fallback}
-                            </a>
+                            {embedStatus !== 'blocked' && (
+                                <iframe
+                                    src={instagramEmbedUrl}
+                                    title={t.social.fallback}
+                                    loading="lazy"
+                                    onLoad={() => setEmbedStatus('ready')}
+                                    onError={() => setEmbedStatus('blocked')}
+                                    style={{
+                                        width: '100%',
+                                        maxWidth: 540,
+                                        minHeight: isMobile ? 560 : 620,
+                                        border: 'none',
+                                        borderRadius: 24,
+                                        background: 'var(--b-bg)',
+                                        opacity: embedStatus === 'ready' ? 1 : 0,
+                                        transition: 'opacity 0.25s ease',
+                                    }}
+                                />
+                            )}
                         </div>
                         {embedStatus === 'loading' && (
                             <div style={{
@@ -1659,7 +1623,7 @@
                                     fontSize: 15, lineHeight: 1.6, color: 'var(--b-text-2)',
                                     margin: '0 auto 18px', maxWidth: 520,
                                 }}>{t.social.unavailable}</p>
-                                <a href="https://x.com/hellobricksapps" target="_blank" rel="noopener noreferrer" style={{
+                                <a href={instagramUrl} target="_blank" rel="noopener noreferrer" style={{
                                     display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
                                     minHeight: 40, padding: '0 18px', borderRadius: 999,
                                     background: CALC_ACCENT, color: '#fff', fontSize: 14,
@@ -1671,7 +1635,7 @@
 
                     {embedStatus === 'ready' && (
                         <div className="reveal reveal-d2" style={{ textAlign: 'center', marginTop: 20 }}>
-                            <a href="https://x.com/hellobricksapps" target="_blank" rel="noopener noreferrer" style={{
+                            <a href={instagramUrl} target="_blank" rel="noopener noreferrer" style={{
                                 fontSize: 14, fontWeight: 600, color: CALC_ACCENT, textDecoration: 'none',
                             }}>{t.social.action}</a>
                         </div>
