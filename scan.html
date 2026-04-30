@@ -763,16 +763,17 @@
         // DownloadCTA
         // ==========================================================================
 
-        window.DownloadCTA = function DownloadCTA({ t, variant = 'default', betaCopy, accent }) {
+        window.DownloadCTA = function DownloadCTA({ t, variant = 'default', betaCopy, productCopy, accent }) {
             const reveal = window.useReveal();
             const isMobile = window.useIsMobile();
             const [hovered, setHovered] = React.useState(null);
 
             const isBeta = variant === 'beta';
-            const title = isBeta ? betaCopy.title : t.cta.title;
-            const sub = isBeta ? betaCopy.sub : t.cta.sub;
+            const isProduct = variant === 'product' && productCopy;
+            const title = isProduct ? productCopy.title : isBeta ? betaCopy.title : t.cta.title;
+            const sub = isProduct ? productCopy.sub : isBeta ? betaCopy.sub : t.cta.sub;
 
-            const apps = [
+            const apps = isProduct ? productCopy.actions : [
                 { label: 'Bricks Calc', href: 'https://apps.apple.com/us/app/bricks-calc-loan-calculator/id6754506837?ct=bricks_web_scan_download_calc&mt=8', accent: window.ACCENTS.calc.light, external: true },
                 { label: 'Bricks Scan', href: 'https://apps.apple.com/us/app/bricks-scan-scan-to-pdf/id6758148083?ct=bricks_web_scan_download_scan&mt=8', accent: window.ACCENTS.scan.light, external: true },
                 { label: 'Bricks Leads', href: 'leads.html', accent: window.ACCENTS.leads.light, external: false },
@@ -1118,6 +1119,13 @@
                         { q: 'Does it sync across my devices?', a: 'Yes, optionally. Enable iCloud Sync in settings to access your scans across iPhone, iPad, and Mac. Off by default — your data stays local until you choose otherwise.' },
                     ],
                 },
+                download: {
+                    title: ['Download', 'Bricks Scan.'],
+                    sub: 'Free to start. No account required. Built for iPhone, iPad, and Mac.',
+                    actions: [
+                        { label: 'Download on the App Store', href: 'https://apps.apple.com/us/app/bricks-scan-scan-to-pdf/id6758148083?ct=bricks_web_scan_download_primary&mt=8', accent: window.ACCENTS.scan.light, external: true },
+                    ],
+                },
                 ecosystem: {
                     eyebrow: 'The suite',
                     title: 'Part of a quiet toolkit.',
@@ -1218,6 +1226,13 @@
                         { q: '\u00bfPuedo buscar dentro del texto de un documento?', a: 'S\u00ed. Cada escaneo pasa por OCR, haciendo el texto completo buscable. Encuentra cualquier documento por las palabras que contiene, no solo por su nombre.' },
                         { q: '\u00bfEs gratuita?', a: 'S\u00ed. Puedes descargar y empezar a usar Bricks Scan de forma gratuita en el App Store. No se necesita cuenta para comenzar.' },
                         { q: '\u00bfSincroniza entre mis dispositivos?', a: 'S\u00ed, de forma opcional. Activa iCloud Sync en ajustes para acceder a tus escaneos desde iPhone, iPad y Mac. Desactivado por defecto \u2014 tus datos se quedan locales hasta que lo elijas.' },
+                    ],
+                },
+                download: {
+                    title: ['Descarga', 'Bricks Scan.'],
+                    sub: 'Gratis para empezar. Sin cuenta obligatoria. Nativa para iPhone, iPad y Mac.',
+                    actions: [
+                        { label: 'Descargar en App Store', href: 'https://apps.apple.com/us/app/bricks-scan-scan-to-pdf/id6758148083?ct=bricks_web_scan_download_primary&mt=8', accent: window.ACCENTS.scan.light, external: true },
                     ],
                 },
                 ecosystem: {
@@ -1526,7 +1541,7 @@
             const reveal = window.useReveal();
             const isMobile = window.useIsMobile();
             return (
-                <section ref={reveal} style={{
+                <section id="ecosystem" ref={reveal} style={{
                     padding: isMobile ? '56px 20px' : '120px 48px',
                     maxWidth: 1200, margin: '0 auto',
                 }}>
@@ -1859,7 +1874,7 @@
                         <ScanPillars t={scanT} theme={effectiveTheme} />
                         <ScanComparison t={scanT} />
                         <ScanTestimony t={scanT} />
-                        <window.DownloadCTA t={t} variant="default" />
+                        <window.DownloadCTA t={t} variant="product" productCopy={scanT.download} />
                         <ScanFAQ t={scanT} />
                         <ScanEcosystem t={scanT} />
                     </main>

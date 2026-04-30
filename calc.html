@@ -714,16 +714,17 @@
         // DownloadCTA
         // ==========================================================================
 
-        window.DownloadCTA = function DownloadCTA({ t, variant = 'default', betaCopy, accent }) {
+        window.DownloadCTA = function DownloadCTA({ t, variant = 'default', betaCopy, productCopy, accent }) {
             const reveal = window.useReveal();
             const isMobile = window.useIsMobile();
             const [hovered, setHovered] = React.useState(null);
 
             const isBeta = variant === 'beta';
-            const title = isBeta ? betaCopy.title : t.cta.title;
-            const sub = isBeta ? betaCopy.sub : t.cta.sub;
+            const isProduct = variant === 'product' && productCopy;
+            const title = isProduct ? productCopy.title : isBeta ? betaCopy.title : t.cta.title;
+            const sub = isProduct ? productCopy.sub : isBeta ? betaCopy.sub : t.cta.sub;
 
-            const apps = [
+            const apps = isProduct ? productCopy.actions : [
                 { label: 'Bricks Calc', href: 'https://apps.apple.com/us/app/bricks-calc-loan-calculator/id6754506837?ct=bricks_web_calc_download_calc&mt=8', accent: window.ACCENTS.calc.light, external: true },
                 { label: 'Bricks Scan', href: 'https://apps.apple.com/us/app/bricks-scan-scan-to-pdf/id6758148083?ct=bricks_web_calc_download_scan&mt=8', accent: window.ACCENTS.scan.light, external: true },
                 { label: 'Bricks Leads', href: 'leads.html', accent: window.ACCENTS.leads.light, external: false },
@@ -1058,6 +1059,13 @@
                         { q: 'Is it free?', a: 'You can download and try Bricks Calc for free. Unlimited saved calculations can be unlocked with an in-app purchase, including a one-time option.' },
                     ],
                 },
+                download: {
+                    title: ['Download', 'Bricks Calc.'],
+                    sub: 'Free to try. No account required. Built for iPhone, iPad, and Mac.',
+                    actions: [
+                        { label: 'Download on the App Store', href: 'https://apps.apple.com/us/app/bricks-calc-loan-calculator/id6754506837?ct=bricks_web_calc_download_primary&mt=8', accent: window.ACCENTS.calc.light, external: true },
+                    ],
+                },
                 ecosystem: {
                     eyebrow: 'The suite',
                     title: 'Part of a quiet toolkit.',
@@ -1148,6 +1156,13 @@
                         { q: '¿Puedo comparar varios escenarios?', a: 'Sí. Puedes crear distintos escenarios de crédito hipotecario y verlos lado a lado para ayudar a tu cliente a decidir con certeza.' },
                         { q: '¿Qué tan exacta es?', a: 'Mucho. Usa las mismas fórmulas estándar de amortización de los bancos. Aun así, conviene siempre confirmar las condiciones finales con la entidad financiera.' },
                         { q: '¿Es gratuita?', a: 'Puedes descargar y probar Bricks Calc gratis. Los cálculos guardados ilimitados se desbloquean con una compra dentro de la app, incluyendo una opción de pago único.' },
+                    ],
+                },
+                download: {
+                    title: ['Descarga', 'Bricks Calc.'],
+                    sub: 'Gratis para probar. Sin cuenta obligatoria. Nativa para iPhone, iPad y Mac.',
+                    actions: [
+                        { label: 'Descargar en App Store', href: 'https://apps.apple.com/us/app/bricks-calc-loan-calculator/id6754506837?ct=bricks_web_calc_download_primary&mt=8', accent: window.ACCENTS.calc.light, external: true },
                     ],
                 },
                 ecosystem: {
@@ -1581,7 +1596,7 @@
             const reveal = window.useReveal();
             const isMobile = window.useIsMobile();
             return (
-                <section ref={reveal} style={{
+                <section id="ecosystem" ref={reveal} style={{
                     padding: isMobile ? '56px 20px' : '120px 48px',
                     maxWidth: 1200, margin: '0 auto',
                 }}>
@@ -1718,7 +1733,7 @@
                         <CalcFeatureSplit feature={calcT.feature_prepay} reverse={true} shotSrc={shotPrepay} theme={effectiveTheme} />
                         <CalcFeatureSplit feature={calcT.feature2} reverse={false} shotSrc={shot2} theme={effectiveTheme} />
                         <CalcTestimonials t={calcT} />
-                        <window.DownloadCTA t={t} variant="default" />
+                        <window.DownloadCTA t={t} variant="product" productCopy={calcT.download} />
                         <CalcFAQ t={calcT} />
                         <CalcEcosystem t={calcT} />
                     </main>
