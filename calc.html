@@ -1048,6 +1048,13 @@
                         { q: 'Being able to compare 15-year vs 30-year terms side by side makes explaining the options so much easier.', n: 'Carlos M.', r: 'Independent Agent', c: 'Bogotá' },
                     ],
                 },
+                social: {
+                    eyebrow: 'Updates',
+                    title: 'Latest from Bricks.',
+                    sub: 'Short product notes, launch updates, and real workflow details from X.',
+                    fallback: 'Posts by @hellobricksapps',
+                    action: 'Open on X',
+                },
                 faq: {
                     eyebrow: 'FAQ',
                     title: 'Common questions.',
@@ -1146,6 +1153,13 @@
                         { q: 'Solía complicarme con hojas de cálculo o calculadoras web. Ahora solo abro Calc en mi iPad y miramos los números juntos.', n: 'Sarah J.', r: 'Agente Inmobiliaria', c: 'Miami' },
                         { q: 'Poder comparar un plazo de 15 años vs 30 años lado a lado hace que explicar las opciones sea mucho más fácil.', n: 'Carlos M.', r: 'Agente Independiente', c: 'Bogotá' },
                     ],
+                },
+                social: {
+                    eyebrow: 'Actualizaciones',
+                    title: 'Lo último de Bricks.',
+                    sub: 'Notas breves de producto, lanzamientos y detalles reales del flujo de trabajo en X.',
+                    fallback: 'Publicaciones de @hellobricksapps',
+                    action: 'Abrir en X',
                 },
                 faq: {
                     eyebrow: 'FAQ',
@@ -1518,6 +1532,89 @@
         }
 
         // ==========================================================================
+        // CalcSocialFeed
+        // ==========================================================================
+
+        function CalcSocialFeed({ t, theme }) {
+            const reveal = window.useReveal();
+            const isMobile = window.useIsMobile();
+            const feedRef = React.useRef(null);
+
+            React.useEffect(() => {
+                const loadTimeline = () => {
+                    if (window.twttr && window.twttr.widgets && feedRef.current) {
+                        window.twttr.widgets.load(feedRef.current);
+                    }
+                };
+
+                const existing = document.querySelector('script[src="https://platform.twitter.com/widgets.js"]');
+                if (existing) {
+                    loadTimeline();
+                    existing.addEventListener('load', loadTimeline, { once: true });
+                    return () => existing.removeEventListener('load', loadTimeline);
+                }
+
+                const script = document.createElement('script');
+                script.src = 'https://platform.twitter.com/widgets.js';
+                script.async = true;
+                script.charset = 'utf-8';
+                script.addEventListener('load', loadTimeline, { once: true });
+                document.body.appendChild(script);
+
+                return () => script.removeEventListener('load', loadTimeline);
+            }, [theme]);
+
+            return (
+                <section ref={reveal} style={{
+                    padding: isMobile ? '56px 20px' : '96px 48px',
+                    maxWidth: 960, margin: '0 auto',
+                }}>
+                    <div className="reveal" style={{ textAlign: 'center', marginBottom: isMobile ? 28 : 40 }}>
+                        <div style={{ ...window.eyebrowStyle, color: CALC_ACCENT }}>{t.social.eyebrow}</div>
+                        <h2 style={{
+                            fontSize: isMobile ? 32 : 44, fontWeight: 900, letterSpacing: '-0.035em',
+                            lineHeight: 1.05, margin: '0 0 12px', color: 'var(--b-text)',
+                        }}>{t.social.title}</h2>
+                        <p style={{
+                            fontSize: 16, color: 'var(--b-text-2)', lineHeight: 1.6, margin: 0,
+                            maxWidth: 540, marginLeft: 'auto', marginRight: 'auto',
+                        }}>{t.social.sub}</p>
+                    </div>
+
+                    <div className="reveal reveal-d1" style={{
+                        background: 'var(--b-bg-elevated)', borderRadius: 32,
+                        boxShadow: 'var(--emboss-soft)',
+                        border: '1px solid var(--b-border)',
+                        padding: isMobile ? 12 : 16,
+                        overflow: 'hidden',
+                    }}>
+                        <div ref={feedRef} key={theme} style={{
+                            minHeight: isMobile ? 560 : 620,
+                            display: 'flex', justifyContent: 'center',
+                        }}>
+                            <a
+                                className="twitter-timeline"
+                                href="https://twitter.com/hellobricksapps"
+                                data-tweet-limit="5"
+                                data-theme={theme === 'dark' ? 'dark' : 'light'}
+                                data-chrome="noheader nofooter noborders transparent"
+                                data-dnt="true"
+                            >
+                                {t.social.fallback}
+                            </a>
+                        </div>
+                    </div>
+
+                    <div className="reveal reveal-d2" style={{ textAlign: 'center', marginTop: 20 }}>
+                        <a href="https://x.com/hellobricksapps" target="_blank" rel="noopener noreferrer" style={{
+                            fontSize: 14, fontWeight: 600, color: CALC_ACCENT, textDecoration: 'none',
+                        }}>{t.social.action}</a>
+                    </div>
+                </section>
+            );
+        }
+
+        // ==========================================================================
         // CalcFAQ
         // ==========================================================================
 
@@ -1734,6 +1831,7 @@
                         <CalcFeatureSplit feature={calcT.feature2} reverse={false} shotSrc={shot2} theme={effectiveTheme} />
                         <CalcTestimonials t={calcT} />
                         <window.DownloadCTA t={t} variant="product" productCopy={calcT.download} />
+                        <CalcSocialFeed t={calcT} theme={effectiveTheme} />
                         <CalcFAQ t={calcT} />
                         <CalcEcosystem t={calcT} />
                     </main>
