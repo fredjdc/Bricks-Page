@@ -4,9 +4,9 @@ This document contains the exact copy, images, and scheduling details for all 72
 
 ---
 
-## ⏸️ Unpublished (Weeks 1–12)
+## ✅ Scheduled in Buffer (Weeks 1–5)
 
-These 72 posts are pending and waiting to be scheduled.
+These 30 posts have been successfully scheduled in Buffer and will go out on their respective dates.
 
 ### Week 1 Tuesday — Bricks Calc (English)
 **Date:** Tuesday, May 19, 2026 @ 1:00 PM (Lima Time)
@@ -167,6 +167,14 @@ These 72 posts are pending and waiting to be scheduled.
   Descarga Bricks Scan en el App Store: https://apps.apple.com/us/app/bricks-scan-scan-to-pdf/id6758148083
 * **X (Twitter):**
   Un documento escaneado debería seguir siendo útil. Mantén tus escaneos cerca de las herramientas de Apple que ya usas. https://apps.apple.com/us/app/bricks-scan-scan-to-pdf/id6758148083
+
+---
+
+---
+
+## ⏸️ Unpublished (Weeks 6–12)
+
+These 42 posts are pending and waiting to be scheduled.
 
 ### Week 6 Tuesday — Bricks Calc (Spanish)
 **Date:** Tuesday, June 23, 2026 @ 1:00 PM (Lima Time)
