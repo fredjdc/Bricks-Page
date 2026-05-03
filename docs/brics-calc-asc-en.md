@@ -37,20 +37,19 @@ It also spends characters on weaker standalone words like `monthly`, `property`,
 Use this as the default English keyword field:
 
 ```text
-mortgage,loan,calculator,amortization,emi,refinance,payment,interest,prepay,rental,pmi,tax
+loan,app,tax,rental,pmi,debt,home,real,estate,house,equity,rate,property,buy,free,easy,escrow,fha,va
 ```
 
-Character count: 90.
+Character count: 100.
 
 Why this is better:
 
-- Keeps the strongest existing mortgage terms.
-- Adds `loan` and `calculator`, which help form combinations like `loan calculator`, `mortgage calculator`, and `amortization calculator`.
-- Adds `emi` for markets where users search for monthly installment calculators.
-- Uses `prepay` instead of `prepayment` to save characters while preserving intent.
-- Keeps `rental`, `pmi`, and `tax` because these are differentiators in the app.
+- Focuses on Mortgage and Home intent.
+- Adds `loan` and `app`, which are high-volume search terms.
+- Includes `fha` and `va` to target specific US loan types.
+- Uses `escrow`, `equity`, and `house` to capture property-specific intent.
 
-Do not include the app name in keywords. The title already carries `Bricks Calc`.
+Do not include the app name in keywords. The title already carries `Bricks`.
 
 ## Ranking Strategy
 
@@ -60,15 +59,15 @@ Do not include the app name in keywords. The title already carries `Bricks Calc`
 - loan calculator
 - amortization calculator
 - mortgage payment calculator
-- refinance calculator
+- home loan calculator
 
 ### Secondary terms to test
 
-- EMI calculator
-- prepayment calculator
-- PMI calculator
+- fha loan calculator
+- va loan calculator
+- equity calculator
 - rental income calculator
-- home loan calculator
+- property tax calculator
 
 ### Positioning
 
@@ -170,32 +169,20 @@ The key business metric is not raw installs. It is completed calculations that r
 ### Name
 
 ```text
-Bricks Calc: Loan Calculator
+Mortgage Calculator - Bricks
 ```
 
-This is a reasonable current name because it keeps the brand and uses a high-intent generic term. If App Store Connect allows a title test later, consider:
-
-```text
-Bricks Calc: Mortgage Calculator
-```
-
-Use this if mortgage searches prove stronger than general loan searches.
+This is a reasonable current name because it keeps the brand and uses a high-intent generic term.
 
 ### Subtitle
 
 Current direction:
 
 ```text
-Home Loan & EMI Tracker
+Amortization & Payment Plan
 ```
 
-Recommended next test:
-
-```text
-Mortgage, EMI & Amortization
-```
-
-Rationale: this keeps `mortgage`, `EMI`, and `amortization` visible near the title. It is more search-aligned than `tracker`, which implies ongoing debt tracking more than calculation.
+Rationale: this keeps `Amortization` and `Payment` visible near the title. It is more search-aligned than `tracker`, which implies ongoing debt tracking more than calculation.
 
 ## iOS
 
@@ -293,7 +280,7 @@ This update improves the tools that help you compare real mortgage and loan scen
 ### Keywords
 
 ```text
-mortgage,loan,calculator,amortization,emi,refinance,payment,interest,prepay,rental,pmi,tax
+loan,app,tax,rental,pmi,debt,home,real,estate,house,equity,rate,property,buy,free,easy,escrow,fha,va
 ```
 
 ## macOS
@@ -392,7 +379,7 @@ This update improves the tools that help you compare real mortgage and loan scen
 ### Keywords
 
 ```text
-mortgage,loan,calculator,amortization,emi,refinance,payment,interest,prepay,rental,pmi,tax
+loan,app,tax,rental,pmi,debt,home,real,estate,house,equity,rate,property,buy,free,easy,escrow,fha,va
 ```
 
 ## visionOS
@@ -491,7 +478,7 @@ This update improves the tools that help you compare real mortgage and loan scen
 ### Keywords
 
 ```text
-mortgage,loan,calculator,amortization,emi,refinance,payment,interest,prepay,rental,pmi,tax
+loan,app,tax,rental,pmi,debt,home,real,estate,house,equity,rate,property,buy,free,easy,escrow,fha,va
 ```
 
 ## Web Page Alignment
