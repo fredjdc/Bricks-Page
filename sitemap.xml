@@ -35,6 +35,28 @@
     </url>
 
     <url>
+        <loc>https://bricks.pe/refinance.html</loc>
+        <lastmod>2026-05-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://bricks.pe/refinance.html"/>
+        <xhtml:link rel="alternate" hreflang="es-PE" href="https://bricks.pe/refinanciamiento.html"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://bricks.pe/refinanciamiento.html"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://bricks.pe/refinance.html"/>
+    </url>
+
+    <url>
+        <loc>https://bricks.pe/refinanciamiento.html</loc>
+        <lastmod>2026-05-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="es-PE" href="https://bricks.pe/refinanciamiento.html"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://bricks.pe/refinanciamiento.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://bricks.pe/refinance.html"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://bricks.pe/refinance.html"/>
+    </url>
+
+    <url>
         <loc>https://bricks.pe/homebuyers.html</loc>
         <lastmod>2026-04-28</lastmod>
         <changefreq>weekly</changefreq>
