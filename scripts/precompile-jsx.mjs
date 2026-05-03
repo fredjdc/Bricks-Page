@@ -8,6 +8,8 @@ const OUT_DIR = path.join(ROOT, "compiled");
 const PAGES = [
   "index.html",
   "calc.html",
+  "refinance.html",
+  "refinanciamiento.html",
   "scan.html",
   "leads.html",
   "about.html",
